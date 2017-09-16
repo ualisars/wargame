@@ -19,35 +19,25 @@ import {
   getNodeFromMap
 } from './path/drawPath';
 
-import Warrior from './warrior/Warrior';
-import {warriors, currentlyChosenWarrior} from './store/warriorStore';
-import {
-  onChooseWarrior,
-  createWarrior,
-  assignWarriorMoveToPosition,
-} from './warrior/warriorAction';
-import {updateWarrior} from './warrior/warriorMovement';
+import Unit from './unit/Unit';
 
 import {
-  createUnit,
   onChooseUnit,
-  onChangeWarriorPositionInUnit
+  createUnit,
+  assignUnitMoveToPosition,
 } from './unit/unitActions';
+import {updateUnit} from './unit/unitMovement';
+
 import {
   units,
   currentlyChosenUnit
 } from './store/unitStore';
 
-import {
-  calcDestinationAngleInDegrees
-} from './unit/unitUtils';
-
-let warrior = createWarrior('barbarian', 80, 160, 5);
-createUnit('testUnit', 6, 240, 420);
+let unit = createUnit('barbarian', 80, 160, 5);
 
 drawGrid();
 console.log('map', map);
-console.log('currentlyChosenWarrior', currentlyChosenWarrior);
+
 
 canvas.addEventListener('click', (e) => {
   console.error('Click');
@@ -55,9 +45,8 @@ canvas.addEventListener('click', (e) => {
   let y = e.offsetY; // get Y
   console.log('Position x', e.offsetX); // get X
   console.log('Position y', e.offsetY); // get Y
-  onChooseWarrior(warriors, x, y);
-  onChooseUnit(units, currentlyChosenWarrior);
-  console.log('currentlyChosenWarrior', currentlyChosenWarrior);
+  onChooseUnit(units, x, y);
+  console.log('currentlyChosenUnit', currentlyChosenUnit);
 });
 
 // set onClickListener for right mouse event
@@ -66,18 +55,15 @@ canvas.addEventListener('contextmenu', (e) => {
   e.preventDefault();
   let x = e.offsetX; // get X
   let y = e.offsetY; // get Y
-  let startNode = getNodeFromMap(currentlyChosenUnit.commanderPositionX, currentlyChosenUnit.commanderPositionY);
+  let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y);
   let finishNode = getNodeFromMap(x, y);
   console.error('startNode', startNode);
   console.error('finishNode', finishNode);
-  assignWarriorMoveToPosition(currentlyChosenWarrior, x, y);
-
-  assignWarriorMoveToPosition(currentlyChosenWarrior, x, y);
-  console.error('Angle', calcDestinationAngleInDegrees(currentlyChosenUnit, x, y));
-  // let path:any = aStar(startNode, finishNode);
-  // if(currentlyChosenUnit) {
-  //  onChangeWarriorPositionInUnit(currentlyChosenUnit,path, 0, x, y);
-  // }
+  assignUnitMoveToPosition(currentlyChosenUnit, x, y);
+  let path:any = aStar(startNode, finishNode);
+  if(currentlyChosenUnit) {
+   updateUnit(currentlyChosenUnit,path, 0, x, y);
+  }
 
   //drawPath(path);
 });

@@ -1,4 +1,4 @@
-import {drawWarrior} from './warriorAction';
+import {drawUnit} from './unitActions';
 import {
   gridSize,
   ctx,
@@ -7,9 +7,8 @@ import {
 } from '../map/mapConfig';
 import {deleteObjectFromArray} from '../utils/objUtils';
 
-export let updateWarrior = (warrior:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number) => {
-  console.log('updateWarrior');
-  if(currentMoveToX !== warrior.moveToNodeX || currentMoveToY !== warrior.moveToNodeY) {
+export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number) => {
+  if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) {
     console.log('new destination has been chosen');
     return;
   }
@@ -20,14 +19,14 @@ export let updateWarrior = (warrior:any, path:any[], i:number=0, currentMoveToX:
     nodeToClear = updatedPath[i - 1];
   }
   ctx.clearRect(nodeToClear.x, nodeToClear.y, gridSize, gridSize);
-  warrior.setX(node.x); // calculate center of the current node
-  warrior.setY(node.y);
+  unit.setX(node.x); // calculate center of the current node
+  unit.setY(node.y);
   //console.log('warrior.x', warrior.x, 'warrior.y', warrior.y);
-  drawWarrior(warrior);
+  drawUnit(unit);
   i++;
   if(i !== updatedPath.length) {
     setTimeout(() => {
-      updateWarrior(warrior, updatedPath, i, currentMoveToX, currentMoveToY);
+      updateUnit(unit, updatedPath, i, currentMoveToX, currentMoveToY);
     }, 300);
   }
 }
