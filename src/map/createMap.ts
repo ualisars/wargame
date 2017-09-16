@@ -106,12 +106,12 @@ export const createObstacles = (startX:number, finishX:number, startY:number, fi
 }
 
 export let map = createNodes();
-map = createObstacles(120, 160, 120, 160, 'river');
-map = createObstacles(660, 820, 180, 200, 'river');
-map = createObstacles(900, 1180, 180, 200, 'river');
-map = createOneObstacle(300, 340, 'mountain');
-map = createObstacles(280, 320, 360, 380, 'mountain');
-map = createObstacles(740, 760, 420, 500, 'forest');
-map = createObstacles(960, 1000, 440, 460, 'forest');
-map = createObstacles(980, 1000, 440, 520, 'forest');
+map = createObstacles(120, 220, 120, 160, 'river');
+map = createObstacles(640, 800, 160, 160, 'river');
+map = createObstacles(880, 1120, 160, 160, 'river');
+map = createOneObstacle(300, 350, 'mountain');
+map = createObstacles(240, 340, 320, 360, 'mountain');
+map = createObstacles(480, 580, 440, 480, 'forest');
+map = createObstacles(960, 1000, 360, 400, 'forest');
+map = createObstacles(920, 1000, 400, 500, 'forest');
 addNeighbours(map);

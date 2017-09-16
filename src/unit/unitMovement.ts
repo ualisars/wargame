@@ -27,6 +27,6 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(i !== updatedPath.length) {
     setTimeout(() => {
       updateUnit(unit, updatedPath, i, currentMoveToX, currentMoveToY);
-    }, 300);
+    }, 600);
   }
 }

@@ -33,7 +33,7 @@ import {
   currentlyChosenUnit
 } from './store/unitStore';
 
-let unit = createUnit('barbarian', 80, 160, 5);
+let unit = createUnit('barbarian', 40, 80, 15);
 
 drawGrid();
 console.log('map', map);
