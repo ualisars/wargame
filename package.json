@@ -1,0 +1,27 @@
+{
+  "name": "wargame",
+  "version": "1.0.0",
+  "description": "Wargame Web game",
+  "main": "game.ts",
+  "scripts": {
+    "test": "mocha -r jsdom-global/register --compilers ts:ts-node/register,tsx:ts-node/register test"
+  },
+  "author": "Ualikhan Sarsenbayev",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.42",
+    "chai": "^4.1.2",
+    "jsdom": "11.1.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "^3.5.0",
+    "source-map-loader": "^0.2.1",
+    "ts-loader": "^2.3.4",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.2",
+    "webpack": "^3.5.5"
+  },
+  "dependencies": {
+    "@types/mocha": "^2.2.42"
+  }
+}
