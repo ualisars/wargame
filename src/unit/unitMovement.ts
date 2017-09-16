@@ -7,6 +7,9 @@ import {
 } from '../map/mapConfig';
 import {deleteObjectFromArray} from '../utils/objUtils';
 
+import {units} from '../store/unitStore';
+import {checkOtherUnitsPosition} from './unitUtils';
+
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number) => {
   if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) {
     console.log('new destination has been chosen');
@@ -14,6 +17,10 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
   let updatedPath = path;
   let node = path[i]; // get next node
+  if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
+    return;
+  }
+
   let nodeToClear = node;;
   if(i !== 0) {
     nodeToClear = updatedPath[i - 1];

@@ -24,7 +24,7 @@ export const onChooseUnit = (warriors:any[], mouseX:number, mouseY:number) => {
 export const drawUnit = (unit:any) => {
     ctx.beginPath();
     ctx.arc(unit.centerX, unit.centerY, unit.radius, 0, Math.PI*2);
-    ctx.fillStyle = '#d92510';
+    ctx.fillStyle = '#12143e';
     ctx.fill();
     ctx.closePath();
 }
