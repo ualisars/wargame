@@ -7,6 +7,14 @@ import {
 } from '../map/mapConfig';
 import {deleteObjectFromArray} from '../utils/objUtils';
 
+import {
+  map,
+  createUnitObstacle,
+  addNeighbours
+} from '../map/createMap';
+import {aStar} from '../path/AStar';
+import {getNodeFromMap} from '../path/drawPath';
+
 import {units} from '../store/unitStore';
 import {checkOtherUnitsPosition} from './unitUtils';
 
@@ -17,7 +25,21 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
   let updatedPath = path;
   let node = path[i]; // get next node
+  console.log('node', node);
   if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
+    console.error('another unit is on the way');
+    let updatedMap = map;
+    updatedMap = createUnitObstacle(updatedMap, node.x, node.y);
+    addNeighbours(updatedMap);
+    console.log('deleted Node', node);
+    console.log('updatedMap', updatedMap);
+    console.log('node', node);
+    let startNode = getNodeFromMap(unit.x, unit.y, updatedMap);
+    let finishNode = getNodeFromMap(currentMoveToX, currentMoveToY, updatedMap);
+    let newPath:any = aStar(updatedMap, startNode, finishNode);
+
+    console.error('newPath', newPath);
+    updateUnit(unit, newPath, 0, currentMoveToX, currentMoveToY);
     return;
   }
 

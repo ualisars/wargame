@@ -11,14 +11,16 @@ class Unit {
   moveToNodeY: number;
   isCurrentlyChosen: boolean = false;
   positionInUnit: number;
+  color: string;
 
-  constructor(name:string, x:number, y:number, radius:number) {
+  constructor(name:string, x:number, y:number, radius:number, color:string) {
     this.name = name;
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.centerX = x + (gridSize / 2);
     this.centerY = y + (gridSize / 2);
+    this.color = color;
   }
 
   setX(x:number) {

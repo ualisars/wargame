@@ -33,8 +33,8 @@ import {
   currentlyChosenUnit
 } from './store/unitStore';
 
-createUnit('barbarian', 40, 80, 15);
-createUnit('knight', 80, 360, 15);
+createUnit('barbarian', 40, 80, 15, '#162f4a');
+createUnit('knight', 80, 360, 15, '#45050e');
 
 drawGrid();
 console.log('map', map);
@@ -56,12 +56,12 @@ canvas.addEventListener('contextmenu', (e) => {
   e.preventDefault();
   let x = e.offsetX; // get X
   let y = e.offsetY; // get Y
-  let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y);
-  let finishNode = getNodeFromMap(x, y);
+  let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
+  let finishNode = getNodeFromMap(x, y, map);
   console.error('startNode', startNode);
   console.error('finishNode', finishNode);
   assignUnitMoveToPosition(currentlyChosenUnit, x, y);
-  let path:any = aStar(startNode, finishNode);
+  let path:any = aStar(map, startNode, finishNode);
   if(currentlyChosenUnit) {
    updateUnit(currentlyChosenUnit,path, 0, x, y);
   }

@@ -22,9 +22,10 @@ export const onChooseUnit = (warriors:any[], mouseX:number, mouseY:number) => {
 }
 
 export const drawUnit = (unit:any) => {
+  console.log('drawUnit x:', unit.x, 'y:', unit.y);
     ctx.beginPath();
     ctx.arc(unit.centerX, unit.centerY, unit.radius, 0, Math.PI*2);
-    ctx.fillStyle = '#12143e';
+    ctx.fillStyle = unit.color;
     ctx.fill();
     ctx.closePath();
 }
@@ -41,9 +42,9 @@ export const assignUnitMoveToPosition = (unit:any, x:number, y:number) => {
 }
 
 // create Unit and immediatly push it into units array
-export let createUnit = (name:string, x:number, y:number, radius:number) => {
+export let createUnit = (name:string, x:number, y:number, radius:number, color:string) => {
   //console.error('createUnit');
-  let unit = new Unit(name, x, y, radius);
+  let unit = new Unit(name, x, y, radius, color);
   units.push(unit);
   drawUnit(unit);
   return unit;

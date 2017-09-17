@@ -15,7 +15,7 @@ export const drawPath = (path:any[]) => {
   }
 }
 
-export let getNodeFromMap = (x:number, y:number) => {
+export let getNodeFromMap = (x:number, y:number, map:any[]) => {
   let node:any;
   for(let grid of map) {
     let bottomRightX = grid.x + gridSize;

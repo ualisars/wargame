@@ -29,7 +29,7 @@ export const createNodes = () => {
   return map;
 }
 
-export const neighbours = (node:any) => {
+export const neighbours = (map: any[], node:any) => {
   let dirs = [
     {x: -gridSize, y: -gridSize, distance: 14},
     {x: 0, y: -gridSize, distance: 10},
@@ -68,12 +68,20 @@ export const neighbours = (node:any) => {
 
 export const addNeighbours = (map:any[]) => {
   for(let node of map) {
-    let n = neighbours(node);
+    let n = neighbours(map, node);
     node.neighbours = n;
   }
 }
 
-export const createOneObstacle = (positionX:number, positionY:number, type:string='forest') => {
+export const createUnitObstacle = (map:any[], positionX:number, positionY:number) => {
+  let node = {
+    x: positionX,
+    y: positionY
+  };
+  return deleteObjectFromArray(node, map)
+}
+
+export const createOneObstacle = (map:any[], positionX:number, positionY:number, type:string='forest') => {
   let node = {
     x: positionX,
     y: positionY
@@ -109,7 +117,7 @@ export let map = createNodes();
 map = createObstacles(120, 220, 120, 160, 'river');
 map = createObstacles(640, 800, 160, 160, 'river');
 map = createObstacles(880, 1120, 160, 160, 'river');
-map = createOneObstacle(300, 350, 'mountain');
+map = createOneObstacle(map, 320, 280, 'mountain');
 map = createObstacles(240, 340, 320, 360, 'mountain');
 map = createObstacles(480, 580, 440, 480, 'forest');
 map = createObstacles(960, 1000, 360, 400, 'forest');
