@@ -23,9 +23,13 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     console.log('new destination has been chosen');
     return;
   }
+
   let updatedPath = path;
   let node = path[i]; // get next node
   console.log('node', node);
+  if(checkOtherUnitsPosition(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
+    return;
+  }
   if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
     console.error('another unit is on the way');
     let updatedMap = map;
@@ -56,6 +60,6 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(i !== updatedPath.length) {
     setTimeout(() => {
       updateUnit(unit, updatedPath, i, currentMoveToX, currentMoveToY);
-    }, 600);
+    }, 300);
   }
 }

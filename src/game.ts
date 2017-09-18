@@ -30,11 +30,14 @@ import {updateUnit} from './unit/unitMovement';
 
 import {
   units,
+  playersUnits,
+  computersUnits,
   currentlyChosenUnit
 } from './store/unitStore';
 
-createUnit('barbarian', 40, 80, 15, '#162f4a');
-createUnit('knight', 80, 360, 15, '#45050e');
+createUnit('barbarian', 40, 80, 15, 'player');
+createUnit('knight', 80, 360, 15, 'player');
+createUnit('infantry', 1080, 560, 15, 'computer');
 
 drawGrid();
 console.log('map', map);
@@ -46,7 +49,7 @@ canvas.addEventListener('click', (e) => {
   let y = e.offsetY; // get Y
   console.log('Position x', e.offsetX); // get X
   console.log('Position y', e.offsetY); // get Y
-  onChooseUnit(units, x, y);
+  onChooseUnit(playersUnits, x, y);
   console.log('currentlyChosenUnit', currentlyChosenUnit);
 });
 
@@ -56,14 +59,14 @@ canvas.addEventListener('contextmenu', (e) => {
   e.preventDefault();
   let x = e.offsetX; // get X
   let y = e.offsetY; // get Y
-  let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
-  let finishNode = getNodeFromMap(x, y, map);
-  console.error('startNode', startNode);
-  console.error('finishNode', finishNode);
-  assignUnitMoveToPosition(currentlyChosenUnit, x, y);
-  let path:any = aStar(map, startNode, finishNode);
   if(currentlyChosenUnit) {
-   updateUnit(currentlyChosenUnit,path, 0, x, y);
+    let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
+    let finishNode = getNodeFromMap(x, y, map);
+    let path:any = aStar(map, startNode, finishNode);
+    console.error('startNode', startNode);
+    console.error('finishNode', finishNode);
+    assignUnitMoveToPosition(currentlyChosenUnit, x, y);
+    updateUnit(currentlyChosenUnit,path, 0, x, y);
   }
 
   //drawPath(path);
