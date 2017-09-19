@@ -19,15 +19,20 @@ import {units} from '../store/unitStore';
 import {checkOtherUnitsPosition} from './unitUtils';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number) => {
+  unit.setIsMovingToTrue();
   if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) {
     console.log('new destination has been chosen');
+    unit.setIsMovingToFalse();
     return;
   }
 
   let updatedPath = path;
   let node = path[i]; // get next node
   console.log('node', node);
+  // allies unit is on the destination position
+  // currentUnit should stop moving
   if(checkOtherUnitsPosition(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
+    unit.setIsMovingToFalse();
     return;
   }
   if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
@@ -60,6 +65,8 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(i !== updatedPath.length) {
     setTimeout(() => {
       updateUnit(unit, updatedPath, i, currentMoveToX, currentMoveToY);
-    }, 300);
+    }, 600);
+  } else {
+    unit.setIsMovingToFalse();
   }
 }

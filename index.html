@@ -8,6 +8,10 @@
   <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
 </head>
 <body>
+  <div style="position: relative;">
+    <canvas id="auxiliary" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+    <canvas id="canvas" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+  </div>
   <script src="dist/bundle.js"></script>
 </body>
 </html>

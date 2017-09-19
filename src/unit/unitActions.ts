@@ -56,3 +56,11 @@ export let createUnit = (name:string, x:number, y:number, radius:number, control
   drawUnit(unit);
   return unit;
 }
+
+export const redrawUnits = (units:any[]) => {
+  for(let unit of units) {
+    if(unit.isMoving !== true) {
+      drawUnit(unit);
+    }
+  }
+}

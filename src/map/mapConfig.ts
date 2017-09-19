@@ -4,13 +4,16 @@ export const HEIGHT: number = 600;
 export const gridSize:number = 40;
 
 // create Canvas
-export let canvas = document.createElement('canvas');
-canvas.id = "canvas";
+export const canvas:any = document.getElementById('canvas');
+export const auxiliaryCanvas:any = document.getElementById('auxiliary');
+
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
 canvas.style.border = "1px solid";
 
-document.body.appendChild(canvas);
+auxiliaryCanvas.width = WIDTH;
+auxiliaryCanvas.height = HEIGHT;
 
 // define 2d context
-export let ctx = canvas.getContext("2d");
+export const ctx = canvas.getContext("2d");
+export const auxiliaryCtx  = auxiliaryCanvas.getContext('2d')

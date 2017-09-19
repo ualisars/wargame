@@ -12,6 +12,7 @@ class Unit {
   isCurrentlyChosen: boolean = false;
   positionInUnit: number;
   controlBy: string;
+  isMoving: boolean = false;
 
   constructor(name:string, x:number, y:number, radius:number, controlBy:string) {
     this.name = name;
@@ -35,6 +36,14 @@ class Unit {
 
   assignPosition(newPosition: number) {
     this.positionInUnit = newPosition;
+  }
+
+  setIsMovingToFalse() {
+    this.isMoving = false;
+  }
+
+  setIsMovingToTrue() {
+    this.isMoving = true;
   }
 }
 
