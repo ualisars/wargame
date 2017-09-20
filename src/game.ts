@@ -30,7 +30,10 @@ import {
   createUnit,
   assignUnitMoveToPosition,
 } from './unit/unitActions';
-import {updateUnit} from './unit/unitMovement';
+import {
+  updateUnit,
+  pursueUnit
+} from './unit/unitMovement';
 
 import {
   units,
@@ -41,7 +44,7 @@ import {
 
 createUnit('barbarian', 40, 80, 15, 'player');
 createUnit('knight', 80, 360, 15, 'player');
-createUnit('infantry', 1080, 560, 15, 'computer');
+createUnit('infantry', 1080, 400, 15, 'computer');
 
 drawGrid();
 console.log('map', map);
@@ -52,7 +55,7 @@ canvas.addEventListener('click', (e:any) => {
   let y = e.offsetY; // get Y
   console.log('Position x', e.offsetX); // get X
   console.log('Position y', e.offsetY); // get Y
-  onChooseUnit(playersUnits, x, y);
+  onChooseUnit(units, x, y);
   console.log('currentlyChosenUnit', currentlyChosenUnit);
 });
 
@@ -97,7 +100,7 @@ auxiliaryCanvas.addEventListener('click', (e:any) => {
   let y = e.offsetY; // get Y
   console.log('Position x', e.offsetX); // get X
   console.log('Position y', e.offsetY); // get Y
-  onChooseUnit(playersUnits, x, y);
+  onChooseUnit(units, x, y);
   console.log('currentlyChosenUnit', currentlyChosenUnit);
 });
 
@@ -107,13 +110,33 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
   let x = e.offsetX; // get X
   let y = e.offsetY; // get Y
   if(currentlyChosenUnit) {
-    let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
-    let finishNode = getNodeFromMap(x, y, map);
-    let path:any = aStar(map, startNode, finishNode);
-    console.error('startNode', startNode);
-    console.error('finishNode', finishNode);
-    assignUnitMoveToPosition(currentlyChosenUnit, x, y);
-    updateUnit(currentlyChosenUnit,path, 0, x, y);
+    for(let computersUnit of computersUnits) {
+      let bottomRightX = computersUnit.x + gridSize;
+      let bottomRightY = computersUnit.y + gridSize;
+      if(x >= computersUnit.x && x < bottomRightX && y >= computersUnit.y && y < bottomRightY) {
+        console.log('computersUnit', computersUnit);
+        currentlyChosenUnit.setUnitToPursue(computersUnit);
+        pursueUnit(currentlyChosenUnit, computersUnit);
+      } else {
+        currentlyChosenUnit.setUnitToPursue(null);
+        let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
+        let finishNode = getNodeFromMap(x, y, map);
+        let path:any = aStar(map, startNode, finishNode);
+        console.error('startNode', startNode);
+        console.error('finishNode', finishNode);
+        assignUnitMoveToPosition(currentlyChosenUnit, x, y);
+        updateUnit(currentlyChosenUnit,path, 0, x, y);
+      }
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+    // let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
+    // let finishNode = getNodeFromMap(x, y, map);
+    // let path:any = aStar(map, startNode, finishNode);
+    // console.error('startNode', startNode);
+    // console.error('finishNode', finishNode);
+    // assignUnitMoveToPosition(currentlyChosenUnit, x, y);
+    // updateUnit(currentlyChosenUnit,path, 0, x, y);
   }
 });
 

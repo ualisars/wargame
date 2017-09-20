@@ -13,6 +13,7 @@ class Unit {
   positionInUnit: number;
   controlBy: string;
   isMoving: boolean = false;
+  unitToPursue: any = null;
 
   constructor(name:string, x:number, y:number, radius:number, controlBy:string) {
     this.name = name;
@@ -44,6 +45,10 @@ class Unit {
 
   setIsMovingToTrue() {
     this.isMoving = true;
+  }
+
+  setUnitToPursue(oponentsUnit:any) {
+    this.unitToPursue = oponentsUnit;
   }
 }
 
