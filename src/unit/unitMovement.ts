@@ -39,7 +39,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
   if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
     // unit has another allies' unit on its way
-    console.error('updateUnit: another unit is on the way');
+    console.error('updateUnit: another unit is on the way x:',node.x,'y:', node.y);
     let updatedMap = map;
     updatedMap = createUnitObstacle(updatedMap, node.x, node.y);
     addNeighbours(updatedMap);
@@ -68,7 +68,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(i !== updatedPath.length) {
     setTimeout(() => {
       updateUnit(unit, updatedPath, i, currentMoveToX, currentMoveToY);
-    }, 2000);
+    }, 400);
   } else {
     unit.setIsMovingToFalse();
   }
@@ -108,6 +108,33 @@ export const pursueUnit = (unit:any, pursuedUnit:any) => {
     return;
   }
 
+  if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
+    // unit has another allies' unit on its way
+    console.error('pursueUnit: another unit is on the way x:',node.x, 'y:',node.y);
+    let updatedMap = map;
+    updatedMap = createUnitObstacle(updatedMap, node.x, node.y);
+    addNeighbours(updatedMap);
+    console.log('deleted Node', node);
+    console.log('updatedMap', updatedMap);
+    console.log('node', node);
+    startNode = getNodeFromMap(unit.x, unit.y, updatedMap);
+    finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, updatedMap);
+    unit.moveToNodeX = pursuedUnit.x;
+    unit.moveToNodeY = pursuedUnit.y;
+    let newPath:any = aStar(updatedMap, startNode, finishNode);
+    previousNode = newPath[0]; // get previous unit's position
+    node = newPath[1]; // get next node
+    console.error('unit is going to node x:', node.x, 'y:',node.y);
+    ctx.clearRect(previousNode.x, previousNode.y, gridSize, gridSize);
+
+    unit.setX(node.x); // calculate center of the current node
+    unit.setY(node.y);
+
+    drawUnit(unit);
+    pursueUnit(unit, pursuedUnit);
+    return;
+  }
+
   ctx.clearRect(previousNode.x, previousNode.y, gridSize, gridSize);
 
   unit.setX(node.x); // calculate center of the current node
@@ -116,5 +143,5 @@ export const pursueUnit = (unit:any, pursuedUnit:any) => {
   drawUnit(unit);
   setTimeout(() => {
     pursueUnit(unit, pursuedUnit);
-  }, 2000);
+  }, 400);
 }
