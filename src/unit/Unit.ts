@@ -15,6 +15,25 @@ class Unit {
   isMoving: boolean = false;
   unitToPursue: any = null;
 
+  // general
+  description: string;
+  cost: number;
+  advantageOver: string[];
+
+  // Characteristics
+  type: string;
+  health: number;
+  speed: number;
+  armour: number;
+  range: number;
+  meleeDamage: number;
+  missileDamage: number;
+  charge: number;
+  discipline: number;
+  morale: number;
+  condition: number = 100;
+
+
   constructor(name:string, x:number, y:number, radius:number, controlBy:string) {
     this.name = name;
     this.x = x;
