@@ -27,9 +27,9 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
 
   let updatedPath = path;
-  let node = path[i]; // get next node
+  let node = updatedPath[i]; // get next node
   console.log('node', node);
-  // allies unit is on the destination position
+  // ally unit is on the destination position
   // currentUnit should stop moving
   if(checkOtherUnitsPosition(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
     unit.moveToNodeX = unit.x;
@@ -55,15 +55,11 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     return;
   }
 
-  let nodeToClear = node;;
+  let nodeToClear = node;
   if(i !== 0) {
     nodeToClear = updatedPath[i - 1];
   }
-  ctx.clearRect(nodeToClear.x, nodeToClear.y, gridSize, gridSize);
-  unit.setX(node.x); // calculate center of the current node
-  unit.setY(node.y);
-  //console.log('warrior.x', warrior.x, 'warrior.y', warrior.y);
-  drawUnit(unit);
+  moveToNextNode(unit, node, nodeToClear);
   i++;
   if(i !== updatedPath.length) {
     setTimeout(() => {
@@ -71,10 +67,11 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     }, 400);
   } else {
     unit.setIsMovingToFalse();
+    return;
   }
 }
 
-export const pursueUnit = (unit:any, pursuedUnit:any) => {
+export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number) => {
   unit.setIsMovingToTrue();
   console.error('pursueUnit');
   console.log('unit.x', unit.x, 'unit.y', unit.y);
@@ -108,6 +105,11 @@ export const pursueUnit = (unit:any, pursuedUnit:any) => {
     return;
   }
 
+  // if pursued unit changed position
+  if(currentMoveToX !== pursuedUnit.x || currentMoveToY !== pursuedUnit.y) {
+
+  }
+
   if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
     // unit has another allies' unit on its way
     console.error('pursueUnit: another unit is on the way x:',node.x, 'y:',node.y);
@@ -125,23 +127,21 @@ export const pursueUnit = (unit:any, pursuedUnit:any) => {
     previousNode = newPath[0]; // get previous unit's position
     node = newPath[1]; // get next node
     console.error('unit is going to node x:', node.x, 'y:',node.y);
-    ctx.clearRect(previousNode.x, previousNode.y, gridSize, gridSize);
-
-    unit.setX(node.x); // calculate center of the current node
-    unit.setY(node.y);
-
-    drawUnit(unit);
-    pursueUnit(unit, pursuedUnit);
+    moveToNextNode(unit, node, previousNode);
+    pursueUnit(unit, pursuedUnit, pursuedUnit.x, pursuedUnit.y, 0);
     return;
   }
+  moveToNextNode(unit, node, previousNode);
+  setTimeout(() => {
+    pursueUnit(unit, pursuedUnit, pursuedUnit.x, pursuedUnit.y, i);
+  }, 400);
+}
 
+export const moveToNextNode = (unit:any, node:any, previousNode:any) => {
   ctx.clearRect(previousNode.x, previousNode.y, gridSize, gridSize);
 
   unit.setX(node.x); // calculate center of the current node
   unit.setY(node.y);
 
   drawUnit(unit);
-  setTimeout(() => {
-    pursueUnit(unit, pursuedUnit);
-  }, 400);
 }

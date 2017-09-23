@@ -34,7 +34,7 @@ class Unit {
   condition: number = 100;
 
 
-  constructor(name:string, x:number, y:number, radius:number, controlBy:string) {
+  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
     this.name = name;
     this.x = x;
     this.y = y;

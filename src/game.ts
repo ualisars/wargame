@@ -116,7 +116,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
       if(x >= computersUnit.x && x < bottomRightX && y >= computersUnit.y && y < bottomRightY) {
         console.log('computersUnit', computersUnit);
         currentlyChosenUnit.setUnitToPursue(computersUnit);
-        pursueUnit(currentlyChosenUnit, computersUnit);
+        pursueUnit(currentlyChosenUnit, computersUnit, computersUnit.x, computersUnit.y, 0);
       } else {
         currentlyChosenUnit.setUnitToPursue(null);
         let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);

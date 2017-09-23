@@ -18,9 +18,8 @@ class MeleeInfantry extends Unit {
   charge: number = 10;
   discipline: number = 30;
   morale: number = 40;
-  condition: number;
 
-  constructor(name:string, x:number, y:number, radius:number, controlBy:string) {
+  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
     super(name, x, y, radius, controlBy);
   }
 }
