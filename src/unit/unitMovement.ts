@@ -71,11 +71,12 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
 }
 
-export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number) => {
+export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number, path:any) => {
   unit.setIsMovingToTrue();
   console.error('pursueUnit');
   console.log('unit.x', unit.x, 'unit.y', unit.y);
-  console.log('pursuedUnit name', pursueUnit.name);
+  console.log('pursuedUnit name', pursuedUnit);
+  console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
   if(unit.unitToPursue !== null) {
     if(pursuedUnit.name !== unit.unitToPursue.name) {
       // allies' unit is now pursue another oponent's unit
@@ -93,21 +94,36 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
 
   let startNode = getNodeFromMap(unit.x, unit.y, map);
   let finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, map);
-  let path:any = aStar(map, startNode, finishNode);
+  let node = path[i];
   unit.moveToNodeX = pursuedUnit.x;
   unit.moveToNodeY = pursuedUnit.y;
-  let node = path[1]; // get next node
-  let previousNode = path[0]; // get previous unit's position
+  let previousNode = node;
+  if(i !== 0) {
+    previousNode = path[i-1];
+  }
+
+  // if pursued unit changed position
+  if(currentMoveToX !== pursuedUnit.x || currentMoveToY !== pursuedUnit.y) {
+    console.error('pursue unit: pursuedUnit change position')
+    i = 1;
+    currentMoveToX = pursuedUnit.x;
+    currentMoveToY = pursuedUnit.y;
+    startNode = getNodeFromMap(unit.x, unit.y, map);
+    finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, map);
+    path = aStar(map, startNode, finishNode);
+    unit.moveToNodeX = pursuedUnit.x;
+    unit.moveToNodeY = pursuedUnit.y;
+    node = path[i]; // get next node
+    previousNode = node;
+    if(i !== 0) {
+      previousNode = path[i-1];
+    }
+  }
 
   if(node.x === pursuedUnit.x && node.y === pursuedUnit.y) {
     // unit is reached oponents's unit
     console.log(`unit is reached oponents's unit`);
     return;
-  }
-
-  // if pursued unit changed position
-  if(currentMoveToX !== pursuedUnit.x || currentMoveToY !== pursuedUnit.y) {
-
   }
 
   if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
@@ -128,12 +144,13 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     node = newPath[1]; // get next node
     console.error('unit is going to node x:', node.x, 'y:',node.y);
     moveToNextNode(unit, node, previousNode);
-    pursueUnit(unit, pursuedUnit, pursuedUnit.x, pursuedUnit.y, 0);
+    pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, 0, path);
     return;
   }
   moveToNextNode(unit, node, previousNode);
+  i++;
   setTimeout(() => {
-    pursueUnit(unit, pursuedUnit, pursuedUnit.x, pursuedUnit.y, i);
+    pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, i, path);
   }, 400);
 }
 

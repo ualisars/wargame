@@ -116,7 +116,10 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
       if(x >= computersUnit.x && x < bottomRightX && y >= computersUnit.y && y < bottomRightY) {
         console.log('computersUnit', computersUnit);
         currentlyChosenUnit.setUnitToPursue(computersUnit);
-        pursueUnit(currentlyChosenUnit, computersUnit, computersUnit.x, computersUnit.y, 0);
+        let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
+        let finishNode = getNodeFromMap(x, y, map);
+        let path:any = aStar(map, startNode, finishNode);
+        pursueUnit(currentlyChosenUnit, computersUnit, computersUnit.x, computersUnit.y, 0, path);
       } else {
         currentlyChosenUnit.setUnitToPursue(null);
         let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
