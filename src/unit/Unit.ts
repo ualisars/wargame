@@ -14,6 +14,7 @@ class Unit {
   controlBy: string;
   isMoving: boolean = false;
   unitToPursue: any = null;
+  isFighting: boolean = false;
 
   // general
   description: string;
@@ -68,6 +69,14 @@ class Unit {
 
   setUnitToPursue(oponentsUnit:any) {
     this.unitToPursue = oponentsUnit;
+  }
+
+  setIsFightingToTrue() {
+    this.isFighting = true;
+  }
+
+  setIsFightingToFalse() {
+    this.isFighting = false;
   }
 }
 

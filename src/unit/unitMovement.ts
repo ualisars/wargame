@@ -17,9 +17,14 @@ import {getNodeFromMap} from '../path/drawPath';
 
 import {units} from '../store/unitStore';
 import {checkOtherUnitsPosition} from './unitUtils';
+import {checkUnitIsFighting} from './unitActions';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null) => {
   unit.setIsMovingToTrue();
+  if(checkUnitIsFighting(unit)) {
+    unit.setIsMovingToFalse();
+    return;
+  }
   if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) {
     console.log('new destination has been chosen');
     unit.setIsMovingToFalse();
@@ -77,6 +82,10 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   console.log('unit.x', unit.x, 'unit.y', unit.y);
   console.log('pursuedUnit name', pursuedUnit);
   console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
+  if(checkUnitIsFighting(unit)) {
+    unit.setIsMovingToFalse();
+    return;
+  }
   if(unit.unitToPursue !== null) {
     if(pursuedUnit.name !== unit.unitToPursue.name) {
       // allies' unit is now pursue another oponent's unit
@@ -123,6 +132,9 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   if(node.x === pursuedUnit.x && node.y === pursuedUnit.y) {
     // unit is reached oponents's unit
     console.log(`unit is reached oponents's unit`);
+    unit.setIsMovingToFalse();
+    unit.setIsFightingToTrue();
+    pursuedUnit.setIsFightingToTrue();
     return;
   }
 
