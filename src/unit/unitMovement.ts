@@ -17,7 +17,7 @@ import {getNodeFromMap} from '../path/drawPath';
 
 import {units} from '../store/unitStore';
 import {checkOtherUnitsPosition} from './unitUtils';
-import {checkUnitIsFighting} from './unitActions';
+import {checkUnitIsFighting} from './unitFight';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null) => {
   unit.setIsMovingToTrue();

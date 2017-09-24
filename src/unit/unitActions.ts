@@ -64,8 +64,3 @@ export const redrawUnits = (units:any[]) => {
     }
   }
 }
-
-export const checkUnitIsFighting = (unit:any) => {
-  if(unit.isFighting) return true;
-  return false;
-}

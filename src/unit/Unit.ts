@@ -15,6 +15,7 @@ class Unit {
   isMoving: boolean = false;
   unitToPursue: any = null;
   isFighting: boolean = false;
+  figthAgainst: string[] = [];
 
   // general
   description: string;
@@ -29,7 +30,6 @@ class Unit {
   range: number;
   meleeDamage: number;
   missileDamage: number;
-  charge: number;
   discipline: number;
   morale: number;
   condition: number = 100;
@@ -77,6 +77,18 @@ class Unit {
 
   setIsFightingToFalse() {
     this.isFighting = false;
+  }
+
+  addUnitIntoFightAgainst(opponent:string) {
+    this.figthAgainst.push(opponent);
+  }
+
+  removeUnitFromFightAgainst(opponent:string) {
+    for(let i = 0; i < this.figthAgainst.length; ++i) {
+      if(this.figthAgainst[i] === opponent) {
+        this.figthAgainst = this.figthAgainst.splice(i, 1);
+      }
+    }
   }
 }
 
