@@ -18,6 +18,7 @@ import {getNodeFromMap} from '../path/drawPath';
 import {units} from '../store/unitStore';
 import {checkOtherUnitsPosition} from './unitUtils';
 import {checkUnitIsFighting} from './unitFight';
+import {findPathFromOneNodeToAnother} from './unitPath';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null) => {
   unit.setIsMovingToTrue();
@@ -173,4 +174,11 @@ export const moveToNextNode = (unit:any, node:any, previousNode:any) => {
   unit.setY(node.y);
 
   drawUnit(unit);
+}
+
+export const moveToNextNode2 = (unit:any, node:any, previousNode:any) => {
+  return new Promise(resove => {
+    ctx.clearRect(previousNode.x, previousNode.y, gridSize, gridSize);
+
+  });
 }
