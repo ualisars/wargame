@@ -81,7 +81,6 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   unit.setIsMovingToTrue();
   console.error('pursueUnit');
   console.log('unit.x', unit.x, 'unit.y', unit.y);
-  console.log('pursuedUnit name', pursuedUnit);
   console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
   if(checkUnitIsFighting(unit)) {
     unit.setIsMovingToFalse();
@@ -115,7 +114,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   // if pursued unit changed position
   if(currentMoveToX !== pursuedUnit.x || currentMoveToY !== pursuedUnit.y) {
     console.error('pursue unit: pursuedUnit change position')
-    i = 1;
+    i = 0;
     currentMoveToX = pursuedUnit.x;
     currentMoveToY = pursuedUnit.y;
     startNode = getNodeFromMap(unit.x, unit.y, map);
@@ -156,15 +155,18 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     previousNode = newPath[0]; // get previous unit's position
     node = newPath[1]; // get next node
     console.error('unit is going to node x:', node.x, 'y:',node.y);
-    moveToNextNode(unit, node, previousNode);
-    pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, 0, path);
+    moveToNextNode2(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
+    //pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, 0, path);
     return;
   }
-  moveToNextNode(unit, node, previousNode);
-  i++;
-  setTimeout(() => {
-    pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, i, path);
-  }, 400);
+  //moveToNextNode(unit, node, previousNode);
+  console.error('previousNode', previousNode);
+  console.error('currentNode', node);
+  moveToNextNode2(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
+  // i++;
+  // setTimeout(() => {
+  //   pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, i, path);
+  // }, 400);
 }
 
 export const moveToNextNode = (unit:any, node:any, previousNode:any) => {
@@ -176,9 +178,84 @@ export const moveToNextNode = (unit:any, node:any, previousNode:any) => {
   drawUnit(unit);
 }
 
-export const moveToNextNode2 = (unit:any, node:any, previousNode:any) => {
-  return new Promise(resove => {
-    ctx.clearRect(previousNode.x, previousNode.y, gridSize, gridSize);
-
+export const moveToNextNode2 = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, currX:number, currY:number, allPath:any[], nodeI:number) => {
+  return new Promise(resolve => {
+    let startX = currentNode.x + (gridSize * 0.5);
+    let startY = currentNode.y + (gridSize * 0.5);
+    let finishX = nextNode.x + (gridSize * 0.5);
+    let finishY = nextNode.y + (gridSize * 0.5);
+    console.error('x:',startX, 'y:', startY);
+    console.error('finishX:',finishX, 'finishY:', finishY);
+    let path = findPathFromOneNodeToAnother(startX, startY, finishX, finishY);
+    console.error('path', path);
+    makeMovement2(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, 0, nodeI);
+    resolve();
   });
+}
+
+// export const makeMovement = (unit:any, path:any[], currentX:number, currentY:number, moveToX:number, moveToY:number, i:number) => {
+//     console.error('makeMovement');
+//     console.error('makeMovement i:', i);
+//    if(path[i].x === moveToX && path[i].y === moveToY) {  // unit reach destination point
+//      return;
+//    }
+//
+//    let node = path[i];
+//    // delete previous state
+//     let deleteX, deleteY;
+//     if(i > 0) {
+//       deleteX = path[i - 1].x - (gridSize * 0.5);
+//       deleteY = path[i - 1].y - (gridSize * 0.5);
+//     } else {
+//       deleteX = path[i].x  - (gridSize * 0.5);
+//       deleteY = path[i].y - (gridSize * 0.5);
+//     }
+//     ctx.clearRect(deleteX, deleteY, gridSize, gridSize);
+//     let centerX = path[i].x;
+//     let centerY = path[i].y;
+//     unit.x = centerX - (gridSize * 0.5); // change x and y every time when centerX and centerY is changed
+//     unit.y = centerY - (gridSize * 0.5);
+//     drawUnit(unit);
+//     i++;
+//     timeout(60)
+//     .then(() => {
+//       makeMovement(unit, path, currentX, currentY, moveToX, moveToY, i);
+//     });
+// }
+
+export const makeMovement2 = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
+  if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
+    console.error('unit reached its position');
+    nodeI++;
+    pursueUnit(unit, pursuedUnit, currX, currY, nodeI, allPath)
+  }
+
+  // delete previous state
+   let deleteX, deleteY;
+   if(i > 0) {
+     deleteX = path[i - 1].x - (gridSize * 0.5);
+     deleteY = path[i - 1].y - (gridSize * 0.5);
+   } else {
+     deleteX = path[i].x  - (gridSize * 0.5);
+     deleteY = path[i].y - (gridSize * 0.5);
+   }
+   ctx.clearRect(deleteX, deleteY, gridSize, gridSize);
+   let centerX = path[i].x;
+   let centerY = path[i].y;
+   unit.setX(centerX - (gridSize * 0.5));
+   unit.setY(centerY - (gridSize * 0.5));
+   drawUnit(unit);
+   timeout(200)
+   .then(() => {
+     i++;
+     makeMovement2(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
+   });
+}
+
+export const timeout = (time:number) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  })
 }

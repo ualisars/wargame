@@ -24,15 +24,14 @@ export const onChooseUnit = (units:any[], mouseX:number, mouseY:number) => {
 }
 
 export const drawUnit = (unit:any) => {
-  console.log('drawUnit x:', unit.x, 'y:', unit.y);
-    let color;
-    if(unit.controlBy === 'player') color = '#dbdb0d';
-    else if(unit.controlBy === 'computer') color = '#d30c0c';
-    ctx.beginPath();
-    ctx.arc(unit.centerX, unit.centerY, unit.radius, 0, Math.PI*2);
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.closePath();
+  let color;
+  if(unit.controlBy === 'player') color = '#dbdb0d';
+  else if(unit.controlBy === 'computer') color = '#d30c0c';
+  ctx.beginPath();
+  ctx.arc(unit.centerX, unit.centerY, unit.radius, 0, Math.PI*2);
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.closePath();
 }
 
 export const assignUnitMoveToPosition = (unit:any, x:number, y:number) => {
