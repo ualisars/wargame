@@ -179,7 +179,8 @@ export const moveToNextNode = (unit:any, node:any, previousNode:any) => {
 }
 
 export const moveToNextNode2 = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, currX:number, currY:number, allPath:any[], nodeI:number) => {
-  return new Promise(resolve => {
+  // return new Promise(resolve => {
+  console.log('moveToNextNode2');
     let startX = currentNode.x + (gridSize * 0.5);
     let startY = currentNode.y + (gridSize * 0.5);
     let finishX = nextNode.x + (gridSize * 0.5);
@@ -189,8 +190,8 @@ export const moveToNextNode2 = (unit:any, pursuedUnit:any, currentNode:any, next
     let path = findPathFromOneNodeToAnother(startX, startY, finishX, finishY);
     console.error('path', path);
     makeMovement2(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, 0, nodeI);
-    resolve();
-  });
+  //   resolve();
+  // });
 }
 
 // export const makeMovement = (unit:any, path:any[], currentX:number, currentY:number, moveToX:number, moveToY:number, i:number) => {
@@ -224,13 +225,22 @@ export const moveToNextNode2 = (unit:any, pursuedUnit:any, currentNode:any, next
 // }
 
 export const makeMovement2 = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
+  console.log('makeMovement2');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
     console.error('unit reached its position');
     nodeI++;
     pursueUnit(unit, pursuedUnit, currX, currY, nodeI, allPath)
   }
 
+  if(i >= path.length) {
+    return;
+  }
+
   // delete previous state
+  console.error('path', path);
+  console.error('path[i]:', path[i]);
+  console.error('i:', i);
+  console.error('nodeI:', nodeI);
    let deleteX, deleteY;
    if(i > 0) {
      deleteX = path[i - 1].x - (gridSize * 0.5);
@@ -244,12 +254,19 @@ export const makeMovement2 = (unit:any, pursuedUnit:any, currentNode:any, nextNo
    let centerY = path[i].y;
    unit.setX(centerX - (gridSize * 0.5));
    unit.setY(centerY - (gridSize * 0.5));
+   console.log('before draw unit');
    drawUnit(unit);
-   timeout(200)
-   .then(() => {
+
+   setTimeout(() => {
      i++;
      makeMovement2(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
-   });
+   }, 15);
+
+
+  //  timeout(80)
+  //  .then(() => {
+  //    makeMovement2(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
+  //  });
 }
 
 export const timeout = (time:number) => {
