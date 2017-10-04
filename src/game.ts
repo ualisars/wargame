@@ -71,8 +71,8 @@ canvas.addEventListener('contextmenu', (e:any) => {
     let path:any = aStar(map, startNode, finishNode);
     console.error('startNode', startNode);
     console.error('finishNode', finishNode);
-    assignUnitMoveToPosition(currentlyChosenUnit, x, y);
-    updateUnit(currentlyChosenUnit,path, 0, x, y);
+    assignUnitMoveToPosition(currentlyChosenUnit, finishNode.x, finishNode.y);
+    updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y);
   }
 });
 
@@ -127,8 +127,8 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
         let path:any = aStar(map, startNode, finishNode);
         console.error('startNode', startNode);
         console.error('finishNode', finishNode);
-        assignUnitMoveToPosition(currentlyChosenUnit, x, y);
-        updateUnit(currentlyChosenUnit,path, 0, x, y);
+        assignUnitMoveToPosition(currentlyChosenUnit, finishNode.x, finishNode.y);
+        updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y);
       }
     }
 

@@ -6,7 +6,7 @@ import {
   HEIGHT
 } from '../map/mapConfig';
 import {deleteObjectFromArray} from '../utils/objUtils';
-
+import {assignUnitMoveToPosition} from './unitActions';
 import {
   map,
   createUnitObstacle,
@@ -30,9 +30,13 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) {
     console.log('new destination has been chosen');
     // unit.setIsMovingToFalse();
-    // return;
-    // let startNode = getNodeFromMap(unit.x, unit.y, map);
-    // let finishNode = getNodeFromMap(unit., y, map);
+    //return;
+    let startNode = getNodeFromMap(unit.x, unit.y, map);
+    let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY, map);
+    let newPath:any = aStar(map, startNode, finishNode);
+    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    updateUnit(unit,newPath, 0, finishNode.x, finishNode.y);
+    return;
   }
 
   let updatedPath = path;
@@ -201,9 +205,8 @@ export const moveToNextNodeInUpdateUnit = (unit:any, currentNode:any, nextNode:a
 }
 
 export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
-  console.log('makeMovementInUpdateUnit');
+  //console.log('makeMovementInUpdateUnit');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
-    console.error('unit reached its position');
     nodeI++;
     updateUnit(unit, allPath, nodeI, currX, currY);
   }
@@ -226,7 +229,6 @@ export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any
    let centerY = path[i].y;
    unit.setX(centerX - (gridSize * 0.5));
    unit.setY(centerY - (gridSize * 0.5));
-   console.log('before draw unit');
    drawUnit(unit);
 
    setTimeout(() => {
@@ -248,10 +250,6 @@ export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNod
   }
 
   // delete previous state
-  console.error('path', path);
-  console.error('path[i]:', path[i]);
-  console.error('i:', i);
-  console.error('nodeI:', nodeI);
    let deleteX, deleteY;
    if(i > 0) {
      deleteX = path[i - 1].x - (gridSize * 0.5);
@@ -265,7 +263,6 @@ export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNod
    let centerY = path[i].y;
    unit.setX(centerX - (gridSize * 0.5));
    unit.setY(centerY - (gridSize * 0.5));
-   console.log('before draw unit');
    drawUnit(unit);
 
    setTimeout(() => {
