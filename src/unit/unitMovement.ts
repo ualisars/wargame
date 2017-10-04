@@ -26,6 +26,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     unit.setIsMovingToFalse();
     return;
   }
+
   if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) {
     console.log('new destination has been chosen');
     unit.setIsMovingToFalse();
@@ -34,7 +35,12 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
 
   let updatedPath = path;
   let node = updatedPath[i]; // get next node
-  console.log('node', node);
+
+  if(i >= updatedPath.length) {
+    unit.setIsMovingToFalse();
+    return;
+  }
+
   // ally unit is on the destination position
   // currentUnit should stop moving
   if(checkOtherUnitsPosition(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
@@ -65,7 +71,11 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(i !== 0) {
     nodeToClear = updatedPath[i - 1];
   }
+  console.error('i', i);
+  console.error('path:', path.length);
+
   moveToNextNodeInUpdateUnit(unit, nodeToClear, node, currentMoveToX, currentMoveToY, path, i);
+
 }
 
 export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number, path:any) => {
@@ -191,7 +201,7 @@ export const moveToNextNodeInUpdateUnit = (unit:any, currentNode:any, nextNode:a
 }
 
 export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
-  console.log('makeMovement2');
+  console.log('makeMovementInUpdateUnit');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
     console.error('unit reached its position');
     nodeI++;
