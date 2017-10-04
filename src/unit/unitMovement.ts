@@ -29,8 +29,10 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
 
   if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) {
     console.log('new destination has been chosen');
-    unit.setIsMovingToFalse();
-    return;
+    // unit.setIsMovingToFalse();
+    // return;
+    // let startNode = getNodeFromMap(unit.x, unit.y, map);
+    // let finishNode = getNodeFromMap(unit., y, map);
   }
 
   let updatedPath = path;
@@ -71,8 +73,6 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(i !== 0) {
     nodeToClear = updatedPath[i - 1];
   }
-  console.error('i', i);
-  console.error('path:', path.length);
 
   moveToNextNodeInUpdateUnit(unit, nodeToClear, node, currentMoveToX, currentMoveToY, path, i);
 
@@ -232,7 +232,7 @@ export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any
    setTimeout(() => {
      i++;
      makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
-   }, 15);
+   }, 10);
 }
 
 export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {

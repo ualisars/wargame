@@ -14,8 +14,8 @@ export const createNodes = () => {
   let map:any[] = [];
   let value = 1;
   let id = 0;
-  for(let y = 0; y <= HEIGHT; y+= gridSize) {
-    for(let x = 0; x <= WIDTH; x+= gridSize) {
+  for(let y = 0; y < HEIGHT; y+= gridSize) {
+    for(let x = 0; x < WIDTH; x+= gridSize) {
       map.push({
         id: id,
         x: x,
@@ -47,7 +47,7 @@ export const neighbours = (map: any[], node:any) => {
       y: node.y + dir.y,
       distance: dir.distance
     }
-    if(neighbour.x >= 0 && neighbour.x < WIDTH && neighbour.y >= 0 && neighbour.y < HEIGHT) {
+    if(neighbour.x >= 0 && neighbour.x <= WIDTH && neighbour.y >= 0 && neighbour.y <= HEIGHT) {
         let finded:boolean = false;
         for(let node of map) {
           if(neighbour.x === node.x && neighbour.y === node.y) {
