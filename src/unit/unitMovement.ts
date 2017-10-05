@@ -79,7 +79,6 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
 
   moveToNextNodeInUpdateUnit(unit, nodeToClear, node, currentMoveToX, currentMoveToY, path, i);
-
 }
 
 export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number, path:any) => {
@@ -91,12 +90,23 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     unit.setIsMovingToFalse();
     return;
   }
+  if(unit.unitToPursue === null) { // unit isn't pursuing any opponent's units
+    let startNode = getNodeFromMap(unit.x, unit.y, map);
+    let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY, map);
+    let newPath:any = aStar(map, startNode, finishNode);
+    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    updateUnit(unit,newPath, 0, finishNode.x, finishNode.y);
+    return;
+  }
   if(unit.unitToPursue !== null) {
     if(pursuedUnit.name !== unit.unitToPursue.name) {
-      // allies' unit is now pursue another oponent's unit
-      console.log('allies unit is not pursue this oponents unit');
-      unit.setIsMovingToFalse();
-      unit.unitToPursue = null;
+      // unit is pursuing another opponent's unit
+      console.log('allies unit is pursuing another oponents unit');
+      let startNode = getNodeFromMap(unit.x, unit.y, map);
+      let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y, map);
+      let newPath:any = aStar(map, startNode, finishNode);
+      assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+      pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath);
       return;
     }
   } else {

@@ -67,8 +67,8 @@ class Unit {
     this.isMoving = true;
   }
 
-  setUnitToPursue(oponentsUnit:any) {
-    this.unitToPursue = oponentsUnit;
+  setUnitToPursue(opponentsUnit:any) {
+    this.unitToPursue = opponentsUnit;
   }
 
   setIsFightingToTrue() {
