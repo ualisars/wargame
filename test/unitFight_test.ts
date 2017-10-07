@@ -27,12 +27,14 @@ let computerUnit = {
 
 describe('Unit Fight Test', function() {
   describe('meeleAttack', function() {
-    it('find node2 {x: 11, y: 31, fScore: 4000}', function() {
-      meeleAttack(allyUnit, computerUnit);
-      let health = computerUnit.health;
-      console.log('health', computerUnit.health);
-      //expect(health).to.be.above(1)
-      assert.equal(11, 11);
+    meeleAttack(allyUnit, computerUnit);
+    let health = computerUnit.health;
+    console.log('health', computerUnit.health);
+    it('Health should be at least 92', function() {
+      expect(health).to.be.least(92);
+    });
+    it('Health should be at most 96', function() {
+      expect(health).to.be.most(96);
     });
   });
 });
