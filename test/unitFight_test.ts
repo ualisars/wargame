@@ -4,7 +4,7 @@ import {
   calculateDamage
 } from '../src/unit/unitFight';
 
-let allyUnit = {
+let alliedUnit = {
   name: 'allyUnit',
   health: 100,
   speed: 5,
@@ -14,6 +14,30 @@ let allyUnit = {
   discipline: 7,
   morale: 100,
   condition: 100
+}
+
+let tiredUnit = {
+  name: 'allyUnit',
+  health: 70,
+  speed: 5,
+  armour: 7,
+  range: 3,
+  meleeDamage: 10,
+  discipline: 7,
+  morale: 100,
+  condition: 70
+}
+
+let exhaustedUnit = {
+  name: 'allyUnit',
+  health: 30,
+  speed: 5,
+  armour: 7,
+  range: 3,
+  meleeDamage: 10,
+  discipline: 7,
+  morale: 100,
+  condition: 7
 }
 
 let computerUnit = {
@@ -28,15 +52,51 @@ let computerUnit = {
   condition: 100
 }
 
+let computerUnit2 = {
+  name: 'computerUnit',
+  health: 100,
+  speed: 5,
+  armour: 4,
+  range: 0,
+  meleeDamage: 6,
+  discipline: 2,
+  morale: 100,
+  condition: 100
+}
+
+let computerUnit3 = {
+  name: 'computerUnit',
+  health: 100,
+  speed: 5,
+  armour: 4,
+  range: 0,
+  meleeDamage: 6,
+  discipline: 2,
+  morale: 100,
+  condition: 100
+}
+
 describe('Unit Fight Test', function() {
   describe('meeleAttack', function() {
-    meeleAttack(allyUnit, computerUnit);
+    meeleAttack(alliedUnit, computerUnit);
+    meeleAttack(tiredUnit, computerUnit2);
+    meeleAttack(exhaustedUnit, computerUnit3);
     let health = computerUnit.health;
+    let tiredUnitHealth = computerUnit2.health;
+    let exhaustedUnitHealth = computerUnit3.health;
     it('Health should be at least 92', function() {
       expect(health).to.be.least(92);
     });
     it('Health should be at most 96', function() {
       expect(health).to.be.most(96);
+    });
+    it('Health of the tiredUnit should be at least 94 and at most 98', function() {
+      expect(tiredUnitHealth).to.be.least(94);
+      expect(tiredUnitHealth).to.be.most(98);
+    });
+    it('Health of the exhaustedUnit should be at least 97 and at most 99', function() {
+      expect(exhaustedUnitHealth).to.be.least(97);
+      expect(exhaustedUnitHealth).to.be.most(99);
     });
   });
   describe('calculateDamage tests', function() {

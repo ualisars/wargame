@@ -10,7 +10,9 @@ export const figthAgainst = (unit:any, opponent:any) => {
 }
 
 export const meeleAttack = (attackUnit:any, defendUnit:any) => {
-  let meleeDamage = randomizeMeleeDamage(attackUnit.meleeDamage);
+  let initialDamage = randomizeMeleeDamage(attackUnit.meleeDamage);
+  let meleeDamage = calculateDamage(attackUnit, initialDamage);
+  if(meleeDamage < 1) meleeDamage = 1; // damage cannot be less than 1
   let armour = defendUnit.armour;
   console.error('armour', armour);
   console.error('meeleeDamage', meleeDamage);
