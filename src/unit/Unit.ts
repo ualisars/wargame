@@ -30,8 +30,8 @@ class Unit {
   range: number;
   meleeDamage: number = 7;
   missileDamage: number;
-  discipline: number;
-  morale: number;
+  discipline: number = 5;
+  morale: number = 100;
   condition: number = 100;
 
 
