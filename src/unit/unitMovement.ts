@@ -19,6 +19,7 @@ import {units} from '../store/unitStore';
 import {checkOtherUnitsPosition} from './unitUtils';
 import {checkUnitIsFighting} from './unitFight';
 import {findPathFromOneNodeToAnother} from './unitPath';
+import {meleeCombat} from './unitFight';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null) => {
   unit.setIsMovingToTrue();
@@ -156,6 +157,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     unit.setIsMovingToFalse();
     unit.setIsFightingToTrue();
     pursuedUnit.setIsFightingToTrue();
+    meleeCombat(unit, pursuedUnit);
     return;
   }
 

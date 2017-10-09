@@ -1,14 +1,14 @@
 import { expect, should, assert} from 'chai';
-import {randomizeMeeleDamage} from '../src/utils/randomGenerator';
+import {randomizeMeleeDamage} from '../src/utils/randomGenerator';
 
 describe('randomGenerator tests', function() {
   describe('meeleAttack', function() {
     let meeleAttack = 10;
-    let randomAttack1 = randomizeMeeleDamage(meeleAttack);
-    let randomAttack2 = randomizeMeeleDamage(meeleAttack);
-    let randomAttack3 = randomizeMeeleDamage(meeleAttack);
-    let randomAttack4 = randomizeMeeleDamage(meeleAttack);
-    let randomAttack5 = randomizeMeeleDamage(meeleAttack);
+    let randomAttack1 = randomizeMeleeDamage(meeleAttack);
+    let randomAttack2 = randomizeMeleeDamage(meeleAttack);
+    let randomAttack3 = randomizeMeleeDamage(meeleAttack);
+    let randomAttack4 = randomizeMeleeDamage(meeleAttack);
+    let randomAttack5 = randomizeMeleeDamage(meeleAttack);
     it('randomAttack should be more or equal than 8', function() {
       console.log('randomAttack', randomAttack1);
       expect(randomAttack1).to.be.least(8);
