@@ -79,8 +79,12 @@ class Unit {
     this.isFighting = false;
   }
 
-  addUnitIntoFightAgainst(opponent:string) {
-    this.figthAgainst.push(opponent);
+  addUnitIntoFightAgainst(unitName:string, position:string='front') {
+    if(position === 'front' || position === 'flank' || position === 'rear') {
+      this.figthAgainst.push(unitName);
+    } else {
+      console.error('Position can be only front, flank or rear');
+    }
   }
 
   removeUnitFromFightAgainst(opponent:string) {

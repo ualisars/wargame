@@ -22,9 +22,6 @@ export const meeleAttack = (attackUnit:any, defendUnit:any) => {
 
 export const meleeCombat = (attackUnit:any, defendUnit:any) => {
   console.error('meeleCombat');
-  console.error('defendUnit health', defendUnit.health);
-  console.error('meeleCombat attackUnit', attackUnit);
-  console.error('meeleCombat defendUnit', defendUnit);
   if(!attackUnit.isFighting || !defendUnit.isFighting || attackUnit.health <= 0 || defendUnit.health <= 0) {
     console.log('not fighting anymore');
     return;

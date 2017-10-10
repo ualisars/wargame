@@ -39,10 +39,8 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     return;
   }
 
-  if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) {
+  if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) { // new destination
     console.log('new destination has been chosen');
-    // unit.setIsMovingToFalse();
-    //return;
     let startNode = getNodeFromMap(unit.x, unit.y, map);
     let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY, map);
     let newPath:any = aStar(map, startNode, finishNode);
@@ -141,6 +139,10 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     currentMoveToY = pursuedUnit.y;
     startNode = getNodeFromMap(unit.x, unit.y, map);
     finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, map);
+    console.error('startNode:', startNode);
+    console.error('finishNode:', finishNode);
+    console.error('pursuedUnit.x:', pursuedUnit.x, 'pursuedUnit.y:', pursuedUnit.y);
+    console.error('map', map);
     path = aStar(map, startNode, finishNode);
     unit.moveToNodeX = pursuedUnit.x;
     unit.moveToNodeY = pursuedUnit.y;
@@ -179,17 +181,11 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     node = newPath[1]; // get next node
     console.error('unit is going to node x:', node.x, 'y:',node.y);
     moveToNextNode(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
-    //pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, 0, path);
     return;
   }
-  //moveToNextNode(unit, node, previousNode);
   console.error('previousNode', previousNode);
   console.error('currentNode', node);
   moveToNextNode(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
-  // i++;
-  // setTimeout(() => {
-  //   pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, i, path);
-  // }, 400);
 }
 
 export const moveToNextNode = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, currX:number, currY:number, allPath:any[], nodeI:number) => {
@@ -252,7 +248,7 @@ export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any
    setTimeout(() => {
      i++;
      makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
-   }, 10);
+   }, 20);
 }
 
 export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
@@ -286,7 +282,7 @@ export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNod
    setTimeout(() => {
      i++;
      makeMovement(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
-   }, 15);
+   }, 25);
 }
 
 export const timeout = (time:number) => {
