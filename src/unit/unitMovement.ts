@@ -15,11 +15,12 @@ import {
 import {aStar} from '../path/AStar';
 import {getNodeFromMap} from '../path/drawPath';
 
-import {units} from '../store/unitStore';
+import {units, computersUnits,} from '../store/unitStore';
 import {checkOtherUnitsPosition} from './unitUtils';
 import {checkUnitIsFighting} from './unitFight';
 import {findPathFromOneNodeToAnother} from './unitPath';
-import {meleeCombat} from './unitFight';
+import {meleeCombat, meleeAttack} from './unitFight';
+import {spotEnemy} from './unitRange';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null) => {
   unit.setIsMovingToTrue();
@@ -84,6 +85,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
 
   let nodeToClear = node;
+  spotEnemy(unit, computersUnits);
   if(i !== 0) {
     nodeToClear = updatedPath[i - 1];
   }
@@ -159,7 +161,8 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     unit.setIsMovingToFalse();
     unit.setIsFightingToTrue();
     pursuedUnit.setIsFightingToTrue();
-    meleeCombat(unit, pursuedUnit);
+    meleeAttack(unit, pursuedUnit);
+    meleeAttack(pursuedUnit, unit);
     return;
   }
 

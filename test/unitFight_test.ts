@@ -1,6 +1,6 @@
 import { expect, should, assert} from 'chai';
 import {
-  meeleAttack,
+  meleeAttack,
   calculateDamage
 } from '../src/unit/unitFight';
 
@@ -78,9 +78,9 @@ let computerUnit3 = {
 
 describe('Unit Fight Test', function() {
   describe('meeleAttack', function() {
-    meeleAttack(alliedUnit, computerUnit);
-    meeleAttack(tiredUnit, computerUnit2);
-    meeleAttack(exhaustedUnit, computerUnit3);
+    meleeAttack(alliedUnit, computerUnit);
+    meleeAttack(tiredUnit, computerUnit2);
+    meleeAttack(exhaustedUnit, computerUnit3);
     let health = computerUnit.health;
     let tiredUnitHealth = computerUnit2.health;
     let exhaustedUnitHealth = computerUnit3.health;

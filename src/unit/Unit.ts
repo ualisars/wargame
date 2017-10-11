@@ -13,6 +13,7 @@ class Unit {
   positionInUnit: number;
   controlBy: string;
   isMoving: boolean = false;
+  isVisible:boolean = false;
   unitToPursue: any = null;
   isFighting: boolean = false;
   figthAgainst: string[] = [];
@@ -31,6 +32,7 @@ class Unit {
   meleeDamage: number = 7;
   missileDamage: number;
   discipline: number = 5;
+  visibility:number = 10;
   morale: number = 100;
   condition: number = 100;
 

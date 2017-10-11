@@ -9,28 +9,42 @@ export const figthAgainst = (unit:any, opponent:any) => {
 
 }
 
-export const meeleAttack = (attackUnit:any, defendUnit:any) => {
-  let initialDamage = randomizeMeleeDamage(attackUnit.meleeDamage);
-  let meleeDamage = calculateDamage(attackUnit, initialDamage);
-  if(meleeDamage < 1) meleeDamage = 1; // damage cannot be less than 1
-  let armour = defendUnit.armour;
-  console.error('armour', armour);
-  console.error('meeleeDamage', meleeDamage);
-  defendUnit.health = defendUnit.health - (meleeDamage - armour);
-  attackUnit.condition -= 1;
+export const meleeAttack = (attackUnit:any, defendUnit:any) => {
+  return new Promise(resolve => {
+    let initialDamage = randomizeMeleeDamage(attackUnit.meleeDamage);
+    let meleeDamage = calculateDamage(attackUnit, initialDamage);
+    if(meleeDamage < 1) meleeDamage = 1; // damage cannot be less than 1
+    let armour = defendUnit.armour;
+    defendUnit.health = defendUnit.health - (meleeDamage - armour);
+    console.error(attackUnit.name, 'damage = ', meleeDamage);
+    console.error(defendUnit.name, 'health = ', defendUnit.health);
+    attackUnit.condition -= 1;
+    resolve();
+  });
 }
 
-export const meleeCombat = (attackUnit:any, defendUnit:any) => {
+export const meleeCombat = (attackUnit:any, defendUnit:any, i:number) => {
+  if(i >= 10) return;
+  if(!attackUnit) { // attackUnit is destroyed
+    return;
+  }
+  if(!defendUnit) { // defendUnit is destroyed
+    return;
+  }
   console.error('meeleCombat');
-  if(!attackUnit.isFighting || !defendUnit.isFighting || attackUnit.health <= 0 || defendUnit.health <= 0) {
+  if(!attackUnit.isFighting || !defendUnit.isFighting || attackUnit.health <= 0 || defendUnit.health <= 50) {
     console.log('not fighting anymore');
     return;
   }
-  meeleAttack(attackUnit, defendUnit);
-  meeleAttack(defendUnit, attackUnit);
-  setInterval(() => {
-    meleeCombat(attackUnit, defendUnit)
-  }, 3000);
+  // Promise.all([meeleAttack(attackUnit, defendUnit), meeleAttack(defendUnit, attackUnit)])
+  meleeAttack(attackUnit, defendUnit)
+  .then(() => {
+    i++;
+    console.error('i', i);
+    setInterval(() => {
+      meleeCombat(attackUnit, defendUnit, i)
+    }, 3000);
+  });
 }
 
 // calculate unit melee damage by unit's health and condition

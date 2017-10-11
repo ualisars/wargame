@@ -102,7 +102,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
       }
     } // for computer units
     if(pursuedUnit) {
-      if(currentlyChosenUnit.isMoving) { // is moving don't fire pursue function
+      if(currentlyChosenUnit.isMoving) { // if unit's moving don't fire pursue function
         currentlyChosenUnit.setUnitToPursue(pursuedUnit);
       } else {
         console.log('computersUnit', pursuedUnit);
@@ -135,7 +135,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
         updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y);
       }
     }
-  } // if currentlyChosenUnit
+  } 
 }); // on context
 
 //setInterval(updateMap, 40);
