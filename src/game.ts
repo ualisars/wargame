@@ -102,27 +102,38 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
       }
     } // for computer units
     if(pursuedUnit) {
-      console.log('computersUnit', pursuedUnit);
-      console.error('attack computers unit');
-      currentlyChosenUnit.setUnitToPursue(pursuedUnit);
-      console.error('currentlyChosenUnit x:', currentlyChosenUnit.x, 'y:', y);
-      let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
-      let finishNode = getNodeFromMap(x, y, map);
-      console.error('startNode', startNode);
-      console.error('finishNode', finishNode);
-      console.error('map', map);
-      let path:any = aStar(map, startNode, finishNode);
-      pursueUnit(currentlyChosenUnit, pursuedUnit, pursuedUnit.x, pursuedUnit.y, 0, path);
+      if(currentlyChosenUnit.isMoving) { // is moving don't fire pursue function
+        currentlyChosenUnit.setUnitToPursue(pursuedUnit);
+      } else {
+        console.log('computersUnit', pursuedUnit);
+        console.error('attack computers unit');
+        currentlyChosenUnit.setUnitToPursue(pursuedUnit);
+        console.error('currentlyChosenUnit x:', currentlyChosenUnit.x, 'y:', y);
+        let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
+        let finishNode = getNodeFromMap(x, y, map);
+        console.error('startNode', startNode);
+        console.error('finishNode', finishNode);
+        console.error('map', map);
+        let path:any = aStar(map, startNode, finishNode);
+        pursueUnit(currentlyChosenUnit, pursuedUnit, pursuedUnit.x, pursuedUnit.y, 0, path);
+      }
     } else {
-      console.error('does not pursue any unit');
-      currentlyChosenUnit.setUnitToPursue(null);
-      let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
-      let finishNode = getNodeFromMap(x, y, map);
-      let path:any = aStar(map, startNode, finishNode);
-      console.error('startNode', startNode);
-      console.error('finishNode', finishNode);
-      assignUnitMoveToPosition(currentlyChosenUnit, finishNode.x, finishNode.y);
-      updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y);
+      if(currentlyChosenUnit.isMoving) {
+        currentlyChosenUnit.setUnitToPursue(null);
+        let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
+        let finishNode = getNodeFromMap(x, y, map);
+        assignUnitMoveToPosition(currentlyChosenUnit, finishNode.x, finishNode.y);
+      } else {
+        console.error('does not pursue any unit');
+        currentlyChosenUnit.setUnitToPursue(null);
+        let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
+        let finishNode = getNodeFromMap(x, y, map);
+        let path:any = aStar(map, startNode, finishNode);
+        console.error('startNode', startNode);
+        console.error('finishNode', finishNode);
+        assignUnitMoveToPosition(currentlyChosenUnit, finishNode.x, finishNode.y);
+        updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y);
+      }
     }
   } // if currentlyChosenUnit
 }); // on context
