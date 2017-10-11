@@ -5,12 +5,23 @@
 import {getNodeFromMap} from '../path/drawPath';
 import {map} from '../map/createMap';
 import {gridSize} from '../map/mapConfig';
+import {
+  playersUnits,
+  computersUnits,
+} from '../store/unitStore';
 
 /*
   spotEnemy: checks if enemies is in its visibility range
   if true, change property isVisible to true
 */
-export const spotEnemy = (unit:any, enemies:any[]) => {
+export const spotEnemy = (unit:any) => {
+  let enemies:any[];
+  if(unit.controlBy === 'player') {
+    enemies = Object.assign([], computersUnits);
+  }
+  if(unit.controlBy === 'computer') {
+    enemies = Object.assign([], playersUnits);
+  }
   let visibility = unit.visibility;
   let visibilityRange = visibility * gridSize;
   let unitNode = getNodeFromMap(unit.x, unit.y, map);

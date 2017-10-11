@@ -85,7 +85,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
 
   let nodeToClear = node;
-  spotEnemy(unit, computersUnits);
+  spotEnemy(unit); // check for enemy units
   if(i !== 0) {
     nodeToClear = updatedPath[i - 1];
   }
