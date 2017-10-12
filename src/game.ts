@@ -39,7 +39,7 @@ import {
   units,
   playersUnits,
   computersUnits,
-  currentlyChosenUnit
+  currentlyChosenUnit,
 } from './store/unitStore';
 
 createUnit('barbarian', 40, 80, 15, 'player');

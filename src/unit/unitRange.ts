@@ -8,7 +8,14 @@ import {gridSize} from '../map/mapConfig';
 import {
   playersUnits,
   computersUnits,
+  visibleForPlayerUnits,
+  visibleForComputerUnits
 } from '../store/unitStore';
+
+import {
+  isObjectInArray,
+  deleteObjectFromArray
+} from '../utils/objUtils';
 
 /*
   spotEnemy: checks if enemies is in its visibility range
@@ -32,8 +39,11 @@ export const spotEnemy = (unit:any) => {
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
       console.error(enemy.name, 'has been spotted');
       enemy.isVisible = true;
+      addUnitIntoVisibleArray(enemy);
     }
   }
+  console.error('visibleForPlayerUnits', visibleForPlayerUnits);
+  console.error('visibleForComputerUnits', visibleForComputerUnits);
 }
 
 /*
@@ -60,6 +70,7 @@ export const isUnitSpottedByEnemy = (unit:any) => {
       console.error(unit.name, 'has been spotted by enemy', enemy.name);
       isSpotted = true;
       unit.isVisible = true;
+      addUnitIntoVisibleArray(unit);
     }
   }
   if(!isSpotted) { // unit is not in range of any enemies
@@ -71,4 +82,32 @@ export const spotUnits = (units:any[]) => {
   for(let unit of units) {
     isUnitSpottedByEnemy(unit);
   }
+  console.error('visibleForPlayerUnits', visibleForPlayerUnits);
+  console.error('visibleForComputerUnits', visibleForComputerUnits);
 }
+
+export const addUnitIntoVisibleArray = (unit:any) => {
+  if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
+    if(!isObjectInArray(unit, visibleForComputerUnits)) {
+      visibleForComputerUnits.push(unit);
+    }
+  }
+  else if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
+    if(!isObjectInArray(unit, visibleForPlayerUnits)) {
+      visibleForPlayerUnits.push(unit);
+    }
+  }
+}
+
+// export const removeUnitFromVisibleArray = (unit:any) => {
+//   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
+//     if(isObjectInArray(unit, visibleForComputerUnits)) {
+//       deleteObjectFromArray(unit, visibleForComputerUnits);
+//     }
+//   }
+//   else if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
+//     if(isObjectInArray(unit, visibleForPlayerUnits)) {
+//       deleteObjectFromArray(unit, visibleForPlayerUnits);
+//     }
+//   }
+// }
