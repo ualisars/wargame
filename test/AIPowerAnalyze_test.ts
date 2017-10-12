@@ -1,75 +1,34 @@
 import { expect, should, assert} from 'chai';
 import {
   playerPower,
-  analyzePlayerPower
+  computerPower,
+  analyzePlayerPower,
+  analyzeComputerPower
 } from '../src/AI/analyzeModule/powerAnalyze';
 
 import {
-  addUnitIntoVisibleArray
+  addUnitIntoVisibleArray,
+  computersUnits
 } from '../src/store/unitStore';
 
-
-let units = [
-  {
-    name: 'unit1',
-    x: 10,
-    y: 10,
-    health: 100,
-    controlBy: 'player',
-    speed: 5,
-    armour: 7,
-    range: 34,
-    meleeDamage: 10,
-    missileDamage: 0,
-    discipline: 71,
-    morale: 78,
-    condition: 100
-  },
-  {
-    name: 'unit2',
-    x: 200,
-    y: 20,
-    health: 70,
-    controlBy: 'player',
-    speed: 15,
-    armour: 3,
-    range: 3,
-    meleeDamage: 4,
-    missileDamage: 2,
-    discipline: 6,
-    morale: 20,
-    condition: 10
-  },
-  {
-    name: 'unit2',
-    x: 300,
-    y: 400,
-    health: 11,
-    controlBy: 'player',
-    speed: 5,
-    armour: 3,
-    range: 3,
-    meleeDamage: 2,
-    missileDamage: 1,
-    discipline: 2,
-    morale: 34,
-    condition: 80
-  }
-];
+import {
+  playerUnits,
+  controlByComputerUnits
+} from './units';
 
 describe('AI: Power Analyze Test', function() {
   describe('analyzePlayerPower', function() {
-    for(let unit of units) {
+    for(let unit of playerUnits) {
       addUnitIntoVisibleArray(unit);
     }
     analyzePlayerPower();
     it('Total health should be equal to  181', function() {
       assert.equal(playerPower.totalHealth, 181);
     });
-    it('Total speed should be equal to 181', function() {
+    it('Total speed should be equal to 25', function() {
       assert.equal(playerPower.totalSpeed, 25);
     });
-    it('Total armour should be equal to 181', function() {
+    it('Total armour should be equal to 13', function() {
       assert.equal(playerPower.totalArmour, 13);
     });
     it('Total meleeDamage should be equal to 16', function() {
@@ -86,6 +45,36 @@ describe('AI: Power Analyze Test', function() {
     });
     it('Total condition should be equal to 190', function() {
       assert.equal(playerPower.totalCondition, 190);
+    });
+  });
+  describe('analyzeComputerPower', function() {
+    for(let unit of controlByComputerUnits) {
+      computersUnits.push(unit);
+    }
+    analyzeComputerPower();
+    it('Total health should be equal to  159', function() {
+      assert.equal(computerPower.totalHealth, 159);
+    });
+    it('Total speed should be equal to 32', function() {
+      assert.equal(computerPower.totalSpeed, 32);
+    });
+    it('Total armour should be equal to 15', function() {
+      assert.equal(computerPower.totalArmour, 15);
+    });
+    it('Total meleeDamage should be equal to 41', function() {
+      assert.equal(computerPower.totalMeleeDamage, 41);
+    });
+    it('Total missileDamage should be equal to 20', function() {
+      assert.equal(computerPower.totalMissileDamage, 20);
+    });
+    it('Total discipline should be equal to 123', function() {
+      assert.equal(computerPower.totalDiscipline, 123);
+    });
+    it('Total morale should be equal to 124', function() {
+      assert.equal(computerPower.totalMorale, 124);
+    });
+    it('Total condition should be equal to 231', function() {
+      assert.equal(computerPower.totalCondition, 231);
     });
   });
 });
