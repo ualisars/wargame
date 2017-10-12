@@ -16,10 +16,10 @@ import {
 */
 export const spotEnemy = (unit:any) => {
   let enemies:any[];
-  if(unit.controlBy === 'player') {
+  if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
     enemies = Object.assign([], computersUnits);
   }
-  if(unit.controlBy === 'computer') {
+  if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
     enemies = Object.assign([], playersUnits);
   }
   let visibility = unit.visibility;
@@ -33,5 +33,42 @@ export const spotEnemy = (unit:any) => {
       console.error(enemy.name, 'has been spotted');
       enemy.isVisible = true;
     }
+  }
+}
+
+/*
+  Checks if unit has been spotted by enemies
+  Switch isVisible to false if not spotted by all enemies
+*/
+export const isUnitSpottedByEnemy = (unit:any) => {
+  let enemies:any[];
+  if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
+    enemies = Object.assign([], computersUnits);
+  }
+  if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
+    enemies = Object.assign([], playersUnits);
+  }
+  let unitNode = getNodeFromMap(unit.x, unit.y, map);
+  let isSpotted = false;
+  for(let enemy of enemies) {
+    let visibility = enemy.visibility;
+    let visibilityRange = visibility * gridSize;
+    let enemyNode = getNodeFromMap(enemy.x, enemy.y, map);
+    let dx = Math.abs(unitNode.x - enemyNode.x);
+    let dy = Math.abs(unitNode.y - enemyNode.y);
+    if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
+      console.error(unit.name, 'has been spotted by enemy', enemy.name);
+      isSpotted = true;
+      unit.isVisible = true;
+    }
+  }
+  if(!isSpotted) { // unit is not in range of any enemies
+    unit.isVisible = false;
+  }
+}
+
+export const spotUnits = (units:any[]) => {
+  for(let unit of units) {
+    isUnitSpottedByEnemy(unit);
   }
 }

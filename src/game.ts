@@ -135,7 +135,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
         updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y);
       }
     }
-  } 
+  }
 }); // on context
 
-//setInterval(updateMap, 40);
+//setInterval(() => hideUnits(units), 400);
