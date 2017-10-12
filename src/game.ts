@@ -67,7 +67,7 @@ auxiliaryCanvas.addEventListener('mousemove', (e:any) => {
       }
     }
 
-    if(pointedUnit) {
+    if(pointedUnit && pointedUnit.isVisible) {
       let finishX = pointedUnit.x + gridSize;
       let finishY = pointedUnit.y + gridSize;
       auxiliaryCtx.fillStyle = '#000';
