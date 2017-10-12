@@ -42,6 +42,8 @@ import {
   currentlyChosenUnit,
 } from './store/unitStore';
 
+import {spotUnits} from './unit/unitRange';
+
 createUnit('barbarian', 40, 80, 15, 'player');
 createUnit('knight', 80, 360, 15, 'player');
 createUnit('infantry', 1080, 400, 15, 'computer');
@@ -138,4 +140,4 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
   }
 }); // on context
 
-//setInterval(() => hideUnits(units), 400);
+//setInterval(() => spotUnits(units), 1000);

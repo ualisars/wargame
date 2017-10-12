@@ -9,7 +9,9 @@ import {
   playersUnits,
   computersUnits,
   visibleForPlayerUnits,
-  visibleForComputerUnits
+  visibleForComputerUnits,
+  addUnitIntoVisibleArray,
+  removeUnitFromVisibleArray
 } from '../store/unitStore';
 
 import {
@@ -75,6 +77,7 @@ export const isUnitSpottedByEnemy = (unit:any) => {
   }
   if(!isSpotted) { // unit is not in range of any enemies
     unit.isVisible = false;
+    removeUnitFromVisibleArray(unit);
   }
 }
 
@@ -85,29 +88,3 @@ export const spotUnits = (units:any[]) => {
   console.error('visibleForPlayerUnits', visibleForPlayerUnits);
   console.error('visibleForComputerUnits', visibleForComputerUnits);
 }
-
-export const addUnitIntoVisibleArray = (unit:any) => {
-  if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
-    if(!isObjectInArray(unit, visibleForComputerUnits)) {
-      visibleForComputerUnits.push(unit);
-    }
-  }
-  else if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
-    if(!isObjectInArray(unit, visibleForPlayerUnits)) {
-      visibleForPlayerUnits.push(unit);
-    }
-  }
-}
-
-// export const removeUnitFromVisibleArray = (unit:any) => {
-//   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
-//     if(isObjectInArray(unit, visibleForComputerUnits)) {
-//       deleteObjectFromArray(unit, visibleForComputerUnits);
-//     }
-//   }
-//   else if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
-//     if(isObjectInArray(unit, visibleForPlayerUnits)) {
-//       deleteObjectFromArray(unit, visibleForPlayerUnits);
-//     }
-//   }
-// }
