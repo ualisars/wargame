@@ -5,6 +5,7 @@
 import {getNodeFromMap} from '../path/drawPath';
 import {map} from '../map/createMap';
 import {gridSize} from '../map/mapConfig';
+import {drawUnit} from './unitActions';
 import {
   playersUnits,
   computersUnits,
@@ -41,6 +42,7 @@ export const spotEnemy = (unit:any) => {
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
       console.error(enemy.name, 'has been spotted');
       enemy.isVisible = true;
+      drawUnit(enemy); // show enemy on the map
       addUnitIntoVisibleArray(enemy);
     }
   }
@@ -73,6 +75,9 @@ export const isUnitSpottedByEnemy = (unit:any) => {
       isSpotted = true;
       unit.isVisible = true;
       addUnitIntoVisibleArray(unit);
+      if(unit.controlBy === 'computer') {
+        drawUnit(unit); // show computer unit on the map
+      }
     }
   }
   if(!isSpotted) { // unit is not in range of any enemies

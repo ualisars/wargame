@@ -25,8 +25,15 @@ export const onChooseUnit = (units:any[], mouseX:number, mouseY:number) => {
 
 export const drawUnit = (unit:any) => {
   let color;
-  if(unit.controlBy === 'player') color = '#dbdb0d';
-  else if(unit.controlBy === 'computer') color = '#d30c0c';
+  if(unit.controlBy === 'player') {
+    color = '#dbdb0d';
+  }
+  else if(unit.controlBy === 'computer') {
+    color = '#d30c0c';
+    if(!unit.isVisible) {
+      return; // unit not visible;
+    }
+  }
   ctx.beginPath();
   ctx.arc(unit.centerX, unit.centerY, unit.radius, 0, Math.PI*2);
   ctx.fillStyle = color;
