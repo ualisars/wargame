@@ -1,9 +1,19 @@
 import PlayerPower from '../store/playerPower';
+import {
+  computersUnits,
+  visibleForComputerUnits,
+} from '../../store/unitStore';
 
 export let playerPower = new PlayerPower;
 
-export const analyzePlayerPower = (playerUnits:any[]) => {
-  for(let unit of playerUnits) {
+export const analyzePlayerPower = () => {
+  for(let unit of visibleForComputerUnits) {
+    decomposeUnitProps(unit);
+  }
+}
+
+export const analyzeComputerPower = () => {
+  for(let unit of computersUnits) {
     decomposeUnitProps(unit);
   }
 }

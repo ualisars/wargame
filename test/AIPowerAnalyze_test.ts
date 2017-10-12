@@ -4,11 +4,18 @@ import {
   analyzePlayerPower
 } from '../src/AI/analyzeModule/powerAnalyze';
 
+import {
+  addUnitIntoVisibleArray
+} from '../src/store/unitStore';
+
 
 let units = [
   {
-    name: 'allyUnit',
+    name: 'unit1',
+    x: 10,
+    y: 10,
     health: 100,
+    controlBy: 'player',
     speed: 5,
     armour: 7,
     range: 34,
@@ -19,8 +26,11 @@ let units = [
     condition: 100
   },
   {
-    name: 'allyUnit',
+    name: 'unit2',
+    x: 200,
+    y: 20,
     health: 70,
+    controlBy: 'player',
     speed: 15,
     armour: 3,
     range: 3,
@@ -31,8 +41,11 @@ let units = [
     condition: 10
   },
   {
-    name: 'allyUnit',
+    name: 'unit2',
+    x: 300,
+    y: 400,
     health: 11,
+    controlBy: 'player',
     speed: 5,
     armour: 3,
     range: 3,
@@ -46,7 +59,10 @@ let units = [
 
 describe('AI: Power Analyze Test', function() {
   describe('analyzePlayerPower', function() {
-    analyzePlayerPower(units);
+    for(let unit of units) {
+      addUnitIntoVisibleArray(unit);
+    }
+    analyzePlayerPower();
     it('Total health should be equal to  181', function() {
       assert.equal(playerPower.totalHealth, 181);
     });
