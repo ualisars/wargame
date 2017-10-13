@@ -4,7 +4,7 @@
 
 import {getNodeFromMap} from '../path/drawPath';
 import {map} from '../map/createMap';
-import {gridSize} from '../map/mapConfig';
+import {gridSize, ctx} from '../map/mapConfig';
 import {drawUnit} from './unitActions';
 import {
   playersUnits,
@@ -83,6 +83,9 @@ export const isUnitSpottedByEnemy = (unit:any) => {
   if(!isSpotted) { // unit is not in range of any enemies
     unit.isVisible = false;
     removeUnitFromVisibleArray(unit);
+    if(unit.controlBy === 'computer' && !unit.isMoving) { // if unit is computer's and not moving
+      ctx.clearRect(unit.x, unit.y, gridSize, gridSize); // hide computer unit on the map
+    }
   }
 }
 
