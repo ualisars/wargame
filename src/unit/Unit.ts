@@ -1,6 +1,7 @@
 import {gridSize} from '../map/mapConfig';
 
 class Unit {
+  id: number;
   name: string;
   x: number;
   y: number;
@@ -38,7 +39,7 @@ class Unit {
   condition: number = 100;
 
 
-  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
+  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
     this.name = name;
     this.x = x;
     this.y = y;

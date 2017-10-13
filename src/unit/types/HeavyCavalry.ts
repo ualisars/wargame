@@ -7,6 +7,7 @@ class HeavyCavalry extends Unit {
   advantageOver: string[];
 
   // Characteristics
+  name: string = 'HeavyCavalry';
   type: string = 'cavalry';
   health: number = 90;
   speed: number = 50;
@@ -18,8 +19,8 @@ class HeavyCavalry extends Unit {
   charge: number = 8;
   discipline: number = 70;
 
-  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
-    super(name, x, y, radius, controlBy);
+  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
+    super(id, x, y, radius, controlBy);
   }
 }
 

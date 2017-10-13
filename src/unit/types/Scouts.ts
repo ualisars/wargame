@@ -7,6 +7,7 @@ class Scouts extends Unit {
   advantageOver: string[];
 
   // Characteristics
+  name: string = 'Scouts';
   type: string = 'scouts';
   health: number = 20;
   speed: number = 20;
@@ -18,8 +19,8 @@ class Scouts extends Unit {
   charge: number = 1;
   discipline: number = 10;
 
-  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
-    super(name, x, y, radius, controlBy);
+  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
+    super(id, x, y, radius, controlBy);
   }
 }
 

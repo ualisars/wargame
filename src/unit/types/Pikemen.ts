@@ -7,6 +7,7 @@ class Pikemen extends Unit {
   advantageOver: string[];
 
   // Characteristics
+  name: string = 'Pikemen';
   type: string = 'spearmen';
   health: number = 120;
   speed: number = 2;
@@ -18,8 +19,8 @@ class Pikemen extends Unit {
   charge: number = 1;
   discipline: number = 80;
 
-  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
-    super(name, x, y, radius, controlBy);
+  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
+    super(id, x, y, radius, controlBy);
   }
 }
 

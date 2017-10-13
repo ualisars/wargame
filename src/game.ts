@@ -44,10 +44,10 @@ import {
 
 import {spotUnits} from './unit/unitRange';
 
-createUnit('barbarian', 40, 80, 15, 'player');
-createUnit('knight', 80, 360, 15, 'player');
-createUnit('infantry', 1080, 400, 15, 'computer');
-createUnit('infantry2', 600, 120, 15, 'computer');
+createUnit('archers', 40, 80, 15, 'player');
+createUnit('pikemen', 80, 360, 15, 'player');
+createUnit('militia', 1080, 400, 15, 'computer');
+createUnit('scouts', 600, 120, 15, 'computer');
 
 drawGrid();
 console.log('map', map);

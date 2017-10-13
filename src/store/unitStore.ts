@@ -7,6 +7,8 @@ export let currentlyChosenUnit:any = null;
 export let visibleForPlayerUnits:any[] = [];
 export let visibleForComputerUnits:any[] = [];
 
+export let unitId:number = 0;
+
 export const assignCurrentlyChosenUnit = (unit:any) => {
   // check unit
   if(unit) {
@@ -14,6 +16,10 @@ export const assignCurrentlyChosenUnit = (unit:any) => {
   } else {
     currentlyChosenUnit = null;
   }
+}
+
+export const incUnitId = () => {
+  unitId++;
 }
 
 export const addUnitIntoVisibleArray = (unit:any) => {

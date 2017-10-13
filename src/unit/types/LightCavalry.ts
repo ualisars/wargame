@@ -18,8 +18,8 @@ class LightCavalry extends Unit {
   charge: number = 4;
   discipline: number = 40;
 
-  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
-    super(name, x, y, radius, controlBy);
+  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
+    super(id, x, y, radius, controlBy);
   }
 }
 

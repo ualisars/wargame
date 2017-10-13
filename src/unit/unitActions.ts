@@ -4,10 +4,26 @@ import {
   playersUnits,
   computersUnits,
   currentlyChosenUnit,
-  assignCurrentlyChosenUnit
+  assignCurrentlyChosenUnit,
+  unitId,
+  incUnitId
 } from '../store/unitStore';
 import {ctx} from '../map/mapConfig';
 import Unit from './Unit';
+// unit types
+import {
+  Archers,
+  HeavyInfantry,
+  HeavyCavalry,
+  Hoplites,
+  LightInfantry,
+  LightCavalry,
+  Militia,
+  Peltasts,
+  Pikemen,
+  Scouts
+}  from './types';
+
 
 export const onChooseUnit = (units:any[], mouseX:number, mouseY:number) => {
   let foundedUnit = null;
@@ -53,13 +69,14 @@ export const assignUnitMoveToPosition = (unit:any, x:number, y:number) => {
 }
 
 // create Unit and immediatly push it into units array
-export let createUnit = (name:string, x:number, y:number, radius:number, controlBy:string) => {
-  //console.error('createUnit');
-  let unit = new Unit(name, x, y, radius, controlBy);
+export let createUnit = (type:string, x:number, y:number, radius:number, controlBy:string) => {
+  let unit:any;
+  unit = chooseUnitType(type, x, y, radius, controlBy);
   units.push(unit);
   if(controlBy === 'player') playersUnits.push(unit);
   else if(controlBy === 'computer') computersUnits.push(unit);
   drawUnit(unit);
+  incUnitId();
   return unit;
 }
 
@@ -68,5 +85,39 @@ export const redrawUnits = (units:any[]) => {
     if(unit.isMoving !== true) {
       drawUnit(unit);
     }
+  }
+}
+
+export const chooseUnitType = (type:string, x:number, y:number, radius:number, controlBy:string) => {
+  let unit:any;
+  if(type === 'archers' || type === 'Archers') {
+    return new Archers(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'heavyCavalry' || type === 'HeavyCavalry') {
+    return new HeavyCavalry(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'heavyInfantry' || type === 'HeavyInfantry') {
+    return new HeavyInfantry(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'hoplites' || type === 'Hoplites') {
+    return new Hoplites(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'lightCavalry' || type === 'LightCavalry') {
+    return new LightCavalry(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'lightInfantry' || type === 'LightInfantry') {
+    return new LightInfantry(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'militia' || type === 'Militia') {
+    return new Militia(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'peltasts' || type === 'Peltasts') {
+    return new Peltasts(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'pikemen' || type === 'Pikemen') {
+    return new Pikemen(unitId, x, y, radius, controlBy);
+  }
+  else if(type === 'scouts' || type === 'Scouts') {
+    return new Scouts(unitId, x, y, radius, controlBy);
   }
 }

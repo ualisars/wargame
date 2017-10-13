@@ -7,6 +7,7 @@ class Hoplites extends Unit {
   advantageOver: string[];
 
   // Characteristics
+  name: string = 'Hoplites';
   type: string = 'spearmen';
   health: number = 90;
   speed: number = 10;
@@ -18,8 +19,8 @@ class Hoplites extends Unit {
   charge: number = 1;
   discipline: number = 90;
 
-  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
-    super(name, x, y, radius, controlBy);
+  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
+    super(id, x, y, radius, controlBy);
   }
 }
 
