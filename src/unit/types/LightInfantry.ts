@@ -1,27 +1,26 @@
 import Unit from '../Unit';
 
-class MeleeInfantry extends Unit {
-
+class LightInfantry extends Unit {
   // general
   description: string = 'Frontline soldiers trained for hand-to-hand combat with their enemies';
   cost: number = 30;
   advantageOver: string[];
 
   // Characteristics
-  type: string = 'meleeInfantry';
+  type: string = 'infantry';
   health: number = 40;
   speed: number = 90;
-  armour: number = 60;
+  armour: number = 2;
   range: number = 0;
-  meleeDamage: number = 20;
+  mobility: number = 5;
+  meleeDamage: number = 6;
   missileDamage: number = 0;
-  charge: number = 10;
+  charge: number = 2;
   discipline: number = 30;
-  morale: number = 40;
 
   constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
     super(name, x, y, radius, controlBy);
   }
 }
 
-export default MeleeInfantry;
+export default LightInfantry;

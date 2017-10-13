@@ -1,0 +1,26 @@
+import Unit from '../Unit';
+
+class Militia extends Unit {
+  // general
+  description: string = `A military force that is raised from the civil population to supplement a regular army in an emergency.`;
+  cost: number = 20;
+  advantageOver: string[];
+
+  // Characteristics
+  type: string = 'cavalry';
+  health: number = 20;
+  speed: number = 10;
+  armour: number = 1;
+  range: number = 0;
+  mobility: number = 3;
+  meleeDamage: number = 2;
+  missileDamage: number = 0;
+  charge: number = 1;
+  discipline: number = 10;
+
+  constructor(name:string, x:number, y:number, radius:number, controlBy:string='player') {
+    super(name, x, y, radius, controlBy);
+  }
+}
+
+export default Militia;

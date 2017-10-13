@@ -29,6 +29,7 @@ class Unit {
   speed: number;
   armour: number = 4;
   range: number;
+  mobility: number = 3;
   meleeDamage: number = 7;
   missileDamage: number;
   discipline: number = 5;

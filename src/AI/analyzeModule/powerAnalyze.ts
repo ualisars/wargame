@@ -8,13 +8,13 @@ import {
 export let playerPower = new PlayerPower;
 export let computerPower = new ComputerPower;
 
-export const analyzePlayerPower = () => {
+export const calculateTotalPlayerPower = () => {
   for(let unit of visibleForComputerUnits) {
     decomposeUnitProps(unit);
   }
 }
 
-export const analyzeComputerPower = () => {
+export const calculateTotalComputerPower = () => {
   for(let unit of computersUnits) {
     decomposeUnitProps(unit, 'computer');
   }

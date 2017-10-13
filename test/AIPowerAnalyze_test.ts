@@ -2,8 +2,8 @@ import { expect, should, assert} from 'chai';
 import {
   playerPower,
   computerPower,
-  analyzePlayerPower,
-  analyzeComputerPower
+  calculateTotalPlayerPower,
+  calculateTotalComputerPower
 } from '../src/AI/analyzeModule/powerAnalyze';
 
 import {
@@ -17,11 +17,11 @@ import {
 } from './units';
 
 describe('AI: Power Analyze Test', function() {
-  describe('analyzePlayerPower', function() {
+  describe('calculateTotalPlayerPower', function() {
     for(let unit of playerUnits) {
       addUnitIntoVisibleArray(unit);
     }
-    analyzePlayerPower();
+    calculateTotalPlayerPower();
     it('Total health should be equal to  181', function() {
       assert.equal(playerPower.totalHealth, 181);
     });
@@ -47,11 +47,11 @@ describe('AI: Power Analyze Test', function() {
       assert.equal(playerPower.totalCondition, 190);
     });
   });
-  describe('analyzeComputerPower', function() {
+  describe('calculateTotalComputerPower', function() {
     for(let unit of controlByComputerUnits) {
       computersUnits.push(unit);
     }
-    analyzeComputerPower();
+    calculateTotalComputerPower();
     it('Total health should be equal to  159', function() {
       assert.equal(computerPower.totalHealth, 159);
     });
