@@ -103,7 +103,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
         pursuedUnit = computersUnit;
       }
     } // for computer units
-    if(pursuedUnit) {
+    if(pursuedUnit && pursuedUnit.isVisible) {
       if(currentlyChosenUnit.isMoving) { // if unit's moving don't fire pursue function
         currentlyChosenUnit.setUnitToPursue(pursuedUnit);
       } else {
