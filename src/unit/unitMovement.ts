@@ -188,6 +188,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   }
   console.error('previousNode', previousNode);
   console.error('currentNode', node);
+  spotEnemy(unit); // check for enemy units
   moveToNextNode(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
 }
 

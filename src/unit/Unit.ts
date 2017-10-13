@@ -40,7 +40,7 @@ class Unit {
 
 
   constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
-    this.name = name;
+    this.id = id;
     this.x = x;
     this.y = y;
     this.radius = radius;
