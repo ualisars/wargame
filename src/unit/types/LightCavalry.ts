@@ -7,9 +7,10 @@ class LightCavalry extends Unit {
   advantageOver: string[];
 
   // Characteristics
+  name: string = 'LightCavalry';
   type: string = 'cavalry';
   health: number = 80;
-  speed: number = 50;
+  speed: number = 40;
   armour: number = 2;
   range: number = 0;
   mobility: number = 7;

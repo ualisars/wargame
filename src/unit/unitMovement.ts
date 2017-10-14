@@ -252,7 +252,7 @@ export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any
    setTimeout(() => {
      i++;
      makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
-   }, 20);
+   }, Math.round(1000 / unit.speed));
 }
 
 export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
@@ -286,7 +286,7 @@ export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNod
    setTimeout(() => {
      i++;
      makeMovement(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
-   }, 25);
+   }, Math.round(1000 / unit.speed));
 }
 
 export const timeout = (time:number) => {

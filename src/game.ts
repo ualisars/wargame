@@ -46,6 +46,8 @@ import {spotUnits} from './unit/unitRange';
 
 createUnit('archers', 40, 80, 15, 'player');
 createUnit('pikemen', 80, 360, 15, 'player');
+createUnit('lightCavalry', 80, 400, 15, 'player');
+createUnit('heavyInfantry', 40, 440, 15, 'player');
 createUnit('militia', 1080, 400, 15, 'computer');
 createUnit('scouts', 600, 120, 15, 'computer');
 

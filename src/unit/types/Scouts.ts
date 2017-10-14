@@ -10,7 +10,7 @@ class Scouts extends Unit {
   name: string = 'Scouts';
   type: string = 'scouts';
   health: number = 20;
-  speed: number = 20;
+  speed: number = 25;
   armour: number = 1;
   range: number = 0;
   mobility: number = 9;

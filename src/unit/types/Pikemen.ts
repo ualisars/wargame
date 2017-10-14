@@ -10,7 +10,7 @@ class Pikemen extends Unit {
   name: string = 'Pikemen';
   type: string = 'spearmen';
   health: number = 120;
-  speed: number = 2;
+  speed: number = 10;
   armour: number = 4;
   range: number = 0;
   mobility: number = 1;

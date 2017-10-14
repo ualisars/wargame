@@ -10,7 +10,7 @@ class Militia extends Unit {
   name: string = 'Militia';
   type: string = 'infantry';
   health: number = 20;
-  speed: number = 10;
+  speed: number = 25;
   armour: number = 1;
   range: number = 0;
   mobility: number = 3;

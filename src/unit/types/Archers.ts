@@ -10,7 +10,7 @@ class Archers extends Unit {
   name: string = 'Archers';
   type: string = 'skirmishers';
   health: number = 50;
-  speed: number = 60;
+  speed: number = 25;
   armour: number = 2;
   range: number = 8;
   ammunition:number =  20;

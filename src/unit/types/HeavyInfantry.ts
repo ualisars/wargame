@@ -10,7 +10,7 @@ class HeavyInfantry extends Unit {
   name: string = 'HeavyInfantry';
   type: string = 'infantry';
   health: number = 70;
-  speed: number = 20;
+  speed: number = 18;
   armour: number = 8;
   range: number = 0;
   mobility: number = 3;

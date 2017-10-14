@@ -10,7 +10,7 @@ class HeavyCavalry extends Unit {
   name: string = 'HeavyCavalry';
   type: string = 'cavalry';
   health: number = 90;
-  speed: number = 50;
+  speed: number = 35;
   armour: number = 8;
   range: number = 0;
   mobility: number = 5;

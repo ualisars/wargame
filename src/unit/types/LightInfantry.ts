@@ -10,7 +10,7 @@ class LightInfantry extends Unit {
   name: string = 'LightInfantry';
   type: string = 'infantry';
   health: number = 40;
-  speed: number = 90;
+  speed: number = 22;
   armour: number = 2;
   range: number = 0;
   mobility: number = 5;

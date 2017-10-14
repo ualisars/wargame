@@ -10,7 +10,7 @@ class Peltasts extends Unit {
   name: string = 'Peltasts';
   type: string = 'skirmishers';
   health: number = 50;
-  speed: number = 70;
+  speed: number = 22;
   armour: number = 4;
   range: number = 3;
   ammunition:number =  10;
