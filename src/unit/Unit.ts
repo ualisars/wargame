@@ -1,4 +1,6 @@
 import {gridSize} from '../map/mapConfig';
+import {map} from '../map/createMap';
+import {getNodeFromMap} from '../path/drawPath';
 
 class Unit {
   id: number;
@@ -10,6 +12,8 @@ class Unit {
   radius: number;
   moveToNodeX: number;
   moveToNodeY: number;
+  currentNode: any;
+  nextNode:any;
   isCurrentlyChosen: boolean = false;
   positionInUnit: number;
   controlBy: string;
@@ -47,6 +51,8 @@ class Unit {
     this.centerX = x + (gridSize / 2);
     this.centerY = y + (gridSize / 2);
     this.controlBy = controlBy;
+    this.currentNode = getNodeFromMap(x, y, map);
+    this.nextNode = getNodeFromMap(x, y, map);
   }
 
   setX(x:number) {
@@ -97,6 +103,14 @@ class Unit {
         this.figthAgainst = this.figthAgainst.splice(i, 1);
       }
     }
+  }
+
+  setCurrentNode(node:any) {
+    this.currentNode = node;
+  }
+
+  setNextNode(node:any) {
+    this.nextNode = node;
   }
 }
 

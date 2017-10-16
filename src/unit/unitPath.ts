@@ -18,6 +18,10 @@ export const findPathFromOneNodeToAnother = (startX:number, startY:number, finis
   console.log('dy', dy);
   console.error('x1:', x1, 'x2:', x2);
   console.error('y1:', y1, 'y2:', y2);
+  if(x1 === x2 && y1 === y2) {
+    path.push({x: x1, y : y1});
+    return path;
+  }
   if(x1 <= x2) {
     console.log('x1 <= x2');
     if(Math.abs(dx) >= Math.abs(dy)) {
