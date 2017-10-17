@@ -1,6 +1,7 @@
 import {gridSize} from '../map/mapConfig';
 import {map} from '../map/createMap';
 import {getNodeFromMap} from '../path/drawPath';
+import {isObjectEmpty} from '../utils/objUtils';
 
 class Unit {
   id: number;
@@ -117,8 +118,10 @@ class Unit {
     this.nextNode = node;
   }
 
-  assignFrontEnemy(enemy:any) {
-    if(this.figthAgainst.front) { // unit is already have front line enemy
+  assignEnemy(enemy:any) {
+    if(isObjectEmpty(this.figthAgainst.front)) { // don't have front enemy
+      this.figthAgainst.front = enemy;
+    } else { // unit is already have front line enemy
       let frontEnemyNode = this.figthAgainst.front.currentNode;
       let newEnemyNode = enemy.currentNode;
       let unitNode = this.currentNode;
@@ -128,10 +131,16 @@ class Unit {
       let newEnemyDiffY = (unitNode.y - newEnemyNode.y) / gridSize;
       if(frontEnemyDiffX === -newEnemyDiffX && frontEnemyDiffY === -newEnemyDiffY) { // enemy is rear
         this.figthAgainst.rear = enemy;
-
       }
-    } else { // don't have front enemy
-      this.figthAgainst.front = enemy;
+      else if(frontEnemyDiffX === newEnemyDiffX && frontEnemyDiffY === -newEnemyDiffY) { // enemy is rear
+        this.figthAgainst.rear = enemy;
+      }
+      else if(frontEnemyDiffX === -newEnemyDiffX && frontEnemyDiffY === newEnemyDiffY) { // enemy is rear
+        this.figthAgainst.rear = enemy;
+      }
+      else {
+        this.figthAgainst.flank.push(enemy);
+      }
     }
 
   }

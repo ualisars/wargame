@@ -195,7 +195,8 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     unit.setIsMovingToFalse();
     unit.setIsFightingToTrue();
     pursuedUnit.setIsFightingToTrue();
-    unit.assignFrontEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
+    unit.assignEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
+    pursuedUnit.assignEnemy(unit);
     console.error('unit frontEnemy:', unit.figthAgainst.front);
     return;
   }
