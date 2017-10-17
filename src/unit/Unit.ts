@@ -94,18 +94,10 @@ class Unit {
     this.isFighting = false;
   }
 
-  addUnitIntoFightAgainst(unitName:string, position:string='front') {
-    if(position === 'front' || position === 'flank' || position === 'rear') {
-      this.figthAgainst.push(unitName);
-    } else {
-      console.error('Position can be only front, flank or rear');
-    }
-  }
-
-  removeUnitFromFightAgainst(opponent:string) {
-    for(let i = 0; i < this.figthAgainst.length; ++i) {
+  removeUnitFromFlank(opponent:string) {
+    for(let i = 0; i < this.figthAgainst.flank.length; ++i) {
       if(this.figthAgainst[i] === opponent) {
-        this.figthAgainst = this.figthAgainst.splice(i, 1);
+        this.figthAgainst.flank = this.figthAgainst.flank.splice(i, 1);
       }
     }
   }
@@ -142,7 +134,22 @@ class Unit {
         this.figthAgainst.flank.push(enemy);
       }
     }
-
+  }
+  
+  removeEnemyFromFightAgainst(enemy:any) {
+    if(enemy.id === this.figthAgainst.front.id) {
+      this.figthAgainst.front = {};
+    }
+    else if(enemy.id === this.figthAgainst.rear.id) {
+      this.figthAgainst.rear = {};
+    }
+    else {
+      for(let unit of this.figthAgainst.flank) {
+        if(unit.id === enemy.id) {
+          this.removeUnitFromFlank(enemy);
+        }
+      }
+    }
   }
 }
 
