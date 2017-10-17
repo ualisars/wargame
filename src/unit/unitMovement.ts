@@ -203,8 +203,14 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
     // unit has another allies' unit on its way
     console.error('pursueUnit: another unit is on the way x:',node.x, 'y:',node.y);
+    let blockingUnit = getBlockingUnit(units, unit, node.x, node.y); // get unit that blocked the way
+    let blockingUnitCurrentNode = blockingUnit.currentNode;
+    let blockingUnitNextNode = blockingUnit.nextNode;
+
+    // if current node and next node are different
     let updatedMap = map;
-    updatedMap = createUnitObstacle(updatedMap, node.x, node.y);
+    updatedMap = createUnitObstacle(updatedMap, blockingUnitCurrentNode.x, blockingUnitCurrentNode.y); // create obstacle for currentNode
+    updatedMap = createUnitObstacle(updatedMap, blockingUnitNextNode.x, blockingUnitNextNode.y); // create obstacle for next node
     addNeighbours(updatedMap);
     console.log('deleted Node', node);
     console.log('updatedMap', updatedMap);
