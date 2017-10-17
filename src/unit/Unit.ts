@@ -21,7 +21,11 @@ class Unit {
   isVisible:boolean = false;
   unitToPursue: any = null;
   isFighting: boolean = false;
-  figthAgainst: any = {};
+  figthAgainst: any = {
+    front: {},
+    flank: [],
+    rear: {}
+  };
 
   // general
   description: string;
@@ -114,7 +118,22 @@ class Unit {
   }
 
   assignFrontEnemy(enemy:any) {
-    this.figthAgainst.front = enemy;
+    if(this.figthAgainst.front) { // unit is already have front line enemy
+      let frontEnemyNode = this.figthAgainst.front.currentNode;
+      let newEnemyNode = enemy.currentNode;
+      let unitNode = this.currentNode;
+      let frontEnemyDiffX = (unitNode.x - frontEnemyNode.x) / gridSize;
+      let frontEnemyDiffY = (unitNode.y - frontEnemyNode.y) / gridSize;
+      let newEnemyDiffX = (unitNode.x - newEnemyNode.x) / gridSize;
+      let newEnemyDiffY = (unitNode.y - newEnemyNode.y) / gridSize;
+      if(frontEnemyDiffX === -newEnemyDiffX && frontEnemyDiffY === -newEnemyDiffY) { // enemy is rear
+        this.figthAgainst.rear = enemy;
+
+      }
+    } else { // don't have front enemy
+      this.figthAgainst.front = enemy;
+    }
+
   }
 }
 

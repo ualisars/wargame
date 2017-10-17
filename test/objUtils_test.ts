@@ -2,7 +2,8 @@ import { expect, should, assert} from 'chai';
 import {
   deleteObjectFromArray,
   isObjectInArray,
-  getNodeFromArray
+  getNodeFromArray,
+  isObjectEmpty
 } from '../src/utils/objUtils';
 
 import {
@@ -74,6 +75,17 @@ describe('Object Utils Tests', function() {
     });
     it('find node {x: 134, y: 94, fScore: 6589}', function() {
       assert.equal(isObjectInArray({x: 134, y: 94, fScore: 6589}, open), false);
+    });
+  });
+
+  describe('isObjectEmpty', function() {
+    let obj1 = {};
+    let obj2 = {front: {enemy: 2}};
+    it('Object1 is an empty object', function() {
+      assert.equal(isObjectEmpty(obj1), true);
+    });
+    it('Object2 is not empty object', function() {
+      assert.equal(isObjectEmpty(obj2), false);
     });
   });
 
