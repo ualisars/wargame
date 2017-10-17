@@ -195,8 +195,8 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     unit.setIsMovingToFalse();
     unit.setIsFightingToTrue();
     pursuedUnit.setIsFightingToTrue();
-    meleeAttack(unit, pursuedUnit);
-    meleeAttack(pursuedUnit, unit);
+    unit.assignFrontEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
+    console.error('unit frontEnemy:', unit.figthAgainst.front);
     return;
   }
 

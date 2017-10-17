@@ -21,7 +21,7 @@ class Unit {
   isVisible:boolean = false;
   unitToPursue: any = null;
   isFighting: boolean = false;
-  figthAgainst: string[] = [];
+  figthAgainst: any = {};
 
   // general
   description: string;
@@ -111,6 +111,10 @@ class Unit {
 
   setNextNode(node:any) {
     this.nextNode = node;
+  }
+
+  assignFrontEnemy(enemy:any) {
+    this.figthAgainst.front = enemy;
   }
 }
 

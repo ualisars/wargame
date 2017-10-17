@@ -1,4 +1,5 @@
 import {randomizeMeleeDamage} from '../utils/randomGenerator';
+import {units} from '../store/unitStore';
 
 export const checkUnitIsFighting = (unit:any) => {
   if(unit.isFighting) return true;
@@ -45,6 +46,14 @@ export const meleeCombat = (attackUnit:any, defendUnit:any, i:number) => {
       meleeCombat(attackUnit, defendUnit, i)
     }, 3000);
   });
+}
+
+export const meleeCombat2 = () => {
+  for(let unit of units) {
+    for(let enemy of unit.figthAgainst) {
+      meleeAttack(unit, enemy);
+    }
+  }
 }
 
 // calculate unit melee damage by unit's health and condition
