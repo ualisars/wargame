@@ -99,13 +99,11 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     let blockingUnit = getBlockingUnit(units, unit, node.x, node.y); // get unit that blocked the way
     let blockingUnitCurrentNode = blockingUnit.currentNode;
     let blockingUnitNextNode = blockingUnit.nextNode;
-    if(blockingUnitCurrentNode.x !== blockingUnitNextNode.x && blockingUnitCurrentNode.y !== blockingUnitNextNode.y) {
-      // if current node and next node are different
-        updatedMap = createUnitObstacle(updatedMap, blockingUnitCurrentNode.x, blockingUnitCurrentNode.y); // create obstacle for currentNode
-        updatedMap = createUnitObstacle(updatedMap, blockingUnitNextNode.x, blockingUnitNextNode.y); // create obstacle for next node
-    } else {
-      updatedMap = createUnitObstacle(updatedMap, blockingUnitCurrentNode.x, blockingUnitCurrentNode.y);
-    }
+
+    // if current node and next node are different
+    updatedMap = createUnitObstacle(updatedMap, blockingUnitCurrentNode.x, blockingUnitCurrentNode.y); // create obstacle for currentNode
+    updatedMap = createUnitObstacle(updatedMap, blockingUnitNextNode.x, blockingUnitNextNode.y); // create obstacle for next node
+
     addNeighbours(updatedMap); // create new neighbours for updated map
     console.log('deleted Node', node);
     console.log('updatedMap', updatedMap);
