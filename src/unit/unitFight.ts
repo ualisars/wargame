@@ -1,5 +1,5 @@
 import {randomizeMeleeDamage} from '../utils/randomGenerator';
-import {units} from '../store/unitStore';
+import {units, removeUnit} from '../store/unitStore';
 import {isObjectEmpty} from '../utils/objUtils';
 
 export const checkUnitIsFighting = (unit:any) => {
@@ -22,7 +22,7 @@ export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string
       console.error('defendUnit is destryed');
       return;
     }
-    defendUnit.health = Math.round(defendUnit.health - (damage - armour));
+    defendUnit.health = Math.round(defendUnit.health - (armourPenetration(damage, armour)));
     console.error(attackUnit.name, 'damage = ', damage);
     console.error(defendUnit.name, 'health = ', defendUnit.health);
     attackUnit.condition -= 1;
@@ -129,3 +129,37 @@ export const armourPenetration = (damage:number, armour:number) => {
     }
   }
 }
+
+export const checkHealth = () => {
+  return new Promise(resolve => {
+    for(let unit of units) {
+      if(unit.health <= 0) { // unit is destroyed
+        removeUnit(unit);
+      }
+    }
+    resolve();
+  });
+}
+
+// export const check = (damage:number, enemyPosition:string) => {
+//   if(damage <= 1) {
+//     return calculateDamageWhenItsLessThanOne(damage);
+//   }
+//   if(enemyPosition === 'front') { // front enemy gain 100% damage
+//     return damage;
+//   }
+//   else if(enemyPosition === 'flank') { // flank enemy gain only 30% damage
+//     let initialDamage =  Math.round(damage * 0.3);
+//     if(initialDamage <= 1) {
+//       return calculateDamageWhenItsLessThanOne(initialDamage);
+//     }
+//     return initialDamage;
+//   }
+//   else if(enemyPosition === 'rear') {
+//     let initialDamage =  Math.round(damage * 0.1); // back enemy gain only 10% of damage
+//     if(initialDamage <= 1) {
+//       return calculateDamageWhenItsLessThanOne(initialDamage);
+//     }
+//     return initialDamage;
+//   }
+// }

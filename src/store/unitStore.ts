@@ -1,6 +1,6 @@
 import {isObjectInArray, deleteObjectFromArray} from '../utils/objUtils';
 
-export const units:any[] = [];
+export let units:any[] = [];
 export const playersUnits: any[] = [];
 export const computersUnits: any[] = [];
 export let currentlyChosenUnit:any = null;
@@ -20,6 +20,13 @@ export const assignCurrentlyChosenUnit = (unit:any) => {
 
 export const incUnitId = () => {
   unitId++;
+}
+
+/*
+delete unit from units array
+*/
+export const removeUnit = (unit:any) => {
+  units = deleteObjectFromArray(unit, units);
 }
 
 export const addUnitIntoVisibleArray = (unit:any) => {
