@@ -10,14 +10,15 @@ export const figthAgainst = (unit:any, opponent:any) => {
 
 }
 
-export const meleeAttack = (attackUnit:any, defendUnit:any) => {
+export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string='front') => {
   return new Promise(resolve => {
     let initialDamage = randomizeMeleeDamage(attackUnit.meleeDamage);
     let meleeDamage = calculateDamage(attackUnit, initialDamage);
     if(meleeDamage < 1) meleeDamage = 1; // damage cannot be less than 1
+    let damage = calculateDamageBaseOnEnemyPosition(meleeDamage, enemyPosition);
     let armour = defendUnit.armour;
-    defendUnit.health = defendUnit.health - (meleeDamage - armour);
-    console.error(attackUnit.name, 'damage = ', meleeDamage);
+    defendUnit.health = defendUnit.health - (damage - armour);
+    console.error(attackUnit.name, 'damage = ', damage);
     console.error(defendUnit.name, 'health = ', defendUnit.health);
     attackUnit.condition -= 1;
     resolve();
@@ -74,5 +75,37 @@ export const calculateDamage = (attackUnit:any, damage:number) => {
   }
   else {
     return Math.round(0.6 * damage);
+  }
+}
+
+export const calculateDamageBaseOnEnemyPosition = (damage:number, enemyPosition:string) => {
+  if(damage <= 1) {
+    return calculateDamageWhenItsLessThanOne(damage);
+  }
+  if(enemyPosition === 'front') { // front enemy gain 100% damage
+    return damage;
+  }
+  else if(enemyPosition === 'flank') { // flank enemy gain only 50% damage
+    let initialDamage =  Math.round(damage * 0.5);
+    if(initialDamage <= 1) {
+      return calculateDamageWhenItsLessThanOne(initialDamage);
+    }
+    return initialDamage;
+  }
+  else if(enemyPosition === 'rear') {
+    let initialDamage =  Math.round(damage * 0.2); // back enemy gain only 20% of damage
+    if(initialDamage <= 1) {
+      return calculateDamageWhenItsLessThanOne(initialDamage);
+    }
+    return initialDamage;
+  }
+}
+
+export const calculateDamageWhenItsLessThanOne = (damage:number) => {
+  let random = Math.random();
+  if(random > 0.5) {
+    return 0;
+  } else {
+    return 1;
   }
 }
