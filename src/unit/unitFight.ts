@@ -1,5 +1,6 @@
 import {randomizeMeleeDamage} from '../utils/randomGenerator';
 import {units} from '../store/unitStore';
+import {isObjectEmpty} from '../utils/objUtils';
 
 export const checkUnitIsFighting = (unit:any) => {
   if(unit.isFighting) return true;
@@ -17,7 +18,11 @@ export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string
     if(meleeDamage < 1) meleeDamage = 1; // damage cannot be less than 1
     let damage = calculateDamageBaseOnEnemyPosition(meleeDamage, enemyPosition);
     let armour = defendUnit.armour;
-    defendUnit.health = defendUnit.health - (damage - armour);
+    if(defendUnit.health < 1) {
+      console.error('defendUnit is destryed');
+      return;
+    }
+    defendUnit.health = Math.round(defendUnit.health - (damage - armour));
     console.error(attackUnit.name, 'damage = ', damage);
     console.error(defendUnit.name, 'health = ', defendUnit.health);
     attackUnit.condition -= 1;
@@ -25,34 +30,27 @@ export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string
   });
 }
 
-export const meleeCombat = (attackUnit:any, defendUnit:any, i:number) => {
-  if(i >= 10) return;
-  if(!attackUnit) { // attackUnit is destroyed
-    return;
-  }
-  if(!defendUnit) { // defendUnit is destroyed
-    return;
-  }
-  console.error('meeleCombat');
-  if(!attackUnit.isFighting || !defendUnit.isFighting || attackUnit.health <= 0 || defendUnit.health <= 50) {
-    console.log('not fighting anymore');
-    return;
-  }
-  // Promise.all([meeleAttack(attackUnit, defendUnit), meeleAttack(defendUnit, attackUnit)])
-  meleeAttack(attackUnit, defendUnit)
-  .then(() => {
-    i++;
-    console.error('i', i);
-    setInterval(() => {
-      meleeCombat(attackUnit, defendUnit, i)
-    }, 3000);
-  });
-}
 
-export const meleeCombat2 = () => {
+/*
+  Go through all units and
+  fire meleeAttack for all enemies that
+  unit is currently fighting
+*/
+export const meleeCombat = () => {
   for(let unit of units) {
-    for(let enemy of unit.figthAgainst) {
-      meleeAttack(unit, enemy);
+    if(!isObjectEmpty(unit.figthAgainst.front)) { // unit have front enemy
+      console.error('Attack front enemy');
+      meleeAttack(unit, unit.figthAgainst.front);
+    }
+    if(!isObjectEmpty(unit.figthAgainst.rear)) { // unit have rear enemy
+      console.error('Attack rear enemy');
+      meleeAttack(unit, unit.figthAgainst.rear);
+    }
+    if(unit.figthAgainst.flank.length > 0) { // unit have flnk enemies
+      for(let enemy of unit.figthAgainst.flank) {
+        console.error('Attack rear enemy');
+        meleeAttack(unit, enemy);
+      }
     }
   }
 }
@@ -85,15 +83,15 @@ export const calculateDamageBaseOnEnemyPosition = (damage:number, enemyPosition:
   if(enemyPosition === 'front') { // front enemy gain 100% damage
     return damage;
   }
-  else if(enemyPosition === 'flank') { // flank enemy gain only 50% damage
-    let initialDamage =  Math.round(damage * 0.5);
+  else if(enemyPosition === 'flank') { // flank enemy gain only 30% damage
+    let initialDamage =  Math.round(damage * 0.3);
     if(initialDamage <= 1) {
       return calculateDamageWhenItsLessThanOne(initialDamage);
     }
     return initialDamage;
   }
   else if(enemyPosition === 'rear') {
-    let initialDamage =  Math.round(damage * 0.2); // back enemy gain only 20% of damage
+    let initialDamage =  Math.round(damage * 0.1); // back enemy gain only 10% of damage
     if(initialDamage <= 1) {
       return calculateDamageWhenItsLessThanOne(initialDamage);
     }
@@ -107,5 +105,27 @@ export const calculateDamageWhenItsLessThanOne = (damage:number) => {
     return 0;
   } else {
     return 1;
+  }
+}
+
+export const armourPenetration = (damage:number, armour:number) => {
+  let random = Math.random();
+  if(damage > armour) {
+    if(random < 0.10) {
+      return damage;
+    }
+    else if(damage < 0.1) {
+      return Math.round(damage - (armour / 2));
+    }
+    else {
+      return damage - armour;
+    }
+  }
+  else if(damage <= armour) {
+    if(random < 0.2) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 }

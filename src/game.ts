@@ -43,6 +43,7 @@ import {
 } from './store/unitStore';
 
 import {spotUnits} from './unit/unitRange';
+import {meleeCombat} from './unit/unitFight'
 
 createUnit('archers', 40, 80, 15, 'player');
 createUnit('pikemen', 80, 360, 15, 'player');
@@ -143,3 +144,4 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
 }); // on context
 
 //setInterval(() => spotUnits(units), 1000);
+setInterval(() => meleeCombat(), 2000);
