@@ -1,14 +1,16 @@
 import {randomizeMeleeDamage} from '../utils/randomGenerator';
-import {units, removeUnit} from '../store/unitStore';
-import {isObjectEmpty} from '../utils/objUtils';
+import {
+  units,
+  removeUnit,
+  playersUnits,
+  computersUnits
+} from '../store/unitStore';
+import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
+
 
 export const checkUnitIsFighting = (unit:any) => {
   if(unit.isFighting) return true;
   return false;
-}
-
-export const figthAgainst = (unit:any, opponent:any) => {
-
 }
 
 export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string='front') => {
@@ -134,6 +136,11 @@ export const checkHealth = () => {
   return new Promise(resolve => {
     for(let unit of units) {
       if(unit.health <= 0) { // unit is destroyed
+        if(findUnitInFightAgainst(unit).length > 0) { // if unit is figthAgainst some enemies
+          for(let enemy of findUnitInFightAgainst(unit)) { // delete this unit from all enemy's fighting
+            enemy.removeEnemyFromFightAgainst(unit);
+          }
+        }
         removeUnit(unit);
       }
     }
@@ -141,25 +148,35 @@ export const checkHealth = () => {
   });
 }
 
-// export const check = (damage:number, enemyPosition:string) => {
-//   if(damage <= 1) {
-//     return calculateDamageWhenItsLessThanOne(damage);
-//   }
-//   if(enemyPosition === 'front') { // front enemy gain 100% damage
-//     return damage;
-//   }
-//   else if(enemyPosition === 'flank') { // flank enemy gain only 30% damage
-//     let initialDamage =  Math.round(damage * 0.3);
-//     if(initialDamage <= 1) {
-//       return calculateDamageWhenItsLessThanOne(initialDamage);
-//     }
-//     return initialDamage;
-//   }
-//   else if(enemyPosition === 'rear') {
-//     let initialDamage =  Math.round(damage * 0.1); // back enemy gain only 10% of damage
-//     if(initialDamage <= 1) {
-//       return calculateDamageWhenItsLessThanOne(initialDamage);
-//     }
-//     return initialDamage;
-//   }
-// }
+export const findUnitInFightAgainst = (unit:any) => {
+  let enemies:any[] = [];
+  let findedUnits:any[] = [];
+  if(unit.controlBy === 'computer') { // enemies for computer are playersUnits
+    enemies = playersUnits;
+  }
+  else if(unit.controlBy === 'player') { // enemies for player are computersUnits
+    enemies = computersUnits;
+  }
+  console.error('enemies', enemies);
+  for(let enemy of enemies) {
+    let figthAgainst = enemy.figthAgainst;
+    if(figthAgainst.front.id === unit.id) { // unit is inside front
+      console.error('unit', unit.name,'was found as front enemy of', enemy.name);
+      findedUnits.push(enemy);
+    }
+    else if(figthAgainst.rear.id === unit.id) { // unit is finded as rear unit
+      console.error('unit', unit.name,'was found as rear enemy of', enemy.name);
+      findedUnits.push(enemy);
+    }
+    for(let flankUnit of figthAgainst.flank) {
+      if(flankUnit.id === unit.id) { // unit is finded as flank unit
+        console.error('unit', unit.name,'was found as flank enemy of', enemy.name);
+        findedUnits.push(enemy);
+      }
+    }
+  }
+  if(findedUnits.length === 0) {
+    console.error('unit is not found as enemy');
+  }
+  return findedUnits;
+}

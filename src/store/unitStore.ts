@@ -26,7 +26,9 @@ export const incUnitId = () => {
 delete unit from units array
 */
 export const removeUnit = (unit:any) => {
+  console.error('before removing unit', units);
   units = deleteObjectFromArray(unit, units);
+  console.error('after removing unit', units);
 }
 
 export const addUnitIntoVisibleArray = (unit:any) => {
