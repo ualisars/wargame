@@ -102,6 +102,19 @@ class Unit {
     }
   }
 
+  increaseCondition(value:number) {
+    if(this.condition < 100) { // condition cannot be more than 100
+      this.condition += value;
+    }
+  }
+
+  decreaseCondition(value:number) {
+    if(this.condition > 0) { // condition cannot be less than 0
+      this.condition -= value;
+    }
+
+  }
+
   setCurrentNode(node:any) {
     this.currentNode = node;
   }
@@ -135,7 +148,7 @@ class Unit {
       }
     }
   }
-  
+
   removeEnemyFromFightAgainst(enemy:any) {
     if(enemy.id === this.figthAgainst.front.id) {
       this.figthAgainst.front = {};

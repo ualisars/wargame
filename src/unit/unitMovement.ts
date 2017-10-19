@@ -123,7 +123,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(i !== 0) {
     nodeToClear = updatedPath[i - 1];
   }
-
+  unit.decreaseCondition(1); // decreaseCondition while moving
   moveToNextNodeInUpdateUnit(unit, nodeToClear, node, currentMoveToX, currentMoveToY, path, i);
 }
 
@@ -230,6 +230,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   console.error('previousNode', previousNode);
   console.error('currentNode', node);
   spotEnemy(unit); // check for enemy units
+  unit.decreaseCondition(1); // decreaseCondition while moving
   moveToNextNode(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
 }
 
