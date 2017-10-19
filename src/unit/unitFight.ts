@@ -142,6 +142,7 @@ export const checkHealth = () => {
           }
         }
         removeUnit(unit);
+        console.log('computersUnits:', computersUnits);
       }
     }
     resolve();
