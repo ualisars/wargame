@@ -5,6 +5,10 @@ import {
   playersUnits,
   computersUnits
 } from '../store/unitStore';
+import {
+  ctx,
+  gridSize
+} from '../map/mapConfig';
 import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
 
 
@@ -142,7 +146,7 @@ export const checkHealth = () => {
           }
         }
         removeUnit(unit);
-        console.log('computersUnits:', computersUnits);
+        ctx.clearRect(unit.x, unit.y, gridSize, gridSize); // remove unit from the map
       }
     }
     resolve();
