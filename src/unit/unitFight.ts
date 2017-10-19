@@ -148,6 +148,7 @@ export const checkHealth = () => {
         removeUnit(unit);
         ctx.clearRect(unit.x, unit.y, gridSize, gridSize); // remove unit from the map
       }
+      isUnitFighting(unit);
     }
     resolve();
   });
@@ -162,26 +163,41 @@ export const findUnitInFightAgainst = (unit:any) => {
   else if(unit.controlBy === 'player') { // enemies for player are computersUnits
     enemies = computersUnits;
   }
-  console.error('enemies', enemies);
   for(let enemy of enemies) {
     let figthAgainst = enemy.figthAgainst;
     if(figthAgainst.front.id === unit.id) { // unit is inside front
-      console.error('unit', unit.name,'was found as front enemy of', enemy.name);
       findedUnits.push(enemy);
     }
     else if(figthAgainst.rear.id === unit.id) { // unit is finded as rear unit
-      console.error('unit', unit.name,'was found as rear enemy of', enemy.name);
       findedUnits.push(enemy);
     }
     for(let flankUnit of figthAgainst.flank) {
       if(flankUnit.id === unit.id) { // unit is finded as flank unit
-        console.error('unit', unit.name,'was found as flank enemy of', enemy.name);
         findedUnits.push(enemy);
       }
     }
   }
-  if(findedUnits.length === 0) {
-    console.error('unit is not found as enemy');
-  }
   return findedUnits;
+}
+
+/*
+  Checks if unit is currently fighting
+  with any enemies, if not fighting
+  set isFighting property to false
+*/
+export const isUnitFighting = (unit:any) => {
+  let isFighting = false;
+  let figthAgainst = unit.figthAgainst;
+  if(!isObjectEmpty(figthAgainst.front)) { // unit has enemy in front of it
+    isFighting = true;
+  }
+  else if(!isObjectEmpty(figthAgainst.rear)) { // unit has an enemy from unit's back
+    isFighting = true;
+  }
+  else if(figthAgainst.flank.length !== 0) { // unit has enemy on the side
+    isFighting = true;
+  }
+  if(!isFighting) { // unit not fighting at that moment
+    unit.setIsFightingToFalse(); // set isFighting property to false
+  }
 }
