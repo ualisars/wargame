@@ -144,7 +144,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
 }); // on context
 
 //setInterval(() => spotUnits(units), 1000);
-setInterval(() => {
-  checkHealth().
-  then(() => meleeCombat());
-}, 1000);
+// setInterval(() => {
+//   checkHealth().
+//   then(() => meleeCombat());
+// }, 1000);
