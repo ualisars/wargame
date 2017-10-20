@@ -22,7 +22,7 @@ import {
 } from './unitUtils';
 import {checkUnitIsFighting} from './unitFight';
 import {findPathFromOneNodeToAnother} from './unitPath';
-import {meleeCombat, meleeAttack} from './unitFight';
+import {meleeCombat, meleeAttack, charge} from './unitFight';
 import {spotEnemy} from './unitRange';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null) => {
@@ -197,6 +197,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     pursuedUnit.setIsFightingToTrue();
     unit.assignEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
     pursuedUnit.assignEnemy(unit);
+    charge(unit, pursuedUnit);
     console.error('unit frontEnemy:', unit.figthAgainst.front);
     return;
   }

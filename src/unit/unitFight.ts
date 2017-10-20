@@ -17,6 +17,15 @@ export const checkUnitIsFighting = (unit:any) => {
   return false;
 }
 
+/*
+  Single time attack, that fires only when one unit
+  has rushed in full speed into another
+*/
+export const charge = (attackUnit:any, defendUnit:any) => {
+  let attackAngle = checkAttackAngle(attackUnit, defendUnit);
+  console.error('attackAngle', attackAngle);
+}
+
 export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string='front') => {
   return new Promise(resolve => {
     let initialDamage = randomizeMeleeDamage(attackUnit.meleeDamage);
@@ -45,17 +54,14 @@ export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string
 export const meleeCombat = () => {
   for(let unit of units) {
     if(!isObjectEmpty(unit.figthAgainst.front)) { // unit have front enemy
-      console.error('Attack front enemy');
-      meleeAttack(unit, unit.figthAgainst.front);
+      meleeAttack(unit, unit.figthAgainst.front, 'front');
     }
     if(!isObjectEmpty(unit.figthAgainst.rear)) { // unit have rear enemy
-      console.error('Attack rear enemy');
-      meleeAttack(unit, unit.figthAgainst.rear);
+      meleeAttack(unit, unit.figthAgainst.rear, 'rear');
     }
     if(unit.figthAgainst.flank.length > 0) { // unit have flnk enemies
       for(let enemy of unit.figthAgainst.flank) {
-        console.error('Attack rear enemy');
-        meleeAttack(unit, enemy);
+        meleeAttack(unit, enemy, 'flank');
       }
     }
   }
@@ -149,6 +155,7 @@ export const checkHealth = () => {
         ctx.clearRect(unit.x, unit.y, gridSize, gridSize); // remove unit from the map
       }
       isUnitFighting(unit);
+      refreshment(unit);
     }
     resolve();
   });
@@ -199,5 +206,60 @@ export const isUnitFighting = (unit:any) => {
   }
   if(!isFighting) { // unit not fighting at that moment
     unit.setIsFightingToFalse(); // set isFighting property to false
+  }
+}
+
+/*
+  If unit is not moving and not fighting
+  so increase unit's condition
+*/
+export const refreshment = (unit:any) => {
+  if(!unit.isFighting && !unit.isMoving) {
+    if(unit.condition < 100) { // condition cannot be more than 100
+      unit.increaseCondition(1);
+    }
+  }
+}
+
+/*
+  Check in what side of the enemy attack will
+  be pointed(front, side, rear)
+*/
+export const checkAttackAngle = (unit:any, enemy:any) => {
+  let enemyCurrNode = enemy.currentNode;
+  let unitNode = unit.currentNode;
+  if(enemy.figthAgainst.front.id === unit.id) {
+    return 'front';
+  }
+
+  else if(!enemy.isFighting && enemy.isMoving) { // enemy not fighting but moving
+    let enemyNextNode = enemy.nextNode;
+    if(enemyNextNode.x === unitNode.x && enemyNextNode.y === unitNode.y) { // enemy in fromt on unit
+     return 'front';
+    }
+    else if(enemyNextNode.x - unitNode.x > gridSize || enemyNextNode.y - unitNode.y > gridSize) { // enemy is going to the other side than unit
+      return 'back';
+    }
+    return 'side';
+  }
+
+  else if(enemy.isFighting) { // enemy is fighting
+    let frontUnitNode = enemy.figthAgainst.front.currentNode;
+    if(unitNode.x === enemyCurrNode.x && unitNode.x === frontUnitNode.x) { // units standing in line
+      return 'back';
+    }
+    else if(unitNode.y === enemyCurrNode.y && unitNode.y === frontUnitNode.y) { //units standing in line
+      return 'back';
+    }
+    // unit is standing in diagonal line, so position is back
+    else if(Math.abs(frontUnitNode.x - enemyCurrNode.x) === gridSize && Math.abs(frontUnitNode.x - unitNode.x) === gridSize * 2) {
+      return 'back';
+    }
+    else if(Math.abs(frontUnitNode.y - enemyCurrNode.y) === gridSize && Math.abs(frontUnitNode.y - unitNode.y) === gridSize * 2) {
+      return 'back';
+    }
+    else {
+      return 'side';
+    }
   }
 }

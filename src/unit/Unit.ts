@@ -36,12 +36,13 @@ class Unit {
   // Characteristics
   type: string;
   health: number = 100;
-  speed: number;
-  armour: number = 4;
-  range: number;
-  mobility: number = 3;
-  meleeDamage: number = 7;
-  missileDamage: number;
+  speed: number = 10;
+  armour: number = 1;
+  range: number = 0;
+  mobility: number = 1;
+  meleeDamage: number = 1;
+  missileDamage: number = 0;
+  charge:number = 2;
   discipline: number = 5;
   visibility:number = 5;
   morale: number = 100;

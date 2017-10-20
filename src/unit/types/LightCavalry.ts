@@ -16,7 +16,7 @@ class LightCavalry extends Unit {
   mobility: number = 7;
   meleeDamage: number = 5;
   missileDamage: number = 0;
-  charge: number = 4;
+  charge: number = 6;
   discipline: number = 40;
 
   constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
