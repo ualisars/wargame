@@ -137,7 +137,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
         console.error('startNode', startNode);
         console.error('finishNode', finishNode);
         assignUnitMoveToPosition(currentlyChosenUnit, finishNode.x, finishNode.y);
-        updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y);
+        updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y, null, true);
       }
     }
   }

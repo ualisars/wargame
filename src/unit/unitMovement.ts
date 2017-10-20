@@ -24,10 +24,11 @@ import {checkUnitIsFighting} from './unitFight';
 import {findPathFromOneNodeToAnother} from './unitPath';
 import {meleeCombat, meleeAttack, charge} from './unitFight';
 import {spotEnemy} from './unitRange';
+import {chanceToOutOfCombat} from './unitUtils';
 
-export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null) => {
+export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   unit.setIsMovingToTrue();
-  if(i === path.length) {
+  if(i === path.length) { // unit approach its end position
     console.log(unit.name, 'is on position');
     let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
     unit.setCurrentNode(currentNode); // set currentNode
@@ -35,7 +36,12 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     unit.setIsMovingToFalse();
     return;
   }
-  if(checkUnitIsFighting(unit)) {
+
+  if(checkUnitIsFighting(unit)) { // stop moving if unit is fighting
+    console.log(unit.name, 'is fighting');
+    if(newMovement) { // unit is trying to out of combat
+      chanceToOutOfCombat(unit);
+    }
     let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
     unit.setCurrentNode(currentNode); // set currentNode
     unit.setNextNode(currentNode); // set nextNode
@@ -64,7 +70,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     unit.setNextNode(startNode); // set nextNode
     let newPath:any = aStar(map, startNode, finishNode);
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
-    updateUnit(unit,newPath, 0, finishNode.x, finishNode.y);
+    updateUnit(unit,newPath, 0, finishNode.x, finishNode.y, null, false);
     return;
   }
 
@@ -114,7 +120,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     let newPath:any = aStar(updatedMap, startNode, finishNode);
     console.error('finishNode:', finishNode);
     console.error('newPath', newPath);
-    updateUnit(unit, newPath, 0, currentMoveToX, currentMoveToY);
+    updateUnit(unit, newPath, 0, currentMoveToX, currentMoveToY, null, false);
     return;
   }
 
@@ -141,7 +147,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY, map);
     let newPath:any = aStar(map, startNode, finishNode);
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
-    updateUnit(unit,newPath, 0, finishNode.x, finishNode.y);
+    updateUnit(unit,newPath, 0, finishNode.x, finishNode.y, null, false);
     return;
   }
   if(unit.unitToPursue !== null) {
@@ -269,7 +275,7 @@ export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any
   //console.log('makeMovementInUpdateUnit');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
     nodeI++;
-    updateUnit(unit, allPath, nodeI, currX, currY);
+    updateUnit(unit, allPath, nodeI, currX, currY, null, false);
   }
 
   if(i >= path.length) {
