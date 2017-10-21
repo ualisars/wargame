@@ -20,7 +20,7 @@ import {
   checkOtherUnitsPosition,
   getBlockingUnit
 } from './unitUtils';
-import {checkUnitIsFighting} from './unitFight';
+
 import {findPathFromOneNodeToAnother} from './unitPath';
 import {meleeCombat, meleeAttack, charge} from './unitFight';
 import {spotEnemy} from './unitRange';
@@ -38,7 +38,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     return;
   }
 
-  if(checkUnitIsFighting(unit)) { // stop moving if unit is fighting
+  if(unit.isFighting) { // stop moving if unit is fighting
     if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
       console.log('unit can get out of combat');
       unit.setIsFightingToFalse(); // unit is not fighting now
@@ -62,7 +62,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y, map);
     let newPath:any = aStar(map, startNode, finishNode);
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
-    pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath);
+    pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
     return;
   }
 
@@ -137,14 +137,24 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   moveToNextNodeInUpdateUnit(unit, nodeToClear, node, currentMoveToX, currentMoveToY, path, i);
 }
 
-export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number, path:any) => {
+export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number, path:any, newMovement:boolean) => {
   unit.setIsMovingToTrue();
   console.error('pursueUnit');
   console.log('unit.x', unit.x, 'unit.y', unit.y);
   console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
-  if(checkUnitIsFighting(unit)) {
-    unit.setIsMovingToFalse();
-    return;
+  if(unit.isFighting) {
+    if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
+      console.log('unit can get out of combat');
+      unit.setIsFightingToFalse(); // unit is not fighting now
+      unit.clearFightAgainst(); // now unit not fighting with anyone
+      removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
+    } else {
+      let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
+      unit.setCurrentNode(currentNode); // set currentNode
+      unit.setNextNode(currentNode); // set nextNode
+      unit.setIsMovingToFalse();
+      return;
+    }
   }
   if(unit.unitToPursue === null) { // unit isn't pursuing any opponent's units
     let startNode = getNodeFromMap(unit.x, unit.y, map);
@@ -162,7 +172,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
       let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y, map);
       let newPath:any = aStar(map, startNode, finishNode);
       assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
-      pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath);
+      pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
       return;
     }
   }
@@ -313,7 +323,7 @@ export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNod
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
     console.error('unit reached its position');
     nodeI++;
-    pursueUnit(unit, pursuedUnit, currX, currY, nodeI, allPath)
+    pursueUnit(unit, pursuedUnit, currX, currY, nodeI, allPath, false);
   }
 
   if(i >= path.length) {

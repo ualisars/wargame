@@ -12,7 +12,7 @@ import {
 import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
 
 
-export const checkUnitIsFighting = (unit:any) => {
+export const ssisUnitFighting = (unit:any) => {
   if(unit.isFighting) return true;
   return false;
 }

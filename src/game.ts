@@ -120,7 +120,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
         console.error('finishNode', finishNode);
         console.error('map', map);
         let path:any = aStar(map, startNode, finishNode);
-        pursueUnit(currentlyChosenUnit, pursuedUnit, pursuedUnit.x, pursuedUnit.y, 0, path);
+        pursueUnit(currentlyChosenUnit, pursuedUnit, pursuedUnit.x, pursuedUnit.y, 0, path, true);
       }
     } else {
       if(currentlyChosenUnit.isMoving) {
