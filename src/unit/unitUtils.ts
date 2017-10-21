@@ -37,7 +37,7 @@ export const getBlockingUnit = (units:any[], currentUnit:any, x:number, y:number
   and provide conclusion in boolean form
   unit is out of combat ot continue fighting
 */
-export const chanceToOutOfCombat = (unit:any) => {
+export const isUnitOutOfCombat = (unit:any) => {
   let chance = 1;
   let numberOfEnemy:number = 0;
   let unitSpeed:number = unit.speed;
@@ -135,16 +135,9 @@ export const chanceToOutOfCombat = (unit:any) => {
   if(chance <= 0) chance = 0.1;
   if(chance >= 1) chance = 0.9;
 
-  // let random = Math.random();
-  // if(random >= 0 && random <= chance) {
-  //   return true;
-  // }
-  // return false;
-  console.error('chance of out of combat:', chance);
-  console.error('unitSpeed:', unitSpeed);
-  console.error('totalEnemySpeed:', totalEnemySpeed);
-  console.error('numberOfEnemy:', numberOfEnemy);
-  console.error('unitHasEnemyInTheBack:', unitHasEnemyInTheBack);
-  console.error('unitMobility:', unitMobility);
-  console.error('unitCondition:', unit.condition);
+  let random = Math.random();
+  if(random >= 0 && random <= chance) {
+    return true;
+  }
+  return false;
 }

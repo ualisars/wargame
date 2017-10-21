@@ -24,7 +24,7 @@ import {checkUnitIsFighting} from './unitFight';
 import {findPathFromOneNodeToAnother} from './unitPath';
 import {meleeCombat, meleeAttack, charge} from './unitFight';
 import {spotEnemy} from './unitRange';
-import {chanceToOutOfCombat} from './unitUtils';
+import {isUnitOutOfCombat} from './unitUtils';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   unit.setIsMovingToTrue();
@@ -38,15 +38,16 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
 
   if(checkUnitIsFighting(unit)) { // stop moving if unit is fighting
-    console.log(unit.name, 'is fighting');
-    if(newMovement) { // unit is trying to out of combat
-      chanceToOutOfCombat(unit);
+    if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
+      console.log('unit can get out of combat');
+      unit.setIsFightingToFalse(); // unit is not fighting now 
+    } else {
+      let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
+      unit.setCurrentNode(currentNode); // set currentNode
+      unit.setNextNode(currentNode); // set nextNode
+      unit.setIsMovingToFalse();
+      return;
     }
-    let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
-    unit.setCurrentNode(currentNode); // set currentNode
-    unit.setNextNode(currentNode); // set nextNode
-    unit.setIsMovingToFalse();
-    return;
   }
 
   if(unit.unitToPursue) {
