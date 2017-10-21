@@ -40,7 +40,8 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(checkUnitIsFighting(unit)) { // stop moving if unit is fighting
     if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
       console.log('unit can get out of combat');
-      unit.setIsFightingToFalse(); // unit is not fighting now 
+      unit.setIsFightingToFalse(); // unit is not fighting now
+      unit.clearFightAgainst(); // now unit not fighting with anyone
     } else {
       let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
       unit.setCurrentNode(currentNode); // set currentNode

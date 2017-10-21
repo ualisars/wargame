@@ -165,6 +165,12 @@ class Unit {
       }
     }
   }
+
+  clearFightAgainst() {
+    this.figthAgainst.front = {};
+    this.figthAgainst.rear = {};
+    this.figthAgainst.flank = [];
+  }
 }
 
 export default Unit;
