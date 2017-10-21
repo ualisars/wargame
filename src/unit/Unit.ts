@@ -95,9 +95,9 @@ class Unit {
     this.isFighting = false;
   }
 
-  removeUnitFromFlank(opponent:string) {
+  removeUnitFromFlank(opponent:any) {
     for(let i = 0; i < this.figthAgainst.flank.length; ++i) {
-      if(this.figthAgainst[i] === opponent) {
+      if(this.figthAgainst[i].id === opponent.id) {
         this.figthAgainst.flank = this.figthAgainst.flank.splice(i, 1);
       }
     }
@@ -157,7 +157,7 @@ class Unit {
     else if(enemy.id === this.figthAgainst.rear.id) {
       this.figthAgainst.rear = {};
     }
-    else {
+    else if(this.figthAgainst.flank.length !== 0) {
       for(let unit of this.figthAgainst.flank) {
         if(unit.id === enemy.id) {
           this.removeUnitFromFlank(enemy);
