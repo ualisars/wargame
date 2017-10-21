@@ -25,6 +25,7 @@ import {findPathFromOneNodeToAnother} from './unitPath';
 import {meleeCombat, meleeAttack, charge} from './unitFight';
 import {spotEnemy} from './unitRange';
 import {isUnitOutOfCombat} from './unitUtils';
+import {removeUnitFromEnemiesFightAgainst} from './unitFightAgainst';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   unit.setIsMovingToTrue();
@@ -42,6 +43,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
       console.log('unit can get out of combat');
       unit.setIsFightingToFalse(); // unit is not fighting now
       unit.clearFightAgainst(); // now unit not fighting with anyone
+      removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
     } else {
       let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
       unit.setCurrentNode(currentNode); // set currentNode
