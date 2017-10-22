@@ -26,6 +26,10 @@ import {meleeCombat, meleeAttack, charge} from './unitFight';
 import {spotEnemy} from './unitRange';
 import {isUnitOutOfCombat} from './unitUtils';
 import {removeUnitFromEnemiesFightAgainst} from './unitFightAgainst';
+import {
+  isEnemyInTheRange,
+  missileAttack
+} from './missileAttack';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   unit.setIsMovingToTrue();
