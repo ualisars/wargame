@@ -17,6 +17,7 @@ class Peltasts extends Unit {
   mobility: number = 6;
   meleeDamage: number = 4;
   missileDamage: number = 12;
+  shotsRemained:number = 5;
   charge: number = 1;
   discipline: number = 50;
 

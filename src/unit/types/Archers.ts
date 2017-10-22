@@ -13,10 +13,10 @@ class Archers extends Unit {
   speed: number = 25;
   armour: number = 2;
   range: number = 8;
-  ammunition:number =  20;
   mobility: number = 4;
   meleeDamage: number = 2;
   missileDamage: number = 7;
+  shotsRemained:number = 10;
   charge: number = 1;
   discipline: number = 40;
 

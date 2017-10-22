@@ -42,6 +42,7 @@ class Unit {
   mobility: number = 1;
   meleeDamage: number = 1;
   missileDamage: number = 0;
+  shotsRemained:number = 0;
   charge:number = 2;
   discipline: number = 5;
   visibility:number = 5;

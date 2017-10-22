@@ -11,12 +11,6 @@ import {
 } from '../map/mapConfig';
 import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
 
-
-export const ssisUnitFighting = (unit:any) => {
-  if(unit.isFighting) return true;
-  return false;
-}
-
 /*
   Single time attack, that fires only when one unit
   has rushed in full speed into another
@@ -155,9 +149,10 @@ export const checkHealth = () => {
         }
         removeUnit(unit);
         ctx.clearRect(unit.x, unit.y, gridSize, gridSize); // remove unit from the map
+      } else { // unit still alive
+        isUnitFighting(unit);
+        refreshment(unit);
       }
-      isUnitFighting(unit);
-      refreshment(unit);
     }
     resolve();
   });
