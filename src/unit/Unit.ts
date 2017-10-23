@@ -98,7 +98,7 @@ class Unit {
 
   removeUnitFromFlank(opponent:any) {
     for(let i = 0; i < this.figthAgainst.flank.length; ++i) {
-      if(this.figthAgainst[i].id === opponent.id) {
+      if(this.figthAgainst.flank[i].id === opponent.id) {
         this.figthAgainst.flank = this.figthAgainst.flank.splice(i, 1);
       }
     }
