@@ -1,6 +1,6 @@
 import {
   isObjectInArray,
-  isUnitInArray, 
+  isUnitInArray,
   deleteObjectFromArray} from '../utils/objUtils';
 
 export let units:any[] = [];
@@ -66,6 +66,14 @@ export const removeUnitFromVisibleArray = (unit:any) => {
   }
 }
 
-export const addToSpottedUnits = (unit:any) => {
+export const addUnitToSpottedUnits = (unit:any) => {
+  if(!isUnitInArray(unit, spottedUnits)) { // unit is not spotted yet
+    spottedUnits.push(unit);
+  }
+}
 
+export const removeUnitFromSpottedUnits = (unit:any) => {
+  if(isUnitInArray(unit, spottedUnits)) {
+    spottedUnits = deleteObjectFromArray(unit, spottedUnits);
+  }
 }
