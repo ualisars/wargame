@@ -18,6 +18,16 @@ export const isObjectInArray = (object:any, arr:any[]) => {
   return result;
 }
 
+export const isUnitInArray = (unitToAdd:any, arr:any[]) => {
+  let result:boolean = false;
+  for(let unit of arr) {
+    if(unitToAdd.id === unit.id) {
+      result = true;
+    }
+  }
+  return result;
+}
+
 export const getNodeFromArray = (object:any, arr:any[]) => {
   for(let node of arr) {
     if(node.x === object.x && node.y && object.y) {

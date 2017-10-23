@@ -1,11 +1,11 @@
 import {
   isObjectInArray,
   deleteObjectFromArray
-} from '../../utils/objUtils';
+} from '../../../utils/objUtils';
 
 class NodeStore {
   store:any[] = [];
-  
+
   addNodeToStore(node:any) {
     if(!isObjectInArray(node, this.store)) { // object is not inside array
       this.store.push(node);

@@ -3,7 +3,8 @@ import {
   deleteObjectFromArray,
   isObjectInArray,
   getNodeFromArray,
-  isObjectEmpty
+  isObjectEmpty,
+  isUnitInArray
 } from '../src/utils/objUtils';
 
 import {
@@ -86,6 +87,24 @@ describe('Object Utils Tests', function() {
     });
     it('Object2 is not empty object', function() {
       assert.equal(isObjectEmpty(obj2), false);
+    });
+  });
+
+  describe('isUnitInArray', function() {
+    let unit1 = {id: 7};
+    let unit2 = {id: 17};
+    let arr = [
+      {id: 1},
+      {id: 7},
+      {id: 12},
+      {id: 114},
+      {id: 527},
+    ]
+    it('Unit with id:7 should be in array', function() {
+      assert.equal(isUnitInArray(unit1, arr), true);
+    });
+    it('Unit with id:17 should not be in array', function() {
+      assert.equal(isUnitInArray(unit2, arr), false);
     });
   });
 

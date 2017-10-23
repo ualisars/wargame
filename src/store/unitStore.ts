@@ -1,8 +1,12 @@
-import {isObjectInArray, deleteObjectFromArray} from '../utils/objUtils';
+import {
+  isObjectInArray,
+  isUnitInArray, 
+  deleteObjectFromArray} from '../utils/objUtils';
 
 export let units:any[] = [];
 export let playersUnits: any[] = [];
 export let computersUnits: any[] = [];
+export let spottedUnits: any[] = [];
 export let currentlyChosenUnit:any = null;
 export let visibleForPlayerUnits:any[] = [];
 export let visibleForComputerUnits:any[] = [];
@@ -60,4 +64,8 @@ export const removeUnitFromVisibleArray = (unit:any) => {
       visibleForPlayerUnits = deleteObjectFromArray(unit, visibleForPlayerUnits);
     }
   }
+}
+
+export const addToSpottedUnits = (unit:any) => {
+
 }

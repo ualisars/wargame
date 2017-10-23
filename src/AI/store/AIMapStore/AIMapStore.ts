@@ -4,7 +4,3 @@ export const possiblePlayerControlNodes:any[] = [];
 export const neutralNodes:any[] = [];
 export const neutralNodesPriorityToExpolore:any = [];
 export const fightingNodes:any[] = [];
-
-export const addToComputerControlNodes = (node:any) => {
-  
-}
