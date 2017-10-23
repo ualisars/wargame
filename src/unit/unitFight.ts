@@ -3,7 +3,9 @@ import {
   units,
   removeUnit,
   playersUnits,
-  computersUnits
+  computersUnits,
+  spottedUnits,
+  removeUnitFromSpottedUnits
 } from '../store/unitStore';
 import {
   ctx,
@@ -30,7 +32,7 @@ export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string
     let damage = calculateDamageBaseOnEnemyPosition(meleeDamage, enemyPosition);
     let armour = defendUnit.armour;
     if(defendUnit.health < 1) {
-      console.error('defendUnit is destryed');
+      console.error('defendUnit is destroyed');
       return;
     }
     defendUnit.health = Math.round(defendUnit.health - (armourPenetration(damage, armour)));
@@ -142,6 +144,10 @@ export const checkHealth = () => {
   return new Promise(resolve => {
     for(let unit of units) {
       if(unit.health <= 0) { // unit is destroyed
+        if(unit.controlBy === 'player') { // if unit is destroyed remove it from spottedUnits
+          removeUnitFromSpottedUnits(unit);
+          console.log('spottedUnits', spottedUnits);
+        }
         if(findUnitInFightAgainst(unit).length > 0) { // if unit is figthAgainst some enemies
           for(let enemy of findUnitInFightAgainst(unit)) { // delete this unit from all enemy's fighting
             enemy.removeEnemyFromFightAgainst(unit);

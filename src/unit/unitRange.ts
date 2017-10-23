@@ -9,10 +9,12 @@ import {drawUnit} from './unitActions';
 import {
   playersUnits,
   computersUnits,
+  spottedUnits,
   visibleForPlayerUnits,
   visibleForComputerUnits,
   addUnitIntoVisibleArray,
-  removeUnitFromVisibleArray
+  removeUnitFromVisibleArray,
+  addUnitToSpottedUnits,
 } from '../store/unitStore';
 
 import {
@@ -44,10 +46,14 @@ export const spotEnemy = (unit:any) => {
       enemy.isVisible = true;
       drawUnit(enemy); // show enemy on the map
       addUnitIntoVisibleArray(enemy);
+      if(unit.controlBy === 'computer') { // for computer add enemy into spottedUnits
+        addUnitToSpottedUnits(enemy);
+      }
     }
   }
   console.error('visibleForPlayerUnits', visibleForPlayerUnits);
   console.error('visibleForComputerUnits', visibleForComputerUnits);
+  console.error('spottedUnits', spottedUnits);
 }
 
 /*
@@ -75,6 +81,9 @@ export const isUnitSpottedByEnemy = (unit:any) => {
       isSpotted = true;
       unit.isVisible = true;
       addUnitIntoVisibleArray(unit);
+      if(unit.controlBy === 'computer') { // for computer add enemy into spottedUnits
+        addUnitToSpottedUnits(enemy);
+      }
       if(unit.controlBy === 'computer') {
         drawUnit(unit); // show computer unit on the map
       }
