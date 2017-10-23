@@ -32,6 +32,10 @@ import {
 } from './missileAttack';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
+  if(unit.health < 0) {
+    console.log('unit has been destroyed');
+    return;
+  }
   unit.setIsMovingToTrue();
   if(i === path.length) { // unit approach its end position
     console.log(unit.name, 'is on position');
