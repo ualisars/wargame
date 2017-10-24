@@ -45,6 +45,9 @@ import {
 import {spotUnits} from './unit/unitRange';
 import {meleeCombat, checkHealth} from './unit/unitFight'
 
+// AI testing
+import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
+
 createUnit('archers', 40, 80, 15, 'player');
 createUnit('scouts', 80, 360, 15, 'player');
 createUnit('lightCavalry', 80, 400, 15, 'player');
@@ -143,8 +146,10 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
   }
 }); // on context
 
-setInterval(() => spotUnits(units), 1000);
-setInterval(() => {
-  checkHealth().
-  then(() => meleeCombat());
-}, 1000);
+// setInterval(() => spotUnits(units), 1000);
+// setInterval(() => {
+//   checkHealth().
+//   then(() => meleeCombat());
+// }, 1000);
+
+setInterval(() => analyzeMap(), 4000);

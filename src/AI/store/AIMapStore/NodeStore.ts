@@ -7,14 +7,18 @@ class NodeStore {
   store:any[] = [];
 
   addNodeToStore(node:any) {
-    if(!isObjectInArray(node, this.store)) { // object is not inside array
-      this.store.push(node);
+    if(node) {
+      if(!isObjectInArray(node, this.store)) { // object is not inside array
+        this.store.push(node);
+      }
     }
   }
 
   removeNodeFromStore(node:any) {
-    if(isObjectInArray(node, this.store)) { // object is inside array
-      this.store = deleteObjectFromArray(node, this.store);
+    if(node) {
+      if(isObjectInArray(node, this.store)) { // object is inside array
+        this.store = deleteObjectFromArray(node, this.store);
+      }
     }
   }
 }
