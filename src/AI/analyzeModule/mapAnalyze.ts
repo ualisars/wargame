@@ -23,8 +23,8 @@ let fightingNodes = new NodeStore();
   nodes that both visible for player and computer goes to fightingNodes
 */
 export const analyzeMap = () => {
-  fillComputerControlNodes();
-  displayComputerControlNodes();
+  clearComputerControlNodes().
+  then(() => fillComputerControlNodes())
 }
 
 /*
@@ -32,19 +32,29 @@ export const analyzeMap = () => {
   visible for computer nodes to computerControlNodes
 */
 export const fillComputerControlNodes = () => {
-  for(let unit of computersUnits) {
-    let startX = unit.currentNode.x - (unit.visibility * gridSize);
-    let finishX = unit.currentNode.x + (unit.visibility * gridSize);
-    let startY = unit.currentNode.y - (unit.visibility * gridSize);
-    let finishY = unit.currentNode.y + (unit.visibility * gridSize);
-    for(let x = startX; x <= finishX; x += gridSize) {
-      for(let y = startY; y <= finishY; y += gridSize) {
-        let node = getNodeFromMap(x, y, map);
-        computerControlNodes.addNodeToStore(node);
+  return new Promise(resolve => {
+    for(let unit of computersUnits) {
+      let startX = unit.currentNode.x - (unit.visibility * gridSize);
+      let finishX = unit.currentNode.x + (unit.visibility * gridSize);
+      let startY = unit.currentNode.y - (unit.visibility * gridSize);
+      let finishY = unit.currentNode.y + (unit.visibility * gridSize);
+      for(let x = startX; x <= finishX; x += gridSize) {
+        for(let y = startY; y <= finishY; y += gridSize) {
+          let node = getNodeFromMap(x, y, map);
+          computerControlNodes.addNodeToStore(node);
+        }
       }
     }
-  }
-  console.error('computerControlNodes', computerControlNodes.store);
+    console.error('computerControlNodes', computerControlNodes.store);
+    resolve();
+  });
+}
+
+export const clearComputerControlNodes = () => {
+  return new Promise(resolve => {
+    computerControlNodes.clearStore();
+    resolve();
+  });
 }
 
 export const displayComputerControlNodes = () => {

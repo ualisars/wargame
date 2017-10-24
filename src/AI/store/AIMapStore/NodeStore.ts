@@ -21,6 +21,10 @@ class NodeStore {
       }
     }
   }
+
+  clearStore() {
+    this.store = [];
+  }
 }
 
 export default NodeStore;
