@@ -25,6 +25,8 @@ let fightingNodes = new NodeStore();
 export const analyzeMap = () => {
   clearComputerControlNodes().
   then(() => fillComputerControlNodes())
+  clearPlayerControlNodes()
+  .then(() => fillPlayerControlNodes())
 }
 
 /*
@@ -55,6 +57,29 @@ export const clearComputerControlNodes = () => {
     computerControlNodes.clearStore();
     resolve();
   });
+}
+
+export const clearPlayerControlNodes = () => {
+  return new Promise(resolve => {
+    playerControlNodes.clearStore();
+    resolve();
+  })
+}
+
+export const fillPlayerControlNodes = () => {
+  for(let unit of visibleForComputerUnits) {
+    let startX = unit.currentNode.x - (unit.visibility * gridSize);
+    let finishX = unit.currentNode.x + (unit.visibility * gridSize);
+    let startY = unit.currentNode.y - (unit.visibility * gridSize);
+    let finishY = unit.currentNode.y + (unit.visibility * gridSize);
+    for(let x = startX; x <= finishX; x += gridSize) {
+      for(let y = startY; y <= finishY; y += gridSize) {
+        let node = getNodeFromMap(x, y, map);
+        playerControlNodes.addNodeToStore(node);
+      }
+    }
+  }
+  console.error('playerControlNodes', playerControlNodes.store);
 }
 
 export const displayComputerControlNodes = () => {
