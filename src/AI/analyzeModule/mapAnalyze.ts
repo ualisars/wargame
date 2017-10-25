@@ -2,6 +2,7 @@ import NodeStore from '../store/AIMapStore/NodeStore';
 import {gridSize, ctx} from '../../map/mapConfig';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
+import {getMinValueFromNode} from '../../utils/objUtils';
 import {
   computersUnits,
   visibleForComputerUnits
@@ -86,5 +87,15 @@ export const displayComputerControlNodes = () => {
   for(let node of computerControlNodes.store) {
     ctx.fillStyle = '#b1c1d1';
     ctx.fillRect(node.x, node.y, gridSize, gridSize);
+  }
+}
+
+/*
+  get fathestNodes of the area
+  by the x ordinate
+*/
+export const getFarthestXNodes = (nodes:any) => {
+  for(let node of nodes) {
+
   }
 }

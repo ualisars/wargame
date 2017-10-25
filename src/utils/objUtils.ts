@@ -1,4 +1,4 @@
-export const deleteObjectFromArray = (object:any, arr:any[]) => {
+export const deleteObjectFromArray = (object:any, arr:any[]):any[] => {
   let updatedArr = arr.filter((el) => {
     if(el.x === object.x && el.y === object.y) {
       return false;
@@ -8,7 +8,7 @@ export const deleteObjectFromArray = (object:any, arr:any[]) => {
   return updatedArr;
 }
 
-export const isObjectInArray = (object:any, arr:any[]) => {
+export const isObjectInArray = (object:any, arr:any[]):boolean => {
   let result:boolean = false;
   for(let node of arr) {
     if(object.x === node.x && object.y === node.y) {
@@ -18,7 +18,7 @@ export const isObjectInArray = (object:any, arr:any[]) => {
   return result;
 }
 
-export const isUnitInArray = (unitToAdd:any, arr:any[]) => {
+export const isUnitInArray = (unitToAdd:any, arr:any[]):boolean => {
   let result:boolean = false;
   for(let unit of arr) {
     if(unitToAdd.id === unit.id) {
@@ -28,7 +28,7 @@ export const isUnitInArray = (unitToAdd:any, arr:any[]) => {
   return result;
 }
 
-export const getNodeFromArray = (object:any, arr:any[]) => {
+export const getNodeFromArray = (object:any, arr:any[]):any => {
   for(let node of arr) {
     if(node.x === object.x && node.y && object.y) {
       return node;
@@ -37,7 +37,7 @@ export const getNodeFromArray = (object:any, arr:any[]) => {
 }
 
 
-export const isObjectEmpty = (obj:any) => {
+export const isObjectEmpty = (obj:any):boolean => {
   let hasOwnProperty = Object.prototype.hasOwnProperty;
   // null and undefined are "empty"
   if (obj == null) return true;
@@ -59,4 +59,17 @@ export const isObjectEmpty = (obj:any) => {
       if (hasOwnProperty.call(obj, key)) return false;
   }
   return true;
+}
+
+/*
+  Get min value of the node from the array 
+*/
+export const getMinValueFromNode = (value:any, nodes:any[]):any => {
+  let min = nodes[0];
+  for(let i = 1; i < nodes.length; ++i) {
+    if(min[i].value > nodes[i]) {
+      min = nodes[i];
+    }
+  }
+  return min.value;
 }
