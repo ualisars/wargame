@@ -152,4 +152,4 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
 //   then(() => meleeCombat());
 // }, 1000);
 //
-// setInterval(() => analyzeMap(), 4000);
+//setInterval(() => analyzeMap(), 9000);

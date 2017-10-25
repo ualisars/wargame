@@ -2,7 +2,10 @@ import NodeStore from '../store/AIMapStore/NodeStore';
 import {gridSize, ctx} from '../../map/mapConfig';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
-import {getMinValueFromNode} from '../../utils/objUtils';
+import {
+  getMinValueFromNodes,
+  getMaxValueFromNodes
+} from '../../utils/objUtils';
 import {
   computersUnits,
   visibleForComputerUnits
@@ -26,8 +29,10 @@ let fightingNodes = new NodeStore();
 export const analyzeMap = () => {
   clearComputerControlNodes().
   then(() => fillComputerControlNodes())
+  .then(() => console.error('farthestNodes', getFarthestXNodes(computerControlNodes.store)))
   clearPlayerControlNodes()
   .then(() => fillPlayerControlNodes())
+
 }
 
 /*
@@ -94,8 +99,16 @@ export const displayComputerControlNodes = () => {
   get fathestNodes of the area
   by the x ordinate
 */
-export const getFarthestXNodes = (nodes:any) => {
+export const getFarthestXNodes = (nodes:any[]):any[] => {
+  let farthestNodes:any[] = [];
+  let minValue = getMinValueFromNodes('x', nodes);
+  let maxValue = getMaxValueFromNodes('x', nodes);
+  console.log('min value:', minValue);
+  console.log('max value:', maxValue);
   for(let node of nodes) {
-
+    if(node.x === minValue || node.x === maxValue) {
+      farthestNodes.push(node);
+    }
   }
+  return farthestNodes;
 }

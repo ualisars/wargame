@@ -62,14 +62,35 @@ export const isObjectEmpty = (obj:any):boolean => {
 }
 
 /*
-  Get min value of the node from the array 
+  Get min value of the node from the array
 */
-export const getMinValueFromNode = (value:any, nodes:any[]):any => {
+export const getMinValueFromNodes = (searchValue:any,nodes:any[]):any => {
+  console.log('nodes', nodes);
   let min = nodes[0];
+  console.log('min', min);
+  console.log('searchValue:', searchValue);
+  console.log('min.x', min[searchValue]);
   for(let i = 1; i < nodes.length; ++i) {
-    if(min[i].value > nodes[i]) {
+    if(min[searchValue] > nodes[i][searchValue]) {
       min = nodes[i];
     }
   }
-  return min.value;
+  return min[searchValue];
+}
+
+/*
+  Get min value of the node from the array
+*/
+export const getMaxValueFromNodes = (searchValue:any,nodes:any[]):any => {
+  console.log('nodes', nodes);
+  let max = nodes[0];
+  console.log('min', max);
+  console.log('searchValue:', searchValue);
+  console.log('min.x', max[searchValue]);
+  for(let i = 1; i < nodes.length; ++i) {
+    if(max[searchValue] < nodes[i][searchValue]) {
+      max = nodes[i];
+    }
+  }
+  return max[searchValue];
 }
