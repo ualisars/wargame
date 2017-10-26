@@ -32,6 +32,7 @@ class Unit {
   description: string;
   cost: number;
   advantageOver: string[];
+  vulnerableAgainst: string[];
 
   // Characteristics
   type: string;

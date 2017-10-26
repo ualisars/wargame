@@ -4,8 +4,12 @@ class Archers extends Unit {
   // general
   description: string = 'High range skirmishers armed with bows';
   cost: number = 50;
-  advantageOver: string[];
-
+  advantageOver: string[] = [
+    'Pikemen', 'Hoplites'
+  ];
+  vulnerableAgainst: string[] = [
+    'LightCavalry', 'HeavyCavalry'
+  ];
   // Characteristics
   name: string = 'Archers';
   type: string = 'skirmishers';

@@ -5,7 +5,7 @@ class HeavyCavalry extends Unit {
   description: string = `heavy and cavalry aimed to break through enemy's lines`;
   cost: number = 150;
   advantageOver: string[];
-
+  vulnerableAgainst: string[];
   // Characteristics
   name: string = 'HeavyCavalry';
   type: string = 'cavalry';

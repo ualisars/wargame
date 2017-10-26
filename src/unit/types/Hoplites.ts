@@ -5,7 +5,7 @@ class Hoplites extends Unit {
   description: string = 'Infantry armed with spears and shields';
   cost: number = 80;
   advantageOver: string[];
-
+  vulnerableAgainst: string[];
   // Characteristics
   name: string = 'Hoplites';
   type: string = 'spearmen';

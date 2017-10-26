@@ -5,7 +5,7 @@ class HeavyInfantry extends Unit {
   description: string = 'Heavily armed infantry trained to mount frontal assaults';
   cost: number = 70;
   advantageOver: string[];
-
+  vulnerableAgainst: string[];
   // Characteristics
   name: string = 'HeavyInfantry';
   type: string = 'infantry';

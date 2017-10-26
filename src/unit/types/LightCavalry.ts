@@ -5,7 +5,7 @@ class LightCavalry extends Unit {
   description: string = 'Light and fast cavalry';
   cost: number = 90;
   advantageOver: string[];
-
+  vulnerableAgainst: string[];
   // Characteristics
   name: string = 'LightCavalry';
   type: string = 'cavalry';
