@@ -4,8 +4,12 @@ class Hoplites extends Unit {
   // general
   description: string = 'Infantry armed with spears and shields';
   cost: number = 80;
-  advantageOver: string[];
-  vulnerableAgainst: string[];
+  advantageOver: string[] = [
+    'LightCavalry', 'HeavyCavalry'
+  ];
+  vulnerableAgainst: string[] = [
+    'Archers', 'Peltasts'
+  ];
   // Characteristics
   name: string = 'Hoplites';
   type: string = 'spearmen';

@@ -4,8 +4,12 @@ class Pikemen extends Unit {
   // general
   description: string = 'Infantry armed with long spears';
   cost: number = 80;
-  advantageOver: string[];
-  vulnerableAgainst: string[];
+  advantageOver: string[] = [
+    'HeavyCavalry', 'LightCavalry'
+  ];
+  vulnerableAgainst: string[] = [
+    'Archers', 'Peltasts'
+  ];
   // Characteristics
   name: string = 'Pikemen';
   type: string = 'spearmen';

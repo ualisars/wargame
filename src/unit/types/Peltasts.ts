@@ -4,8 +4,12 @@ class Peltasts extends Unit {
   // general
   description: string = 'Low range skirmishers armed with javelins';
   cost: number = 50;
-  advantageOver: string[];
-  vulnerableAgainst: string[];
+  advantageOver: string[] = [
+    'Hoplites', 'Pikemen'
+  ];
+  vulnerableAgainst: string[] = [
+    'LightCavalry', 'HeavyCavalry'
+  ];
   // Characteristics
   name: string = 'Peltasts';
   type: string = 'skirmishers';
