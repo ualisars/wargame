@@ -1,6 +1,9 @@
 import {
   playersUnits
 } from '../../store/unitStore';
+import {gridSize} from '../../map/mapSettings';
+import {map} from '../../map/createMap';
+import {getNodeFromMap} from '../../path/drawPath';
 
 export const analyzeUnit = (unit:any):any => {
   console.log(calculateUnitsToBeware(unit));
@@ -39,15 +42,16 @@ export const calculateUnitsToBeware = (unit:any):number => {
   Calculate how many player's units are nearby
   the computer units
 */
-// export const enemyPowerNearby = (unit:any):any => {
-//   let startX = unit.currentNode.x - (unit.visibility * gridSize);
-//   let finishX = unit.currentNode.x + (unit.visibility * gridSize);
-//   let startY = unit.currentNode.y - (unit.visibility * gridSize);
-//   let finishY = unit.currentNode.y + (unit.visibility * gridSize);
-//   for(let x = startX; x <= finishX; x += gridSize) {
-//     for(let y = startY; y <= finishY; y += gridSize) {
-//       let node = getNodeFromMap(x, y, map);
-//       computerControlNodes.addNodeToStore(node);
-//     }
-//   }
-// }
+export const getSurroundedNodes = (unit:any, distance:number):any => {
+  let nodes:any[] = [];
+  let startX = unit.currentNode.x - (distance * gridSize);
+  let finishX = unit.currentNode.x + (distance * gridSize);
+  let startY = unit.currentNode.y - (distance * gridSize);
+  let finishY = unit.currentNode.y + (distance * gridSize);
+  for(let x = startX; x <= finishX; x += gridSize) {
+    for(let y = startY; y <= finishY; y += gridSize) {
+      let node = getNodeFromMap(x, y, map);
+      nodes.push(node);
+    }
+  }
+}
