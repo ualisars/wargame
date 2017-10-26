@@ -1,5 +1,9 @@
 import {redrawUnits} from '../unit/unitActions';
-import {ctx, WIDTH, HEIGHT} from './mapConfig';
+import {ctx} from './mapConfig';
+import {
+  WIDTH,
+  HEIGHT
+} from './mapSettings';
 import {drawGrid} from './drawGrid';
 import {units} from '../store/unitStore';
 

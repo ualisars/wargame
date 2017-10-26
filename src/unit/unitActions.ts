@@ -1,4 +1,4 @@
-import {gridSize} from '../map/mapConfig';
+import {gridSize} from '../map/mapSettings';
 import {
   units,
   playersUnits,

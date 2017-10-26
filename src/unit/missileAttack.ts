@@ -1,9 +1,9 @@
+import {ctx} from '../map/mapConfig';
 import {
-  ctx,
   gridSize,
   WIDTH,
   HEIGHT
-} from '../map/mapConfig';
+} from '../map/mapSettings';
 import {randomizeMeleeDamage} from '../utils/randomGenerator';
 
 export const missileAttack = (unit:any, enemy:any) => {

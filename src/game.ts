@@ -1,12 +1,15 @@
 import {
   canvas,
   ctx,
-  WIDTH,
-  HEIGHT,
-  gridSize,
   auxiliaryCanvas,
   auxiliaryCtx
 } from './map/mapConfig';
+
+import {
+  WIDTH,
+  HEIGHT,
+  gridSize,
+} from './map/mapSettings';
 
 import {drawGrid} from './map/drawGrid';
 import {

@@ -1,10 +1,12 @@
 import {
   canvas,
-  ctx,
+  ctx
+} from './mapConfig';
+import {
   WIDTH,
   HEIGHT,
   gridSize
-} from './mapConfig';
+} from './mapSettings';
 
 export const drawGrid = () => {
   for(let y = 0; y <= HEIGHT; y+= gridSize) {

@@ -1,8 +1,4 @@
-// global variables
-export const WIDTH: number = 1200;
-export const HEIGHT: number = 600;
-export const gridSize:number = 40;
-
+import {WIDTH, HEIGHT} from './mapSettings';
 // create Canvas
 export const canvas:any = document.getElementById('canvas');
 export const auxiliaryCanvas:any = document.getElementById('auxiliary');

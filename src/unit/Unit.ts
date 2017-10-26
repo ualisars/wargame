@@ -1,4 +1,4 @@
-import {gridSize} from '../map/mapConfig';
+import {gridSize} from '../map/mapSettings';
 import {map} from '../map/createMap';
 import {getNodeFromMap} from '../path/drawPath';
 import {isObjectEmpty} from '../utils/objUtils';

@@ -1,5 +1,6 @@
 import NodeStore from '../store/AIMapStore/NodeStore';
-import {gridSize, ctx} from '../../map/mapConfig';
+import {ctx} from '../../map/mapConfig';
+import {gridSize} from '../../map/mapSettings';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
 import {

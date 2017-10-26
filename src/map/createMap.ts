@@ -1,10 +1,12 @@
 import {
   canvas,
-  ctx,
+  ctx
+} from '../map/mapConfig';
+import {
   WIDTH,
   HEIGHT,
   gridSize
-} from '../map/mapConfig';
+} from '../map/mapSettings';
 
 import {
   deleteObjectFromArray,

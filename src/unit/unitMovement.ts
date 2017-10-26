@@ -1,10 +1,10 @@
 import {drawUnit} from './unitActions';
+import {ctx} from '../map/mapConfig';
 import {
-  gridSize,
-  ctx,
-  WIDTH,
-  HEIGHT
-} from '../map/mapConfig';
+    gridSize,
+    WIDTH,
+    HEIGHT
+} from '../map/mapSettings';
 import {deleteObjectFromArray} from '../utils/objUtils';
 import {assignUnitMoveToPosition} from './unitActions';
 import {
