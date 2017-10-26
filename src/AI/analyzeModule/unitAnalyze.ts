@@ -39,8 +39,7 @@ export const calculateUnitsToBeware = (unit:any):number => {
 }
 
 /*
-  Calculate how many player's units are nearby
-  the computer units
+  return nodes that surround unit in some distance
 */
 export const getSurroundedNodes = (unit:any, distance:number):any => {
   let nodes:any[] = [];
@@ -54,4 +53,46 @@ export const getSurroundedNodes = (unit:any, distance:number):any => {
       nodes.push(node);
     }
   }
+}
+
+export const getSurroundedEnemies = (unit:any):any[] => {
+  let surroundedEnemies:any[] = [];
+  let nodes = getSurroundedNodes(unit, 6);
+  for(let node of nodes) {
+    for(let enemy of playersUnits) {
+      if(node.x === enemy.x && node.y === enemy.y) {
+        surroundedEnemies.push(enemy);
+      }
+    }
+  }
+  return surroundedEnemies;
+}
+
+/*
+  Calculate how many player's units and their power nearby
+  the computer units
+*/
+export const calculateSurroundedEnemyPower = (unit:any) => {
+  let power = {
+    health: 0,
+    speed: 0,
+    armour: 0,
+    meleeDamage: 0,
+    missileDamage: 0,
+    morale: 0,
+    condition: 0
+  }
+  let surroundedEnemies = getSurroundedEnemies(unit);
+  if(surroundedEnemies.length !== 0) {
+    for(let enemy of surroundedEnemies) {
+      power.health += enemy.health;
+      power.speed += enemy.speed;
+      power.armour += enemy.armour;
+      power.meleeDamage += enemy.meleeDamage;
+      power.missileDamage += enemy.missileDamage;
+      power.morale += enemy.morale;
+      power.condition += enemy.condition;
+    }
+  }
+  return power;
 }
