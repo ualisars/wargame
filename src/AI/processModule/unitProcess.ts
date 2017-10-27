@@ -1,3 +1,11 @@
+import {
+  getSurroundedEnemies,
+  calculateSurroundedEnemyPower,
+  getSurroundedAllies,
+  calculateSurroundedAlliesPower,
+  calculatePowerAdvantageInTheArea
+} from '../analyzeModule/unitAnalyze';
+
 /*
   (DoesUnitNeedProtection)
   Check advantages and disadvantages of the unit
@@ -8,7 +16,14 @@
   2. Unit is not mobile and vulnerable for flank attack
 */
 export const DoesUnitNeedProtection = (unit:any):boolean => {
-
+  let numberOfEnemies:number = getSurroundedEnemies(unit).length;
+  let numberOfAllies:number = getSurroundedAllies(unit).length;
+  if(numberOfEnemies === numberOfAllies) { // in this area computer and player has equal number of units
+    let {health, speed, armour, meleeDamage, missileDamage, condition} = calculatePowerAdvantageInTheArea(unit);
+    if(health < 0 && meleeDamage < 0 && armour < 0 && condition < 0) {
+      return true;
+    }
+  }
   return false;
 }
 /*
@@ -23,4 +38,29 @@ export const DoesUnitNeedProtection = (unit:any):boolean => {
 */
 export const DoesUnitNeedHelp = (unit:any):number => {
   return 0;
+}
+
+export const possibilityToDestroyEnemy = (unit:any, enemy:any) => {
+  let possibility:string;
+  let unitHealth = unit.health;
+  let enemyHealth = enemy.health;
+  let unitDamage = unit.meleeDamage - enemy.armour;
+  let enemyDamage = enemy.meleeDamage - unit.armour;
+  let unitAttemps = Math.floor(enemyHealth / unitDamage); // how many strikes does unit need to destroy enemy
+  let enemyAttemps = Math.floor(unitHealth / enemyDamage); // how many strikes does enemy need to destroy unit
+  if(unitAttemps - enemyAttemps >= -2 && unitAttemps - enemyAttemps < 3) {
+    possibility = 'medium';
+  }
+  else if(unitAttemps - enemyAttemps >= 3 && unitAttemps - enemyAttemps < 8) {
+    possibility = 'high';
+  }
+  else if(unitAttemps - enemyAttemps >= 8) {
+    possibility = 'very high';
+  }
+  else if(unitAttemps - enemyAttemps <= -3 && unitAttemps - enemyAttemps > -8) {
+      possibility = 'low';
+  }
+  else if(unitAttemps - enemyAttemps <= -8) {
+    possibility = 'very low';
+  }
 }

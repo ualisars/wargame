@@ -143,3 +143,29 @@ export const calculateSurroundedAlliesPower = (unit:any) => {
   }
   return power;
 }
+
+/*
+  Calculate the difference between computer's and
+  player's power in the small area
+*/
+
+export const calculatePowerAdvantageInTheArea = (unit:any) => {
+  let playerPower = calculateSurroundedEnemyPower(unit);
+  let computerPower = calculateSurroundedAlliesPower(unit);
+  let health = computerPower.health - playerPower.health;
+  let speed = computerPower.speed - playerPower.speed;
+  let armour = computerPower.armour - playerPower.armour;
+  let meleeDamage = computerPower.meleeDamage - playerPower.meleeDamage;
+  let missileDamage = computerPower.missileDamage - playerPower.missileDamage;
+  let condition = computerPower.condition - playerPower.condition;
+  let morale = computerPower.morale - playerPower.morale;
+  return {
+    health,
+    speed,
+    armour,
+    meleeDamage,
+    missileDamage,
+    condition,
+    morale
+  }
+}
