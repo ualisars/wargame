@@ -70,10 +70,26 @@ export const possibilityToDestroyEnemy = (unit:any, enemy:any) => {
   }
 }
 
-export const chanceUnitToFlee = (unit:any) => {
+export const chanceUnitToFlee = (unit:any):string => {
+  let chance:string;
   let unitSpeed = unit.speed;
   let surroundedEnemies = getSurroundedEnemies(unit);
-  for(let enemy of surroundedEnemies) {
-    
+  let enemySpeed = getUnitsMaxProperty(surroundedEnemies, 'speed');
+  let diffInSpeed = unitSpeed - enemySpeed;
+  if(diffInSpeed > -10 && diffInSpeed <= 10) {
+    chance = 'medium';
   }
+  else if(diffInSpeed > 10 && diffInSpeed <= 20) {
+    chance = 'high';
+  }
+  else if(diffInSpeed > 20) {
+    chance = 'very high';
+  }
+  else if(diffInSpeed < -10 && diffInSpeed >= -20) {
+    chance = 'low';
+  }
+  else if(diffInSpeed < -20) {
+    chance = 'very low';
+  }
+  return chance;
 }
