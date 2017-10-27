@@ -6,6 +6,11 @@ import {
   calculatePowerAdvantageInTheArea
 } from '../analyzeModule/unitAnalyze';
 
+import {
+  getUnitsMaxProperty,
+  getUnitsMinProperty
+} from '../../unit/unitUtils';
+
 /*
   (DoesUnitNeedProtection)
   Check advantages and disadvantages of the unit
@@ -62,5 +67,13 @@ export const possibilityToDestroyEnemy = (unit:any, enemy:any) => {
   }
   else if(unitAttemps - enemyAttemps <= -8) {
     possibility = 'very low';
+  }
+}
+
+export const chanceUnitToFlee = (unit:any) => {
+  let unitSpeed = unit.speed;
+  let surroundedEnemies = getSurroundedEnemies(unit);
+  for(let enemy of surroundedEnemies) {
+    
   }
 }
