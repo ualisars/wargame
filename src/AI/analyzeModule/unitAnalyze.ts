@@ -72,6 +72,20 @@ export const getSurroundedEnemies = (unit:any):any[] => {
   return surroundedEnemies;
 }
 
+export const getSurroundedAllies = (unit:any):any[] => {
+  let surroundedAllies:any[] = [];
+  let nodes = getSurroundedNodes(unit, 3);
+  console.log('nodes', nodes);
+  for(let node of nodes) {
+    for(let enemy of computersUnits) {
+      if(node.x === enemy.x && node.y === enemy.y) {
+        surroundedAllies.push(enemy);
+      }
+    }
+  }
+  return surroundedAllies;
+}
+
 /*
   Calculate how many player's units and their power nearby
   the computer units
@@ -89,6 +103,35 @@ export const calculateSurroundedEnemyPower = (unit:any) => {
   let surroundedEnemies = getSurroundedEnemies(unit);
   if(surroundedEnemies.length !== 0) {
     for(let enemy of surroundedEnemies) {
+      power.health += enemy.health;
+      power.speed += enemy.speed;
+      power.armour += enemy.armour;
+      power.meleeDamage += enemy.meleeDamage;
+      power.missileDamage += enemy.missileDamage;
+      power.morale += enemy.morale;
+      power.condition += enemy.condition;
+    }
+  }
+  return power;
+}
+
+/*
+  Calculate how many player's units and their power nearby
+  the computer units
+*/
+export const calculateSurroundedAlliesPower = (unit:any) => {
+  let power = {
+    health: 0,
+    speed: 0,
+    armour: 0,
+    meleeDamage: 0,
+    missileDamage: 0,
+    morale: 0,
+    condition: 0
+  }
+  let surroundedAllies = getSurroundedAllies(unit);
+  if(surroundedAllies.length !== 0) {
+    for(let enemy of surroundedAllies) {
       power.health += enemy.health;
       power.speed += enemy.speed;
       power.armour += enemy.armour;
