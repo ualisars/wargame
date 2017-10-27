@@ -1,20 +1,20 @@
 import {
-  playersUnits
+  playersUnits,
+  computersUnits
 } from '../../store/unitStore';
 import {gridSize} from '../../map/mapSettings';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
 
 export const analyzeUnit = (unit:any):any => {
-  console.log(calculateUnitsToBeware(unit));
+  //console.log(calculateUnitsToBeware(unit));
+  console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
 }
 
-/*
-  Check advantages and disadvantages of the unit
-  and decide whether the unit require support or not
-*/
-export const DoesUnitNeedProtection = (unit:any):boolean => {
-  return false;
+export const analyzeUnits = ():any => {
+  for(let unit of computersUnits) {
+    console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
+  }
 }
 
 export const assignProtector = (unit:any) => {
@@ -41,7 +41,7 @@ export const calculateUnitsToBeware = (unit:any):number => {
 /*
   return nodes that surround unit in some distance
 */
-export const getSurroundedNodes = (unit:any, distance:number):any => {
+export const getSurroundedNodes = (unit:any, distance:number):any[] => {
   let nodes:any[] = [];
   let startX = unit.currentNode.x - (distance * gridSize);
   let finishX = unit.currentNode.x + (distance * gridSize);
@@ -50,14 +50,18 @@ export const getSurroundedNodes = (unit:any, distance:number):any => {
   for(let x = startX; x <= finishX; x += gridSize) {
     for(let y = startY; y <= finishY; y += gridSize) {
       let node = getNodeFromMap(x, y, map);
-      nodes.push(node);
+      if(node) {
+        nodes.push(node);
+      }
     }
   }
+  return nodes;
 }
 
 export const getSurroundedEnemies = (unit:any):any[] => {
   let surroundedEnemies:any[] = [];
-  let nodes = getSurroundedNodes(unit, 6);
+  let nodes = getSurroundedNodes(unit, 3);
+  console.log('nodes', nodes);
   for(let node of nodes) {
     for(let enemy of playersUnits) {
       if(node.x === enemy.x && node.y === enemy.y) {

@@ -50,6 +50,7 @@ import {meleeCombat, checkHealth} from './unit/unitFight'
 
 // AI testing
 import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
+import {analyzeUnits} from './AI/analyzeModule/unitAnalyze';
 
 createUnit('archers', 40, 80, 15, 'player');
 createUnit('scouts', 80, 360, 15, 'player');
@@ -156,3 +157,4 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
 // }, 1000);
 //
 //setInterval(() => analyzeMap(), 9000);
+//setInterval(() => analyzeUnits(), 4000);
