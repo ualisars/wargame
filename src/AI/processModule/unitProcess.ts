@@ -3,7 +3,8 @@ import {
   calculateSurroundedEnemyPower,
   getSurroundedAllies,
   calculateSurroundedAlliesPower,
-  calculatePowerAdvantageInTheArea
+  calculatePowerAdvantageInTheArea,
+  calculateUnitsToBeware
 } from '../analyzeModule/unitAnalyze';
 
 import {
@@ -23,11 +24,19 @@ import {
 export const DoesUnitNeedProtection = (unit:any):boolean => {
   let numberOfEnemies:number = getSurroundedEnemies(unit).length;
   let numberOfAllies:number = getSurroundedAllies(unit).length;
-  if(numberOfEnemies === numberOfAllies) { // in this area computer and player has equal number of units
-    let {health, speed, armour, meleeDamage, missileDamage, condition} = calculatePowerAdvantageInTheArea(unit);
-    if(health < 0 && meleeDamage < 0 && armour < 0 && condition < 0) {
+  let unitsToBeware = calculateUnitsToBeware(unit);
+  let enemyQtyAdvantage = numberOfEnemies - numberOfAllies; // enemy number advantage
+  if(unit.type === 'skirmishers' && unitsToBeware > 0) {
       return true;
-    }
+  }
+  if(unit.mobility === 1 && enemyQtyAdvantage >= 1) {
+    return true;
+  }
+  if((unit.mobility > 1 && unit.mobility <= 3) && (enemyQtyAdvantage >= 2)) {
+    return true;
+  }
+  if(unit.mobility > 3 && enemyQtyAdvantage >= 4) {
+    return true;
   }
   return false;
 }
@@ -37,15 +46,44 @@ export const DoesUnitNeedProtection = (unit:any):boolean => {
   1. Player has more units nearby
   2. Player has more total power nearby this specific unit
   3. Unit is flanked
-  return value is range from 0 to 1,
+  return value is range from 0 to 100,
   0 unit does not need any help
   1 - unit need help urgently
 */
 export const DoesUnitNeedHelp = (unit:any):number => {
-  return 0;
+  let requireHelp:number = 0;
+  let numberOfEnemies:number = getSurroundedEnemies(unit).length;
+  let numberOfAllies:number = getSurroundedAllies(unit).length;
+  let unitsToBeware = calculateUnitsToBeware(unit);
+  let enemyQtyAdvantage = numberOfEnemies - numberOfAllies; // enemy number advantage
+  if(numberOfEnemies === 1) { // unit would fight only against one enemy
+    let chance = possibilityToDestroyEnemy(unit, getSurroundedEnemies(unit)[0]);
+    if(chance == 'very low') {
+      requireHelp += 90;
+    }
+    else if(chance == 'low') {
+      requireHelp += 70;
+    }
+    else if(chance == 'medium') {
+      requireHelp += 30;
+    }
+  }
+  if(unit.mobility === 1 && (enemyQtyAdvantage >= 1 && enemyQtyAdvantage <=2)) {
+    requireHelp += 20;
+  }
+  if(unit.mobility === 1 && (enemyQtyAdvantage >= 3)) {
+    requireHelp += 80;
+  }
+  if((unit.mobility > 1 && unit.mobility <= 3) && (enemyQtyAdvantage >= 2 && enemyQtyAdvantage <=4)) {
+    requireHelp += 20;
+  }
+  if(unit.mobility > 3 && enemyQtyAdvantage >= 4) {
+    requireHelp += 40;
+  }
+  return requireHelp;
 }
 
-export const possibilityToDestroyEnemy = (unit:any, enemy:any) => {
+export const possibilityToDestroyEnemy = (unit:any, enemy:any):string => {
   let possibility:string;
   let unitHealth = unit.health;
   let enemyHealth = enemy.health;
@@ -68,6 +106,7 @@ export const possibilityToDestroyEnemy = (unit:any, enemy:any) => {
   else if(unitAttemps - enemyAttemps <= -8) {
     possibility = 'very low';
   }
+  return possibility;
 }
 
 export const chanceUnitToFlee = (unit:any):string => {
