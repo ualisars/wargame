@@ -17,8 +17,8 @@ export const getClosestToNodeUnit = (node:any):any => {
   return closestUnit;
 }
 
-export const chooseNearestUnitToOtherUnit = (unit:any) => {
-
+export const getNearestUnitToOtherUnit = (unit:any) => {
+  
 }
 
 export const chooseFastestUnit = ():any => {
