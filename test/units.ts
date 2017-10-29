@@ -1,6 +1,7 @@
 export let playerUnits = [
   {
     name: 'unit1',
+    id: 1,
     currentNode: {
       x: 10,
       y: 10
@@ -20,6 +21,7 @@ export let playerUnits = [
   },
   {
     name: 'unit2',
+    id: 2,
     currentNode: {
       x: 200,
       y: 20
@@ -39,6 +41,7 @@ export let playerUnits = [
   },
   {
     name: 'unit3',
+    id: 3,
     currentNode: {
       x: 300,
       y: 400
@@ -61,6 +64,7 @@ export let playerUnits = [
 export let controlByComputerUnits:any[] = [
   {
     name: 'unit1',
+    id: 4,
     currentNode: {
       x: 10,
       y: 10
@@ -80,6 +84,7 @@ export let controlByComputerUnits:any[] = [
   },
   {
     name: 'unit2',
+    id: 5,
     currentNode: {
       x: 200,
       y: 20
@@ -99,6 +104,7 @@ export let controlByComputerUnits:any[] = [
   },
   {
     name: 'unit3',
+    id: 6,
     currentNode: {
       x: 300,
       y: 400
