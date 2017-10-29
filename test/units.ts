@@ -1,6 +1,10 @@
 export let playerUnits = [
   {
     name: 'unit1',
+    currentNode: {
+      x: 10,
+      y: 10
+    },
     x: 10,
     y: 10,
     health: 100,
@@ -16,6 +20,10 @@ export let playerUnits = [
   },
   {
     name: 'unit2',
+    currentNode: {
+      x: 200,
+      y: 20
+    },
     x: 200,
     y: 20,
     health: 70,
@@ -30,7 +38,11 @@ export let playerUnits = [
     condition: 10
   },
   {
-    name: 'unit2',
+    name: 'unit3',
+    currentNode: {
+      x: 300,
+      y: 400
+    },
     x: 300,
     y: 400,
     health: 11,
@@ -49,6 +61,10 @@ export let playerUnits = [
 export let controlByComputerUnits:any[] = [
   {
     name: 'unit1',
+    currentNode: {
+      x: 10,
+      y: 10
+    },
     x: 10,
     y: 10,
     health: 40,
@@ -64,6 +80,10 @@ export let controlByComputerUnits:any[] = [
   },
   {
     name: 'unit2',
+    currentNode: {
+      x: 200,
+      y: 20
+    },
     x: 200,
     y: 20,
     health: 63,
@@ -78,7 +98,11 @@ export let controlByComputerUnits:any[] = [
     condition: 76
   },
   {
-    name: 'unit2',
+    name: 'unit3',
+    currentNode: {
+      x: 300,
+      y: 400
+    },
     x: 300,
     y: 400,
     health: 56,
