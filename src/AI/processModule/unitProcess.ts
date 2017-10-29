@@ -1,4 +1,8 @@
 import {
+  playersUnits
+} from '../../store/unitStore';
+
+import {
   getSurroundedEnemies,
   calculateSurroundedEnemyPower,
   getSurroundedAllies,
@@ -22,24 +26,16 @@ import {
   2. Unit is not mobile and vulnerable for flank attack
 */
 export const DoesUnitNeedProtection = (unit:any):boolean => {
-  let numberOfEnemies:number = getSurroundedEnemies(unit).length;
-  let numberOfAllies:number = getSurroundedAllies(unit).length;
   let unitsToBeware = calculateUnitsToBeware(unit);
-  let enemyQtyAdvantage = numberOfEnemies - numberOfAllies; // enemy number advantage
   if(unit.type === 'skirmishers' && unitsToBeware > 0) {
       return true;
   }
-  if(unit.mobility === 1 && enemyQtyAdvantage >= 1) {
-    return true;
-  }
-  if((unit.mobility > 1 && unit.mobility <= 3) && (enemyQtyAdvantage >= 2)) {
-    return true;
-  }
-  if(unit.mobility > 3 && enemyQtyAdvantage >= 4) {
+  if(unit.type === 'spearmen' && playersUnits.length > 1) {
     return true;
   }
   return false;
 }
+
 /*
   (DoesUnitNeedHelp)
   Unit need help if:
