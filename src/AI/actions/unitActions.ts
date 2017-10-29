@@ -3,7 +3,11 @@ import {
 } from '../../store/unitStore';
 
 import {gridSize} from '../../map/mapSettings';
-import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/nodeUtils';
+import {
+  getDistanceBetweenUnitAndNodeInGrids,
+  getDistanceBetweenTwoUnitsInGrids
+} from '../../utils/nodeUtils';
+import {deleteUnitFromArray} from '../../utils/unitUtils';
 
 export const getClosestToNodeUnit = (node:any):any => {
   let closestUnit:any = computersUnits[0];
@@ -17,8 +21,17 @@ export const getClosestToNodeUnit = (node:any):any => {
   return closestUnit;
 }
 
-export const getNearestUnitToOtherUnit = (unit:any) => {
-  
+export const getClosestUnitToOtherUnit = (unit:any) => {
+  let updatedComputersUnits = Object.assign([], deleteUnitFromArray(unit, computersUnits));
+  let closestUnit:any = updatedComputersUnits[0];
+  for(let i = 1; i < updatedComputersUnits.length; ++i) {
+    let closestUnitDistance = getDistanceBetweenTwoUnitsInGrids(closestUnit, unit);
+    let unitDistance = getDistanceBetweenTwoUnitsInGrids(computersUnits[i], unit);
+    if(unitDistance < closestUnitDistance) {
+      closestUnit = computersUnits[i];
+    }
+  }
+  return closestUnit;
 }
 
 export const chooseFastestUnit = ():any => {
