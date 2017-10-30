@@ -52,6 +52,12 @@ import {meleeCombat, checkHealth} from './unit/unitFight'
 import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
 import {analyzeUnits} from './AI/analyzeModule/unitAnalyze';
 
+// strategy module
+import AIPersonality from './AI/strategyModule/AIPersonality';
+
+// create instance of AIPersonality
+let personality = new AIPersonality();
+
 createUnit('archers', 40, 80, 15, 'player');
 createUnit('scouts', 80, 360, 15, 'player');
 createUnit('lightCavalry', 80, 400, 15, 'player');
@@ -149,6 +155,10 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
     }
   }
 }); // on context
+
+//set behaviour
+personality.setBehaviour();
+console.log('behaviour', personality.behaviour);
 
 // setInterval(() => spotUnits(units), 1000);
 // setInterval(() => {
