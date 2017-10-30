@@ -2,7 +2,8 @@ import { expect, should, assert} from 'chai';
 import {
   getClosestToNodeUnit,
   getClosestUnitToOtherUnit,
-  getBestUnitByProperty
+  getBestUnitByProperty,
+  getWorstUnitByProperty
 } from '../src/AI/actions/unitActions';
 import {
   computersUnits
@@ -54,6 +55,17 @@ describe('AI unitActions test', function() {
     it('unit2 should be the unit with most hp', function() {
       let fastestUnit = getBestUnitByProperty('health');
       assert.equal(fastestUnit.name, 'unit2');
+    });
+  });
+  describe('getWorstUnitByProperty', function() {
+    it('Unit1 should be worst unit by health', function() {
+      let worstUnit = getWorstUnitByProperty('health');
+      assert.equal(worstUnit.name, 'unit1');
+    });
+    it('Unit3 should be the second worst unit by health', function() {
+      let exclusion = [{id: 4}];
+      let worstUnit = getWorstUnitByProperty('health', exclusion);
+      assert.equal(worstUnit.name, 'unit3');
     });
   });
 });

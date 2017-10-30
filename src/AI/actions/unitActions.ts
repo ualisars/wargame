@@ -54,8 +54,23 @@ export const getBestUnitByProperty = (property:string, exclusion:any[] = []):any
   return bestUnit;
 }
 
-export const chooseUnitWithMoreHealth = ():any => {
-
+export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):any => {
+  let updatedComputersUnits = Object.assign([], computersUnits);
+  if(exclusion.length !== 0) { // delete exceptional units from searhing
+    for(let unit of exclusion) {
+      updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
+    }
+  }
+  if(updatedComputersUnits.length === 0) {
+    return null;
+  }
+  let worstUnit = updatedComputersUnits[0];
+  for(let i = 0; i < updatedComputersUnits.length; ++i) {
+    if(worstUnit[property] > updatedComputersUnits[i][property]) {
+      worstUnit = updatedComputersUnits[i];
+    }
+  }
+  return worstUnit;
 }
 
 export const getNotFightingUnits = ():any[] => {
