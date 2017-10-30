@@ -35,27 +35,23 @@ export const getClosestUnitToOtherUnit = (unit:any) => {
   return closestUnit;
 }
 
-export const getFastestUnit = (exception:any[] = []):any => {
+export const getBestUnitByProperty = (property:string, exclusion:any[] = []):any => {
   let updatedComputersUnits = Object.assign([], computersUnits);
-  if(exception.length !== 0) { // delete exceptional units from searhing
-    for(let unit of exception) {
+  if(exclusion.length !== 0) { // delete exceptional units from searhing
+    for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
   }
   if(updatedComputersUnits.length === 0) {
     return null;
   }
-  let fastestUnit = updatedComputersUnits[0];
+  let bestUnit = updatedComputersUnits[0];
   for(let i = 0; i < updatedComputersUnits.length; ++i) {
-    if(fastestUnit.speed < updatedComputersUnits[i].speed) {
-      fastestUnit = updatedComputersUnits[i];
+    if(bestUnit[property] < updatedComputersUnits[i][property]) {
+      bestUnit = updatedComputersUnits[i];
     }
   }
-  return fastestUnit;
-}
-
-export const chooseStrongestUnit = ():any => {
-
+  return bestUnit;
 }
 
 export const chooseUnitWithMoreHealth = ():any => {

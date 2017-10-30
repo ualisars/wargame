@@ -2,7 +2,7 @@ import { expect, should, assert} from 'chai';
 import {
   getClosestToNodeUnit,
   getClosestUnitToOtherUnit,
-  getFastestUnit
+  getBestUnitByProperty
 } from '../src/AI/actions/unitActions';
 import {
   computersUnits
@@ -32,17 +32,28 @@ describe('AI unitActions test', function() {
       assert.equal(closestUnit.id, 5);
     });
   });
-  describe('getFastestUnit', function() {
-    it('unit with id == 5 should be fastestUnit', function() {
-      let fastestUnit = getFastestUnit();
-      assert.equal(fastestUnit.id, 5);
+  describe('getBestUnitByProperty', function() {
+    it('unit3 should be the strongest unit by meleeDamage', function() {
+      let strongestUnit = getBestUnitByProperty('meleeDamage');
+      assert.equal(strongestUnit.name, 'unit3');
     });
-    it('withoud unit with id == 5, unit with id === 6 should be fastestUnit', function() {
-      let exception = [{
-        id: 5
-      }];
-      let fastestUnit = getFastestUnit(exception);
-      assert.equal(fastestUnit.id, 6);
+    it('unit1 should be the second unit by meleeDamage', function() {
+      let exclusion = [{id: 6}];
+      let strongestUnit = getBestUnitByProperty('meleeDamage', exclusion);
+      assert.equal(strongestUnit.name, 'unit1');
+    });
+    it('unit2 should be the fastestUnit', function() {
+      let fastestUnit = getBestUnitByProperty('speed');
+      assert.equal(fastestUnit.name, 'unit2');
+    });
+    it('unit3 should be the second unit by speed', function() {
+      let exclusion = [{id: 5}];
+      let fastestUnit = getBestUnitByProperty('speed', exclusion);
+      assert.equal(fastestUnit.name, 'unit3');
+    });
+    it('unit2 should be the unit with most hp', function() {
+      let fastestUnit = getBestUnitByProperty('health');
+      assert.equal(fastestUnit.name, 'unit2');
     });
   });
 });
