@@ -1,11 +1,9 @@
 import { expect, should, assert} from 'chai';
 import {
   deleteUnitFromArray,
-  getDistanceBetweenTwoUnitsInGrids
-} from '../src/utils/unitUtils';
-import {
+  getDistanceBetweenTwoUnitsInGrids,
   isUnitInArray
-} from '../src/utils/objUtils';
+} from '../src/utils/unitUtils';
 
 describe('Unit utils test', function() {
   describe('deleteUnitFromArray', function() {

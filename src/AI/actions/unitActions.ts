@@ -73,7 +73,21 @@ export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):an
   return worstUnit;
 }
 
-export const getNotFightingUnits = ():any[] => {
+export const getNotFightingUnits = (exclusion:any[] = []):any[] => {
+  let updatedComputersUnits = Object.assign([], computersUnits);
+  if(exclusion.length !== 0) { // delete exceptional units from searhing
+    for(let unit of exclusion) {
+      updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
+    }
+  }
+  if(updatedComputersUnits.length === 0) {
+    return null;
+  }
   let notFightingUnits:any[] = [];
+  for(let unit of updatedComputersUnits) {
+    if(!unit.isFighting) {
+      notFightingUnits.push(unit);
+    }
+  }
   return notFightingUnits;
 }

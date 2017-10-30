@@ -20,3 +20,13 @@ export const getDistanceBetweenTwoUnitsInGrids = (unit1:any, unit2:any):number =
   let distance:number = distanceX + distanceY;
   return distance;
 }
+
+export const isUnitInArray = (unitToAdd:any, arr:any[]):boolean => {
+  let result:boolean = false;
+  for(let unit of arr) {
+    if(unitToAdd.id === unit.id) {
+      result = true;
+    }
+  }
+  return result;
+}

@@ -3,9 +3,9 @@ import {
   deleteObjectFromArray,
   isObjectInArray,
   getNodeFromArray,
-  isObjectEmpty,
-  isUnitInArray
+  isObjectEmpty
 } from '../src/utils/objUtils';
+import {isUnitInArray} from '../src/utils/unitUtils';
 
 import {
   isObjectInMapKeys

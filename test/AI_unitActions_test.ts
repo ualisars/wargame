@@ -1,9 +1,11 @@
 import { expect, should, assert} from 'chai';
+import {isUnitInArray} from '../src/utils/unitUtils';
 import {
   getClosestToNodeUnit,
   getClosestUnitToOtherUnit,
   getBestUnitByProperty,
-  getWorstUnitByProperty
+  getWorstUnitByProperty,
+  getNotFightingUnits
 } from '../src/AI/actions/unitActions';
 import {
   computersUnits
@@ -66,6 +68,19 @@ describe('AI unitActions test', function() {
       let exclusion = [{id: 4}];
       let worstUnit = getWorstUnitByProperty('health', exclusion);
       assert.equal(worstUnit.name, 'unit3');
+    });
+  });
+  describe('getNotFightingUnits', function() {
+    let unit1 = {id: 4};
+    let unit2 = {id: 5};
+    let unit3 = {id: 6};
+    let notFightingUnits = getNotFightingUnits();
+    it('Unit2 and unit3 should be in the notFightingUnits', function() {
+      assert.equal(isUnitInArray(unit2, notFightingUnits), true);
+      assert.equal(isUnitInArray(unit3, notFightingUnits), true);
+    });
+    it('Unit1 is fighting so it should not be in the notFightingUnits', function() {
+      assert.equal(isUnitInArray(unit1, notFightingUnits), false);
     });
   });
 });
