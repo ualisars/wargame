@@ -1,5 +1,14 @@
 class AIPersonality {
   behaviour:string;
+  rosterPreferences:any = {
+    skirmishers: 20,
+    cavalry: 20,
+    infantry: 20,
+    quality: 50,
+    quantity: 50
+  };
+  strategy:string;
+
   setBehaviour() {
     let r = Math.random();
     if(r >= 0 && r < 0.1) {
@@ -20,6 +29,12 @@ class AIPersonality {
     else {
       this.behaviour = 'passive';
     }
+  }
+  setPreferences() {
+
+  }
+  setStrategy() {
+    
   }
 }
 
