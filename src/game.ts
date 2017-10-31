@@ -45,7 +45,7 @@ import {
   currentlyChosenUnit,
 } from './store/unitStore';
 
-import {spotUnits} from './unit/unitRange';
+import {spotUnits} from './unit/unitSpotting';
 import {meleeCombat, checkHealth} from './unit/unitFight'
 
 // AI testing
