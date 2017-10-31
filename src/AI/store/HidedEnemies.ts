@@ -12,7 +12,7 @@ class HidedEmenies {
   addToHidedEnemies(unit:any){
     if(!isUnitInArray(unit, visibleForComputerUnits)) { // hided enemy cannot be visible at the same time
       let updatedUnit = Object.assign({}, unit);
-      if(!isUnitInArray(unit, this.hidedEmenies)) { // unit's already added
+      if(!isUnitInArray(unit, this.hidedEmenies) && unit.controlBy === 'player') { // unit's already added
         this.hidedEmenies.push(unit);
       }
     }

@@ -23,6 +23,9 @@ import {
   deleteObjectFromArray
 } from '../utils/objUtils';
 
+// AI
+import {hidedEmeniesStore} from '../AI/setUpAI';
+
 /*
   spotEnemy: checks if enemies is in its visibility range
   if true, change property isVisible to true
@@ -44,6 +47,9 @@ export const spotEnemy = (unit:any) => {
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
       console.error(enemy.name, 'has been spotted');
+      if(unit.controlBy === 'computer' && enemy.isVisible === false) {
+        hidedEmeniesStore.removeFromHidedEnemies(enemy);
+      }
       enemy.isVisible = true;
       drawUnit(enemy); // show enemy on the map
       addUnitIntoVisibleArray(enemy);
@@ -79,9 +85,12 @@ export const isUnitSpottedByEnemy = (unit:any) => {
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
       console.error(unit.name, 'has been spotted by enemy', enemy.name);
-      isSpotted = true;
-      unit.isVisible = true;
       addUnitIntoVisibleArray(unit);
+      isSpotted = true;
+      if(unit.isVisible === false && unit.controlBy === 'player') {
+        hidedEmeniesStore.removeFromHidedEnemies(unit);
+      }
+      unit.isVisible = true;
       if(unit.controlBy === 'computer') { // for computer add enemy into spottedUnits
         addUnitToSpottedUnits(enemy);
       }
@@ -91,8 +100,11 @@ export const isUnitSpottedByEnemy = (unit:any) => {
     }
   }
   if(!isSpotted) { // unit is not in range of any enemies
-    unit.isVisible = false;
     removeUnitFromVisibleArray(unit);
+    if(unit.controlBy === 'player' && unit.isVisible === true) { // unit has been in the spottedUnits
+      hidedEmeniesStore.addToHidedEnemies(unit);
+    }
+    unit.isVisible = false;
     if(unit.controlBy === 'computer' && !unit.isMoving) { // if unit is computer's and not moving
       ctx.clearRect(unit.x, unit.y, gridSize, gridSize); // hide computer unit on the map
     }

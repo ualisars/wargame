@@ -1,4 +1,4 @@
-import {personality} from './setUpAI';
+import {personality} from '../setUpAI';
 
 export let AIControl = () => {
   if(personality.behaviour === 'aggressive') { // type of play is aggressive
@@ -14,5 +14,5 @@ export let moveUnit = () => {
 }
 
 export let protectUnit = () => {
-  
+
 }

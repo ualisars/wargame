@@ -53,7 +53,10 @@ import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
 import {analyzeUnits} from './AI/analyzeModule/unitAnalyze';
 
 // strategy module
-import {personality} from './AI/strategyModule/setUpAI';
+import {
+  personality,
+  hidedEmeniesStore
+} from './AI/setUpAI';
 
 
 createUnit('archers', 40, 80, 15, 'player');
@@ -157,11 +160,13 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
 //set behaviour
 console.log('behaviour', personality.behaviour);
 
+// setInterval(() => console.log('hidedEmenies', hidedEmeniesStore.hidedEmenies), 4000);
+//
 // setInterval(() => spotUnits(units), 1000);
 // setInterval(() => {
 //   checkHealth().
 //   then(() => meleeCombat());
 // }, 1000);
 //
-//setInterval(() => analyzeMap(), 9000);
-//setInterval(() => analyzeUnits(), 4000);
+// setInterval(() => analyzeMap(), 9000);
+// setInterval(() => analyzeUnits(), 4000);
