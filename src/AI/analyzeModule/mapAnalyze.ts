@@ -12,12 +12,12 @@ import {
   visibleForComputerUnits
 } from '../../store/unitStore';
 // create instances of AI map stores
-let computerControlNodes = new NodeStore();
-let playerControlNodes = new NodeStore();
-let possiblePlayerControlNodes = new NodeStore();
-let neutralNodes = new NodeStore();
-let neutralNodesPriorityToExpolore = new NodeStore();
-let fightingNodes = new NodeStore();
+export let computerControlNodes = new NodeStore();
+export let playerControlNodes = new NodeStore();
+export let possiblePlayerControlNodes = new NodeStore();
+export let neutralNodes = new NodeStore();
+export let neutralNodesPriorityToExpolore = new NodeStore();
+export let notExploredNodes = new NodeStore();
 
 /*
   add visible for computer nodes into computerControlNodes

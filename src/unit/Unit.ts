@@ -50,6 +50,13 @@ class Unit {
   morale: number = 100;
   condition: number = 100;
 
+  // AI attributes
+  task:string;
+  unitToProtect:any = {};
+  isUnitUnderProtection:boolean = false;
+  unitToHelp:any = {};
+  isUnitNeedHelp:boolean = false;
+  beCloseTo:any[] = [];
 
   constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
     this.id = id;
@@ -172,6 +179,56 @@ class Unit {
     this.figthAgainst.front = {};
     this.figthAgainst.rear = {};
     this.figthAgainst.flank = [];
+  }
+
+  // AI methods
+  assignTask(task:string) {
+    if(task === 'exploration') {
+      this.task = task;
+    }
+    else if(task === 'protection') {
+      this.task = task;
+    }
+    else if(task === 'flanking') {
+      this.task = task;
+    }
+    else if(task === 'occupation') {
+      this.task = task;
+    }
+    else if(task === 'offensive') {
+      this.task = task;
+    }
+    else if(task === 'destruction') {
+      this.task = task;
+    }
+    else if(task === 'defense') {
+      this.task = task;
+    }
+  }
+
+  unitNeedProtection() {
+    this.isUnitUnderProtection = true;
+  }
+  unitDoesntNeedProtection() {
+    this.isUnitUnderProtection = false;
+  }
+  assignUnitToProtect(unit:any) {
+    this.unitToProtect = unit;
+  }
+  clearUnitToProtect() {
+    this.unitToProtect = {}
+  }
+  unitNeedHelp() {
+    this.isUnitNeedHelp = true;
+  }
+  unitDoesntNeedHelp() {
+    this.isUnitNeedHelp = false;
+  }
+  assignUnitToHelp(unit:any) {
+    this.unitNeedHelp = unit;
+  }
+  clearUnitToHelp() {
+    this.unitToHelp = {};
   }
 }
 
