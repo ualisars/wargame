@@ -23,7 +23,7 @@ import {
 
 import {findPathFromOneNodeToAnother} from './unitPath';
 import {meleeCombat, meleeAttack, charge} from './unitFight';
-import {spotEnemy} from './unitRange';
+import {spotEnemy} from './unitSpotting';
 import {isUnitOutOfCombat} from './unitUtils';
 import {removeUnitFromEnemiesFightAgainst} from './unitFightAgainst';
 import {
