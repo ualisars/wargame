@@ -63,7 +63,7 @@ import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
 createUnit('archers', 40, 80, 15, 'player');
 createUnit('scouts', 80, 360, 15, 'player');
 createUnit('lightCavalry', 80, 400, 15, 'player');
-createUnit('heavyInfantry', 40, 440, 15, 'player');
+createUnit('hoplites', 40, 440, 15, 'player');
 createUnit('militia', 1080, 400, 15, 'computer');
 createUnit('pikemen', 600, 120, 15, 'computer');
 

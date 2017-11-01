@@ -166,6 +166,15 @@ class Unit {
   removeEnemyFromFightAgainst(enemy:any) {
     if(enemy.id === this.figthAgainst.front.id) {
       this.figthAgainst.front = {};
+      // set another enemy as a front-line enemy
+      if(this.figthAgainst.flank.length === 0) {
+        if(!isObjectEmpty(this.figthAgainst.rear)) {
+          this.figthAgainst.front = this.figthAgainst.rear;
+        }
+      } else {
+        this.figthAgainst.front = this.figthAgainst.flank[0]; // change to closest enemy in future
+      }
+      this.arrangeFightAgainst();
     }
     else if(enemy.id === this.figthAgainst.rear.id) {
       this.figthAgainst.rear = {};
@@ -176,6 +185,19 @@ class Unit {
           this.removeUnitFromFlank(enemy);
         }
       }
+    }
+  }
+
+  arrangeFightAgainst() {
+    this.figthAgainst.flank = [];
+    this.figthAgainst.rear = {};
+    if(this.figthAgainst.flank !== 0) {
+      for(let enemy of this.figthAgainst.flank) {
+          this.assignEnemy(enemy);
+      }
+    }
+    if(!isObjectEmpty(this.figthAgainst.rear)) {
+      this.assignEnemy(this.figthAgainst.rear);
     }
   }
 

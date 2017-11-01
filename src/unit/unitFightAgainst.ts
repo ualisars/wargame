@@ -23,3 +23,7 @@ export const removeUnitFromEnemiesFightAgainst = (unit:any) => {
     }
   }
 }
+
+export const arrangeFightAgainst = (unit:any):any => {
+
+}
