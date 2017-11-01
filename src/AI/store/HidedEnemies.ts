@@ -7,7 +7,7 @@ import {
 } from '../../store/unitStore';
 
 class HidedEmenies {
-  hidedEmenies:any[] = [];
+  store:any[] = [];
 
   addToHidedEnemies(unit:any){
     if(!isUnitInArray(unit, visibleForComputerUnits)) { // hided enemy cannot be visible at the same time
@@ -27,16 +27,16 @@ class HidedEmenies {
         condition: unit.condition,
         node: unit.currentNode,
       }
-      if(!isUnitInArray(unit, this.hidedEmenies) && unit.controlBy === 'player') { // unit's already added
-        this.hidedEmenies.push(updatedUnit);
+      if(!isUnitInArray(unit, this.store) && unit.controlBy === 'player') { // unit's already added
+        this.store.push(updatedUnit);
       }
     }
   }
 
   removeFromHidedEnemies(unit:any){
     if(isUnitInArray(unit, visibleForComputerUnits)) {
-      if(isUnitInArray(unit, this.hidedEmenies)) { // unit should be in the array
-        this.hidedEmenies = deleteUnitFromArray(unit, this.hidedEmenies);
+      if(isUnitInArray(unit, this.store)) { // unit should be in the array
+        this.store = deleteUnitFromArray(unit, this.store);
       }
     }
   }

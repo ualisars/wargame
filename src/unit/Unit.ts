@@ -96,6 +96,10 @@ class Unit {
     this.unitToPursue = opponentsUnit;
   }
 
+  setUnitToPursueToNull() {
+    this.unitToPursue = null;
+  }
+
   setIsFightingToTrue() {
     this.isFighting = true;
   }

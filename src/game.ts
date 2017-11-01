@@ -57,6 +57,7 @@ import {
   personality,
   hidedEmeniesStore
 } from './AI/setUpAI';
+import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
 
 
 createUnit('archers', 40, 80, 15, 'player');
@@ -170,3 +171,4 @@ console.log('behaviour', personality.behaviour);
 //
 // setInterval(() => analyzeMap(), 9000);
 // setInterval(() => analyzeUnits(), 4000);
+// setInterval(() => orderToAttackEnemy(), 2000);

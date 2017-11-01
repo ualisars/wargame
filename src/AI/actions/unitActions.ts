@@ -1,5 +1,6 @@
 import {
-  computersUnits
+  computersUnits,
+  playersUnits
 } from '../../store/unitStore';
 
 import {gridSize} from '../../map/mapSettings';
@@ -90,4 +91,20 @@ export const getNotFightingUnits = (exclusion:any[] = []):any[] => {
     }
   }
   return notFightingUnits;
+}
+
+export const getClosestEnemyToUnit = (unit:any) => {
+  let updatedPlayerUnits = Object.assign([], deleteUnitFromArray(unit, playersUnits));
+  if(updatedPlayerUnits.length === 0) { // only one unit remained
+    return null;
+  }
+  let closestUnit:any = updatedPlayerUnits[0];
+  for(let i = 1; i < updatedPlayerUnits.length; ++i) {
+    let closestUnitDistance = getDistanceBetweenTwoUnitsInGrids(closestUnit, unit);
+    let unitDistance = getDistanceBetweenTwoUnitsInGrids(updatedPlayerUnits[i], unit);
+    if(unitDistance < closestUnitDistance) {
+      closestUnit = updatedPlayerUnits[i];
+    }
+  }
+  return closestUnit;
 }

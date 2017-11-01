@@ -49,6 +49,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(unit.isFighting) { // stop moving if unit is fighting
     if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
       console.log('unit can get out of combat');
+      unit.setUnitToPursueToNull();
       unit.setIsFightingToFalse(); // unit is not fighting now
       unit.clearFightAgainst(); // now unit not fighting with anyone
       removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
@@ -151,6 +152,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   console.log('unit.x', unit.x, 'unit.y', unit.y);
   console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
   if(unit.isFighting) {
+    unit.setUnitToPursueToNull();
     if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
       console.log('unit can get out of combat');
       unit.setIsFightingToFalse(); // unit is not fighting now
@@ -221,6 +223,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     // unit is reached oponents's unit
     console.log(`unit is reached oponents's unit`);
     unit.setIsMovingToFalse();
+    unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();
     pursuedUnit.setIsFightingToTrue();
     unit.assignEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
