@@ -5,7 +5,8 @@ import {
   getClosestUnitToOtherUnit,
   getBestUnitByProperty,
   getWorstUnitByProperty,
-  getNotFightingUnits
+  getNotFightingUnits,
+  getFreeUnits
 } from '../src/AI/actions/unitActions';
 import {
   computersUnits
@@ -81,6 +82,19 @@ describe('AI unitActions test', function() {
     });
     it('Unit1 is fighting so it should not be in the notFightingUnits', function() {
       assert.equal(isUnitInArray(unit1, notFightingUnits), false);
+    });
+  });
+  describe('getFreeUnits', function() {
+    let freeUnits = getFreeUnits();
+    let unit1 = {id: 4};
+    let unit2 = {id: 5};
+    let unit3 = {id: 6};
+    it('Unit1 and unit2 have tasks', function() {
+      assert.equal(isUnitInArray(unit1, freeUnits), false);
+      assert.equal(isUnitInArray(unit2, freeUnits), false);
+    });
+    it('Unit3 is free', function() {
+      assert.equal(isUnitInArray(unit3, freeUnits), true);
     });
   });
 });

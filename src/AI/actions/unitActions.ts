@@ -108,3 +108,22 @@ export const getClosestEnemyToUnit = (unit:any) => {
   }
   return closestUnit;
 }
+
+export const getFreeUnits = (exclusion:any[] = []):any => {
+  let updatedComputersUnits = Object.assign([], computersUnits);
+  if(exclusion.length !== 0) { // delete exceptional units from searhing
+    for(let unit of exclusion) {
+      updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
+    }
+  }
+  if(updatedComputersUnits.length === 0) {
+    return null;
+  }
+  let freeUnits:any[] = [];
+  for(let unit of updatedComputersUnits) {
+    if(!unit.task) {
+      freeUnits.push(unit);
+    }
+  }
+  return freeUnits;
+}

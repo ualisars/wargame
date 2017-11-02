@@ -230,6 +230,9 @@ class Unit {
     else if(task === 'defense') {
       this.task = task;
     }
+    else {
+      this.task = '';
+    }
   }
 
   unitNeedProtection() {

@@ -81,7 +81,13 @@ export let controlByComputerUnits:any[] = [
     missileDamage: 2,
     discipline: 87,
     morale: 72,
-    condition: 99
+    condition: 99,
+    task: 'exploration',
+    unitToProtect: {},
+    isUnitUnderProtection: false,
+    unitToHelp: {},
+    isUnitNeedHelp: false,
+    beCloseTo: [],
   },
   {
     name: 'unit2',
@@ -102,7 +108,13 @@ export let controlByComputerUnits:any[] = [
     missileDamage: 3,
     discipline: 16,
     morale: 30,
-    condition: 76
+    condition: 76,
+    task: 'occupation',
+    unitToProtect: {},
+    isUnitUnderProtection: false,
+    unitToHelp: {},
+    isUnitNeedHelp: false,
+    beCloseTo: [],
   },
   {
     name: 'unit3',
@@ -123,6 +135,12 @@ export let controlByComputerUnits:any[] = [
     missileDamage: 15,
     discipline: 20,
     morale: 22,
-    condition: 56
+    condition: 56,
+    task: '',
+    unitToProtect: {},
+    isUnitUnderProtection: false,
+    unitToHelp: {},
+    isUnitNeedHelp: false,
+    beCloseTo: [],
   }
 ];

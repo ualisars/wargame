@@ -59,7 +59,7 @@ import {chooseFormation} from './AI/strategyModule/formation';
 // strategy module
 import {
   personality,
-  hidedEmeniesStore
+  hidedEmenies
 } from './AI/setUpAI';
 import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
 
@@ -73,9 +73,6 @@ createUnit('militia', 1080, 400, 15, 'computer');
 createUnit('pikemen', 600, 120, 15, 'computer');
 createUnit('militia', 820, 400, 15, 'computer');
 createUnit('militia', 520, 80, 15, 'computer');
-createUnit('archers', 520, 80, 15, 'computer');
-createUnit('lightCavalry', 520, 80, 15, 'computer');
-
 
 drawGrid();
 console.log('map', map);
@@ -171,7 +168,7 @@ auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
 //set behaviour
 console.log('behaviour', personality.behaviour);
 
-// setInterval(() => console.log('hidedEmenies', hidedEmeniesStore.hidedEmenies), 4000);
+// setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
 //
 // setInterval(() => spotUnits(units), 1000);
 // setInterval(() => {
