@@ -169,3 +169,39 @@ export const calculatePowerAdvantageInTheArea = (unit:any) => {
     morale
   }
 }
+
+export const calculateUnitTypes = ():any => {
+  let types:any = {
+    infantry: 0,
+    spearmen: 0,
+    lightInfantry: 0,
+    heavyInfantry: 0,
+    scouts: 0,
+    skirmishers: 0,
+    cavalry: 0
+  }
+  for(let unit of computersUnits) {
+    if(unit.type === 'infantry' || unit.type === 'spearmen' || unit.type === 'scouts') {
+      types.infantry += 1;
+    }
+    if(unit.type === 'spearmen') {
+      types.spearmen += 1;
+    }
+    if(unit.type === 'infantry' && unit.name !== 'HeavyInfantry') {
+      types.lightInfantry += 1;
+    }
+    if(unit.type === 'spearmen' || unit.name === 'HeavyInfantry') {
+      types.heavyInfantry += 1;
+    }
+    if(unit.type === 'scouts') {
+      types.scouts += 1;
+    }
+    if(unit.type === 'skirmishers') {
+      types.skirmishers += 1;
+    }
+    if(unit.type === 'cavalry') {
+      types.cavalry += 1;
+    }
+  }
+  return types;
+}

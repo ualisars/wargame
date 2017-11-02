@@ -50,7 +50,10 @@ import {meleeCombat, checkHealth} from './unit/unitFight'
 
 // AI testing
 import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
-import {analyzeUnits} from './AI/analyzeModule/unitAnalyze';
+import {
+  analyzeUnits,
+  calculateUnitTypes
+} from './AI/analyzeModule/unitAnalyze';
 
 // strategy module
 import {
@@ -172,3 +175,4 @@ console.log('behaviour', personality.behaviour);
 // setInterval(() => analyzeMap(), 9000);
 // setInterval(() => analyzeUnits(), 4000);
 // setInterval(() => orderToAttackEnemy(), 2000);
+setInterval(() => console.log('types', calculateUnitTypes()), 3000);

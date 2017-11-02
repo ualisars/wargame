@@ -75,6 +75,10 @@ export const isUnitSpottedByEnemy = (unit:any) => {
   if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
     enemies = Object.assign([], playersUnits);
   }
+  if(enemies.length === 0) {
+    // no enemy to spot the unit
+    return;
+  }
   let unitNode = getNodeFromMap(unit.x, unit.y, map);
   let isSpotted = false;
   for(let enemy of enemies) {
@@ -112,8 +116,10 @@ export const isUnitSpottedByEnemy = (unit:any) => {
 }
 
 export const spotUnits = (units:any[]) => {
-  for(let unit of units) {
-    isUnitSpottedByEnemy(unit);
+  if(units.length > 0) {
+    for(let unit of units) {
+      isUnitSpottedByEnemy(unit);
+    }
   }
   console.error('visibleForPlayerUnits', visibleForPlayerUnits);
   console.error('visibleForComputerUnits', visibleForComputerUnits);
