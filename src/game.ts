@@ -53,9 +53,9 @@ import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
 import {
   analyzeUnits,
   calculateUnitTypes,
-  getUnitTypesInPercentage
+  getUnitTypesInPercentage,
 } from './AI/analyzeModule/unitAnalyze';
-
+import {chooseFormation} from './AI/strategyModule/formation';
 // strategy module
 import {
   personality,
@@ -68,8 +68,14 @@ createUnit('archers', 40, 80, 15, 'player');
 createUnit('scouts', 80, 360, 15, 'player');
 createUnit('lightCavalry', 80, 400, 15, 'player');
 createUnit('hoplites', 40, 440, 15, 'player');
+
 createUnit('militia', 1080, 400, 15, 'computer');
 createUnit('pikemen', 600, 120, 15, 'computer');
+createUnit('militia', 820, 400, 15, 'computer');
+createUnit('militia', 520, 80, 15, 'computer');
+createUnit('archers', 520, 80, 15, 'computer');
+createUnit('lightCavalry', 520, 80, 15, 'computer');
+
 
 drawGrid();
 console.log('map', map);
@@ -177,4 +183,5 @@ console.log('behaviour', personality.behaviour);
 // setInterval(() => analyzeUnits(), 4000);
 // setInterval(() => orderToAttackEnemy(), 2000);
 //setInterval(() => console.log('types', calculateUnitTypes()), 3000);
-//setInterval(() => console.log('percentage', getUnitTypesInPercentage()), 3000);
+console.log('percentage', getUnitTypesInPercentage())
+console.log('formation', chooseFormation());
