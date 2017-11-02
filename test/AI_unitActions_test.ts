@@ -6,7 +6,8 @@ import {
   getBestUnitByProperty,
   getWorstUnitByProperty,
   getNotFightingUnits,
-  getFreeUnits
+  getFreeUnits,
+  getUnitsByTask
 } from '../src/AI/actions/unitActions';
 import {
   computersUnits
@@ -95,6 +96,24 @@ describe('AI unitActions test', function() {
     });
     it('Unit3 is free', function() {
       assert.equal(isUnitInArray(unit3, freeUnits), true);
+    });
+  });
+  describe('getUnitsByTask', function() {
+    let units = getUnitsByTask('exploration');
+    let unit1 = {id: 4};
+    let unit2 = {id: 5};
+    let unit3 = {id: 6};
+    it('Unit1 task is exploration, and unit2 and unit3 has different tasks', function() {
+      let units = getUnitsByTask('exploration');
+      assert.equal(isUnitInArray(unit1, units), true);
+      assert.equal(isUnitInArray(unit2, units), false);
+      assert.equal(isUnitInArray(unit3, units), false);
+    });
+    it('Unit2 task is occupation, and unit1 and unit3 has different tasks', function() {
+      let units = getUnitsByTask('occupation');
+      assert.equal(isUnitInArray(unit1, units), false);
+      assert.equal(isUnitInArray(unit2, units), true);
+      assert.equal(isUnitInArray(unit3, units), false);
     });
   });
 });
