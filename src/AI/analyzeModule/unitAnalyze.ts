@@ -190,7 +190,7 @@ export const calculateUnitTypes = ():any => {
     if(unit.type === 'infantry' && unit.name !== 'HeavyInfantry') {
       types.lightInfantry += 1;
     }
-    if(unit.type === 'spearmen' || unit.name === 'HeavyInfantry') {
+    if(unit.name === 'HeavyInfantry') {
       types.heavyInfantry += 1;
     }
     if(unit.type === 'scouts') {
@@ -204,4 +204,30 @@ export const calculateUnitTypes = ():any => {
     }
   }
   return types;
+}
+
+/*
+  calculate units' types in percentage
+  e.g cavalry - 30%, infantry: 40% etc
+*/
+export const getUnitTypesInPercentage = ():any => {
+  let percentage = {
+    infantry: 0,
+    spearmen: 0,
+    lightInfantry: 0,
+    heavyInfantry: 0,
+    scouts: 0,
+    skirmishers: 0,
+    cavalry: 0
+  }
+  let types = calculateUnitTypes();
+  let totalUnits = computersUnits.length;
+  percentage.infantry = Math.round((types.infantry / totalUnits) * 100);
+  percentage.spearmen = Math.round((types.spearmen / totalUnits) * 100);
+  percentage.lightInfantry = Math.round((types.lightInfantry / totalUnits) * 100);
+  percentage.heavyInfantry = Math.round((types.heavyInfantry / totalUnits) * 100);
+  percentage.scouts = Math.round((types.scouts / totalUnits) * 100);
+  percentage.skirmishers = Math.round((types.skirmishers / totalUnits) * 100);
+  percentage.cavalry = Math.round((types.cavalry / totalUnits) * 100);
+  return percentage;
 }

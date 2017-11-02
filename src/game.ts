@@ -52,7 +52,8 @@ import {meleeCombat, checkHealth} from './unit/unitFight'
 import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
 import {
   analyzeUnits,
-  calculateUnitTypes
+  calculateUnitTypes,
+  getUnitTypesInPercentage
 } from './AI/analyzeModule/unitAnalyze';
 
 // strategy module
@@ -175,4 +176,5 @@ console.log('behaviour', personality.behaviour);
 // setInterval(() => analyzeMap(), 9000);
 // setInterval(() => analyzeUnits(), 4000);
 // setInterval(() => orderToAttackEnemy(), 2000);
-setInterval(() => console.log('types', calculateUnitTypes()), 3000);
+//setInterval(() => console.log('types', calculateUnitTypes()), 3000);
+//setInterval(() => console.log('percentage', getUnitTypesInPercentage()), 3000);
