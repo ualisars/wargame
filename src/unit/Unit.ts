@@ -233,12 +233,13 @@ class Unit {
     else {
       this.task = '';
     }
+    console.error(' new task for unit', this.name, 'is', task);
   }
 
-  unitNeedProtection() {
+  setIsUnitUnderProtectionToTrue() {
     this.isUnitUnderProtection = true;
   }
-  unitDoesntNeedProtection() {
+  setIsUnitUnderProtectionToFalse() {
     this.isUnitUnderProtection = false;
   }
   assignUnitToProtect(unit:any) {
@@ -247,14 +248,14 @@ class Unit {
   clearUnitToProtect() {
     this.unitToProtect = {}
   }
-  unitNeedHelp() {
+  setIsUnitNeedHelpToTrue() {
     this.isUnitNeedHelp = true;
   }
-  unitDoesntNeedHelp() {
+  setIsUnitNeedHelpToFalse() {
     this.isUnitNeedHelp = false;
   }
   assignUnitToHelp(unit:any) {
-    this.unitNeedHelp = unit;
+    this.unitToHelp = unit;
   }
   clearUnitToHelp() {
     this.unitToHelp = {};

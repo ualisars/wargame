@@ -5,7 +5,7 @@ class Militia extends Unit {
   description: string = `A military force that is raised from the civil population to supplement a regular army in an emergency.`;
   cost: number = 20;
   advantageOver: string[];
-  vulnerableAgainst: string[];
+  vulnerableAgainst: string[] = [];
   // Characteristics
   name: string = 'Militia';
   type: string = 'infantry';

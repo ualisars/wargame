@@ -20,8 +20,8 @@ export const getClosestToNodeUnit = (node:any):any => {
   return closestUnit;
 }
 
-export const getClosestUnitToOtherUnit = (unit:any) => {
-  let updatedComputersUnits = Object.assign([], deleteUnitFromArray(unit, computersUnits));
+export const getClosestUnitToOtherUnit = (unit:any, array:any[] = computersUnits):any => {
+  let updatedComputersUnits = Object.assign([], deleteUnitFromArray(unit, array));
   if(updatedComputersUnits.length === 0) { // only one unit remained
     return unit;
   }

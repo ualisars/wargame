@@ -62,6 +62,7 @@ import {
   hidedEmenies
 } from './AI/setUpAI';
 import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
+import {assignTasks} from './AI/strategyModule/unitStrategy';
 
 
 createUnit('archers', 40, 80, 15, 'player');
@@ -72,7 +73,7 @@ createUnit('hoplites', 40, 440, 15, 'player');
 createUnit('militia', 1080, 400, 15, 'computer');
 createUnit('pikemen', 600, 120, 15, 'computer');
 createUnit('militia', 820, 400, 15, 'computer');
-createUnit('militia', 520, 80, 15, 'computer');
+createUnit('archers', 520, 80, 15, 'computer');
 
 drawGrid();
 console.log('map', map);
@@ -182,3 +183,9 @@ console.log('behaviour', personality.behaviour);
 //setInterval(() => console.log('types', calculateUnitTypes()), 3000);
 console.log('percentage', getUnitTypesInPercentage())
 console.log('formation', chooseFormation());
+// setInterval(() => {
+//   assignTasks();
+//   console.log('computersUnits', computersUnits);
+// }, 10000);
+assignTasks();
+console.log('computersUnits', computersUnits);

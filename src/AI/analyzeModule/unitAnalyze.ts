@@ -28,10 +28,14 @@ export const assignProtector = (unit:any) => {
 */
 export const calculateUnitsToBeware = (unit:any):number => {
   let unitsToBeware:number = 0;
-  for(let enemy of playersUnits) {
-    for(let vulnerability of unit.vulnerableAgainst) {
-      if(vulnerability === enemy.name) {
-        unitsToBeware++;
+  if(playersUnits.length !== 0) {
+    for(let enemy of playersUnits) {
+      if(unit.vulnerableAgainst.length !== 0) {
+        for(let vulnerability of unit.vulnerableAgainst) {
+          if(vulnerability === enemy.name) {
+            unitsToBeware++;
+          }
+        }
       }
     }
   }

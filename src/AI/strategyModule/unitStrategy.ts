@@ -22,7 +22,7 @@ import {assignTasksForNeutral} from '../behaviour/neutral/assignTask';
   2. Stage
   3. Allies Units
 */
-export const assignTasks = (unit:any):any => {
+export const assignTasks = ():any => {
   let behaviour = 'neutral'; // change to dynamic in future
   let numberOfUnits = computersUnits.length;
   let numberOfEnemies = playersUnits.length;
