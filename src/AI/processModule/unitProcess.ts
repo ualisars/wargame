@@ -9,13 +9,14 @@ import {
   getSurroundedAllies,
   calculateSurroundedAlliesPower,
   calculatePowerAdvantageInTheArea,
-  calculateUnitsToBeware
+  calculateUnitsToBeware,
 } from '../analyzeModule/unitAnalyze';
 
 import {
   getUnitsMaxProperty,
   getUnitsMinProperty
 } from '../../unit/unitUtils';
+
 
 /*
   (DoesUnitNeedProtection)

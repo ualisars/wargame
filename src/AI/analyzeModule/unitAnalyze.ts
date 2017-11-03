@@ -5,6 +5,13 @@ import {
 import {gridSize} from '../../map/mapSettings';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
+import {
+  playerPower,
+  computerPower
+} from './powerAnalyze';
+import {
+  calculateTotalPower
+} from '../analyzeModule/powerAnalyze';
 
 export const analyzeUnit = (unit:any):any => {
   //console.log(calculateUnitsToBeware(unit));
@@ -234,4 +241,13 @@ export const getUnitTypesInPercentage = ():any => {
   percentage.skirmishers = Math.round((types.skirmishers / totalUnits) * 100);
   percentage.cavalry = Math.round((types.cavalry / totalUnits) * 100);
   return percentage;
+}
+
+export const getInitialPropeties = ():any => {
+  return {
+    initialNumberOfUnits: computersUnits.length,
+    initialNumberOfEnemies: playersUnits.length,
+    initialUnitsHealth: computerPower.totalHealth,
+    initialEnemiesHealth: playerPower.totalHealth
+  }
 }

@@ -49,6 +49,7 @@ import {spotUnits} from './unit/unitSpotting';
 import {meleeCombat, checkHealth} from './unit/unitFight'
 
 // AI testing
+import {setUpAI} from './AI/setUpAI';
 import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
 import {
   analyzeUnits,
@@ -63,6 +64,8 @@ import {
 } from './AI/setUpAI';
 import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
 import {assignTasks} from './AI/strategyModule/unitStrategy';
+import {getCombatStage} from './AI/processModule/mapProcess';
+import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
 
 
 createUnit('archers', 40, 80, 15, 'player');
@@ -72,13 +75,15 @@ createUnit('hoplites', 40, 440, 15, 'player');
 
 createUnit('militia', 1080, 400, 15, 'computer');
 createUnit('pikemen', 600, 120, 15, 'computer');
-createUnit('militia', 820, 400, 15, 'computer');
+createUnit('militia', 840, 400, 15, 'computer');
 createUnit('archers', 520, 80, 15, 'computer');
 
 drawGrid();
 console.log('map', map);
 console.error('units', units);
 console.error('computersUnits', computersUnits);
+
+setUpAI(); // set up AI engine
 
 auxiliaryCanvas.addEventListener('mousemove', (e:any) => {
   let mouseX = e.offsetX; // get X
@@ -171,21 +176,24 @@ console.log('behaviour', personality.behaviour);
 
 // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
 //
-// setInterval(() => spotUnits(units), 1000);
-// setInterval(() => {
-//   checkHealth().
-//   then(() => meleeCombat());
-// }, 1000);
+setInterval(() => spotUnits(units), 1000);
+setInterval(() => {
+  checkHealth().
+  then(() => meleeCombat());
+}, 1000);
 //
 // setInterval(() => analyzeMap(), 9000);
 // setInterval(() => analyzeUnits(), 4000);
 // setInterval(() => orderToAttackEnemy(), 2000);
 //setInterval(() => console.log('types', calculateUnitTypes()), 3000);
-console.log('percentage', getUnitTypesInPercentage())
-console.log('formation', chooseFormation());
+// console.log('percentage', getUnitTypesInPercentage())
+// console.log('formation', chooseFormation());
 // setInterval(() => {
 //   assignTasks();
 //   console.log('computersUnits', computersUnits);
 // }, 10000);
-assignTasks();
-console.log('computersUnits', computersUnits);
+// assignTasks();
+// console.log('computersUnits', computersUnits);
+setInterval(() => calculateTotalPower(), 8000);
+
+setInterval(() => console.error('combat stage: ', getCombatStage()), 10000);

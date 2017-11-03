@@ -1,16 +1,25 @@
-import PlayerPower from '../store/PlayerPower';
-import ComputerPower from '../store/ComputerPower';
 import {
   computersUnits,
   visibleForComputerUnits,
+  playersUnits
 } from '../../store/unitStore';
+import PlayerPower from '../store/PlayerPower';
+import ComputerPower from '../store/ComputerPower';
 
 export let playerPower = new PlayerPower;
 export let computerPower = new ComputerPower;
+export let visiblePlayerUnitsPower = new PlayerPower();
+
 
 export const calculateTotalPlayerPower = () => {
-  for(let unit of visibleForComputerUnits) {
+  for(let unit of playersUnits) {
     decomposeUnitProps(unit);
+  }
+}
+
+export const calculateVisiblePlayerPower = () => {
+  for(let unit of visibleForComputerUnits) {
+    decomposeUnitProps(unit, 'visiblePlayerUnits');
   }
 }
 
@@ -20,7 +29,22 @@ export const calculateTotalComputerPower = () => {
   }
 }
 
+export const calculateTotalPower = () => {
+  calculateTotalComputerPower();
+  calculateTotalPlayerPower();
+}
+
 export const decomposeUnitProps = (unit:any, side:string='player') => {
+  if(side === 'visiblePlayerUnits') {
+    visiblePlayerUnitsPower.addHealth(unit.health);
+    visiblePlayerUnitsPower.addSpeed(unit.speed);
+    visiblePlayerUnitsPower.addArmour(unit.armour);
+    visiblePlayerUnitsPower.addMeleeDamage(unit.meleeDamage);
+    visiblePlayerUnitsPower.addMissileDamage(unit.missileDamage);
+    visiblePlayerUnitsPower.addDiscipline(unit.discipline);
+    visiblePlayerUnitsPower.addMorale(unit.morale);
+    visiblePlayerUnitsPower.addCondition(unit.condition);
+  }
   if(side === 'player') {
     playerPower.addHealth(unit.health);
     playerPower.addSpeed(unit.speed);

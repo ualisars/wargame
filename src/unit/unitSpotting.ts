@@ -46,7 +46,7 @@ export const spotEnemy = (unit:any) => {
     let dx = Math.abs(unitNode.x - enemyNode.x);
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
-      console.error(enemy.name, 'has been spotted');
+      //console.error(enemy.name, 'has been spotted');
       if(unit.controlBy === 'computer' && enemy.isVisible === false) {
         hidedEmenies.removeFromHidedEnemies(enemy);
       }
@@ -58,9 +58,9 @@ export const spotEnemy = (unit:any) => {
       }
     }
   }
-  console.error('visibleForPlayerUnits', visibleForPlayerUnits);
-  console.error('visibleForComputerUnits', visibleForComputerUnits);
-  console.error('spottedUnits', spottedUnits);
+  // console.error('visibleForPlayerUnits', visibleForPlayerUnits);
+  // console.error('visibleForComputerUnits', visibleForComputerUnits);
+  // console.error('spottedUnits', spottedUnits);
 }
 
 /*
@@ -88,7 +88,7 @@ export const isUnitSpottedByEnemy = (unit:any) => {
     let dx = Math.abs(unitNode.x - enemyNode.x);
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
-      console.error(unit.name, 'has been spotted by enemy', enemy.name);
+      //console.error(unit.name, 'has been spotted by enemy', enemy.name);
       addUnitIntoVisibleArray(unit);
       isSpotted = true;
       if(unit.isVisible === false && unit.controlBy === 'player') {
@@ -121,6 +121,6 @@ export const spotUnits = (units:any[]) => {
       isUnitSpottedByEnemy(unit);
     }
   }
-  console.error('visibleForPlayerUnits', visibleForPlayerUnits);
-  console.error('visibleForComputerUnits', visibleForComputerUnits);
+  // console.error('visibleForPlayerUnits', visibleForPlayerUnits);
+  // console.error('visibleForComputerUnits', visibleForComputerUnits);
 }

@@ -124,9 +124,9 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     updatedMap = createUnitObstacle(updatedMap, blockingUnitNextNode.x, blockingUnitNextNode.y); // create obstacle for next node
 
     addNeighbours(updatedMap); // create new neighbours for updated map
-    console.log('deleted Node', node);
-    console.log('updatedMap', updatedMap);
-    console.log('node', node);
+    // console.log('deleted Node', node);
+    // console.log('updatedMap', updatedMap);
+    // console.log('node', node);
     let startNode = getNodeFromMap(unit.x, unit.y, updatedMap);
     let finishNode = getNodeFromMap(currentMoveToX, currentMoveToY, updatedMap);
 
@@ -148,9 +148,9 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
 
 export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number, path:any, newMovement:boolean) => {
   unit.setIsMovingToTrue();
-  console.error('pursueUnit');
-  console.log('unit.x', unit.x, 'unit.y', unit.y);
-  console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
+  // console.error('pursueUnit');
+  // console.log('unit.x', unit.x, 'unit.y', unit.y);
+  // console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
   if(unit.isFighting) {
     unit.setUnitToPursueToNull();
     if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
@@ -199,16 +199,16 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
 
   // if pursued unit changed position
   if(currentMoveToX !== pursuedUnit.x || currentMoveToY !== pursuedUnit.y) {
-    console.error('pursue unit: pursuedUnit change position')
+    //console.error('pursue unit: pursuedUnit change position')
     i = 0;
     currentMoveToX = pursuedUnit.x;
     currentMoveToY = pursuedUnit.y;
     startNode = getNodeFromMap(unit.x, unit.y, map);
     finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, map);
-    console.error('startNode:', startNode);
-    console.error('finishNode:', finishNode);
-    console.error('pursuedUnit.x:', pursuedUnit.x, 'pursuedUnit.y:', pursuedUnit.y);
-    console.error('map', map);
+    // console.error('startNode:', startNode);
+    // console.error('finishNode:', finishNode);
+    // console.error('pursuedUnit.x:', pursuedUnit.x, 'pursuedUnit.y:', pursuedUnit.y);
+    // console.error('map', map);
     path = aStar(map, startNode, finishNode);
     unit.moveToNodeX = pursuedUnit.x;
     unit.moveToNodeY = pursuedUnit.y;
@@ -245,9 +245,9 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     updatedMap = createUnitObstacle(updatedMap, blockingUnitCurrentNode.x, blockingUnitCurrentNode.y); // create obstacle for currentNode
     updatedMap = createUnitObstacle(updatedMap, blockingUnitNextNode.x, blockingUnitNextNode.y); // create obstacle for next node
     addNeighbours(updatedMap);
-    console.log('deleted Node', node);
-    console.log('updatedMap', updatedMap);
-    console.log('node', node);
+    // console.log('deleted Node', node);
+    // console.log('updatedMap', updatedMap);
+    // console.log('node', node);
     startNode = getNodeFromMap(unit.x, unit.y, updatedMap);
     finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, updatedMap);
     unit.moveToNodeX = pursuedUnit.x;
@@ -255,12 +255,12 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     let newPath:any = aStar(updatedMap, startNode, finishNode);
     previousNode = newPath[0]; // get previous unit's position
     node = newPath[1]; // get next node
-    console.error('unit is going to node x:', node.x, 'y:',node.y);
+    //console.error('unit is going to node x:', node.x, 'y:',node.y);
     moveToNextNode(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
     return;
   }
-  console.error('previousNode', previousNode);
-  console.error('currentNode', node);
+  // console.error('previousNode', previousNode);
+  // console.error('currentNode', node);
   spotEnemy(unit); // check for enemy units
   unit.decreaseCondition(1); // decreaseCondition while moving
   moveToNextNode(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
@@ -268,32 +268,31 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
 
 export const moveToNextNode = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, currX:number, currY:number, allPath:any[], nodeI:number) => {
   // return new Promise(resolve => {
-  console.log('moveToNextNode2');
-    let startX = currentNode.x + (gridSize * 0.5);
-    let startY = currentNode.y + (gridSize * 0.5);
-    let finishX = nextNode.x + (gridSize * 0.5);
-    let finishY = nextNode.y + (gridSize * 0.5);
-    console.error('x:',startX, 'y:', startY);
-    console.error('finishX:',finishX, 'finishY:', finishY);
-    let path = findPathFromOneNodeToAnother(startX, startY, finishX, finishY);
-    console.error('path', path);
-    makeMovement(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, 0, nodeI);
+  //console.log('moveToNextNode2');
+  let startX = currentNode.x + (gridSize * 0.5);
+  let startY = currentNode.y + (gridSize * 0.5);
+  let finishX = nextNode.x + (gridSize * 0.5);
+  let finishY = nextNode.y + (gridSize * 0.5);
+  // console.error('x:',startX, 'y:', startY);
+  // console.error('finishX:',finishX, 'finishY:', finishY);
+  let path = findPathFromOneNodeToAnother(startX, startY, finishX, finishY);
+  //console.error('path', path);
+  makeMovement(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, 0, nodeI);
 
 }
 
 export const moveToNextNodeInUpdateUnit = (unit:any, currentNode:any, nextNode:any, currX:number, currY:number, allPath:any[], nodeI:number) => {
   // return new Promise(resolve => {
-  console.log('moveToNextNode2');
-    let startX = currentNode.x + (gridSize * 0.5);
-    let startY = currentNode.y + (gridSize * 0.5);
-    let finishX = nextNode.x + (gridSize * 0.5);
-    let finishY = nextNode.y + (gridSize * 0.5);
-    console.error('x:',startX, 'y:', startY);
-    console.error('finishX:',finishX, 'finishY:', finishY);
-    let path = findPathFromOneNodeToAnother(startX, startY, finishX, finishY);
-    console.error('path', path);
-    makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, 0, nodeI);
-
+  //console.log('moveToNextNode2');
+  let startX = currentNode.x + (gridSize * 0.5);
+  let startY = currentNode.y + (gridSize * 0.5);
+  let finishX = nextNode.x + (gridSize * 0.5);
+  let finishY = nextNode.y + (gridSize * 0.5);
+  // console.error('x:',startX, 'y:', startY);
+  // console.error('finishX:',finishX, 'finishY:', finishY);
+  let path = findPathFromOneNodeToAnother(startX, startY, finishX, finishY);
+  //console.error('path', path);
+  makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, 0, nodeI);
 }
 
 export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
@@ -330,9 +329,9 @@ export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any
 }
 
 export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
-  console.log('makeMovement2');
+  //console.log('makeMovement2');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
-    console.error('unit reached its position');
+    //console.error('unit reached its position');
     nodeI++;
     pursueUnit(unit, pursuedUnit, currX, currY, nodeI, allPath, false);
   }
