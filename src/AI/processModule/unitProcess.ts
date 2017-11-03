@@ -1,5 +1,6 @@
 import {
-  playersUnits
+  playersUnits,
+  computersUnits
 } from '../../store/unitStore';
 
 import {
@@ -25,7 +26,7 @@ import {
     but player has cavalry in the roster)
   2. Unit is not mobile and vulnerable for flank attack
 */
-export const DoesUnitNeedProtection = (unit:any):boolean => {
+export const doesUnitNeedProtection = (unit:any):boolean => {
   let unitsToBeware = calculateUnitsToBeware(unit);
   if(unit.type === 'skirmishers' && unitsToBeware > 0) {
       return true;
@@ -34,6 +35,19 @@ export const DoesUnitNeedProtection = (unit:any):boolean => {
     return true;
   }
   return false;
+}
+
+/*
+  Show how many units need protection
+*/
+export const howManyUnitsNeedProtection = ():number => {
+  let units:number = 0;
+  for(let unit of computersUnits) {
+    if(doesUnitNeedProtection) {
+      units++;
+    }
+  }
+  return units;
 }
 
 /*
