@@ -15,6 +15,7 @@ import {
 import {hidedEmenies} from '../setUpAI';
 import {assignTasksForNeutral} from '../behaviour/neutral/assignTask';
 
+
 /*
   Task depends on:
   1. Unit ability

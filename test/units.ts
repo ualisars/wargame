@@ -64,6 +64,7 @@ export let playerUnits = [
 export let controlByComputerUnits:any[] = [
   {
     name: 'unit1',
+    type: 'spearmen',
     id: 4,
     currentNode: {
       x: 10,
@@ -91,6 +92,7 @@ export let controlByComputerUnits:any[] = [
   },
   {
     name: 'unit2',
+    type: 'spearmen',
     id: 5,
     currentNode: {
       x: 200,
@@ -118,6 +120,7 @@ export let controlByComputerUnits:any[] = [
   },
   {
     name: 'unit3',
+    type: 'skirmishers',
     id: 6,
     currentNode: {
       x: 300,

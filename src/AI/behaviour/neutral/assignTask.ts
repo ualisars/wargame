@@ -14,7 +14,10 @@ import {
 
 import {hidedEmenies} from '../../setUpAI';
 
-import {doesUnitNeedProtection} from '../../processModule/unitProcess';
+import {
+  doesUnitNeedProtection,
+  howManyUnitsNeedProtection
+} from '../../processModule/unitProcess';
 
 export let assignTasksForNeutral = () => {
   let numberOfUnits = computersUnits.length;
@@ -35,7 +38,15 @@ export let assignTasksForNeutral = () => {
   Assign one unit to protect another
 */
 export const assignProtection = () => {
-
+  let unitsNeedProtection:number = howManyUnitsNeedProtection();
+  for(let unit of computersUnits) {
+    if(doesUnitNeedProtection(unit) && !unit.isUnitUnderProtection) { // unit needs protection
+      let freeUnits = getFreeUnits();
+      if(unit.type === 'archers') {
+        
+      }
+    }
+  }
 }
 
 export const assignExploration = (unit:any, unitTypes:any):any => {

@@ -7,7 +7,8 @@ import {
   getWorstUnitByProperty,
   getNotFightingUnits,
   getFreeUnits,
-  getUnitsByTask
+  getUnitsByTask,
+  getUnitsByPropertyValue
 } from '../src/AI/actions/unitActions';
 import {
   computersUnits
@@ -114,6 +115,29 @@ describe('AI unitActions test', function() {
       assert.equal(isUnitInArray(unit1, units), false);
       assert.equal(isUnitInArray(unit2, units), true);
       assert.equal(isUnitInArray(unit3, units), false);
+    });
+  });
+  describe('getUnitsByPropertyValue', function() {
+    let spearmen = getUnitsByPropertyValue('type', 'spearmen');
+    let skirmishers = getUnitsByPropertyValue('type', 'skirmishers');
+    let getUnit1 = getUnitsByPropertyValue('name', 'unit1');
+    let unit1 = {id: 4};
+    let unit2 = {id: 5};
+    let unit3 = {id: 6};
+    it('Unit1 and unit2 are spearmen and unit3 is not spearmen', function() {
+      assert.equal(isUnitInArray(unit1, spearmen), true);
+      assert.equal(isUnitInArray(unit2, spearmen), true);
+      assert.equal(isUnitInArray(unit3, spearmen), false);
+    });
+    it('Only unit3s type is skirmishers', function() {
+      assert.equal(isUnitInArray(unit1, skirmishers), false);
+      assert.equal(isUnitInArray(unit2, skirmishers), false);
+      assert.equal(isUnitInArray(unit3, skirmishers), true);
+    });
+    it('Should be only unit1', function() {
+      assert.equal(isUnitInArray(unit1, getUnit1), true);
+      assert.equal(isUnitInArray(unit2, getUnit1), false);
+      assert.equal(isUnitInArray(unit3, getUnit1), false);
     });
   });
 });

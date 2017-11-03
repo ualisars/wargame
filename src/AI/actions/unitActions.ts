@@ -146,3 +146,22 @@ export const getUnitsByTask = (task:string, exclusion:any[] = []):any => {
   }
   return units;
 }
+
+export const getUnitsByPropertyValue = (property:string, value:any, exclusion:any[]=[]):any[] => {
+  let updatedComputersUnits = Object.assign([], computersUnits);
+  if(exclusion.length !== 0) { // delete exceptional units from searhing
+    for(let unit of exclusion) {
+      updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
+    }
+  }
+  if(updatedComputersUnits.length === 0) {
+    return null;
+  }
+  let units:any[] = [];
+  for(let unit of updatedComputersUnits) {
+    if(unit[property] === value) {
+      units.push(unit);
+    }
+  }
+  return units;
+}
