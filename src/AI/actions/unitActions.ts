@@ -20,6 +20,18 @@ export const getClosestToNodeUnit = (node:any):any => {
   return closestUnit;
 }
 
+export const getClosestNodeToUnit = (unit:any, nodes:any):any => {
+  let closestNode:any = nodes[0];
+  for(let i = 1; i < nodes.length; ++i) {
+    let closestNodeDistance = getDistanceBetweenUnitAndNodeInGrids(unit, closestNode);
+    let nodeDistance = getDistanceBetweenUnitAndNodeInGrids(unit, nodes[i]);
+    if(nodeDistance < closestNodeDistance) {
+      closestNode = nodes[i];
+    }
+  }
+  return closestNode;
+}
+
 export const getClosestUnitToOtherUnit = (unit:any, array:any[] = computersUnits):any => {
   let updatedComputersUnits = Object.assign([], deleteUnitFromArray(unit, array));
   if(updatedComputersUnits.length === 0) { // only one unit remained

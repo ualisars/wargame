@@ -8,7 +8,8 @@ import {
   getNotFightingUnits,
   getFreeUnits,
   getUnitsByTask,
-  getUnitsByPropertyValue
+  getUnitsByPropertyValue,
+  getClosestNodeToUnit
 } from '../src/AI/actions/unitActions';
 import {
   computersUnits
@@ -138,6 +139,19 @@ describe('AI unitActions test', function() {
       assert.equal(isUnitInArray(unit1, getUnit1), true);
       assert.equal(isUnitInArray(unit2, getUnit1), false);
       assert.equal(isUnitInArray(unit3, getUnit1), false);
+    });
+  });
+  describe('getClosestNodeToUnit', function() {
+    let unit = {currentNode: {x: 200, y: 200}};
+    let nodes = [
+      {id: 1, x: 240, y: 360},
+      {id: 2, x: 300, y: 280},
+      {id: 3, x: 200, y: 280},
+      {id: 4, x: 400, y: 240},
+    ];
+    let closestNode = getClosestNodeToUnit(unit, nodes);
+    it('nodes id:3, x: 200, y:280 should be closest to unit', function() {
+      assert.equal(closestNode.id, 3);
     });
   });
 });

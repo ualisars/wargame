@@ -3,6 +3,7 @@ import {ctx} from '../../map/mapConfig';
 import {gridSize} from '../../map/mapSettings';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
+import {} from '../actions/unitActions';
 import {
   getMinValueFromNodes,
   getMaxValueFromNodes
@@ -11,6 +12,7 @@ import {
   computersUnits,
   visibleForComputerUnits
 } from '../../store/unitStore';
+import {hidedEmenies} from '../setUpAI';
 // create instances of AI map stores
 export let computerControlNodes = new NodeStore();
 export let playerControlNodes = new NodeStore();
@@ -112,4 +114,35 @@ export const getFarthestXNodes = (nodes:any[]):any[] => {
     }
   }
   return farthestNodes;
+}
+
+export const getClosestToEnemySideNodes = (nodes:any):any[] => {
+  let closestNodes:any[] = [];
+  let minValue = getMinValueFromNodes('x', nodes);
+  let maxValue = getMaxValueFromNodes('x', nodes);
+  console.log('min value:', minValue);
+  console.log('max value:', maxValue);
+  for(let node of nodes) {
+    if(node.x === minValue) { // min x is closer to enemy(player) side
+      closestNodes.push(node);
+    }
+  }
+  return closestNodes;
+}
+
+/*
+  get closest node to enemy side or
+  hided enemies, these nodes are
+  prioritize for exploration
+*/
+export const getClosestToEnemyNodes = (nodes:any[]):any[] => {
+  let closestNodes:any[] = [];
+  if(hidedEmenies.store.length === 0) { // no units are spotted
+    closestNodes = getClosestToEnemyNodes(nodes); // get nodes that close to enemy side
+  } else {
+    for(let hidedEnemy of hidedEmenies.store) { // there are hided enemy
+
+    }
+  }
+  return closestNodes;
 }

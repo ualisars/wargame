@@ -2,8 +2,10 @@ import { expect, should, assert} from 'chai';
 import {
   playerPower,
   computerPower,
+  visiblePlayerUnitsPower,
   calculateTotalPlayerPower,
-  calculateTotalComputerPower
+  calculateTotalComputerPower,
+  calculateVisiblePlayerPower
 } from '../src/AI/analyzeModule/powerAnalyze';
 
 import {
@@ -17,34 +19,34 @@ import {
 } from './units';
 
 describe('AI: Power Analyze Test', function() {
-  describe('calculateTotalPlayerPower', function() {
+  describe('calculateVisiblePlayerPower', function() {
     for(let unit of playerUnits) {
       addUnitIntoVisibleArray(unit);
     }
-    calculateTotalPlayerPower();
+    calculateVisiblePlayerPower();
     it('Total health should be equal to  181', function() {
-      assert.equal(playerPower.totalHealth, 181);
+      assert.equal(visiblePlayerUnitsPower.totalHealth, 181);
     });
     it('Total speed should be equal to 25', function() {
-      assert.equal(playerPower.totalSpeed, 25);
+      assert.equal(visiblePlayerUnitsPower.totalSpeed, 25);
     });
     it('Total armour should be equal to 13', function() {
-      assert.equal(playerPower.totalArmour, 13);
+      assert.equal(visiblePlayerUnitsPower.totalArmour, 13);
     });
     it('Total meleeDamage should be equal to 16', function() {
-      assert.equal(playerPower.totalMeleeDamage, 16);
+      assert.equal(visiblePlayerUnitsPower.totalMeleeDamage, 16);
     });
     it('Total missileDamage should be equal to 3', function() {
-      assert.equal(playerPower.totalMissileDamage, 3);
+      assert.equal(visiblePlayerUnitsPower.totalMissileDamage, 3);
     });
     it('Total discipline should be equal to 79', function() {
-      assert.equal(playerPower.totalDiscipline, 79);
+      assert.equal(visiblePlayerUnitsPower.totalDiscipline, 79);
     });
     it('Total morale should be equal to 132', function() {
-      assert.equal(playerPower.totalMorale, 132);
+      assert.equal(visiblePlayerUnitsPower.totalMorale, 132);
     });
     it('Total condition should be equal to 190', function() {
-      assert.equal(playerPower.totalCondition, 190);
+      assert.equal(visiblePlayerUnitsPower.totalCondition, 190);
     });
   });
   describe('calculateTotalComputerPower', function() {

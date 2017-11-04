@@ -9,6 +9,7 @@ import {
 } from '../../path/drawPath';
 import {aStar} from '../../path/AStar';
 import {map} from '../../map/createMap';
+import {neutralExploration} from '../behaviour/neutral/exploration';
 
 export let assignUnitToProtect = (unit:any, ProtectedUnit:any) => {
 
@@ -26,5 +27,12 @@ export const orderToAttackEnemy = () => {
         pursueUnit(unit, enemy, enemy.currentNode.x, enemy.currentNode.y, 0, path, true);
       }
     }
+  }
+}
+
+export const explorationStage = () => {
+  let behaviour = 'neutral';
+  if(behaviour === 'neutral') {
+    neutralExploration();
   }
 }
