@@ -8,7 +8,10 @@ import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/nodeUtils';
 import {getDistanceBetweenTwoUnitsInGrids} from '../../utils/unitUtils';
 import {deleteUnitFromArray} from '../../utils/unitUtils';
 
-export const getClosestToNodeUnit = (node:any):any => {
+/*
+  get closest computer's unit to specific node
+*/
+export const getClosestUnitToNode = (node:any):any => {
   let closestUnit:any = computersUnits[0];
   for(let i = 1; i < computersUnits.length; ++i) {
     let closestUnitDistance = getDistanceBetweenUnitAndNodeInGrids(closestUnit, node);
@@ -20,6 +23,9 @@ export const getClosestToNodeUnit = (node:any):any => {
   return closestUnit;
 }
 
+/*
+  get closestNode from nodes array to specific unit
+*/
 export const getClosestNodeToUnit = (unit:any, nodes:any):any => {
   let closestNode:any = nodes[0];
   for(let i = 1; i < nodes.length; ++i) {

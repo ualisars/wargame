@@ -3,7 +3,7 @@ import {ctx} from '../../map/mapConfig';
 import {gridSize} from '../../map/mapSettings';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
-import {} from '../actions/unitActions';
+import {getClosestNodeToUnit} from '../actions/unitActions';
 import {
   getMinValueFromNodes,
   getMaxValueFromNodes
@@ -141,8 +141,17 @@ export const getClosestToEnemyNodes = (nodes:any[]):any[] => {
     closestNodes = getClosestToEnemyNodes(nodes); // get nodes that close to enemy side
   } else {
     for(let hidedEnemy of hidedEmenies.store) { // there are hided enemy
-
+      let closestNode = getClosestNodeToUnit(hidedEnemy, nodes);
+      closestNodes.push(closestNode); // add closestNode into nodes array
     }
   }
   return closestNodes;
+}
+
+export const getFarthestFromEnemyNode = (nodes:any[]):any => {
+  let farthestNode:any = nodes[0];
+  for(let i = 0; i < nodes.length; ++i) {
+    //let farthestNodeDistance = 
+  }
+  return farthestNode;
 }

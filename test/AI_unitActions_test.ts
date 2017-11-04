@@ -1,7 +1,7 @@
 import { expect, should, assert} from 'chai';
 import {isUnitInArray} from '../src/utils/unitUtils';
 import {
-  getClosestToNodeUnit,
+  getClosestUnitToNode,
   getClosestUnitToOtherUnit,
   getBestUnitByProperty,
   getWorstUnitByProperty,
@@ -16,13 +16,13 @@ import {
 } from '../src/store/unitStore';
 
 describe('AI unitActions test', function() {
-  describe('getClosestToNodeUnit', function() {
+  describe('getClosestUnitToNode', function() {
     let node = {
       x: 300,
       y: 400
     }
     it('Unit 1 should be closest unit to this node', function() {
-      let closestUnit = getClosestToNodeUnit(node);
+      let closestUnit = getClosestUnitToNode(node);
       assert.equal(closestUnit.name, 'unit3');
     });
   });
