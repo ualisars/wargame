@@ -1,4 +1,4 @@
-class PlayerPower {
+class Power {
   quantity = 0;
   totalHealth = 0;
   totalSpeed = 0;
@@ -49,6 +49,18 @@ class PlayerPower {
     this.totalCondition += condition;
   }
 
+  resetAllProperties() {
+    this.quantity = 0;
+    this.totalHealth = 0;
+    this.totalSpeed = 0;
+    this.totalArmour = 0;
+    this.totalMeleeDamage = 0;
+    this.totalMissileDamage = 0;
+    this.totalDiscipline = 0;
+    this.totalMorale = 0;
+    this.totalCondition = 0;
+  }
+
 }
 
-export default PlayerPower;
+export default Power;

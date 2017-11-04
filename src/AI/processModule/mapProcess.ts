@@ -4,17 +4,13 @@ import {
   visibleForComputerUnits
 } from '../../store/unitStore';
 
-import {
-  hidedEmenies,
-  initialNumberOfUnits,
-  initialNumberOfEnemies,
-  initialUnitsHealth,
-  initialEnemiesHealth,
-} from '../setUpAI';
+import {hidedEmenies} from '../setUpAI';
 
 import {
   playerPower,
-  computerPower
+  computerPower,
+  initialPlayerPower,
+  initialComputerPower
 } from '../analyzeModule/powerAnalyze';
 
 /*
@@ -61,6 +57,11 @@ export const isEndingStage = ():boolean => {
   console.error('numberOfEnemies', numberOfEnemies);
   console.error('computerHealth', computerHealth);
   console.error('playersHealth', playersHealth);
+
+  const initialNumberOfUnits = initialComputerPower.quantity;
+  const initialNumberOfEnemies = initialPlayerPower.quantity;
+  const initialUnitsHealth = initialComputerPower.totalHealth;
+  const initialEnemiesHealth = initialPlayerPower.totalHealth;
 
   console.error('initialNumberOfUnits', initialNumberOfUnits);
   console.error('initialNumberOfEnemies', initialNumberOfEnemies);

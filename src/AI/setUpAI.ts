@@ -4,24 +4,10 @@ import {getInitialPropeties} from './analyzeModule/unitAnalyze';
 import {playersUnits, computersUnits} from '../store/unitStore';
 import {
   calculateTotalPower,
-  playerPower,
-  computerPower
+  calculateInitialPower
 } from './analyzeModule/powerAnalyze';
 export let personality:any;
 export let hidedEmenies:any;
-
-export let initialNumberOfUnits:number;
-export let initialNumberOfEnemies:number;
-export let initialUnitsHealth:number;
-export let initialEnemiesHealth:number;
-
-
-export const setUpInitialProperties = () => {
-  initialNumberOfUnits = computersUnits.length;
-  initialNumberOfEnemies = playersUnits.length;
-  initialUnitsHealth = computerPower.totalHealth;
-  initialEnemiesHealth = playerPower.totalHealth;
-}
 
 export const firstStage = () => {
   return new Promise(resolve => {
@@ -29,11 +15,12 @@ export const firstStage = () => {
     hidedEmenies = new HidedEmenies();
     personality.setBehaviour();
     calculateTotalPower();
+    calculateInitialPower();
     resolve();
   });
 }
 
 
 export const setUpAI = () => {
-  firstStage().then(() => setUpInitialProperties());
+  firstStage();
 }
