@@ -176,11 +176,11 @@ console.log('behaviour', personality.behaviour);
 
 // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
 //
-setInterval(() => spotUnits(units), 1000);
-setInterval(() => {
-  checkHealth().
-  then(() => meleeCombat());
-}, 1000);
+// setInterval(() => spotUnits(units), 1000);
+// setInterval(() => {
+//   checkHealth().
+//   then(() => meleeCombat());
+// }, 1000);
 //
 // setInterval(() => analyzeMap(), 9000);
 // setInterval(() => analyzeUnits(), 4000);
@@ -194,6 +194,6 @@ setInterval(() => {
 // }, 10000);
 // assignTasks();
 // console.log('computersUnits', computersUnits);
-setInterval(() => calculateTotalPower(), 8000);
+//setInterval(() => calculateTotalPower(), 8000);
 
-setInterval(() => console.error('combat stage: ', getCombatStage()), 10000);
+//setInterval(() => console.error('combat stage: ', getCombatStage()), 10000);

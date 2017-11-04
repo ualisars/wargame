@@ -12,31 +12,36 @@ export let initialPlayerPower = new Power();
 export let initialComputerPower = new Power();
 
 
+export const calculateTotalComputerPower = () => {
+  computerPower.resetAllProperties();
+  for(let unit of computersUnits) {
+    decomposeUnitProps(unit, 'computer');
+  }
+}
+
 export const calculateTotalPlayerPower = () => {
+  playerPower.resetAllProperties();
   for(let unit of playersUnits) {
     decomposeUnitProps(unit);
   }
 }
 
 export const calculateVisiblePlayerPower = () => {
+  visiblePlayerUnitsPower.resetAllProperties();
   for(let unit of visibleForComputerUnits) {
     decomposeUnitProps(unit, 'visiblePlayerUnits');
   }
 }
 
-export const calculateTotalComputerPower = () => {
-  for(let unit of computersUnits) {
-    decomposeUnitProps(unit, 'computer');
-  }
-}
-
 export const calculateInitialComputerPower = () => {
+  initialComputerPower.resetAllProperties();
   for(let unit of computersUnits) {
     decomposeUnitProps(unit, 'initialComputer');
   }
 }
 
 export const calculateInitialPlayerPower = () => {
+  initialPlayerPower.resetAllProperties();
   for(let unit of playersUnits) {
     decomposeUnitProps(unit, 'initialPlayer');
   }
@@ -54,6 +59,7 @@ export const calculateInitialPower = () => {
 
 export const decomposeUnitProps = (unit:any, side:string='player') => {
   if(side === 'visiblePlayerUnits') {
+    visiblePlayerUnitsPower.incrementQuantity();
     visiblePlayerUnitsPower.addHealth(unit.health);
     visiblePlayerUnitsPower.addSpeed(unit.speed);
     visiblePlayerUnitsPower.addArmour(unit.armour);
@@ -64,6 +70,7 @@ export const decomposeUnitProps = (unit:any, side:string='player') => {
     visiblePlayerUnitsPower.addCondition(unit.condition);
   }
   if(side === 'player') {
+    playerPower.incrementQuantity();
     playerPower.addHealth(unit.health);
     playerPower.addSpeed(unit.speed);
     playerPower.addArmour(unit.armour);
@@ -74,6 +81,7 @@ export const decomposeUnitProps = (unit:any, side:string='player') => {
     playerPower.addCondition(unit.condition);
   }
   else if(side === 'computer') {
+    computerPower.incrementQuantity();
     computerPower.addHealth(unit.health);
     computerPower.addSpeed(unit.speed);
     computerPower.addArmour(unit.armour);
@@ -84,6 +92,7 @@ export const decomposeUnitProps = (unit:any, side:string='player') => {
     computerPower.addCondition(unit.condition);
   }
   else if(side === 'initialComputer') {
+    initialComputerPower.incrementQuantity();
     initialComputerPower.addHealth(unit.health);
     initialComputerPower.addSpeed(unit.speed);
     initialComputerPower.addArmour(unit.armour);
@@ -94,6 +103,7 @@ export const decomposeUnitProps = (unit:any, side:string='player') => {
     initialComputerPower.addCondition(unit.condition);
   }
   else if(side === 'initialPlayer') {
+    initialPlayerPower.incrementQuantity();
     initialPlayerPower.addHealth(unit.health);
     initialPlayerPower.addSpeed(unit.speed);
     initialPlayerPower.addArmour(unit.armour);

@@ -21,7 +21,6 @@ import {
   4. ending
 */
 export const getCombatStage = ():string => {
-  let stage:string;
   const numberOfEnemies:number = playersUnits.length;
   const numberOfVisibleEnemies:number = visibleForComputerUnits.length;
   const numberOfHidedEmenies:number = hidedEmenies.store.length;
@@ -31,19 +30,18 @@ export const getCombatStage = ():string => {
   console.error('percentageOfVisibleUnits', percentageOfVisibleUnits);
   console.error('percentageOfSpottedUnits', percentageOfSpottedUnits);
   if(isEndingStage()) {
-    stage = 'ending';
+    return 'ending';
   }
-  if(percentageOfSpottedUnits < 65) {
-    stage = 'exploration';
+  else if(percentageOfSpottedUnits < 65) {
+    return 'exploration';
   }
   else if(percentageOfSpottedUnits >= 65 && percentageOfSpottedUnits < 90) {
-    stage = 'advance';
+    return 'advance';
   }
   else if(percentageOfSpottedUnits >= 90) {
-    stage = 'fighting';
+    return 'fighting';
   }
-
-  return stage;
+  return 'no stage';
 }
 
 export const isEndingStage = ():boolean => {
