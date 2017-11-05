@@ -57,6 +57,7 @@ class Unit {
   unitToHelp:any = {};
   isUnitNeedHelp:boolean = false;
   beCloseTo:any[] = [];
+  frozen:boolean = false; // to prevent order to many order in short period of time
 
   constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
     this.id = id;

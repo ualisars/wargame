@@ -1,4 +1,6 @@
-import {pursueUnit} from '../../../unit/unitMovement';
+import {updateUnit} from '../../../unit/unitMovement';
+import {assignUnitMoveToPosition} from '../../../unit/unitActions';
+import {getDistanceBetweenTwoUnitsInGrids} from '../../../utils/unitUtils';
 import {
   getNodeFromMap
 } from '../../../path/drawPath';
@@ -10,15 +12,18 @@ import {
   getUnitsByTask,
   getNotFightingUnits,
   getBestUnitByProperty,
-  getClosestUnitToOtherUnit
+  getClosestUnitToOtherUnit,
+  getClosestEnemyToUnit,
+  getClosestNodeToUnit
 } from '../../actions/unitActions';
 import {
   computerControlNodes,
-  getClosestToEnemyNodes
+  getClosestToEnemyNodes,
+  getFarthestNodeFromEnemy
 } from '../../analyzeModule/mapAnalyze';
 
 export const neutralExploration = () => {
-
+  scoutsMovement();
 }
 
 /*
@@ -27,9 +32,43 @@ export const neutralExploration = () => {
 */
 export const scoutsMovement = () => {
   const scouts = getUnitsByTask('exploration'); // get scouts from computersUnits
-
+  for(let unit of scouts) {
+    let closestEnemy = getClosestEnemyToUnit(unit);
+    let distanceToClosestEnemy = getDistanceBetweenTwoUnitsInGrids(unit, closestEnemy);
+    if(distanceToClosestEnemy >= 8) {
+      explore(unit);
+    } else {
+      backDown(unit, closestEnemy, computerControlNodes.store);
+    }
+  }
 }
 
-export const backDown = () => {
+export const backDown = (unit:any, enemy:any, nodes:any[]) => {
+  let farthestNode = getFarthestNodeFromEnemy(enemy, nodes);
+  unit.setUnitToPursue(null);
+  let startNode = getNodeFromMap(unit.x, unit.y, map);
+  let finishNode = getNodeFromMap(farthestNode.x, farthestNode.y, map);
+  let path:any = aStar(map, startNode, finishNode);
+  if(unit.isMoving) {
+    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+  } else {
+    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
+  }
+}
 
+export const explore = (unit:any) => {
+  let nodes = getClosestToEnemyNodes(computerControlNodes.store);
+  let node = getClosestNodeToUnit(unit, nodes);
+  console.error('chosen nodes:', nodes);
+  unit.setUnitToPursue(null);
+  let startNode = getNodeFromMap(unit.x, unit.y, map);
+  let finishNode = getNodeFromMap(node.x, node.y, map);
+  let path:any = aStar(map, startNode, finishNode);
+  if(unit.isMoving) {
+    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+  } else {
+    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
+  }
 }

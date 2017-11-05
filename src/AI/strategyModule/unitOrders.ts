@@ -11,10 +11,6 @@ import {aStar} from '../../path/AStar';
 import {map} from '../../map/createMap';
 import {neutralExploration} from '../behaviour/neutral/exploration';
 
-export let assignUnitToProtect = (unit:any, ProtectedUnit:any) => {
-
-}
-
 export const orderToAttackEnemy = () => {
   if(playersUnits.length !== 0 && computersUnits.length !== 0) {
     for(let unit of computersUnits) {

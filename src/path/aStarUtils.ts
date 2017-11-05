@@ -33,6 +33,5 @@ export const isObjectInMapKeys = (object:any, map:any) => {
       result = true;
     }
   }
-  console.log('result', result);
   return result;
 }

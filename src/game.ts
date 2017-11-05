@@ -66,6 +66,7 @@ import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
 import {assignTasks} from './AI/strategyModule/unitStrategy';
 import {getCombatStage} from './AI/processModule/mapProcess';
 import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
+import {explorationStage} from './AI/strategyModule/unitOrders';
 
 
 createUnit('archers', 40, 80, 15, 'player');
@@ -75,7 +76,6 @@ createUnit('hoplites', 40, 440, 15, 'player');
 
 createUnit('militia', 1080, 400, 15, 'computer');
 createUnit('pikemen', 600, 120, 15, 'computer');
-createUnit('militia', 840, 400, 15, 'computer');
 createUnit('archers', 520, 80, 15, 'computer');
 
 drawGrid();
@@ -181,8 +181,11 @@ console.log('behaviour', personality.behaviour);
 //   checkHealth().
 //   then(() => meleeCombat());
 // }, 1000);
-//
-// setInterval(() => analyzeMap(), 9000);
+// //
+setInterval(() => {
+  analyzeMap()
+  .then(() => explorationStage())
+}, 2000);
 // setInterval(() => analyzeUnits(), 4000);
 // setInterval(() => orderToAttackEnemy(), 2000);
 //setInterval(() => console.log('types', calculateUnitTypes()), 3000);
@@ -193,6 +196,7 @@ console.log('behaviour', personality.behaviour);
 //   console.log('computersUnits', computersUnits);
 // }, 10000);
 // assignTasks();
+assignTasks();
 // console.log('computersUnits', computersUnits);
 //setInterval(() => calculateTotalPower(), 8000);
 
