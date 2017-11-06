@@ -9,7 +9,8 @@ import {
   getFreeUnits,
   getUnitsByTask,
   getUnitsByPropertyValue,
-  getClosestNodeToUnit
+  getClosestNodeToUnit,
+  getProtector
 } from '../src/AI/actions/unitActions';
 import {
   computersUnits
@@ -152,6 +153,16 @@ describe('AI unitActions test', function() {
     let closestNode = getClosestNodeToUnit(unit, nodes);
     it('nodes id:3, x: 200, y:280 should be closest to unit', function() {
       assert.equal(closestNode.id, 3);
+    });
+  });
+  describe('getProtectorTest', function() {
+    let unit1 = {id: 4};
+    let unit2 = {id:5};
+    let unit3 = {id:6};
+    it('unit 1 and unit2 does not have a protector, and unit3 has a protector with id:4(unit1)', function() {
+      assert.equal(getProtector(unit1), null);
+      assert.equal(getProtector(unit2), null);
+      assert.equal(getProtector(unit3).id, 4);
     });
   });
 });

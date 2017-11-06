@@ -1,6 +1,7 @@
 import {updateUnit} from '../../../unit/unitMovement';
 import {assignUnitMoveToPosition} from '../../../unit/unitActions';
 import {getDistanceBetweenTwoUnitsInGrids} from '../../../utils/unitUtils';
+import {deleteObjectFromArray} from '../../../utils/objUtils';
 import {
   getNodeFromMap
 } from '../../../path/drawPath';
@@ -14,7 +15,8 @@ import {
   getBestUnitByProperty,
   getClosestUnitToOtherUnit,
   getClosestEnemyToUnit,
-  getClosestNodeToUnit
+  getClosestNodeToUnit,
+  isNodeExploredByScout
 } from '../../actions/unitActions';
 import {
   computerControlNodes,
@@ -44,6 +46,10 @@ export const scoutsMovement = () => {
 }
 
 export const backDown = (unit:any, enemy:any, nodes:any[]) => {
+  if(unit.isUnitUnderProtection) { // unit has a protector
+    // approach to a protector
+    
+  }
   let farthestNode = getFarthestNodeFromEnemy(enemy, nodes);
   unit.setUnitToPursue(null);
   let startNode = getNodeFromMap(unit.x, unit.y, map);
@@ -60,6 +66,10 @@ export const backDown = (unit:any, enemy:any, nodes:any[]) => {
 export const explore = (unit:any) => {
   let nodes = getClosestToEnemyNodes(computerControlNodes.store);
   let node = getClosestNodeToUnit(unit, nodes);
+  while(isNodeExploredByScout(node)) {
+    nodes = deleteObjectFromArray(node, nodes);
+    node = getClosestNodeToUnit(unit, nodes);
+  }
   console.error('chosen nodes:', nodes);
   unit.setUnitToPursue(null);
   let startNode = getNodeFromMap(unit.x, unit.y, map);

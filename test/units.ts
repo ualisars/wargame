@@ -84,7 +84,7 @@ export let controlByComputerUnits:any[] = [
     morale: 72,
     condition: 99,
     task: 'exploration',
-    unitToProtect: {},
+    unitToProtect: {id: 6},
     isUnitUnderProtection: false,
     unitToHelp: {},
     isUnitNeedHelp: false,
