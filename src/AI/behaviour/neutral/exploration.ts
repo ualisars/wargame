@@ -16,13 +16,15 @@ import {
   getClosestUnitToOtherUnit,
   getClosestEnemyToUnit,
   getClosestNodeToUnit,
-  isNodeExploredByScout
+  isNodeExploredByScout,
+  getProtector
 } from '../../actions/unitActions';
 import {
   computerControlNodes,
   getClosestToEnemyNodes,
   getFarthestNodeFromEnemy
 } from '../../analyzeModule/mapAnalyze';
+import {getSurroundedNodes} from '../../analyzeModule/unitAnalyze';
 
 export const neutralExploration = () => {
   scoutsMovement();
@@ -48,6 +50,8 @@ export const scoutsMovement = () => {
 export const backDown = (unit:any, enemy:any, nodes:any[]) => {
   if(unit.isUnitUnderProtection) { // unit has a protector
     // approach to a protector
+    let protector = getProtector(unit);
+    let protectorSurroundedNodes = getSurroundedNodes(unit, 2);
     
   }
   let farthestNode = getFarthestNodeFromEnemy(enemy, nodes);
