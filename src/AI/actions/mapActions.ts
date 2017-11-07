@@ -22,7 +22,7 @@ export const sortNodesByRandomValue = (nodes:any[]):any[] => {
 	return nodes;
 };
 
-function getRandomNode(nodes:any[]):any {
+export const getRandomNode = (nodes:any[]):any => {
 	let map:any[] = [];
 	for(let node of nodes) {
 		let randomValue = Math.random();

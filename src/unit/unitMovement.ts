@@ -18,7 +18,8 @@ import {getNodeFromMap} from '../path/drawPath';
 import {units, computersUnits,} from '../store/unitStore';
 import {
   checkOtherUnitsPosition,
-  getBlockingUnit
+  getBlockingUnit,
+  giveWay
 } from './unitUtils';
 
 import {findPathFromOneNodeToAnother} from './unitPath';
@@ -119,6 +120,18 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     let blockingUnitCurrentNode = blockingUnit.currentNode;
     let blockingUnitNextNode = blockingUnit.nextNode;
 
+    if(unit.currentNode.x === blockingUnit.nextNode.x && unit.currentNode.y === blockingUnit.nextNode.y) {
+      // units are going towards each other
+      if(giveWay(unit, blockingUnit)) { // unit should give a way to blockingUnit
+        unit.moveToNodeX = unit.x;
+        unit.moveToNodeY = unit.y;
+        let currentNode = getNodeFromMap(unit.x, unit.y, map);
+        unit.setIsMovingToFalse();
+        unit.setCurrentNode(currentNode); // set currentNode
+        unit.setNextNode(currentNode); // set nextNode
+        return;
+      }
+    }
     // if current node and next node are different
     updatedMap = createUnitObstacle(updatedMap, blockingUnitCurrentNode.x, blockingUnitCurrentNode.y); // create obstacle for currentNode
     updatedMap = createUnitObstacle(updatedMap, blockingUnitNextNode.x, blockingUnitNextNode.y); // create obstacle for next node
@@ -239,6 +252,16 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     let blockingUnit = getBlockingUnit(units, unit, node.x, node.y); // get unit that blocked the way
     let blockingUnitCurrentNode = blockingUnit.currentNode;
     let blockingUnitNextNode = blockingUnit.nextNode;
+
+    if(giveWay(unit, blockingUnit)) { // unit should give a way to blockingUnit
+      unit.moveToNodeX = unit.x;
+      unit.moveToNodeY = unit.y;
+      let currentNode = getNodeFromMap(unit.x, unit.y, map);
+      unit.setIsMovingToFalse();
+      unit.setCurrentNode(currentNode); // set currentNode
+      unit.setNextNode(currentNode); // set nextNode
+      return;
+    }
 
     // if current node and next node are different
     let updatedMap = map;

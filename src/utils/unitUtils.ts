@@ -10,6 +10,14 @@ export const deleteUnitFromArray = (unit:any, arr:any[]):any[] => {
   return updatedArr;
 }
 
+export const addUnitIntoArray = (unit:any, arr:any[]):any[] => {
+  let updatedArr = Object.assign([], arr);
+  if(!isUnitInArray(unit, arr)) {
+    updatedArr.push(unit);
+  }
+  return updatedArr;
+}
+
 export const getDistanceBetweenTwoUnitsInGrids = (unit1:any, unit2:any):number => {
   let unit1X:number = unit1.currentNode.x;
   let unit1Y:number = unit1.currentNode.y;
@@ -22,11 +30,12 @@ export const getDistanceBetweenTwoUnitsInGrids = (unit1:any, unit2:any):number =
 }
 
 export const isUnitInArray = (unitToAdd:any, arr:any[]):boolean => {
-  let result:boolean = false;
-  for(let unit of arr) {
-    if(unitToAdd.id === unit.id) {
-      result = true;
+  if(arr.length !== 0) {
+    for(let unit of arr) {
+      if(unitToAdd.id === unit.id) {
+        return true;
+      }
     }
   }
-  return result;
+  return false;
 }

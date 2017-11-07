@@ -25,6 +25,7 @@ import {
   getFarthestNodeFromEnemy
 } from '../../analyzeModule/mapAnalyze';
 import {getSurroundedNodes} from '../../analyzeModule/unitAnalyze';
+import {getRandomNode} from '../../actions/mapActions';
 
 export const neutralExploration = () => {
   scoutsMovement();
@@ -52,7 +53,16 @@ export const backDown = (unit:any, enemy:any, nodes:any[]) => {
     // approach to a protector
     let protector = getProtector(unit);
     let protectorSurroundedNodes = getSurroundedNodes(unit, 2);
-    
+    let randomNode = getRandomNode(protectorSurroundedNodes);
+    let startNode = getNodeFromMap(unit.x, unit.y, map);
+    let finishNode = getNodeFromMap(randomNode.x, randomNode.y, map);
+    let path:any = aStar(map, startNode, finishNode);
+    if(unit.isMoving) {
+      assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    } else {
+      assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+      updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
+    }
   }
   let farthestNode = getFarthestNodeFromEnemy(enemy, nodes);
   unit.setUnitToPursue(null);

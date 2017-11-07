@@ -1,5 +1,15 @@
-import {deleteObjectFromArray, isObjectEmpty} from '../utils/objUtils';
+import {
+  deleteObjectFromArray,
+  isObjectEmpty,
+  addNodeIntoArray
+} from '../utils/objUtils';
+import {deleteUnitFromArray} from '../utils/unitUtils';
 import {getNodeFromMap} from '../path/drawPath';
+import {getSurroundedNodes} from '../AI/analyzeModule/unitAnalyze';
+import {
+  playersUnits,
+  computersUnits
+} from '../store/unitStore';
 import {map} from '../map/createMap';
 
 export const checkOtherUnitsPosition = (units:any[], currentUnit:any, x:number, y:number) => {
@@ -29,7 +39,21 @@ export const getBlockingUnit = (units:any[], currentUnit:any, x:number, y:number
       return unit;
     }
   }
-  return;
+  return null;
+}
+
+/*
+  Stop one of the units that are goind towards each other
+*/
+export const giveWay = (unit:any, blockingUnit:any) => {
+  if(unit.speed > blockingUnit.speed) {
+    return true;
+  }
+  else if(unit.speed === blockingUnit.speed) {
+    if(unit.id < blockingUnit.id) {
+      return true;
+    }
+  }
 }
 
 /*
@@ -170,4 +194,31 @@ export const getUnitsMinProperty = (units:any[], property:any):number => {
     }
     return minProperty;
   }
+}
+
+/*
+ get closest to unit nodes where alliedUnits are located
+ or moving to
+*/
+export const getSurroundedBlockedNodes = (unit:any) => {
+  let surroundedNodes = getSurroundedNodes(unit, 1);
+  let surroundedBlockedNodes:any = [];
+  let alliedUnits:any[];
+  if(unit.controlBy === 'player') {
+    alliedUnits = playersUnits;
+  } else {
+    alliedUnits = computersUnits;
+  }
+  let updatedUnits = deleteUnitFromArray(unit, alliedUnits);
+  for(let node of surroundedNodes) {
+    for(let alliedUnit of updatedUnits) {
+      if(alliedUnit.currentNode.x === node.x && alliedUnit.currentNode.y === node.y) {
+          surroundedBlockedNodes = addNodeIntoArray(node, surroundedBlockedNodes);
+      }
+      if(alliedUnit.nextNode.x === node.x && alliedUnit.nextNode.y === node.y) {
+          surroundedBlockedNodes = addNodeIntoArray(node, surroundedBlockedNodes);
+      }
+    }
+  }
+  return surroundedBlockedNodes;
 }

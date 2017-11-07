@@ -9,13 +9,22 @@ export const deleteObjectFromArray = (object:any, arr:any[]):any[] => {
 }
 
 export const isObjectInArray = (object:any, arr:any[]):boolean => {
-  let result:boolean = false;
-  for(let node of arr) {
-    if(object.x === node.x && object.y === node.y) {
-      result = true;
+  if(arr.length !== 0) {
+    for(let node of arr) {
+      if(object.x === node.x && object.y === node.y) {
+        return true;
+      }
     }
   }
-  return result;
+  return false;
+}
+
+export const addNodeIntoArray = (node:any, arr:any[]) => {
+  let updatedArr = Object.assign([], arr);
+  if(!isObjectInArray(node, arr)) {
+    updatedArr.push(node);
+  }
+  return updatedArr;
 }
 
 export const getNodeFromArray = (object:any, arr:any[]):any => {

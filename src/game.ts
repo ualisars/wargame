@@ -55,6 +55,7 @@ import {
   analyzeUnits,
   calculateUnitTypes,
   getUnitTypesInPercentage,
+  getSurroundedNodes
 } from './AI/analyzeModule/unitAnalyze';
 import {chooseFormation} from './AI/strategyModule/formation';
 // strategy module
@@ -67,12 +68,13 @@ import {assignTasks} from './AI/strategyModule/unitStrategy';
 import {getCombatStage} from './AI/processModule/mapProcess';
 import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
 import {explorationStage} from './AI/strategyModule/unitOrders';
+import {getSurroundedBlockedNodes} from './unit/unitUtils';
 
 
 createUnit('archers', 40, 80, 15, 'player');
-createUnit('scouts', 80, 360, 15, 'player');
+createUnit('lightCavalry', 80, 360, 15, 'player');
 createUnit('lightCavalry', 80, 400, 15, 'player');
-createUnit('hoplites', 40, 440, 15, 'player');
+createUnit('lightCavalry', 40, 440, 15, 'player');
 
 createUnit('militia', 1080, 400, 15, 'computer');
 createUnit('pikemen', 600, 120, 15, 'computer');
@@ -118,6 +120,9 @@ auxiliaryCanvas.addEventListener('click', (e:any) => {
   console.log('Position y', e.offsetY); // get Y
   onChooseUnit(units, x, y);
   console.log('currentlyChosenUnit', currentlyChosenUnit);
+  console.log('node', getNodeFromMap(x, y, map));
+  console.log('surroundedNodes', getSurroundedNodes(currentlyChosenUnit, 1));
+  console.log('blockedNodes:', getSurroundedBlockedNodes(currentlyChosenUnit));
 });
 
 auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
@@ -182,10 +187,10 @@ console.log('behaviour', personality.behaviour);
 //   then(() => meleeCombat());
 // }, 1000);
 // //
-setInterval(() => {
-  analyzeMap()
-  .then(() => explorationStage())
-}, 2000);
+// setInterval(() => {
+//   analyzeMap()
+//   .then(() => explorationStage())
+// }, 2000);
 // setInterval(() => analyzeUnits(), 4000);
 // setInterval(() => orderToAttackEnemy(), 2000);
 //setInterval(() => console.log('types', calculateUnitTypes()), 3000);
