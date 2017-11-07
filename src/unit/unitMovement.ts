@@ -31,6 +31,7 @@ import {
   isEnemyInTheRange,
   missileAttack
 } from './missileAttack';
+import {getSurroundedBlockedNodes} from './unitUtils';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   if(unit.health < 0) {
@@ -116,25 +117,28 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     unit.setCurrentNode(currentNode); // set currentNode
     unit.setNextNode(currentNode); // set nextNode
     let updatedMap = map;
-    let blockingUnit = getBlockingUnit(units, unit, node.x, node.y); // get unit that blocked the way
-    let blockingUnitCurrentNode = blockingUnit.currentNode;
-    let blockingUnitNextNode = blockingUnit.nextNode;
-
-    if(unit.currentNode.x === blockingUnit.nextNode.x && unit.currentNode.y === blockingUnit.nextNode.y) {
-      // units are going towards each other
-      if(giveWay(unit, blockingUnit)) { // unit should give a way to blockingUnit
-        unit.moveToNodeX = unit.x;
-        unit.moveToNodeY = unit.y;
-        let currentNode = getNodeFromMap(unit.x, unit.y, map);
-        unit.setIsMovingToFalse();
-        unit.setCurrentNode(currentNode); // set currentNode
-        unit.setNextNode(currentNode); // set nextNode
-        return;
-      }
+    // let blockingUnit = getBlockingUnit(units, unit, node.x, node.y); // get unit that blocked the way
+    // let blockingUnitCurrentNode = blockingUnit.currentNode;
+    // let blockingUnitNextNode = blockingUnit.nextNode;
+    let blockedNodes = getSurroundedBlockedNodes(unit);
+    for(let blockedNode of blockedNodes) {
+      updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
     }
+
+    // if(unit.currentNode.x === blockingUnit.nextNode.x && unit.currentNode.y === blockingUnit.nextNode.y) {
+    //   // units are going towards each other
+    //   if(giveWay(unit, blockingUnit)) { // unit should give a way to blockingUnit
+    //     unit.moveToNodeX = unit.x;
+    //     unit.moveToNodeY = unit.y;
+    //     let currentNode = getNodeFromMap(unit.x, unit.y, map);
+    //     unit.setIsMovingToFalse();
+    //     unit.setCurrentNode(currentNode); // set currentNode
+    //     unit.setNextNode(currentNode); // set nextNode
+    //     return;
+    //   }
+    // }
     // if current node and next node are different
-    updatedMap = createUnitObstacle(updatedMap, blockingUnitCurrentNode.x, blockingUnitCurrentNode.y); // create obstacle for currentNode
-    updatedMap = createUnitObstacle(updatedMap, blockingUnitNextNode.x, blockingUnitNextNode.y); // create obstacle for next node
+
 
     addNeighbours(updatedMap); // create new neighbours for updated map
     // console.log('deleted Node', node);
@@ -249,24 +253,12 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
     // unit has another allies' unit on its way
     console.error('pursueUnit: another unit is on the way x:',node.x, 'y:',node.y);
-    let blockingUnit = getBlockingUnit(units, unit, node.x, node.y); // get unit that blocked the way
-    let blockingUnitCurrentNode = blockingUnit.currentNode;
-    let blockingUnitNextNode = blockingUnit.nextNode;
-
-    if(giveWay(unit, blockingUnit)) { // unit should give a way to blockingUnit
-      unit.moveToNodeX = unit.x;
-      unit.moveToNodeY = unit.y;
-      let currentNode = getNodeFromMap(unit.x, unit.y, map);
-      unit.setIsMovingToFalse();
-      unit.setCurrentNode(currentNode); // set currentNode
-      unit.setNextNode(currentNode); // set nextNode
-      return;
-    }
-
+    let blockedNodes = getSurroundedBlockedNodes(unit);
     // if current node and next node are different
     let updatedMap = map;
-    updatedMap = createUnitObstacle(updatedMap, blockingUnitCurrentNode.x, blockingUnitCurrentNode.y); // create obstacle for currentNode
-    updatedMap = createUnitObstacle(updatedMap, blockingUnitNextNode.x, blockingUnitNextNode.y); // create obstacle for next node
+    for(let blockedNode of blockedNodes) {
+      updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
+    }
     addNeighbours(updatedMap);
     // console.log('deleted Node', node);
     // console.log('updatedMap', updatedMap);
