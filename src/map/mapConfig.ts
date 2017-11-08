@@ -1,5 +1,6 @@
 import {WIDTH, HEIGHT} from './mapSettings';
 // create Canvas
+export const backgroundCanvas:any = document.getElementById('background');
 export const canvas:any = document.getElementById('canvas');
 export const auxiliaryCanvas:any = document.getElementById('auxiliary');
 
@@ -10,6 +11,10 @@ canvas.style.border = "1px solid";
 auxiliaryCanvas.width = WIDTH;
 auxiliaryCanvas.height = HEIGHT;
 
+backgroundCanvas.width = WIDTH;
+backgroundCanvas.height = HEIGHT;
+
 // define 2d context
 export const ctx = canvas.getContext("2d");
-export const auxiliaryCtx  = auxiliaryCanvas.getContext('2d')
+export const auxiliaryCtx  = auxiliaryCanvas.getContext('2d');
+export const backgroundCtx  = backgroundCanvas.getContext('2d');

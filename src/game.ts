@@ -70,6 +70,10 @@ import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
 import {explorationStage} from './AI/strategyModule/unitOrders';
 import {getSurroundedBlockedNodes} from './unit/unitUtils';
 
+// GUI
+import {drawBackground} from './GUI/terrain/background';
+
+drawBackground('./src/img/terrain/terrain.png');
 
 createUnit('archers', 40, 80, 15, 'player');
 createUnit('lightCavalry', 80, 360, 15, 'player');
@@ -107,7 +111,7 @@ auxiliaryCanvas.addEventListener('mousemove', (e:any) => {
       auxiliaryCtx.font = "14px Arial";
       auxiliaryCtx.fillText("Attack", pointedUnit.x, pointedUnit.y + gridSize / 2);
     } else {
-       auxiliaryCtx.clearRect(0, 0, WIDTH, HEIGHT);
+      auxiliaryCtx.clearRect(0, 0, WIDTH, HEIGHT);
     }
   }
 });
