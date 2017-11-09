@@ -39,6 +39,9 @@ const displayRosterUnits = (i:number = 0, x:number=60, y:number=titleHeight+60) 
     drawCoin(x + 15, y + imgHeight + 15, 5);
     mainMenuCtx.fillStyle = '#000';
     mainMenuCtx.fillText(roster[i].cost, x + 25 ,y + imgHeight + 20);
+    roster[i].x = x;
+    roster[i].y = y;
+    console.log('roster[i]', roster[i]);
     x = (x + imgWidth + 15);
     if(i === 2 || i === 5 || i === 8 || i === 11) {
       x = 60;
