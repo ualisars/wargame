@@ -9,6 +9,7 @@ class Militia extends Unit {
   // Characteristics
   name: string = 'Militia';
   type: string = 'infantry';
+  imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 20;
   speed: number = 25;
   armour: number = 1;

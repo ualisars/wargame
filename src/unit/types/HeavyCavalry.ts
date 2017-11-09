@@ -13,6 +13,7 @@ class HeavyCavalry extends Unit {
   // Characteristics
   name: string = 'HeavyCavalry';
   type: string = 'cavalry';
+  imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 90;
   speed: number = 35;
   armour: number = 8;

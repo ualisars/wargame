@@ -9,6 +9,7 @@ class LightInfantry extends Unit {
   // Characteristics
   name: string = 'LightInfantry';
   type: string = 'infantry';
+  imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 40;
   speed: number = 22;
   armour: number = 2;

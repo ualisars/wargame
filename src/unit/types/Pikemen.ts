@@ -13,6 +13,7 @@ class Pikemen extends Unit {
   // Characteristics
   name: string = 'Pikemen';
   type: string = 'spearmen';
+  imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 120;
   speed: number = 10;
   armour: number = 4;

@@ -13,6 +13,7 @@ class Peltasts extends Unit {
   // Characteristics
   name: string = 'Peltasts';
   type: string = 'skirmishers';
+  imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 50;
   speed: number = 22;
   armour: number = 4;

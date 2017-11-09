@@ -18,6 +18,7 @@ class Unit {
   isCurrentlyChosen: boolean = false;
   positionInUnit: number;
   controlBy: string;
+  imgSrc:string = './src/img/units/pikemen.jpg';
   isMoving: boolean = false;
   isVisible:boolean = false;
   unitToPursue: any = null;

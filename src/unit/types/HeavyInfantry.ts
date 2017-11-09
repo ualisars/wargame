@@ -11,6 +11,7 @@ class HeavyInfantry extends Unit {
   // Characteristics
   name: string = 'HeavyInfantry';
   type: string = 'infantry';
+  imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 70;
   speed: number = 18;
   armour: number = 8;

@@ -13,6 +13,7 @@ class Archers extends Unit {
   // Characteristics
   name: string = 'Archers';
   type: string = 'skirmishers';
+  imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 50;
   speed: number = 25;
   armour: number = 2;

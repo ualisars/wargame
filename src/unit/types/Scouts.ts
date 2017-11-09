@@ -9,6 +9,7 @@ class Scouts extends Unit {
   // Characteristics
   name: string = 'Scouts';
   type: string = 'scouts';
+  imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 20;
   speed: number = 25;
   armour: number = 1;
