@@ -9,10 +9,28 @@ import {
   Pikemen,
   Scouts
 } from '../../unit/types';
+import {
+  isUnitInArray,
+  deleteUnitFromArray
+} from '../../utils/unitUtils';
 
 export let roster:any[] = [];
 export let selectedUnitInRoster:any = null;
+export let army:any[] = [];
 
+export const addUnitToArmy = (unit:any) => {
+  if(unit) {
+    if(!isUnitInArray(unit, army)) {
+      army.push(unit);
+    }
+  }
+}
+
+export const removeUnitFromArmy = (unit:any) => {
+  if(unit && isUnitInArray(unit, army)) {
+    deleteUnitFromArray(unit, army);
+  }
+}
 export const selectUnitInRoster = (unit:any) => {
   if(unit) {
     selectedUnitInRoster = unit;
