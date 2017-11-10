@@ -1,6 +1,8 @@
 import {
   mainMenu,
-  mainMenuCtx
+  mainMenuCtx,
+  dragAndDropCanvas,
+  dragAndDropCanvasCtx
 } from './mainMenuSettings';
 
 import {
@@ -12,9 +14,11 @@ import {
   rosterImgWidth,
   rosterImgHeight
 } from './unitRoster';
+import {loadImage} from '../../utils/loadImage';
+import {WIDTH, HEIGHT} from '../../map/mapSettings';
 
 export const dragAndDrop = () => {
-  mainMenu.addEventListener('click', (e:any) => {
+  dragAndDropCanvas.addEventListener('click', (e:any) => {
     console.error('Click');
     let x = e.offsetX; // get X
     let y = e.offsetY; // get Y
@@ -23,10 +27,10 @@ export const dragAndDrop = () => {
     onChooseRoster(x, y);
   });
 
-  mainMenu.addEventListener('mousemove', (e:any) => {
+  dragAndDropCanvas.addEventListener('mousemove', (e:any) => {
     let x = e.offsetX; // get X
     let y = e.offsetY; // get Y
-
+    onDragUnit(x, y);
   });
 }
 
@@ -43,4 +47,17 @@ export let onChooseRoster = (mouseX:number, mouseY:number) => {
   }
   selectUnitInRoster(selectedUnit);
   console.error('selectedUnitInRoster:', selectedUnitInRoster);
+}
+
+export let onDragUnit = (mouseX:number, mouseY:number) => {
+  if(selectedUnitInRoster) {
+    let width = rosterImgWidth;
+    let height = rosterImgHeight;
+    let x = mouseX - (width / 2);
+    let y = mouseY - (height / 2);
+    loadImage(selectedUnitInRoster.imgSrc, (err:any, img:any) => {
+      dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+      dragAndDropCanvasCtx.drawImage(img, x, y, rosterImgWidth, rosterImgHeight);
+    });
+  }
 }
