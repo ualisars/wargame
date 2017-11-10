@@ -6,7 +6,8 @@ import {loadImage} from '../../utils/loadImage';
 
 export const rosterWidth = Math.round(WIDTH / 3);
 export const rosterHeight = HEIGHT - 100;
-
+export const rosterImgWidth:number = 80;
+export const rosterImgHeight:number = 80;
 
 
 export const displayRoster = () => {
@@ -28,24 +29,22 @@ const displayRosterUnits = (i:number = 0, x:number=60, y:number=titleHeight+60) 
   if(i >= roster.length) {
     return;
   }
-  const imgWidth:number = 80;
-  const imgHeight:number = 80;
   loadImage(roster[i].imgSrc, (err:any, img:any) => {
     mainMenuCtx.font = '14px serif';
     mainMenuCtx.fillStyle = '#000';
     mainMenuCtx.textAlign = 'left';
     mainMenuCtx.fillText(roster[i].name, x + 5, y);
-    mainMenuCtx.drawImage(img, x, y + 5, imgWidth, imgHeight);
-    drawCoin(x + 15, y + imgHeight + 15, 5);
+    mainMenuCtx.drawImage(img, x, y + 5, rosterImgWidth, rosterImgHeight);
+    drawCoin(x + 15, y + rosterImgHeight + 15, 5);
     mainMenuCtx.fillStyle = '#000';
-    mainMenuCtx.fillText(roster[i].cost, x + 25 ,y + imgHeight + 20);
+    mainMenuCtx.fillText(roster[i].cost, x + 25 ,y + rosterImgHeight + 20);
     roster[i].x = x;
     roster[i].y = y;
     console.log('roster[i]', roster[i]);
-    x = (x + imgWidth + 15);
+    x = (x + rosterImgWidth + 15);
     if(i === 2 || i === 5 || i === 8 || i === 11) {
       x = 60;
-      y += imgHeight + 45;
+      y += rosterImgHeight + 45;
     }
     i++;
     displayRosterUnits(i, x, y);

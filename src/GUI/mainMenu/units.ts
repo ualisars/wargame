@@ -10,7 +10,16 @@ import {
   Scouts
 } from '../../unit/types';
 
-export const roster:any[] = [];
+export let roster:any[] = [];
+export let selectedUnitInRoster:any = null;
+
+export const selectUnitInRoster = (unit:any) => {
+  if(unit) {
+    selectedUnitInRoster = unit;
+  } else {
+    selectedUnitInRoster = null;
+  }
+}
 
 let archersRoster = new Archers(0,0,0,0);
 let heavyCavalryRoster = new HeavyCavalry(0,0,0,0);
@@ -31,3 +40,7 @@ roster.push(militiaRoster);
 roster.push(peltastsRoster);
 roster.push(pikemenRoster);
 roster.push(scoutsRoster);
+
+for(let unit of roster) {
+  unit.selected = false;
+}

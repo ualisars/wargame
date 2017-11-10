@@ -5,6 +5,7 @@ import {displayRoster} from './unitRoster';
 import {displayChosenUnits} from './chosenUnits';
 import {displayInfo} from './info';
 import {displayTitle} from './title';
+import {dragAndDrop} from './dragAndDrop';
 
 export const launchMainMenu = () => {
   //mainMenuCtx.fillStyle = 'red';
@@ -13,4 +14,5 @@ export const launchMainMenu = () => {
   displayChosenUnits();
   displayInfo();
   displayTitle();
+  dragAndDrop();
 }
