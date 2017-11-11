@@ -19,6 +19,10 @@ import {
 import {loadImage} from '../../utils/loadImage';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import {
+  onChoosePlayer,
+  onChooseComputer
+} from './title';
+import {
   emptyBoxes,
   armyImgWidth,
   armyImgHeight
@@ -31,8 +35,20 @@ export const dragAndDrop = () => {
     let y = e.offsetY; // get Y
     console.log('Position x', e.offsetX); // get X
     console.log('Position y', e.offsetY); // get Y
+    onChoosePlayer(x, y);
+    onChooseComputer(x, y);
     if(selectedUnitInRoster) {
       console.log('unit is added:', isUnitAddedToArmy(x, y));
+      if(isUnitAddedToArmy(x,y)) { // draw unit is army list
+        let box = isUnitAddedToArmy(x,y);
+        if(!box.filled) { // box clear
+          box.filled = true;
+          showUnitInArmyList(box);
+          dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
+        }
+      } else {
+        dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
+      }
     }
     onChooseRoster(x, y);
   });
@@ -84,9 +100,21 @@ export const isUnitAddedToArmy = (mouseX:number, mouseY:number):any => {
     let x = box.x;
     let y = box.y;
     if(mouseX >= x && mouseX < (x + width) && mouseY >= y && mouseY < (y + height)) {
-      box.filled = true;
       return box;
     }
   }
   return null;
+}
+
+export const showUnitInArmyList = (box:any) => {
+  if(box) {
+    let x = box.x;
+    let y = box.y;
+    const width = armyImgWidth;
+    const height = armyImgHeight;
+    loadImage(selectedUnitInRoster.imgSrc, (err:any, img:any) => {
+      dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+      mainMenuCtx.drawImage(img, x, y, width, height);
+    });
+  }
 }
