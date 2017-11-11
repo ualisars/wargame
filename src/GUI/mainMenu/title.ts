@@ -60,16 +60,6 @@ export const changeToComputer = () => {
   this.side = 'computer';
 }
 
-export const chooseSide = () => {
-  dragAndDropCanvas.addEventListener('click', (e:any) => {
-    let x = e.offsetX; // get X
-    let y = e.offsetY; // get Y
-    console.log('chooseSide', side);
-    onChoosePlayer(x, y);
-    onChooseComputer(x, y);
-  });
-}
-
 export const onChoosePlayer = (mouseX:number, mouseY:number) => {
   if(mouseX >= rosterWidth && mouseX < playerX1 && mouseY >= playerY0 && mouseY < playerY1) {
     changeToPlayer();
