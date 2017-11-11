@@ -1,11 +1,13 @@
 import {mainMenuCtx} from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
-import {titleHeight} from './title';
+import {
+  titleHeight,
+  side
+} from './sideSwitcher';
 import {
   rosterWidth,
   rosterHeight
 } from './unitRoster';
-import {side} from './title';
 import {
   playerArmy,
   computerArmy
@@ -19,9 +21,10 @@ export let armyImgHeight:number = 70;
 export let emptyBox:any;
 
 export const displayChosenUnits = () => {
+  mainMenuCtx.clearRect(rosterWidth, titleHeight, chosenUnitsWidth, chosenUnitsHeight);
   mainMenuCtx.fillStyle = '#cdd1d6';
-  mainMenuCtx.fillRect(rosterWidth, 0, chosenUnitsWidth, chosenUnitsHeight);
-  mainMenuCtx.strokeRect(rosterWidth, 0, chosenUnitsWidth, chosenUnitsHeight);
+  mainMenuCtx.fillRect(rosterWidth, titleHeight, chosenUnitsWidth, chosenUnitsHeight);
+  mainMenuCtx.strokeRect(rosterWidth, titleHeight, chosenUnitsWidth, chosenUnitsHeight);
   displayChosenUnitsTitle();
   displayArmy();
 }
@@ -40,6 +43,7 @@ export const displayArmy = (i:number = 1, x:number=rosterWidth+20, y:number=titl
   } else {
     army = computerArmy;
   }
+  console.log('army', army);
   if(army.length >= 1 && army.length >= i) {
     loadImage(army[i - 1].imgSrc, (err:any, img:any) => {
       mainMenuCtx.drawImage(img, x, y, armyImgWidth, armyImgHeight);
@@ -63,6 +67,7 @@ export const displayArmy = (i:number = 1, x:number=rosterWidth+20, y:number=titl
       filled: false
     };
     console.log('emptyBox:', emptyBox);
+    return;
   }
-  return;
+
 }

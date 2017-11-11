@@ -2,9 +2,9 @@ import {mainMenuCtx} from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 
 import {displayRoster} from './unitRoster';
-import {displayChosenUnits} from './chosenUnits';
+import {displayChosenUnits} from './army';
 import {displayInfo} from './info';
-import {displayTitle} from './title';
+import {displayTitle} from './sideSwitcher';
 import {dragAndDrop} from './dragAndDrop';
 
 export const launchMainMenu = () => {

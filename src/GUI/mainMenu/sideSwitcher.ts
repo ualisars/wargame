@@ -5,9 +5,11 @@ import {
 } from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import {rosterWidth} from './unitRoster';
-import {chosenUnitsWidth} from './chosenUnits';
 import {infoWidth} from './info';
-
+import{
+  chosenUnitsWidth,
+  displayChosenUnits
+} from './army';
 export const side:string = 'player';
 
 export const titleHeight = 70;
@@ -59,10 +61,12 @@ export const displayComputer = () => {
 
 export const changeToPlayer = () => {
   this.side = 'player';
+  displayChosenUnits();
 }
 
 export const changeToComputer = () => {
   this.side = 'computer';
+  displayChosenUnits();
 }
 
 export const onChoosePlayer = (mouseX:number, mouseY:number) => {

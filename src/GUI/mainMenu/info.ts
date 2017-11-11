@@ -4,7 +4,7 @@ import {rosterWidth} from './unitRoster';
 import {
   chosenUnitsWidth,
   chosenUnitsHeight
-} from './chosenUnits';
+} from './army';
 
 export const infoWidth = Math.round(WIDTH / 3);
 export const infoHeight = HEIGHT - 100;

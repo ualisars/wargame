@@ -1,6 +1,6 @@
 import {mainMenuCtx} from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
-import {titleHeight} from './title';
+import {titleHeight} from './sideSwitcher';
 import {roster} from './units';
 import {loadImage} from '../../utils/loadImage';
 

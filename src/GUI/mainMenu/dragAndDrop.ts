@@ -21,13 +21,14 @@ import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import {
   onChoosePlayer,
   onChooseComputer
-} from './title';
+} from './sideSwitcher';
 import {
   emptyBox,
   armyImgWidth,
   armyImgHeight,
-  displayArmy
-} from './chosenUnits';
+  displayArmy,
+  displayChosenUnits
+} from './army';
 
 
 export const dragAndDrop = () => {
@@ -44,10 +45,10 @@ export const dragAndDrop = () => {
       if(isUnitAddedToArmy(x,y)) { // draw unit is army list
         let unit = isUnitAddedToArmy(x,y);
         addUnitToArmy(unit);
-        displayArmy();
+        displayChosenUnits();
         dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
       } else {
-        displayArmy();
+        displayChosenUnits();
         dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
       }
     }
