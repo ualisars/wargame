@@ -5,19 +5,25 @@ import {
   rosterWidth,
   rosterHeight
 } from './unitRoster';
+import {side} from './title';
+import {
+  playerArmy,
+  computerArmy
+} from './units';
+import {loadImage} from '../../utils/loadImage';
 
 export const chosenUnitsWidth = Math.round(WIDTH / 3);
 export const chosenUnitsHeight = HEIGHT - 100;
 export let armyImgWidth:number = 70;
 export let armyImgHeight:number = 70;
-export const emptyBoxes:any[] = [];
+export let emptyBox:any;
 
 export const displayChosenUnits = () => {
   mainMenuCtx.fillStyle = '#cdd1d6';
   mainMenuCtx.fillRect(rosterWidth, 0, chosenUnitsWidth, chosenUnitsHeight);
   mainMenuCtx.strokeRect(rosterWidth, 0, chosenUnitsWidth, chosenUnitsHeight);
   displayChosenUnitsTitle();
-  displayEmptySpaces();
+  displayArmy();
 }
 
 const displayChosenUnitsTitle = () => {
@@ -27,27 +33,36 @@ const displayChosenUnitsTitle = () => {
   mainMenuCtx.fillText('Units', rosterWidth + 150, titleHeight + 20);
 }
 
-const displayEmptySpaces = () => {
-  let i:number = 1;
-  let x = rosterWidth + 20;
-  let y = titleHeight + 60;
-  while(i <= 20) {
-    emptyBoxes.push({
-      i,
-      x,
-      y,
-      filled: false
+export const displayArmy = (i:number = 1, x:number=rosterWidth+20, y:number=titleHeight+60) => {
+  let army:any[] = [];
+  if(side === 'player') {
+    army = playerArmy;
+  } else {
+    army = computerArmy;
+  }
+  if(army.length >= 1 && army.length >= i) {
+    loadImage(army[i - 1].imgSrc, (err:any, img:any) => {
+      mainMenuCtx.drawImage(img, x, y, armyImgWidth, armyImgHeight);
+      x += armyImgWidth + 10;
+      if(i % 5 === 0) {
+        y += armyImgHeight + 15;
+        x = rosterWidth + 20;
+      }
+      i++;
+      displayArmy(i,x,y);
     });
+  } else {
     mainMenuCtx.fillStyle = '#fff';
     mainMenuCtx.fillRect(x, y, armyImgWidth, armyImgHeight);
     mainMenuCtx.fillStyle = '#000';
     mainMenuCtx.strokeRect(x, y, armyImgWidth, armyImgHeight);
-    x += armyImgWidth + 10;
-    if(i % 5 === 0) {
-      y += armyImgHeight + 15;
-      x = rosterWidth + 20;
-    }
-    i++;
+    emptyBox = {
+      i,
+      x,
+      y,
+      filled: false
+    };
+    console.log('emptyBox:', emptyBox);
   }
-  console.log('emptyBoxes:', emptyBoxes);
+  return;
 }

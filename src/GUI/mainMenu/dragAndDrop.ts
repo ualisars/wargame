@@ -23,10 +23,12 @@ import {
   onChooseComputer
 } from './title';
 import {
-  emptyBoxes,
+  emptyBox,
   armyImgWidth,
-  armyImgHeight
+  armyImgHeight,
+  displayArmy
 } from './chosenUnits';
+
 
 export const dragAndDrop = () => {
   dragAndDropCanvas.addEventListener('click', (e:any) => {
@@ -40,13 +42,12 @@ export const dragAndDrop = () => {
     if(selectedUnitInRoster) {
       console.log('unit is added:', isUnitAddedToArmy(x, y));
       if(isUnitAddedToArmy(x,y)) { // draw unit is army list
-        let box = isUnitAddedToArmy(x,y);
-        if(!box.filled) { // box clear
-          box.filled = true;
-          showUnitInArmyList(box);
-          dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
-        }
+        let unit = isUnitAddedToArmy(x,y);
+        addUnitToArmy(unit);
+        displayArmy();
+        dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
       } else {
+        displayArmy();
         dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
       }
     }
@@ -96,25 +97,23 @@ export let onDragUnit = (mouseX:number, mouseY:number) => {
 export const isUnitAddedToArmy = (mouseX:number, mouseY:number):any => {
   const width = armyImgWidth;
   const height = armyImgHeight;
-  for(let box of emptyBoxes) {
-    let x = box.x;
-    let y = box.y;
-    if(mouseX >= x && mouseX < (x + width) && mouseY >= y && mouseY < (y + height)) {
-      return box;
-    }
+  let x = emptyBox.x;
+  let y = emptyBox.y;
+  if(mouseX >= x && mouseX < (x + width) && mouseY >= y && mouseY < (y + height)) {
+    return selectedUnitInRoster;
   }
   return null;
 }
 
-export const showUnitInArmyList = (box:any) => {
-  if(box) {
-    let x = box.x;
-    let y = box.y;
-    const width = armyImgWidth;
-    const height = armyImgHeight;
-    loadImage(selectedUnitInRoster.imgSrc, (err:any, img:any) => {
-      dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-      mainMenuCtx.drawImage(img, x, y, width, height);
-    });
-  }
-}
+// export const showUnitInArmyList = (box:any) => {
+//   if(box) {
+//     let x = box.x;
+//     let y = box.y;
+//     const width = armyImgWidth;
+//     const height = armyImgHeight;
+//     // loadImage(selectedUnitInRoster.imgSrc, (err:any, img:any) => {
+//     //   dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+//     //   mainMenuCtx.drawImage(img, x, y, width, height);
+//     // });
+//   }
+// }

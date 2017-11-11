@@ -13,20 +13,33 @@ import {
   isUnitInArray,
   deleteUnitFromArray
 } from '../../utils/unitUtils';
+import {side} from './title';
 
 export let roster:any[] = [];
 export let selectedUnitInRoster:any = null;
-export let army:any[] = [];
+export let playerArmy:any[] = [];
+export let computerArmy:any[] = [];
 
 export const addUnitToArmy = (unit:any) => {
+  let army:any[];
+  if(side === 'player') {
+    army = playerArmy;
+  } else {
+    army = computerArmy;
+  }
   if(unit) {
-    if(!isUnitInArray(unit, army)) {
       army.push(unit);
-    }
+      console.log('unit', unit.name, 'is added');
   }
 }
 
 export const removeUnitFromArmy = (unit:any) => {
+  let army:any[];
+  if(side === 'player') {
+    army = playerArmy;
+  } else {
+    army = computerArmy;
+  }
   if(unit && isUnitInArray(unit, army)) {
     deleteUnitFromArray(unit, army);
   }
