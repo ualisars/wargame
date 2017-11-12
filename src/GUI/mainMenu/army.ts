@@ -1,30 +1,32 @@
-import {mainMenuCtx} from './mainMenuSettings';
+import {
+  mainMenuCtx,
+  unitRosterWidth,
+  unitRosterHeight
+} from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import {
   titleHeight,
   side
 } from './sideSwitcher';
 import {
-  rosterWidth,
-  rosterHeight
-} from './unitRoster';
+  armyLayoutWidth,
+  armyLayoutHeight
+} from './mainMenuSettings';
 import {
   playerArmy,
   computerArmy
 } from './units';
 import {loadImage} from '../../utils/loadImage';
 
-export const chosenUnitsWidth = Math.round(WIDTH / 3);
-export const chosenUnitsHeight = HEIGHT - 100;
 export let armyImgWidth:number = 70;
 export let armyImgHeight:number = 70;
 export let emptyBox:any;
 
 export const displayChosenUnits = () => {
-  mainMenuCtx.clearRect(rosterWidth, titleHeight, chosenUnitsWidth, chosenUnitsHeight);
+  mainMenuCtx.clearRect(unitRosterWidth, titleHeight, armyLayoutWidth, armyLayoutHeight);
   mainMenuCtx.fillStyle = '#cdd1d6';
-  mainMenuCtx.fillRect(rosterWidth, titleHeight, chosenUnitsWidth, chosenUnitsHeight);
-  mainMenuCtx.strokeRect(rosterWidth, titleHeight, chosenUnitsWidth, chosenUnitsHeight);
+  mainMenuCtx.fillRect(unitRosterWidth, titleHeight, armyLayoutWidth, armyLayoutHeight);
+  mainMenuCtx.strokeRect(unitRosterWidth, titleHeight, armyLayoutWidth, armyLayoutHeight);
   displayChosenUnitsTitle();
   displayArmy();
 }
@@ -33,10 +35,10 @@ const displayChosenUnitsTitle = () => {
   mainMenuCtx.fillStyle =  '#000';
   mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
-  mainMenuCtx.fillText('Units', rosterWidth + 150, titleHeight + 20);
+  mainMenuCtx.fillText('Units', unitRosterWidth + 150, titleHeight + 20);
 }
 
-export const displayArmy = (i:number = 1, x:number=rosterWidth+20, y:number=titleHeight+60) => {
+export const displayArmy = (i:number = 1, x:number=unitRosterWidth+20, y:number=titleHeight+60) => {
   let army:any[] = [];
   if(side === 'player') {
     army = playerArmy;
@@ -50,7 +52,7 @@ export const displayArmy = (i:number = 1, x:number=rosterWidth+20, y:number=titl
       x += armyImgWidth + 10;
       if(i % 5 === 0) {
         y += armyImgHeight + 15;
-        x = rosterWidth + 20;
+        x = unitRosterWidth + 20;
       }
       i++;
       displayArmy(i,x,y);

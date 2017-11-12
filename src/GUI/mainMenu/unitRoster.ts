@@ -1,18 +1,20 @@
-import {mainMenuCtx} from './mainMenuSettings';
+import {
+  mainMenuCtx,
+  unitRosterWidth,
+  unitRosterHeight
+} from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import {titleHeight} from './sideSwitcher';
 import {roster} from './units';
 import {loadImage} from '../../utils/loadImage';
 
-export const rosterWidth = Math.round(WIDTH / 3);
-export const rosterHeight = HEIGHT - 100;
 export const rosterImgWidth:number = 80;
 export const rosterImgHeight:number = 80;
 
 
 export const displayRoster = () => {
   mainMenuCtx.fillStyle = '#cdd1d6';
-  mainMenuCtx.fillRect(0,0, rosterWidth, rosterHeight);
+  mainMenuCtx.fillRect(0,0, unitRosterWidth, unitRosterHeight);
   displayRosterTitle();
 }
 
