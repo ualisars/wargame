@@ -7,12 +7,21 @@ import {
   infoLayoutHeight,
   titleHeight,
   showBattleSettings,
-  showUnitInfo
+  showUnitInfo,
+  changeBattleSettingsToTrue,
+  changeUnitInfoToTrue
 } from './mainMenuSettings';
 
+const width = 160;
+const height = 30;
+const battleSettingsX = armyLayoutWidth + unitRosterWidth + 50;
+const battleSettingsY = titleHeight;
+const unitInfoX = armyLayoutWidth + unitRosterWidth + 50 + width + 20;
+const unitInfoY = titleHeight;
 export const displayInfo = () => {
+  mainMenuCtx.clearRect(armyLayoutWidth + unitRosterWidth, titleHeight, infoLayoutWidth, infoLayoutHeight);
   mainMenuCtx.fillStyle = '#cdd1d6';
-  mainMenuCtx.fillRect(armyLayoutWidth + unitRosterWidth, 0, infoLayoutWidth, infoLayoutHeight);
+  mainMenuCtx.fillRect(armyLayoutWidth + unitRosterWidth, titleHeight, infoLayoutWidth, infoLayoutHeight);
   showSwither();
 }
 
@@ -21,40 +30,67 @@ export const showSwither = () => {
   unitInfoSwither();
 }
 
+export const onChooseInfo = (x:number, y:number) => {
+  if(onChooseBattleSettings(x,y)) {
+    changeBattleSettingsToTrue();
+    displayInfo(); // redraw info
+  }
+  if(onChooseUnitInfo(x,y)) {
+    changeUnitInfoToTrue();
+    displayInfo(); // redraw info
+  }
+}
+
 export const battleSettingsSwither = () => {
-  let width = 160;
-  let height = 30;
-  let startX = armyLayoutWidth + unitRosterWidth + 50;
-  let startY = titleHeight;
   if(showBattleSettings) {
     mainMenuCtx.fillStyle = '#fff';
   } else {
     mainMenuCtx.fillStyle = '#cdd1d6';
   }
-  mainMenuCtx.fillRect(startX, startY, width, height);
+  mainMenuCtx.fillRect(battleSettingsX, battleSettingsY, width, height);
   mainMenuCtx.fillStyle = '#000';
-  mainMenuCtx.strokeRect(startX, startY, width, height);
+  mainMenuCtx.strokeRect(battleSettingsX, battleSettingsY, width, height);
   // text
   mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
-  mainMenuCtx.fillText('Battle Settings', startX + 5, startY + 20);
+  mainMenuCtx.fillText('Battle Settings', battleSettingsX + 5, battleSettingsY + 20);
 }
 
 export const unitInfoSwither = () => {
-  let width = 160;
-  let height = 30;
-  let startX = armyLayoutWidth + unitRosterWidth + 50 + width + 20;
-  let startY = titleHeight;
   if(showUnitInfo) {
     mainMenuCtx.fillStyle = '#fff';
   } else {
     mainMenuCtx.fillStyle = '#cdd1d6';
   }
-  mainMenuCtx.fillRect(startX, startY, width, height);
+  mainMenuCtx.fillRect(unitInfoX, unitInfoY, width, height);
   mainMenuCtx.fillStyle = '#000';
-  mainMenuCtx.strokeRect(startX, startY, width, height);
+  mainMenuCtx.strokeRect(unitInfoX, unitInfoY, width, height);
   // text
   mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
-  mainMenuCtx.fillText('Unit Info', startX + 35, startY + 20);
+  mainMenuCtx.fillText('Unit Info', unitInfoX + 35, unitInfoY + 20);
+}
+
+export const onChooseBattleSettings = (mouseX:number, mouseY:number) => {
+  let x0 = battleSettingsX;
+  let x1 = battleSettingsX + width;
+  let y0 = battleSettingsY;
+  let y1 = battleSettingsY + height;
+  if(mouseX >= x0 && mouseX < x1 && mouseY >= y0 && mouseY < y1) {
+    console.log('battleSettings has been chosen');
+    return true;
+  }
+  return false;
+}
+
+export const onChooseUnitInfo = (mouseX:number, mouseY:number) => {
+  let x0 = unitInfoX;
+  let x1 = unitInfoX + width;
+  let y0 = unitInfoY;
+  let y1 = unitInfoY + height;
+  if(mouseX >= x0 && mouseX < x1 && mouseY >= y0 && mouseY < y1) {
+    console.log('unitInfo is chosen');
+    return true;
+  }
+  return false;
 }

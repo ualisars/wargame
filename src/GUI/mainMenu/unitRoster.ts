@@ -2,7 +2,7 @@ import {
   mainMenuCtx,
   unitRosterWidth,
   unitRosterHeight,
-  titleHeight
+  titleHeight,
 } from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import {roster} from './units';

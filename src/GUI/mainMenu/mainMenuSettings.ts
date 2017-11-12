@@ -22,4 +22,14 @@ export let showUnitInfo:boolean = false;
 
 // define 2d context
 export const mainMenuCtx = mainMenu.getContext('2d');
-export const dragAndDropCanvasCtx = dragAndDropCanvas.getContext('2d')
+export const dragAndDropCanvasCtx = dragAndDropCanvas.getContext('2d');
+
+export const changeBattleSettingsToTrue = () => {
+  showBattleSettings = true;
+  showUnitInfo = false;
+}
+
+export const changeUnitInfoToTrue = () => {
+  showBattleSettings = false;
+  showUnitInfo = true;
+}

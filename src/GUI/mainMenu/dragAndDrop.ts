@@ -29,6 +29,7 @@ import {
   displayArmy,
   displayChosenUnits
 } from './army';
+import {onChooseInfo} from './info';
 
 
 export const dragAndDrop = () => {
@@ -38,6 +39,7 @@ export const dragAndDrop = () => {
     let y = e.offsetY; // get Y
     console.log('Position x', e.offsetX); // get X
     console.log('Position y', e.offsetY); // get Y
+    onChooseInfo(x,y);
     onChoosePlayer(x, y);
     onChooseComputer(x, y);
     if(selectedUnitInRoster) {
