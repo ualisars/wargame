@@ -1,10 +1,10 @@
 import {
   mainMenuCtx,
   unitRosterWidth,
-  unitRosterHeight
+  unitRosterHeight,
+  titleHeight
 } from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
-import {titleHeight} from './sideSwitcher';
 import {roster} from './units';
 import {loadImage} from '../../utils/loadImage';
 

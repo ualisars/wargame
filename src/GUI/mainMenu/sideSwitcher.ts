@@ -5,6 +5,7 @@ import {
   unitRosterWidth,
   armyLayoutWidth,
   infoLayoutWidth,
+  titleHeight
 } from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import{
@@ -12,7 +13,6 @@ import{
 } from './army';
 export const side:string = 'player';
 
-export const titleHeight = 70;
 let playerX0 = armyLayoutWidth;
 let playerX1 = armyLayoutWidth + (armyLayoutWidth / 2);
 let playerY0 = 0
