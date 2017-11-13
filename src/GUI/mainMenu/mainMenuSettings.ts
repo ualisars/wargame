@@ -10,11 +10,11 @@ dragAndDropCanvas.width = WIDTH;
 dragAndDropCanvas.height = HEIGHT;
 
 export let armyLayoutWidth:number = Math.round(WIDTH / 3);
-export let armyLayoutHeight:number = HEIGHT - 100;
+export let armyLayoutHeight:number = HEIGHT - 140;
 export let unitRosterWidth:number = Math.round(WIDTH / 3);
-export let unitRosterHeight:number = HEIGHT - 100;
+export let unitRosterHeight:number = HEIGHT - 140;
 export let infoLayoutWidth:number = Math.round(WIDTH / 3);;
-export let infoLayoutHeight:number = HEIGHT - 100;
+export let infoLayoutHeight:number = HEIGHT - 140;
 export const titleHeight = 70;
 
 export let showBattleSettings:boolean = true;

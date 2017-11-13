@@ -4,4 +4,4 @@ import {launchMainMenu} from './GUI/mainMenu/mainMenuLaunch';
 import {launchBattle} from './launchBattle';
 launchMainMenu();
 // mainMenu.style = 'z:index: 0';
-// launchBattle();
+//launchBattle();

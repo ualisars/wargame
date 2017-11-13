@@ -30,6 +30,7 @@ import {
   displayChosenUnits
 } from './army';
 import {onChooseInfo} from './info';
+import {changeTotalMoney} from './battleSettings';
 
 
 export const dragAndDrop = () => {
@@ -39,6 +40,7 @@ export const dragAndDrop = () => {
     let y = e.offsetY; // get Y
     console.log('Position x', e.offsetX); // get X
     console.log('Position y', e.offsetY); // get Y
+    changeTotalMoney(x,y); // test 
     onChooseInfo(x,y);
     onChoosePlayer(x, y);
     onChooseComputer(x, y);

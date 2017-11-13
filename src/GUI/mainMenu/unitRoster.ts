@@ -14,7 +14,7 @@ export const rosterImgHeight:number = 80;
 
 export const displayRoster = () => {
   mainMenuCtx.fillStyle = '#cdd1d6';
-  mainMenuCtx.fillRect(0,0, unitRosterWidth, unitRosterHeight);
+  mainMenuCtx.fillRect(0,titleHeight, unitRosterWidth, unitRosterHeight);
   displayRosterTitle();
 }
 

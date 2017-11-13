@@ -11,9 +11,10 @@ import {
   changeBattleSettingsToTrue,
   changeUnitInfoToTrue
 } from './mainMenuSettings';
+import {battleSettings} from './battleSettings';
 
-const width = 160;
-const height = 30;
+export const width = 160;
+export const height = 30;
 const battleSettingsX = armyLayoutWidth + unitRosterWidth + 50;
 const battleSettingsY = titleHeight;
 const unitInfoX = armyLayoutWidth + unitRosterWidth + 50 + width + 20;
@@ -28,6 +29,9 @@ export const displayInfo = () => {
 export const showSwither = () => {
   battleSettingsSwither();
   unitInfoSwither();
+  if(showBattleSettings) {
+    battleSettings();
+  }
 }
 
 export const onChooseInfo = (x:number, y:number) => {
