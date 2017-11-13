@@ -2,14 +2,16 @@ import {
   mainMenuCtx,
   armyLayoutWidth,
   unitRosterWidth,
-  titleHeight
+  titleHeight,
+  setTotalMoney,
+  totalMoney
 } from './mainMenuSettings';
 
-export let totalMoney:number = 400;
+
 const moneyOptions:any[] = [
   200, 300, 400, 600, 1000
 ];
-const moneyBoxes:any[] = [];
+let moneyBoxes:any[] = [];
 
 const boxWidth:number = 40;
 const boxHeight:number = 40;
@@ -18,6 +20,7 @@ export const battleSettings = () => {
 }
 
 const fillTotalMoney = () => {
+  moneyBoxes = [];
   let x = armyLayoutWidth + unitRosterWidth + 100;
   let y = titleHeight + 50;
   for(let money of moneyOptions) {
@@ -43,7 +46,9 @@ const showTotalMoney = () => {
 export const changeTotalMoney = (mouseX:number, mouseY:number) => {
   for(let box of moneyBoxes) {
     if(mouseX >= box.x && mouseX < box.x + boxWidth && mouseY >= box.y && mouseY < box.y + boxHeight) {
-      console.error('box:', box.money, 'is pressed');
+      setTotalMoney(box.money);
+      console.log('totalMoney', totalMoney);
+      showTotalMoney();
     }
   }
 }
