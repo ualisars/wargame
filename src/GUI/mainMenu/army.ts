@@ -16,7 +16,8 @@ import {
 import {
   playerArmy,
   computerArmy,
-  selectedUnitInRoster
+  selectedUnitInRoster,
+  removeUnitFromArmy
 } from './units';
 import {loadImage} from '../../utils/loadImage';
 
@@ -86,6 +87,7 @@ export const onChooseUnitInArmy = (mouseX:number, mouseY:number) => {
   } else {
     army = computerArmy;
   }
+  let selectedUnit:any = null;
   console.error('army', army);
   for(let unit of army) {
       let x0:number = unit.armyPosition.x;
@@ -93,12 +95,16 @@ export const onChooseUnitInArmy = (mouseX:number, mouseY:number) => {
       let y0:number = unit.armyPosition.y;
       let y1:number = y0 + armyImgHeight;
       if(mouseX >= x0 && mouseX < x1 && mouseY > y0 && mouseY < y1) {
-        drawRemoveIcon(unit);
+        selectedUnit = unit;
       } else {
         if(!selectedUnitInRoster) { // unit is not dragged
           dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
         }
       }
+  }
+  console.log('selectedUnit', selectedUnit);
+  if(selectedUnit) {
+    drawRemoveIcon(selectedUnit);
   }
 }
 
@@ -132,4 +138,25 @@ export const drawCloseImageForUnit = (unit:any) => {
   dragAndDropCanvasCtx.moveTo(line2X0, line2Y0);
   dragAndDropCanvasCtx.lineTo(line2X1, line2Y1);
   dragAndDropCanvasCtx.stroke();
+}
+
+export const isUnitShouldBeRemoved = (mouseX:number, mouseY:number) => {
+  let army:any[] = [];
+  if(side === 'player') {
+    army = playerArmy;
+  } else {
+    army = computerArmy;
+  }
+  for(let unit of army) {
+    let x0 = unit.armyPosition.x + armyImgWidth - 15;
+    let x1 = unit.armyPosition.x + armyImgWidth - 5;
+    let y0 = unit.armyPosition.y + 4;
+    let y1 = unit.armyPosition.y + 15;
+    console.log('x0', x0, 'x1', x1);
+    console.log('y0', y0, 'y1', y1);
+    if(mouseX >= x0 && mouseX < x1 && mouseY >= y0 && mouseY < y1) {
+      return unit;
+    }
+  }
+  return null;
 }

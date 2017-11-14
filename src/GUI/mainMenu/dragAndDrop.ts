@@ -30,12 +30,12 @@ import {
   armyImgWidth,
   armyImgHeight,
   displayArmy,
-  displayChosenUnits
+  displayChosenUnits,
+  isUnitShouldBeRemoved
 } from './army';
 import {onChooseUnitInArmy} from './army';
 import {onChooseInfo} from './info';
 import {changeTotalMoney} from './battleSettings';
-
 
 export const dragAndDrop = () => {
   dragAndDropCanvas.addEventListener('click', (e:any) => {
@@ -48,6 +48,13 @@ export const dragAndDrop = () => {
     onChooseInfo(x,y);
     onChoosePlayer(x, y);
     onChooseComputer(x, y);
+    if(isUnitShouldBeRemoved(x,y)) {
+      console.log('remove unit');
+      let unit = isUnitShouldBeRemoved(x, y);
+      removeUnitFromArmy(unit);
+      decreaseSpendedGold(unit);
+      displayChosenUnits();
+    }
     if(selectedUnitInRoster) {
       console.log('unit is added:', isUnitAddedToArmy(x, y));
       if(isUnitAddedToArmy(x,y)) { // draw unit is army list

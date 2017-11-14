@@ -41,7 +41,11 @@ export const removeUnitFromArmy = (unit:any) => {
     army = computerArmy;
   }
   if(unit && isUnitInArray(unit, army)) {
-    deleteUnitFromArray(unit, army);
+    if(side === 'player') {
+      playerArmy = deleteUnitFromArray(unit, playerArmy);
+    } else {
+      computerArmy = deleteUnitFromArray(unit, computerArmy);
+    }
   }
 }
 export const selectUnitInRoster = (unit:any) => {
