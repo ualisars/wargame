@@ -5,13 +5,12 @@ import {
   unitRosterWidth,
   armyLayoutWidth,
   infoLayoutWidth,
-  titleHeight
+  titleHeight,
+  computerSpendedGold,
+  playerSpendedGold,
+  totalGold
 } from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
-import {
-  totalGold,
-  spendedGold
-} from './mainMenuSettings';
 import{
   displayChosenUnits
 } from './army';
@@ -70,6 +69,13 @@ export const displayComputer = () => {
 export const displayRemainGold = () => {
   mainMenuCtx.fillStyle = '#cdd1d6';
   mainMenuCtx.font = '24px serif';
+  let spendedGold:number;
+  if(side === 'computer') {
+    spendedGold = computerSpendedGold;
+  }
+  else if(side === 'player') {
+    spendedGold = playerSpendedGold;
+  }
   mainMenuCtx.fillText(spendedGold + '/' + totalGold, goldX, goldY);
 }
 

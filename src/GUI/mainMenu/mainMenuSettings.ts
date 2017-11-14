@@ -16,7 +16,6 @@ export let unitRosterHeight:number = HEIGHT - 140;
 export let infoLayoutWidth:number = Math.round(WIDTH / 3);;
 export let infoLayoutHeight:number = HEIGHT - 140;
 export let totalGold:number = 400;
-export let spendedGold:number = 0;
 export let playerSpendedGold:number = 0;
 export let computerSpendedGold:number = 0;
 export const titleHeight = 70;

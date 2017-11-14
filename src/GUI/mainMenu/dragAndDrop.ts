@@ -2,7 +2,9 @@ import {
   mainMenu,
   mainMenuCtx,
   dragAndDropCanvas,
-  dragAndDropCanvasCtx
+  dragAndDropCanvasCtx,
+  decreaseSpendedGold,
+  increaseSpendedGold
 } from './mainMenuSettings';
 
 import {
@@ -20,7 +22,8 @@ import {loadImage} from '../../utils/loadImage';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import {
   onChoosePlayer,
-  onChooseComputer
+  onChooseComputer,
+  displayTitle
 } from './sideSwitcher';
 import {
   emptyBox,
@@ -40,7 +43,7 @@ export const dragAndDrop = () => {
     let y = e.offsetY; // get Y
     console.log('Position x', e.offsetX); // get X
     console.log('Position y', e.offsetY); // get Y
-    changeTotalMoney(x,y); // test 
+    changeTotalMoney(x,y); // test
     onChooseInfo(x,y);
     onChoosePlayer(x, y);
     onChooseComputer(x, y);
@@ -50,6 +53,8 @@ export const dragAndDrop = () => {
         let unit = isUnitAddedToArmy(x,y);
         addUnitToArmy(unit);
         displayChosenUnits();
+        increaseSpendedGold(unit.cost);
+        displayTitle(); // redraw totalGold in title
         dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
       } else {
         displayChosenUnits();
@@ -109,16 +114,3 @@ export const isUnitAddedToArmy = (mouseX:number, mouseY:number):any => {
   }
   return null;
 }
-
-// export const showUnitInArmyList = (box:any) => {
-//   if(box) {
-//     let x = box.x;
-//     let y = box.y;
-//     const width = armyImgWidth;
-//     const height = armyImgHeight;
-//     // loadImage(selectedUnitInRoster.imgSrc, (err:any, img:any) => {
-//     //   dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-//     //   mainMenuCtx.drawImage(img, x, y, width, height);
-//     // });
-//   }
-// }
