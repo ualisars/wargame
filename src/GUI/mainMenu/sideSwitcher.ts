@@ -8,7 +8,9 @@ import {
   titleHeight,
   computerSpendedGold,
   playerSpendedGold,
-  totalGold
+  totalGold,
+  changeToComputer,
+  changeToPlayer
 } from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import{
@@ -67,8 +69,6 @@ export const displayComputer = () => {
 }
 
 export const displayRemainGold = () => {
-  mainMenuCtx.fillStyle = '#cdd1d6';
-  mainMenuCtx.font = '24px serif';
   let spendedGold:number;
   if(side === 'computer') {
     spendedGold = computerSpendedGold;
@@ -76,22 +76,20 @@ export const displayRemainGold = () => {
   else if(side === 'player') {
     spendedGold = playerSpendedGold;
   }
+  if(spendedGold > totalGold) {
+    mainMenuCtx.fillStyle = 'red';
+  } else {
+    mainMenuCtx.fillStyle = '#cdd1d6';
+  }
+  mainMenuCtx.font = '24px serif';
   mainMenuCtx.fillText(spendedGold + '/' + totalGold, goldX, goldY);
-}
-
-export const changeToPlayer = () => {
-  this.side = 'player';
-  displayChosenUnits();
-}
-
-export const changeToComputer = () => {
-  this.side = 'computer';
-  displayChosenUnits();
 }
 
 export const onChoosePlayer = (mouseX:number, mouseY:number) => {
   if(mouseX >= unitRosterWidth && mouseX < playerX1 && mouseY >= playerY0 && mouseY < playerY1) {
     changeToPlayer();
+    displayChosenUnits();
+    displayPlayer();
     displayTitle();
   }
 }
@@ -99,6 +97,7 @@ export const onChoosePlayer = (mouseX:number, mouseY:number) => {
 export const onChooseComputer = (mouseX:number, mouseY:number) => {
   if(mouseX >= computerX0 && mouseX < computerX1 && mouseY >= computerY0 && mouseY < computerY1) {
     changeToComputer();
+    displayChosenUnits();
     displayComputer();
     displayTitle();
     console.log('side', side);

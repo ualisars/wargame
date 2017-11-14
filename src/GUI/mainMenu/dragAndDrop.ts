@@ -32,6 +32,7 @@ import {
   displayArmy,
   displayChosenUnits
 } from './army';
+import {onChooseUnitInArmy} from './army';
 import {onChooseInfo} from './info';
 import {changeTotalMoney} from './battleSettings';
 
@@ -68,6 +69,7 @@ export const dragAndDrop = () => {
     let x = e.offsetX; // get X
     let y = e.offsetY; // get Y
     onDragUnit(x, y);
+    onChooseUnitInArmy(x,y);
   });
 }
 

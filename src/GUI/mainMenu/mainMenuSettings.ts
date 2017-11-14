@@ -58,3 +58,11 @@ export const decreaseSpendedGold = (gold:number) => {
     playerSpendedGold -= gold;
   }
 }
+
+export const changeToPlayer = () => {
+  side = 'player';
+}
+
+export const changeToComputer = () => {
+  side = 'computer';
+}
