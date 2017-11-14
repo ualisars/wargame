@@ -7,6 +7,8 @@ import {
   totalMoney
 } from './mainMenuSettings';
 
+const moneyBoxStartX:number = armyLayoutWidth + unitRosterWidth + 100;
+const moneyBoxStartY:number = titleHeight + 80;
 
 const moneyOptions:any[] = [
   200, 300, 400, 600, 1000
@@ -21,8 +23,8 @@ export const battleSettings = () => {
 
 const fillTotalMoney = () => {
   moneyBoxes = [];
-  let x = armyLayoutWidth + unitRosterWidth + 100;
-  let y = titleHeight + 50;
+  let x = moneyBoxStartX;
+  let y = moneyBoxStartY;
   for(let money of moneyOptions) {
     moneyBoxes.push({
       x,
@@ -34,9 +36,13 @@ const fillTotalMoney = () => {
 }
 
 const showTotalMoney = () => {
+  let startTotalMoneyTitleX:number = moneyBoxStartX + 40;
+  let startTotalMoneyTitleY:number = moneyBoxStartY - 20;
   mainMenuCtx.fillStyle = '#000';
-  mainMenuCtx.font = '12px serif';
+  mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
+  mainMenuCtx.fillText('Total Money:', startTotalMoneyTitleX, startTotalMoneyTitleY);
+  mainMenuCtx.font = '12px serif';
   fillTotalMoney();
   for(let box of moneyBoxes) {
     drawMoneyBox(box.x, box.y, box.money);
@@ -47,7 +53,6 @@ export const changeTotalMoney = (mouseX:number, mouseY:number) => {
   for(let box of moneyBoxes) {
     if(mouseX >= box.x && mouseX < box.x + boxWidth && mouseY >= box.y && mouseY < box.y + boxHeight) {
       setTotalMoney(box.money);
-      console.log('totalMoney', totalMoney);
       showTotalMoney();
     }
   }
@@ -59,7 +64,6 @@ export const drawMoneyBox = (x:number, y:number, amount:number) => {
   } else {
     mainMenuCtx.fillStyle = '#cdd1d6';
   }
-  console.error('x:', x, 'y:', y, 'money:', amount);
   mainMenuCtx.fillRect(x, y, boxWidth, boxHeight);
   mainMenuCtx.fillStyle = '#000';
   mainMenuCtx.strokeRect(x, y, boxWidth, boxHeight);
