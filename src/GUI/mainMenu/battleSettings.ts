@@ -3,17 +3,20 @@ import {
   armyLayoutWidth,
   unitRosterWidth,
   titleHeight,
-  setTotalMoney,
-  totalMoney
+  setTotalGold,
+  totalGold
 } from './mainMenuSettings';
+import {displayTitle} from './sideSwitcher';
 
-const moneyBoxStartX:number = armyLayoutWidth + unitRosterWidth + 100;
-const moneyBoxStartY:number = titleHeight + 80;
+const goldBoxStartX:number = armyLayoutWidth + unitRosterWidth + 100;
+const goldBoxStartY:number = titleHeight + 80;
+let startTotalMoneyTitleX:number = goldBoxStartX + 40;
+let startTotalMoneyTitleY:number = goldBoxStartY - 20;
 
-const moneyOptions:any[] = [
+const goldOptions:any[] = [
   200, 300, 400, 600, 1000
 ];
-let moneyBoxes:any[] = [];
+let goldBoxes:any[] = [];
 
 const boxWidth:number = 40;
 const boxHeight:number = 40;
@@ -21,45 +24,44 @@ export const battleSettings = () => {
   showTotalMoney();
 }
 
-const fillTotalMoney = () => {
-  moneyBoxes = [];
-  let x = moneyBoxStartX;
-  let y = moneyBoxStartY;
-  for(let money of moneyOptions) {
-    moneyBoxes.push({
+const fillTotalGold = () => {
+  goldBoxes = [];
+  let x = goldBoxStartX;
+  let y = goldBoxStartY;
+  for(let gold of goldOptions) {
+    goldBoxes.push({
       x,
       y,
-      money
+      gold
     });
     x += boxWidth + 5;
   }
 }
 
 const showTotalMoney = () => {
-  let startTotalMoneyTitleX:number = moneyBoxStartX + 40;
-  let startTotalMoneyTitleY:number = moneyBoxStartY - 20;
   mainMenuCtx.fillStyle = '#000';
   mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
   mainMenuCtx.fillText('Total Money:', startTotalMoneyTitleX, startTotalMoneyTitleY);
   mainMenuCtx.font = '12px serif';
-  fillTotalMoney();
-  for(let box of moneyBoxes) {
-    drawMoneyBox(box.x, box.y, box.money);
+  fillTotalGold();
+  for(let box of goldBoxes) {
+    drawMoneyBox(box.x, box.y, box.gold);
   }
 }
 
 export const changeTotalMoney = (mouseX:number, mouseY:number) => {
-  for(let box of moneyBoxes) {
+  for(let box of goldBoxes) {
     if(mouseX >= box.x && mouseX < box.x + boxWidth && mouseY >= box.y && mouseY < box.y + boxHeight) {
-      setTotalMoney(box.money);
+      setTotalGold(box.gold);
       showTotalMoney();
+      displayTitle(); // redraw totalGold in the titleComponent
     }
   }
 }
 
 export const drawMoneyBox = (x:number, y:number, amount:number) => {
-  if(amount === totalMoney) {
+  if(amount === totalGold) {
     mainMenuCtx.fillStyle = '#fff';
   } else {
     mainMenuCtx.fillStyle = '#cdd1d6';

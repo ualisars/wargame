@@ -8,10 +8,14 @@ import {
   titleHeight
 } from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
+import {
+  totalGold,
+  spendedGold
+} from './mainMenuSettings';
 import{
   displayChosenUnits
 } from './army';
-export const side:string = 'player';
+import {side} from './mainMenuSettings';
 
 let playerX0 = armyLayoutWidth;
 let playerX1 = armyLayoutWidth + (armyLayoutWidth / 2);
@@ -26,6 +30,9 @@ let computerY1 = titleHeight / 2;
 let playerWidth = armyLayoutWidth / 2;
 let computerWidth = armyLayoutWidth / 2;
 
+const goldX:number = playerX0 + playerWidth;
+const goldY:number = (titleHeight / 2) + 25;
+
 export const displayTitle = () => {
   mainMenuCtx.clearRect(0,0, WIDTH, titleHeight);
   mainMenuCtx.fillStyle =  '#2c2f33';
@@ -35,6 +42,7 @@ export const displayTitle = () => {
   mainMenuCtx.textAlign = 'center';
   displayPlayer();
   displayComputer();
+  displayRemainGold();
 }
 
 export const displayPlayer = () => {
@@ -57,6 +65,12 @@ export const displayComputer = () => {
   mainMenuCtx.fillStyle =  '#000';
   mainMenuCtx.font = '28px serif';
   mainMenuCtx.fillText('Computer', armyLayoutWidth + 300, (titleHeight / 2) - 10);
+}
+
+export const displayRemainGold = () => {
+  mainMenuCtx.fillStyle = '#cdd1d6';
+  mainMenuCtx.font = '24px serif';
+  mainMenuCtx.fillText(spendedGold + '/' + totalGold, goldX, goldY);
 }
 
 export const changeToPlayer = () => {

@@ -7,7 +7,7 @@ import {
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
 import {
   side
-} from './sideSwitcher';
+} from './mainMenuSettings';
 import {
   armyLayoutWidth,
   armyLayoutHeight

@@ -15,8 +15,12 @@ export let unitRosterWidth:number = Math.round(WIDTH / 3);
 export let unitRosterHeight:number = HEIGHT - 140;
 export let infoLayoutWidth:number = Math.round(WIDTH / 3);;
 export let infoLayoutHeight:number = HEIGHT - 140;
-export let totalMoney:number = 400;
+export let totalGold:number = 400;
+export let spendedGold:number = 0;
+export let playerSpendedGold:number = 0;
+export let computerSpendedGold:number = 0;
 export const titleHeight = 70;
+export let side:string = 'player';
 
 export let showBattleSettings:boolean = true;
 export let showUnitInfo:boolean = false;
@@ -25,8 +29,8 @@ export let showUnitInfo:boolean = false;
 export const mainMenuCtx = mainMenu.getContext('2d');
 export const dragAndDropCanvasCtx = dragAndDropCanvas.getContext('2d');
 
-export const setTotalMoney = (money:number) => {
-  totalMoney = money;
+export const setTotalGold = (gold:number) => {
+  totalGold = gold;
 }
 export const changeBattleSettingsToTrue = () => {
   showBattleSettings = true;
@@ -36,4 +40,22 @@ export const changeBattleSettingsToTrue = () => {
 export const changeUnitInfoToTrue = () => {
   showBattleSettings = false;
   showUnitInfo = true;
+}
+
+export const increaseSpendedGold = (gold:number) => {
+  if(side === 'computer') {
+    computerSpendedGold += gold;
+  }
+  else if(side === 'player') {
+    playerSpendedGold += gold;
+  }
+}
+
+export const decreaseSpendedGold = (gold:number) => {
+  if(side === 'computer') {
+    computerSpendedGold -= gold;
+  }
+  else if(side === 'player') {
+    playerSpendedGold -= gold;
+  }
 }
