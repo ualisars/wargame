@@ -3,18 +3,24 @@ import {
   armyLayoutWidth,
   unitRosterWidth,
   titleHeight,
+  hoveredUnit
 } from './mainMenuSettings';
 
 const unitInfoTitleX:number = armyLayoutWidth + unitRosterWidth + 170;
 const unitInfoTitleY:number = titleHeight + 60;
-const propertyStartX:number = unitInfoTitleX - 100;
-const propertyStartY:number = unitInfoTitleY + 30;
-const valueStartX:number = propertyStartX + 200;
-const valueStartY:number = unitInfoTitleY + 30;
+let propertyStartX:number = unitInfoTitleX - 100;
+let propertyStartY:number = unitInfoTitleY + 30;
+let valueStartX:number = propertyStartX + 200;
+let valueStartY:number = unitInfoTitleY + 30;
+const propertyList = [
+  'name', 'cost', 'type', 'health', 'speed', 'armour', 'range',
+  'mobility', 'meleeDamage', 'missileDamage', 'charge', 'visibility'
+]
 
 export const unitInfo = () => {
   displayTitle();
-  displayUnitInfo();
+  displayUnitInfo(hoveredUnit);
+  console.log('hoveredUnit', hoveredUnit);
 }
 
 const displayTitle = () => {
@@ -24,10 +30,26 @@ const displayTitle = () => {
   mainMenuCtx.fillText('Unit Info:', unitInfoTitleX, unitInfoTitleY);
 }
 
-const displayUnitInfo = () => {
+const displayUnitInfo = (unit:any) => {
+  setDefault();
   mainMenuCtx.fillStyle = '#000';
   mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
-  mainMenuCtx.fillText('Property:', propertyStartX, propertyStartY);
-  mainMenuCtx.fillText('Value', valueStartX, valueStartY);
+  for(let property of propertyList) {
+    mainMenuCtx.fillText(property, propertyStartX, propertyStartY);
+    mainMenuCtx.fillText(unit[property], valueStartX, valueStartY);
+    changeY();
+  }
+}
+
+const changeY = () => {
+  propertyStartY += 30;
+  valueStartY += 30;
+}
+
+const setDefault = () => {
+  propertyStartX = unitInfoTitleX - 100;
+  propertyStartY = unitInfoTitleY + 30;
+  valueStartX = propertyStartX + 200;
+  valueStartY = unitInfoTitleY + 30;
 }

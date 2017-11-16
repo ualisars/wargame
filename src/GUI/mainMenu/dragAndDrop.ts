@@ -4,7 +4,11 @@ import {
   dragAndDropCanvas,
   dragAndDropCanvasCtx,
   decreaseSpendedGold,
-  increaseSpendedGold
+  increaseSpendedGold,
+  changeUnitInfoToTrue,
+  changeHoveredUnit,
+  showUnitInfo,
+  hoveredUnit
 } from './mainMenuSettings';
 
 import {
@@ -16,7 +20,8 @@ import {
 } from './units';
 import {
   rosterImgWidth,
-  rosterImgHeight
+  rosterImgHeight,
+  isUnitSelectedInRoster
 } from './unitRoster';
 import {loadImage} from '../../utils/loadImage';
 import {WIDTH, HEIGHT} from '../../map/mapSettings';
@@ -34,7 +39,10 @@ import {
   isUnitShouldBeRemoved
 } from './army';
 import {onChooseUnitInArmy} from './army';
-import {onChooseInfo} from './info';
+import {
+  onChooseInfo,
+  displayInfo
+} from './info';
 import {changeTotalMoney} from './battleSettings';
 
 export const dragAndDrop = () => {
@@ -77,6 +85,22 @@ export const dragAndDrop = () => {
     let y = e.offsetY; // get Y
     onDragUnit(x, y);
     onChooseUnitInArmy(x,y);
+    if(isUnitSelectedInRoster(x,y)) { // player hover unit in roster
+      let unit = isUnitSelectedInRoster(x,y);
+      if(hoveredUnit) {
+        if(unit.x !== hoveredUnit.x && unit.y !== hoveredUnit) {
+          console.log('changeHoveredUnit')
+          changeHoveredUnit(unit);
+          displayInfo();
+        }
+      } else {
+        changeHoveredUnit(unit);
+      }
+      if(!showUnitInfo) {
+        changeUnitInfoToTrue(); // show unit info
+        displayInfo();
+      }
+    }
   });
 }
 

@@ -20,6 +20,7 @@ const battleSettingsX = armyLayoutWidth + unitRosterWidth + 50;
 const battleSettingsY = titleHeight;
 const unitInfoX = armyLayoutWidth + unitRosterWidth + 50 + width + 20;
 const unitInfoY = titleHeight;
+
 export const displayInfo = () => {
   mainMenuCtx.clearRect(armyLayoutWidth + unitRosterWidth, titleHeight, infoLayoutWidth, infoLayoutHeight);
   mainMenuCtx.fillStyle = '#cdd1d6';

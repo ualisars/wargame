@@ -15,6 +15,7 @@ export let unitRosterWidth:number = Math.round(WIDTH / 3);
 export let unitRosterHeight:number = HEIGHT - 140;
 export let infoLayoutWidth:number = Math.round(WIDTH / 3);;
 export let infoLayoutHeight:number = HEIGHT - 140;
+export let hoveredUnit:any = null;
 export let totalGold:number = 400;
 export let playerSpendedGold:number = 0;
 export let computerSpendedGold:number = 0;
@@ -51,17 +52,17 @@ export const increaseSpendedGold = (gold:number) => {
 }
 
 export const decreaseSpendedGold = (gold:number) => {
-  console.log('gold', gold);
-  console.log('side:',side);
+  // console.log('gold', gold);
+  // console.log('side:',side);
   if(side === 'computer') {
-    console.log('computerSpendedGold before:', computerSpendedGold);
+    //console.log('computerSpendedGold before:', computerSpendedGold);
     computerSpendedGold -= gold;
-    console.log('computerSpendedGold after:', computerSpendedGold);
+    //console.log('computerSpendedGold after:', computerSpendedGold);
   }
   else if(side === 'player') {
-    console.log('playerSpendedGold before', playerSpendedGold);
+    //console.log('playerSpendedGold before', playerSpendedGold);
     playerSpendedGold -= gold;
-    console.log('playerSpendedGold after', playerSpendedGold);
+    //console.log('playerSpendedGold after', playerSpendedGold);
   }
 }
 
@@ -71,4 +72,10 @@ export const changeToPlayer = () => {
 
 export const changeToComputer = () => {
   side = 'computer';
+}
+
+export const changeHoveredUnit = (unit:any) => {
+  if(unit) {
+    hoveredUnit = unit;
+  }
 }
