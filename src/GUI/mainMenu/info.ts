@@ -12,6 +12,7 @@ import {
   changeUnitInfoToTrue
 } from './mainMenuSettings';
 import {battleSettings} from './battleSettings';
+import {unitInfo} from './unitInfo';
 
 export const width = 160;
 export const height = 30;
@@ -31,6 +32,8 @@ export const showSwither = () => {
   unitInfoSwither();
   if(showBattleSettings) {
     battleSettings();
+  } else {
+    unitInfo();
   }
 }
 

@@ -11,7 +11,7 @@ import {
 } from '../../unit/types';
 import {
   isUnitInArray,
-  deleteUnitFromArray
+  deleteUnitFromArmy
 } from '../../utils/unitUtils';
 import {side} from './mainMenuSettings';
 
@@ -33,6 +33,7 @@ export const addUnitToArmy = (unit:any) => {
   }
 }
 
+
 export const removeUnitFromArmy = (unit:any) => {
   let army:any[];
   if(side === 'player') {
@@ -42,9 +43,11 @@ export const removeUnitFromArmy = (unit:any) => {
   }
   if(unit && isUnitInArray(unit, army)) {
     if(side === 'player') {
-      playerArmy = deleteUnitFromArray(unit, playerArmy);
+      console.log('playerArmy before deletion', playerArmy);
+      playerArmy = deleteUnitFromArmy(unit, playerArmy);
+      console.log('playerArmy after deletion', playerArmy);
     } else {
-      computerArmy = deleteUnitFromArray(unit, computerArmy);
+      computerArmy = deleteUnitFromArmy(unit, computerArmy);
     }
   }
 }

@@ -23,7 +23,7 @@ const displayRosterTitle = () => {
   mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
   mainMenuCtx.fillText('Roster', 150, titleHeight + 20);
-  console.log('roster', roster);
+  //console.log('roster', roster);
   displayRosterUnits();
 }
 
@@ -42,7 +42,7 @@ const displayRosterUnits = (i:number = 0, x:number=60, y:number=titleHeight+60) 
     mainMenuCtx.fillText(roster[i].cost, x + 25 ,y + rosterImgHeight + 20);
     roster[i].x = x;
     roster[i].y = y;
-    console.log('roster[i]', roster[i]);
+    //console.log('roster[i]', roster[i]);
     x = (x + rosterImgWidth + 15);
     if(i === 2 || i === 5 || i === 8 || i === 11) {
       x = 60;

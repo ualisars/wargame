@@ -48,7 +48,7 @@ export const displayArmy = (i:number = 1, x:number=unitRosterWidth+20, y:number=
   } else {
     army = computerArmy;
   }
-  console.log('army', army);
+  // console.log('army', army);
   if(army.length >= 1 && army.length >= i) {
     loadImage(army[i - 1].imgSrc, (err:any, img:any) => {
       army[i - 1].armyPosition = {
@@ -88,7 +88,7 @@ export const onChooseUnitInArmy = (mouseX:number, mouseY:number) => {
     army = computerArmy;
   }
   let selectedUnit:any = null;
-  console.error('army', army);
+  // console.error('army', army);
   for(let unit of army) {
       let x0:number = unit.armyPosition.x;
       let x1:number = x0 + armyImgWidth;
@@ -102,7 +102,7 @@ export const onChooseUnitInArmy = (mouseX:number, mouseY:number) => {
         }
       }
   }
-  console.log('selectedUnit', selectedUnit);
+  // console.log('selectedUnit', selectedUnit);
   if(selectedUnit) {
     drawRemoveIcon(selectedUnit);
   }
@@ -152,8 +152,8 @@ export const isUnitShouldBeRemoved = (mouseX:number, mouseY:number) => {
     let x1 = unit.armyPosition.x + armyImgWidth - 5;
     let y0 = unit.armyPosition.y + 4;
     let y1 = unit.armyPosition.y + 15;
-    console.log('x0', x0, 'x1', x1);
-    console.log('y0', y0, 'y1', y1);
+    // console.log('x0', x0, 'x1', x1);
+    // console.log('y0', y0, 'y1', y1);
     if(mouseX >= x0 && mouseX < x1 && mouseY >= y0 && mouseY < y1) {
       return unit;
     }

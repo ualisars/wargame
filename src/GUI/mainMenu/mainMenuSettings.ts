@@ -51,11 +51,17 @@ export const increaseSpendedGold = (gold:number) => {
 }
 
 export const decreaseSpendedGold = (gold:number) => {
+  console.log('gold', gold);
+  console.log('side:',side);
   if(side === 'computer') {
+    console.log('computerSpendedGold before:', computerSpendedGold);
     computerSpendedGold -= gold;
+    console.log('computerSpendedGold after:', computerSpendedGold);
   }
   else if(side === 'player') {
+    console.log('playerSpendedGold before', playerSpendedGold);
     playerSpendedGold -= gold;
+    console.log('playerSpendedGold after', playerSpendedGold);
   }
 }
 

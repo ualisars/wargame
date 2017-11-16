@@ -10,6 +10,16 @@ export const deleteUnitFromArray = (unit:any, arr:any[]):any[] => {
   return updatedArr;
 }
 
+export const deleteUnitFromArmy = (unit:any, arr:any[]):any[] => {
+  let updatedArr = arr.filter((el) => {
+    if(el.armyPosition.x === unit.armyPosition.x && el.armyPosition.y === unit.armyPosition.y) {
+      return false;
+    }
+    return true;
+  });
+  return updatedArr;
+}
+
 export const addUnitIntoArray = (unit:any, arr:any[]):any[] => {
   let updatedArr = Object.assign([], arr);
   if(!isUnitInArray(unit, arr)) {

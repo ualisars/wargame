@@ -42,8 +42,6 @@ export const dragAndDrop = () => {
     console.error('Click');
     let x = e.offsetX; // get X
     let y = e.offsetY; // get Y
-    console.log('Position x', e.offsetX); // get X
-    console.log('Position y', e.offsetY); // get Y
     changeTotalMoney(x,y); // test
     onChooseInfo(x,y);
     onChoosePlayer(x, y);
@@ -51,9 +49,11 @@ export const dragAndDrop = () => {
     if(isUnitShouldBeRemoved(x,y)) {
       console.log('remove unit');
       let unit = isUnitShouldBeRemoved(x, y);
+      decreaseSpendedGold(unit.cost);
       removeUnitFromArmy(unit);
-      decreaseSpendedGold(unit);
       displayChosenUnits();
+      displayTitle(); // redraw totalGold in title
+      dragAndDropCanvasCtx.clearRect(0,0, WIDTH, HEIGHT);
     }
     if(selectedUnitInRoster) {
       console.log('unit is added:', isUnitAddedToArmy(x, y));
