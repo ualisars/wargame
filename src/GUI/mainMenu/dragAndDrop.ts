@@ -116,6 +116,8 @@ export let onChooseRoster = (mouseX:number, mouseY:number) => {
     }
   }
   selectUnitInRoster(selectedUnit);
+  changeHoveredUnit(selectedUnit);
+  displayInfo();
   console.error('selectedUnitInRoster:', selectedUnitInRoster);
 }
 
