@@ -6,7 +6,7 @@ import {displayChosenUnits} from './army';
 import {displayInfo} from './info';
 import {displayTitle} from './sideSwitcher';
 import {dragAndDrop} from './dragAndDrop';
-import {startBattle} from './startBattle';
+import {startBattleLayout} from './startBattle';
 
 export const launchMainMenu = () => {
   //mainMenuCtx.fillStyle = 'red';
@@ -16,5 +16,5 @@ export const launchMainMenu = () => {
   displayInfo();
   displayTitle();
   dragAndDrop();
-  startBattle();
+  startBattleLayout();
 }

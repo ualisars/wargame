@@ -22,7 +22,7 @@ let startBattleButtonHeight:number = 40;
 let startBattleTextX:number = startBattleButtonX + 30;
 let startBattleTextY:number = startBattleButtonY + 30;
 
-export const startBattle = () => {
+export const startBattleLayout = () => {
   fillLayout();
   showStartBattleButton();
   showText();
@@ -36,7 +36,7 @@ const fillLayout = () => {
 
 export const showStartBattleButton = () => {
   let color:string;
-  if(isStartBattleAvailable) {
+  if(startBattleAvailable) {
     color = '#fff';
   } else {
     color = '#ccc';
@@ -75,12 +75,19 @@ export const isStartBattleAvailable = () => {
   if(computerUnitsNumber < 1 || playerUnitsNumber < 1) {
     // computer or(and) player don't have units
     disableStartBattleButton();
+    startBattleLayout(); // redraw startBattle layout
   }
   else if(computerRemainGold < 0 || playerRemainGold < 0) {
     // computer or(and player) exceed total available gold
     disableStartBattleButton();
+    startBattleLayout(); // redraw startBattle layout
   }
   else {
     enableStartBattleButton();
+    startBattleLayout(); // redraw startBattle layout
   }
+}
+
+export const startBattle = () => {
+  
 }

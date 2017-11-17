@@ -44,6 +44,7 @@ import {
   displayInfo
 } from './info';
 import {changeTotalMoney} from './battleSettings';
+import {isStartBattleAvailable} from './startBattle';
 
 export const dragAndDrop = () => {
   dragAndDropCanvas.addEventListener('click', (e:any) => {
@@ -62,6 +63,7 @@ export const dragAndDrop = () => {
       displayChosenUnits();
       displayTitle(); // redraw totalGold in title
       dragAndDropCanvasCtx.clearRect(0,0, WIDTH, HEIGHT);
+      isStartBattleAvailable();
     }
     if(selectedUnitInRoster) {
       console.log('unit is added:', isUnitAddedToArmy(x, y));
@@ -72,6 +74,7 @@ export const dragAndDrop = () => {
         increaseSpendedGold(unit.cost);
         displayTitle(); // redraw totalGold in title
         dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
+        isStartBattleAvailable();
       } else {
         displayChosenUnits();
         dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
