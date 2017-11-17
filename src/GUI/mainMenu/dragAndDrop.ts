@@ -55,8 +55,8 @@ export const dragAndDrop = () => {
     onChoosePlayer(x, y);
     onChooseComputer(x, y);
     if(isUnitShouldBeRemoved(x,y)) {
-      console.log('remove unit');
       let unit = isUnitShouldBeRemoved(x, y);
+      console.log('remove unit:', unit);
       decreaseSpendedGold(unit.cost);
       removeUnitFromArmy(unit);
       displayChosenUnits();

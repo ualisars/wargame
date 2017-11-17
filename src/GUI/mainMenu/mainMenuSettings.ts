@@ -14,13 +14,18 @@ export let armyLayoutWidth:number = Math.round(WIDTH / 3);
 export let armyLayoutHeight:number = HEIGHT - 140;
 export let unitRosterWidth:number = Math.round(WIDTH / 3);
 export let unitRosterHeight:number = HEIGHT - 140;
-export let infoLayoutWidth:number = Math.round(WIDTH / 3);;
+export let infoLayoutWidth:number = Math.round(WIDTH / 3);
 export let infoLayoutHeight:number = HEIGHT - 140;
 // start battle
 export let startBattleStartY:number = titleHeight + infoLayoutHeight;
 export let startBattleWidth:number = WIDTH;
 export let startBattleHeight:number = HEIGHT - (titleHeight + infoLayoutHeight);
 export let hoveredUnit:any = null;
+// startBattle available
+export let startBattleAvailable:boolean = false;
+export let playerHasUnits:boolean = false;
+export let computerHasUnits:boolean = false;
+
 export let totalGold:number = 400;
 export let playerSpendedGold:number = 0;
 export let computerSpendedGold:number = 0;
@@ -83,4 +88,20 @@ export const changeHoveredUnit = (unit:any) => {
   if(unit) {
     hoveredUnit = unit;
   }
+}
+
+/*
+ set startBattleAvailable to false
+*/
+export const disableStartBattleButton = () => {
+  startBattleAvailable = false;
+  console.log('startBattleAvailable:', startBattleAvailable);
+}
+
+/*
+ set startBattleAvailable to true
+*/
+export const enableStartBattleButton = () => {
+  startBattleAvailable = true;
+  console.log('startBattleAvailable:', startBattleAvailable);
 }

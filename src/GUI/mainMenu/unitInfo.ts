@@ -35,11 +35,16 @@ const displayUnitInfo = (unit:any) => {
   mainMenuCtx.fillStyle = '#000';
   mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
-  for(let property of propertyList) {
-    mainMenuCtx.fillText(property, propertyStartX, propertyStartY);
-    mainMenuCtx.fillText(unit[property], valueStartX, valueStartY);
-    changeY();
+  if(hoveredUnit) {
+    for(let property of propertyList) {
+      mainMenuCtx.fillText(property, propertyStartX, propertyStartY);
+      mainMenuCtx.fillText(unit[property], valueStartX, valueStartY);
+      changeY();
+    }
+  } else {
+      mainMenuCtx.fillText('No unit selected', propertyStartX, propertyStartY);
   }
+
 }
 
 const changeY = () => {

@@ -2,8 +2,18 @@ import {
   mainMenuCtx,
   startBattleStartY,
   startBattleWidth,
-  startBattleHeight
+  startBattleHeight,
+  startBattleAvailable,
+  totalGold,
+  playerSpendedGold,
+  computerSpendedGold,
+  disableStartBattleButton,
+  enableStartBattleButton
 } from './mainMenuSettings';
+import {
+  playerArmy,
+  computerArmy
+} from './units';
 
 let startBattleButtonX:number = Math.round(startBattleWidth / 3) + 120;
 let startBattleButtonY:number = startBattleStartY + 15;
@@ -25,7 +35,13 @@ const fillLayout = () => {
 }
 
 export const showStartBattleButton = () => {
-  mainMenuCtx.fillStyle = '#ccc';
+  let color:string;
+  if(isStartBattleAvailable) {
+    color = '#fff';
+  } else {
+    color = '#ccc';
+  }
+  mainMenuCtx.fillStyle = color;
   mainMenuCtx.fillRect(startBattleButtonX, startBattleButtonY, startBattleButtonWidth, startBattleButtonHeight);
 }
 
@@ -36,4 +52,35 @@ export const showText = () => {
   mainMenuCtx.fillText('Start Battle', startBattleTextX, startBattleTextY);
 }
 
-//export const isStartBattleButtonSelected = (mouseX:)
+export const isStartBattleButtonSelected = (mouseX:number, mouseY:number):boolean => {
+  let x0 = startBattleButtonX;
+  let x1 = x0 + startBattleWidth;
+  let y0 = startBattleButtonY;
+  let y1 = y0 + startBattleButtonHeight;
+  if(mouseX >= x0 && mouseX < x1 && mouseY >= y0 && mouseY < y1) {
+    return true;
+  }
+  return false;
+}
+
+/*
+  Checks total player and computer units and spended gold
+  and decide if battle can start or not
+*/
+export const isStartBattleAvailable = () => {
+  let computerUnitsNumber:number = computerArmy.length;
+  let playerUnitsNumber:number = playerArmy.length;
+  let computerRemainGold:number = totalGold - computerSpendedGold;
+  let playerRemainGold:number = totalGold - playerSpendedGold;
+  if(computerUnitsNumber < 1 || playerUnitsNumber < 1) {
+    // computer or(and) player don't have units
+    disableStartBattleButton();
+  }
+  else if(computerRemainGold < 0 || playerRemainGold < 0) {
+    // computer or(and player) exceed total available gold
+    disableStartBattleButton();
+  }
+  else {
+    enableStartBattleButton();
+  }
+}
