@@ -8,7 +8,8 @@ import {
   changeUnitInfoToTrue,
   changeHoveredUnit,
   showUnitInfo,
-  hoveredUnit
+  hoveredUnit,
+  startBattleAvailable
 } from './mainMenuSettings';
 
 import {
@@ -44,7 +45,11 @@ import {
   displayInfo
 } from './info';
 import {changeTotalMoney} from './battleSettings';
-import {isStartBattleAvailable} from './startBattle';
+import {
+  isStartBattleAvailable,
+  isStartBattleButtonSelected,
+  startBattle
+} from './startBattle';
 
 export const dragAndDrop = () => {
   dragAndDropCanvas.addEventListener('click', (e:any) => {
@@ -64,6 +69,9 @@ export const dragAndDrop = () => {
       displayTitle(); // redraw totalGold in title
       dragAndDropCanvasCtx.clearRect(0,0, WIDTH, HEIGHT);
       isStartBattleAvailable();
+    }
+    if(startBattleAvailable && isStartBattleButtonSelected(x,y)) {
+      startBattle();
     }
     if(selectedUnitInRoster) {
       console.log('unit is added:', isUnitAddedToArmy(x, y));

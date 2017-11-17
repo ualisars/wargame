@@ -125,3 +125,7 @@ map = createObstacles(480, 580, 440, 480, 'forest');
 map = createObstacles(960, 1000, 360, 400, 'forest');
 map = createObstacles(920, 1000, 400, 500, 'forest');
 addNeighbours(map);
+
+export const clearMap = () => {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}

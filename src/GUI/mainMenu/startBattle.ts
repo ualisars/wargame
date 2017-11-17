@@ -1,5 +1,7 @@
 import {
+  mainMenu,
   mainMenuCtx,
+  dragAndDropCanvas,
   startBattleStartY,
   startBattleWidth,
   startBattleHeight,
@@ -14,6 +16,7 @@ import {
   playerArmy,
   computerArmy
 } from './units';
+import {activateBattleMode} from '../../config/battleMode';
 
 let startBattleButtonX:number = Math.round(startBattleWidth / 3) + 120;
 let startBattleButtonY:number = startBattleStartY + 15;
@@ -89,5 +92,5 @@ export const isStartBattleAvailable = () => {
 }
 
 export const startBattle = () => {
-  
+  activateBattleMode();
 }

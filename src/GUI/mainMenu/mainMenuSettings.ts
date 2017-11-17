@@ -105,3 +105,8 @@ export const enableStartBattleButton = () => {
   startBattleAvailable = true;
   console.log('startBattleAvailable:', startBattleAvailable);
 }
+
+export const clearMainMenu = () => {
+  mainMenuCtx.clearRect(0, 0, WIDTH, HEIGHT);
+  dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+}
