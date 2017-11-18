@@ -1,5 +1,5 @@
 import {getUnitTypesInPercentage} from '../analyzeModule/unitAnalyze';
-
+import {changeFormation} from '../store/global';
 /*
   formations:
   1. Heavy infantry and skirmishers - center, cavalry and light infantry - flank
@@ -15,7 +15,7 @@ export const chooseFormation = ():any => {
   if(behaviour === 'neutral') {
     formation = neutralFormations(percentage);
   }
-  return formation;
+  changeFormation(formation);
 }
 
 export const neutralFormations = (percentage:any) => {

@@ -52,6 +52,7 @@ class Unit {
   condition: number = 100;
 
   // AI attributes
+  position:string; // position in formation
   task:string;
   unitToProtect:any = {};
   isUnitUnderProtection:boolean = false;

@@ -64,7 +64,7 @@ import {
   hidedEmenies
 } from './AI/setUpAI';
 import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
-import {assignTasks} from './AI/strategyModule/unitStrategy';
+import {assignTasks} from './AI/strategyModule/assignTask';
 import {getCombatStage} from './AI/processModule/mapProcess';
 import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
 import {explorationStage} from './AI/strategyModule/unitOrders';
@@ -192,16 +192,16 @@ export const launchBattle = () => {
   //   checkHealth().
   //   then(() => meleeCombat());
   // }, 1000);
-  // //
+  // // //
   // setInterval(() => {
   //   analyzeMap()
   //   .then(() => explorationStage())
   // }, 2000);
   // setInterval(() => analyzeUnits(), 4000);
-  // setInterval(() => orderToAttackEnemy(), 2000);
+  //setInterval(() => orderToAttackEnemy(), 2000);
   // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
   // console.log('percentage', getUnitTypesInPercentage())
-  // console.log('formation', chooseFormation());
+  chooseFormation();
   // setInterval(() => {
   //   assignTasks();
   //   console.log('computersUnits', computersUnits);
