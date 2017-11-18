@@ -11,6 +11,7 @@ import {aStar} from '../../path/AStar';
 import {map} from '../../map/createMap';
 import {neutralExploration} from '../behaviour/neutral/exploration';
 import {advance} from '../behaviour/neutral/advanceStage/advance';
+import {combatStage} from '../store/global';
 
 export const orderToAttackEnemy = () => {
   if(playersUnits.length !== 0 && computersUnits.length !== 0) {
@@ -28,7 +29,12 @@ export const orderToAttackEnemy = () => {
 }
 
 export const AIMovement = () => {
-  
+  if(combatStage === 'exploration') {
+    explorationStage();
+  }
+  else if(combatStage === 'advance') {
+    advanceStage();
+  }
 }
 
 export const explorationStage = () => {

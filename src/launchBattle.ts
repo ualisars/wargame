@@ -67,7 +67,7 @@ import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
 import {assignTasks} from './AI/strategyModule/assignTask';
 import {assignCombatStage} from './AI/processModule/mapProcess';
 import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
-import {explorationStage} from './AI/strategyModule/unitOrders';
+import {AIMovement} from './AI/strategyModule/unitOrders';
 import {getSurroundedBlockedNodes} from './unit/unitUtils';
 
 import {drawBackground} from './GUI/terrain/background';
@@ -195,7 +195,7 @@ export const launchBattle = () => {
   // // // //
   // setInterval(() => {
   //   analyzeMap()
-  //   .then(() => explorationStage())
+  //   .then(() => AIMovement())
   // }, 2000);
   // setInterval(() => analyzeUnits(), 4000);
   //
