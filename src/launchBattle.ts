@@ -65,7 +65,7 @@ import {
 } from './AI/setUpAI';
 import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
 import {assignTasks} from './AI/strategyModule/assignTask';
-import {getCombatStage} from './AI/processModule/mapProcess';
+import {assignCombatStage} from './AI/processModule/mapProcess';
 import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
 import {explorationStage} from './AI/strategyModule/unitOrders';
 import {getSurroundedBlockedNodes} from './unit/unitUtils';
@@ -192,16 +192,16 @@ export const launchBattle = () => {
   //   checkHealth().
   //   then(() => meleeCombat());
   // }, 1000);
-  // // //
+  // // // //
   // setInterval(() => {
   //   analyzeMap()
   //   .then(() => explorationStage())
   // }, 2000);
   // setInterval(() => analyzeUnits(), 4000);
-  //setInterval(() => orderToAttackEnemy(), 2000);
+  //
   // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
   // console.log('percentage', getUnitTypesInPercentage())
-  chooseFormation();
+  // chooseFormation();
   // setInterval(() => {
   //   assignTasks();
   //   console.log('computersUnits', computersUnits);
@@ -210,6 +210,6 @@ export const launchBattle = () => {
   // assignTasks();
   // console.log('computersUnits', computersUnits);
   // setInterval(() => calculateTotalPower(), 8000);
-  //
-  // setInterval(() => console.error('combat stage: ', getCombatStage()), 10000);
+  // //
+  // setInterval(() => assignCombatStage(), 10000);
 }

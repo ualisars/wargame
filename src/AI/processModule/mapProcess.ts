@@ -5,6 +5,7 @@ import {
 } from '../../store/unitStore';
 
 import {hidedEmenies} from '../setUpAI';
+import {changeCombatStage} from '../store/global';
 
 import {
   playerPower,
@@ -20,7 +21,7 @@ import {
   3. fight
   4. ending
 */
-export const getCombatStage = ():string => {
+export const assignCombatStage = ():string => {
   const numberOfEnemies:number = playersUnits.length;
   const numberOfVisibleEnemies:number = visibleForComputerUnits.length;
   const numberOfHidedEmenies:number = hidedEmenies.store.length;
@@ -30,18 +31,20 @@ export const getCombatStage = ():string => {
   console.error('percentageOfVisibleUnits', percentageOfVisibleUnits);
   console.error('percentageOfSpottedUnits', percentageOfSpottedUnits);
   if(isEndingStage()) {
-    return 'ending';
+    changeCombatStage('ending');
   }
   else if(percentageOfSpottedUnits < 65) {
-    return 'exploration';
+    changeCombatStage('ending');
   }
   else if(percentageOfSpottedUnits >= 65 && percentageOfSpottedUnits < 90) {
-    return 'advance';
+    changeCombatStage('advance');
   }
   else if(percentageOfSpottedUnits >= 90) {
-    return 'fighting';
+    changeCombatStage('fighting');
   }
-  return 'no stage';
+  else {
+    return 'no stage';
+  }
 }
 
 export const isEndingStage = ():boolean => {
