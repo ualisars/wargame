@@ -10,6 +10,7 @@ import {
 import {aStar} from '../../path/AStar';
 import {map} from '../../map/createMap';
 import {neutralExploration} from '../behaviour/neutral/exploration';
+import {advance} from '../behaviour/neutral/advanceStage/advance';
 
 export const orderToAttackEnemy = () => {
   if(playersUnits.length !== 0 && computersUnits.length !== 0) {
@@ -26,7 +27,18 @@ export const orderToAttackEnemy = () => {
   }
 }
 
+export const AIMovement = () => {
+  
+}
+
 export const explorationStage = () => {
+  let behaviour = 'neutral';
+  if(behaviour === 'neutral') {
+    neutralExploration();
+  }
+}
+
+export const advanceStage = () => {
   let behaviour = 'neutral';
   if(behaviour === 'neutral') {
     neutralExploration();
