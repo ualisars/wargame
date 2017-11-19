@@ -188,10 +188,10 @@ export const launchBattle = () => {
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
   // setInterval(() => spotUnits(units), 1000);
-  // setInterval(() => {
-  //   checkHealth().
-  //   then(() => meleeCombat());
-  // }, 1000);
+  setInterval(() => {
+    checkHealth().
+    then(() => meleeCombat());
+  }, 1000);
   // // // //
   // setInterval(() => {
   //   analyzeMap()

@@ -32,6 +32,7 @@ import {
   missileAttack
 } from './missileAttack';
 import {getSurroundedBlockedNodes} from './unitUtils';
+import {getSurroundedEnemies} from './unitInterception';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   if(unit.health < 0) {
@@ -62,6 +63,18 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
       unit.setIsMovingToFalse();
       return;
     }
+  }
+
+  if(getSurroundedEnemies(unit).length !== 0) { // enemy is on the neighbour node
+    unit.setIsMovingToFalse();
+    unit.setUnitToPursueToNull();
+    unit.setIsFightingToTrue();
+    for(let enemy of getSurroundedEnemies(unit)) {
+      enemy.setIsFightingToTrue();
+      unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
+      enemy.assignEnemy(unit);
+    }
+    return;
   }
 
   if(unit.unitToPursue) {
@@ -202,6 +215,18 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
       pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
       return;
     }
+  }
+
+  if(getSurroundedEnemies(unit).length !== 0) { // enemy is on the neighbour node
+    unit.setIsMovingToFalse();
+    unit.setUnitToPursueToNull();
+    unit.setIsFightingToTrue();
+    for(let enemy of getSurroundedEnemies(unit)) {
+      enemy.setIsFightingToTrue();
+      unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
+      enemy.assignEnemy(unit);
+    }
+    return;
   }
 
   let startNode = getNodeFromMap(unit.x, unit.y, map);
