@@ -66,6 +66,8 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   }
 
   if(getSurroundedEnemies(unit).length !== 0) { // enemy is on the neighbour node
+    console.error('unit has been intercepted by enemy');
+    console.log('enemies', getSurroundedEnemies(unit));
     unit.setIsMovingToFalse();
     unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();

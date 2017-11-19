@@ -188,11 +188,11 @@ export const launchBattle = () => {
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
   // setInterval(() => spotUnits(units), 1000);
-  setInterval(() => {
-    checkHealth().
-    then(() => meleeCombat());
-  }, 1000);
-  // // // //
+  // setInterval(() => {
+  //   checkHealth().
+  //   then(() => meleeCombat());
+  // }, 1000);
+  // // // // // //
   // setInterval(() => {
   //   analyzeMap()
   //   .then(() => AIMovement())
@@ -210,6 +210,6 @@ export const launchBattle = () => {
   // assignTasks();
   // console.log('computersUnits', computersUnits);
   // setInterval(() => calculateTotalPower(), 8000);
-  // //
-  // setInterval(() => assignCombatStage(), 10000);
+  //
+  //setInterval(() => assignCombatStage(), 10000);
 }

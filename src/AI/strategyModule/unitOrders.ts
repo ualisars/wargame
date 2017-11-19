@@ -11,6 +11,7 @@ import {aStar} from '../../path/AStar';
 import {map} from '../../map/createMap';
 import {neutralExploration} from '../behaviour/neutral/exploration';
 import {advance} from '../behaviour/neutral/advanceStage/advance';
+import{fight} from '../behaviour/neutral/fightStage/fightStage';
 import {combatStage} from '../store/global';
 
 export const orderToAttackEnemy = () => {
@@ -34,6 +35,9 @@ export const AIMovement = () => {
   }
   else if(combatStage === 'advance') {
     advanceStage();
+  }
+  else {
+    fight();
   }
 }
 

@@ -92,6 +92,44 @@ export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):an
   return worstUnit;
 }
 
+export const getBestEnemyByProperty = (property:string, exclusion:any[] = []):any => {
+  let updatedPlayerUnits = Object.assign([], playersUnits);
+  if(exclusion.length !== 0) { // delete exceptional units from searhing
+    for(let unit of exclusion) {
+      updatedPlayerUnits = deleteUnitFromArray(unit, updatedPlayerUnits);
+    }
+  }
+  if(updatedPlayerUnits.length === 0) {
+    return null;
+  }
+  let bestUnit = updatedPlayerUnits[0];
+  for(let i = 0; i < updatedPlayerUnits.length; ++i) {
+    if(bestUnit[property] < updatedPlayerUnits[i][property]) {
+      bestUnit = updatedPlayerUnits[i];
+    }
+  }
+  return bestUnit;
+}
+
+export const getWorstEnemyByProperty = (property:string, exclusion:any[] = []):any => {
+  let updatedPlayerUnits = Object.assign([], playersUnits);
+  if(exclusion.length !== 0) { // delete exceptional units from searhing
+    for(let unit of exclusion) {
+      updatedPlayerUnits = deleteUnitFromArray(unit, updatedPlayerUnits);
+    }
+  }
+  if(updatedPlayerUnits.length === 0) {
+    return null;
+  }
+  let worstUnit = updatedPlayerUnits[0];
+  for(let i = 0; i < updatedPlayerUnits.length; ++i) {
+    if(worstUnit[property] > updatedPlayerUnits[i][property]) {
+      worstUnit = updatedPlayerUnits[i];
+    }
+  }
+  return worstUnit;
+}
+
 export const getNotFightingUnits = (exclusion:any[] = []):any[] => {
   let updatedComputersUnits = Object.assign([], computersUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing

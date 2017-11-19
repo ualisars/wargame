@@ -32,9 +32,15 @@ export const getSurroundedNodes = (unit:any, distance:number):any[] => {
 
 export const getSurroundedEnemies = (unit:any):any[] => {
   let surroundedEnemies:any[] = [];
+  let enemies:any[] = [];
+  if(unit.controlBy === 'computer') {
+    enemies = playersUnits;
+  } else {
+    enemies = computersUnits;
+  }
   let nodes = getSurroundedNodes(unit, 1);
   for(let node of nodes) {
-    for(let enemy of computersUnits) {
+    for(let enemy of enemies) {
       if(node.x === enemy.x && node.y === enemy.y) {
         surroundedEnemies.push(enemy);
       }

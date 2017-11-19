@@ -37,7 +37,7 @@ export const advance = () => {
 }
 
 export const getCentralNode = () => {
-  let strongestUnit = getBestUnitByProperty('power');
+  let strongestUnit = getBestUnitByProperty('meleeDamage');
   let enemies:any[] = [];
   for(let enemy of visibleForComputerUnits) {
     enemies.push(enemy);
