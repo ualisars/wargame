@@ -121,9 +121,9 @@ map = createObstacles(640, 800, 160, 160, 'river');
 map = createObstacles(880, 1120, 160, 160, 'river');
 map = createOneObstacle(map, 320, 280, 'mountain');
 map = createObstacles(240, 340, 320, 360, 'mountain');
-map = createObstacles(480, 580, 440, 480, 'forest');
+map = createObstacles(480, 580, 400, 440, 'forest');
 map = createObstacles(960, 1000, 360, 400, 'forest');
-map = createObstacles(920, 1000, 400, 500, 'forest');
+map = createObstacles(920, 1000, 400, 440, 'forest');
 addNeighbours(map);
 
 export const clearMap = () => {
