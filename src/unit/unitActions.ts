@@ -8,6 +8,7 @@ import {
   unitId,
   incUnitId
 } from '../store/unitStore';
+import {loadImage} from '../utils/loadImage';
 import {ctx} from '../map/mapConfig';
 import Unit from './Unit';
 // unit types
@@ -37,6 +38,12 @@ export const onChooseUnit = (units:any[], mouseX:number, mouseY:number) => {
     }
   }
   assignCurrentlyChosenUnit(foundedUnit);
+}
+
+export const drawUnitImage = (x:number, y:number, width:number, height:number, src:string) => {
+  loadImage(src, (err:any, img:any) => {
+    ctx.drawImage(img, x, y, width, height);
+  });
 }
 
 export const drawUnit = (unit:any) => {

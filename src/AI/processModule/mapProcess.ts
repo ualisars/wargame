@@ -34,7 +34,7 @@ export const assignCombatStage = ():string => {
     changeCombatStage('ending');
   }
   else if(percentageOfSpottedUnits < 65) {
-    changeCombatStage('ending');
+    changeCombatStage('exploration');
   }
   else if(percentageOfSpottedUnits >= 65 && percentageOfSpottedUnits < 90) {
     changeCombatStage('advance');

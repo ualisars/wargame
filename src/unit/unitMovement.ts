@@ -207,7 +207,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     return;
   }
   if(unit.unitToPursue !== null) {
-    if(pursuedUnit.name !== unit.unitToPursue.name) {
+    if(pursuedUnit.id !== unit.unitToPursue.id) {
       // unit is pursuing another opponent's unit
       console.log('allies unit is pursuing another oponents unit');
       let startNode = getNodeFromMap(unit.x, unit.y, map);

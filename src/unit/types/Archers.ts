@@ -14,12 +14,12 @@ class Archers extends Unit {
   name: string = 'Archers';
   type: string = 'skirmishers';
   imgSrc:string = './src/img/units/pikemen.jpg';
-  health: number = 50;
+  health: number = 25;
   speed: number = 25;
   armour: number = 2;
   range: number = 8;
   mobility: number = 4;
-  meleeDamage: number = 2;
+  meleeDamage: number = 7;
   missileDamage: number = 7;
   shotsRemained:number = 10;
   charge: number = 1;

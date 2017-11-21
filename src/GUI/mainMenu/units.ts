@@ -27,6 +27,8 @@ export const addUnitToArmy = (unit:any) => {
   } else {
     army = computerArmy;
   }
+  console.log('computerArmy', computerArmy);
+  console.log('playerArmy', playerArmy);
   if(unit) {
       army.push(unit);
       console.log('unit', unit.name, 'is added');

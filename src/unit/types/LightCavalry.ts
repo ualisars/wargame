@@ -19,7 +19,7 @@ class LightCavalry extends Unit {
   armour: number = 2;
   range: number = 0;
   mobility: number = 7;
-  meleeDamage: number = 5;
+  meleeDamage: number = 8;
   missileDamage: number = 0;
   charge: number = 6;
   discipline: number = 40;

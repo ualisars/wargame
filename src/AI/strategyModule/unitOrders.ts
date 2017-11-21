@@ -18,6 +18,7 @@ export const orderToAttackEnemy = () => {
   if(playersUnits.length !== 0 && computersUnits.length !== 0) {
     for(let unit of computersUnits) {
       if(!unit.unitToPursue && !unit.isFighting) {
+        console.error('orderToAttackEnemy');
         let enemy = getClosestEnemyToUnit(unit);
         let startNode = getNodeFromMap(unit.x, unit.y, map);
         let finishNode = getNodeFromMap(enemy.x, enemy.y, map);
@@ -38,10 +39,12 @@ export const AIMovement = () => {
       explorationStage();
   }
   else if(combatStage === 'advance') {
-      advanceStage();
+      //advanceStage();
+      orderToAttackEnemy();
   }
   else {
-      fight();
+      //fight();
+      orderToAttackEnemy();
   }
 }
 

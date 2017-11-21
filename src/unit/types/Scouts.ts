@@ -10,12 +10,12 @@ class Scouts extends Unit {
   name: string = 'Scouts';
   type: string = 'scouts';
   imgSrc:string = './src/img/units/pikemen.jpg';
-  health: number = 20;
+  health: number = 60;
   speed: number = 25;
   armour: number = 1;
   range: number = 0;
   mobility: number = 9;
-  meleeDamage: number = 2;
+  meleeDamage: number = 7;
   missileDamage: number = 0;
   charge: number = 1;
   discipline: number = 10;

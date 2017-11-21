@@ -27,10 +27,14 @@ export const advance = () => {
       let finishNode = getNodeFromMap(node.x, node.y, map);
       let path:any = aStar(map, startNode, finishNode);
       if(unit.isMoving) {
-        console.log('order to unit', unit, 'to go to', finishNode);
+        console.log('order to unit');
+        console.log(unit.name, 'to go to', finishNode);
+        unit.setUnitToPursue(null);
         assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
       } else {
-        console.log('order to unit', unit, 'to go to', finishNode);
+        console.log('order to unit');
+        console.log(unit, 'to go to', finishNode);
+        unit.setUnitToPursue(null);
         assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
         updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
       }

@@ -88,11 +88,13 @@ export const attack = () => {
   let finishNode = getNodeFromMap(enemy.currentNode.x, enemy.currentNode.y, map);
   let path:any = aStar(map, startNode, finishNode);
   if(unit.isMoving) {
-    console.error('unit', unit, 'has to go to', finishNode);
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    console.error('fight stage');
+    console.error('unit', unit.name, 'has to go to', finishNode);
+    unit.setUnitToPursue(enemy);
   } else {
-    console.error('unit', unit, 'has to go to', finishNode);
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    console.error('fight stage');
+    console.error('unit', unit.name, 'has to go to', finishNode);
+    unit.setUnitToPursue(enemy);
     pursueUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
   }
 }

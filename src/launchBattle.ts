@@ -74,20 +74,22 @@ import {getSurroundedBlockedNodes} from './unit/unitUtils';
 import {drawBackground} from './GUI/terrain/background';
 import {isBattleEnd, checkWinner} from './gameLoop';
 import {battleFinish} from './config/globalConfig';
+import {createArmy} from './startBattle/store';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
   addObstaclesToMap();
-  createUnit('archers', 40, 80, 15, 'player');
-  createUnit('lightCavalry', 80, 360, 15, 'player');
-  createUnit('lightCavalry', 80, 400, 15, 'player');
-  createUnit('lightCavalry', 40, 440, 15, 'player');
-
+  // createUnit('archers', 40, 80, 15, 'player');
+  // createUnit('pikemen', 80, 360, 15, 'player');
+  // createUnit('lightCavalry', 80, 400, 15, 'player');
+  // createUnit('lightCavalry', 40, 440, 15, 'player');
+  //
   // createUnit('militia', 1080, 400, 15, 'computer');
   // createUnit('pikemen', 600, 120, 15, 'computer');
   // createUnit('pikemen', 600, 120, 15, 'computer');
   // createUnit('pikemen', 600, 120, 15, 'computer');
-  createUnit('archers', 520, 80, 15, 'computer');
+  // createUnit('archers', 520, 80, 15, 'computer');
+
 
   //drawGrid();
   console.log('map', map);
@@ -96,7 +98,7 @@ export const launchBattle = () => {
 
   console.log('monitor: height', window.screen.availHeight, 'width:',window.screen.availWidth);
 
-  setUpAI(); // set up AI engine
+
 
   auxiliaryCanvas.addEventListener('mousemove', (e:any) => {
     let mouseX = e.offsetX; // get X
@@ -188,36 +190,59 @@ export const launchBattle = () => {
   }); // on context
 
   //set behaviour
-  console.log('behaviour', personality.behaviour);
+  //console.log('behaviour', personality.behaviour);
 
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
+  createArmy().then(() => {
+    setUpAI(); // set up AI engine
     setInterval(() => spotUnits(units), 1000);
     setInterval(() => {
-      checkHealth().
-      then(() => meleeCombat());
+      if(!battleFinish) {
+        checkHealth().
+        then(() => meleeCombat());
+      }
     }, 800);
     // // // // // //
-    // AIMovement();
-    // setInterval(() => {
-    //   analyzeMap()
-    //   .then(() => AIMovement())
-    // }, 3000);
-    // setInterval(() => analyzeUnits(), 4000);
-    // //
+    //AIMovement();
+    setInterval(() => {
+      if(!battleFinish) {
+        analyzeMap()
+        .then(() => {
+          //AIMovement()
+          orderToAttackEnemy();
+        });
+      }
+    }, 3000);
+    setInterval(() => {
+      if(!battleFinish) {
+        analyzeUnits();
+      }
+    }, 4000);
+    //
     // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
     // console.log('percentage', getUnitTypesInPercentage())
-    // chooseFormation();
-    // setInterval(() => {
-    //   assignTasks();
-    //   console.log('computersUnits', computersUnits);
-    // }, 10000);
-    // assignTasks();
-    // // //assignTasks();
+    chooseFormation();
+    setInterval(() => {
+      if(!battleFinish) {
+        assignTasks();
+        console.log('computersUnits', computersUnits);
+      }
+    }, 10000);
+    assignTasks();
     // // console.log('computersUnits', computersUnits);
     //  setInterval(() => calculateTotalPower(), 8000);
     //
-    // setInterval(() => assignCombatStage(), 10000);
-    setInterval(() => isBattleEnd(), 3000);
+    setInterval(() => {
+      if(!battleFinish) {
+        assignCombatStage();
+      }
+    }, 10000);
+    setInterval(() => {
+      if(!battleFinish) {
+        isBattleEnd();
+      }
+    }, 3000);
+  })
 
 }

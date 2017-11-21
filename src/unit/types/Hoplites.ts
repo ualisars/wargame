@@ -14,7 +14,7 @@ class Hoplites extends Unit {
   name: string = 'Hoplites';
   type: string = 'spearmen';
   imgSrc:string = './src/img/units/hoplites.jpg';
-  health: number = 90;
+  health: number = 190;
   speed: number = 12;
   armour: number = 7;
   range: number = 0;
