@@ -71,6 +71,7 @@ import {AIMovement} from './AI/strategyModule/unitOrders';
 import {getSurroundedBlockedNodes} from './unit/unitUtils';
 
 import {drawBackground} from './GUI/terrain/background';
+import {isBattleEnd} from './gameLoop';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/brown.png');
@@ -187,11 +188,11 @@ export const launchBattle = () => {
 
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
-  // setInterval(() => spotUnits(units), 1000);
-  // setInterval(() => {
-  //   checkHealth().
-  //   then(() => meleeCombat());
-  // }, 1000);
+  setInterval(() => spotUnits(units), 1000);
+  setInterval(() => {
+    checkHealth().
+    then(() => meleeCombat());
+  }, 1000);
   // // // // // //
   // setInterval(() => {
   //   analyzeMap()
@@ -212,4 +213,5 @@ export const launchBattle = () => {
   // setInterval(() => calculateTotalPower(), 8000);
   //
   //setInterval(() => assignCombatStage(), 10000);
+  setInterval(() => isBattleEnd(), 3000);
 }

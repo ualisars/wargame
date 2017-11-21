@@ -8,13 +8,14 @@
   <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
 </head>
 <body>
-  <div style="position: relative;">
-    <canvas id="dragAndDrop" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
-    <canvas id="mainMenu" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
-    <canvas id="auxiliary" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>
-    <canvas id="canvas" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
-    <canvas id="background" style="position: absolute; left: 0; top: 0;z-index: 1;"></canvas>
-
+  <div id="game">
+    <div id="dispay" style="position: relative;">
+        <canvas id="dragAndDrop" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+        <canvas id="mainMenu" style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+        <canvas id="auxiliary" style="position: absolute; left: 0; top: 0; z-index: 3;"></canvas>
+        <canvas id="canvas" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+        <canvas id="background" style="position: absolute; left: 0; top: 0;z-index: 1;"></canvas>
+    </div>
   </div>
   <script src="dist/bundle.js"></script>
 </body>
