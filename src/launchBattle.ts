@@ -15,7 +15,8 @@ import {drawGrid} from './map/drawGrid';
 import {
   addNeighbours,
   createNodes,
-  map
+  map,
+  addObstaclesToMap
 } from './map/createMap';
 import {showObstacles} from './map/mapUtils';
 import {h, aStar} from './path/AStar';
@@ -71,18 +72,21 @@ import {AIMovement} from './AI/strategyModule/unitOrders';
 import {getSurroundedBlockedNodes} from './unit/unitUtils';
 
 import {drawBackground} from './GUI/terrain/background';
-import {isBattleEnd} from './gameLoop';
+import {isBattleEnd, checkWinner} from './gameLoop';
+import {battleFinish} from './config/globalConfig';
 
 export const launchBattle = () => {
-  drawBackground('./src/img/terrain/brown.png');
-
+  drawBackground('./src/img/terrain/terrain.png');
+  addObstaclesToMap();
   createUnit('archers', 40, 80, 15, 'player');
   createUnit('lightCavalry', 80, 360, 15, 'player');
   createUnit('lightCavalry', 80, 400, 15, 'player');
   createUnit('lightCavalry', 40, 440, 15, 'player');
 
-  createUnit('militia', 1080, 400, 15, 'computer');
-  createUnit('pikemen', 600, 120, 15, 'computer');
+  // createUnit('militia', 1080, 400, 15, 'computer');
+  // createUnit('pikemen', 600, 120, 15, 'computer');
+  // createUnit('pikemen', 600, 120, 15, 'computer');
+  // createUnit('pikemen', 600, 120, 15, 'computer');
   createUnit('archers', 520, 80, 15, 'computer');
 
   //drawGrid();
@@ -188,30 +192,32 @@ export const launchBattle = () => {
 
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
-  setInterval(() => spotUnits(units), 1000);
-  setInterval(() => {
-    checkHealth().
-    then(() => meleeCombat());
-  }, 1000);
-  // // // // // //
-  // setInterval(() => {
-  //   analyzeMap()
-  //   .then(() => AIMovement())
-  // }, 2000);
-  // setInterval(() => analyzeUnits(), 4000);
-  //
-  // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
-  // console.log('percentage', getUnitTypesInPercentage())
-  // chooseFormation();
-  // setInterval(() => {
-  //   assignTasks();
-  //   console.log('computersUnits', computersUnits);
-  // }, 10000);
-  // assignTasks();
-  // assignTasks();
-  // console.log('computersUnits', computersUnits);
-  // setInterval(() => calculateTotalPower(), 8000);
-  //
-  //setInterval(() => assignCombatStage(), 10000);
-  setInterval(() => isBattleEnd(), 3000);
+    setInterval(() => spotUnits(units), 1000);
+    setInterval(() => {
+      checkHealth().
+      then(() => meleeCombat());
+    }, 800);
+    // // // // // //
+    // AIMovement();
+    // setInterval(() => {
+    //   analyzeMap()
+    //   .then(() => AIMovement())
+    // }, 3000);
+    // setInterval(() => analyzeUnits(), 4000);
+    // //
+    // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
+    // console.log('percentage', getUnitTypesInPercentage())
+    // chooseFormation();
+    // setInterval(() => {
+    //   assignTasks();
+    //   console.log('computersUnits', computersUnits);
+    // }, 10000);
+    // assignTasks();
+    // // //assignTasks();
+    // // console.log('computersUnits', computersUnits);
+    //  setInterval(() => calculateTotalPower(), 8000);
+    //
+    // setInterval(() => assignCombatStage(), 10000);
+    setInterval(() => isBattleEnd(), 3000);
+
 }

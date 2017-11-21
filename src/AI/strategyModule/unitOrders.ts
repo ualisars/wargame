@@ -30,14 +30,18 @@ export const orderToAttackEnemy = () => {
 }
 
 export const AIMovement = () => {
+  for(let unit of computersUnits) {
+    unit.setIsMovingToFalse();
+  }
+
   if(combatStage === 'exploration') {
-    explorationStage();
+      explorationStage();
   }
   else if(combatStage === 'advance') {
-    advanceStage();
+      advanceStage();
   }
   else {
-    fight();
+      fight();
   }
 }
 

@@ -59,7 +59,7 @@ export const fillComputerControlNodes = () => {
         }
       }
     }
-    console.error('computerControlNodes', computerControlNodes.store);
+    //console.error('computerControlNodes', computerControlNodes.store);
     resolve();
   });
 }
@@ -91,7 +91,7 @@ export const fillPlayerControlNodes = () => {
       }
     }
   }
-  console.error('playerControlNodes', playerControlNodes.store);
+  //console.error('playerControlNodes', playerControlNodes.store);
 }
 
 export const displayComputerControlNodes = () => {

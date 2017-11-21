@@ -30,13 +30,18 @@ import {assignUnitMoveToPosition} from '../../../../unit/unitActions';
 */
 
 export const fight = () => {
-  if(computersUnits.length > 1) {
-    surround();
-    flankUnit()
-    attack();
-  } else {
-    attack();
-  }
+  //if(computersUnits.length > 1) {
+  //   surround();
+  //   setTimeout(() => {
+  //     flankUnit();
+  //   }, 200);
+  //   setTimeout(() => {
+  //     attack();
+  //   }, 300);
+  // } else {
+  //   attack();
+  // }
+  attack();
 }
 
 // find strongestUnit
@@ -83,8 +88,10 @@ export const attack = () => {
   let finishNode = getNodeFromMap(enemy.currentNode.x, enemy.currentNode.y, map);
   let path:any = aStar(map, startNode, finishNode);
   if(unit.isMoving) {
+    console.error('unit', unit, 'has to go to', finishNode);
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
   } else {
+    console.error('unit', unit, 'has to go to', finishNode);
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
     pursueUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
   }

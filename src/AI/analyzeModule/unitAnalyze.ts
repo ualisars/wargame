@@ -15,12 +15,12 @@ import {
 
 export const analyzeUnit = (unit:any):any => {
   //console.log(calculateUnitsToBeware(unit));
-  console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
+  //console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
 }
 
 export const analyzeUnits = ():any => {
   for(let unit of computersUnits) {
-    console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
+    //console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
   }
 }
 
@@ -76,7 +76,7 @@ export const getSurroundedNodes = (unit:any, distance:number):any[] => {
 export const getSurroundedEnemies = (unit:any):any[] => {
   let surroundedEnemies:any[] = [];
   let nodes = getSurroundedNodes(unit, 3);
-  console.log('nodes', nodes);
+  //console.log('nodes', nodes);
   for(let node of nodes) {
     for(let enemy of playersUnits) {
       if(node.x === enemy.x && node.y === enemy.y) {
@@ -90,7 +90,7 @@ export const getSurroundedEnemies = (unit:any):any[] => {
 export const getSurroundedAllies = (unit:any):any[] => {
   let surroundedAllies:any[] = [];
   let nodes = getSurroundedNodes(unit, 3);
-  console.log('nodes', nodes);
+  //console.log('nodes', nodes);
   for(let node of nodes) {
     for(let enemy of computersUnits) {
       if(node.x === enemy.x && node.y === enemy.y) {

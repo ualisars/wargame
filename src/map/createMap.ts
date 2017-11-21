@@ -12,6 +12,8 @@ import {
   deleteObjectFromArray,
 } from '../utils/objUtils';
 
+import {drawObstacle} from '../GUI/terrain/background';
+
 export const createNodes = () => {
   let map:any[] = [];
   let value = 1;
@@ -88,10 +90,9 @@ export const createOneObstacle = (map:any[], positionX:number, positionY:number,
     x: positionX,
     y: positionY
   };
-  if(type === 'forest') ctx.fillStyle = 'green';
-  else if(type === 'mountain') ctx.fillStyle = '#8B4513';
-  else if(type === 'river') ctx.fillStyle = 'blue';
-  ctx.fillRect(positionX, positionY, gridSize, gridSize);
+  if(type === 'forest') drawObstacle(node.x, node.y, gridSize, gridSize, './src/img/terrain/trees.png');
+  else if(type === 'mountain') drawObstacle(node.x, node.y, gridSize, gridSize,'./src/img/terrain/mountain.png');
+  else if(type === 'river') drawObstacle(node.x, node.y, gridSize, gridSize,'./src/img/terrain/river.jpg');
   return deleteObjectFromArray(node, map)
 }
 
@@ -104,27 +105,31 @@ export const createObstacles = (startX:number, finishX:number, startY:number, fi
         y
       }
       newMap = deleteObjectFromArray(node, newMap);
-      if(type === 'forest') ctx.fillStyle = 'green';
-      else if(type === 'mountain') ctx.fillStyle = '#8B4513';
-      else if(type === 'river') ctx.fillStyle = 'blue';
       let xLength = Math.abs(startX - finishX);
       let yLength = Math.abs(startY - finishY);
-      ctx.fillRect(x, y, gridSize, gridSize);
+      let src:string;
+      if(type === 'forest') src='./src/img/terrain/trees.png';
+      else if(type === 'mountain') src='/src/img/terrain/mountain.png';
+      else if(type === 'river') src='./src/img/terrain/river.jpg';
+      drawObstacle(node.x, node.y, gridSize, gridSize, src);
     }
   }
   return newMap;
 }
 
 export let map = createNodes();
-map = createObstacles(120, 220, 120, 160, 'river');
-map = createObstacles(640, 800, 160, 160, 'river');
-map = createObstacles(880, 1120, 160, 160, 'river');
-map = createOneObstacle(map, 320, 280, 'mountain');
-map = createObstacles(240, 340, 320, 360, 'mountain');
-map = createObstacles(480, 580, 400, 440, 'forest');
-map = createObstacles(960, 1000, 360, 400, 'forest');
-map = createObstacles(920, 1000, 400, 440, 'forest');
-addNeighbours(map);
+export let addObstaclesToMap = () => {
+  map = createObstacles(120, 220, 120, 160, 'river');
+  map = createObstacles(640, 800, 160, 160, 'river');
+  map = createObstacles(880, 1120, 160, 160, 'river');
+  map = createOneObstacle(map, 320, 280, 'mountain');
+  map = createObstacles(240, 340, 320, 360, 'mountain');
+  map = createObstacles(480, 580, 400, 440, 'forest');
+  map = createObstacles(960, 1000, 360, 400, 'forest');
+  map = createObstacles(920, 1000, 400, 440, 'forest');
+  addNeighbours(map);
+}
+
 
 export const clearMap = () => {
   ctx.clearRect(0, 0, WIDTH, HEIGHT);

@@ -9,7 +9,6 @@ import {dragAndDrop} from './dragAndDrop';
 import {startBattleLayout} from './startBattle';
 
 export const launchMainMenu = () => {
-  //mainMenuCtx.fillStyle = 'red';
   mainMenuCtx.fillRect(0, 0, WIDTH, HEIGHT);
   displayRoster();
   displayChosenUnits();
