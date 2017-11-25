@@ -1,7 +1,7 @@
 import {
-  computersUnits,
+  computerUnits,
   visibleForComputerUnits,
-  playersUnits
+  playerUnits
 } from '../../store/unitStore';
 import Power from '../store/Power';
 
@@ -14,14 +14,14 @@ export let initialComputerPower = new Power();
 
 export const calculateTotalComputerPower = () => {
   computerPower.resetAllProperties();
-  for(let unit of computersUnits) {
+  for(let unit of computerUnits) {
     decomposeUnitProps(unit, 'computer');
   }
 }
 
 export const calculateTotalPlayerPower = () => {
   playerPower.resetAllProperties();
-  for(let unit of playersUnits) {
+  for(let unit of playerUnits) {
     decomposeUnitProps(unit);
   }
 }
@@ -35,14 +35,14 @@ export const calculateVisiblePlayerPower = () => {
 
 export const calculateInitialComputerPower = () => {
   initialComputerPower.resetAllProperties();
-  for(let unit of computersUnits) {
+  for(let unit of computerUnits) {
     decomposeUnitProps(unit, 'initialComputer');
   }
 }
 
 export const calculateInitialPlayerPower = () => {
   initialPlayerPower.resetAllProperties();
-  for(let unit of playersUnits) {
+  for(let unit of playerUnits) {
     decomposeUnitProps(unit, 'initialPlayer');
   }
 }

@@ -1,7 +1,7 @@
 import {
   visibleForComputerUnits,
   spottedUnits,
-  computersUnits
+  computerUnits
 } from '../../../../store/unitStore';
 import {
   getClosestUnitToOtherUnit,
@@ -20,7 +20,7 @@ import {assignUnitMoveToPosition} from '../../../../unit/unitActions';
 
 export const advance = () => {
   let nodes = getNodesToOccupy();
-  for(let unit of computersUnits) {
+  for(let unit of computerUnits) {
     if(unit.task !== 'exploration') {
       let node = getRandomNode(nodes);
       let startNode = getNodeFromMap(unit.x, unit.y, map);

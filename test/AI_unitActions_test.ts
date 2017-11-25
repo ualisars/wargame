@@ -13,7 +13,7 @@ import {
   getProtector
 } from '../src/AI/actions/unitActions';
 import {
-  computersUnits
+  computerUnits
 } from '../src/store/unitStore';
 
 describe('AI unitActions test', function() {

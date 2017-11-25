@@ -1,7 +1,6 @@
 import AIPersonality from './strategyModule/AIPersonality';
 import HidedEmenies from './store/HidedEnemies';
 import {getInitialPropeties} from './analyzeModule/unitAnalyze';
-import {playersUnits, computersUnits} from '../store/unitStore';
 import {
   calculateTotalPower,
   calculateInitialPower

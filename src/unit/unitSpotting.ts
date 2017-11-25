@@ -8,8 +8,8 @@ import {ctx} from '../map/mapConfig';
 import {gridSize} from '../map/mapSettings';
 import {drawUnit} from './drawUnit';
 import {
-  playersUnits,
-  computersUnits,
+  playerUnits,
+  computerUnits,
   spottedUnits,
   visibleForPlayerUnits,
   visibleForComputerUnits,
@@ -33,10 +33,10 @@ import {hidedEmenies} from '../AI/setUpAI';
 export const spotEnemy = (unit:any) => {
   let enemies:any[];
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
-    enemies = Object.assign([], computersUnits);
+    enemies = Object.assign([], computerUnits);
   }
   if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
-    enemies = Object.assign([], playersUnits);
+    enemies = Object.assign([], playerUnits);
   }
   let visibility = unit.visibility;
   let visibilityRange = visibility * gridSize;
@@ -70,10 +70,10 @@ export const spotEnemy = (unit:any) => {
 export const isUnitSpottedByEnemy = (unit:any) => {
   let enemies:any[];
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
-    enemies = Object.assign([], computersUnits);
+    enemies = Object.assign([], computerUnits);
   }
   if(unit.controlBy === 'computer') { //if unit is control by computer enemies will be player's units
-    enemies = Object.assign([], playersUnits);
+    enemies = Object.assign([], playerUnits);
   }
   if(enemies.length === 0) {
     // no enemy to spot the unit

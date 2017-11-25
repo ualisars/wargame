@@ -8,7 +8,6 @@ import {
 import {aStar} from '../../../path/AStar';
 import {map} from '../../../map/createMap';
 
-import {computersUnits} from '../../../store/unitStore';
 import {
   getUnitsByTask,
   getNotFightingUnits,

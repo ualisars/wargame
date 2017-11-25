@@ -10,7 +10,7 @@ import {
   getMaxValueFromNodes
 } from '../../utils/objUtils';
 import {
-  computersUnits,
+  computerUnits,
   visibleForComputerUnits
 } from '../../store/unitStore';
 import {hidedEmenies} from '../setUpAI';
@@ -47,7 +47,7 @@ export const analyzeMap = () => {
 */
 export const fillComputerControlNodes = () => {
   return new Promise(resolve => {
-    for(let unit of computersUnits) {
+    for(let unit of computerUnits) {
       let startX = unit.currentNode.x - (unit.visibility * gridSize);
       let finishX = unit.currentNode.x + (unit.visibility * gridSize);
       let startY = unit.currentNode.y - (unit.visibility * gridSize);

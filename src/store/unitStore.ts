@@ -5,8 +5,8 @@ import {
 import {isUnitInArray} from '../utils/unitUtils';
 
 export let units:any[] = [];
-export let playersUnits: any[] = [];
-export let computersUnits: any[] = [];
+export let playerUnits: any[] = [];
+export let computerUnits: any[] = [];
 export let spottedUnits: any[] = [];
 export let currentlyChosenUnit:any = null;
 export let visibleForPlayerUnits:any[] = [];
@@ -32,10 +32,10 @@ delete unit from units array
 */
 export const removeUnit = (unit:any) => {
   if(unit.controlBy === 'computer') {
-    computersUnits = deleteObjectFromArray(unit, computersUnits); // delete from computersUnits
+    computerUnits = deleteObjectFromArray(unit, computerUnits); // delete from computersUnits
   }
   else if(unit.controlBy === 'player') {
-    playersUnits = deleteObjectFromArray(unit, playersUnits); // delete from playersUnits
+    playerUnits = deleteObjectFromArray(unit, playerUnits); // delete from playersUnits
   }
   removeUnitFromVisibleArray(unit);
   units = deleteObjectFromArray(unit, units);

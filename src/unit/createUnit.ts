@@ -1,6 +1,6 @@
 import {
-  playersUnits,
-  computersUnits,
+  playerUnits,
+  computerUnits,
   units,
   incUnitId
 } from '../store/unitStore';
@@ -13,8 +13,8 @@ export let createUnit = (type:string, x:number, y:number, radius:number, control
   let unit:any;
   unit = chooseUnitType(type, x, y, radius, controlBy);
   units.push(unit);
-  if(controlBy === 'player') playersUnits.push(unit);
-  else if(controlBy === 'computer') computersUnits.push(unit);
+  if(controlBy === 'player') playerUnits.push(unit);
+  else if(controlBy === 'computer') computerUnits.push(unit);
   drawUnit(unit);
   incUnitId();
   return unit;

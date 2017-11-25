@@ -1,6 +1,6 @@
 import {
-  computersUnits,
-  playersUnits
+  computerUnits,
+  playerUnits
 } from '../../store/unitStore';
 
 import {gridSize} from '../../map/mapSettings';
@@ -12,12 +12,12 @@ import {deleteUnitFromArray} from '../../utils/unitUtils';
   get closest computer's unit to specific node
 */
 export const getClosestUnitToNode = (node:any):any => {
-  let closestUnit:any = computersUnits[0];
-  for(let i = 1; i < computersUnits.length; ++i) {
+  let closestUnit:any = computerUnits[0];
+  for(let i = 1; i < computerUnits.length; ++i) {
     let closestUnitDistance = getDistanceBetweenUnitAndNodeInGrids(closestUnit, node);
-    let unitDistance = getDistanceBetweenUnitAndNodeInGrids(computersUnits[i], node);
+    let unitDistance = getDistanceBetweenUnitAndNodeInGrids(computerUnits[i], node);
     if(unitDistance < closestUnitDistance) {
-      closestUnit = computersUnits[i];
+      closestUnit = computerUnits[i];
     }
   }
   return closestUnit;
@@ -38,7 +38,7 @@ export const getClosestNodeToUnit = (unit:any, nodes:any):any => {
   return closestNode;
 }
 
-export const getClosestUnitToOtherUnit = (unit:any, array:any[] = computersUnits):any => {
+export const getClosestUnitToOtherUnit = (unit:any, array:any[] = computerUnits):any => {
   let updatedComputersUnits = Object.assign([], deleteUnitFromArray(unit, array));
   if(updatedComputersUnits.length === 0) { // only one unit remained
     return unit;
@@ -55,7 +55,7 @@ export const getClosestUnitToOtherUnit = (unit:any, array:any[] = computersUnits
 }
 
 export const getBestUnitByProperty = (property:string, exclusion:any[] = []):any => {
-  let updatedComputersUnits = Object.assign([], computersUnits);
+  let updatedComputersUnits = Object.assign([], computerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
@@ -74,7 +74,7 @@ export const getBestUnitByProperty = (property:string, exclusion:any[] = []):any
 }
 
 export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):any => {
-  let updatedComputersUnits = Object.assign([], computersUnits);
+  let updatedComputersUnits = Object.assign([], computerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
@@ -93,7 +93,7 @@ export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):an
 }
 
 export const getBestEnemyByProperty = (property:string, exclusion:any[] = []):any => {
-  let updatedPlayerUnits = Object.assign([], playersUnits);
+  let updatedPlayerUnits = Object.assign([], playerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing
     for(let unit of exclusion) {
       updatedPlayerUnits = deleteUnitFromArray(unit, updatedPlayerUnits);
@@ -112,7 +112,7 @@ export const getBestEnemyByProperty = (property:string, exclusion:any[] = []):an
 }
 
 export const getWorstEnemyByProperty = (property:string, exclusion:any[] = []):any => {
-  let updatedPlayerUnits = Object.assign([], playersUnits);
+  let updatedPlayerUnits = Object.assign([], playerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing
     for(let unit of exclusion) {
       updatedPlayerUnits = deleteUnitFromArray(unit, updatedPlayerUnits);
@@ -131,7 +131,7 @@ export const getWorstEnemyByProperty = (property:string, exclusion:any[] = []):a
 }
 
 export const getNotFightingUnits = (exclusion:any[] = []):any[] => {
-  let updatedComputersUnits = Object.assign([], computersUnits);
+  let updatedComputersUnits = Object.assign([], computerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
@@ -150,7 +150,7 @@ export const getNotFightingUnits = (exclusion:any[] = []):any[] => {
 }
 
 export const getClosestEnemyToUnit = (unit:any) => {
-  let updatedPlayerUnits = Object.assign([], deleteUnitFromArray(unit, playersUnits));
+  let updatedPlayerUnits = Object.assign([], deleteUnitFromArray(unit, playerUnits));
   if(updatedPlayerUnits.length === 0) { // only one unit remained
     return null;
   }
@@ -166,7 +166,7 @@ export const getClosestEnemyToUnit = (unit:any) => {
 }
 
 export const getFreeUnits = (exclusion:any[] = []):any => {
-  let updatedComputersUnits = Object.assign([], computersUnits);
+  let updatedComputersUnits = Object.assign([], computerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
@@ -185,7 +185,7 @@ export const getFreeUnits = (exclusion:any[] = []):any => {
 }
 
 export const getUnitsByTask = (task:string, exclusion:any[] = []):any => {
-  let updatedComputersUnits = Object.assign([], computersUnits);
+  let updatedComputersUnits = Object.assign([], computerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
@@ -204,7 +204,7 @@ export const getUnitsByTask = (task:string, exclusion:any[] = []):any => {
 }
 
 export const getUnitsByPropertyValue = (property:string, value:any, exclusion:any[]=[]):any[] => {
-  let updatedComputersUnits = Object.assign([], computersUnits);
+  let updatedComputersUnits = Object.assign([], computerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searhing
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
@@ -233,7 +233,7 @@ export const isNodeExploredByScout = (node:any):boolean => {
 }
 
 export const getProtector = (unit:any):any => {
-  for(let ally of computersUnits) {
+  for(let ally of computerUnits) {
     if(ally.unitToProtect.id === unit.id) {
       return ally;
     }

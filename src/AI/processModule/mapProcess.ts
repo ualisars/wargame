@@ -1,6 +1,6 @@
 import {
-  computersUnits,
-  playersUnits,
+  computerUnits,
+  playerUnits,
   visibleForComputerUnits
 } from '../../store/unitStore';
 
@@ -22,7 +22,7 @@ import {
   4. ending
 */
 export const assignCombatStage = ():string => {
-  const numberOfEnemies:number = playersUnits.length;
+  const numberOfEnemies:number = playerUnits.length;
   const numberOfVisibleEnemies:number = visibleForComputerUnits.length;
   const numberOfHidedEmenies:number = hidedEmenies.store.length;
   const numberOfSpottedEnemies:number = visibleForComputerUnits.length + hidedEmenies.store.length;
@@ -49,8 +49,8 @@ export const assignCombatStage = ():string => {
 
 export const isEndingStage = ():boolean => {
   let ending:boolean = false;
-  const numberOfUnits:number = computersUnits.length;
-  const numberOfEnemies:number = playersUnits.length;
+  const numberOfUnits:number = computerUnits.length;
+  const numberOfEnemies:number = playerUnits.length;
   const computerHealth:number = computerPower.totalHealth;
   const playersHealth:number = playerPower.totalHealth;
 

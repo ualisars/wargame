@@ -1,6 +1,6 @@
 import {
-  playersUnits,
-  computersUnits
+  playerUnits,
+  computerUnits
 } from '../../store/unitStore';
 import {gridSize} from '../../map/mapSettings';
 import {map} from '../../map/createMap';
@@ -19,7 +19,7 @@ export const analyzeUnit = (unit:any):any => {
 }
 
 export const analyzeUnits = ():any => {
-  for(let unit of computersUnits) {
+  for(let unit of computerUnits) {
     //console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
   }
 }
@@ -35,8 +35,8 @@ export const assignProtector = (unit:any) => {
 */
 export const calculateUnitsToBeware = (unit:any):number => {
   let unitsToBeware:number = 0;
-  if(playersUnits.length !== 0) {
-    for(let enemy of playersUnits) {
+  if(playerUnits.length !== 0) {
+    for(let enemy of playerUnits) {
       if(unit.vulnerableAgainst.length !== 0) {
         for(let vulnerability of unit.vulnerableAgainst) {
           if(vulnerability === enemy.name) {
@@ -78,7 +78,7 @@ export const getSurroundedEnemies = (unit:any):any[] => {
   let nodes = getSurroundedNodes(unit, 3);
   //console.log('nodes', nodes);
   for(let node of nodes) {
-    for(let enemy of playersUnits) {
+    for(let enemy of playerUnits) {
       if(node.x === enemy.x && node.y === enemy.y) {
         surroundedEnemies.push(enemy);
       }
@@ -92,7 +92,7 @@ export const getSurroundedAllies = (unit:any):any[] => {
   let nodes = getSurroundedNodes(unit, 3);
   //console.log('nodes', nodes);
   for(let node of nodes) {
-    for(let enemy of computersUnits) {
+    for(let enemy of computerUnits) {
       if(node.x === enemy.x && node.y === enemy.y) {
         surroundedAllies.push(enemy);
       }
@@ -195,7 +195,7 @@ export const calculateUnitTypes = ():any => {
     skirmishers: 0,
     cavalry: 0
   }
-  for(let unit of computersUnits) {
+  for(let unit of computerUnits) {
     if(unit.type === 'infantry' || unit.type === 'spearmen' || unit.type === 'scouts') {
       types.infantry += 1;
     }
@@ -236,7 +236,7 @@ export const getUnitTypesInPercentage = ():any => {
     cavalry: 0
   }
   let types = calculateUnitTypes();
-  let totalUnits = computersUnits.length;
+  let totalUnits = computerUnits.length;
   percentage.infantry = Math.round((types.infantry / totalUnits) * 100);
   percentage.spearmen = Math.round((types.spearmen / totalUnits) * 100);
   percentage.lightInfantry = Math.round((types.lightInfantry / totalUnits) * 100);
@@ -249,8 +249,8 @@ export const getUnitTypesInPercentage = ():any => {
 
 export const getInitialPropeties = ():any => {
   return {
-    initialNumberOfUnits: computersUnits.length,
-    initialNumberOfEnemies: playersUnits.length,
+    initialNumberOfUnits: computerUnits.length,
+    initialNumberOfEnemies: playerUnits.length,
     initialUnitsHealth: computerPower.totalHealth,
     initialEnemiesHealth: playerPower.totalHealth
   }

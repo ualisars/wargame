@@ -1,6 +1,6 @@
 import {
-  computersUnits,
-  playersUnits
+  computerUnits,
+  playerUnits
 } from '../../store/unitStore';
 import {pursueUnit} from '../../unit/unitMovement';
 import {getClosestEnemyToUnit} from '../actions/unitActions';
@@ -15,8 +15,8 @@ import{fight} from '../behaviour/neutral/fightStage/fightStage';
 import {combatStage} from '../store/global';
 
 export const orderToAttackEnemy = () => {
-  if(playersUnits.length !== 0 && computersUnits.length !== 0) {
-    for(let unit of computersUnits) {
+  if(playerUnits.length !== 0 && computerUnits.length !== 0) {
+    for(let unit of computerUnits) {
       if(!unit.unitToPursue && !unit.isFighting) {
         console.error('orderToAttackEnemy');
         let enemy = getClosestEnemyToUnit(unit);
@@ -31,7 +31,7 @@ export const orderToAttackEnemy = () => {
 }
 
 export const AIMovement = () => {
-  for(let unit of computersUnits) {
+  for(let unit of computerUnits) {
     unit.setIsMovingToFalse();
   }
 

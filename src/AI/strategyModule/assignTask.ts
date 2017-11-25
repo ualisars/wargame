@@ -7,8 +7,8 @@ import{
   calculateUnitTypes,
 } from '../analyzeModule/unitAnalyze';
 import {
-  computersUnits,
-  playersUnits,
+  computerUnits,
+  playerUnits,
   visibleForComputerUnits
 } from '../../store/unitStore';
 
@@ -24,8 +24,8 @@ import {assignTasksForNeutral} from '../behaviour/neutral/assignTask';
 */
 export const assignTasks = ():any => {
   let behaviour = 'neutral'; // change to dynamic in future
-  let numberOfUnits = computersUnits.length;
-  let numberOfEnemies = playersUnits.length;
+  let numberOfUnits = computerUnits.length;
+  let numberOfEnemies = playerUnits.length;
   let spottedEnemies = visibleForComputerUnits.length + hidedEmenies.store.length;
   let visibleEnemies = visibleForComputerUnits.length;
   let percentage = getUnitTypesInPercentage();
@@ -34,6 +34,6 @@ export const assignTasks = ():any => {
   if(behaviour === 'neutral') {
     assignTasksForNeutral();
   }
-  
+
 
 }

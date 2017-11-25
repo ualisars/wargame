@@ -2,8 +2,8 @@ import {randomizeMeleeDamage} from '../utils/randomGenerator';
 import {
   units,
   removeUnit,
-  playersUnits,
-  computersUnits,
+  playerUnits,
+  computerUnits,
   spottedUnits,
   removeUnitFromSpottedUnits
 } from '../store/unitStore';
@@ -175,10 +175,10 @@ export const findUnitInFightAgainst = (unit:any) => {
   let enemies:any[] = [];
   let findedUnits:any[] = [];
   if(unit.controlBy === 'computer') { // enemies for computer are playersUnits
-    enemies = playersUnits;
+    enemies = playerUnits;
   }
   else if(unit.controlBy === 'player') { // enemies for player are computersUnits
-    enemies = computersUnits;
+    enemies = computerUnits;
   }
   for(let enemy of enemies) {
     let figthAgainst = enemy.figthAgainst;

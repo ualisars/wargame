@@ -1,6 +1,6 @@
 import {
-  playersUnits,
-  computersUnits
+  playerUnits,
+  computerUnits
 } from '../../store/unitStore';
 
 import {
@@ -32,7 +32,7 @@ export const doesUnitNeedProtection = (unit:any):boolean => {
   if(unit.type === 'skirmishers' && unitsToBeware > 0) {
       return true;
   }
-  if(unit.type === 'spearmen' && playersUnits.length > 1) {
+  if(unit.type === 'spearmen' && playerUnits.length > 1) {
     return true;
   }
   return false;
@@ -43,7 +43,7 @@ export const doesUnitNeedProtection = (unit:any):boolean => {
 */
 export const howManyUnitsNeedProtection = ():number => {
   let units:number = 0;
-  for(let unit of computersUnits) {
+  for(let unit of computerUnits) {
     if(doesUnitNeedProtection) {
       units++;
     }

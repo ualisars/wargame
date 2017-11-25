@@ -1,7 +1,7 @@
 import {
   visibleForComputerUnits,
   spottedUnits,
-  computersUnits
+  computerUnits
 } from '../../../../store/unitStore';
 import {
   getClosestUnitToOtherUnit,
@@ -102,7 +102,7 @@ export const attack = () => {
 export const surround = () => {
   let enemy = findStrongestUnitToAttack();
   let nodes = getSurroundedNodes(enemy, 3);
-  for(let unit of computersUnits) {
+  for(let unit of computerUnits) {
     let node = getRandomNode(nodes);
     let startNode = getNodeFromMap(unit.x, unit.y, map);
     let finishNode = getNodeFromMap(node.x, node.y, map);

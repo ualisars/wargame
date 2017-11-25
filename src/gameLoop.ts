@@ -1,13 +1,13 @@
 import {
-  computersUnits,
-  playersUnits
+  computerUnits,
+  playerUnits
 } from './store/unitStore';
 import {finishBattle} from './config/globalConfig';
 import {drawMessage} from './GUI/afterBattle/menu';
 
 export const isBattleEnd = () => {
-  let computerNumber = computersUnits.length;
-  let playerNumber = playersUnits.length;
+  let computerNumber = computerUnits.length;
+  let playerNumber = playerUnits.length;
   if(computerNumber === 0 || playerNumber === 0) {
     finishBattle();
     checkWinner();
@@ -15,8 +15,8 @@ export const isBattleEnd = () => {
 }
 
 export const checkWinner = () => {
-  let computerNumber = computersUnits.length;
-  let playerNumber = playersUnits.length;
+  let computerNumber = computerUnits.length;
+  let playerNumber = playerUnits.length;
   if(computerNumber === 0) {
     console.error('victory');
     drawMessage('Victory');

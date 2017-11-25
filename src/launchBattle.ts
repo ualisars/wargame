@@ -39,8 +39,8 @@ import {
 
 import {
   units,
-  playersUnits,
-  computersUnits,
+  playerUnits,
+  computerUnits,
   currentlyChosenUnit,
 } from './store/unitStore';
 
@@ -92,7 +92,7 @@ export const launchBattle = () => {
   //drawGrid();
   console.log('map', map);
   console.error('units', units);
-  console.error('computersUnits', computersUnits);
+  console.error('computersUnits', computerUnits);
 
   console.log('monitor: height', window.screen.availHeight, 'width:',window.screen.availWidth);
 
@@ -103,7 +103,7 @@ export const launchBattle = () => {
     let mouseY = e.offsetY; // get Y
     if(currentlyChosenUnit) {
       let pointedUnit = null;
-      for(let unit of computersUnits) {
+      for(let unit of computerUnits) {
         let finishX = unit.x + gridSize;
         let finishY = unit.y + gridSize;
         if((mouseX >= unit.x && mouseX < finishX) && (mouseY >= unit.y && mouseY < finishY)) {
@@ -143,7 +143,7 @@ export const launchBattle = () => {
     let y = e.offsetY; // get Y
     if(currentlyChosenUnit) {
       let pursuedUnit:any = null;
-      for(let computersUnit of computersUnits) {
+      for(let computersUnit of computerUnits) {
         let bottomRightX = computersUnit.x + gridSize;
         let bottomRightY = computersUnit.y + gridSize;
         if(x >= computersUnit.x && x < bottomRightX && y >= computersUnit.y && y < bottomRightY) {
@@ -224,7 +224,7 @@ export const launchBattle = () => {
     setInterval(() => {
       if(!battleFinish) {
         assignTasks();
-        console.log('computersUnits', computersUnits);
+        console.log('computersUnits', computerUnits);
       }
     }, 10000);
     assignTasks();

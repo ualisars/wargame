@@ -1,6 +1,6 @@
 import {
-  playersUnits,
-  computersUnits
+  playerUnits,
+  computerUnits
 } from '../store/unitStore';
 import {gridSize} from '../map/mapSettings';
 import {map} from '../map/createMap';
@@ -34,9 +34,9 @@ export const getSurroundedEnemies = (unit:any):any[] => {
   let surroundedEnemies:any[] = [];
   let enemies:any[] = [];
   if(unit.controlBy === 'computer') {
-    enemies = playersUnits;
+    enemies = playerUnits;
   } else {
-    enemies = computersUnits;
+    enemies = computerUnits;
   }
   let nodes = getSurroundedNodes(unit, 1);
   for(let node of nodes) {

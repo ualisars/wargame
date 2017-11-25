@@ -15,7 +15,7 @@ import {
 import {aStar} from '../path/AStar';
 import {getNodeFromMap} from '../path/drawPath';
 
-import {units, computersUnits,} from '../store/unitStore';
+import {units} from '../store/unitStore';
 import {
   checkOtherUnitsPosition,
   getBlockingUnit,

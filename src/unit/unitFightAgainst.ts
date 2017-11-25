@@ -1,8 +1,8 @@
 import {
   units,
   removeUnit,
-  playersUnits,
-  computersUnits
+  playerUnits,
+  computerUnits
 } from '../store/unitStore';
 import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
 
@@ -13,9 +13,9 @@ import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
 export const removeUnitFromEnemiesFightAgainst = (unit:any) => {
   let enemies:any[];
   if(unit.controlBy === 'computer') {
-    enemies = playersUnits;
+    enemies = playerUnits;
   } else {
-    enemies = computersUnits;
+    enemies = computerUnits;
   }
   if(enemies.length !== 0) {
     for(let enemy of enemies) {

@@ -9,8 +9,8 @@ import{
   calculateUnitTypes,
 } from '../../analyzeModule/unitAnalyze';
 import {
-  computersUnits,
-  playersUnits,
+  computerUnits,
+  playerUnits,
   visibleForComputerUnits
 } from '../../../store/unitStore';
 
@@ -22,8 +22,8 @@ import {
 } from '../../processModule/unitProcess';
 
 export let assignTasksForNeutral = () => {
-  let numberOfUnits = computersUnits.length;
-  let numberOfEnemies = playersUnits.length;
+  let numberOfUnits = computerUnits.length;
+  let numberOfEnemies = playerUnits.length;
   let spottedEnemies = visibleForComputerUnits.length + hidedEmenies.store.length;
   let visibleEnemies = visibleForComputerUnits.length;
   let percentage = getUnitTypesInPercentage();
@@ -47,8 +47,8 @@ export const assignProtection = (percentage:number) => {
   return new Promise(resolve => {
     let unitsNeedProtection:number = howManyUnitsNeedProtection();
     let unitsUnderProtection:number = 0;
-    let percentageOfUnits:number = Math.round((unitsUnderProtection / computersUnits.length) * 100);
-    for(let unit of computersUnits) {
+    let percentageOfUnits:number = Math.round((unitsUnderProtection / computerUnits.length) * 100);
+    for(let unit of computerUnits) {
       if(doesUnitNeedProtection(unit) && !unit.isUnitUnderProtection && percentageOfUnits < percentage) { // unit needs protection
         let freeUnits = getFreeUnits();
         let spearmen = getUnitsByPropertyValue('type', 'spearmen');
@@ -65,7 +65,7 @@ export const assignProtection = (percentage:number) => {
           unit.setIsUnitUnderProtectionToTrue();
           unitsUnderProtection++;
         }
-      } 
+      }
     }
     resolve();
   });
@@ -85,9 +85,9 @@ export const assignExploration = (unitTypes:any, percentage:number):any => {
         }
       }
     } else {
-      for(let unit of computersUnits) {
+      for(let unit of computerUnits) {
         let scouts:number = 0;
-        let percentageOfScouts:number = Math.round((scouts / computersUnits.length) * 100);
+        let percentageOfScouts:number = Math.round((scouts / computerUnits.length) * 100);
         if(!unit.task && (unit.type === 'scouts' || unit.type === 'cavalry') && percentageOfScouts < percentage) {
           // there is scouts and not recommended to scouts to be more than 30% of units
           unit.assignTask('exploration');

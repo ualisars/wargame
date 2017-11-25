@@ -7,8 +7,8 @@ import {deleteUnitFromArray} from '../utils/unitUtils';
 import {getNodeFromMap} from '../path/drawPath';
 import {getSurroundedNodes} from '../AI/analyzeModule/unitAnalyze';
 import {
-  playersUnits,
-  computersUnits
+  playerUnits,
+  computerUnits
 } from '../store/unitStore';
 import {map} from '../map/createMap';
 
@@ -205,9 +205,9 @@ export const getSurroundedBlockedNodes = (unit:any) => {
   let surroundedBlockedNodes:any = [];
   let alliedUnits:any[];
   if(unit.controlBy === 'player') {
-    alliedUnits = playersUnits;
+    alliedUnits = playerUnits;
   } else {
-    alliedUnits = computersUnits;
+    alliedUnits = computerUnits;
   }
   let updatedUnits = deleteUnitFromArray(unit, alliedUnits);
   for(let node of surroundedNodes) {

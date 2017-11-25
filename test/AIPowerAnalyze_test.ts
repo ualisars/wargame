@@ -10,7 +10,7 @@ import {
 
 import {
   addUnitIntoVisibleArray,
-  computersUnits
+  computerUnits
 } from '../src/store/unitStore';
 
 import {
@@ -51,7 +51,7 @@ describe('AI: Power Analyze Test', function() {
   });
   describe('calculateTotalComputerPower', function() {
     for(let unit of controlByComputerUnits) {
-      computersUnits.push(unit);
+      computerUnits.push(unit);
     }
     calculateTotalComputerPower();
     it('Total health should be equal to  159', function() {

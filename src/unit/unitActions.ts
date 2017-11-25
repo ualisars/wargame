@@ -1,8 +1,6 @@
 import {gridSize} from '../map/mapSettings';
 import {
   units,
-  playersUnits,
-  computersUnits,
   currentlyChosenUnit,
   assignCurrentlyChosenUnit,
   unitId
