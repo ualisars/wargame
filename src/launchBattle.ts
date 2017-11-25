@@ -31,9 +31,9 @@ import Unit from './unit/Unit';
 
 import {
   onChooseUnit,
-  createUnit,
   assignUnitMoveToPosition,
 } from './unit/unitActions';
+import {createUnit} from './unit/createUnit';
 import {
   updateUnit,
   pursueUnit
@@ -79,16 +79,16 @@ import {createArmy} from './startBattle/store';
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
   addObstaclesToMap();
-  // createUnit('archers', 40, 80, 15, 'player');
-  // createUnit('pikemen', 80, 360, 15, 'player');
-  // createUnit('lightCavalry', 80, 400, 15, 'player');
-  // createUnit('lightCavalry', 40, 440, 15, 'player');
-  //
-  // createUnit('militia', 1080, 400, 15, 'computer');
-  // createUnit('pikemen', 600, 120, 15, 'computer');
-  // createUnit('pikemen', 600, 120, 15, 'computer');
-  // createUnit('pikemen', 600, 120, 15, 'computer');
-  // createUnit('archers', 520, 80, 15, 'computer');
+  createUnit('archers', 40, 80, 15, 'player');
+  createUnit('lightInfantry', 80, 360, 15, 'player');
+  createUnit('lightCavalry', 80, 400, 15, 'player');
+  createUnit('lightCavalry', 40, 440, 15, 'player');
+
+  createUnit('militia', 1080, 400, 15, 'computer');
+  createUnit('pikemen', 600, 120, 15, 'computer');
+  createUnit('pikemen', 600, 120, 15, 'computer');
+  createUnit('heavyInfantry', 600, 120, 15, 'computer');
+  createUnit('archers', 520, 80, 15, 'computer');
 
 
   //drawGrid();
@@ -194,7 +194,7 @@ export const launchBattle = () => {
 
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
-  createArmy().then(() => {
+  //createArmy().then(() => {
     setUpAI(); // set up AI engine
     setInterval(() => spotUnits(units), 1000);
     setInterval(() => {
@@ -243,6 +243,6 @@ export const launchBattle = () => {
         isBattleEnd();
       }
     }, 3000);
-  })
+  //});
 
 }

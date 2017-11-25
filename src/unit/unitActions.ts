@@ -5,8 +5,7 @@ import {
   computersUnits,
   currentlyChosenUnit,
   assignCurrentlyChosenUnit,
-  unitId,
-  incUnitId
+  unitId
 } from '../store/unitStore';
 import {loadImage} from '../utils/loadImage';
 import {ctx} from '../map/mapConfig';
@@ -73,18 +72,6 @@ export const assignUnitMoveToPosition = (unit:any, x:number, y:number) => {
   } else {
     console.log('warrior not chosen');
   }
-}
-
-// create Unit and immediatly push it into units array
-export let createUnit = (type:string, x:number, y:number, radius:number, controlBy:string) => {
-  let unit:any;
-  unit = chooseUnitType(type, x, y, radius, controlBy);
-  units.push(unit);
-  if(controlBy === 'player') playersUnits.push(unit);
-  else if(controlBy === 'computer') computersUnits.push(unit);
-  drawUnit(unit);
-  incUnitId();
-  return unit;
 }
 
 export const redrawUnits = (units:any[]) => {
