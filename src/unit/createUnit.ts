@@ -4,7 +4,7 @@ import {
   units,
   incUnitId
 } from '../store/unitStore';
-import {drawUnit} from './unitActions';
+import {drawUnit} from './drawUnit';
 
 import {chooseUnitType} from './unitActions';
 

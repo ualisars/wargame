@@ -25,8 +25,6 @@ import {
   getNodeFromMap
 } from './path/drawPath';
 
-import {updateMap} from './map/mapUpdate';
-
 import Unit from './unit/Unit';
 
 import {

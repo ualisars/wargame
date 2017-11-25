@@ -6,7 +6,7 @@ import {getNodeFromMap} from '../path/drawPath';
 import {map} from '../map/createMap';
 import {ctx} from '../map/mapConfig';
 import {gridSize} from '../map/mapSettings';
-import {drawUnit} from './unitActions';
+import {drawUnit} from './drawUnit';
 import {
   playersUnits,
   computersUnits,

@@ -1,4 +1,4 @@
-import {drawUnit} from './unitActions';
+import {drawUnit} from './drawUnit';
 import {ctx} from '../map/mapConfig';
 import {
     gridSize,
