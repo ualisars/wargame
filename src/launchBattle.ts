@@ -193,54 +193,54 @@ export const launchBattle = () => {
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
   //createArmy().then(() => {
-    setUpAI(); // set up AI engine
-    setInterval(() => spotUnits(units), 1000);
-    setInterval(() => {
-      if(!battleFinish) {
-        checkHealth().
-        then(() => meleeCombat());
-      }
-    }, 800);
-    // // // // // //
-    //AIMovement();
-    setInterval(() => {
-      if(!battleFinish) {
-        analyzeMap()
-        .then(() => {
-          //AIMovement()
-          orderToAttackEnemy();
-        });
-      }
-    }, 3000);
-    setInterval(() => {
-      if(!battleFinish) {
-        analyzeUnits();
-      }
-    }, 4000);
+    // setUpAI(); // set up AI engine
+    // setInterval(() => spotUnits(units), 1000);
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     checkHealth().
+    //     then(() => meleeCombat());
+    //   }
+    // }, 800);
+    // // // // // // //
+    // //AIMovement();
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     analyzeMap()
+    //     .then(() => {
+    //       //AIMovement()
+    //       orderToAttackEnemy();
+    //     });
+    //   }
+    // }, 3000);
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     analyzeUnits();
+    //   }
+    // }, 4000);
     //
     // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
     // console.log('percentage', getUnitTypesInPercentage())
-    chooseFormation();
-    setInterval(() => {
-      if(!battleFinish) {
-        assignTasks();
-        console.log('computersUnits', computerUnits);
-      }
-    }, 10000);
-    assignTasks();
+    // chooseFormation();
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     assignTasks();
+    //     console.log('computersUnits', computerUnits);
+    //   }
+    // }, 10000);
+    // assignTasks();
     // // console.log('computersUnits', computersUnits);
     //  setInterval(() => calculateTotalPower(), 8000);
     //
-    setInterval(() => {
-      if(!battleFinish) {
-        assignCombatStage();
-      }
-    }, 10000);
-    setInterval(() => {
-      if(!battleFinish) {
-        isBattleEnd();
-      }
-    }, 3000);
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     assignCombatStage();
+    //   }
+    // }, 10000);
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     isBattleEnd();
+    //   }
+    // }, 3000);
   //});
 
 }

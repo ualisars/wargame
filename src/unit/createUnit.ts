@@ -1,9 +1,11 @@
 import {
-  playerUnits,
-  computerUnits,
-  units,
   incUnitId
 } from '../store/unitStore';
+import {
+  playerUnits,
+  computerUnits,
+  units
+} from '../store';
 import {drawUnit} from './drawUnit';
 
 import {chooseUnitType} from './unitActions';
