@@ -5,7 +5,7 @@ import {
 } from '../../store/unitStore';
 
 import {hidedEmenies} from '../setUpAI';
-import {changeCombatStage} from '../store/global';
+import {changeCombatStage} from '../../store/AI/combatStage';
 
 import {
   playerPower,

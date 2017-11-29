@@ -5,8 +5,12 @@ import {
   spottedUnits,
   currentlyChosenUnit,
   visibleForPlayerUnits,
-  visibleForComputerUnits
+  visibleForComputerUnits,
 } from './unitStore';
+
+import {combatStage} from './AI/combatStage';
+import {formation} from './AI/formation';
+import {hidedEnemies} from './AI/hidedEnemies';
 
 export {
   units,
@@ -15,5 +19,8 @@ export {
   spottedUnits,
   currentlyChosenUnit,
   visibleForPlayerUnits,
-  visibleForComputerUnits
+  visibleForComputerUnits,
+  combatStage,
+  formation,
+  hidedEnemies
 }

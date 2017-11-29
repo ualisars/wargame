@@ -1,5 +1,4 @@
 import AIPersonality from './strategyModule/AIPersonality';
-import HidedEmenies from './store/HidedEnemies';
 import {getInitialPropeties} from './analyzeModule/unitAnalyze';
 import {
   calculateTotalPower,
@@ -11,7 +10,6 @@ export let hidedEmenies:any;
 export const firstStage = () => {
   return new Promise(resolve => {
     personality = new AIPersonality();
-    hidedEmenies = new HidedEmenies();
     personality.setBehaviour();
     calculateTotalPower();
     calculateInitialPower();
