@@ -12,7 +12,7 @@ import {
   computerPower,
   initialPlayerPower,
   initialComputerPower
-} from '../analyzeModule/powerAnalyze';
+} from '../../store';
 
 /*
   get stage of the combat

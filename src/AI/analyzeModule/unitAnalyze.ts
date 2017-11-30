@@ -1,14 +1,12 @@
 import {
   playerUnits,
-  computerUnits
-} from '../../store/unitStore';
+  computerUnits,
+  playerPower,
+  computerPower
+} from '../../store';
 import {gridSize} from '../../map/mapSettings';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
-import {
-  playerPower,
-  computerPower
-} from './powerAnalyze';
 import {
   calculateTotalPower
 } from '../analyzeModule/powerAnalyze';

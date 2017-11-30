@@ -1,12 +1,16 @@
 import { expect, should, assert} from 'chai';
 import {
-  playerPower,
-  computerPower,
-  visiblePlayerUnitsPower,
+
   calculateTotalPlayerPower,
   calculateTotalComputerPower,
   calculateVisiblePlayerPower
 } from '../src/AI/analyzeModule/powerAnalyze';
+
+import {
+  playerPower,
+  computerPower,
+  visiblePlayerUnitsPower
+} from '../src/store';
 
 import {
   addUnitIntoVisibleArray,

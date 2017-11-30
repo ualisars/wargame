@@ -1,16 +1,13 @@
 import {
   computerUnits,
   visibleForComputerUnits,
-  playerUnits
-} from '../../store/unitStore';
-import Power from '../store/Power';
-
-export let playerPower = new Power;
-export let computerPower = new Power;
-export let visiblePlayerUnitsPower = new Power();
-export let initialPlayerPower = new Power();
-export let initialComputerPower = new Power();
-
+  playerUnits,
+  playerPower,
+  computerPower,
+  initialComputerPower,
+  initialPlayerPower,
+  visiblePlayerUnitsPower
+} from '../../store/';
 
 export const calculateTotalComputerPower = () => {
   computerPower.resetAllProperties();

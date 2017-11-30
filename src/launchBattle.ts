@@ -49,7 +49,7 @@ import {meleeCombat, checkHealth} from './unit/unitFight'
 
 // AI testing
 import {setUpAI} from './AI/setUpAI';
-import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
+//import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
 import {
   analyzeUnits,
   calculateUnitTypes,
@@ -194,13 +194,13 @@ export const launchBattle = () => {
   //
   //createArmy().then(() => {
     // setUpAI(); // set up AI engine
-    // setInterval(() => spotUnits(units), 1000);
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     checkHealth().
-    //     then(() => meleeCombat());
-    //   }
-    // }, 800);
+    setInterval(() => spotUnits(units), 1000);
+    setInterval(() => {
+      if(!battleFinish) {
+        checkHealth().
+        then(() => meleeCombat());
+      }
+    }, 800);
     // // // // // // //
     // //AIMovement();
     // setInterval(() => {

@@ -1,6 +1,6 @@
 import { expect, should, assert} from 'chai';
 import {isObjectInArray} from '../src/utils/objUtils';
-import NodeStore from '../src/AI/store/AIMapStore/NodeStore';
+import NodeStore from '../src/store/AI/nodeStore';
 
 describe('AIMapStore test', function() {
   describe('NodeStore test', function() {

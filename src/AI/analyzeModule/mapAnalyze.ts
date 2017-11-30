@@ -1,4 +1,4 @@
-import NodeStore from '../store/AIMapStore/NodeStore';
+import NodeStore from '../../store/AI/nodeStore';
 import {ctx} from '../../map/mapConfig';
 import {gridSize} from '../../map/mapSettings';
 import {map} from '../../map/createMap';

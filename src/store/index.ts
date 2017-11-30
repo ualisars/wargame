@@ -11,7 +11,13 @@ import {
 import {combatStage} from './AI/combatStage';
 import {formation} from './AI/formation';
 import {hidedEnemies} from './AI/hidedEnemies';
-import {power} from './AI/power';
+
+import {computerPower} from './AI/power/computerPower';
+import {playerPower} from './AI/power/playerPower';
+import {initialComputerPower} from './AI/power/initialComputerPower';
+import {initialPlayerPower} from './AI/power/initialPlayerPower';
+import {visiblePlayerUnitsPower} from './AI/power/visiblePlayerUnitsPower';
+
 
 export {
   units,
@@ -24,5 +30,9 @@ export {
   combatStage,
   formation,
   hidedEnemies,
-  power
+  computerPower,
+  playerPower,
+  initialComputerPower,
+  initialPlayerPower,
+  visiblePlayerUnitsPower
 }
