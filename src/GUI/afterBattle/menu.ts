@@ -1,4 +1,4 @@
-import {WIDTH, HEIGHT} from '../../map/mapSettings';
+import {WIDTH, HEIGHT} from '../../config';
 import {
   backgroundCanvas,
   backgroundCtx,

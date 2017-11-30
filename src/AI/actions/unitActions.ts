@@ -3,7 +3,7 @@ import {
   playerUnits
 } from '../../store/unitStore';
 
-import {gridSize} from '../../map/mapSettings';
+import {gridSize} from '../../config';
 import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/nodeUtils';
 import {getDistanceBetweenTwoUnitsInGrids} from '../../utils/unitUtils';
 import {deleteUnitFromArray} from '../../utils/unitUtils';

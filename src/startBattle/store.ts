@@ -9,7 +9,7 @@ import {
   gridSize,
   WIDTH,
   HEIGHT
-} from '../map/mapSettings';
+} from '../config';
 import {getRandomNode} from '../AI/actions/mapActions';
 import {createUnit} from '../unit/createUnit';
 

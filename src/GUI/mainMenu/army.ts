@@ -5,7 +5,7 @@ import {
   titleHeight,
   dragAndDropCanvasCtx
 } from './mainMenuSettings';
-import {WIDTH, HEIGHT} from '../../map/mapSettings';
+import {WIDTH, HEIGHT} from '../../config';
 import {
   side
 } from './mainMenuSettings';

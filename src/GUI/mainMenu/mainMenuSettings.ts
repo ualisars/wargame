@@ -1,4 +1,4 @@
-import {WIDTH, HEIGHT} from '../../map/mapSettings';
+import {WIDTH, HEIGHT} from '../../config';
 
 export const mainMenu:any = document.getElementById('mainMenu');
 export const dragAndDropCanvas:any = document.getElementById('dragAndDrop');

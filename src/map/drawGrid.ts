@@ -6,7 +6,7 @@ import {
   WIDTH,
   HEIGHT,
   gridSize
-} from './mapSettings';
+} from '../config';
 
 export const drawGrid = () => {
   for(let y = 0; y <= HEIGHT; y+= gridSize) {

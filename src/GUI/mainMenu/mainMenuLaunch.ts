@@ -1,5 +1,5 @@
 import {mainMenuCtx} from './mainMenuSettings';
-import {WIDTH, HEIGHT} from '../../map/mapSettings';
+import {WIDTH, HEIGHT} from '../../config';
 
 import {displayRoster} from './unitRoster';
 import {displayChosenUnits} from './army';

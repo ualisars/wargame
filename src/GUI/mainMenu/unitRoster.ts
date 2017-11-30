@@ -4,7 +4,7 @@ import {
   unitRosterHeight,
   titleHeight,
 } from './mainMenuSettings';
-import {WIDTH, HEIGHT} from '../../map/mapSettings';
+import {WIDTH, HEIGHT} from '../../config';
 import {roster} from './units';
 import {loadImage} from '../../utils/loadImage';
 

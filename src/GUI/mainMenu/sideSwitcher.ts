@@ -12,7 +12,7 @@ import {
   changeToComputer,
   changeToPlayer
 } from './mainMenuSettings';
-import {WIDTH, HEIGHT} from '../../map/mapSettings';
+import {WIDTH, HEIGHT} from '../../config';
 import{
   displayChosenUnits
 } from './army';

@@ -8,7 +8,7 @@ import {
   removeUnitFromSpottedUnits
 } from '../store/unitStore';
 import {ctx} from '../map/mapConfig';
-import {gridSize} from '../map/mapSettings';
+import {gridSize} from '../config';
 import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
 
 /*

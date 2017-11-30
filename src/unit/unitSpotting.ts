@@ -5,7 +5,7 @@
 import {getNodeFromMap} from '../path/drawPath';
 import {map} from '../map/createMap';
 import {ctx} from '../map/mapConfig';
-import {gridSize} from '../map/mapSettings';
+import {gridSize} from '../config';
 import {drawUnit} from './drawUnit';
 import {
   playerUnits,

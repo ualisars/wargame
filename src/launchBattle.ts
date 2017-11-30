@@ -9,7 +9,7 @@ import {
   WIDTH,
   HEIGHT,
   gridSize,
-} from './map/mapSettings';
+} from './config';
 
 import {drawGrid} from './map/drawGrid';
 import {

@@ -4,7 +4,7 @@ import {
   playerPower,
   computerPower
 } from '../../store';
-import {gridSize} from '../../map/mapSettings';
+import {gridSize} from '../../config';
 import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../path/drawPath';
 import {

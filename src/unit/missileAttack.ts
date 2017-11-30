@@ -3,7 +3,7 @@ import {
   gridSize,
   WIDTH,
   HEIGHT
-} from '../map/mapSettings';
+} from '../config';
 import {randomizeMeleeDamage} from '../utils/randomGenerator';
 
 export const missileAttack = (unit:any, enemy:any) => {

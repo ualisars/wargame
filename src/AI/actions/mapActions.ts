@@ -12,7 +12,7 @@ export const sortNodesByRandomValue = (nodes:any[]):any[] => {
 					min = j;
 			}
 			if(nodes[j].randomValue < nodes[min].randomValue) {
-				min = j
+				min = j;
 			}
 		}
 		if(min !== i) {

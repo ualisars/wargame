@@ -1,4 +1,4 @@
-import {gridSize} from '../map/mapSettings';
+import {gridSize} from '../config';
 import {
   units,
   currentlyChosenUnit,

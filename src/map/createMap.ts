@@ -6,7 +6,7 @@ import {
   WIDTH,
   HEIGHT,
   gridSize
-} from '../map/mapSettings';
+} from '../config';
 
 import {
   deleteObjectFromArray,

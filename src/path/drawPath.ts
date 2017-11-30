@@ -6,7 +6,7 @@ import {
   WIDTH,
   HEIGHT,
   gridSize
-} from '../map/mapSettings';
+} from '../config';
 import {map} from '../map/createMap';
 
 export const drawPath = (path:any[]) => {

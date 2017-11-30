@@ -25,7 +25,7 @@ import {
   isUnitSelectedInRoster
 } from './unitRoster';
 import {loadImage} from '../../utils/loadImage';
-import {WIDTH, HEIGHT} from '../../map/mapSettings';
+import {WIDTH, HEIGHT} from '../../config';
 import {
   onChoosePlayer,
   onChooseComputer,

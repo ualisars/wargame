@@ -4,7 +4,7 @@ import {
     gridSize,
     WIDTH,
     HEIGHT
-} from '../map/mapSettings';
+} from '../config';
 import {deleteObjectFromArray} from '../utils/objUtils';
 import {assignUnitMoveToPosition} from './unitActions';
 import {
