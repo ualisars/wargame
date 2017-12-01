@@ -2,7 +2,7 @@ import {neighbours} from '../map/createMap';
 import {
   deleteObjectFromArray,
   isObjectInArray
-} from '../utils/objUtils';
+} from '../utils';
 
 import {
   getMinFScore,

@@ -3,7 +3,7 @@ import {
   deleteUnitFromArray,
   getDistanceBetweenTwoUnitsInGrids,
   isUnitInArray
-} from '../src/utils/unitUtils';
+} from '../src/utils';
 
 describe('Unit utils test', function() {
   describe('deleteUnitFromArray', function() {

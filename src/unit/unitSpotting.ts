@@ -1,8 +1,6 @@
 /*
   Functions that works with unit's visibility
 */
-
-import {getNodeFromMap} from '../path/drawPath';
 import {map} from '../map/createMap';
 import {ctx} from '../map/mapConfig';
 import {gridSize} from '../config';
@@ -20,8 +18,9 @@ import {
 
 import {
   isObjectInArray,
-  deleteObjectFromArray
-} from '../utils/objUtils';
+  deleteObjectFromArray,
+  getNodeFromMap
+} from '../utils';
 
 // AI
 import {hidedEmenies} from '../AI/setUpAI';

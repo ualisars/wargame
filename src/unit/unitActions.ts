@@ -5,7 +5,7 @@ import {
   assignCurrentlyChosenUnit,
   unitId
 } from '../store/unitStore';
-import {loadImage} from '../utils/loadImage';
+import {loadImage} from '../utils';
 import {ctx} from '../map/mapConfig';
 import Unit from './Unit';
 // unit types

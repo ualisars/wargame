@@ -1,6 +1,8 @@
 import {map} from '../map/createMap';
-import {getNodeFromMap} from '../path/drawPath';
-import {deleteObjectFromArray} from '../utils/objUtils';
+import {
+  getNodeFromMap,
+  deleteObjectFromArray
+} from '../utils';
 import {
   playerArmy,
   computerArmy

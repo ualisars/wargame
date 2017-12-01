@@ -11,7 +11,7 @@ import {getRandomNode} from '../../../actions/mapActions';
 import {getSurroundedNodes} from '../../../analyzeModule/unitAnalyze';
 import {
   getNodeFromMap
-} from '../../../../path/drawPath';
+} from '../../../../utils';
 import {aStar} from '../../../../path/AStar';
 import {map} from '../../../../map/createMap';
 import {updateUnit} from '../../../../unit/unitMovement';

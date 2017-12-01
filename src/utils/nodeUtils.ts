@@ -1,4 +1,48 @@
 import {gridSize} from '../config';
+import {isObjectInArray} from './objUtils';
+
+export const addNodeIntoArray = (node:any, arr:any[]) => {
+  let updatedArr = Object.assign([], arr);
+  if(!isObjectInArray(node, arr)) {
+    updatedArr.push(node);
+  }
+  return updatedArr;
+}
+
+export const getNodeFromArray = (object:any, arr:any[]):any => {
+  for(let node of arr) {
+    if(node.x === object.x && node.y && object.y) {
+      return node;
+    }
+  }
+}
+
+/*
+  Get min value of the node from the array
+*/
+export const getMinValueFromNodes = (searchValue:any,nodes:any[]):any => {
+  let min = nodes[0];
+  for(let i = 1; i < nodes.length; ++i) {
+    if(min[searchValue] > nodes[i][searchValue]) {
+      min = nodes[i];
+    }
+  }
+  return min[searchValue];
+}
+
+/*
+  Get min value of the node from the array
+*/
+export const getMaxValueFromNodes = (searchValue:any,nodes:any[]):any => {
+  let max = nodes[0];
+  for(let i = 1; i < nodes.length; ++i) {
+    if(max[searchValue] < nodes[i][searchValue]) {
+      max = nodes[i];
+    }
+  }
+  return max[searchValue];
+}
+
 export const getDistanceBetweenUnitAndNodeInGrids = (unit:any, node:any):number => {
   let nodeX:number = node.x;
   let nodeY:number = node.y;

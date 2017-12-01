@@ -5,7 +5,10 @@ import {
     WIDTH,
     HEIGHT
 } from '../config';
-import {deleteObjectFromArray} from '../utils/objUtils';
+import {
+  deleteObjectFromArray,
+  getNodeFromMap
+} from '../utils';
 import {assignUnitMoveToPosition} from './unitActions';
 import {
   map,
@@ -13,8 +16,6 @@ import {
   addNeighbours
 } from '../map/createMap';
 import {aStar} from '../path/AStar';
-import {getNodeFromMap} from '../path/drawPath';
-
 import {units} from '../store/unitStore';
 import {
   checkOtherUnitsPosition,

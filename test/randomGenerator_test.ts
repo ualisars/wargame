@@ -1,5 +1,5 @@
 import { expect, should, assert} from 'chai';
-import {randomizeMeleeDamage} from '../src/utils/randomGenerator';
+import {randomizeMeleeDamage} from '../src/utils';
 
 describe('randomGenerator tests', function() {
   describe('meeleAttack', function() {

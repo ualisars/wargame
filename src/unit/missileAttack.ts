@@ -4,7 +4,7 @@ import {
   WIDTH,
   HEIGHT
 } from '../config';
-import {randomizeMeleeDamage} from '../utils/randomGenerator';
+import {randomizeMeleeDamage} from '../utils';
 
 export const missileAttack = (unit:any, enemy:any) => {
   if(isEnemyInTheRange) {

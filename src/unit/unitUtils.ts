@@ -1,10 +1,10 @@
 import {
   deleteObjectFromArray,
   isObjectEmpty,
-  addNodeIntoArray
-} from '../utils/objUtils';
-import {deleteUnitFromArray} from '../utils/unitUtils';
-import {getNodeFromMap} from '../path/drawPath';
+  addNodeIntoArray,
+  getNodeFromMap,
+  deleteUnitFromArray
+} from '../utils';
 import {getSurroundedNodes} from '../AI/analyzeModule/unitAnalyze';
 import {
   playerUnits,

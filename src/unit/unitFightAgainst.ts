@@ -4,7 +4,7 @@ import {
   playerUnits,
   computerUnits
 } from '../store/unitStore';
-import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
+import {isObjectEmpty, deleteObjectFromArray} from '../utils';
 
 /*
   loop through all enemies' figthAgainst array

@@ -6,7 +6,7 @@ import {pursueUnit} from '../../unit/unitMovement';
 import {getClosestEnemyToUnit} from '../actions/unitActions';
 import {
   getNodeFromMap
-} from '../../path/drawPath';
+} from '../../utils';
 import {aStar} from '../../path/AStar';
 import {map} from '../../map/createMap';
 import {neutralExploration} from '../behaviour/neutral/exploration';

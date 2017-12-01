@@ -20,10 +20,8 @@ import {
 } from './map/createMap';
 import {showObstacles} from './map/mapUtils';
 import {h, aStar} from './path/AStar';
-import {
-  drawPath,
-  getNodeFromMap
-} from './path/drawPath';
+import {drawPath} from './path/drawPath';
+import {getNodeFromMap} from './utils';
 
 import Unit from './unit/Unit';
 

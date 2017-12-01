@@ -6,7 +6,7 @@ import {
 } from '../../store';
 import {gridSize} from '../../config';
 import {map} from '../../map/createMap';
-import {getNodeFromMap} from '../../path/drawPath';
+import {getNodeFromMap} from '../../utils';
 import {
   calculateTotalPower
 } from '../analyzeModule/powerAnalyze';

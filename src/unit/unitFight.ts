@@ -1,4 +1,8 @@
-import {randomizeMeleeDamage} from '../utils/randomGenerator';
+import {
+  randomizeMeleeDamage,
+  isObjectEmpty,
+  deleteObjectFromArray
+} from '../utils';
 import {
   units,
   removeUnit,
@@ -9,7 +13,6 @@ import {
 } from '../store/unitStore';
 import {ctx} from '../map/mapConfig';
 import {gridSize} from '../config';
-import {isObjectEmpty, deleteObjectFromArray} from '../utils/objUtils';
 
 /*
   Single time attack, that fires only when one unit

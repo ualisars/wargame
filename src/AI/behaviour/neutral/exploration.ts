@@ -1,10 +1,10 @@
 import {updateUnit} from '../../../unit/unitMovement';
 import {assignUnitMoveToPosition} from '../../../unit/unitActions';
-import {getDistanceBetweenTwoUnitsInGrids} from '../../../utils/unitUtils';
-import {deleteObjectFromArray} from '../../../utils/objUtils';
 import {
-  getNodeFromMap
-} from '../../../path/drawPath';
+  getDistanceBetweenTwoUnitsInGrids,
+  getNodeFromMap,
+  deleteObjectFromArray
+} from '../../../utils';
 import {aStar} from '../../../path/AStar';
 import {map} from '../../../map/createMap';
 

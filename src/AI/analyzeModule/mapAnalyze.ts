@@ -2,13 +2,13 @@ import NodeStore from '../../store/AI/nodeStore';
 import {ctx} from '../../map/mapConfig';
 import {gridSize} from '../../config';
 import {map} from '../../map/createMap';
-import {getNodeFromMap} from '../../path/drawPath';
 import {getClosestNodeToUnit} from '../actions/unitActions';
-import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/nodeUtils';
 import {
   getMinValueFromNodes,
-  getMaxValueFromNodes
-} from '../../utils/objUtils';
+  getMaxValueFromNodes,
+  getNodeFromMap,
+  getDistanceBetweenUnitAndNodeInGrids
+} from '../../utils/';
 import {
   computerUnits,
   visibleForComputerUnits
