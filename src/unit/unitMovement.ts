@@ -15,7 +15,10 @@ import {
   createUnitObstacle,
   addNeighbours
 } from '../map/createMap';
-import {aStar} from '../path/AStar';
+import {
+  aStar,
+  findPathFromOneNodeToAnother
+} from '../path';
 import {units} from '../store/unitStore';
 import {
   checkOtherUnitsPosition,
@@ -23,7 +26,6 @@ import {
   giveWay
 } from './unitUtils';
 
-import {findPathFromOneNodeToAnother} from './unitPath';
 import {meleeCombat, meleeAttack, charge} from './unitFight';
 import {spotEnemy} from './unitSpotting';
 import {isUnitOutOfCombat} from './unitUtils';

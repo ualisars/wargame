@@ -1,7 +1,7 @@
 import {
   deleteUnitFromArray,
   isUnitInArray
-} from '../../utils/unitUtils';
+} from '../../utils';
 import {
   visibleForComputerUnits
 } from '../index';

@@ -24,7 +24,7 @@ import {
   rosterImgHeight,
   isUnitSelectedInRoster
 } from './unitRoster';
-import {loadImage} from '../../utils/loadImage';
+import {loadImage} from '../../utils';
 import {WIDTH, HEIGHT} from '../../config';
 import {
   onChoosePlayer,

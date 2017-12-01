@@ -6,7 +6,7 @@ import {
 } from './mainMenuSettings';
 import {WIDTH, HEIGHT} from '../../config';
 import {roster} from './units';
-import {loadImage} from '../../utils/loadImage';
+import {loadImage} from '../../utils';
 
 export const rosterImgWidth:number = 80;
 export const rosterImgHeight:number = 80;

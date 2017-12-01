@@ -1,13 +1,13 @@
 import {
   canvas,
   ctx
-} from '../map/mapConfig';
+} from '../../map/mapConfig';
 import {
   WIDTH,
   HEIGHT,
   gridSize
-} from '../config';
-import {map} from '../map/createMap';
+} from '../../config';
+import {map} from '../../map/createMap';
 
 export const drawPath = (path:any[]) => {
   for(let step of path) {

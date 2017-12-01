@@ -1,12 +1,14 @@
 import {
   computerUnits,
   playerUnits
-} from '../../store/unitStore';
+} from '../../store';
 
 import {gridSize} from '../../config';
-import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/nodeUtils';
-import {getDistanceBetweenTwoUnitsInGrids} from '../../utils/unitUtils';
-import {deleteUnitFromArray} from '../../utils/unitUtils';
+import {
+  getDistanceBetweenUnitAndNodeInGrids,
+  getDistanceBetweenTwoUnitsInGrids,
+  deleteUnitFromArray
+} from '../../utils';
 
 /*
   get closest computer's unit to specific node

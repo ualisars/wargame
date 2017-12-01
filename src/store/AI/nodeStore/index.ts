@@ -1,7 +1,7 @@
 import {
   isObjectInArray,
   deleteObjectFromArray
-} from '../../../utils/objUtils';
+} from '../../../utils';
 
 class NodeStore {
   store:any[] = [];

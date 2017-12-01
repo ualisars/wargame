@@ -2,7 +2,7 @@ import {
   visibleForComputerUnits,
   spottedUnits,
   computerUnits
-} from '../../../../store/unitStore';
+} from '../../../../store';
 import {
   getClosestUnitToOtherUnit,
   getBestUnitByProperty,
@@ -15,7 +15,7 @@ import {getSurroundedNodes} from '../../../analyzeModule/unitAnalyze';
 import {
   getNodeFromMap
 } from '../../../../utils';
-import {aStar} from '../../../../path/AStar';
+import {aStar} from '../../../../path';
 import {map} from '../../../../map/createMap';
 import {
   updateUnit,

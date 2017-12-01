@@ -1,8 +1,8 @@
-import {neighbours} from '../map/createMap';
+import {neighbours} from '../../map/createMap';
 import {
   deleteObjectFromArray,
   isObjectInArray
-} from '../utils';
+} from '../../utils';
 
 import {
   getMinFScore,

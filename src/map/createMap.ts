@@ -10,7 +10,7 @@ import {
 
 import {
   deleteObjectFromArray,
-} from '../utils/objUtils';
+} from '../utils';
 
 import {drawObstacle} from '../GUI/terrain/background';
 

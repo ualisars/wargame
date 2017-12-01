@@ -4,12 +4,12 @@ import {
   getMinFScore,
   unclosedNeigbours,
   isObjectInMapKeys
-} from '../src/path/aStarUtils';
+} from '../src/path';
 
 import {
   deleteObjectFromArray,
   isObjectInArray,
-} from '../src/utils/objUtils';
+} from '../src/utils';
 
 let open:any = [];
 

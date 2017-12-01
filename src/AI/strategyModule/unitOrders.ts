@@ -7,7 +7,7 @@ import {getClosestEnemyToUnit} from '../actions/unitActions';
 import {
   getNodeFromMap
 } from '../../utils';
-import {aStar} from '../../path/AStar';
+import {aStar} from '../../path';
 import {map} from '../../map/createMap';
 import {neutralExploration} from '../behaviour/neutral/exploration';
 import {advance} from '../behaviour/neutral/advanceStage/advance';

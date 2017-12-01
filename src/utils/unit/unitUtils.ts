@@ -1,4 +1,4 @@
-import {gridSize} from '../config';
+import {gridSize} from '../../config';
 
 export const deleteUnitFromArray = (unit:any, arr:any[]):any[] => {
   let updatedArr = arr.filter((el) => {

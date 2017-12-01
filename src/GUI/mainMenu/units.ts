@@ -12,7 +12,7 @@ import {
 import {
   isUnitInArray,
   deleteUnitFromArmy
-} from '../../utils/unitUtils';
+} from '../../utils';
 import {side} from './mainMenuSettings';
 
 export let roster:any[] = [];

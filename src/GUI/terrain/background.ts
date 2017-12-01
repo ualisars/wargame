@@ -1,5 +1,5 @@
 import {backgroundCtx, terrainCtx} from '../../map/mapConfig';
-import {loadImage} from '../../utils/loadImage';
+import {loadImage} from '../../utils';
 import {WIDTH, HEIGHT} from '../../config';
 
 export const drawBackground = (src:string) => {

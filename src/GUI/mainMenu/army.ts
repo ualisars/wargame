@@ -19,7 +19,7 @@ import {
   selectedUnitInRoster,
   removeUnitFromArmy
 } from './units';
-import {loadImage} from '../../utils/loadImage';
+import {loadImage} from '../../utils';
 
 export let armyImgWidth:number = 70;
 export let armyImgHeight:number = 70;

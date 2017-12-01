@@ -12,7 +12,7 @@ import {
   computerUnits,
   playerUnits,
   visibleForComputerUnits
-} from '../../../store/unitStore';
+} from '../../../store';
 
 import {hidedEmenies} from '../../setUpAI';
 

@@ -9,13 +9,11 @@ import {
 import {
   playerPower,
   computerPower,
-  visiblePlayerUnitsPower
+  visiblePlayerUnitsPower,
+  computerUnits
 } from '../src/store';
 
-import {
-  addUnitIntoVisibleArray,
-  computerUnits
-} from '../src/store/unitStore';
+import {addUnitIntoVisibleArray} from '../src/store/unitStore';
 
 import {
   playerUnits,

@@ -2,7 +2,7 @@ import { expect, should, assert} from 'chai';
 import {
   getDistanceBetweenUnitAndNodeInGrids,
   getDistanceBetweenTwoNodesInGrids
-} from '../src/utils/nodeUtils';
+} from '../src/utils';
 
 describe('Node Utils Tests', function() {
   describe('getDistanceBetweenUnitAndNodeInGrids', function() {

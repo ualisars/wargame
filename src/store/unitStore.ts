@@ -1,8 +1,8 @@
 import {
   isObjectInArray,
-  deleteObjectFromArray
-} from '../utils/objUtils';
-import {isUnitInArray} from '../utils/unitUtils';
+  deleteObjectFromArray,
+  isUnitInArray
+} from '../utils';
 
 export let units:any[] = [];
 export let playerUnits: any[] = [];

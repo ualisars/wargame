@@ -1,5 +1,5 @@
 import { expect, should, assert} from 'chai';
-import {isUnitInArray} from '../src/utils/unitUtils';
+import {isUnitInArray} from '../src/utils';
 import {sortNodesByRandomValue} from '../src/AI/actions/mapActions';
 
 describe('AI mapActions test', function() {

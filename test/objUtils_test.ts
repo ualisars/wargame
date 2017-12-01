@@ -9,7 +9,7 @@ import {
 
 import {
   isObjectInMapKeys
-} from '../src/path/aStarUtils';
+} from '../src/path';
 
 let open:any = [];
 

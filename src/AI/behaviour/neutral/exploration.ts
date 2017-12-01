@@ -5,7 +5,7 @@ import {
   getNodeFromMap,
   deleteObjectFromArray
 } from '../../../utils';
-import {aStar} from '../../../path/AStar';
+import {aStar} from '../../../path';
 import {map} from '../../../map/createMap';
 
 import {

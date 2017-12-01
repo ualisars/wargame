@@ -1,5 +1,5 @@
 import { expect, should, assert} from 'chai';
-import {isUnitInArray} from '../src/utils/unitUtils';
+import {isUnitInArray} from '../src/utils';
 import {
   getClosestUnitToNode,
   getClosestUnitToOtherUnit,

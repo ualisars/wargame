@@ -19,8 +19,9 @@ import {
   addObstaclesToMap
 } from './map/createMap';
 import {showObstacles} from './map/mapUtils';
-import {h, aStar} from './path/AStar';
-import {drawPath} from './path/drawPath';
+import {
+  aStar
+} from './path';
 import {getNodeFromMap} from './utils';
 
 import Unit from './unit/Unit';

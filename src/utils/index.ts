@@ -1,5 +1,5 @@
-import {getNodeFromMap} from './getNodeFromMap';
-import {loadImage} from './loadImage';
+import {getNodeFromMap} from './node/getNodeFromMap';
+import {loadImage} from './image/loadImage';
 import {
   getDistanceBetweenUnitAndNodeInGrids,
   getDistanceBetweenTwoNodesInGrids,
@@ -7,12 +7,12 @@ import {
   getNodeFromArray,
   getMinValueFromNodes,
   getMaxValueFromNodes
-} from './nodeUtils';
+} from './node/nodeUtils';
 import {
   deleteObjectFromArray,
   isObjectInArray,
   isObjectEmpty
-} from './objUtils';
+} from './object/objUtils';
 import {randomizeMeleeDamage} from './random/randomGenerator';
 import {
   deleteUnitFromArray,
@@ -20,7 +20,7 @@ import {
   addUnitIntoArray,
   getDistanceBetweenTwoUnitsInGrids,
   isUnitInArray
-} from './unitUtils';
+} from './unit/unitUtils';
 
 export {
   getNodeFromMap,

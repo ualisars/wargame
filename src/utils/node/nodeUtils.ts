@@ -1,5 +1,5 @@
-import {gridSize} from '../config';
-import {isObjectInArray} from './objUtils';
+import {gridSize} from '../../config';
+import {isObjectInArray} from '../index';
 
 export const addNodeIntoArray = (node:any, arr:any[]) => {
   let updatedArr = Object.assign([], arr);
