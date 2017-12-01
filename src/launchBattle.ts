@@ -22,7 +22,10 @@ import {showObstacles} from './map/mapUtils';
 import {
   aStar
 } from './path';
-import {getNodeFromMap} from './utils';
+import {
+  getNodeFromMap,
+  getSurroundedBlockedNodes
+} from './utils';
 
 import Unit from './unit/Unit';
 
@@ -66,7 +69,6 @@ import {assignTasks} from './AI/strategyModule/assignTask';
 import {assignCombatStage} from './AI/processModule/mapProcess';
 import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
 import {AIMovement} from './AI/strategyModule/unitOrders';
-import {getSurroundedBlockedNodes} from './unit/unitUtils';
 
 import {drawBackground} from './GUI/terrain/background';
 import {isBattleEnd, checkWinner} from './gameLoop';

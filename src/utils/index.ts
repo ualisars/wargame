@@ -21,6 +21,17 @@ import {
   getDistanceBetweenTwoUnitsInGrids,
   isUnitInArray
 } from './unit/unitUtils';
+import {
+  getBlockingUnit,
+  getSurroundedBlockedNodes,
+} from './unit/blockUnit';
+import {giveWay} from './unit/giveWay';
+import {isUnitOutOfCombat} from './unit/outOfCombat';
+import {checkOtherUnitsPosition} from './unit/position';
+import {
+  getUnitsMinProperty,
+  getUnitsMaxProperty
+} from './unit/property';
 
 export {
   getNodeFromMap,
@@ -39,5 +50,12 @@ export {
   addUnitIntoArray,
   getDistanceBetweenTwoUnitsInGrids,
   isUnitInArray,
-  randomizeMeleeDamage
+  randomizeMeleeDamage,
+  getBlockingUnit,
+  getSurroundedBlockedNodes,
+  giveWay,
+  isUnitOutOfCombat,
+  checkOtherUnitsPosition,
+  getUnitsMinProperty,
+  getUnitsMaxProperty
 }

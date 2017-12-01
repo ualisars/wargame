@@ -15,7 +15,7 @@ import {
 import {
   getUnitsMaxProperty,
   getUnitsMinProperty
-} from '../../unit/unitUtils';
+} from '../../utils';
 
 
 /*

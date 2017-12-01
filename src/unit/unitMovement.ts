@@ -23,18 +23,18 @@ import {units} from '../store/unitStore';
 import {
   checkOtherUnitsPosition,
   getBlockingUnit,
-  giveWay
-} from './unitUtils';
+  giveWay,
+  isUnitOutOfCombat,
+  getSurroundedBlockedNodes
+} from '../utils';
 
 import {meleeCombat, meleeAttack, charge} from './unitFight';
 import {spotEnemy} from './unitSpotting';
-import {isUnitOutOfCombat} from './unitUtils';
 import {removeUnitFromEnemiesFightAgainst} from './unitFightAgainst';
 import {
   isEnemyInTheRange,
   missileAttack
 } from './missileAttack';
-import {getSurroundedBlockedNodes} from './unitUtils';
 import {getSurroundedEnemies} from './unitInterception';
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
