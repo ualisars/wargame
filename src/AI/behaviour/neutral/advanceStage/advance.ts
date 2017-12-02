@@ -14,8 +14,8 @@ import {
 } from '../../../../utils';
 import {aStar} from '../../../../path';
 import {map} from '../../../../map/createMap';
-import {updateUnit} from '../../../../unit/unitMovement';
-import {assignUnitMoveToPosition} from '../../../../unit/unitActions';
+import {updateUnit} from '../../../../unit/movement/unitMovement';
+import {assignUnitMoveToPosition} from '../../../../unit/actions/unitActions';
 
 
 export const advance = () => {

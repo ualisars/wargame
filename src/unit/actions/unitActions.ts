@@ -1,13 +1,13 @@
-import {gridSize} from '../config';
+import {gridSize} from '../../config';
 import {
   units,
   currentlyChosenUnit,
   assignCurrentlyChosenUnit,
   unitId
-} from '../store/unitStore';
-import {loadImage} from '../utils';
-import {ctx} from '../map/mapConfig';
-import Unit from './Unit';
+} from '../../store/unitStore';
+import {loadImage} from '../../utils';
+import {ctx} from '../../map/mapConfig';
+import Unit from '../Unit';
 // unit types
 import {
   Archers,
@@ -20,7 +20,7 @@ import {
   Peltasts,
   Pikemen,
   Scouts
-}  from './types';
+}  from '../types';
 
 
 export const onChooseUnit = (units:any[], mouseX:number, mouseY:number) => {

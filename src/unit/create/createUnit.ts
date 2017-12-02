@@ -1,14 +1,14 @@
 import {
   incUnitId
-} from '../store/unitStore';
+} from '../../store/unitStore';
 import {
   playerUnits,
   computerUnits,
   units
-} from '../store';
-import {drawUnit} from './drawUnit';
+} from '../../store';
+import {drawUnit} from '../draw/drawUnit';
 
-import {chooseUnitType} from './unitActions';
+import {chooseUnitType} from '../actions/unitActions';
 
 // create Unit and immediatly push it into units array
 export let createUnit = (type:string, x:number, y:number, radius:number, controlBy:string) => {
