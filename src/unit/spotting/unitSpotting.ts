@@ -1,8 +1,10 @@
 /*
   Functions that works with unit's visibility
 */
-import {map} from '../../map/createMap';
-import {ctx} from '../../map/mapConfig';
+import {
+  map,
+  ctx
+} from '../../map';
 import {gridSize} from '../../config';
 import {drawUnit} from '../draw';
 import {

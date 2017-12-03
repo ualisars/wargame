@@ -1,4 +1,4 @@
-import {ctx} from '../../../map/mapConfig';
+import {ctx} from '../../../map';
 import {
   gridSize,
   WIDTH,

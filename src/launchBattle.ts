@@ -2,8 +2,13 @@ import {
   canvas,
   ctx,
   auxiliaryCanvas,
-  auxiliaryCtx
-} from './map/mapConfig';
+  auxiliaryCtx,
+  drawGrid,
+  addNeighbors,
+  createNodes,
+  map,
+  addObstaclesToMap
+} from './map';
 
 import {
   WIDTH,
@@ -11,20 +16,14 @@ import {
   gridSize,
 } from './config';
 
-import {drawGrid} from './map/drawGrid';
-import {
-  addNeighbours,
-  createNodes,
-  map,
-  addObstaclesToMap
-} from './map/createMap';
-import {showObstacles} from './map/mapUtils';
+
 import {
   aStar
 } from './path';
 import {
   getNodeFromMap,
-  getSurroundedBlockedNodes
+  getSurroundedBlockedNodes,
+  drawBackground
 } from './utils';
 
 import {
@@ -66,8 +65,6 @@ import {assignTasks} from './AI/strategyModule/assignTask';
 import {assignCombatStage} from './AI/processModule/mapProcess';
 import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
 import {AIMovement} from './AI/strategyModule/unitOrders';
-
-import {drawBackground} from './GUI/terrain/background';
 import {isBattleEnd, checkWinner} from './gameLoop';
 import {battleFinish} from './config/globalConfig';
 import {createArmy} from './startBattle/store';

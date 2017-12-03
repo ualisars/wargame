@@ -1,7 +1,7 @@
 import {
   canvas,
   ctx
-} from '../../map/mapConfig';
+} from '../../map';
 import {
   WIDTH,
   HEIGHT,

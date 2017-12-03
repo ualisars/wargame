@@ -1,5 +1,5 @@
 import NodeStore from '../../store/AI/nodeStore';
-import {ctx} from '../../map/mapConfig';
+import {ctx} from '../../map';
 import {gridSize} from '../../config';
 import {map} from '../../map/createMap';
 import {getClosestNodeToUnit} from '../actions/unitActions';

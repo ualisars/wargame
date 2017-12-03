@@ -4,7 +4,7 @@ import {
   backgroundCtx,
   ctx,
   auxiliaryCtx
-} from '../../map/mapConfig';
+} from '../../map';
 
 export const drawMessage = (message:string) => {
   // backgroundCtx.clearRect(0, 0, WIDTH, HEIGHT);

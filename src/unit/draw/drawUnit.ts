@@ -1,4 +1,4 @@
-import {ctx} from '../../map/mapConfig';
+import {ctx} from '../../map';
 import {loadImage} from '../../utils';
 
 export const drawUnitImage = (x:number, y:number, width:number, height:number, src:string) => {

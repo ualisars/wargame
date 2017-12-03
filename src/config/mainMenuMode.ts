@@ -7,10 +7,10 @@ import {
   canvas,
   auxiliaryCanvas,
   backgroundCanvas,
-  terrain
-} from '../map/mapConfig';
+  terrain,
+  clearMap
+} from '../map';
 import {clearMainMenu} from '../GUI/mainMenu/mainMenuSettings';
-import {clearMap} from '../map/createMap';
 import {setMainMenuMode} from './globalConfig';
 import {launchGame} from './launchGame';
 

@@ -6,7 +6,6 @@ import {
   charge,
   removeUnitFromEnemiesFightAgainst
 } from '../index';
-import {ctx} from '../../map/mapConfig';
 import {
     gridSize,
     WIDTH,
@@ -19,9 +18,10 @@ import {
 import {assignUnitMoveToPosition} from '../actions';
 import {
   map,
+  ctx,
   createUnitObstacle,
-  addNeighbours
-} from '../../map/createMap';
+  addNeighbors
+} from '../../map';
 import {
   aStar,
   findPathFromOneNodeToAnother
@@ -159,7 +159,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     // if current node and next node are different
 
 
-    addNeighbours(updatedMap); // create new neighbours for updated map
+    addNeighbors(updatedMap); // create new neighbours for updated map
     // console.log('deleted Node', node);
     // console.log('updatedMap', updatedMap);
     // console.log('node', node);
@@ -290,7 +290,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     for(let blockedNode of blockedNodes) {
       updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
     }
-    addNeighbours(updatedMap);
+    addNeighbors(updatedMap);
     // console.log('deleted Node', node);
     // console.log('updatedMap', updatedMap);
     // console.log('node', node);

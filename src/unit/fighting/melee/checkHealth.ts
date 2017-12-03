@@ -8,7 +8,7 @@ import {
 } from '../../../store/unitStore';
 import {findUnitInFightAgainst} from '../fightAgainst';
 import {isUnitFighting} from './checkFighting';
-import {ctx} from '../../../map/mapConfig';
+import {ctx} from '../../../map';
 import {refreshment} from '../refreshment';
 import {gridSize} from '../../../config';
 

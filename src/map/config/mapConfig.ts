@@ -1,4 +1,7 @@
-import {WIDTH, HEIGHT} from '../config';
+import {
+  WIDTH,
+  HEIGHT
+} from '../../config';
 // create Canvas
 export const backgroundCanvas:any = document.getElementById('background');
 export const canvas:any = document.getElementById('canvas');

@@ -37,6 +37,11 @@ import {
   getSurroundedEnemies
 } from './surrounded';
 
+import {
+  drawBackground,
+  drawObstacle
+} from './draw';
+
 export {
   getNodeFromMap,
   loadImage,
@@ -63,5 +68,7 @@ export {
   getUnitsMinProperty,
   getUnitsMaxProperty,
   getSurroundedNodes,
-  getSurroundedEnemies
+  getSurroundedEnemies,
+  drawBackground,
+  drawObstacle
 }

@@ -1,4 +1,4 @@
-import {neighbours} from '../../map/createMap';
+import {neighbors} from '../../map';
 import {
   deleteObjectFromArray,
   isObjectInArray
@@ -49,7 +49,7 @@ export const aStar = (map:any[], startNode:any, finishNode:any) => {
         neighbour.fScore = neighbour.gScore + h(neighbour, finishNode);
       }
       if(!isObjectInArray(neighbour, open)) { // create function
-        let nodeNeighbours = neighbours(map, neighbour);
+        let nodeNeighbours = neighbors(map, neighbour);
         neighbour.neighbours = nodeNeighbours;
         open.push(neighbour);
       }
