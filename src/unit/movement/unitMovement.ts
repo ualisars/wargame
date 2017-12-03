@@ -1,41 +1,42 @@
-import {drawUnit} from './drawUnit';
-import {ctx} from '../map/mapConfig';
+import {
+  drawUnit,
+  spotEnemy,
+  getSurroundedEnemies,
+  meleeCombat,
+  meleeAttack,
+  charge,
+  removeUnitFromEnemiesFightAgainst
+} from '../index';
+import {ctx} from '../../map/mapConfig';
 import {
     gridSize,
     WIDTH,
     HEIGHT
-} from '../config';
+} from '../../config';
 import {
   deleteObjectFromArray,
   getNodeFromMap
-} from '../utils';
-import {assignUnitMoveToPosition} from './unitActions';
+} from '../../utils';
+import {assignUnitMoveToPosition} from '../actions';
 import {
   map,
   createUnitObstacle,
   addNeighbours
-} from '../map/createMap';
+} from '../../map/createMap';
 import {
   aStar,
   findPathFromOneNodeToAnother
-} from '../path';
-import {units} from '../store/unitStore';
+} from '../../path';
+import {units} from '../../store/unitStore';
 import {
   checkOtherUnitsPosition,
   getBlockingUnit,
   giveWay,
   isUnitOutOfCombat,
   getSurroundedBlockedNodes
-} from '../utils';
+} from '../../utils';
 
-import {meleeCombat, meleeAttack, charge} from './unitFight';
-import {spotEnemy} from './unitSpotting';
-import {removeUnitFromEnemiesFightAgainst} from './unitFightAgainst';
-import {
-  isEnemyInTheRange,
-  missileAttack
-} from './missileAttack';
-import {getSurroundedEnemies} from './unitInterception';
+
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   if(unit.health < 0) {

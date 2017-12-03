@@ -7,7 +7,7 @@ import {
 } from '../../store/unitStore';
 import {loadImage} from '../../utils';
 import {ctx} from '../../map/mapConfig';
-import Unit from '../Unit';
+import {Unit} from '../types';
 // unit types
 import {
   Archers,

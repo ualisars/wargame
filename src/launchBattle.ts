@@ -27,17 +27,17 @@ import {
   getSurroundedBlockedNodes
 } from './utils';
 
-import Unit from './unit/Unit';
-
 import {
+  Unit,
   onChooseUnit,
   assignUnitMoveToPosition,
-} from './unit/unitActions';
-import {createUnit} from './unit/createUnit';
-import {
+  createUnit,
   updateUnit,
-  pursueUnit
-} from './unit/unitMovement';
+  pursueUnit,
+  spotUnits,
+  meleeCombat,
+  checkHealth
+} from './unit';
 
 import {
   units,
@@ -45,9 +45,6 @@ import {
   computerUnits,
   currentlyChosenUnit,
 } from './store/unitStore';
-
-import {spotUnits} from './unit/unitSpotting';
-import {meleeCombat, checkHealth} from './unit/unitFight'
 
 // AI testing
 import {setUpAI} from './AI/setUpAI';

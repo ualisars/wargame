@@ -1,4 +1,4 @@
-import Unit from '../Unit';
+import Unit from './Unit';
 
 class LightInfantry extends Unit {
   // general

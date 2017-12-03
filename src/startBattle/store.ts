@@ -13,7 +13,7 @@ import {
   HEIGHT
 } from '../config';
 import {getRandomNode} from '../AI/actions/mapActions';
-import {createUnit} from '../unit/createUnit';
+import {createUnit} from '../unit';
 
 export let playerUnitsNodes:any[] = [];
 export let computerUnitsNodes:any[] = [];

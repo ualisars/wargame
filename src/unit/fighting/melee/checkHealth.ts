@@ -1,3 +1,17 @@
+import {
+  units,
+  spottedUnits
+} from '../../../store';
+import {
+  removeUnitFromSpottedUnits,
+  removeUnit
+} from '../../../store/unitStore';
+import {findUnitInFightAgainst} from '../fightAgainst';
+import {isUnitFighting} from './checkFighting';
+import {ctx} from '../../../map/mapConfig';
+import {refreshment} from '../refreshment';
+import {gridSize} from '../../../config';
+
 export const checkHealth = () => {
   return new Promise(resolve => {
     for(let unit of units) {

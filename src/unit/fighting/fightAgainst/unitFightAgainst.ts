@@ -3,8 +3,8 @@ import {
   removeUnit,
   playerUnits,
   computerUnits
-} from '../store/unitStore';
-import {isObjectEmpty, deleteObjectFromArray} from '../utils';
+} from '../../../store/unitStore';
+import {isObjectEmpty, deleteObjectFromArray} from '../../../utils';
 
 /*
   loop through all enemies' figthAgainst array

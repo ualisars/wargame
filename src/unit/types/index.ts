@@ -8,6 +8,7 @@ import Militia from './Militia';
 import Peltasts from './Peltasts';
 import Pikemen from './Pikemen';
 import Scouts from './Scouts';
+import Unit from './Unit';
 
 export {
   Archers,
@@ -19,5 +20,6 @@ export {
   Militia,
   Peltasts,
   Pikemen,
-  Scouts
+  Scouts,
+  Unit
 }

@@ -1,3 +1,6 @@
+import {units} from '../../../store';
+import {isObjectEmpty} from '../../../utils';
+import {meleeAttack} from './index';
 /*
   Go through all units and
   fire meleeAttack for all enemies that

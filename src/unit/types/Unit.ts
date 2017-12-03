@@ -1,9 +1,9 @@
-import {gridSize} from '../config';
-import {map} from '../map/createMap';
+import {gridSize} from '../../config';
+import {map} from '../../map/createMap';
 import {
   isObjectEmpty,
   getNodeFromMap
-} from '../utils';
+} from '../../utils';
 
 class Unit {
   id: number;

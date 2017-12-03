@@ -1,10 +1,11 @@
 import {checkAttackSide} from '../attackSide';
+import {calculateDamageWhenItsLessThanOne} from '../damage';
 /*
   Single time attack, that fires only when one unit
   has rushed in full speed into another
 */
 export const charge = (attackUnit:any, defendUnit:any) => {
-  let attackAngle = checkAttackAngle(attackUnit, defendUnit);
+  let attackAngle = checkAttackSide(attackUnit, defendUnit);
   console.error('attackAngle', attackAngle);
   let charge = calculateCharge(attackUnit, defendUnit, attackAngle);
   defendUnit.health = Math.round(defendUnit.health - charge);

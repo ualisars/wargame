@@ -1,3 +1,10 @@
+import {randomizeMeleeDamage} from '../../../utils';
+import {
+  calculateDamage,
+  calculateDamageBaseOnEnemyPosition
+} from '../damage';
+import {armourPenetration} from '../armour';
+
 export const meleeAttack = (attackUnit:any, defendUnit:any, enemyPosition:string='front') => {
   return new Promise(resolve => {
     let initialDamage = randomizeMeleeDamage(attackUnit.meleeDamage);

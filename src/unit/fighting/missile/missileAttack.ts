@@ -1,10 +1,10 @@
-import {ctx} from '../map/mapConfig';
+import {ctx} from '../../../map/mapConfig';
 import {
   gridSize,
   WIDTH,
   HEIGHT
-} from '../config';
-import {randomizeMeleeDamage} from '../utils';
+} from '../../../config';
+import {randomizeMeleeDamage} from '../../../utils';
 
 export const missileAttack = (unit:any, enemy:any) => {
   if(isEnemyInTheRange) {

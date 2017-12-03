@@ -1,29 +1,33 @@
 /*
   Functions that works with unit's visibility
 */
-import {map} from '../map/createMap';
-import {ctx} from '../map/mapConfig';
-import {gridSize} from '../config';
-import {drawUnit} from './drawUnit';
+import {map} from '../../map/createMap';
+import {ctx} from '../../map/mapConfig';
+import {gridSize} from '../../config';
+import {drawUnit} from '../draw';
 import {
   playerUnits,
   computerUnits,
   spottedUnits,
   visibleForPlayerUnits,
   visibleForComputerUnits,
+  hidedEnemies
+} from '../../store';
+import {
   addUnitIntoVisibleArray,
   removeUnitFromVisibleArray,
   addUnitToSpottedUnits,
-} from '../store/unitStore';
-
+} from '../../store/unitStore';
 import {
   isObjectInArray,
   deleteObjectFromArray,
   getNodeFromMap
-} from '../utils';
+} from '../../utils';
+import {
+  addToHidedEnemies,
+  removeFromHidedEnemies
+} from '../../store/AI/hidedEnemies';
 
-// AI
-import {hidedEmenies} from '../AI/setUpAI';
 
 /*
   spotEnemy: checks if enemies is in its visibility range
@@ -47,7 +51,7 @@ export const spotEnemy = (unit:any) => {
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
       //console.error(enemy.name, 'has been spotted');
       if(unit.controlBy === 'computer' && enemy.isVisible === false) {
-        hidedEmenies.removeFromHidedEnemies(enemy);
+        removeFromHidedEnemies(enemy);
       }
       enemy.isVisible = true;
       drawUnit(enemy); // show enemy on the map
@@ -91,7 +95,7 @@ export const isUnitSpottedByEnemy = (unit:any) => {
       addUnitIntoVisibleArray(unit);
       isSpotted = true;
       if(unit.isVisible === false && unit.controlBy === 'player') {
-        hidedEmenies.removeFromHidedEnemies(unit);
+        removeFromHidedEnemies(unit);
       }
       unit.isVisible = true;
       if(unit.controlBy === 'computer') { // for computer add enemy into spottedUnits
@@ -105,7 +109,7 @@ export const isUnitSpottedByEnemy = (unit:any) => {
   if(!isSpotted) { // unit is not in range of any enemies
     removeUnitFromVisibleArray(unit);
     if(unit.controlBy === 'player' && unit.isVisible === true) { // unit has been in the spottedUnits
-      hidedEmenies.addToHidedEnemies(unit);
+      addToHidedEnemies(unit);
     }
     unit.isVisible = false;
     if(unit.controlBy === 'computer' && !unit.isMoving) { // if unit is computer's and not moving

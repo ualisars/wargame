@@ -1,10 +1,10 @@
 import {
   playerUnits,
   computerUnits
-} from '../store/unitStore';
-import {gridSize} from '../config';
-import {map} from '../map/createMap';
-import {getNodeFromMap} from '../utils';
+} from '../../store';
+import {gridSize} from '../../config';
+import {map} from '../../map/createMap';
+import {getNodeFromMap} from '../../utils';
 
 /*
   return nodes that surround unit in some distance

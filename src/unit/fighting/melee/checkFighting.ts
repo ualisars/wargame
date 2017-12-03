@@ -1,3 +1,4 @@
+import {isObjectEmpty} from '../../../utils';
 /*
   Checks if unit is currently fighting
   with any enemies, if not fighting

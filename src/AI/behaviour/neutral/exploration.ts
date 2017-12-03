@@ -1,5 +1,7 @@
-import {updateUnit} from '../../../unit/unitMovement';
-import {assignUnitMoveToPosition} from '../../../unit/unitActions';
+import {
+  updateUnit,
+  assignUnitMoveToPosition
+} from '../../../unit';
 import {
   getDistanceBetweenTwoUnitsInGrids,
   getNodeFromMap,

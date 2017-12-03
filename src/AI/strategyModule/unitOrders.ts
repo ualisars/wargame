@@ -2,7 +2,7 @@ import {
   computerUnits,
   playerUnits
 } from '../../store/unitStore';
-import {pursueUnit} from '../../unit/unitMovement';
+import {pursueUnit} from '../../unit';
 import {getClosestEnemyToUnit} from '../actions/unitActions';
 import {
   getNodeFromMap
