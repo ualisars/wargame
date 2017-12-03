@@ -7,7 +7,7 @@ import {
   addNeighbors,
   createNodes,
   map,
-  addObstaclesToMap
+  initializeMap
 } from '../../map';
 
 import {
@@ -71,23 +71,23 @@ import {createArmy} from '../../startBattle/store';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
-  addObstaclesToMap();
-  createUnit('archers', 40, 80, 15, 'player');
-  createUnit('lightInfantry', 80, 360, 15, 'player');
-  createUnit('lightCavalry', 80, 400, 15, 'player');
-  createUnit('lightCavalry', 40, 440, 15, 'player');
-
-  createUnit('militia', 1080, 400, 15, 'computer');
-  createUnit('pikemen', 600, 120, 15, 'computer');
-  createUnit('pikemen', 600, 120, 15, 'computer');
-  createUnit('heavyInfantry', 600, 120, 15, 'computer');
-  createUnit('archers', 520, 80, 15, 'computer');
+  initializeMap();
+  // createUnit('archers', 40, 80, 15, 'player');
+  // createUnit('lightInfantry', 80, 360, 15, 'player');
+  // createUnit('lightCavalry', 80, 400, 15, 'player');
+  // createUnit('lightCavalry', 40, 440, 15, 'player');
+  //
+  // createUnit('militia', 1080, 400, 15, 'computer');
+  // createUnit('pikemen', 600, 120, 15, 'computer');
+  // createUnit('pikemen', 600, 120, 15, 'computer');
+  // createUnit('heavyInfantry', 600, 120, 15, 'computer');
+  // createUnit('archers', 520, 80, 15, 'computer');
 
 
   //drawGrid();
-  console.log('map', map);
-  console.error('units', units);
-  console.error('computersUnits', computerUnits);
+  // console.log('map', map);
+  // console.error('units', units);
+  // console.error('computersUnits', computerUnits);
 
   console.log('monitor: height', window.screen.availHeight, 'width:',window.screen.availWidth);
 

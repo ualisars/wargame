@@ -1,9 +1,9 @@
 import {
-  addObstaclesToMap,
+  initializeMap,
   map
 } from './createMap';
 
 export {
-  addObstaclesToMap,
+  initializeMap,
   map
 }

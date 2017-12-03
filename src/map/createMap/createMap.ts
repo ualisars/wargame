@@ -18,7 +18,14 @@ import {
   addNeighbors
 } from '../index';
 
-export let map = createNodes();
+export let map:any[] = [];
+
+export const createMap = () => {
+  return new Promise(resolve => {
+    map = createNodes();
+    resolve();
+  });
+}
 
 export let addObstaclesToMap = () => {
   map = createObstacles(120, 220, 120, 160, 'river');
@@ -30,4 +37,9 @@ export let addObstaclesToMap = () => {
   map = createObstacles(960, 1000, 360, 400, 'forest');
   map = createObstacles(920, 1000, 400, 440, 'forest');
   addNeighbors(map);
+}
+
+export const initializeMap = () => {
+  createMap()
+  .then(() => addObstaclesToMap());
 }

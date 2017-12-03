@@ -12,7 +12,7 @@ import {
   terrainCtx
 } from './config';
 import {
-  addObstaclesToMap,
+  initializeMap,
   map
 } from './createMap';
 import {
@@ -41,7 +41,7 @@ export {
   ctx,
   terrain,
   terrainCtx,
-  addObstaclesToMap,
+  initializeMap,
   map,
   drawGrid,
   addNeighbors,
