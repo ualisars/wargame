@@ -1,7 +1,6 @@
 import {
   drawUnit,
   spotEnemy,
-  getSurroundedEnemies,
   meleeCombat,
   meleeAttack,
   charge,
@@ -33,7 +32,8 @@ import {
   getBlockingUnit,
   giveWay,
   isUnitOutOfCombat,
-  getSurroundedBlockedNodes
+  getSurroundedBlockedNodes,
+  getSurroundedEnemies
 } from '../../utils';
 
 

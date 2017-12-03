@@ -29,9 +29,7 @@ import {
 } from './fighting';
 import {
   updateUnit,
-  pursueUnit,
-  getSurroundedNodes,
-  getSurroundedEnemies
+  pursueUnit
 } from './movement';
 import {
   spotEnemy,
@@ -76,8 +74,6 @@ export {
   refreshment,
   updateUnit,
   pursueUnit,
-  getSurroundedNodes,
-  getSurroundedEnemies,
   spotEnemy,
   isUnitSpottedByEnemy,
   spotUnits,

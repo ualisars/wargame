@@ -32,6 +32,10 @@ import {
   getUnitsMinProperty,
   getUnitsMaxProperty
 } from './unit/property';
+import {
+  getSurroundedNodes,
+  getSurroundedEnemies
+} from './surrounded';
 
 export {
   getNodeFromMap,
@@ -57,5 +61,7 @@ export {
   isUnitOutOfCombat,
   checkOtherUnitsPosition,
   getUnitsMinProperty,
-  getUnitsMaxProperty
+  getUnitsMaxProperty,
+  getSurroundedNodes,
+  getSurroundedEnemies
 }
