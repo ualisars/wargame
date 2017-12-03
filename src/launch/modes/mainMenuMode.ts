@@ -1,7 +1,7 @@
 import {
   mainMenu,
   dragAndDropCanvas
-} from '../GUI/mainMenu/mainMenuSettings';
+} from '../../GUI/mainMenu/mainMenuSettings';
 
 import {
   canvas,
@@ -9,10 +9,10 @@ import {
   backgroundCanvas,
   terrain,
   clearMap
-} from '../map';
-import {clearMainMenu} from '../GUI/mainMenu/mainMenuSettings';
-import {setMainMenuMode} from './globalConfig';
-import {launchGame} from './launchGame';
+} from '../../map';
+import {clearMainMenu} from '../../GUI/mainMenu/mainMenuSettings';
+import {setMainMenuMode} from '../../config/globalConfig';
+import {launchGame} from '../index';
 
 export const activateMainMenuMode = () => {
   dragAndDropCanvas.style.zIndex = '6';

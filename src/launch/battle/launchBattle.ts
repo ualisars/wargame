@@ -8,23 +8,23 @@ import {
   createNodes,
   map,
   addObstaclesToMap
-} from './map';
+} from '../../map';
 
 import {
   WIDTH,
   HEIGHT,
   gridSize,
-} from './config';
+} from '../../config';
 
 
 import {
   aStar
-} from './path';
+} from '../../path';
 import {
   getNodeFromMap,
   getSurroundedBlockedNodes,
   drawBackground
-} from './utils';
+} from '../../utils';
 
 import {
   Unit,
@@ -36,38 +36,38 @@ import {
   spotUnits,
   meleeCombat,
   checkHealth
-} from './unit';
+} from '../../unit';
 
 import {
   units,
   playerUnits,
   computerUnits,
   currentlyChosenUnit,
-} from './store/unitStore';
+} from '../../store/unitStore';
 
 // AI testing
-import {setUpAI} from './AI/setUpAI';
+import {setUpAI} from '../../AI/setUpAI';
 //import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
 import {
   analyzeUnits,
   calculateUnitTypes,
   getUnitTypesInPercentage,
   getSurroundedNodes
-} from './AI/analyzeModule/unitAnalyze';
-import {chooseFormation} from './AI/strategyModule/formation';
+} from '../../AI/analyzeModule/unitAnalyze';
+import {chooseFormation} from '../../AI/strategyModule/formation';
 // strategy module
 import {
   personality,
   hidedEmenies
-} from './AI/setUpAI';
-import{orderToAttackEnemy} from './AI/strategyModule/unitOrders';
-import {assignTasks} from './AI/strategyModule/assignTask';
-import {assignCombatStage} from './AI/processModule/mapProcess';
-import {calculateTotalPower} from './AI/analyzeModule/powerAnalyze';
-import {AIMovement} from './AI/strategyModule/unitOrders';
-import {isBattleEnd, checkWinner} from './gameLoop';
-import {battleFinish} from './config/globalConfig';
-import {createArmy} from './startBattle/store';
+} from '../../AI/setUpAI';
+import{orderToAttackEnemy} from '../../AI/strategyModule/unitOrders';
+import {assignTasks} from '../../AI/strategyModule/assignTask';
+import {assignCombatStage} from '../../AI/processModule/mapProcess';
+import {calculateTotalPower} from '../../AI/analyzeModule/powerAnalyze';
+import {AIMovement} from '../../AI/strategyModule/unitOrders';
+import {isBattleEnd, checkWinner} from '../../gameLoop';
+import {battleFinish} from '../../config/globalConfig';
+import {createArmy} from '../../startBattle/store';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');

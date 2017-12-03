@@ -1,5 +1,3 @@
-import {launchGame} from './config/launchGame';
-import {launchBattle} from './launchBattle';
+import {launchGame} from './launch';
 
 launchGame();
-//launchBattle();

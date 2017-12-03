@@ -1,6 +1,6 @@
-import {launchMainMenu} from '../GUI/mainMenu/mainMenuLaunch';
-import {launchBattle} from '../launchBattle';
-import {mainMenuMode, battleMode} from '../config/globalConfig';
+import {launchMainMenu} from '../../GUI/mainMenu/mainMenuLaunch';
+import {launchBattle} from '../battle/launchBattle';
+import {mainMenuMode, battleMode} from '../../config/globalConfig';
 
 export const launchGame = () => {
   if(mainMenuMode) {

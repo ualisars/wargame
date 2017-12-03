@@ -1,7 +1,7 @@
 import {
   mainMenu,
   dragAndDropCanvas
-} from '../GUI/mainMenu/mainMenuSettings';
+} from '../../GUI/mainMenu/mainMenuSettings';
 
 import {
   canvas,
@@ -9,11 +9,11 @@ import {
   backgroundCanvas,
   terrain,
   clearMap
-} from '../map';
+} from '../../map';
 
-import {clearMainMenu} from '../GUI/mainMenu/mainMenuSettings';
-import {setBattleMode} from './globalConfig';
-import {launchGame} from './launchGame';
+import {clearMainMenu} from '../../GUI/mainMenu/mainMenuSettings';
+import {setBattleMode} from '../../config/globalConfig';
+import {launchGame} from '../index';
 
 export const activateBattleMode = () => {
   dragAndDropCanvas.style.zIndex = '0';
