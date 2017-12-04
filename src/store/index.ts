@@ -1,12 +1,20 @@
 import {
-  units,
-  playerUnits,
-  computerUnits,
-  spottedUnits,
   currentlyChosenUnit,
-  visibleForPlayerUnits,
+  assignCurrentlyChosenUnit,
+  addUnitToSpottedUnits,
+  spottedUnits,
+  removeUnitFromSpottedUnits,
+  incUnitId,
+  unitId,
+  computerUnits,
+  playerUnits,
+  removeUnit,
+  units,
+  addUnitIntoVisibleArray,
+  removeUnitFromVisibleArray,
   visibleForComputerUnits,
-} from './unit/unitStore';
+  visibleForPlayerUnits
+} from './unit';
 
 import {combatStage} from './AI/combatStage';
 import {formation} from './AI/formation';
@@ -20,13 +28,21 @@ import {visiblePlayerUnitsPower} from './AI/power/visiblePlayerUnitsPower';
 
 
 export {
-  units,
-  playerUnits,
-  computerUnits,
-  spottedUnits,
   currentlyChosenUnit,
-  visibleForPlayerUnits,
+  assignCurrentlyChosenUnit,
+  addUnitToSpottedUnits,
+  spottedUnits,
+  removeUnitFromSpottedUnits,
+  incUnitId,
+  unitId,
+  computerUnits,
+  playerUnits,
+  removeUnit,
+  units,
+  addUnitIntoVisibleArray,
+  removeUnitFromVisibleArray,
   visibleForComputerUnits,
+  visibleForPlayerUnits,
   combatStage,
   formation,
   hidedEnemies,

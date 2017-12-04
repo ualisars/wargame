@@ -1,9 +1,9 @@
 import {
   units,
   playerUnits,
-  computerUnits
+  computerUnits,
+  removeUnit
 } from '../../../store';
-import {removeUnit} from '../../../store/unit/unitStore';
 import {isObjectEmpty, deleteObjectFromArray} from '../../../utils';
 
 /*

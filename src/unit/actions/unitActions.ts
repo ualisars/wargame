@@ -4,7 +4,7 @@ import {
   currentlyChosenUnit,
   assignCurrentlyChosenUnit,
   unitId
-} from '../../store/unit/unitStore';
+} from '../../store';
 import {loadImage} from '../../utils';
 import {ctx} from '../../map';
 import {Unit} from '../types';

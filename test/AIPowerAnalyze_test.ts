@@ -13,7 +13,7 @@ import {
   computerUnits
 } from '../src/store';
 
-import {addUnitIntoVisibleArray} from '../src/store/unit/unitStore';
+import {addUnitIntoVisibleArray} from '../src/store/unit/visibleUnits';
 
 import {
   playerUnits,

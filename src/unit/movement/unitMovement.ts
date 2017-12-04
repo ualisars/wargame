@@ -26,7 +26,7 @@ import {
   aStar,
   findPathFromOneNodeToAnother
 } from '../../path';
-import {units} from '../../store/unit/unitStore';
+import {units} from '../../store';
 import {
   checkOtherUnitsPosition,
   getBlockingUnit,

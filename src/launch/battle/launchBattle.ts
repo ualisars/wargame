@@ -43,7 +43,7 @@ import {
   playerUnits,
   computerUnits,
   currentlyChosenUnit,
-} from '../../store/unit/unitStore';
+} from '../../store';
 
 // AI testing
 import {setUpAI} from '../../AI/setUpAI';

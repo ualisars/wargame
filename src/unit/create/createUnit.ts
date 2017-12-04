@@ -1,10 +1,8 @@
 import {
-  incUnitId
-} from '../../store/unit/unitStore';
-import {
   playerUnits,
   computerUnits,
-  units
+  units,
+  incUnitId
 } from '../../store';
 import {drawUnit} from '../draw/drawUnit';
 

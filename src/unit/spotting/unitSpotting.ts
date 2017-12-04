@@ -13,13 +13,11 @@ import {
   spottedUnits,
   visibleForPlayerUnits,
   visibleForComputerUnits,
-  hidedEnemies
-} from '../../store';
-import {
+  hidedEnemies,
   addUnitIntoVisibleArray,
   removeUnitFromVisibleArray,
   addUnitToSpottedUnits,
-} from '../../store/unit/unitStore';
+} from '../../store';
 import {
   isObjectInArray,
   deleteObjectFromArray,
