@@ -5,7 +5,7 @@ import {
 import {
   removeUnitFromSpottedUnits,
   removeUnit
-} from '../../../store/unitStore';
+} from '../../../store/unit/unitStore';
 import {findUnitInFightAgainst} from '../fightAgainst';
 import {isUnitFighting} from './checkFighting';
 import {ctx} from '../../../map';

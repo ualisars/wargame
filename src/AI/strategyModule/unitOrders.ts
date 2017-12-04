@@ -1,7 +1,7 @@
 import {
   computerUnits,
   playerUnits
-} from '../../store/unitStore';
+} from '../../store';
 import {pursueUnit} from '../../unit';
 import {getClosestEnemyToUnit} from '../actions/unitActions';
 import {

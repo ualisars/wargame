@@ -19,7 +19,7 @@ import {
   addUnitIntoVisibleArray,
   removeUnitFromVisibleArray,
   addUnitToSpottedUnits,
-} from '../../store/unitStore';
+} from '../../store/unit/unitStore';
 import {
   isObjectInArray,
   deleteObjectFromArray,

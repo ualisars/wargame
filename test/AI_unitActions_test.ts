@@ -14,7 +14,7 @@ import {
 } from '../src/AI/actions/unitActions';
 import {
   computerUnits
-} from '../src/store/unitStore';
+} from '../src/store';
 
 describe('AI unitActions test', function() {
   describe('getClosestUnitToNode', function() {

@@ -2,7 +2,7 @@ import {
   isObjectInArray,
   deleteObjectFromArray,
   isUnitInArray
-} from '../utils';
+} from '../../utils';
 
 export let units:any[] = [];
 export let playerUnits: any[] = [];

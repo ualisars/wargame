@@ -1,6 +1,6 @@
 import {
   incUnitId
-} from '../../store/unitStore';
+} from '../../store/unit/unitStore';
 import {
   playerUnits,
   computerUnits,

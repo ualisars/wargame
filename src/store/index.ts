@@ -6,7 +6,7 @@ import {
   currentlyChosenUnit,
   visibleForPlayerUnits,
   visibleForComputerUnits,
-} from './unitStore';
+} from './unit/unitStore';
 
 import {combatStage} from './AI/combatStage';
 import {formation} from './AI/formation';

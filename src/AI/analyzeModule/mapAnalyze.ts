@@ -12,7 +12,7 @@ import {
 import {
   computerUnits,
   visibleForComputerUnits
-} from '../../store/unitStore';
+} from '../../store';
 import {hidedEmenies} from '../setUpAI';
 // create instances of AI map stores
 export let computerControlNodes = new NodeStore();
