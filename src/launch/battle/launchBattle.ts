@@ -66,7 +66,7 @@ import {assignCombatStage} from '../../AI/processModule/mapProcess';
 import {calculateTotalPower} from '../../AI/analyzeModule/powerAnalyze';
 import {AIMovement} from '../../AI/strategyModule/unitOrders';
 import {isBattleEnd, checkWinner} from '../../gameLoop';
-import {battleFinish} from '../../config/globalConfig';
+import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
 
 export const launchBattle = () => {

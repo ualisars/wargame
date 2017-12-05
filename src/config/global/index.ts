@@ -1,22 +1,13 @@
 import {
-  HEIGHT,
-  WIDTH,
-  gridSize
-} from './map';
-
-import {
   battleMode,
   battleFinish,
   finishBattle,
   mainMenuMode,
   setBattleMode,
   setMainMenuMode
-} from './global';
+} from './globalConfig';
 
 export {
-  HEIGHT,
-  WIDTH,
-  gridSize,
   battleMode,
   battleFinish,
   finishBattle,

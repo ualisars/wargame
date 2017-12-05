@@ -2,7 +2,7 @@ import {
   computerUnits,
   playerUnits
 } from './store';
-import {finishBattle} from './config/globalConfig';
+import {finishBattle} from './config';
 import {drawMessage} from './GUI/afterBattle/menu';
 
 export const isBattleEnd = () => {

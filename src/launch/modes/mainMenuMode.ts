@@ -11,7 +11,7 @@ import {
   clearMap
 } from '../../map';
 import {clearMainMenu} from '../../GUI/mainMenu/mainMenuSettings';
-import {setMainMenuMode} from '../../config/globalConfig';
+import {setMainMenuMode} from '../../config';
 import {launchGame} from '../index';
 
 export const activateMainMenuMode = () => {

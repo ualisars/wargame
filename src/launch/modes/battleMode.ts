@@ -12,7 +12,7 @@ import {
 } from '../../map';
 
 import {clearMainMenu} from '../../GUI/mainMenu/mainMenuSettings';
-import {setBattleMode} from '../../config/globalConfig';
+import {setBattleMode} from '../../config';
 import {launchGame} from '../index';
 
 export const activateBattleMode = () => {

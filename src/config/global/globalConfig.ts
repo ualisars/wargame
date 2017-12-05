@@ -1,6 +1,6 @@
-export let mainMenuMode:boolean = true;
 export let battleMode:boolean = false;
 export let battleFinish:boolean = false;
+export let mainMenuMode:boolean = true;
 
 export const setBattleMode = () => {
   mainMenuMode = false;
