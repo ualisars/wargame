@@ -2,6 +2,10 @@ import {
   mainMenuCtx,
   mainMenu,
   dragAndDropCanvas,
+
+} from './mainMenuSettings';
+import {
+  side,
   unitRosterWidth,
   armyLayoutWidth,
   infoLayoutWidth,
@@ -11,12 +15,11 @@ import {
   totalGold,
   changeToComputer,
   changeToPlayer
-} from './mainMenuSettings';
+} from '../../config/mainMenu';
 import {WIDTH, HEIGHT} from '../../config';
 import{
   displayChosenUnits
 } from './army';
-import {side} from './mainMenuSettings';
 
 let playerX0 = armyLayoutWidth;
 let playerX1 = armyLayoutWidth + (armyLayoutWidth / 2);

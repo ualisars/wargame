@@ -1,10 +1,13 @@
 import {
   mainMenuCtx,
+
+} from './mainMenuSettings';
+import {
   armyLayoutWidth,
   unitRosterWidth,
   titleHeight,
   hoveredUnit
-} from './mainMenuSettings';
+} from '../../config/mainMenu';
 
 const unitInfoTitleX:number = armyLayoutWidth + unitRosterWidth + 170;
 const unitInfoTitleY:number = titleHeight + 60;

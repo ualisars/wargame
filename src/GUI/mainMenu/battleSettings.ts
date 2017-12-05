@@ -1,11 +1,14 @@
 import {
   mainMenuCtx,
+
+} from './mainMenuSettings';
+import {
   armyLayoutWidth,
   unitRosterWidth,
   titleHeight,
   setTotalGold,
   totalGold
-} from './mainMenuSettings';
+} from '../../config/mainMenu';
 import {displayTitle} from './sideSwitcher';
 
 const goldBoxStartX:number = armyLayoutWidth + unitRosterWidth + 100;

@@ -1,9 +1,12 @@
 import {
   mainMenuCtx,
+
+} from './mainMenuSettings';
+import {
   unitRosterWidth,
   unitRosterHeight,
-  titleHeight,
-} from './mainMenuSettings';
+  titleHeight
+} from '../../config/mainMenu';
 import {WIDTH, HEIGHT} from '../../config';
 import {roster} from './units';
 import {loadImage} from '../../utils';

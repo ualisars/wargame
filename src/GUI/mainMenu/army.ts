@@ -1,18 +1,18 @@
 import {
   mainMenuCtx,
+
+  dragAndDropCanvasCtx
+} from './mainMenuSettings';
+
+import {
   unitRosterWidth,
   unitRosterHeight,
   titleHeight,
-  dragAndDropCanvasCtx
-} from './mainMenuSettings';
-import {WIDTH, HEIGHT} from '../../config';
-import {
-  side
-} from './mainMenuSettings';
-import {
   armyLayoutWidth,
-  armyLayoutHeight
-} from './mainMenuSettings';
+  armyLayoutHeight,
+  side
+} from '../../config/mainMenu';
+import {WIDTH, HEIGHT} from '../../config';
 import {
   playerArmy,
   computerArmy,

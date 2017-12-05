@@ -3,6 +3,9 @@ import {
   mainMenuCtx,
   dragAndDropCanvas,
   dragAndDropCanvasCtx,
+
+} from './mainMenuSettings';
+import {
   decreaseSpendedGold,
   increaseSpendedGold,
   changeUnitInfoToTrue,
@@ -10,7 +13,8 @@ import {
   showUnitInfo,
   hoveredUnit,
   startBattleAvailable
-} from './mainMenuSettings';
+} from '../../config/mainMenu';
+
 
 import {
   roster,

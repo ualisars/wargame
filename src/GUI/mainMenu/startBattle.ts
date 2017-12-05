@@ -2,6 +2,8 @@ import {
   mainMenu,
   mainMenuCtx,
   dragAndDropCanvas,
+} from './mainMenuSettings';
+import {
   startBattleStartY,
   startBattleWidth,
   startBattleHeight,
@@ -11,7 +13,7 @@ import {
   computerSpendedGold,
   disableStartBattleButton,
   enableStartBattleButton
-} from './mainMenuSettings';
+} from '../../config/mainMenu';
 import {
   playerArmy,
   computerArmy

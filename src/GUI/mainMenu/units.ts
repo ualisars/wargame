@@ -13,7 +13,7 @@ import {
   isUnitInArray,
   deleteUnitFromArmy
 } from '../../utils';
-import {side} from './mainMenuSettings';
+import {side} from '../../config/mainMenu';
 
 export let roster:any[] = [];
 export let selectedUnitInRoster:any = null;

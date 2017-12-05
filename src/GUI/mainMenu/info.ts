@@ -1,5 +1,8 @@
 import {
   mainMenuCtx,
+
+} from './mainMenuSettings';
+import {
   unitRosterWidth,
   armyLayoutWidth,
   armyLayoutHeight,
@@ -10,7 +13,7 @@ import {
   showUnitInfo,
   changeBattleSettingsToTrue,
   changeUnitInfoToTrue
-} from './mainMenuSettings';
+} from '../../config/mainMenu';
 import {battleSettings} from './battleSettings';
 import {unitInfo} from './unitInfo';
 
