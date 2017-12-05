@@ -67,7 +67,7 @@ import {calculateTotalPower} from '../../AI/analyzeModule/powerAnalyze';
 import {AIMovement} from '../../AI/strategyModule/unitOrders';
 import {isBattleEnd, checkWinner} from '../../gameLoop';
 import {battleFinish} from '../../config/globalConfig';
-import {createArmy} from '../../startBattle/store';
+import {createArmy} from '../../battle';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');

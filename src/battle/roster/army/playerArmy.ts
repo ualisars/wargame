@@ -1,11 +1,11 @@
 import {
   playerArmy
-} from '../../GUI/mainMenu/units';
-import {getRandomNode} from '../../AI/actions/mapActions';
+} from '../../../GUI/mainMenu/units';
+import {getRandomNode} from '../../../AI/actions/mapActions';
 import {
   playerUnitsNodes
 } from '../index';
-import {createUnit} from '../../unit';
+import {createUnit} from '../../../unit';
 
 export const createPlayerArmy = () => {
   return new Promise(resolve => {

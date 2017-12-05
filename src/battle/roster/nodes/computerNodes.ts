@@ -2,12 +2,12 @@ import {
   gridSize,
   HEIGHT,
   WIDTH
-} from '../../config';
-import {map} from '../../map';
+} from '../../../config';
+import {map} from '../../../map';
 import {
   deleteObjectFromArray,
   getNodeFromMap
-} from '../../utils';
+} from '../../../utils';
 
 export let computerUnitsNodes:any[] = [];
 
