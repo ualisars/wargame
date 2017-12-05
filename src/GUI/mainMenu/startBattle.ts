@@ -17,7 +17,7 @@ import {
 import {
   playerArmy,
   computerArmy
-} from './units';
+} from '../../store/roster';
 import {activateBattleMode} from '../../launch';
 
 let startBattleButtonX:number = Math.round(startBattleWidth / 3) + 120;

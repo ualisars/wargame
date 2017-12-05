@@ -8,7 +8,7 @@ import {
   titleHeight
 } from '../../config/mainMenu';
 import {WIDTH, HEIGHT} from '../../config';
-import {roster} from './units';
+import {roster} from '../../store/roster';
 import {loadImage} from '../../utils';
 
 export const rosterImgWidth:number = 80;

@@ -18,7 +18,7 @@ import {
   computerArmy,
   selectedUnitInRoster,
   removeUnitFromArmy
-} from './units';
+} from '../../store/roster';
 import {loadImage} from '../../utils';
 
 export let armyImgWidth:number = 70;

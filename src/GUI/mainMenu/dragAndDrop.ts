@@ -3,7 +3,6 @@ import {
   mainMenuCtx,
   dragAndDropCanvas,
   dragAndDropCanvasCtx,
-
 } from './mainMenuSettings';
 import {
   decreaseSpendedGold,
@@ -14,15 +13,13 @@ import {
   hoveredUnit,
   startBattleAvailable
 } from '../../config/mainMenu';
-
-
 import {
   roster,
   selectUnitInRoster,
-  selectedUnitInRoster,
   addUnitToArmy,
   removeUnitFromArmy
-} from './units';
+} from '../../store/roster';
+import {selectedUnitInRoster} from '../../store/roster/selectedUnit';
 import {
   rosterImgWidth,
   rosterImgHeight,
@@ -58,6 +55,7 @@ import {
 export const dragAndDrop = () => {
   dragAndDropCanvas.addEventListener('click', (e:any) => {
     console.error('Click');
+    console.log('roster', roster);
     let x = e.offsetX; // get X
     let y = e.offsetY; // get Y
     changeTotalMoney(x,y); // test
@@ -93,6 +91,7 @@ export const dragAndDrop = () => {
       }
     }
     onChooseRoster(x, y);
+    console.log('onClick selectedUnitInRoster', selectedUnitInRoster);
   });
 
   dragAndDropCanvas.addEventListener('mousemove', (e:any) => {
@@ -130,10 +129,11 @@ export let onChooseRoster = (mouseX:number, mouseY:number) => {
       selectedUnit = unit;
     }
   }
+  console.log('onChooseRoster selectedUnit', selectedUnit);
   selectUnitInRoster(selectedUnit);
   changeHoveredUnit(selectedUnit);
   displayInfo();
-  console.error('selectedUnitInRoster:', selectedUnitInRoster);
+  console.error('onChooseRoster selectedUnitInRoster:', selectedUnitInRoster);
 }
 
 export let onDragUnit = (mouseX:number, mouseY:number) => {

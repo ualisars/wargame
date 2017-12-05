@@ -1,6 +1,6 @@
 import {
   playerArmy
-} from '../../../GUI/mainMenu/units';
+} from '../../../store/roster';
 import {getRandomNode} from '../../../AI/actions/mapActions';
 import {
   playerUnitsNodes

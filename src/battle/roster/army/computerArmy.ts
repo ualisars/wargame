@@ -1,6 +1,6 @@
 import {
   computerArmy
-} from '../../../GUI/mainMenu/units';
+} from '../../../store/roster';
 import {getRandomNode} from '../../../AI/actions/mapActions';
 import {computerUnitsNodes} from '../index';
 import {createUnit} from '../../../unit';
