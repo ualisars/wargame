@@ -14,7 +14,7 @@ import {
   startBattleStartY,
   startBattleHeight,
   startBattleWidth
-} from './lowerLayout';
+} from './bottomLayout';
 import {
   titleHeight
 } from './upperLayout';

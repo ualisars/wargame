@@ -3,7 +3,7 @@ import {
   playerUnits
 } from './store';
 import {finishBattle} from './config';
-import {drawMessage} from './GUI/afterBattle/menu';
+import {drawMessage} from './UI/messages/drawMessage';
 
 export const isBattleEnd = () => {
   let computerNumber = computerUnits.length;

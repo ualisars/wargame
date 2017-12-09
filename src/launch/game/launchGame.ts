@@ -1,4 +1,4 @@
-import {launchMainMenu} from '../../GUI/mainMenu/mainMenuLaunch';
+import {launchMainMenu} from '../mainMenu/launchMainMenu';
 import {launchBattle} from '../battle/launchBattle';
 import {mainMenuMode, battleMode} from '../../config';
 

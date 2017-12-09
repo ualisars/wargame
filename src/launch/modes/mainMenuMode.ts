@@ -1,7 +1,7 @@
 import {
   mainMenu,
   dragAndDropCanvas
-} from '../../GUI/mainMenu/mainMenuSettings';
+} from '../../UI/mainMenu/settings';
 
 import {
   canvas,
@@ -10,7 +10,6 @@ import {
   terrain,
   clearMap
 } from '../../map';
-import {clearMainMenu} from '../../GUI/mainMenu/mainMenuSettings';
 import {setMainMenuMode} from '../../config';
 import {launchGame} from '../index';
 

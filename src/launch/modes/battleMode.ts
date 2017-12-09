@@ -1,7 +1,7 @@
 import {
   mainMenu,
   dragAndDropCanvas
-} from '../../GUI/mainMenu/mainMenuSettings';
+} from '../../UI/mainMenu/settings';
 
 import {
   canvas,
@@ -11,7 +11,6 @@ import {
   clearMap
 } from '../../map';
 
-import {clearMainMenu} from '../../GUI/mainMenu/mainMenuSettings';
 import {setBattleMode} from '../../config';
 import {launchGame} from '../index';
 
@@ -22,7 +21,6 @@ export const activateBattleMode = () => {
   canvas.style.zIndex = '3';
   terrain.style.zIndex = '2';
   backgroundCanvas.style.zIndex = '1';
-  clearMainMenu();
   setBattleMode();
   launchGame();
 }
