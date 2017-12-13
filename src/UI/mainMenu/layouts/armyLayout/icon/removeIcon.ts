@@ -1,4 +1,4 @@
-import {dragAndDropCanvasCtx} from '../../../settings';
+import {dragAndDropCanvasCtx} from '../../../../../config/context';
 import {
   armyImgHeight,
   armyImgWidth

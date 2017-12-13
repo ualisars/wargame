@@ -1,4 +1,4 @@
-import {mainMenuCtx} from '../../UI/mainMenu/settings';
+import {mainMenuCtx} from '../../config/context';
 import {WIDTH, HEIGHT} from '../../config';
 import {displayRoster} from '../../UI/mainMenu/layouts/rosterLayout';
 import {displayChosenUnits} from '../../UI/mainMenu/layouts/armyLayout';

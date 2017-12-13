@@ -1,6 +1,6 @@
 import {
   mainMenuCtx
-} from '../../../settings';
+} from '../../../../../config/context';
 import {
   propertyStartX,
   propertyStartY,

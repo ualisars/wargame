@@ -3,7 +3,7 @@ import {
   unitRosterHeight,
   titleHeight
 } from '../../../../../config/mainMenu';
-import {mainMenuCtx} from '../../../settings';
+import {mainMenuCtx} from '../../../../../config/context';
 import {displayRosterTitle} from './index';
 
 export const displayRoster = () => {

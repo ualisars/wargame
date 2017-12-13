@@ -3,7 +3,7 @@ import {
 } from '../../../../../../config/mainMenu/gold/totalGold';
 import {
   mainMenuCtx,
-} from '../../../../settings';
+} from '../../../../../../config/context';
 import {
   boxHeight,
   boxWidth

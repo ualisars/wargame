@@ -1,6 +1,3 @@
-// import {
-//   changeToComputer
-// } from '../../../../../config/mainMenu';
 import {
   displayComputer,
   displayPlayer,
@@ -12,7 +9,7 @@ import {
 import {
   WIDTH
 } from '../../../../../config';
-import {mainMenuCtx} from '../../../settings';
+import {mainMenuCtx} from '../../../../../config/context';
 import {side} from '../../../../../config/mainMenu/sides/side';
 
 export const displayTitle = () => {

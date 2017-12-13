@@ -1,7 +1,7 @@
 import {
   mainMenuCtx,
   dragAndDropCanvasCtx
-} from '../../../settings';
+} from '../../../../../config/context';
 import {side} from '../../../../../config/mainMenu/sides/side';
 import {
   playerArmy,

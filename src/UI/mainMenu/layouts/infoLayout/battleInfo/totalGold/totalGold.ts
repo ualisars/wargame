@@ -9,7 +9,7 @@ import {
 } from '../../infoSettings';
 import {
   mainMenuCtx
-} from '../../../../settings';
+} from '../../../../../../config/context';
 import {
   setTotalGold
 } from '../../../../../../config/mainMenu';

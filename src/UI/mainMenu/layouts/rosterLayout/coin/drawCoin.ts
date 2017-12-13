@@ -1,4 +1,4 @@
-import {mainMenuCtx} from '../../../settings';
+import {mainMenuCtx} from '../../../../../config/context';
 
 export const drawCoin = (centerX:number, centerY:number, radius:number) => {
   mainMenuCtx.beginPath();

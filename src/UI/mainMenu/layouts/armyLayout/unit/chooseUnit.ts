@@ -1,5 +1,5 @@
 import {side} from '../../../../../config/mainMenu/sides/side';
-import {dragAndDropCanvasCtx} from '../../../settings';
+import {dragAndDropCanvasCtx} from '../../../../../config/context';
 import {WIDTH, HEIGHT} from '../../../../../config';
 import {selectedUnitInRoster} from '../../../../../store/roster/selectedUnit';
 import {drawRemoveIcon} from '../icon';

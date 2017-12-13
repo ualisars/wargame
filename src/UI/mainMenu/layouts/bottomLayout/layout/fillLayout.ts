@@ -6,7 +6,7 @@ import {
 import {
   mainMenuCtx,
   dragAndDropCanvasCtx
-} from '../../../settings';
+} from '../../../../../config/context';
 
 export const fillLayout = () => {
   mainMenuCtx.clearRect(0, startBattleStartY, startBattleWidth, startBattleHeight);

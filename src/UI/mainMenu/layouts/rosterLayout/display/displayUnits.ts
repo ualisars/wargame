@@ -1,4 +1,4 @@
-import {mainMenuCtx} from '../../../settings';
+import {mainMenuCtx} from '../../../../../config/context';
 import {
   unitRosterWidth,
   unitRosterHeight,

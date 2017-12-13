@@ -1,7 +1,7 @@
 import {
   mainMenu,
   dragAndDropCanvas
-} from '../../UI/mainMenu/settings';
+} from '../../config/canvas';
 import {clearMap} from '../../map';
 import {
   canvas,

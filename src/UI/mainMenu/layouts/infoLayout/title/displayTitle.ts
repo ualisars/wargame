@@ -1,7 +1,7 @@
 import {
   mainMenuCtx,
   dragAndDropCanvasCtx
-} from '../../../settings';
+} from '../../../../../config/context';
 import {
   unitInfoTitleX,
   unitInfoTitleY

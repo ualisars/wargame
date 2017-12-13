@@ -1,9 +1,11 @@
 import {
   mainMenu,
-  mainMenuCtx,
-  dragAndDropCanvas,
+  dragAndDropCanvas
+} from '../../../config/canvas';
+import {
   dragAndDropCanvasCtx,
-} from '../settings';
+  mainMenuCtx
+} from '../../../config/context';
 import {
   decreaseSpendedGold,
   increaseSpendedGold,

@@ -3,7 +3,7 @@ import {
   titleHeight,
   unitRosterWidth
 } from '../../../../../config/mainMenu';
-import {mainMenuCtx} from '../../../settings';
+import {mainMenuCtx} from '../../../../../config/context';
 import {side} from '../../../../../config/mainMenu/sides/side';
 
 export const displayComputer = () => {
