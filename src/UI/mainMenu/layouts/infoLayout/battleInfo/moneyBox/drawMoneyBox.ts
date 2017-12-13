@@ -7,7 +7,7 @@ import {
 import {
   boxHeight,
   boxWidth
-} from '../../settings';
+} from '../../infoSettings';
 
 export const drawMoneyBox = (x:number, y:number, amount:number) => {
   if(amount === totalGold) {

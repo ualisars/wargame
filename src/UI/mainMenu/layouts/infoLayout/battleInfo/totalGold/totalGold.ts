@@ -6,7 +6,7 @@ import {
   goldOptions,
   startTotalMoneyTitleX,
   startTotalMoneyTitleY
-} from '../../settings';
+} from '../../infoSettings';
 import {
   mainMenuCtx
 } from '../../../../settings';

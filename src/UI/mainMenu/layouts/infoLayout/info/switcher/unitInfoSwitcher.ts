@@ -4,7 +4,7 @@ import {
   unitInfoX,
   unitInfoY,
   width
-} from '../../settings';
+} from '../../infoSettings';
 import {
   showUnitInfo
 } from '../../../../../../config/mainMenu';

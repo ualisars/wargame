@@ -3,7 +3,7 @@ import {
   battleSettingsY,
   height,
   width
-} from '../../settings';
+} from '../../infoSettings';
 
 export const onChooseBattleSettings = (mouseX:number, mouseY:number) => {
   let x0 = battleSettingsX;

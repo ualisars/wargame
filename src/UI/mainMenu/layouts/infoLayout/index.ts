@@ -7,7 +7,7 @@ import {
 } from './info';
 import {
 
-} from './settings';
+} from './infoSettings';
 import {
 
 } from './title';

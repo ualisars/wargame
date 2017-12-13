@@ -3,7 +3,7 @@ import {
   unitInfoX,
   unitInfoY,
   width
-} from '../../settings';
+} from '../../infoSettings';
 
 export const onChooseUnitInfo = (mouseX:number, mouseY:number) => {
   let x0 = unitInfoX;

@@ -6,11 +6,11 @@ import {
   propertyStartY,
   valueStartX,
   valueStartY
-} from '../settings';
+} from '../infoSettings';
 import {
   changeY,
   setDefault
-} from '../settings/infoSettings';
+} from '../infoSettings/infoSettings';
 import {
   armyLayoutWidth,
   unitRosterWidth,
