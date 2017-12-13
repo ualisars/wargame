@@ -1,8 +1,8 @@
 import {
-  computerX0,
-  computerX1,
-  computerY0,
-  computerY1
+  computerSwitcherX0,
+  computerSwitcherX1,
+  computerSwitcherY0,
+  computerSwitcherY1
 } from '../upperLayoutSettings';
 import {
   changeToComputer
@@ -15,7 +15,7 @@ import {
 import {displayChosenUnits} from '../../index';
 
 export const onChooseComputer = (mouseX:number, mouseY:number) => {
-  if(mouseX >= computerX0 && mouseX < computerX1 && mouseY >= computerY0 && mouseY < computerY1) {
+  if(mouseX >= computerSwitcherX0 && mouseX < computerSwitcherX1 && mouseY >= computerSwitcherY0 && mouseY < computerSwitcherY1) {
     changeToComputer();
     displayChosenUnits();
     displayComputer();

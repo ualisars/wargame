@@ -1,7 +1,7 @@
 import {
-  playerX1,
-  playerY0,
-  playerY1
+  playerSwitcherX1,
+  playerSwitcherY0,
+  playerSwitcherY1
 } from '../upperLayoutSettings';
 import {
   changeToPlayer
@@ -16,7 +16,7 @@ import {
 import {displayChosenUnits} from '../../index';
 
 export const onChoosePlayer = (mouseX:number, mouseY:number) => {
-  if(mouseX >= unitRosterWidth && mouseX < playerX1 && mouseY >= playerY0 && mouseY < playerY1) {
+  if(mouseX >= unitRosterWidth && mouseX < playerSwitcherX1 && mouseY >= playerSwitcherY0 && mouseY < playerSwitcherY1) {
     changeToPlayer();
     displayChosenUnits();
     displayPlayer();
