@@ -19,7 +19,7 @@ import {
 import {
   armyImgHeight,
   armyImgWidth
-} from '../settings';
+} from '../armySettings';
 
 export let emptyBox:any;
 

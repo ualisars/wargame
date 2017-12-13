@@ -3,7 +3,7 @@ import {
   computerArmy,
   playerArmy
 } from '../../../../../store/roster/army';
-import {armyImgWidth} from '../settings';
+import {armyImgWidth} from '../armySettings';
 
 export const isUnitShouldBeRemoved = (mouseX:number, mouseY:number) => {
   console.log('isUnitShouldBeRemoved');

@@ -2,7 +2,7 @@ import {dragAndDropCanvasCtx} from '../../../settings';
 import {
   armyImgHeight,
   armyImgWidth
-} from '../settings';
+} from '../armySettings';
 
 export const drawRemoveIcon = (unit:any) => {
   drawCloseImageForUnit(unit);

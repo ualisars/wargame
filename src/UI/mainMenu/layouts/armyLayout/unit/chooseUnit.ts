@@ -10,7 +10,7 @@ import {
 import {
   armyImgHeight,
   armyImgWidth
-} from '../settings';
+} from '../armySettings';
 
 export const onChooseUnitInArmy = (mouseX:number, mouseY:number) => {
   let army:any[] = [];

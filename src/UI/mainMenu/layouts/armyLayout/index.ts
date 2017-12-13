@@ -11,7 +11,7 @@ import {
 import {
   armyImgWidth,
   armyImgHeight
-} from './settings';
+} from './armySettings';
 import {
   displayChosenUnits,
   displayChosenUnitsTitle,
