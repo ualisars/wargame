@@ -1,4 +1,4 @@
-import {terrainCtx} from '../../map';
+import {terrainCtx} from '../../config/context';
 import {loadImage} from '../../utils';
 import {WIDTH, HEIGHT} from '../../config';
 

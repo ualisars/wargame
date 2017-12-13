@@ -1,4 +1,4 @@
-import {backgroundCtx} from '../../map';
+import {backgroundCtx} from '../../config/context';
 import {loadImage} from '../../utils';
 import {WIDTH, HEIGHT} from '../../config';
 

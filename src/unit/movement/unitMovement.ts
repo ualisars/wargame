@@ -18,10 +18,10 @@ import {
 import {assignUnitMoveToPosition} from '../actions';
 import {
   map,
-  ctx,
   createUnitObstacle,
   addNeighbors
 } from '../../map';
+import {ctx,} from '../../config/context';
 import {
   aStar,
   findPathFromOneNodeToAnother

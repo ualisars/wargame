@@ -6,7 +6,7 @@ import {
 } from '../../../store';
 import {findUnitInFightAgainst} from '../fightAgainst';
 import {isUnitFighting} from './checkFighting';
-import {ctx} from '../../../map';
+import {ctx} from '../../../config/context';
 import {refreshment} from '../refreshment';
 import {gridSize} from '../../../config';
 

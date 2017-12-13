@@ -1,4 +1,4 @@
-import {ctx} from '../index';
+import {ctx} from '../../config/context';
 import {
   WIDTH,
   HEIGHT

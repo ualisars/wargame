@@ -1,14 +1,18 @@
 import {
-  canvas,
-  ctx,
-  auxiliaryCanvas,
-  auxiliaryCtx,
   drawGrid,
   addNeighbors,
   createNodes,
   map,
   initializeMap
 } from '../../map';
+import {
+  auxiliaryCanvas,
+  canvas
+} from '../../config/canvas';
+import {
+  auxiliaryCtx,
+  ctx
+} from '../../config/context';
 
 import {
   WIDTH,

@@ -2,16 +2,6 @@ import {
   clearMap
 } from './clearMap';
 import {
-  auxiliaryCanvas,
-  auxiliaryCtx,
-  backgroundCanvas,
-  backgroundCtx,
-  canvas,
-  ctx,
-  terrain,
-  terrainCtx
-} from './config';
-import {
   initializeMap,
   map
 } from './createMap';
@@ -33,14 +23,6 @@ import {
 
 export {
   clearMap,
-  auxiliaryCanvas,
-  auxiliaryCtx,
-  backgroundCanvas,
-  backgroundCtx,
-  canvas,
-  ctx,
-  terrain,
-  terrainCtx,
   initializeMap,
   map,
   drawGrid,

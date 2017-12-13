@@ -2,14 +2,13 @@ import {
   mainMenu,
   dragAndDropCanvas
 } from '../../UI/mainMenu/settings';
-
+import {clearMap} from '../../map';
 import {
   canvas,
   auxiliaryCanvas,
   backgroundCanvas,
-  terrain,
-  clearMap
-} from '../../map';
+  terrain
+} from '../../config/canvas';
 import {setMainMenuMode} from '../../config';
 import {launchGame} from '../index';
 

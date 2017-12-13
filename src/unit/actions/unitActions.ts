@@ -6,7 +6,7 @@ import {
   unitId
 } from '../../store';
 import {loadImage} from '../../utils';
-import {ctx} from '../../map';
+import {ctx} from '../../config/context';
 import {Unit} from '../types';
 // unit types
 import {

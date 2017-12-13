@@ -1,7 +1,5 @@
-import {
-  canvas,
-  ctx
-} from '../index';
+import {canvas} from '../../config/canvas';
+import {ctx} from '../../config/context';
 import {
   WIDTH,
   HEIGHT,

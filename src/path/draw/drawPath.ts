@@ -1,7 +1,5 @@
-import {
-  canvas,
-  ctx
-} from '../../map';
+import {canvas} from '../../config/canvas';
+import {ctx} from '../../config/context';
 import {
   WIDTH,
   HEIGHT,

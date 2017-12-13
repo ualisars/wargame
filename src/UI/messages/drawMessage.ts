@@ -1,10 +1,11 @@
 import {WIDTH, HEIGHT} from '../../config';
+import {backgroundCanvas} from '../../config/canvas';
+
 import {
-  backgroundCanvas,
   backgroundCtx,
   ctx,
   auxiliaryCtx
-} from '../../map';
+} from '../../config/context';
 
 export const drawMessage = (message:string) => {
   // backgroundCtx.clearRect(0, 0, WIDTH, HEIGHT);
