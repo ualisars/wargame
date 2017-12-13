@@ -7,7 +7,7 @@ import {
   startBattleButtonHeight,
   startBattleTextX,
   startBattleTextY
-} from '../settings';
+} from '../bottomSettings';
 
 export const showStartBattleButton = () => {
   let color:string;

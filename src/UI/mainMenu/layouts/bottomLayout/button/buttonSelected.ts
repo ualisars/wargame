@@ -3,7 +3,7 @@ import {
   startBattleButtonWidth,
   startBattleButtonY,
   startBattleButtonHeight
-} from '../settings';
+} from '../bottomSettings';
 
 export const isStartBattleButtonSelected = (mouseX:number, mouseY:number):boolean => {
   let x0 = startBattleButtonX;

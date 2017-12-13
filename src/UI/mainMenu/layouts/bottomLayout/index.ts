@@ -15,7 +15,7 @@ import {
   startBattleButtonHeight,
   startBattleTextX,
   startBattleTextY
-} from './settings';
+} from './bottomSettings';
 
 export {
   isStartBattleAvailable,
