@@ -1,4 +1,4 @@
-import {side} from '../index';
+import {side} from '../sides/side';
 
 export let playerSpendedGold:number = 0;
 export let computerSpendedGold:number = 0;
