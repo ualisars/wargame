@@ -5,7 +5,7 @@ import {
 } from '../upperLayoutSettings';
 import {
   changeToPlayer
-} from '../../../../../config/mainMenu';
+} from '../../../../../config/mainMenu/sides/side';
 import {
   displayPlayer,
   displayTitle

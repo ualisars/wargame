@@ -6,7 +6,7 @@ import {
 } from '../upperLayoutSettings';
 import {
   changeToComputer
-} from '../../../../../config/mainMenu';
+} from '../../../../../config/mainMenu/sides/side';
 import {
   displayComputer,
   displayTitle

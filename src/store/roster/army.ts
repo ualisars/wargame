@@ -1,4 +1,4 @@
-import {side} from '../../config/mainMenu';
+import {side} from '../../config/mainMenu/sides/side';
 import {
   isUnitInArray,
   deleteUnitFromArmy

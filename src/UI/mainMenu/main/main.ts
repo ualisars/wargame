@@ -16,17 +16,17 @@ import {
   startBattleAvailable
 } from '../../../config/mainMenu';
 import {
-  roster,
-  selectUnitInRoster,
   addUnitToArmy,
   removeUnitFromArmy
-} from '../../../store/roster';
+} from '../../../store/roster/army';
+import {roster} from '../../../store/roster/roster';
+import {selectUnitInRoster} from '../../../store/roster/selectedUnit';
 import {selectedUnitInRoster} from '../../../store/roster/selectedUnit';
 import {
   rosterImgWidth,
   rosterImgHeight
 } from '../layouts/rosterLayout/rosterSettings';
-import {isUnitSelectedInRoster} from '../layouts/rosterLayout';
+import {isUnitSelectedInRoster} from '../layouts/rosterLayout/unit/isUnitSelectedInRoster';
 import {loadImage} from '../../../utils'
 import {WIDTH, HEIGHT} from '../../../config';
 import {
@@ -40,8 +40,8 @@ import {
   armyImgHeight,
   displayArmy,
   displayChosenUnits,
-  isUnitShouldBeRemoved
 } from '../layouts/armyLayout';
+import {isUnitShouldBeRemoved} from '../layouts/armyLayout/remove/removeUnit';
 import {emptyBox} from '../layouts/armyLayout/army/displayArmy'
 import {
   onChooseInfo,
@@ -77,7 +77,7 @@ export const dragAndDrop = () => {
     if(startBattleAvailable && isStartBattleButtonSelected(x,y)) {
       activateBattleMode();
     }
-    if(selectedUnitInRoster) {
+    if(selectedUnitInRoster) { // add unit to roster
       console.log('unit is added:', isUnitAddedToArmy(x, y));
       if(isUnitAddedToArmy(x,y)) { // draw unit is army list
         let unit = isUnitAddedToArmy(x,y);
@@ -124,6 +124,7 @@ export let onChooseRoster = (mouseX:number, mouseY:number) => {
   let selectedUnit = null;
   const width = rosterImgWidth;
   const height = rosterImgHeight;
+  console.log('height', height, 'width', width);
   for(let unit of roster) {
     let x = unit.x;
     let y = unit.y;
@@ -162,6 +163,7 @@ export const isUnitAddedToArmy = (mouseX:number, mouseY:number):any => {
   let x = emptyBox.x;
   let y = emptyBox.y;
   if(mouseX >= x && mouseX < (x + width) && mouseY >= y && mouseY < (y + height)) {
+    console.log('isUnitAddedToArmy selectedUnitInRoster, selectedUnitInRoster');
     return selectedUnitInRoster;
   }
   return null;
