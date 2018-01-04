@@ -13,7 +13,8 @@ import {
 import {
   setTotalGold
 } from '../../../../../../config/mainMenu';
-import {displayTitle} from '../../title';
+//import {displayTitle} from '../../title';
+import {displayTitle} from '../../../upperLayout';
 import {drawMoneyBox} from '../moneyBox';
 
 export let goldBoxes:any[] = [];

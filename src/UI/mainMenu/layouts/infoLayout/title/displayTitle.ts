@@ -6,6 +6,7 @@ import {
   unitInfoTitleX,
   unitInfoTitleY
 } from '../infoSettings';
+
 export const displayTitle = () => {
   mainMenuCtx.fillStyle = '#000';
   mainMenuCtx.font = '24px serif';
