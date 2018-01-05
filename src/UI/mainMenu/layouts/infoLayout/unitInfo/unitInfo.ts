@@ -6,7 +6,7 @@ import {
   propertyStartY,
   valueStartX,
   valueStartY
-} from '../infoSettings';
+} from '../infoSettings/infoSettings';
 import {
   changeY,
   setDefault
@@ -27,12 +27,11 @@ const propertyList = [
 export const unitInfo = () => {
   displayTitle();
   displayUnitInfo(hoveredUnit);
-  console.log('hoveredUnit', hoveredUnit);
 }
 
-
-
 export const displayUnitInfo = (unit:any) => {
+  console.error('displayUnitInfo');
+  console.log('hoveredUnit:', hoveredUnit);
   setDefault();
   mainMenuCtx.fillStyle = '#000';
   mainMenuCtx.font = '24px serif';
