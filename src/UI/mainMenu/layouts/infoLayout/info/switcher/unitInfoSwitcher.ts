@@ -7,7 +7,7 @@ import {
 } from '../../infoSettings';
 import {
   showUnitInfo
-} from '../../../../../../config/mainMenu';
+} from '../../../../../../config/mainMenu/show/showInfo';
 
 export const unitInfoSwitcher = () => {
   if(showUnitInfo) {

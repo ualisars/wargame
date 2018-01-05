@@ -11,7 +11,7 @@ export const onChooseUnitInfo = (mouseX:number, mouseY:number) => {
   let y0 = unitInfoY;
   let y1 = unitInfoY + height;
   if(mouseX >= x0 && mouseX < x1 && mouseY >= y0 && mouseY < y1) {
-    console.log('unitInfo is chosen');
+    console.error('unitInfo is chosen');
     return true;
   }
   return false;

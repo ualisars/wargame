@@ -11,7 +11,7 @@ export const onChooseBattleSettings = (mouseX:number, mouseY:number) => {
   let y0 = battleSettingsY;
   let y1 = battleSettingsY + height;
   if(mouseX >= x0 && mouseX < x1 && mouseY >= y0 && mouseY < y1) {
-    console.log('battleSettings has been chosen');
+    console.error('battleSettings has been chosen');
     return true;
   }
   return false;

@@ -5,7 +5,7 @@ import {
   height,
   width
 } from '../../infoSettings';
-import {showBattleSettings} from '../../../../../../config/mainMenu';
+import {showBattleSettings} from '../../../../../../config/mainMenu/show/showInfo';
 
 export const battleSettingSwitcher = () => {
   if(showBattleSettings) {
