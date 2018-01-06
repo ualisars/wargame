@@ -30,8 +30,6 @@ export const unitInfo = () => {
 }
 
 export const displayUnitInfo = (unit:any) => {
-  console.error('displayUnitInfo');
-  console.log('hoveredUnit:', hoveredUnit);
   setDefault();
   mainMenuCtx.fillStyle = '#000';
   mainMenuCtx.font = '24px serif';

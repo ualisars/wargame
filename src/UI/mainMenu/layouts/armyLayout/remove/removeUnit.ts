@@ -6,7 +6,7 @@ import {
 import {armyImgWidth} from '../armySettings';
 
 export const isUnitShouldBeRemoved = (mouseX:number, mouseY:number) => {
-  console.log('isUnitShouldBeRemoved');
+  //console.log('isUnitShouldBeRemoved');
   let army:any[] = [];
   if(side === 'player') {
     army = playerArmy;

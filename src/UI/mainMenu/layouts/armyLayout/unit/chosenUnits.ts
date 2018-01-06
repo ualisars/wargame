@@ -11,7 +11,7 @@ import {
 import {displayArmy} from '../army';
 
 export const displayChosenUnits = () => {
-  console.log('displayChosenUnits');
+  //console.log('displayChosenUnits');
   mainMenuCtx.clearRect(unitRosterWidth, titleHeight, armyLayoutWidth, armyLayoutHeight);
   mainMenuCtx.fillStyle = '#cdd1d6';
   mainMenuCtx.fillRect(unitRosterWidth, titleHeight, armyLayoutWidth, armyLayoutHeight);

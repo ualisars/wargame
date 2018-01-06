@@ -56,8 +56,6 @@ import {activateBattleMode} from '../../../launch';
 
 export const dragAndDrop = () => {
   dragAndDropCanvas.addEventListener('click', (e:any) => {
-    console.error('Click');
-    console.log('roster', roster);
     let x = e.offsetX; // get X
     let y = e.offsetY; // get Y
     changeTotalGold(x,y); // test
@@ -79,7 +77,7 @@ export const dragAndDrop = () => {
     }
     if(selectedUnitInRoster) { // add unit to roster
       console.log('unit is added:', isUnitAddedToArmy(x, y));
-      if(isUnitAddedToArmy(x,y)) { // draw unit is army list
+      if(isUnitAddedToArmy(x,y)) { // draw unit in army list
         let unit = isUnitAddedToArmy(x,y);
         addUnitToArmy(unit);
         displayChosenUnits();
@@ -124,7 +122,6 @@ export let onChooseRoster = (mouseX:number, mouseY:number) => {
   let selectedUnit = null;
   const width = rosterImgWidth;
   const height = rosterImgHeight;
-  console.log('height', height, 'width', width);
   for(let unit of roster) {
     let x = unit.x;
     let y = unit.y;
@@ -132,11 +129,9 @@ export let onChooseRoster = (mouseX:number, mouseY:number) => {
       selectedUnit = unit;
     }
   }
-  console.log('onChooseRoster selectedUnit', selectedUnit);
   selectUnitInRoster(selectedUnit);
   changeHoveredUnit(selectedUnit);
   displayInfo();
-  console.error('onChooseRoster selectedUnitInRoster:', selectedUnitInRoster);
 }
 
 export let onDragUnit = (mouseX:number, mouseY:number) => {
@@ -163,7 +158,6 @@ export const isUnitAddedToArmy = (mouseX:number, mouseY:number):any => {
   let x = emptyBox.x;
   let y = emptyBox.y;
   if(mouseX >= x && mouseX < (x + width) && mouseY >= y && mouseY < (y + height)) {
-    console.log('isUnitAddedToArmy selectedUnitInRoster, selectedUnitInRoster');
     return selectedUnitInRoster;
   }
   return null;

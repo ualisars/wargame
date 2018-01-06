@@ -8,7 +8,6 @@ import {
 } from '../../../../../config/context';
 
 export const fillLayout = () => {
-  console.error('startBattleStartY:', startBattleStartY);
   mainMenuCtx.clearRect(0, startBattleStartY, startBattleWidth, startBattleHeight);
   mainMenuCtx.fillStyle = '#2c2f33';
   mainMenuCtx.fillRect(0, startBattleStartY, startBattleWidth, startBattleWidth);

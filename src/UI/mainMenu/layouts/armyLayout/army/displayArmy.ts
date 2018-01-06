@@ -33,15 +33,22 @@ export const displayArmy = (i:number = 1, x:number=unitRosterWidth+20, y:number=
   // console.log('army', army);
   if(army.length >= 1 && army.length >= i) {
     loadImage(army[i - 1].imgSrc, (err:any, img:any) => {
-      army[i - 1].armyPosition = {
+      let marginWidth = armyImgWidth + 10;
+      let marginHeight = armyImgHeight + 15;
+      let defaultWidth = unitRosterWidth + 20;
+      console.error('displayArmy');
+      console.log('army[i - 1]', army[i - 1]);
+      console.error('i', i);
+      army[i - 1].armyPosition = { // assign armyPosition
         x,
         y
       };
       mainMenuCtx.drawImage(img, x, y, armyImgWidth, armyImgHeight);
-      x += armyImgWidth + 10;
       if(i % 5 === 0) {
-        y += armyImgHeight + 15;
-        x = unitRosterWidth + 20;
+        y += marginHeight;
+        x = defaultWidth;
+      } else {
+        x += marginWidth;
       }
       i++;
       displayArmy(i,x,y);
@@ -57,7 +64,6 @@ export const displayArmy = (i:number = 1, x:number=unitRosterWidth+20, y:number=
       y,
       filled: false
     };
-    console.log('emptyBox:', emptyBox);
     return;
   }
 }
