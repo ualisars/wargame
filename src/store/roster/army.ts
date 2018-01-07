@@ -20,26 +20,27 @@ export let playerArmyPositionX:number = unitRosterWidth + 20;
 export let playerArmyPositionY:number = titleHeight + 60;
 
 export const addUnitToArmy = (unit:any) => {
+  let updatedUnit = Object.assign({}, unit);
   let army:any[];
   if(side === 'player') {
     army = playerArmy;
-    unit.armyPosition = { // assign armyPosition
+    updatedUnit.armyPosition = { // assign armyPosition
       x: playerArmyPositionX,
-      y: playerArmyPositionY
+      y: playerArmyPositionY,
     };
     changePlayerArmyPosition();
   } else {
     army = computerArmy;
-    unit.armyPosition = { // assign armyPosition
+    updatedUnit.armyPosition = { // assign armyPosition
       x: computerArmyPositionX,
       y: computerArmyPositionY
     };
     changeComputerArmyPosition();
   }
   if(unit) {
-      army.push(unit);
-      console.log('unit', unit);
-      console.log('unit', unit.name, 'is added');
+      army.push(updatedUnit);
+      console.log('unit', updatedUnit);
+      console.log('unit', updatedUnit.name, 'is added');
   }
   console.log('computerArmy', computerArmy);
   console.log('playerArmy', playerArmy);
@@ -97,41 +98,6 @@ export const changeComputerArmyPosition = () => {
     computerArmyPositionX += marginWidth;
   }
   i++;
-}
-
-export const rearrangeArmyPosition = () => {
-  let army:any[] = [];
-  if(side === 'player') {
-    army = playerArmy;
-  } else {
-    army = computerArmy;
-  }
-  let marginWidth = armyImgWidth + 10;
-  let marginHeight = armyImgHeight + 15;
-  let defaultWidth = unitRosterWidth + 20;
-  let x:number=unitRosterWidth+20;
-  let y:number=titleHeight+60;
-  let i = 1;
-  for(let unit of army) {
-    unit.armyPosition = { // assign armyPosition
-      x,
-      y
-    };
-    if(i % 5 === 0) {
-      y += marginHeight;
-      x = defaultWidth;
-    } else {
-      x += marginWidth;
-    }
-    i++;
-  }
-  if(side === 'player' && army.length !== 0) {
-    playerArmyPositionX = army[army.length - 1].armyPosition.x;
-    playerArmyPositionY = army[army.length - 1].armyPosition.y;
-  } else {
-    computerArmyPositionX = army[army.length - 1].armyPosition.x;
-    computerArmyPositionY = army[army.length - 1].armyPosition.y;
-  }
 }
 
 export const rearrangePlayerArmyPosition = () => {

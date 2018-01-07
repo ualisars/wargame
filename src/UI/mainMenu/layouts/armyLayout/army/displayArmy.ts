@@ -39,10 +39,10 @@ export const displayArmy = (i:number = 1, x:number=unitRosterWidth+20, y:number=
       console.error('displayArmy');
       console.log('army[i - 1]', army[i - 1]);
       console.error('i', i);
-      army[i - 1].armyPosition = { // assign armyPosition
-        x,
-        y
-      };
+      // army[i - 1].armyPosition = { // assign armyPosition
+      //   x,
+      //   y
+      // };
       mainMenuCtx.drawImage(img, x, y, armyImgWidth, armyImgHeight);
       if(i % 5 === 0) {
         y += marginHeight;
