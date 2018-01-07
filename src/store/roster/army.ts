@@ -55,11 +55,18 @@ export const removeUnitFromArmy = (unit:any) => {
     army = computerArmy;
   }
   if(unit && isUnitInArray(unit, army)) {
+    console.error('before deletion');
+    console.error('playerArmyPositionX', playerArmyPositionX);
+    console.error('playerArmyPositionY', playerArmyPositionY);
     if(side === 'player') {
       playerArmy = deleteUnitFromArmy(unit, playerArmy);
     } else {
       computerArmy = deleteUnitFromArmy(unit, computerArmy);
     }
+    rearrangeArmyPosition();
+    console.error('after deletion');
+    console.error('playerArmyPositionX', playerArmyPositionX);
+    console.error('playerArmyPositionY', playerArmyPositionY);
   }
 }
 
@@ -118,10 +125,10 @@ export const rearrangeArmyPosition = () => {
     i++;
   }
   if(side === 'player') {
-    playerArmyPositionX = army[army.length - 1].armyPositionX;
-    playerArmyPositionY = army[army.length - 1].armyPositionY;
+    playerArmyPositionX = army[army.length - 1].armyPosition.x;
+    playerArmyPositionY = army[army.length - 1].armyPosition.y;
   } else {
-    computerArmyPositionX = army[army.length - 1].armyPositionX;
-    computerArmyPositionY = army[army.length - 1].armyPositionY;
+    computerArmyPositionX = army[army.length - 1].armyPosition.x;
+    computerArmyPositionY = army[army.length - 1].armyPosition.y;
   }
 }
