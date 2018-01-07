@@ -28,24 +28,22 @@ export const addUnitToArmy = (unit:any) => {
       x: playerArmyPositionX,
       y: playerArmyPositionY,
     };
-    changePlayerArmyPosition();
+
   } else {
     army = computerArmy;
     updatedUnit.armyPosition = { // assign armyPosition
       x: computerArmyPositionX,
       y: computerArmyPositionY
     };
-    changeComputerArmyPosition();
   }
   if(unit) {
       army.push(updatedUnit);
-      console.log('unit', updatedUnit);
-      console.log('unit', updatedUnit.name, 'is added');
   }
-  console.log('computerArmy', computerArmy);
-  console.log('playerArmy', playerArmy);
-  console.error('playerArmyPositionX', playerArmyPositionX);
-  console.error('playerArmyPositionY', playerArmyPositionY);
+  if(side === 'player') {
+    changePlayerArmyPosition();
+  } else {
+    changeComputerArmyPosition();
+  }
 }
 
 export const removeUnitFromArmy = (unit:any) => {
@@ -56,9 +54,6 @@ export const removeUnitFromArmy = (unit:any) => {
     army = computerArmy;
   }
   if(unit && isUnitInArray(unit, army)) {
-    console.error('before deletion');
-    console.error('playerArmyPositionX', playerArmyPositionX);
-    console.error('playerArmyPositionY', playerArmyPositionY);
     if(side === 'player') {
       playerArmy = deleteUnitFromArmy(unit, playerArmy);
       rearrangePlayerArmyPosition();
@@ -66,9 +61,6 @@ export const removeUnitFromArmy = (unit:any) => {
       computerArmy = deleteUnitFromArmy(unit, computerArmy);
       rearrangeComputerArmyPosition();
     }
-    console.error('after deletion');
-    console.error('playerArmyPositionX', playerArmyPositionX);
-    console.error('playerArmyPositionY', playerArmyPositionY);
   }
 }
 
@@ -78,12 +70,11 @@ export const changePlayerArmyPosition = () => {
   let marginHeight = armyImgHeight + 15;
   let defaultWidth = unitRosterWidth + 20;
   if(i % 5 === 0) {
-    playerArmyPositionY += marginHeight;
     playerArmyPositionX = defaultWidth;
+    playerArmyPositionY += marginHeight;
   } else {
     playerArmyPositionX += marginWidth;
   }
-  i++;
 }
 
 export const changeComputerArmyPosition = () => {
@@ -92,12 +83,11 @@ export const changeComputerArmyPosition = () => {
   let marginHeight = armyImgHeight + 15;
   let defaultWidth = unitRosterWidth + 20;
   if(i % 5 === 0) {
-    computerArmyPositionY += marginHeight;
     computerArmyPositionX = defaultWidth;
+    computerArmyPositionY += marginHeight;
   } else {
     computerArmyPositionX += marginWidth;
   }
-  i++;
 }
 
 export const rearrangePlayerArmyPosition = () => {
@@ -113,8 +103,8 @@ export const rearrangePlayerArmyPosition = () => {
       y
     };
     if(i % 5 === 0) {
-      y += marginHeight;
       x = defaultWidth;
+      y += marginHeight;
     } else {
       x += marginWidth;
     }
