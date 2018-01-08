@@ -5,10 +5,6 @@ import {
 } from '../armySettings';
 
 export const drawRemoveIcon = (unit:any) => {
-  drawCloseImageForUnit(unit);
-}
-
-export const drawCloseImageForUnit = (unit:any) => {
   const rightTopX:number = unit.armyPosition.x + armyImgWidth;
   const rightTopY:number = unit.armyPosition.y;
 

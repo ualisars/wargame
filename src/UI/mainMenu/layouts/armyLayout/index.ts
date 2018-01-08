@@ -2,7 +2,6 @@ import {
   displayArmy
 } from './army';
 import {
-  drawCloseImageForUnit,
   drawRemoveIcon
 } from './icon';
 import {
@@ -20,7 +19,6 @@ import {
 
 export {
   displayArmy,
-  drawCloseImageForUnit,
   drawRemoveIcon,
   isUnitShouldBeRemoved,
   armyImgWidth,
