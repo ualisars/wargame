@@ -23,6 +23,9 @@ export const addUnitToArmy = (unit:any) => {
   let updatedUnit = Object.assign({}, unit);
   let army:any[];
   if(side === 'player') {
+    console.log('before addition');
+    console.log('playerArmyPositionX', playerArmyPositionX);
+    console.log('playerArmyPositionY', playerArmyPositionY);
     army = playerArmy;
     updatedUnit.armyPosition = { // assign armyPosition
       x: playerArmyPositionX,
@@ -44,6 +47,10 @@ export const addUnitToArmy = (unit:any) => {
   } else {
     changeComputerArmyPosition();
   }
+  console.error('playerArmy', playerArmy);
+  console.log('after addition');
+  console.log('playerArmyPositionX', playerArmyPositionX);
+  console.log('playerArmyPositionY', playerArmyPositionY);
 }
 
 export const removeUnitFromArmy = (unit:any) => {
@@ -55,8 +62,16 @@ export const removeUnitFromArmy = (unit:any) => {
   }
   if(unit && isUnitInArray(unit, army)) {
     if(side === 'player') {
+      console.error('removeUnitFromArmy');
+      console.log('before rearrangePlayerArmyPosition');
+      console.log('playerArmyPositionX', playerArmyPositionX);
+      console.log('playerArmyPositionY', playerArmyPositionY);
       playerArmy = deleteUnitFromArmy(unit, playerArmy);
       rearrangePlayerArmyPosition();
+
+      console.log('playerArmyPositionX', playerArmyPositionX);
+      console.log('playerArmyPositionY', playerArmyPositionY);
+      console.log('playerArmy', playerArmy);
     } else {
       computerArmy = deleteUnitFromArmy(unit, computerArmy);
       rearrangeComputerArmyPosition();
@@ -111,8 +126,15 @@ export const rearrangePlayerArmyPosition = () => {
     i++;
   }
   if(playerArmy.length !== 0) {
-    playerArmyPositionX = playerArmy[playerArmy.length - 1].armyPosition.x;
-    playerArmyPositionY = playerArmy[playerArmy.length - 1].armyPosition.y;
+    let prevX = playerArmy[playerArmy.length - 1].armyPosition.x; // x and y last unit's
+    let prevY = playerArmy[playerArmy.length - 1].armyPosition.y; // army position x and
+    if(i % 5 === 0) {
+      playerArmyPositionX = defaultWidth;
+      playerArmyPositionY = prevY + marginHeight;
+    } else {
+      playerArmyPositionX = prevX + marginWidth;
+      playerArmyPositionY = prevY;
+    }
   } else {
     playerArmyPositionX = unitRosterWidth + 20;
     playerArmyPositionY = titleHeight + 60;
@@ -140,8 +162,15 @@ export const rearrangeComputerArmyPosition = () => {
     i++;
   }
   if(computerArmy.length !== 0) {
-    computerArmyPositionX = computerArmy[computerArmy.length - 1].armyPosition.x;
-    computerArmyPositionY = computerArmy[computerArmy.length - 1].armyPosition.y;
+    let prevX = computerArmy[computerArmy.length - 1].armyPosition.x; // x and y last unit's
+    let prevY = computerArmy[computerArmy.length - 1].armyPosition.y; // army position x and
+    if(i % 5 === 0) {
+      computerArmyPositionX = defaultWidth;
+      computerArmyPositionY = prevY + marginHeight;
+    } else {
+      computerArmyPositionX = prevX + marginWidth;
+      computerArmyPositionY = prevY;
+    }
   } else {
     computerArmyPositionX = unitRosterWidth + 20;;
     computerArmyPositionY = titleHeight + 60;
