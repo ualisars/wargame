@@ -16,6 +16,7 @@ import {
 //import {displayTitle} from '../../title';
 import {displayTitle} from '../../../upperLayout';
 import {drawMoneyBox} from '../moneyBox';
+import {isStartBattleAvailable} from '../../../bottomLayout/button';
 
 export let goldBoxes:any[] = [];
 
@@ -25,6 +26,7 @@ export const changeTotalGold = (mouseX:number, mouseY:number) => {
       setTotalGold(box.gold);
       showTotalGold();
       displayTitle(); // redraw totalGold in the titleComponent
+      isStartBattleAvailable(); // check if startBattleAvailable
     }
   }
 }
