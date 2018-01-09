@@ -14,6 +14,7 @@ import {setBattleMode} from '../../config';
 import {launchGame} from '../index';
 
 export const activateBattleMode = () => {
+  console.error('activateBattleMode');
   dragAndDropCanvas.style.zIndex = '0';
   mainMenu.style.zIndex = '0';
   auxiliaryCanvas.style.zIndex = '4';

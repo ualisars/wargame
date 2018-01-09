@@ -23,9 +23,6 @@ export const addUnitToArmy = (unit:any) => {
   let updatedUnit = Object.assign({}, unit);
   let army:any[];
   if(side === 'player') {
-    console.log('before addition');
-    console.log('playerArmyPositionX', playerArmyPositionX);
-    console.log('playerArmyPositionY', playerArmyPositionY);
     army = playerArmy;
     updatedUnit.armyPosition = { // assign armyPosition
       x: playerArmyPositionX,
@@ -47,10 +44,6 @@ export const addUnitToArmy = (unit:any) => {
   } else {
     changeComputerArmyPosition();
   }
-  console.error('playerArmy', playerArmy);
-  console.log('after addition');
-  console.log('playerArmyPositionX', playerArmyPositionX);
-  console.log('playerArmyPositionY', playerArmyPositionY);
 }
 
 export const removeUnitFromArmy = (unit:any) => {
@@ -62,16 +55,8 @@ export const removeUnitFromArmy = (unit:any) => {
   }
   if(unit && isUnitInArray(unit, army)) {
     if(side === 'player') {
-      console.error('removeUnitFromArmy');
-      console.log('before rearrangePlayerArmyPosition');
-      console.log('playerArmyPositionX', playerArmyPositionX);
-      console.log('playerArmyPositionY', playerArmyPositionY);
       playerArmy = deleteUnitFromArmy(unit, playerArmy);
       rearrangePlayerArmyPosition();
-
-      console.log('playerArmyPositionX', playerArmyPositionX);
-      console.log('playerArmyPositionY', playerArmyPositionY);
-      console.log('playerArmy', playerArmy);
     } else {
       computerArmy = deleteUnitFromArmy(unit, computerArmy);
       rearrangeComputerArmyPosition();

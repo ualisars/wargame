@@ -12,9 +12,9 @@ import {
   changeUnitInfoToTrue,
   changeHoveredUnit,
   showUnitInfo,
-  hoveredUnit,
-  startBattleAvailable
+  hoveredUnit
 } from '../../../config/mainMenu';
+import {startBattleAvailable} from '../../../config/mainMenu/startBattle/startBattleAvailable';
 import {
   addUnitToArmy,
   removeUnitFromArmy
