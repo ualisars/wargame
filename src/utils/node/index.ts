@@ -14,6 +14,12 @@ import {
 import {
 
 } from './map';
+import {
+  getRandomNode
+} from './random';
+import {
+  sortNodesByRandomValue
+} from './sort';
 
 export {
   addNodeIntoArray,
@@ -22,5 +28,7 @@ export {
   getNodeFromArray,
   getNodeFromMap,
   getMinValueFromNodes,
-  getMaxValueFromNodes
+  getMaxValueFromNodes,
+  getRandomNode,
+  sortNodesByRandomValue
 }
