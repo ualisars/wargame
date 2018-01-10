@@ -1,13 +1,13 @@
-import {getNodeFromMap} from './node/getNodeFromMap';
-import {loadImage} from './image/loadImage';
+import {loadImage} from './image';
 import {
+  getNodeFromMap,
   getDistanceBetweenUnitAndNodeInGrids,
   getDistanceBetweenTwoNodesInGrids,
   addNodeIntoArray,
   getNodeFromArray,
   getMinValueFromNodes,
   getMaxValueFromNodes
-} from './node/nodeUtils';
+} from './node';
 import {
   deleteObjectFromArray,
   isObjectInArray,

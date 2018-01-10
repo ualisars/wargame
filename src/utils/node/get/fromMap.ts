@@ -1,4 +1,4 @@
-import {gridSize} from '../../config';
+import {gridSize} from '../../../config';
 
 export let getNodeFromMap = (x:number, y:number, map:any[]) => {
   let node:any;
