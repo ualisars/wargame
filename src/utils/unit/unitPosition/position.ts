@@ -1,8 +1,8 @@
-import {map} from '../../map/createMap';
+import {map} from '../../../map/createMap';
 import {
   deleteObjectFromArray,
   getNodeFromMap
-} from '../index';
+} from '../../index';
 
 export const checkOtherUnitsPosition = (units:any[], currentUnit:any, x:number, y:number) => {
   let updatedUnits = deleteObjectFromArray(currentUnit, units);

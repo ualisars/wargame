@@ -1,4 +1,12 @@
-import {gridSize} from '../../config';
+import {gridSize} from '../../../config';
+
+export const addUnitIntoArray = (unit:any, arr:any[]):any[] => {
+  let updatedArr = Object.assign([], arr);
+  if(!isUnitInArray(unit, arr)) {
+    updatedArr.push(unit);
+  }
+  return updatedArr;
+}
 
 export const deleteUnitFromArray = (unit:any, arr:any[]):any[] => {
   let updatedArr = arr.filter((el) => {
@@ -17,14 +25,6 @@ export const deleteUnitFromArmy = (unit:any, arr:any[]):any[] => {
     }
     return true;
   });
-  return updatedArr;
-}
-
-export const addUnitIntoArray = (unit:any, arr:any[]):any[] => {
-  let updatedArr = Object.assign([], arr);
-  if(!isUnitInArray(unit, arr)) {
-    updatedArr.push(unit);
-  }
   return updatedArr;
 }
 

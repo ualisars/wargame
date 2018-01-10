@@ -15,23 +15,19 @@ import {
 } from './object/objUtils';
 import {randomizeMeleeDamage} from './random/randomGenerator';
 import {
+  addUnitIntoArray,
+  checkOtherUnitsPosition,
   deleteUnitFromArray,
   deleteUnitFromArmy,
-  addUnitIntoArray,
-  getDistanceBetweenTwoUnitsInGrids,
-  isUnitInArray
-} from './unit/unitUtils';
-import {
   getBlockingUnit,
   getSurroundedBlockedNodes,
-} from './unit/blockUnit';
-import {giveWay} from './unit/giveWay';
-import {isUnitOutOfCombat} from './unit/outOfCombat';
-import {checkOtherUnitsPosition} from './unit/position';
-import {
+  getDistanceBetweenTwoUnitsInGrids,
   getUnitsMinProperty,
-  getUnitsMaxProperty
-} from './unit/property';
+  getUnitsMaxProperty,
+  giveWay,
+  isUnitInArray,
+  isUnitOutOfCombat
+} from './unit';
 import {
   getSurroundedNodes,
   getSurroundedEnemies

@@ -1,4 +1,4 @@
-import {isObjectEmpty} from '../index';
+import {isObjectEmpty} from '../../index';
 /*
   Analyze chance to get out from the combat
   and provide conclusion in boolean form

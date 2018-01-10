@@ -1,15 +1,15 @@
-import {map} from '../../map/createMap';
-import {getSurroundedNodes} from '../../AI/analyzeModule/unitAnalyze';
+import {map} from '../../../map/createMap';
+import {getSurroundedNodes} from '../../../AI/analyzeModule/unitAnalyze';
 import {
   playerUnits,
   computerUnits
-} from '../../store';
+} from '../../../store';
 import {
   deleteObjectFromArray,
   getNodeFromMap,
   addNodeIntoArray,
   deleteUnitFromArray
-} from '../index';
+} from '../../index';
 
 export const getBlockingUnit = (units:any[], currentUnit:any, x:number, y:number) => {
   let updatedUnits = deleteObjectFromArray(currentUnit, units);
