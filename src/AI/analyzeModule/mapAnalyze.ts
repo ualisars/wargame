@@ -3,16 +3,10 @@ import {ctx} from '../../config/context';
 import {gridSize} from '../../config';
 import {map} from '../../map/createMap';
 import {getClosestNodeToUnit} from '../../utils/unit/actions';
-import {
-  getMinValueFromNodes,
-  getMaxValueFromNodes,
-  getNodeFromMap,
-  getDistanceBetweenUnitAndNodeInGrids
-} from '../../utils/';
-import {
-  computerUnits,
-  visibleForComputerUnits
-} from '../../store';
+import {getFarthestXNodes} from '../../utils/node/get';
+import {getNodeFromMap} from '../../utils';
+import {computerUnits} from '../../store/unit/units';
+import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 import {hidedEmenies} from '../setUpAI';
 // create instances of AI map stores
 export let computerControlNodes = new NodeStore();
@@ -99,61 +93,4 @@ export const displayComputerControlNodes = () => {
     ctx.fillStyle = '#b1c1d1';
     ctx.fillRect(node.x, node.y, gridSize, gridSize);
   }
-}
-
-/*
-  get fathestNodes of the area
-  by the x ordinate
-*/
-export const getFarthestXNodes = (nodes:any[]):any[] => {
-  let farthestNodes:any[] = [];
-  let minValue = getMinValueFromNodes('x', nodes);
-  let maxValue = getMaxValueFromNodes('x', nodes);
-  for(let node of nodes) {
-    if(node.x === minValue || node.x === maxValue) {
-      farthestNodes.push(node);
-    }
-  }
-  return farthestNodes;
-}
-
-export const getClosestToEnemySideNodes = (nodes:any):any[] => {
-  let closestNodes:any[] = [];
-  let minValue = getMinValueFromNodes('x', nodes);
-  for(let node of nodes) {
-    if(node.x === minValue) { // min x is closer to enemy(player) side
-      closestNodes.push(node);
-    }
-  }
-  return closestNodes;
-}
-
-/*
-  get closest node to enemy side or
-  hided enemies, these nodes are
-  prioritize for exploration
-*/
-export const getClosestToEnemyNodes = (nodes:any[]):any[] => {
-  let closestNodes:any[] = [];
-  if(hidedEmenies.store.length === 0) { // no units are spotted
-    closestNodes = getClosestToEnemySideNodes(nodes); // get nodes that close to enemy side
-  } else {
-    for(let hidedEnemy of hidedEmenies.store) { // there are hided enemy
-      let closestNode = getClosestNodeToUnit(hidedEnemy, nodes);
-      closestNodes.push(closestNode); // add closestNode into nodes array
-    }
-  }
-  return closestNodes;
-}
-
-export const getFarthestNodeFromEnemy = (enemy:any, nodes:any[]):any => {
-  let farthestNode:any = nodes[0];
-  for(let i = 0; i < nodes.length; ++i) {
-    let farthestNodeDistance = getDistanceBetweenUnitAndNodeInGrids(enemy, farthestNode);
-    let nodeDistance = getDistanceBetweenUnitAndNodeInGrids(enemy, nodes[i]);
-    if(nodeDistance > farthestNodeDistance) {
-      farthestNode = nodes[i];
-    }
-  }
-  return farthestNode;
 }

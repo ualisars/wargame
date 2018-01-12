@@ -20,11 +20,11 @@ import {
 } from '../../../utils/unit/actions';
 import {getProtector} from '../../../utils/unit/protector';
 import {isNodeExploredByScout} from '../../../utils/node/explore';
+import {computerControlNodes} from '../../analyzeModule/mapAnalyze';
 import {
-  computerControlNodes,
   getClosestToEnemyNodes,
   getFarthestNodeFromEnemy
-} from '../../analyzeModule/mapAnalyze';
+} from '../../../utils/node/get';
 import {getSurroundedNodes} from '../../analyzeModule/unitAnalyze';
 import {getRandomNode} from '../../../utils/node';
 
