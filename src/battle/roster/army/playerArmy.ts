@@ -1,7 +1,7 @@
 import {
   playerArmy
 } from '../../../store/roster';
-import {getRandomNode} from '../../../AI/actions/mapActions';
+import {getRandomNode} from '../../../utils/node';
 import {
   playerUnitsNodes
 } from '../index';

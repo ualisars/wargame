@@ -26,7 +26,7 @@ import {
   getFarthestNodeFromEnemy
 } from '../../analyzeModule/mapAnalyze';
 import {getSurroundedNodes} from '../../analyzeModule/unitAnalyze';
-import {getRandomNode} from '../../actions/mapActions';
+import {getRandomNode} from '../../../utils/node';
 
 export const neutralExploration = () => {
   scoutsMovement();

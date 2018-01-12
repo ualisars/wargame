@@ -1,7 +1,7 @@
 import {
   computerArmy
 } from '../../../store/roster';
-import {getRandomNode} from '../../../AI/actions/mapActions';
+import {getRandomNode} from '../../../utils/node';
 import {computerUnitsNodes} from '../index';
 import {createUnit} from '../../../unit';
 

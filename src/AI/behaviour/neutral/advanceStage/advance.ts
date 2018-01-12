@@ -7,7 +7,7 @@ import {
   getClosestUnitToOtherUnit,
   getBestUnitByProperty
 } from '../../../actions/unitActions';
-import {getRandomNode} from '../../../actions/mapActions';
+import {getRandomNode} from '../../../../utils/node';
 import {getSurroundedNodes} from '../../../analyzeModule/unitAnalyze';
 import {
   getNodeFromMap
