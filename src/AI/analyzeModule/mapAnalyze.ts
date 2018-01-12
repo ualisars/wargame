@@ -2,7 +2,7 @@ import NodeStore from '../../store/AI/nodeStore';
 import {ctx} from '../../config/context';
 import {gridSize} from '../../config';
 import {map} from '../../map/createMap';
-import {getClosestNodeToUnit} from '../actions/unitActions';
+import {getClosestNodeToUnit} from '../../utils/unit/actions';
 import {
   getMinValueFromNodes,
   getMaxValueFromNodes,

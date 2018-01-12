@@ -9,7 +9,7 @@ import {
   getBestEnemyByProperty,
   getWorstEnemyByProperty,
   getUnitsByTask
-} from '../../../actions/unitActions';
+} from '../../../../utils/unit/actions';
 import {getRandomNode} from '../../../../utils/node';
 import {getSurroundedNodes} from '../../../analyzeModule/unitAnalyze';
 import {

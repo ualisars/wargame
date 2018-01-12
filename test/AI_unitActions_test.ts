@@ -10,8 +10,8 @@ import {
   getUnitsByTask,
   getUnitsByPropertyValue,
   getClosestNodeToUnit,
-  getProtector
-} from '../src/AI/actions/unitActions';
+} from '../src/utils/unit/actions';
+import {getProtector} from '../src/utils/unit/protector';
 import {
   computerUnits
 } from '../src/store';

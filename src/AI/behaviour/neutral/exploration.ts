@@ -16,10 +16,10 @@ import {
   getBestUnitByProperty,
   getClosestUnitToOtherUnit,
   getClosestEnemyToUnit,
-  getClosestNodeToUnit,
-  isNodeExploredByScout,
-  getProtector
-} from '../../actions/unitActions';
+  getClosestNodeToUnit
+} from '../../../utils/unit/actions';
+import {getProtector} from '../../../utils/unit/protector';
+import {isNodeExploredByScout} from '../../../utils/node/explore';
 import {
   computerControlNodes,
   getClosestToEnemyNodes,

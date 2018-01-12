@@ -3,7 +3,7 @@ import {
   playerUnits
 } from '../../store';
 import {pursueUnit} from '../../unit';
-import {getClosestEnemyToUnit} from '../actions/unitActions';
+import {getClosestEnemyToUnit} from '../../utils/unit/actions';
 import {
   getNodeFromMap
 } from '../../utils';

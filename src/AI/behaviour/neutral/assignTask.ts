@@ -3,7 +3,7 @@ import {
   getFreeUnits,
   getUnitsByPropertyValue,
   getClosestUnitToOtherUnit
-} from '../../actions/unitActions';
+} from '../../../utils/unit/actions';
 import{
   getUnitTypesInPercentage,
   calculateUnitTypes,

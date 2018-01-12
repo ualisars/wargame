@@ -1,14 +1,14 @@
 import {
   computerUnits,
   playerUnits
-} from '../../store';
+} from '../../../store/unit/units';
 
-import {gridSize} from '../../config';
+import {gridSize} from '../../../config';
 import {
   getDistanceBetweenUnitAndNodeInGrids,
   getDistanceBetweenTwoUnitsInGrids,
   deleteUnitFromArray
-} from '../../utils';
+} from '../../index';
 
 /*
   get closest computer's unit to specific node
@@ -222,23 +222,4 @@ export const getUnitsByPropertyValue = (property:string, value:any, exclusion:an
     }
   }
   return units;
-}
-
-export const isNodeExploredByScout = (node:any):boolean => {
-  let scouts = getUnitsByTask('exploration');
-  for(let unit of scouts) {
-    if(node.x === unit.moveToNodeX && node.y === unit.moveToNodeY) {
-      return true;
-    }
-  }
-  return false;
-}
-
-export const getProtector = (unit:any):any => {
-  for(let ally of computerUnits) {
-    if(ally.unitToProtect.id === unit.id) {
-      return ally;
-    }
-  }
-  return null;
 }
