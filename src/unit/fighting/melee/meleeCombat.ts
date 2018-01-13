@@ -1,4 +1,4 @@
-import {units} from '../../../store';
+import {units} from '../../../store/unit/units';
 import {isObjectEmpty} from '../../../utils';
 import {meleeAttack} from './index';
 /*

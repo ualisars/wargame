@@ -1,9 +1,11 @@
 import {
   units,
+  removeUnit
+} from '../../../store/unit/units';
+import {
   spottedUnits,
   removeUnitFromSpottedUnits,
-  removeUnit
-} from '../../../store';
+} from '../../../store/unit/spottedUnits';
 import {findUnitInFightAgainst} from '../fightAgainst';
 import {isUnitFighting} from './checkFighting';
 import {ctx} from '../../../config/context';

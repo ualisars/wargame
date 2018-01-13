@@ -3,7 +3,7 @@ import {
   playerUnits,
   computerUnits,
   removeUnit
-} from '../../../store';
+} from '../../../store/unit/units';
 import {isObjectEmpty, deleteObjectFromArray} from '../../../utils';
 
 /*
