@@ -1,13 +1,15 @@
 import {
-  computerUnits,
-  visibleForComputerUnits,
-  playerUnits,
-  playerPower,
-  computerPower,
   initialComputerPower,
   initialPlayerPower,
-  visiblePlayerUnitsPower
 } from '../../store/';
+import {playerPower} from '../../store/AI/power/playerPower';
+import {computerPower} from '../../store/AI/power/computerPower';
+import {
+  playerUnits,
+  computerUnits
+} from '../../store/unit/units';
+import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
+import {visiblePlayerUnitsPower} from '../../store/AI/power/visiblePlayerUnitsPower';
 
 export const calculateTotalComputerPower = () => {
   computerPower.resetAllProperties();

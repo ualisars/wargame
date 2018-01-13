@@ -1,9 +1,9 @@
+import {playerPower} from '../../store/AI/power/playerPower';
+import {computerPower} from '../../store/AI/power/computerPower';
 import {
   playerUnits,
-  computerUnits,
-  playerPower,
-  computerPower
-} from '../../store';
+  computerUnits
+} from '../../store/unit/units';
 import {gridSize} from '../../config';
 import {map} from '../../map';
 import {getNodeFromMap} from '../../utils';

@@ -76,16 +76,16 @@ import {createArmy} from '../../battle';
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
   initializeMap();
-  // createUnit('archers', 40, 80, 15, 'player');
-  // createUnit('lightInfantry', 80, 360, 15, 'player');
-  // createUnit('lightCavalry', 80, 400, 15, 'player');
-  // createUnit('lightCavalry', 40, 440, 15, 'player');
-  //
-  // createUnit('militia', 1080, 400, 15, 'computer');
-  // createUnit('pikemen', 600, 120, 15, 'computer');
-  // createUnit('pikemen', 600, 120, 15, 'computer');
-  // createUnit('heavyInfantry', 600, 120, 15, 'computer');
-  // createUnit('archers', 520, 80, 15, 'computer');
+  createUnit('archers', 40, 80, 15, 'player');
+  createUnit('lightInfantry', 80, 360, 15, 'player');
+  createUnit('lightCavalry', 80, 400, 15, 'player');
+  createUnit('lightCavalry', 40, 440, 15, 'player');
+
+  createUnit('militia', 1080, 400, 15, 'computer');
+  createUnit('pikemen', 600, 120, 15, 'computer');
+  createUnit('pikemen', 600, 120, 15, 'computer');
+  createUnit('heavyInfantry', 600, 120, 15, 'computer');
+  createUnit('archers', 520, 80, 15, 'computer');
 
 
   //drawGrid();
