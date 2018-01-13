@@ -1,10 +1,10 @@
 import {gridSize} from '../../config';
+import {units} from '../../store/unit/units';
 import {
-  units,
   currentlyChosenUnit,
   assignCurrentlyChosenUnit,
-  unitId
-} from '../../store';
+} from '../../store/unit/currentlyChosenUnit';
+import {unitId} from '../../store/unit/unitId';
 import {loadImage} from '../../utils';
 import {ctx} from '../../config/context';
 import {Unit} from '../types';
