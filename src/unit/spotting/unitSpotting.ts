@@ -6,16 +6,20 @@ import {ctx} from '../../config/context';
 import {gridSize} from '../../config';
 import {drawUnit} from '../draw';
 import {
-  playerUnits,
-  computerUnits,
-  spottedUnits,
-  visibleForPlayerUnits,
-  visibleForComputerUnits,
-  hidedEnemies,
   addUnitIntoVisibleArray,
   removeUnitFromVisibleArray,
   addUnitToSpottedUnits,
 } from '../../store';
+import {hidedEnemies} from '../../store/AI/hidedEnemies';
+import {spottedUnits} from '../../store/unit/spottedUnits';
+import {
+  visibleForPlayerUnits,
+  visibleForComputerUnits
+} from '../../store/unit/visibleUnits';
+import {
+  playerUnits,
+  computerUnits,
+} from '../../store/unit/units';
 import {
   isObjectInArray,
   deleteObjectFromArray,

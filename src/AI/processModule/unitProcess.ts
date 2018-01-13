@@ -1,7 +1,7 @@
 import {
   playerUnits,
   computerUnits
-} from '../../store';
+} from '../../store/unit/units';
 
 import {
   getSurroundedEnemies,

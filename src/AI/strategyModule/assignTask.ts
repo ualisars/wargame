@@ -8,9 +8,9 @@ import{
 } from '../analyzeModule/unitAnalyze';
 import {
   computerUnits,
-  playerUnits,
-  visibleForComputerUnits
-} from '../../store';
+  playerUnits
+} from '../../store/unit/units';
+import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 
 import {hidedEmenies} from '../setUpAI';
 import {assignTasksForNeutral} from '../behaviour/neutral/assignTask';

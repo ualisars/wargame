@@ -1,18 +1,18 @@
 import {
   computerUnits,
-  playerUnits,
-  visibleForComputerUnits
-} from '../../store';
+  playerUnits
+} from '../../store/unit/units';
+import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 
 import {hidedEmenies} from '../setUpAI';
 import {changeCombatStage} from '../../store/AI/combatStage';
 
 import {
-  playerPower,
-  computerPower,
   initialPlayerPower,
   initialComputerPower
 } from '../../store';
+import {computerPower} from '../../store/AI/power/computerPower';
+import {playerPower} from '../../store/AI/power/playerPower';
 
 /*
   get stage of the combat
