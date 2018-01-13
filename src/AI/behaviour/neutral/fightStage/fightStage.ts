@@ -1,8 +1,6 @@
-import {
-  visibleForComputerUnits,
-  spottedUnits,
-  computerUnits
-} from '../../../../store';
+import {computerUnits} from '../../../../store/unit/units';
+import {visibleForComputerUnits} from '../../../../store/unit/visibleUnits';
+import {spottedUnits} from '../../../../store/unit/spottedUnits';
 import {
   getClosestUnitToOtherUnit,
   getBestUnitByProperty,
