@@ -2,7 +2,6 @@ import {
   drawGrid,
   addNeighbors,
   createNodes,
-
 } from '../../map';
 import {
   initializeMap,
@@ -65,7 +64,7 @@ import {chooseFormation} from '../../AI/strategyModule/formation';
 // strategy module
 import {
   hidingEnemies
-} from '../../store/AI/hidingEnemies';
+} from '../../store/AI/enemies/hidingEnemies';
 import{orderToAttackEnemy} from '../../AI/strategyModule/unitOrders';
 import {assignTasks} from '../../AI/strategyModule/assignTask';
 import {assignCombatStage} from '../../AI/processModule/mapProcess';

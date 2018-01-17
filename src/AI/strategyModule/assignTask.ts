@@ -12,7 +12,7 @@ import {
 } from '../../store/unit/units';
 import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 
-import {hidingEnemies} from '../../store/AI/hidingEnemies';
+import {hidingEnemies} from '../../store/AI/enemies/hidingEnemies';
 import {assignTasksForNeutral} from '../behaviour/neutral/assignTask';
 
 

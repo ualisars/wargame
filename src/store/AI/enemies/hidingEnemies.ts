@@ -1,10 +1,10 @@
 import {
   deleteUnitFromArray,
   isUnitInArray
-} from '../../utils';
+} from '../../../utils';
 import {
   visibleForComputerUnits
-} from '../index';
+} from '../../unit/visibleUnits';
 
 export let hidingEnemies:any[] = [];
 

@@ -12,7 +12,7 @@ import {map} from '../../map/createMap';
 import {neutralExploration} from '../behaviour/neutral/exploration';
 import {advance} from '../behaviour/neutral/advanceStage/advance';
 import{fight} from '../behaviour/neutral/fightStage/fightStage';
-import {combatStage} from '../../store/AI/combatStage';
+import {combatStage} from '../../store/AI/stage/combatStage';
 
 export const orderToAttackEnemy = () => {
   if(playerUnits.length !== 0 && computerUnits.length !== 0) {

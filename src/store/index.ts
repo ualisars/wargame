@@ -16,9 +16,6 @@ import {
   visibleForPlayerUnits
 } from './unit';
 
-import {combatStage} from './AI/combatStage';
-import {formation} from './AI/formation';
-
 import {computerPower} from './AI/power/computerPower';
 import {playerPower} from './AI/power/playerPower';
 import {initialComputerPower} from './AI/power/initialComputerPower';
@@ -42,8 +39,6 @@ export {
   removeUnitFromVisibleArray,
   visibleForComputerUnits,
   visibleForPlayerUnits,
-  combatStage,
-  formation,
   computerPower,
   playerPower,
   initialComputerPower,

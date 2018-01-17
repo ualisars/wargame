@@ -4,8 +4,8 @@ import {
 } from '../../store/unit/units';
 import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 
-import {hidingEnemies} from '../../store/AI/hidingEnemies';
-import {changeCombatStage} from '../../store/AI/combatStage';
+import {hidingEnemies} from '../../store/AI/enemies/hidingEnemies';
+import {changeCombatStage} from '../../store/AI/stage/combatStage';
 
 import {
   initialPlayerPower,

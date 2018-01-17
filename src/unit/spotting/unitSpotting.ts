@@ -28,7 +28,7 @@ import {
   hidingEnemies,
   addToHidingEnemies,
   removeFromHidingEnemies
-} from '../../store/AI/hidingEnemies';
+} from '../../store/AI/enemies/hidingEnemies';
 
 
 /*

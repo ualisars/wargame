@@ -13,7 +13,7 @@ import {
   playerUnits
 } from '../../../store/unit/units';
 import {visibleForComputerUnits} from '../../../store/unit/visibleUnits';
-import {hidingEnemies} from '../../../store/AI/hidingEnemies';
+import {hidingEnemies} from '../../../store/AI/enemies/hidingEnemies';
 import {
   doesUnitNeedProtection,
   howManyUnitsNeedProtection
