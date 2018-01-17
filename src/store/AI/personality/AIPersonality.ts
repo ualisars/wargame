@@ -34,7 +34,7 @@ class AIPersonality {
 
   }
   setStrategy() {
-    
+
   }
 }
 
