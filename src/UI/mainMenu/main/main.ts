@@ -7,8 +7,8 @@ import {
   mainMenuCtx
 } from '../../../config/context';
 import {
-  decreaseSpendedGold,
-  increaseSpendedGold,
+  decreaseSpentGold,
+  increaseSpentGold,
   changeUnitInfoToTrue,
   changeHoveredUnit,
   showUnitInfo,
@@ -65,7 +65,7 @@ export const dragAndDrop = () => {
     if(isUnitShouldBeRemoved(x,y)) {
       let unit = isUnitShouldBeRemoved(x, y);
       console.log('remove unit:', unit);
-      decreaseSpendedGold(unit.cost);
+      decreaseSpentGold(unit.cost);
       removeUnitFromArmy(unit);
       displayChosenUnits();
       displayTitle(); // redraw totalGold in title
@@ -81,7 +81,7 @@ export const dragAndDrop = () => {
         let unit = isUnitAddedToArmy(x,y);
         addUnitToArmy(unit);
         displayChosenUnits();
-        increaseSpendedGold(unit.cost);
+        increaseSpentGold(unit.cost);
         displayTitle(); // redraw totalGold in title
         dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
         isStartBattleAvailable();

@@ -1,20 +1,14 @@
 import {
-  computerSpendedGold,
-  decreaseSpendedGold,
-  increaseSpendedGold,
-  playerSpendedGold
-} from './spendedGold';
+  decreaseSpentGold,
+  increaseSpentGold,
+} from './spentGold';
 
 import {
   setTotalGold,
-  totalGold
 } from './totalGold';
 
 export {
-  computerSpendedGold,
-  decreaseSpendedGold,
-  increaseSpendedGold,
-  playerSpendedGold,
-  setTotalGold,
-  totalGold
+  decreaseSpentGold,
+  increaseSpentGold,
+  setTotalGold
 }

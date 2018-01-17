@@ -3,9 +3,9 @@ import {
   computerArmy
 } from '../../../../../store/roster/army';
 import {
-  computerSpendedGold,
-  playerSpendedGold,
-} from '../../../../../config/mainMenu/gold/spendedGold';
+  computerSpentGold,
+  playerSpentGold,
+} from '../../../../../config/mainMenu/gold/spentGold';
 import {totalGold} from '../../../../../config/mainMenu/gold/totalGold';
 import {
   disableStartBattleButton,
@@ -21,8 +21,8 @@ import {
 export const isStartBattleAvailable = () => {
   let computerUnitsNumber:number = computerArmy.length;
   let playerUnitsNumber:number = playerArmy.length;
-  let computerRemainGold:number = totalGold - computerSpendedGold;
-  let playerRemainGold:number = totalGold - playerSpendedGold;
+  let computerRemainGold:number = totalGold - computerSpentGold;
+  let playerRemainGold:number = totalGold - playerSpentGold;
   if(computerUnitsNumber < 1 || playerUnitsNumber < 1) {
     // computer or(and) player don't have units
     disableStartBattleButton();

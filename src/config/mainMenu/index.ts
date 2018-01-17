@@ -1,10 +1,7 @@
 import {
-  computerSpendedGold,
-  decreaseSpendedGold,
-  increaseSpendedGold,
-  playerSpendedGold,
-  setTotalGold,
-  totalGold
+  decreaseSpentGold,
+  increaseSpentGold,
+  setTotalGold
 } from './gold';
 import {
   armyLayoutHeight,
@@ -42,12 +39,9 @@ import {
 } from './unit';
 
 export {
-  computerSpendedGold,
-  decreaseSpendedGold,
-  increaseSpendedGold,
-  playerSpendedGold,
+  decreaseSpentGold,
+  increaseSpentGold,
   setTotalGold,
-  totalGold,
   armyLayoutHeight,
   armyLayoutWidth,
   infoLayoutHeight,

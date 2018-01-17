@@ -1,9 +1,9 @@
 import {mainMenuCtx} from '../../../../../config/context';
 import {side} from '../../../../../config/mainMenu/sides/side';
 import {
-  computerSpendedGold,
-  playerSpendedGold
-} from '../../../../../config/mainMenu/gold/spendedGold';
+  computerSpentGold,
+  playerSpentGold
+} from '../../../../../config/mainMenu/gold/spentGold';
 import {totalGold} from '../../../../../config/mainMenu/gold/totalGold';
 import {
   goldX,
@@ -13,10 +13,10 @@ import {
 export const displayRemainGold = () => {
   let spendedGold:number;
   if(side === 'computer') {
-    spendedGold = computerSpendedGold;
+    spendedGold = computerSpentGold;
   }
   else if(side === 'player') {
-    spendedGold = playerSpendedGold;
+    spendedGold = playerSpentGold;
   }
   if(spendedGold > totalGold) {
     mainMenuCtx.fillStyle = 'red';
