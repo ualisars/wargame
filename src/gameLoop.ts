@@ -1,7 +1,7 @@
 import {
   computerUnits,
   playerUnits
-} from './store';
+} from './store/unit/units';
 import {finishBattle} from './config';
 import {drawMessage} from './UI/messages/drawMessage';
 

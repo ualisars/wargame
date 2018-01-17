@@ -7,7 +7,6 @@ import {getFarthestXNodes} from '../../utils/node/get';
 import {getNodeFromMap} from '../../utils';
 import {computerUnits} from '../../store/unit/units';
 import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
-import {hidedEmenies} from '../setUpAI';
 // create instances of AI map stores
 export let computerControlNodes = new NodeStore();
 export let playerControlNodes = new NodeStore();

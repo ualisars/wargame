@@ -5,7 +5,7 @@ import {
   computerUnits
 } from '../../store/unit/units';
 import {gridSize} from '../../config';
-import {map} from '../../map';
+import {map} from '../../map/createMap';
 import {getNodeFromMap} from '../../utils';
 import {
   calculateTotalPower

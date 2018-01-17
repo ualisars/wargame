@@ -1,7 +1,7 @@
 import {
   playerUnits,
   computerUnits
-} from '../../store';
+} from '../../store/unit/units';
 import {getSurroundedNodes} from '../index';
 
 export const getSurroundedEnemies = (unit:any):any[] => {

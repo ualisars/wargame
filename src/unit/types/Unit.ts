@@ -1,5 +1,5 @@
 import {gridSize} from '../../config';
-import {map} from '../../map';
+import {map} from '../../map/createMap';
 import {
   isObjectEmpty,
   getNodeFromMap

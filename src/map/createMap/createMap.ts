@@ -38,6 +38,10 @@ export let addObstaclesToMap = () => {
 }
 
 export const initializeMap = () => {
+  console.error('initializeMap');
   createMap()
   .then(() => addObstaclesToMap());
+  console.log('map', map);
 }
+
+initializeMap();

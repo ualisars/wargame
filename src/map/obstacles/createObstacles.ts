@@ -1,4 +1,4 @@
-import {map} from '../index';
+import {map} from '../createMap';
 import {
   HEIGHT,
   gridSize,

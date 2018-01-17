@@ -13,7 +13,7 @@ import {
   playerUnits
 } from '../../../store/unit/units';
 import {visibleForComputerUnits} from '../../../store/unit/visibleUnits';
-import {hidedEmenies} from '../../setUpAI';
+import {hidingEnemies} from '../../../store/AI/hidingEnemies';
 import {
   doesUnitNeedProtection,
   howManyUnitsNeedProtection
@@ -22,7 +22,7 @@ import {
 export let assignTasksForNeutral = () => {
   let numberOfUnits = computerUnits.length;
   let numberOfEnemies = playerUnits.length;
-  let spottedEnemies = visibleForComputerUnits.length + hidedEmenies.store.length;
+  let spottedEnemies = visibleForComputerUnits.length + hidingEnemies.length;
   let visibleEnemies = visibleForComputerUnits.length;
   let percentage = getUnitTypesInPercentage();
   let unitTypes = calculateUnitTypes();

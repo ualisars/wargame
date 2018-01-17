@@ -2,9 +2,12 @@ import {
   drawGrid,
   addNeighbors,
   createNodes,
-  map,
-  initializeMap
+
 } from '../../map';
+import {
+  initializeMap,
+  map
+} from '../../map/createMap'
 import {
   auxiliaryCanvas,
   canvas
@@ -45,9 +48,9 @@ import {
 import {
   units,
   playerUnits,
-  computerUnits,
-  currentlyChosenUnit,
-} from '../../store';
+  computerUnits
+} from '../../store/unit/units';
+import {currentlyChosenUnit} from '../../store/unit/currentlyChosenUnit';
 
 // AI testing
 import {setUpAI} from '../../AI/setUpAI';
@@ -61,9 +64,8 @@ import {
 import {chooseFormation} from '../../AI/strategyModule/formation';
 // strategy module
 import {
-  personality,
-  hidedEmenies
-} from '../../AI/setUpAI';
+  hidingEnemies
+} from '../../store/AI/hidingEnemies';
 import{orderToAttackEnemy} from '../../AI/strategyModule/unitOrders';
 import {assignTasks} from '../../AI/strategyModule/assignTask';
 import {assignCombatStage} from '../../AI/processModule/mapProcess';
@@ -72,10 +74,11 @@ import {AIMovement} from '../../AI/strategyModule/unitOrders';
 import {isBattleEnd, checkWinner} from '../../gameLoop';
 import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
+import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
-  initializeMap();
+  //initializeMap();
   createUnit('archers', 40, 80, 15, 'player');
   createUnit('lightInfantry', 80, 360, 15, 'player');
   createUnit('lightCavalry', 80, 400, 15, 'player');
@@ -130,6 +133,7 @@ export const launchBattle = () => {
     console.log('Position y', e.offsetY); // get Y
     onChooseUnit(units, x, y);
     console.log('currentlyChosenUnit', currentlyChosenUnit);
+    console.error('map', map);
     console.log('node', getNodeFromMap(x, y, map));
     console.log('surroundedNodes', getSurroundedNodes(currentlyChosenUnit, 1));
     console.log('blockedNodes:', getSurroundedBlockedNodes(currentlyChosenUnit));
@@ -191,8 +195,7 @@ export const launchBattle = () => {
 
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
-  //createArmy().then(() => {
-    // setUpAI(); // set up AI engine
+    setUpAI(); // set up AI engine
     setInterval(() => spotUnits(units), 1000);
     setInterval(() => {
       if(!battleFinish) {
@@ -200,46 +203,45 @@ export const launchBattle = () => {
         then(() => meleeCombat());
       }
     }, 800);
-    // // // // // // //
-    // //AIMovement();
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     analyzeMap()
-    //     .then(() => {
-    //       //AIMovement()
-    //       orderToAttackEnemy();
-    //     });
-    //   }
-    // }, 3000);
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     analyzeUnits();
-    //   }
-    // }, 4000);
-    //
-    // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
-    // console.log('percentage', getUnitTypesInPercentage())
-    // chooseFormation();
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     assignTasks();
-    //     console.log('computersUnits', computerUnits);
-    //   }
-    // }, 10000);
-    // assignTasks();
-    // // console.log('computersUnits', computersUnits);
-    //  setInterval(() => calculateTotalPower(), 8000);
-    //
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     assignCombatStage();
-    //   }
-    // }, 10000);
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     isBattleEnd();
-    //   }
-    // }, 3000);
-  //});
+    // // // // // //
+    //AIMovement();
+    setInterval(() => {
+      if(!battleFinish) {
+        analyzeMap()
+        .then(() => {
+          //AIMovement()
+          orderToAttackEnemy();
+        });
+      }
+    }, 3000);
+    setInterval(() => {
+      if(!battleFinish) {
+        analyzeUnits();
+      }
+    }, 4000);
+
+    setInterval(() => console.log('types', calculateUnitTypes()), 3000);
+    console.log('percentage', getUnitTypesInPercentage())
+    chooseFormation();
+    setInterval(() => {
+      if(!battleFinish) {
+        assignTasks();
+        console.log('computersUnits', computerUnits);
+      }
+    }, 10000);
+    assignTasks();
+    // console.log('computersUnits', computersUnits);
+     setInterval(() => calculateTotalPower(), 8000);
+
+    setInterval(() => {
+      if(!battleFinish) {
+        assignCombatStage();
+      }
+    }, 10000);
+    setInterval(() => {
+      if(!battleFinish) {
+        isBattleEnd();
+      }
+    }, 3000);
 
 }

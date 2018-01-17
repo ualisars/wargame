@@ -6,9 +6,9 @@ import {
   visibleForComputerUnits
 } from '../index';
 
-export let hidedEnemies:any[] = [];
+export let hidingEnemies:any[] = [];
 
-export const addToHidedEnemies = (unit:any) => {
+export const addToHidingEnemies = (unit:any) => {
   if(!isUnitInArray(unit, visibleForComputerUnits)) { // hided enemy cannot be visible at the same time
     let updatedUnit = {
       id: unit.id,
@@ -27,15 +27,15 @@ export const addToHidedEnemies = (unit:any) => {
       node: unit.currentNode,
     }
     if(!isUnitInArray(unit, this.store) && unit.controlBy === 'player') { // unit's already added
-      hidedEnemies.push(updatedUnit);
+      hidingEnemies.push(updatedUnit);
     }
   }
 }
 
-export const removeFromHidedEnemies = (unit:any) => {
+export const removeFromHidingEnemies = (unit:any) => {
   if(isUnitInArray(unit, visibleForComputerUnits)) {
     if(isUnitInArray(unit, this.store)) { // unit should be in the array
-      hidedEnemies = deleteUnitFromArray(unit, hidedEnemies);
+      hidingEnemies = deleteUnitFromArray(unit, hidingEnemies);
     }
   }
 }

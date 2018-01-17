@@ -1,7 +1,7 @@
 /*
   Functions that works with unit's visibility
 */
-import {map} from '../../map';
+import {map} from '../../map/createMap';
 import {ctx} from '../../config/context';
 import {gridSize} from '../../config';
 import {drawUnit} from '../draw';
@@ -10,7 +10,6 @@ import {
   removeUnitFromVisibleArray,
   addUnitToSpottedUnits,
 } from '../../store';
-import {hidedEnemies} from '../../store/AI/hidedEnemies';
 import {spottedUnits} from '../../store/unit/spottedUnits';
 import {
   visibleForPlayerUnits,
@@ -26,9 +25,10 @@ import {
   getNodeFromMap
 } from '../../utils';
 import {
-  addToHidedEnemies,
-  removeFromHidedEnemies
-} from '../../store/AI/hidedEnemies';
+  hidingEnemies,
+  addToHidingEnemies,
+  removeFromHidingEnemies
+} from '../../store/AI/hidingEnemies';
 
 
 /*
@@ -53,7 +53,7 @@ export const spotEnemy = (unit:any) => {
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
       //console.error(enemy.name, 'has been spotted');
       if(unit.controlBy === 'computer' && enemy.isVisible === false) {
-        removeFromHidedEnemies(enemy);
+        removeFromHidingEnemies(enemy);
       }
       enemy.isVisible = true;
       drawUnit(enemy); // show enemy on the map
@@ -97,7 +97,7 @@ export const isUnitSpottedByEnemy = (unit:any) => {
       addUnitIntoVisibleArray(unit);
       isSpotted = true;
       if(unit.isVisible === false && unit.controlBy === 'player') {
-        removeFromHidedEnemies(unit);
+        removeFromHidingEnemies(unit);
       }
       unit.isVisible = true;
       if(unit.controlBy === 'computer') { // for computer add enemy into spottedUnits
@@ -111,7 +111,7 @@ export const isUnitSpottedByEnemy = (unit:any) => {
   if(!isSpotted) { // unit is not in range of any enemies
     removeUnitFromVisibleArray(unit);
     if(unit.controlBy === 'player' && unit.isVisible === true) { // unit has been in the spottedUnits
-      addToHidedEnemies(unit);
+      addToHidingEnemies(unit);
     }
     unit.isVisible = false;
     if(unit.controlBy === 'computer' && !unit.isMoving) { // if unit is computer's and not moving

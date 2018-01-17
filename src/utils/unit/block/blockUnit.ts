@@ -3,7 +3,7 @@ import {getSurroundedNodes} from '../../../AI/analyzeModule/unitAnalyze';
 import {
   playerUnits,
   computerUnits
-} from '../../../store';
+} from '../../../store/unit/units';
 import {
   deleteObjectFromArray,
   getNodeFromMap,

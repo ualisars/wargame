@@ -5,7 +5,6 @@ import {
   calculateInitialPower
 } from './analyzeModule/powerAnalyze';
 export let personality:any;
-export let hidedEmenies:any;
 
 export const firstStage = () => {
   return new Promise(resolve => {
@@ -16,7 +15,6 @@ export const firstStage = () => {
     resolve();
   });
 }
-
 
 export const setUpAI = () => {
   firstStage();

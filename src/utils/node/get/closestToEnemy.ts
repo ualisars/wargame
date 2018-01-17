@@ -2,7 +2,7 @@ import {
   getMinValueFromNodes
 } from '../../index';
 import {getClosestNodeToUnit} from '../../unit/actions';
-import {hidedEmenies} from '../../../AI/setUpAI';;
+import {hidingEnemies} from '../../../store/AI/hidingEnemies';;
 
 export const getClosestToEnemySideNodes = (nodes:any):any[] => {
   let closestNodes:any[] = [];
@@ -22,11 +22,11 @@ export const getClosestToEnemySideNodes = (nodes:any):any[] => {
 */
 export const getClosestToEnemyNodes = (nodes:any[]):any[] => {
   let closestNodes:any[] = [];
-  if(hidedEmenies.store.length === 0) { // no units are spotted
+  if(hidingEnemies.length === 0) { // no units are spotted
     closestNodes = getClosestToEnemySideNodes(nodes); // get nodes that close to enemy side
   } else {
-    for(let hidedEnemy of hidedEmenies.store) { // there are hided enemy
-      let closestNode = getClosestNodeToUnit(hidedEnemy, nodes);
+    for(let hidingEnemy of hidingEnemies) { // there are hided enemy
+      let closestNode = getClosestNodeToUnit(hidingEnemy, nodes);
       closestNodes.push(closestNode); // add closestNode into nodes array
     }
   }

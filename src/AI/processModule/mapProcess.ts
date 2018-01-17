@@ -4,7 +4,7 @@ import {
 } from '../../store/unit/units';
 import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 
-import {hidedEmenies} from '../setUpAI';
+import {hidingEnemies} from '../../store/AI/hidingEnemies';
 import {changeCombatStage} from '../../store/AI/combatStage';
 
 import {
@@ -24,8 +24,8 @@ import {playerPower} from '../../store/AI/power/playerPower';
 export const assignCombatStage = ():string => {
   const numberOfEnemies:number = playerUnits.length;
   const numberOfVisibleEnemies:number = visibleForComputerUnits.length;
-  const numberOfHidedEmenies:number = hidedEmenies.store.length;
-  const numberOfSpottedEnemies:number = visibleForComputerUnits.length + hidedEmenies.store.length;
+  const numberOfHidingEmenies:number = hidingEnemies.length;
+  const numberOfSpottedEnemies:number = visibleForComputerUnits.length + hidingEnemies.length;
   let percentageOfSpottedUnits:number = Math.round((numberOfSpottedEnemies / numberOfEnemies) * 100);
   let percentageOfVisibleUnits:number = Math.round((numberOfVisibleEnemies / numberOfEnemies) * 100);
   // console.error('percentageOfVisibleUnits', percentageOfVisibleUnits);

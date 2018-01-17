@@ -17,10 +17,10 @@ import {
 } from '../../utils';
 import {assignUnitMoveToPosition} from '../actions';
 import {
-  map,
   createUnitObstacle,
   addNeighbors
 } from '../../map';
+import {map} from '../../map/createMap';
 import {ctx,} from '../../config/context';
 import {
   aStar,
