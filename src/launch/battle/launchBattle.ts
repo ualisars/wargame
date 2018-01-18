@@ -78,16 +78,18 @@ import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
   //initializeMap();
-  createUnit('archers', 40, 80, 15, 'player');
-  createUnit('lightInfantry', 80, 360, 15, 'player');
-  createUnit('lightCavalry', 80, 400, 15, 'player');
-  createUnit('lightCavalry', 40, 440, 15, 'player');
+  // createUnit('archers', 40, 80, 15, 'player');
+  // createUnit('lightInfantry', 80, 360, 15, 'player');
+  // createUnit('lightCavalry', 80, 400, 15, 'player');
+  // createUnit('lightCavalry', 40, 440, 15, 'player');
+  //
+  // createUnit('militia', 1080, 400, 15, 'computer');
+  // createUnit('pikemen', 600, 120, 15, 'computer');
+  // createUnit('pikemen', 600, 120, 15, 'computer');
+  // createUnit('heavyInfantry', 600, 120, 15, 'computer');
+  // createUnit('archers', 520, 80, 15, 'computer');
 
-  createUnit('militia', 1080, 400, 15, 'computer');
-  createUnit('pikemen', 600, 120, 15, 'computer');
-  createUnit('pikemen', 600, 120, 15, 'computer');
-  createUnit('heavyInfantry', 600, 120, 15, 'computer');
-  createUnit('archers', 520, 80, 15, 'computer');
+  createArmy();
 
 
   //drawGrid();
@@ -194,53 +196,53 @@ export const launchBattle = () => {
 
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
-    setUpAI(); // set up AI engine
-    setInterval(() => spotUnits(units), 1000);
-    setInterval(() => {
-      if(!battleFinish) {
-        checkHealth().
-        then(() => meleeCombat());
-      }
-    }, 800);
+    // setUpAI(); // set up AI engine
+    // setInterval(() => spotUnits(units), 1000);
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     checkHealth().
+    //     then(() => meleeCombat());
+    //   }
+    // }, 800);
     // // // // // //
     //AIMovement();
-    setInterval(() => {
-      if(!battleFinish) {
-        analyzeMap()
-        .then(() => {
-          //AIMovement()
-          orderToAttackEnemy();
-        });
-      }
-    }, 3000);
-    setInterval(() => {
-      if(!battleFinish) {
-        analyzeUnits();
-      }
-    }, 4000);
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     analyzeMap()
+    //     .then(() => {
+    //       //AIMovement()
+    //       orderToAttackEnemy();
+    //     });
+    //   }
+    // }, 3000);
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     analyzeUnits();
+    //   }
+    // }, 4000);
 
-    setInterval(() => console.log('types', calculateUnitTypes()), 3000);
-    console.log('percentage', getUnitTypesInPercentage())
-    chooseFormation();
-    setInterval(() => {
-      if(!battleFinish) {
-        assignTasks();
-        console.log('computersUnits', computerUnits);
-      }
-    }, 10000);
-    assignTasks();
-    // console.log('computersUnits', computersUnits);
-     setInterval(() => calculateTotalPower(), 8000);
-
-    setInterval(() => {
-      if(!battleFinish) {
-        assignCombatStage();
-      }
-    }, 10000);
-    setInterval(() => {
-      if(!battleFinish) {
-        isBattleEnd();
-      }
-    }, 3000);
+    // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
+    // console.log('percentage', getUnitTypesInPercentage())
+    // chooseFormation();
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     assignTasks();
+    //     console.log('computersUnits', computerUnits);
+    //   }
+    // }, 10000);
+    // assignTasks();
+    // // console.log('computersUnits', computersUnits);
+    //  setInterval(() => calculateTotalPower(), 8000);
+    //
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     assignCombatStage();
+    //   }
+    // }, 10000);
+    // setInterval(() => {
+    //   if(!battleFinish) {
+    //     isBattleEnd();
+    //   }
+    // }, 3000);
 
 }

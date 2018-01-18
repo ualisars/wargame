@@ -3,7 +3,7 @@ import {
   HEIGHT,
   WIDTH
 } from '../../../config';
-import {map} from '../../../map';
+import {map} from '../../../map/createMap';
 import {
   deleteObjectFromArray,
   getNodeFromMap
@@ -19,7 +19,9 @@ const computerY1 = HEIGHT;
 for(let x = computerX0; x <= computerX1; x += gridSize) {
   for(let y = computerY0; y <= computerY1; y+= gridSize) {
     let node = getNodeFromMap(x,y, map);
-    computerUnitsNodes.push(node);
+    if(node) {
+      computerUnitsNodes.push(node);
+    }
   }
 }
 

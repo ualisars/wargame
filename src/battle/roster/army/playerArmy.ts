@@ -1,27 +1,22 @@
 import {
   playerArmy
-} from '../../../store/roster';
+} from '../../../store/roster/army';
+import {deleteNodeFromPlayerNodes} from '../index';
 import {getRandomNode} from '../../../utils/node';
 import {
   playerUnitsNodes
-} from '../index';
+} from '../nodes/playerNodes';
 import {createUnit} from '../../../unit';
 
 export const createPlayerArmy = () => {
   return new Promise(resolve => {
     for(let unit of playerArmy) {
-      console.log('playerArmy', playerArmy);
-      console.log('createPlayerArmy', unit);
       let node = getRandomNode(playerUnitsNodes);
-      console.log('createPlayerArmy randomNode', node);
       let type = unit.name;
       let x = node.x;
       let y = node.y;
-      console.log('createPlayerArmy type', type);
-      console.log('createPlayerArmy x', x);
-      console.log('createPlayerArmy y', y);
       createUnit(type, x, y, 15, 'player');
-      //deleteNodeFromPlayerNodes(node);
+      deleteNodeFromPlayerNodes(node);
     }
     resolve();
   })
