@@ -6,7 +6,7 @@ import {
 import {
   initializeMap,
   map
-} from '../../map/createMap'
+} from '../../map/createMap';
 import {
   auxiliaryCanvas,
   canvas
