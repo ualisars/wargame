@@ -58,8 +58,8 @@ import {
   analyzeUnits,
   calculateUnitTypes,
   getUnitTypesInPercentage,
-  getSurroundedNodes
 } from '../../AI/analyzeModule/unitAnalyze';
+import {getSurroundedNodes} from '../../utils/surrounded';
 import {chooseFormation} from '../../AI/strategyModule/formation';
 // strategy module
 import {

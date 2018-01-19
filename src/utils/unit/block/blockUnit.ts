@@ -1,5 +1,5 @@
 import {map} from '../../../map/createMap';
-import {getSurroundedNodes} from '../../../AI/analyzeModule/unitAnalyze';
+import {getSurroundedNodes} from '../../surrounded';
 import {
   playerUnits,
   computerUnits

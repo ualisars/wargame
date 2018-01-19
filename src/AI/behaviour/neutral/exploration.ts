@@ -25,7 +25,7 @@ import {
   getClosestToEnemyNodes,
   getFarthestNodeFromEnemy
 } from '../../../utils/node/get';
-import {getSurroundedNodes} from '../../analyzeModule/unitAnalyze';
+import {getSurroundedNodes} from '../../../utils/surrounded';
 import {getRandomNode} from '../../../utils/node';
 
 export const neutralExploration = () => {

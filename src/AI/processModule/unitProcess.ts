@@ -4,14 +4,15 @@ import {
 } from '../../store/unit/units';
 
 import {
-  getSurroundedEnemies,
   calculateSurroundedEnemyPower,
-  getSurroundedAllies,
   calculateSurroundedAlliesPower,
   calculatePowerAdvantageInTheArea,
   calculateUnitsToBeware,
 } from '../analyzeModule/unitAnalyze';
-
+import {
+  getSurroundedAllies,
+  getSurroundedEnemies
+} from '../../utils/surrounded';
 import {
   getUnitsMaxProperty,
   getUnitsMinProperty

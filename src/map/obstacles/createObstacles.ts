@@ -11,7 +11,6 @@ import {
 
 export const createObstacles = (startX:number, finishX:number, startY:number, finishY:number, type:string='forest') => {
   let newMap:any[] = map;
-  console.log('newMap', newMap);
   for(let x = startX; x <= finishX; x += gridSize) {
     for(let y = startY; y <= finishY; y += gridSize) {
       let node = {
@@ -19,8 +18,6 @@ export const createObstacles = (startX:number, finishX:number, startY:number, fi
         y
       }
       newMap = deleteObjectFromArray(node, newMap);
-      console.log('node', node, 'has been inserted');
-      console.log('newMap after', newMap);
       let xLength = Math.abs(startX - finishX);
       let yLength = Math.abs(startY - finishY);
       let src:string;

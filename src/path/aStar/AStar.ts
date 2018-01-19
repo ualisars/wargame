@@ -25,13 +25,7 @@ export const aStar = (map:any[], startNode:any, finishNode:any) => {
   // if a node can be reached from many nodes, cameFrom will eventially
   // contain the most efficient previous step
   let from = new Map();
-
   // For each node, the cost of getting from the start node to that node.
-  // let gScore = new Map();
-  // let fScore = new Map();
-  //
-  // gScore.set(startNode, 0);
-  // fScore.set(startNode, gScore.get(startNode) + h(startNode, finishNode));
   while(open) {
     let current:any = getMinFScore(open);
     //console.log('current', current);
@@ -55,7 +49,6 @@ export const aStar = (map:any[], startNode:any, finishNode:any) => {
       }
     }
   }
-  console.log('failure');
   return 0; // failure
 }
 

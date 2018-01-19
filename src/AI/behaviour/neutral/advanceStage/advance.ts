@@ -6,7 +6,7 @@ import {
   getBestUnitByProperty
 } from '../../../../utils/unit/actions';
 import {getRandomNode} from '../../../../utils/node';
-import {getSurroundedNodes} from '../../../analyzeModule/unitAnalyze';
+import {getSurroundedNodes} from '../../../../utils/surrounded';
 import {
   getNodeFromMap
 } from '../../../../utils';
