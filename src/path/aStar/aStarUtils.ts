@@ -9,20 +9,20 @@ export const getMinFScore = (open:any[]) => {
   return open[min];
 }
 
-export const unclosedNeigbours = (current:any, closed:any) => {
-  let neighboursNotInClosed = [];
-  for(let neighbour of current.neighbours) {
+export const unclosedNeigbors = (current:any, closed:any) => {
+  let neighborsNotInClosed = [];
+  for(let neighbor of current.neighbors) {
     let isInClosed:boolean = false;
     for(let node of closed) {
-      if(neighbour.x === node.x && neighbour.y === node.y) {
+      if(neighbor.x === node.x && neighbor.y === node.y) {
         isInClosed = true;
       }
     }
     if(!isInClosed) {
-      neighboursNotInClosed.push(neighbour);
+      neighborsNotInClosed.push(neighbor);
     }
   }
-  return neighboursNotInClosed;
+  return neighborsNotInClosed;
 }
 
 export const isObjectInMapKeys = (object:any, map:any) => {

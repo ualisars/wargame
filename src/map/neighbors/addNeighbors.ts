@@ -42,6 +42,6 @@ export const neighbors = (map: any[], node:any) => {
 export const addNeighbors = (map:any[]) => {
   for(let node of map) {
     let n = neighbors(map, node);
-    node.neighbours = n;
+    node.neighbors = n;
   }
 }

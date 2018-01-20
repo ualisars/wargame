@@ -2,7 +2,7 @@ import { expect, should, assert} from 'chai';
 
 import {
   getMinFScore,
-  unclosedNeigbours,
+  unclosedNeigbors,
   isObjectInMapKeys
 } from '../src/path';
 
@@ -58,11 +58,11 @@ describe('A* Algorithm tests', function() {
 
   describe('unclosedNeigbours', function() {
     it('Check neighbours of node7 is in closed', function() {
-      let neighboursNotInClosed = unclosedNeigbours(node7, closed);
-      console.log('neighboursNotInClosed', neighboursNotInClosed);
-      assert.equal(isObjectInArray(node1, neighboursNotInClosed), true);
-      assert.equal(isObjectInArray(node6, neighboursNotInClosed), true);
-      assert.equal(isObjectInArray(node4, neighboursNotInClosed), false);
+      let neighborsNotInClosed = unclosedNeigbors(node7, closed);
+      console.log('neighboursNotInClosed', neighborsNotInClosed);
+      assert.equal(isObjectInArray(node1, neighborsNotInClosed), true);
+      assert.equal(isObjectInArray(node6, neighborsNotInClosed), true);
+      assert.equal(isObjectInArray(node4, neighborsNotInClosed), false);
     });
   });
 

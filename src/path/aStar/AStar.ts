@@ -6,7 +6,7 @@ import {
 
 import {
   getMinFScore,
-  unclosedNeigbours,
+  unclosedNeigbors,
   isObjectInMapKeys,
   getNeighborDistance
 } from './aStarUtils';
@@ -29,25 +29,24 @@ export const aStar = (map:any[], startNode:any, finishNode:any) => {
   // For each node, the cost of getting from the start node to that node.
   while(open) {
     let current:any = getMinFScore(open);
-    //console.log('current', current);
     if(current.x === finishNode.x && current.y === finishNode.y) {
       // currentNode is a goal
       return reconstructPath(from, current);
     }
     open = deleteObjectFromArray(current, open);
     closed.push(current);
-    for(let neighbour of unclosedNeigbours(current, closed)) {
-      let distance = getNeighborDistance(current, neighbour);
+    for(let neighbor of unclosedNeigbors(current, closed)) {
+      let distance = getNeighborDistance(current, neighbor);
       let tempG = current.gScore + distance;
-      if(!isObjectInArray(neighbour, open) || tempG < neighbour.gScore) {
-        from.set(neighbour, current);
-        neighbour.gScore = tempG;
-        neighbour.fScore = neighbour.gScore + h(neighbour, finishNode);
+      if(!isObjectInArray(neighbor, open) || tempG < neighbor.gScore) {
+        from.set(neighbor, current);
+        neighbor.gScore = tempG;
+        neighbor.fScore = neighbor.gScore + h(neighbor, finishNode);
       }
-      if(!isObjectInArray(neighbour, open)) { // create function
-        let nodeNeighbours = neighbors(map, neighbour);
-        neighbour.neighbours = nodeNeighbours;
-        open.push(neighbour);
+      if(!isObjectInArray(neighbor, open)) { // create function
+        let nodeNeighbors = neighbors(map, neighbor);
+        neighbor.neighbors = nodeNeighbors;
+        open.push(neighbor);
       }
     }
   }

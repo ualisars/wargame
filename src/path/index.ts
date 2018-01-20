@@ -3,7 +3,7 @@ import {drawPath} from './draw/drawPath';
 import {findPathFromOneNodeToAnother} from './find/findPath';
 import {
   getMinFScore,
-  unclosedNeigbours,
+  unclosedNeigbors,
   isObjectInMapKeys
 } from './aStar/aStarUtils';
 
@@ -12,6 +12,6 @@ export {
   drawPath,
   findPathFromOneNodeToAnother,
   getMinFScore,
-  unclosedNeigbours,
+  unclosedNeigbors,
   isObjectInMapKeys
 }
