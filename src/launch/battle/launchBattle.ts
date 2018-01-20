@@ -77,25 +77,10 @@ import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
-  //initializeMap();
-  // createUnit('archers', 40, 80, 15, 'player');
-  // createUnit('lightInfantry', 80, 360, 15, 'player');
-  // createUnit('lightCavalry', 80, 400, 15, 'player');
-  // createUnit('lightCavalry', 40, 440, 15, 'player');
-  //
-  // createUnit('militia', 1080, 400, 15, 'computer');
-  // createUnit('pikemen', 600, 120, 15, 'computer');
-  // createUnit('pikemen', 600, 120, 15, 'computer');
-  // createUnit('heavyInfantry', 600, 120, 15, 'computer');
-  // createUnit('archers', 520, 80, 15, 'computer');
-
   createArmy();
 
 
   //drawGrid();
-  // console.log('map', map);
-  // console.error('units', units);
-  // console.error('computersUnits', computerUnits);
 
   console.log('monitor: height', window.screen.availHeight, 'width:',window.screen.availWidth);
 
@@ -136,8 +121,11 @@ export const launchBattle = () => {
     console.log('currentlyChosenUnit', currentlyChosenUnit);
     console.error('map', map);
     console.log('node', getNodeFromMap(x, y, map));
-    console.log('surroundedNodes', getSurroundedNodes(currentlyChosenUnit, 1));
-    console.log('blockedNodes:', getSurroundedBlockedNodes(currentlyChosenUnit));
+    // test delete in deployment
+    if(currentlyChosenUnit) {
+      console.log('surroundedNodes', getSurroundedNodes(currentlyChosenUnit, 1));
+      console.log('blockedNodes:', getSurroundedBlockedNodes(currentlyChosenUnit));
+    }
   });
 
   auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {

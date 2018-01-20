@@ -7,7 +7,8 @@ import {
 import {
   getMinFScore,
   unclosedNeigbours,
-  isObjectInMapKeys
+  isObjectInMapKeys,
+  getNeighborDistance
 } from './aStarUtils';
 
 export const aStar = (map:any[], startNode:any, finishNode:any) => {
@@ -30,13 +31,14 @@ export const aStar = (map:any[], startNode:any, finishNode:any) => {
     let current:any = getMinFScore(open);
     //console.log('current', current);
     if(current.x === finishNode.x && current.y === finishNode.y) {
-      //console.error('Path', reconstructPath(from, current));
+      // currentNode is a goal
       return reconstructPath(from, current);
     }
     open = deleteObjectFromArray(current, open);
     closed.push(current);
     for(let neighbour of unclosedNeigbours(current, closed)) {
-      let tempG = current.gScore + neighbour.distance;
+      let distance = getNeighborDistance(current, neighbour);
+      let tempG = current.gScore + distance;
       if(!isObjectInArray(neighbour, open) || tempG < neighbour.gScore) {
         from.set(neighbour, current);
         neighbour.gScore = tempG;

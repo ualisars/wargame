@@ -1,3 +1,4 @@
+import {gridSize} from '../../config';
 export const getMinFScore = (open:any[]) => {
   let min = 0;
   for(let i = 1; i < open.length - 1; ++i) {
@@ -34,4 +35,14 @@ export const isObjectInMapKeys = (object:any, map:any) => {
     }
   }
   return result;
+}
+
+export const getNeighborDistance = (currentNode:any, neighbor:any) => {
+  let dx = Math.abs(currentNode.x - neighbor.x);
+  let dy = Math.abs(currentNode.y - neighbor.y);
+  if(dx !== 0 && dy !== 0) {
+    return 14;
+  } else {
+    return 10;
+  }
 }
