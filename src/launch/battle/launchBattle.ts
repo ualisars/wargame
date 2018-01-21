@@ -28,9 +28,9 @@ import {
 } from '../../path';
 import {
   getNodeFromMap,
-  getSurroundedBlockedNodes,
   drawBackground
 } from '../../utils';
+import {getSurroundedBlockedNodes} from '../../utils/node';
 
 import {
   Unit,

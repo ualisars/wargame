@@ -32,9 +32,9 @@ import {
   getBlockingUnit,
   giveWay,
   isUnitOutOfCombat,
-  getSurroundedBlockedNodes,
   getSurroundedEnemies
 } from '../../utils';
+import {getSurroundedBlockedNodes} from '../../utils/node';
 
 
 

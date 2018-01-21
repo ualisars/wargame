@@ -1,6 +1,5 @@
 import {
-  getBlockingUnit,
-  getSurroundedBlockedNodes
+  getBlockingUnit
 } from './block';
 import {
   giveWay
@@ -29,7 +28,6 @@ export {
   deleteUnitFromArray,
   deleteUnitFromArmy,
   getBlockingUnit,
-  getSurroundedBlockedNodes,
   getDistanceBetweenTwoUnitsInGrids,
   getUnitsMinProperty,
   getUnitsMaxProperty,

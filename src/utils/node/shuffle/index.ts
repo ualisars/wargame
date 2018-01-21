@@ -1,6 +1,6 @@
 import {
   sortNodesByRandomValue
-} from './sort';
+} from './shuffle';
 
 export {
   sortNodesByRandomValue

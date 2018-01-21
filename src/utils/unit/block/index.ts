@@ -1,9 +1,7 @@
 import {
-  getBlockingUnit,
-  getSurroundedBlockedNodes
+  getBlockingUnit
 } from './blockUnit';
 
 export {
-  getBlockingUnit,
-  getSurroundedBlockedNodes
+  getBlockingUnit
 }
