@@ -1,5 +1,5 @@
 // import { expect, should, assert} from 'chai';
-// import Unit from '../src/unit/Unit';
+// import Unit from '../../src/unit/types/Unit';
 //
 // let unit1 = new Unit('unit1', 100, 100, 5);
 // let opponentUnit1 = new Unit('opponentUnit1', 200, 100, 5, 'computer');

@@ -1,4 +1,4 @@
-import {gridSize} from '../../../config';
+import {gridSize} from '../../../config/map';
 
 export const getDistanceBetweenUnitAndNodeInGrids = (unit:any, node:any):number => {
   let nodeX:number = node.x;

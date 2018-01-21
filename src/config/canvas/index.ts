@@ -1,4 +1,4 @@
-import {auxiliaryCanvas} from './aixiliary';
+import {auxiliaryCanvas} from './auxiliary';
 import {backgroundCanvas} from './background';
 import {canvas} from './canvas';
 import {terrain} from './terrain';

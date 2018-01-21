@@ -4,7 +4,7 @@
   "description": "Wargame Web game",
   "main": "game.ts",
   "scripts": {
-    "test": "mocha -r jsdom-global/register --compilers ts:ts-node/register,tsx:ts-node/register test"
+    "test": "mocha -r jsdom-global/register --compilers ts:ts-node/register,tsx:ts-node/register test --recursive"
   },
   "author": "Ualikhan Sarsenbayev",
   "license": "MIT",
