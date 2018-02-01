@@ -1,4 +1,4 @@
-import {isObjectInArray} from '../../index';
+import {isObjectInArray} from '../../object';
 
 export const addNodeIntoArray = (node:any, arr:any[]) => {
   let updatedArr = Object.assign([], arr);
