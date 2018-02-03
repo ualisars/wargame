@@ -27,7 +27,14 @@ export const analyzeMap = () => {
     .then(() => console.error('farthestNodes', getFarthestXNodes(computerControlNodes.store)))
     clearPlayerControlNodes()
     .then(() => fillPlayerControlNodes())
+    clearExplorationNodes()
+    .then(() => fillExplorationNodes());
+    console.log('explorationNodes', explorationNodes.store);
+    console.log('computerControlNodes', computerControlNodes.store);
+    console.log('playerControlNodes', playerControlNodes.store);
+    console.log('visibleForComputerUnits', visibleForComputerUnits);
     resolve();
+
   });
 }
 
@@ -101,4 +108,11 @@ export const fillExplorationNodes = () => {
       explorationNodes.addNodeToStore(node);
     }
   }
+}
+
+export const clearExplorationNodes = () => {
+  return new Promise(resolve => {
+    explorationNodes.clearStore();
+    resolve();
+  })
 }

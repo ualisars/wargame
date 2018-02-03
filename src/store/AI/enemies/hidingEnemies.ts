@@ -34,7 +34,7 @@ export const addToHidingEnemies = (unit:any) => {
 
 export const removeFromHidingEnemies = (unit:any) => {
   if(isUnitInArray(unit, visibleForComputerUnits)) {
-    if(isUnitInArray(unit, this.store)) { // unit should be in the array
+    if(isUnitInArray(unit, hidingEnemies)) { // unit should be in the array
       hidingEnemies = deleteUnitFromArray(unit, hidingEnemies);
     }
   }

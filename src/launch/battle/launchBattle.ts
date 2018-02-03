@@ -179,13 +179,17 @@ export const launchBattle = () => {
     }
   }); // on context
 
+  setUpAI(); // set up AI engine
+  setInterval(() => analyzeMap(), 4000);
+  setInterval(() => spotUnits(units), 1000);
+
   //set behaviour
   //console.log('behaviour', personality.behaviour);
 
   // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
   //
-    // setUpAI(); // set up AI engine
-    // setInterval(() => spotUnits(units), 1000);
+
+
     // setInterval(() => {
     //   if(!battleFinish) {
     //     checkHealth().
