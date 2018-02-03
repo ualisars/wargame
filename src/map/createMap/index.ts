@@ -1,14 +1,12 @@
-import {canvas} from '../../config/canvas';
-import {ctx} from '../../config/context';
 import {
   WIDTH,
   HEIGHT,
   gridSize
-} from '../../config';
+} from '../../config/map';
 
 import {
   deleteObjectFromArray,
-} from '../../utils';
+} from '../../utils/object';
 import {
   createNodes,
   createOneObstacle,

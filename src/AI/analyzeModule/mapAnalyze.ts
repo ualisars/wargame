@@ -1,18 +1,16 @@
 import NodeStore from '../../store/AI/nodeStore';
-import {gridSize} from '../../config';
+import {gridSize} from '../../config/map/gridSize';
 import {map} from '../../map/createMap';
 import {getClosestNodeToUnit} from '../../utils/unit/actions';
 import {getFarthestXNodes} from '../../utils/node/get';
-import {getNodeFromMap} from '../../utils';
+import {getNodeFromMap} from '../../utils/node';
 import {computerUnits} from '../../store/unit/units';
 import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 // create instances of AI map stores
 export let computerControlNodes = new NodeStore();
 export let playerControlNodes = new NodeStore();
-export let possiblePlayerControlNodes = new NodeStore();
-export let neutralNodes = new NodeStore();
-export let neutralNodesPriorityToExpolore = new NodeStore();
-export let notExploredNodes = new NodeStore();
+export let frontNodes = new NodeStore();
+export let explorationNodes = new NodeStore();
 
 /*
   add visible for computer nodes into computerControlNodes
@@ -84,4 +82,23 @@ export const fillPlayerControlNodes = () => {
     }
   }
   //console.error('playerControlNodes', playerControlNodes.store);
+}
+
+export const fillExplorationNodes = () => {
+  for(let node of map) {
+    let addNode:boolean = false;
+    for(let computerNode of computerControlNodes.store) {
+        for(let playerNode of playerControlNodes.store) {
+          if(node.x !== computerNode.x && node.y !== computerNode.y) {
+            if(node.x !== playerNode.x && node.y !== playerNode.y) {
+              // node is not inside computer and player control node
+              addNode = true;
+            }
+          }
+        }
+    }
+    if(addNode) {
+      explorationNodes.addNodeToStore(node);
+    }
+  }
 }
