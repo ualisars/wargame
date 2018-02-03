@@ -93,18 +93,18 @@ export const fillPlayerControlNodes = () => {
 
 export const fillExplorationNodes = () => {
   for(let node of map) {
-    let addNode:boolean = false;
+    let nodeExist:boolean = false;
     for(let computerNode of computerControlNodes.store) {
-        for(let playerNode of playerControlNodes.store) {
-          if(node.x !== computerNode.x && node.y !== computerNode.y) {
-            if(node.x !== playerNode.x && node.y !== playerNode.y) {
-              // node is not inside computer and player control node
-              addNode = true;
-            }
-          }
-        }
+      if(computerNode.x === node.x && computerNode.y === node.y) {
+        nodeExist = true;
+      }
     }
-    if(addNode) {
+    for(let playerNode of playerControlNodes.store) {
+      if(playerNode.x === node.x && playerNode.y === node.y) {
+        nodeExist = true;
+      }
+    }
+    if(!nodeExist) {
       explorationNodes.addNodeToStore(node);
     }
   }

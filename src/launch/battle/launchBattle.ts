@@ -180,7 +180,7 @@ export const launchBattle = () => {
   }); // on context
 
   setUpAI(); // set up AI engine
-  setInterval(() => analyzeMap(), 4000);
+  setTimeout(() => analyzeMap(), 4000);
   setInterval(() => spotUnits(units), 1000);
 
   //set behaviour
