@@ -1,5 +1,5 @@
 // import { expect, should, assert} from 'chai';
-// import {isUnitInArray} from '../src/utils';
+// import {isUnitInArray} from '../../../src/utils/unit/utils';
 // import {
 //   getClosestUnitToNode,
 //   getClosestUnitToOtherUnit,
@@ -10,11 +10,11 @@
 //   getUnitsByTask,
 //   getUnitsByPropertyValue,
 //   getClosestNodeToUnit,
-// } from '../src/utils/unit/actions';
-// import {getProtector} from '../src/utils/unit/protector';
+// } from '../../../src/utils/unit/actions';
+// import {getProtector} from '../../../src/utils/unit/protector';
 // import {
 //   computerUnits
-// } from '../src/store';
+// } from '../../../src/store/unit/units';
 //
 // describe('AI unitActions test', function() {
 //   describe('getClosestUnitToNode', function() {

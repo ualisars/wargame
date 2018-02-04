@@ -3,21 +3,21 @@ import {
   getFreeUnits,
   getUnitsByPropertyValue,
   getClosestUnitToOtherUnit
-} from '../../../utils/unit/actions';
+} from '../../../../utils/unit/actions';
 import{
   getUnitTypesInPercentage,
   calculateUnitTypes,
-} from '../../analyzeModule/unitAnalyze';
+} from '../../../analyzeModule/unitAnalyze';
 import {
   computerUnits,
   playerUnits
-} from '../../../store/unit/units';
-import {visibleForComputerUnits} from '../../../store/unit/visibleUnits';
-import {hidingEnemies} from '../../../store/AI/enemies/hidingEnemies';
+} from '../../../../store/unit/units';
+import {visibleForComputerUnits} from '../../../../store/unit/visibleUnits';
+import {hidingEnemies} from '../../../../store/AI/enemies/hidingEnemies';
 import {
   doesUnitNeedProtection,
   howManyUnitsNeedProtection
-} from '../../processModule/unitProcess';
+} from '../../../processModule/unitProcess';
 
 export let assignTasksForNeutral = () => {
   let numberOfUnits = computerUnits.length;

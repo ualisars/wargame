@@ -9,7 +9,7 @@ import {
 } from '../../utils';
 import {aStar} from '../../path';
 import {map} from '../../map/createMap';
-import {neutralExploration} from '../behaviour/neutral/exploration';
+import {neutralExploration} from '../behaviour/neutral/explorationStage/exploration';
 import {advance} from '../behaviour/neutral/advanceStage/advance';
 import{fight} from '../behaviour/neutral/fightStage/fightStage';
 import {combatStage} from '../../store/AI/stage/combatStage';

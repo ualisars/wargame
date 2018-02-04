@@ -57,11 +57,12 @@ class Unit {
   position:string; // position in formation
   task:string;
   unitToProtect:any = {};
+  baseNode:any = {};
   isUnitUnderProtection:boolean = false;
   unitToHelp:any = {};
   isUnitNeedHelp:boolean = false;
   beCloseTo:any[] = [];
-  frozen:boolean = false; // to prevent order to many order in short period of time
+  frozen:boolean = false; // to prevent too many orders in short period of time
 
   constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
     this.id = id;
@@ -264,6 +265,14 @@ class Unit {
   }
   clearUnitToHelp() {
     this.unitToHelp = {};
+  }
+  assignBaseNode(node:any) {
+    if(node) {
+      this.baseNode = node;
+    }
+  }
+  removeBaseNode() {
+    this.baseNode = {};
   }
 }
 

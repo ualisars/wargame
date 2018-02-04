@@ -13,7 +13,7 @@ import {
 import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 
 import {hidingEnemies} from '../../store/AI/enemies/hidingEnemies';
-import {assignTasksForNeutral} from '../behaviour/neutral/assignTask';
+import {assignTasksForNeutral} from '../behaviour/neutral/task/assignTask';
 
 
 /*

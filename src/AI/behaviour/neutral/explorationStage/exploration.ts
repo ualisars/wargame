@@ -1,14 +1,14 @@
 import {
   updateUnit,
   assignUnitMoveToPosition
-} from '../../../unit';
+} from '../../../../unit';
 import {
   getDistanceBetweenTwoUnitsInGrids,
   getNodeFromMap,
   deleteObjectFromArray
-} from '../../../utils';
-import {aStar} from '../../../path';
-import {map} from '../../../map/createMap';
+} from '../../../../utils';
+import {aStar} from '../../../../path';
+import {map} from '../../../../map/createMap';
 
 import {
   getUnitsByTask,
@@ -17,16 +17,16 @@ import {
   getClosestUnitToOtherUnit,
   getClosestEnemyToUnit,
   getClosestNodeToUnit
-} from '../../../utils/unit/actions';
-import {getProtector} from '../../../utils/unit/protector';
-import {isNodeExploredByScout} from '../../../utils/node/explore';
-import {computerControlNodes} from '../../analyzeModule/mapAnalyze';
+} from '../../../../utils/unit/actions';
+import {getProtector} from '../../../../utils/unit/protector';
+import {isNodeExploredByScout} from '../../../../utils/node/explore';
+import {computerControlNodes} from '../../../analyzeModule/mapAnalyze';
 import {
   getClosestToEnemyNodes,
   getFarthestNodeFromEnemy
-} from '../../../utils/node/get';
-import {getSurroundedNodes} from '../../../utils/surrounded';
-import {getRandomNode} from '../../../utils/node';
+} from '../../../../utils/node/get';
+import {getSurroundedNodes} from '../../../../utils/surrounded';
+import {getRandomNode} from '../../../../utils/node';
 
 export const neutralExploration = () => {
   scoutsMovement();

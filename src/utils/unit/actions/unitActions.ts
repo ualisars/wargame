@@ -3,13 +3,12 @@ import {
   playerUnits
 } from '../../../store/unit/units';
 
-import {gridSize} from '../../../config';
+import {gridSize} from '../../../config/map';
 import {
-  getDistanceBetweenUnitAndNodeInGrids,
   getDistanceBetweenTwoUnitsInGrids,
   deleteUnitFromArray
-} from '../../index';
-
+} from '../utils';
+import {getDistanceBetweenUnitAndNodeInGrids} from '../../node';
 /*
   get closest computer's unit to specific node
 */
@@ -222,4 +221,14 @@ export const getUnitsByPropertyValue = (property:string, value:any, exclusion:an
     }
   }
   return units;
+}
+
+/*
+  return total number of scouts
+*/
+export const getScoutsNumber = () => {
+  for(let unit of computerUnits) {
+      let scouts = getUnitsByTask('exploration');
+      return scouts.length;
+  }
 }
