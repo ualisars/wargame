@@ -10,7 +10,8 @@ import {
   getClosestEnemyToUnit,
   getFreeUnits,
   getUnitsByTask,
-  getUnitsByPropertyValue
+  getUnitsByPropertyValue,
+  getScoutsNumber
 } from './unitActions';
 
 export {
@@ -25,5 +26,6 @@ export {
   getClosestEnemyToUnit,
   getFreeUnits,
   getUnitsByTask,
-  getUnitsByPropertyValue
+  getUnitsByPropertyValue,
+  getScoutsNumber
 }

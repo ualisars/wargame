@@ -17,6 +17,10 @@ import {
   getUnitsMaxProperty,
   getUnitsMinProperty
 } from '../../utils';
+import {
+  getUnitsByTask,
+  getScoutsNumber
+} from '../../utils/unit/actions';
 
 
 /*
@@ -143,4 +147,19 @@ export const chanceUnitToFlee = (unit:any):string => {
     chance = 'very low';
   }
   return chance;
+}
+
+/*
+  Split exploration node
+  between scouts
+*/
+export const divideExplorationZone = () => {
+  let numberOfScouts:number = getScoutsNumber();
+  let scouts:any = getUnitsByTask('exploration');
+  console.error('numberOfScouts', numberOfScouts);
+  if(numberOfScouts > 1) {
+    for(let i = 0; i < scouts.length; i++) {
+      
+    }
+  }
 }

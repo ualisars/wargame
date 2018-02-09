@@ -73,13 +73,15 @@ export const assignExploration = (unitTypes:any, percentage:number):any => {
   return new Promise(resolve => {
     if(unitTypes.scouts === 0 && unitTypes.cavalry === 0) { // no cavalry or scouts
       let freeUnits = getFreeUnits();
-      if(freeUnits.length !== 0) {
-        let fastestUnit = getBestUnitByProperty('speed'); // get fastest unit
-        fastestUnit.assignTask('exploration');
-        if(freeUnits.length > 1) {
-          let exclusion = [fastestUnit];
-          let secondFastestUnit = getBestUnitByProperty('speed', exclusion);
-          secondFastestUnit.assignTask('exploration');
+      if(freeUnits) {
+        if(freeUnits.length !== 0) {
+          let fastestUnit = getBestUnitByProperty('speed'); // get fastest unit
+          fastestUnit.assignTask('exploration');
+          if(freeUnits.length > 1) {
+            let exclusion = [fastestUnit];
+            let secondFastestUnit = getBestUnitByProperty('speed', exclusion);
+            secondFastestUnit.assignTask('exploration');
+          }
         }
       }
     } else {

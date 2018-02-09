@@ -5,7 +5,7 @@ const swap = (arr:any[], a:number, b:number) => {
 }
 
 export const sortNodesByRandomValue = (nodes:any[]):any[] => {
-	for(let i = 0; i < nodes.length - 1; ++i) {
+	for(let i = 0; i < nodes.length; ++i) {
 		let min = i;
 		for(let j = i + 1; j < nodes.length; ++j) {
 			if(nodes[j].randomValue === nodes[min].randomValue) {
