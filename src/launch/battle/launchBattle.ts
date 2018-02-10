@@ -75,7 +75,7 @@ import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 import {divideExplorationZone} from '../../AI/processModule/unitProcess'; // remove later
-import {shuffleUnits} from '../../utils/unit/shuffle';
+import {shuffleID} from '../../utils/unit/shuffle';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
