@@ -171,7 +171,7 @@ const checkDifference = (baseNode1:any, baseNode2:any):number => {
   return diff;
 }
 
-export const divideExplorationZone = () => {
+export const assignBaseNodesForScouts = () => {
   let numberOfScouts:number = getScoutsNumber();
   let scouts:any = getUnitsByTask('exploration');
   // console.error('divideExplorationZone');

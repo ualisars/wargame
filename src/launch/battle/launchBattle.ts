@@ -74,7 +74,6 @@ import {isBattleEnd, checkWinner} from '../../gameLoop';
 import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
-import {divideExplorationZone} from '../../AI/processModule/unitProcess'; // remove later
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
