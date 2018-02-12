@@ -232,3 +232,11 @@ export const getScoutsNumber = () => {
       return scouts.length;
   }
 }
+
+export const getUnitById = (id:number, units:any[]):any => {
+  for(let unit of units) {
+    if(id === unit.id) {
+      return unit;
+    }
+  }
+}

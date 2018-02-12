@@ -75,7 +75,6 @@ import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 import {divideExplorationZone} from '../../AI/processModule/unitProcess'; // remove later
-import {shuffleID} from '../../utils/unit/shuffle';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
@@ -182,11 +181,11 @@ export const launchBattle = () => {
   }); // on context
 
   setUpAI(); // set up AI engine
-  setTimeout(analyzeMap, 4000);
+  setTimeout(analyzeMap, 2000);
   setTimeout(spotUnits(units), 1000);
 
-  // setInterval(assignTasks, 3000);
-  // setInterval(divideExplorationZone, 4000);
+  setTimeout(assignTasks, 3000);
+
 
 
 

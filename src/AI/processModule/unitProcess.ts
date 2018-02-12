@@ -19,8 +19,16 @@ import {
 } from '../../utils';
 import {
   getUnitsByTask,
-  getScoutsNumber
+  getScoutsNumber,
+  getUnitById
 } from '../../utils/unit/actions';
+import {
+  HEIGHT,
+  gridSize
+} from '../../config/map';
+import {getNodeFromMap} from '../../utils/node/get/fromMap';
+import {map} from '../../map/createMap';
+import {shuffleID} from '../../utils/unit/shuffle';
 
 
 /*
@@ -153,13 +161,78 @@ export const chanceUnitToFlee = (unit:any):string => {
   Split exploration node
   between scouts
 */
+
+const checkDifference = (baseNode1:any, baseNode2:any):number => {
+  const y1:number = baseNode1.y;
+  const y2:number = baseNode2.y;
+  // console.log('y1', y1);
+  // console.log('y2', y2);
+  const diff = Math.abs(y1 - y2);
+  return diff;
+}
+
 export const divideExplorationZone = () => {
   let numberOfScouts:number = getScoutsNumber();
   let scouts:any = getUnitsByTask('exploration');
-  console.error('numberOfScouts', numberOfScouts);
+  // console.error('divideExplorationZone');
+  // console.error('numberOfScouts', numberOfScouts);
   if(numberOfScouts > 1) {
-    for(let i = 0; i < scouts.length; i++) {
-      
-    }
+    let ids = shuffleID(scouts);
+    for(let i = 0; i < ids.length; ++i) {
+      let x:number = 0;
+      let y:number;
+      let id:number = ids[i].id;
+      let unit:any = getUnitById(id, computerUnits);
+      //console.log('unit', i, unit);
+      if(i === 0) { // first scout
+        y = 0;
+      }
+      else if(i === 1) { // second unit
+        y = HEIGHT - gridSize;
+      }
+      else if(i === 2) { // third unit
+        y = (HEIGHT - gridSize) / 2;
+      }
+      else { // more than 4 units
+        //console.log('more than 4 units');
+        const firstScoutId:number = ids[i - 3].id;
+        const secondScoutId:number = ids[i - 2].id;
+        const thirdScoutId:number = ids[i - 1].id;
+        // console.log('firstScoutId', firstScoutId);
+        // console.log('secondScoutId', secondScoutId);
+        // console.log('thirdScoutId', thirdScoutId);
+        const firstScoutBaseNode:any = getUnitById(firstScoutId, scouts).baseNode;
+        const secondScoutBaseNode:any = getUnitById(secondScoutId, scouts).baseNode;
+        const thirdScoutBaseNode:any = getUnitById(thirdScoutId, scouts).baseNode;
+        // console.log('firstScoutBaseNode', firstScoutBaseNode);
+        // console.log('secondScoutBaseNode', secondScoutBaseNode);
+        // console.log('thirdScoutBaseNode', thirdScoutBaseNode);
+        // check difference between between 3 previous scouts
+        const d1:number = checkDifference(firstScoutBaseNode, thirdScoutBaseNode);
+        const d2:number = checkDifference(secondScoutBaseNode, thirdScoutBaseNode);
+        // console.log('d1 for unit', unit.id, ' = ', d1);
+        // console.log('d2 for unit', unit.id, ' = ', d2);
+        if(d1 === d2) {
+          // same difference
+          let random = Math.random();
+          if(random < 0.5) {
+            y = Math.abs(firstScoutBaseNode.y - thirdScoutBaseNode.y) / 2;
+          } else {
+            y = Math.abs(secondScoutBaseNode.y - thirdScoutBaseNode.y) / 2;
+          }
+        }
+        else if(d1 > d2) {
+          y = Math.abs(firstScoutBaseNode.y - thirdScoutBaseNode.y) / 2;
+        }
+        else if(d1 < d2) {
+          y = Math.abs(secondScoutBaseNode.y - thirdScoutBaseNode.y) / 2;
+        }
+      }
+      // assign base node for unit
+      let node = getNodeFromMap(x, y, map);
+      unit.assignBaseNode(node);
+      //console.error('unit', unit.id, 'baseNode', unit.baseNode);
+    } // end of ids for loop
+    //console.error('scouts base nodes', scouts);
   }
 }

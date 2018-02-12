@@ -11,7 +11,8 @@ import {
   getFreeUnits,
   getUnitsByTask,
   getUnitsByPropertyValue,
-  getScoutsNumber
+  getScoutsNumber,
+  getUnitById
 } from './unitActions';
 
 export {
@@ -27,5 +28,6 @@ export {
   getFreeUnits,
   getUnitsByTask,
   getUnitsByPropertyValue,
-  getScoutsNumber
+  getScoutsNumber,
+  getUnitById
 }
