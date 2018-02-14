@@ -74,6 +74,8 @@ import {isBattleEnd, checkWinner} from '../../gameLoop';
 import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
+import {assignBaseNodesForScouts} from '../../AI/processModule/unitProcess'; // remove
+import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/exploration'; //remove
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
@@ -184,6 +186,10 @@ export const launchBattle = () => {
   setTimeout(spotUnits(units), 1000);
 
   setTimeout(assignTasks, 3000);
+
+  setTimeout(assignBaseNodesForScouts, 3500);
+
+  setInterval(scoutsMovement, 4000);
 
 
 

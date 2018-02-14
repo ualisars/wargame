@@ -78,17 +78,33 @@ export const backDown = (unit:any, enemy:any, nodes:any[]) => {
   }
 }
 
+// export const explore = (unit:any) => {
+//   let nodes = getClosestToEnemyNodes(computerControlNodes.store);
+//   let node = getClosestNodeToUnit(unit, nodes);
+//   while(isNodeExploredByScout(node)) {
+//     nodes = deleteObjectFromArray(node, nodes);
+//     node = getClosestNodeToUnit(unit, nodes);
+//   }
+//   console.error('chosen nodes:', nodes);
+//   unit.setUnitToPursue(null);
+//   let startNode = getNodeFromMap(unit.x, unit.y, map);
+//   let finishNode = getNodeFromMap(node.x, node.y, map);
+//   let path:any = aStar(map, startNode, finishNode);
+//   if(unit.isMoving) {
+//     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+//   } else {
+//     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+//     updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
+//   }
+// }
+
 export const explore = (unit:any) => {
-  let nodes = getClosestToEnemyNodes(computerControlNodes.store);
-  let node = getClosestNodeToUnit(unit, nodes);
-  while(isNodeExploredByScout(node)) {
-    nodes = deleteObjectFromArray(node, nodes);
-    node = getClosestNodeToUnit(unit, nodes);
-  }
-  console.error('chosen nodes:', nodes);
-  unit.setUnitToPursue(null);
-  let startNode = getNodeFromMap(unit.x, unit.y, map);
-  let finishNode = getNodeFromMap(node.x, node.y, map);
+  const startX = unit.x;
+  const startY = unit.y;
+  const finishX = unit.baseNode.x;
+  const finishY = unit.baseNode.y;
+  let startNode = getNodeFromMap(startX, startY, map);
+  let finishNode = getNodeFromMap(finishX, finishY, map);
   let path:any = aStar(map, startNode, finishNode);
   if(unit.isMoving) {
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
