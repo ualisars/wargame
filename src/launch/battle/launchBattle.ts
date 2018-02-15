@@ -67,14 +67,14 @@ import {
 } from '../../store/AI/enemies/hidingEnemies';
 import{orderToAttackEnemy} from '../../AI/strategyModule/unitOrders';
 import {assignTasks} from '../../AI/strategyModule/assignTask';
-import {assignCombatStage} from '../../AI/processModule/mapProcess';
+import {assignCombatStage} from '../../AI/processModule/combatStage';
 import {calculateTotalPower} from '../../AI/analyzeModule/powerAnalyze';
 import {AIMovement} from '../../AI/strategyModule/unitOrders';
 import {isBattleEnd, checkWinner} from '../../gameLoop';
 import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
-import {assignBaseNodesForScouts} from '../../AI/processModule/unitProcess'; // remove
+import {assignBaseNodesForScouts} from '../../AI/processModule/unit'; // remove
 import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/explorationMoves'; //remove
 
 export const launchBattle = () => {

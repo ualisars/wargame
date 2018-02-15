@@ -1,34 +1,34 @@
 import {
   playerUnits,
   computerUnits
-} from '../../store/unit/units';
+} from '../../../store/unit/units';
 
 import {
   calculateSurroundedEnemyPower,
   calculateSurroundedAlliesPower,
   calculatePowerAdvantageInTheArea,
   calculateUnitsToBeware,
-} from '../analyzeModule/unitAnalyze';
+} from '../../analyzeModule/unitAnalyze';
 import {
   getSurroundedAllies,
   getSurroundedEnemies
-} from '../../utils/surrounded';
+} from '../../../utils/surrounded';
 import {
   getUnitsMaxProperty,
   getUnitsMinProperty
-} from '../../utils';
+} from '../../../utils';
 import {
   getUnitsByTask,
   getScoutsNumber,
   getUnitById
-} from '../../utils/unit/actions';
+} from '../../../utils/unit/actions';
 import {
   HEIGHT,
   gridSize
-} from '../../config/map';
-import {getNodeFromMap} from '../../utils/node/get/fromMap';
-import {map} from '../../map/createMap';
-import {shuffleID} from '../../utils/unit/shuffle';
+} from '../../../config/map';
+import {getNodeFromMap} from '../../../utils/node/get/fromMap';
+import {map} from '../../../map/createMap';
+import {shuffleID} from '../../../utils/unit/shuffle';
 
 
 /*
