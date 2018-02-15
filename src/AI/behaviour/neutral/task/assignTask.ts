@@ -89,7 +89,7 @@ export const assignExploration = (unitTypes:any, percentage:number):any => {
         let scouts:number = 0;
         let percentageOfScouts:number = Math.round((scouts / computerUnits.length) * 100);
         if(!unit.task && (unit.type === 'scouts' || unit.type === 'cavalry') && percentageOfScouts < percentage) {
-          // there is scouts and not recommended to scouts to be more than 30% of units
+          // there are scouts and not recommended scouts to be more than 30% of units
           unit.assignTask('exploration');
         }
       }

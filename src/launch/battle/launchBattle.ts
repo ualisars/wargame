@@ -75,7 +75,7 @@ import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 import {assignBaseNodesForScouts} from '../../AI/processModule/unitProcess'; // remove
-import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/exploration'; //remove
+import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/explorationMoves'; //remove
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
