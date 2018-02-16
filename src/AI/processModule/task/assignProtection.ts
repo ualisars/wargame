@@ -24,6 +24,7 @@ export const assignProtection = (percentage:number) => {
     for(let unit of computerUnits) {
       if(doesUnitNeedProtection(unit) && !unit.isUnitUnderProtection && percentageOfUnits < percentage) { // unit needs protection
         let freeUnits = getFreeUnits();
+        console.error('freeUnits', freeUnits);
         let spearmen = getUnitsByPropertyValue('type', 'spearmen');
         if(spearmen.length !== 0) { // there are some free spearmen
           let closestSpearmen = getClosestUnitToOtherUnit(unit, spearmen);

@@ -1,6 +1,5 @@
 import {computerUnits} from '../../../store/unit/units';
-import {getUnitsByTask} from '../../../utils/unit/actions/unitActions';
-import {deleteUnitFromArray} from '../../../utils';
+
 /*
   All units no assigned to be scouts
   have to patrol if they have enough speed

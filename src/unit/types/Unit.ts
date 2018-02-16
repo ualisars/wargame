@@ -224,8 +224,12 @@ class Unit {
     else if(task === 'patrol') {
       this.task = task;
     }
+    else if(task === 'holdPosition') {
+      this.task = task;
+    }
     else {
-      this.task = '';
+      this.task = null;
+      console.error('cannot assign task, no task', task);
     }
     console.error(' new task for unit', this.name, 'is', task);
   }
