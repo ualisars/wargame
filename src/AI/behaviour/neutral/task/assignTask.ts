@@ -9,6 +9,10 @@ import {
 import {visibleForComputerUnits} from '../../../../store/unit/visibleUnits';
 import {hidingEnemies} from '../../../../store/AI/enemies/hidingEnemies';
 import {combatStage} from '../../../../store/AI/stage/combatStage';
+import {
+  assignPatrol,
+  assignExploration
+} from '../../../processModule/task';
 
 
 export let assignTasksForNeutral = () => {
@@ -19,6 +23,12 @@ export let assignTasksForNeutral = () => {
   let percentage = getUnitTypesInPercentage();
   let unitTypes = calculateUnitTypes();
   if(combatStage === 'exploration') {
-
+    assignExploration(unitTypes, 60)
+    .then(assignPatrol)
+    .then(() => {
+      for(let unit of computerUnits) {
+        console.log('id', unit.id, 'name', unit.name, 'task is', unit.task);
+      }
+    });
   }
 }

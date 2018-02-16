@@ -221,19 +221,7 @@ class Unit {
     else if(task === 'protection') {
       this.task = task;
     }
-    else if(task === 'flanking') {
-      this.task = task;
-    }
-    else if(task === 'occupation') {
-      this.task = task;
-    }
-    else if(task === 'offensive') {
-      this.task = task;
-    }
-    else if(task === 'destruction') {
-      this.task = task;
-    }
-    else if(task === 'defense') {
+    else if(task === 'patrol') {
       this.task = task;
     }
     else {

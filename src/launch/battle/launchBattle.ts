@@ -187,9 +187,9 @@ export const launchBattle = () => {
 
   setTimeout(assignTasks, 3000);
 
-  setTimeout(assignBaseNodesForScouts, 3500);
-
-  setInterval(scoutsMovement, 4000);
+  // setTimeout(assignBaseNodesForScouts, 3500);
+  //
+  // setInterval(scoutsMovement, 4000);
 
 
 
