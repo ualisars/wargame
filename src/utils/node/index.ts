@@ -18,7 +18,7 @@ import {
   getRandomNode
 } from './random';
 import {
-  sortNodesByRandomValue
+  shuffleNodes
 } from './shuffle';
 import {getSurroundedBlockedNodes} from './surrounded';
 
@@ -32,5 +32,5 @@ export {
   getMaxValueFromNodes,
   getRandomNode,
   getSurroundedBlockedNodes,
-  sortNodesByRandomValue
+  shuffleNodes
 }

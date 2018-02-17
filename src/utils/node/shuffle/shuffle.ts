@@ -12,7 +12,7 @@ export const assignRandomValue = (nodes:any[]):any[] => {
 	return nodes;
 }
 
-export const sortNodesByRandomValue = (nodes:any[]):any[] => {
+export const shuffleNodes = (nodes:any[]):any[] => {
 	let updatedNodes:any[] = Object.assign([], nodes);
 	let randomValueNodes:any[] = assignRandomValue(updatedNodes);
 	for(let i = 0; i < randomValueNodes.length; ++i) {

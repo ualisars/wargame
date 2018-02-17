@@ -1,7 +1,7 @@
 import {
-  sortNodesByRandomValue
+  shuffleNodes
 } from './shuffle';
 
 export {
-  sortNodesByRandomValue
+  shuffleNodes
 }
