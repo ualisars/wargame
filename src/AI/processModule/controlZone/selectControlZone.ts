@@ -6,6 +6,7 @@ import {
 } from '../../../config/map';
 import {backgroundCtx} from '../../../config/context';
 import {getNodeFromMap} from '../../../utils/node/get/fromMap';
+import {getRandomNode} from '../../../utils/node/random';
 /*
   return nodes locating on computer's side
 */
@@ -30,6 +31,10 @@ export const drawNodes = (nodes:any[]) => {
   }
 }
 export const selectCotrolZone = () => {
-  let nodes = filterNodes();
+  let nodes:any[] = filterNodes();
   drawNodes(nodes);
+  let selectedNode:any = getRandomNode(nodes);
+  console.error('selectedNode', selectedNode);
+  backgroundCtx.fillStyle="green";
+  backgroundCtx.fillRect(selectedNode.x, selectedNode.y, gridSize, gridSize);
 }
