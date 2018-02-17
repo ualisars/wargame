@@ -10,6 +10,9 @@ import {getRandomNode} from '../../../utils/node/random';
 /*
   return nodes locating on computer's side
 */
+
+export let controlZone:any[] = [];
+
 export const filterNodes = ():any[] => {
   let computerSideNodes:any[] = [];
   const startX:number = Math.round(WIDTH / 2);
@@ -24,17 +27,19 @@ export const filterNodes = ():any[] => {
   return computerSideNodes;
 }
 
-export const drawNodes = (nodes:any[]) => {
-  for(let node of nodes) {
-    backgroundCtx.fillStyle="red";
-    backgroundCtx.fillRect(node.x, node.y, gridSize, gridSize);
-  }
-}
 export const selectCotrolZone = () => {
   let nodes:any[] = filterNodes();
-  drawNodes(nodes);
   let selectedNode:any = getRandomNode(nodes);
-  console.error('selectedNode', selectedNode);
-  backgroundCtx.fillStyle="green";
-  backgroundCtx.fillRect(selectedNode.x, selectedNode.y, gridSize, gridSize);
+  const startX:number = selectedNode.x - (gridSize * 3);
+  const startY:number = selectedNode.y - (gridSize * 3);
+  const finishX:number = selectedNode.x + (gridSize * 3);
+  const finishY:number = selectedNode.y + (gridSize * 3);
+  for(let x = startX; x <= finishX; x += gridSize) {
+    for(let y = startY; y <= finishY; y += gridSize) {
+      let node:any = getNodeFromMap(x ,y, map);
+      if(node) {
+        controlZone.push(node);
+      }
+    }
+  }
 }
