@@ -76,7 +76,7 @@ import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 import {assignBaseNodesForScouts} from '../../AI/processModule/unit'; // remove
 import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/explorationMoves'; //remove
-
+import {selectCotrolZone} from '../../AI/processModule/controlZone/selectControlZone';
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
   createArmy();
@@ -186,6 +186,7 @@ export const launchBattle = () => {
   setTimeout(spotUnits(units), 1000);
 
   setTimeout(assignTasks, 3000);
+  setTimeout(selectCotrolZone, 4000);
 
   // setTimeout(assignBaseNodesForScouts, 3500);
   //
