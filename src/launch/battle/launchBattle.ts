@@ -78,6 +78,7 @@ import {assignBaseNodesForScouts} from '../../AI/processModule/unit'; // remove
 import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/explorationMoves'; //remove
 import {selectCotrolZone} from '../../AI/processModule/controlZone';
 import {occupyControlZone} from '../../AI/movement/occupyControlZone';
+import {getEnemiesInsideZone} from '../../AI/movement/defenderMovement';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
@@ -184,16 +185,17 @@ export const launchBattle = () => {
   }); // on context
 
   setUpAI(); // set up AI engine
-  setTimeout(analyzeMap, 2000);
-  setInterval(spotUnits(units), 1000);
-
-  setTimeout(assignTasks, 3000);
+  // setTimeout(analyzeMap, 2000);
+  // setInterval(spotUnits(units), 1000);
+  //
+  // setTimeout(assignTasks, 3000);
   setTimeout(selectCotrolZone, 4000);
-
-  setTimeout(assignBaseNodesForScouts, 3500);
-
-  setTimeout(scoutsMovement, 4000);
-  setTimeout(occupyControlZone, 4000);
+  //
+  // setTimeout(assignBaseNodesForScouts, 3500);
+  //
+  // setTimeout(scoutsMovement, 4000);
+  // setTimeout(occupyControlZone, 4000);
+  setInterval(getEnemiesInsideZone, 2000);
 
 
 

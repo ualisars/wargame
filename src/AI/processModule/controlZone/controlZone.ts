@@ -42,4 +42,8 @@ export const selectCotrolZone = () => {
       }
     }
   }
+  for(let node of controlZone) {
+    backgroundCtx.fillStyle = 'red';
+    backgroundCtx.fillRect(node.x, node.y, 40, 40);
+  }
 }
