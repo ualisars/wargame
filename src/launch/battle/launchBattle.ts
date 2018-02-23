@@ -77,7 +77,7 @@ import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 import {assignBaseNodesForScouts} from '../../AI/processModule/unit'; // remove
 import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/explorationMoves'; //remove
 import {selectCotrolZone} from '../../AI/processModule/controlZone';
-import {defenderMovement} from '../../AI/movement/defenderMovement';
+import {occupyControlZone} from '../../AI/movement/occupyControlZone';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
@@ -193,7 +193,7 @@ export const launchBattle = () => {
   setTimeout(assignBaseNodesForScouts, 3500);
 
   setTimeout(scoutsMovement, 4000);
-  setTimeout(defenderMovement, 4000);
+  setTimeout(occupyControlZone, 4000);
 
 
 

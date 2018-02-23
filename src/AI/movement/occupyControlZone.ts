@@ -8,8 +8,16 @@ import {
   assignUnitMoveToPosition
 } from '../../unit';
 import {getNodeFromMap} from '../../utils';
+import {getUnitsByTask} from '../../utils/unit/actions';
 
-export const occupyControlZone = (unit:any) => {
+export const occupyControlZone = () => {
+  let defenders:any[] = getUnitsByTask('holdPosition');
+  for(let defender of defenders) {
+    occupyNodeInControlZone(defender);
+  }
+}
+
+export const occupyNodeInControlZone = (unit:any) => {
   let node:any = getRandomNode(controlZone); // get randon node from controlZone
   let startNode = getNodeFromMap(unit.x, unit.y, map);
   let finishNode = getNodeFromMap(node.x, node.y, map);
