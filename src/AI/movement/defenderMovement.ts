@@ -4,6 +4,24 @@ import {
   playerUnits
 } from '../../store/unit/units';
 import {controlZone} from '../processModule/controlZone/controlZone';
+import {getDistanceBetweenTwoUnitsInGrids} from '../../utils';
+import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/node';
+
+
+export const findClosestEnemyInZone = (unit:any, enemies:any[]):any => {
+  if(enemies.length === 0) { // only one unit remained
+    return null;
+  }
+  let closestEnemy:any = enemies[0];
+  for(let i = 1; i < enemies.length; ++i) {
+    let closestUnitDistance = getDistanceBetweenTwoUnitsInGrids(closestEnemy, unit);
+    let unitDistance = getDistanceBetweenTwoUnitsInGrids(enemies[i], unit);
+    if(unitDistance < closestUnitDistance) {
+      closestEnemy = enemies[i];
+    }
+  }
+  return closestEnemy;
+}
 
 
 export const getEnemiesInsideZone = ():any[] => {
