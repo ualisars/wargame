@@ -45,9 +45,13 @@ export const spotEnemy = (unit:any) => {
   }
   let visibility = unit.visibility;
   let visibilityRange = visibility * gridSize;
-  let unitNode = getNodeFromMap(unit.x, unit.y, map);
+  let unitX:number = unit.currentNode.x;
+  let unitY:number = unit.currentNode.y;
+  let unitNode = getNodeFromMap(unitX, unitY, map);
   for(let enemy of enemies) {
-    let enemyNode = getNodeFromMap(enemy.x, enemy.y, map);
+    let enemyX:number = enemy.currentNode.x;
+    let enemyY:number = enemy.currentNode.y;
+    let enemyNode = getNodeFromMap(enemyX, enemyY, map);
     let dx = Math.abs(unitNode.x - enemyNode.x);
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
@@ -84,12 +88,16 @@ export const isUnitSpottedByEnemy = (unit:any) => {
     // no enemy to spot the unit
     return;
   }
-  let unitNode = getNodeFromMap(unit.x, unit.y, map);
+  let unitX:number = unit.currentNode.x;
+  let unitY:number = unit.currentNode.y;
+  let unitNode = getNodeFromMap(unitX, unitY, map);
   let isSpotted = false;
   for(let enemy of enemies) {
     let visibility = enemy.visibility;
     let visibilityRange = visibility * gridSize;
-    let enemyNode = getNodeFromMap(enemy.x, enemy.y, map);
+    let enemyX:number = enemy.currentNode.x;
+    let enemyY:number = enemy.currentNode.y;
+    let enemyNode = getNodeFromMap(enemyX, enemyY, map);
     let dx = Math.abs(unitNode.x - enemyNode.x);
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
