@@ -110,6 +110,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
 
   let updatedPath = path;
   let node = updatedPath[i]; // get next node
+  if(!node) return;
   let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
   unit.setCurrentNode(currentNode); // set currentNode
   unit.setNextNode(node); // set nextNode

@@ -1,7 +1,11 @@
 import {selectCotrolZone} from './controlZone';
-import {isNumberOfEnemiesChanged} from './enemiesInsideControlZone';
+import {
+  isNumberOfEnemiesChanged,
+  updateEnemiesInsideControlZone
+} from './enemiesInsideControlZone';
 
 export {
   selectCotrolZone,
-  isNumberOfEnemiesChanged
+  isNumberOfEnemiesChanged,
+  updateEnemiesInsideControlZone
 }

@@ -76,7 +76,10 @@ import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 import {assignBaseNodesForScouts} from '../../AI/processModule/unit'; // remove
 import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/explorationMoves'; //remove
-import {selectCotrolZone} from '../../AI/processModule/controlZone';
+import {
+  selectCotrolZone,
+  isNumberOfEnemiesChanged
+} from '../../AI/processModule/controlZone';
 import {occupyControlZone} from '../../AI/movement/occupyControlZone';
 import {
   getEnemiesInsideZone,

@@ -29,6 +29,7 @@ export const aStar = (map:any[], startNode:any, finishNode:any) => {
   // For each node, the cost of getting from the start node to that node.
   while(open) {
     let current:any = getMinFScore(open);
+    if(!current) return;
     if(current.x === finishNode.x && current.y === finishNode.y) {
       // currentNode is a goal
       return reconstructPath(from, current);
@@ -40,6 +41,7 @@ export const aStar = (map:any[], startNode:any, finishNode:any) => {
       let tempG = current.gScore + distance;
       if(!isObjectInArray(neighbor, open) || tempG < neighbor.gScore) {
         from.set(neighbor, current);
+        if(!neighbor) return;
         neighbor.gScore = tempG;
         neighbor.fScore = neighbor.gScore + h(neighbor, finishNode);
       }
