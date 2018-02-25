@@ -14,6 +14,7 @@ import {
 } from '../../unit';
 import {getNodeFromMap} from '../../utils';
 import {occupyControlZone} from './occupyControlZone';
+import {isNumberOfEnemiesChanged} from '../processModule/controlZone';
 
 
 export const findClosestEnemyInZone = (unit:any, enemies:any[]):any => {
@@ -45,6 +46,7 @@ export const getEnemiesInsideZone = ():any[] => {
 }
 
 export const defenderMovement = () => {
+  if(isNumberOfEnemiesChanged) { // fire function only if enemies number changed
     if(getEnemiesInsideZone.length > 0) { // enemy try to enter the zone
       let enemies:any[] = getEnemiesInsideZone();
       let defenders:any[] = getUnitsByTask('holdPosition');
@@ -69,4 +71,5 @@ export const defenderMovement = () => {
     } else {
       occupyControlZone();
     }
+  }
 }
