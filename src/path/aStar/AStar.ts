@@ -14,6 +14,7 @@ import {
 export const aStar = (map:any[], startNode:any, finishNode:any) => {
   // the set of currently discovered nodes that are not evaluated yet
   // Initially only the start node is known
+  if(!startNode || !finishNode) return;
   let open:any[] = [];
 
   // the set of nodes that already evaluated
