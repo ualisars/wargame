@@ -35,6 +35,7 @@ import {
   getSurroundedEnemies
 } from '../../utils';
 import {getSurroundedBlockedNodes} from '../../utils/node';
+import {stopMoving} from './stopMoving';
 
 
 
@@ -46,10 +47,8 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   unit.setIsMovingToTrue();
   if(i === path.length) { // unit approach its end position
     console.log(unit.name, 'is on position');
-    let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
-    unit.setCurrentNode(currentNode); // set currentNode
-    unit.setNextNode(currentNode); // set nextNode
-    unit.setIsMovingToFalse();
+    let currentNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map); // get currentNode
+    stopMoving(unit, currentNode);
     return;
   }
 
@@ -62,9 +61,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
       removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
     } else {
       let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
-      unit.setCurrentNode(currentNode); // set currentNode
-      unit.setNextNode(currentNode); // set nextNode
-      unit.setIsMovingToFalse();
+      stopMoving(unit, currentNode);
       return;
     }
   }
@@ -122,9 +119,9 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   // ally unit is on the destination position
   // currentUnit should stop moving
   if(checkOtherUnitsPosition(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
-    unit.moveToNodeX = unit.x;
-    unit.moveToNodeY = unit.y;
-    let currentNode = getNodeFromMap(unit.x, unit.y, map);
+    unit.moveToNodeX = unit.currentNode.x;
+    unit.moveToNodeY = unit.currentNode.y;
+    let currentNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map);
     unit.setIsMovingToFalse();
     unit.setCurrentNode(currentNode); // set currentNode
     unit.setNextNode(currentNode); // set nextNode
@@ -137,9 +134,6 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     unit.setCurrentNode(currentNode); // set currentNode
     unit.setNextNode(currentNode); // set nextNode
     let updatedMap = map;
-    // let blockingUnit = getBlockingUnit(units, unit, node.x, node.y); // get unit that blocked the way
-    // let blockingUnitCurrentNode = blockingUnit.currentNode;
-    // let blockingUnitNextNode = blockingUnit.nextNode;
     let blockedNodes = getSurroundedBlockedNodes(unit);
     for(let blockedNode of blockedNodes) {
       updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
@@ -161,9 +155,6 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
 
 
     addNeighbors(updatedMap); // create new neighbours for updated map
-    // console.log('deleted Node', node);
-    // console.log('updatedMap', updatedMap);
-    // console.log('node', node);
     let startNode = getNodeFromMap(unit.x, unit.y, updatedMap);
     let finishNode = getNodeFromMap(currentMoveToX, currentMoveToY, updatedMap);
 
