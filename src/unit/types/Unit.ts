@@ -18,7 +18,6 @@ class Unit {
   currentNode: any;
   nextNode:any;
   isCurrentlyChosen: boolean = false;
-  positionInUnit: number;
   controlBy: string;
   imgSrc:string = './src/img/units/pikemen.jpg';
   isMoving: boolean = false;
@@ -84,10 +83,6 @@ class Unit {
   setY(y:number) {
     this.y = y;
     this.centerY = y + (gridSize / 2);
-  }
-
-  assignPosition(newPosition: number) {
-    this.positionInUnit = newPosition;
   }
 
   setIsMovingToFalse() {

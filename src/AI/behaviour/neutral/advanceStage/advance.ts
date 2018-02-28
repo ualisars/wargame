@@ -12,7 +12,7 @@ import {
 } from '../../../../utils';
 import {aStar} from '../../../../path';
 import {map} from '../../../../map/createMap';
-import {updateUnit} from '../../../../unit/movement/unitMovement';
+import {updateUnit} from '../../../../unit/movement';
 import {assignUnitMoveToPosition} from '../../../../unit/actions/unitActions';
 
 

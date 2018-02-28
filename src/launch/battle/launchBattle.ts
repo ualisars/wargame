@@ -146,11 +146,11 @@ export const launchBattle = () => {
     let y = e.offsetY; // get Y
     if(currentlyChosenUnit) {
       let pursuedUnit:any = null;
-      for(let computersUnit of computerUnits) {
-        let bottomRightX = computersUnit.x + gridSize;
-        let bottomRightY = computersUnit.y + gridSize;
-        if(x >= computersUnit.x && x < bottomRightX && y >= computersUnit.y && y < bottomRightY) {
-          pursuedUnit = computersUnit;
+      for(let computerUnit of computerUnits) {
+        let bottomRightX = computerUnit.x + gridSize;
+        let bottomRightY = computerUnit.y + gridSize;
+        if(x >= computerUnit.x && x < bottomRightX && y >= computerUnit.y && y < bottomRightY) {
+          pursuedUnit = computerUnit;
         }
       } // for computer units
       if(pursuedUnit && pursuedUnit.isVisible) {
@@ -190,17 +190,17 @@ export const launchBattle = () => {
     }
   }); // on context
 
-  setUpAI(); // set up AI engine
-  setTimeout(analyzeMap, 2000);
-  setInterval(spotUnits(units), 1000);
-  //
-  setTimeout(assignTasks, 3000);
-  setTimeout(selectCotrolZone, 1000);
-  //
-  setTimeout(assignBaseNodesForScouts, 3500);
-  //
-  setTimeout(scoutsMovement, 4000);
-  setInterval(defenderMovement, 2000);
+  // setUpAI(); // set up AI engine
+  // setTimeout(analyzeMap, 2000);
+  // setInterval(spotUnits(units), 1000);
+  // //
+  // setTimeout(assignTasks, 3000);
+  // setTimeout(selectCotrolZone, 1000);
+  // //
+  // setTimeout(assignBaseNodesForScouts, 3500);
+  // //
+  // setTimeout(scoutsMovement, 4000);
+  // setInterval(defenderMovement, 2000);
 
 
 

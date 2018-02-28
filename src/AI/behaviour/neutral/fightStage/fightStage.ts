@@ -18,7 +18,7 @@ import {map} from '../../../../map/createMap';
 import {
   updateUnit,
   pursueUnit
-} from '../../../../unit/movement/unitMovement';
+} from '../../../../unit/movement';
 import {assignUnitMoveToPosition} from '../../../../unit/actions/unitActions';
 /*
   What neutral AI should do in fightStage
