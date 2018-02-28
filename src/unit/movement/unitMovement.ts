@@ -28,7 +28,7 @@ import {
 } from '../../path';
 import {units} from '../../store/unit/units';
 import {
-  checkOtherUnitsPosition,
+  anotherUnitIsOnTheWay,
   getBlockingUnit,
   giveWay,
   isUnitOutOfCombat,
@@ -118,16 +118,15 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
 
   // ally unit is on the destination position
   // currentUnit should stop moving
-  if(checkOtherUnitsPosition(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
+  if(anotherUnitIsOnTheWay(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
+    console.error('another unit occupying destination position');
     unit.moveToNodeX = unit.currentNode.x;
     unit.moveToNodeY = unit.currentNode.y;
     let currentNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map);
-    unit.setIsMovingToFalse();
-    unit.setCurrentNode(currentNode); // set currentNode
-    unit.setNextNode(currentNode); // set nextNode
+    stopMoving(unit, currentNode);
     return;
   }
-  if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
+  if(anotherUnitIsOnTheWay(units, unit, node.x, node.y)) {
     // unit has another allies' unit on its way
     console.error('updateUnit: another unit is on the way x:',node.x,'y:', node.y);
     let currentNode = getNodeFromMap(unit.x, unit.y, map);
@@ -138,22 +137,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     for(let blockedNode of blockedNodes) {
       updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
     }
-
-    // if(unit.currentNode.x === blockingUnit.nextNode.x && unit.currentNode.y === blockingUnit.nextNode.y) {
-    //   // units are going towards each other
-    //   if(giveWay(unit, blockingUnit)) { // unit should give a way to blockingUnit
-    //     unit.moveToNodeX = unit.x;
-    //     unit.moveToNodeY = unit.y;
-    //     let currentNode = getNodeFromMap(unit.x, unit.y, map);
-    //     unit.setIsMovingToFalse();
-    //     unit.setCurrentNode(currentNode); // set currentNode
-    //     unit.setNextNode(currentNode); // set nextNode
-    //     return;
-    //   }
-    // }
-    // if current node and next node are different
-
-
+    
     addNeighbors(updatedMap); // create new neighbours for updated map
     let startNode = getNodeFromMap(unit.x, unit.y, updatedMap);
     let finishNode = getNodeFromMap(currentMoveToX, currentMoveToY, updatedMap);
@@ -273,7 +257,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     return;
   }
 
-  if(checkOtherUnitsPosition(units, unit, node.x, node.y)) {
+  if(anotherUnitIsOnTheWay(units, unit, node.x, node.y)) {
     // unit has another allies' unit on its way
     console.error('pursueUnit: another unit is on the way x:',node.x, 'y:',node.y);
     let blockedNodes = getSurroundedBlockedNodes(unit);

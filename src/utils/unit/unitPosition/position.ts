@@ -4,7 +4,7 @@ import {
   getNodeFromMap
 } from '../../index';
 
-export const checkOtherUnitsPosition = (units:any[], currentUnit:any, x:number, y:number) => {
+export const anotherUnitIsOnTheWay = (units:any[], currentUnit:any, x:number, y:number) => {
   let updatedUnits = deleteObjectFromArray(currentUnit, units);
   let currentUnitNextNode = getNodeFromMap(x, y, map);
   for(let unit of updatedUnits) {

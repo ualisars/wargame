@@ -12,7 +12,7 @@ import {
   getUnitsMaxProperty
 } from './property';
 import {
-  checkOtherUnitsPosition
+  anotherUnitIsOnTheWay
 } from './unitPosition';
 import {
   addUnitIntoArray,
@@ -24,7 +24,7 @@ import {
 
 export {
   addUnitIntoArray,
-  checkOtherUnitsPosition,
+  anotherUnitIsOnTheWay,
   deleteUnitFromArray,
   deleteUnitFromArmy,
   getBlockingUnit,

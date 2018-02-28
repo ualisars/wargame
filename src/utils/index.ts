@@ -16,7 +16,7 @@ import {
 import {randomizeMeleeDamage} from './random/randomGenerator';
 import {
   addUnitIntoArray,
-  checkOtherUnitsPosition,
+  anotherUnitIsOnTheWay,
   deleteUnitFromArray,
   deleteUnitFromArmy,
   getBlockingUnit,
@@ -58,7 +58,7 @@ export {
   getBlockingUnit,
   giveWay,
   isUnitOutOfCombat,
-  checkOtherUnitsPosition,
+  anotherUnitIsOnTheWay,
   getUnitsMinProperty,
   getUnitsMaxProperty,
   getSurroundedNodes,

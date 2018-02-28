@@ -1,7 +1,7 @@
 import {
-  checkOtherUnitsPosition
+  anotherUnitIsOnTheWay
 } from './position';
 
 export {
-  checkOtherUnitsPosition
+  anotherUnitIsOnTheWay
 }
