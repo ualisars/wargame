@@ -22,7 +22,7 @@ import {
 } from '../../utils';
 import {getSurroundedBlockedNodes} from '../../utils/node';
 import {stopMoving} from './stopMoving';
-import {moveToNextNode} from './unitMovement';
+import {moveToNextNode} from './moveToNextNode';
 
 import {updateUnit} from './updateUnit';
 
