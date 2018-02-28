@@ -1,6 +1,4 @@
-import {
-  pursueUnit
-} from './unitMovement';
+import {pursueUnit} from './pursueUnit';
 import {updateUnit} from './updateUnit';
 
 export {
