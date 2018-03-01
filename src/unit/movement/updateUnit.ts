@@ -37,7 +37,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   console.error('currentMoveTo x', currentMoveToX ,'y',currentMoveToY);
   if(i === path.length) { // unit approach its end position
     console.log(unit.name, 'is on position');
-    let currentNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map); // get currentNode
+    let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
     stopMoving(unit, currentNode);
     return;
   }
@@ -50,7 +50,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
       unit.clearFightAgainst(); // now unit not fighting with anyone
       removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
     } else {
-      let currentNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map); // get currentNode
+      let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
       stopMoving(unit, currentNode);
       return;
     }
@@ -73,7 +73,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(unit.unitToPursue) {
     // unit now is pursuing opponent's unit
     console.log('allies unit is pursuing another oponents unit');
-    let startNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map);
+    let startNode = getNodeFromMap(unit.x, unit.y, map);
     unit.setCurrentNode(startNode); // set currentNode
     unit.setNextNode(startNode); // set nextNode
     let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y, map);
@@ -110,9 +110,9 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   // currentUnit should stop moving
   if(anotherUnitIsOnTheWay(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
     console.error('another unit occupying destination position');
-    unit.moveToNodeX = unit.currentNode.x;
-    unit.moveToNodeY = unit.currentNode.y;
-    let currentNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map);
+    unit.moveToNodeX = unit.x;
+    unit.moveToNodeY = unit.y;
+    let currentNode = getNodeFromMap(unit.x, unit.y, map);
     stopMoving(unit, currentNode);
     return;
   }
