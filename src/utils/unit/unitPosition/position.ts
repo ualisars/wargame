@@ -1,18 +1,14 @@
 import {map} from '../../../map/createMap';
-import {
-  deleteObjectFromArray,
-  getNodeFromMap
-} from '../../index';
+import Unit from '../../../unit/types/Unit';
+import {getNodeFromMap} from '../../index';
+import {deleteUnitFromArray} from '../utils';
 
-export const anotherUnitIsOnTheWay = (units:any[], currentUnit:any, x:number, y:number) => {
-  let updatedUnits = deleteObjectFromArray(currentUnit, units);
-  console.error('anotherUnitIsOnTheWay');
-  console.log('units', units);
-  console.log('updatedUnits', updatedUnits);
-  let currentUnitNextNode = getNodeFromMap(x, y, map);
-  console.error('currentUnit', currentUnit);
-  console.log('currentUnitNextNode', currentUnitNextNode); 
-  for(let unit of updatedUnits) {
+export const anotherUnitIsOnTheWay = (units:any[], currentUnit:any, nextNodeX:number, nextNodeY:number) => {
+  let updatedUnits: Unit[] = Object.assign([], units);
+  let otherUnits: Unit[] = deleteUnitFromArray(currentUnit, units);
+  let currentUnitNextNode = getNodeFromMap(nextNodeX, nextNodeY, map);
+
+  for(let unit of otherUnits) {
     //let alliedUnitNode = getNodeFromMap(unit.x, unit.y, map);
     if(currentUnitNextNode.x === unit.currentNode.x && currentUnitNextNode.y === unit.currentNode.y) {
       return true;
