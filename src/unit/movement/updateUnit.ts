@@ -25,7 +25,7 @@ import {
 } from '../../utils';
 import {getSurroundedBlockedNodes} from '../../utils/node';
 import {stopMoving} from './stopMoving';
-import {moveToNextNodeInUpdateUnit} from './unitMovement';
+import {moveToNextNodeInUpdateUnit} from './moveToNextNode';
 import {pursueUnit} from './pursueUnit'
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {

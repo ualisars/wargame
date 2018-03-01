@@ -22,7 +22,7 @@ import {
 } from '../../utils';
 import {getSurroundedBlockedNodes} from '../../utils/node';
 import {stopMoving} from './stopMoving';
-import {moveToNextNode} from './moveToNextNode';
+import {moveToNextNodeInPursueUnit} from './moveToNextNode';
 
 import {updateUnit} from './updateUnit';
 
@@ -146,12 +146,12 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     previousNode = newPath[0]; // get previous unit's position
     node = newPath[1]; // get next node
     //console.error('unit is going to node x:', node.x, 'y:',node.y);
-    moveToNextNode(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
+    moveToNextNodeInPursueUnit(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
     return;
   }
   // console.error('previousNode', previousNode);
   // console.error('currentNode', node);
   spotEnemy(unit); // check for enemy units
   unit.decreaseCondition(1); // decreaseCondition while moving
-  moveToNextNode(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
+  moveToNextNodeInPursueUnit(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
 }

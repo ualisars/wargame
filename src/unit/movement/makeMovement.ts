@@ -3,61 +3,28 @@ import {
   spotEnemy,
   meleeCombat,
   meleeAttack,
-  charge,
-  removeUnitFromEnemiesFightAgainst
+  charge
 } from '../index';
 import {
     gridSize,
-    WIDTH,
-    HEIGHT
+    WIDTH
 } from '../../config';
-import {
-  deleteObjectFromArray,
-  getNodeFromMap
-} from '../../utils';
-import {assignUnitMoveToPosition} from '../actions';
-import {
-  createUnitObstacle,
-  addNeighbors
-} from '../../map';
-import {map} from '../../map/createMap';
-import {ctx,} from '../../config/context';
+import {deleteObjectFromArray} from '../../utils';
+import {createUnitObstacle} from '../../map';
+import {ctx} from '../../config/context';
 import {
   aStar,
   findPathFromOneNodeToAnother
 } from '../../path';
-import {units} from '../../store/unit/units';
 import {
   anotherUnitIsOnTheWay,
   getBlockingUnit,
   giveWay,
-  isUnitOutOfCombat,
-  getSurroundedEnemies
+  isUnitOutOfCombat
 } from '../../utils';
-import {getSurroundedBlockedNodes} from '../../utils/node';
-import {stopMoving} from './stopMoving';
-
 import {updateUnit} from './updateUnit';
 import {pursueUnit} from './pursueUnit';
 
-
-
-
-
-
-export const moveToNextNodeInUpdateUnit = (unit:any, currentNode:any, nextNode:any, currX:number, currY:number, allPath:any[], nodeI:number) => {
-  // return new Promise(resolve => {
-  //console.log('moveToNextNode2');
-  let startX = currentNode.x + (gridSize * 0.5);
-  let startY = currentNode.y + (gridSize * 0.5);
-  let finishX = nextNode.x + (gridSize * 0.5);
-  let finishY = nextNode.y + (gridSize * 0.5);
-  // console.error('x:',startX, 'y:', startY);
-  // console.error('finishX:',finishX, 'finishY:', finishY);
-  let path = findPathFromOneNodeToAnother(startX, startY, finishX, finishY);
-  //console.error('path', path);
-  makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, 0, nodeI);
-}
 
 export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
   //console.log('makeMovementInUpdateUnit');
@@ -92,7 +59,7 @@ export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any
    }, Math.round(1000 / unit.speed));
 }
 
-export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
+export const makeMovementInPursueUnit = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
   //console.log('makeMovement2');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
     //console.error('unit reached its position');
@@ -122,14 +89,6 @@ export const makeMovement = (unit:any, pursuedUnit:any, currentNode:any, nextNod
 
    setTimeout(() => {
      i++;
-     makeMovement(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
+     makeMovementInPursueUnit(unit, pursuedUnit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
    }, Math.round(1000 / unit.speed));
-}
-
-export const timeout = (time:number) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, time);
-  })
 }
