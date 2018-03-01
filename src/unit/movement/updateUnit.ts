@@ -29,7 +29,7 @@ import {moveToNextNodeInUpdateUnit} from './moveToNextNode';
 import {pursueUnit} from './pursueUnit'
 
 export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
-  if(unit.health < 0) {
+  if(unit.health <= 0) {
     console.log('unit has been destroyed');
     return;
   }
@@ -50,7 +50,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
       unit.clearFightAgainst(); // now unit not fighting with anyone
       removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
     } else {
-      let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
+      let currentNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map); // get currentNode
       stopMoving(unit, currentNode);
       return;
     }
