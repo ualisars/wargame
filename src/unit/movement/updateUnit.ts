@@ -73,7 +73,7 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
   if(unit.unitToPursue) {
     // unit now is pursuing opponent's unit
     console.log('allies unit is pursuing another oponents unit');
-    let startNode = getNodeFromMap(unit.x, unit.y, map);
+    let startNode = getNodeFromMap(unit.currentNode.x, unit.currentNode.y, map);
     unit.setCurrentNode(startNode); // set currentNode
     unit.setNextNode(startNode); // set nextNode
     let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y, map);
