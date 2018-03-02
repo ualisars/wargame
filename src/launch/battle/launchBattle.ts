@@ -49,7 +49,10 @@ import {
   playerUnits,
   computerUnits
 } from '../../store/unit/units';
-import {attackEnemy} from '../../unit/movement';
+import {
+  attackEnemy,
+  moveTo
+} from '../../unit/movement';
 import {currentlyChosenUnit} from '../../store/unit/currentlyChosenUnit';
 
 // AI testing
@@ -157,22 +160,7 @@ export const launchBattle = () => {
       if(pursuedUnit && pursuedUnit.isVisible) {
         attackEnemy(currentlyChosenUnit, pursuedUnit);
       } else {
-        if(currentlyChosenUnit.isMoving) {
-          currentlyChosenUnit.setUnitToPursue(null);
-          let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
-          let finishNode = getNodeFromMap(x, y, map);
-          assignUnitMoveToPosition(currentlyChosenUnit, finishNode.x, finishNode.y);
-        } else {
-          console.error('does not pursue any unit');
-          currentlyChosenUnit.setUnitToPursue(null);
-          let startNode = getNodeFromMap(currentlyChosenUnit.x, currentlyChosenUnit.y, map);
-          let finishNode = getNodeFromMap(x, y, map);
-          let path:any = aStar(map, startNode, finishNode);
-          console.error('startNode', startNode);
-          console.error('finishNode', finishNode);
-          assignUnitMoveToPosition(currentlyChosenUnit, finishNode.x, finishNode.y);
-          updateUnit(currentlyChosenUnit,path, 0, finishNode.x, finishNode.y, null, true);
-        }
+        moveTo(currentlyChosenUnit, x, y);
       }
     }
   }); // on context
