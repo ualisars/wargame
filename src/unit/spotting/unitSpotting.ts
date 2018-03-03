@@ -19,6 +19,7 @@ import {
   playerUnits,
   computerUnits,
 } from '../../store/unit/units';
+import Unit from '../types/Unit';
 import {
   isObjectInArray,
   deleteObjectFromArray,
@@ -35,7 +36,7 @@ import {
   spotEnemy: checks if enemies is in its visibility range
   if true, change property isVisible to true
 */
-export const spotEnemy = (unit:any) => {
+export const spotEnemy = (unit:Unit) => {
   let enemies:any[];
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
     enemies = Object.assign([], computerUnits);
@@ -76,7 +77,7 @@ export const spotEnemy = (unit:any) => {
   Checks if unit has been spotted by enemies
   Switch isVisible to false if not spotted by all enemies
 */
-export const isUnitSpottedByEnemy = (unit:any) => {
+export const isUnitSpottedByEnemy = (unit:Unit) => {
   let enemies:any[];
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
     enemies = Object.assign([], computerUnits);
@@ -128,7 +129,7 @@ export const isUnitSpottedByEnemy = (unit:any) => {
   }
 }
 
-export const spotUnits = (units:any[]) => {
+export const spotUnits = (units:Unit[]) => {
   if(units.length > 0) {
     for(let unit of units) {
       isUnitSpottedByEnemy(unit);

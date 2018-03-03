@@ -23,12 +23,13 @@ import {
   isUnitOutOfCombat,
   getSurroundedEnemies
 } from '../../utils';
+import Unit from '../types/Unit';
 import {getSurroundedBlockedNodes} from '../../utils/node';
 import {stopMoving} from './stopMoving';
 import {moveToNextNodeInUpdateUnit} from './moveToNextNode';
 import {pursueUnit} from './pursueUnit'
 
-export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
+export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   if(unit.health <= 0) {
     console.log('unit has been destroyed');
     return;
