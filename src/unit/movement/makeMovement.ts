@@ -22,11 +22,12 @@ import {
   giveWay,
   isUnitOutOfCombat
 } from '../../utils';
+import Unit from '../types/Unit';
 import {updateUnit} from './updateUnit';
 import {pursueUnit} from './pursueUnit';
 
 
-export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
+export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
   //console.log('makeMovementInUpdateUnit');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
     nodeI++;
@@ -59,7 +60,7 @@ export const makeMovementInUpdateUnit = (unit:any, currentNode:any, nextNode:any
    }, Math.round(1000 / unit.speed));
 }
 
-export const makeMovementInPursueUnit = (unit:any, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
+export const makeMovementInPursueUnit = (unit:Unit, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
   //console.log('makeMovement2');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
     //console.error('unit reached its position');

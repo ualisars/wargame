@@ -34,7 +34,6 @@ export let updateUnit = (unit:any, path:any[], i:number=0, currentMoveToX:number
     return;
   }
   unit.setIsMovingToTrue();
-  console.error('currentMoveTo x', currentMoveToX ,'y',currentMoveToY);
   if(i === path.length) { // unit approach its end position
     console.log(unit.name, 'is on position');
     let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
