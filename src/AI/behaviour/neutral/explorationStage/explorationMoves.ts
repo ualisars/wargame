@@ -9,7 +9,7 @@ import {
 } from '../../../../utils';
 import {aStar} from '../../../../path';
 import {map} from '../../../../map/createMap';
-
+import Unit from '../../../../unit/types/Unit';
 import {
   getUnitsByTask,
   getNotFightingUnits,
@@ -49,7 +49,7 @@ export const scoutsMovement = () => {
   }
 }
 
-export const backDown = (unit:any, enemy:any, nodes:any[]) => {
+export const backDown = (unit:Unit, enemy:Unit, nodes:any[]) => {
   if(unit.isUnitUnderProtection) { // unit has a protector
     // approach to a protector
     let protector = getProtector(unit);
@@ -78,31 +78,17 @@ export const backDown = (unit:any, enemy:any, nodes:any[]) => {
   }
 }
 
-// export const explore = (unit:any) => {
-//   let nodes = getClosestToEnemyNodes(computerControlNodes.store);
-//   let node = getClosestNodeToUnit(unit, nodes);
-//   while(isNodeExploredByScout(node)) {
-//     nodes = deleteObjectFromArray(node, nodes);
-//     node = getClosestNodeToUnit(unit, nodes);
-//   }
-//   console.error('chosen nodes:', nodes);
-//   unit.setUnitToPursue(null);
-//   let startNode = getNodeFromMap(unit.x, unit.y, map);
-//   let finishNode = getNodeFromMap(node.x, node.y, map);
-//   let path:any = aStar(map, startNode, finishNode);
-//   if(unit.isMoving) {
-//     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
-//   } else {
-//     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
-//     updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
-//   }
-// }
-
-export const explore = (unit:any) => {
+export const explore = (unit:Unit) => {
+  console.error('explore');
   const startX = unit.x;
   const startY = unit.y;
+  console.error('startX', startX);
+  console.error('startY', startY);
+  console.error('baseNode', unit.baseNode);
   const finishX = unit.baseNode.x;
   const finishY = unit.baseNode.y;
+  console.error('finishX', finishX);
+  console.error('finishY', finishY);
   let startNode = getNodeFromMap(startX, startY, map);
   let finishNode = getNodeFromMap(finishX, finishY, map);
   let path:any = aStar(map, startNode, finishNode);

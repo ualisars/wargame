@@ -27,6 +27,7 @@ import {
   gridSize
 } from '../../../config/map';
 import {getNodeFromMap} from '../../../utils/node/get/fromMap';
+import {getRandomNode} from '../../../utils/node/random';
 import {map} from '../../../map/createMap';
 import {shuffleID} from '../../../utils/unit/shuffle';
 
@@ -234,5 +235,15 @@ export const assignBaseNodesForScouts = () => {
       //console.error('unit', unit.id, 'baseNode', unit.baseNode);
     } // end of ids for loop
     //console.error('scouts base nodes', scouts);
+  } else {
+    // one scout
+    let possibleNodes:any[] = [
+      {x: 0, y: 0},
+      {x: 0, y: HEIGHT - gridSize},
+      {x: 0, y: (HEIGHT - gridSize) / 2}
+    ];
+    let node = getRandomNode(possibleNodes);
+    let unit = scouts[0]; // only one unit
+    unit.assignBaseNode(node);
   }
 }
