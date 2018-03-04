@@ -11,7 +11,7 @@ export const isNumberOfEnemiesChanged = (newEnemies:any[]):boolean => {
     return true;
   }
   // enemies number remain the same
-  if(previousEnemies.length === 0) { // remain 0
+  else if(previousEnemies.length === 0 && newEnemies.length === 0) { // remain 0
     return false;
   } else {
     // need to check if new enemy came in

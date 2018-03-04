@@ -8,10 +8,7 @@ import {getDistanceBetweenTwoUnitsInGrids} from '../../utils';
 import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/node';
 import {aStar} from '../../path';
 import {map} from '../../map/createMap';
-import {
-  pursueUnit,
-  assignUnitMoveToPosition
-} from '../../unit';
+import {attackEnemy} from '../../unit/movement';
 import {getNodeFromMap} from '../../utils';
 import {occupyControlZone} from './occupyControlZone';
 import {
@@ -61,15 +58,7 @@ export const defenderMovement = () => {
         let enemyX:number = closestEnemy.currentNode.x;
         let enemyY:number = closestEnemy.currentNode.y;
         if(closestEnemy && closestEnemy.isVisible) {
-          if(defender.isMoving) { // if unit's moving don't fire pursue function
-            defender.setUnitToPursue(closestEnemy);
-          } else {
-            defender.setUnitToPursue(closestEnemy);
-            let startNode = getNodeFromMap(defenderX, defenderY, map);
-            let finishNode = getNodeFromMap(enemyX, enemyY, map);
-            let path:any = aStar(map, startNode, finishNode);
-            pursueUnit(defender, closestEnemy, enemyX, enemyY, 0, path, true);
-          }
+          attackEnemy(defender, closestEnemy);
         }
       }
     } else {
