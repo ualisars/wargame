@@ -9,6 +9,8 @@ import {
 } from '../../unit';
 import {getNodeFromMap} from '../../utils';
 import {getUnitsByTask} from '../../utils/unit/actions';
+import Unit from '../../unit/types/Unit';
+import {moveTo} from '../../unit/movement';
 
 export const occupyControlZone = () => {
   let defenders:any[] = getUnitsByTask('holdPosition');
@@ -17,15 +19,7 @@ export const occupyControlZone = () => {
   }
 }
 
-export const occupyNodeInControlZone = (unit:any) => {
+export const occupyNodeInControlZone = (unit:Unit) => {
   let node:any = getRandomNode(controlZone); // get randon node from controlZone
-  let startNode = getNodeFromMap(unit.x, unit.y, map);
-  let finishNode = getNodeFromMap(node.x, node.y, map);
-  let path:any = aStar(map, startNode, finishNode);
-  if(unit.isMoving) {
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
-  } else {
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
-    updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
-  }
+  moveTo(unit, node.x, node.y);
 }
