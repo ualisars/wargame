@@ -57,7 +57,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
   }
 
   if(getSurroundedEnemies(unit).length !== 0) { // enemy is on the neighbour node
-    console.error('unit has been intercepted by enemy');
+    console.error('unit has been intercepted by an enemy');
     console.log('enemies', getSurroundedEnemies(unit));
     unit.setIsMovingToFalse();
     unit.setUnitToPursueToNull();
@@ -95,12 +95,19 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     return;
   }
 
-  let updatedPath = path;
+  let updatedPath = Object.assign([], path);
   let node = updatedPath[i]; // get next node
   if(!node) return;
+  let nextNode:any;
+  if(i + 1 === updatedPath.length) { // last node
+    nextNode = node;
+  } else {
+    nextNode = updatedPath[i + 1];
+  }
+
   let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
   unit.setCurrentNode(currentNode); // set currentNode
-  unit.setNextNode(node); // set nextNode
+  unit.setNextNode(currentNode); // set nextNode
   if(i >= updatedPath.length) {
     unit.setIsMovingToFalse();
     return;
@@ -108,7 +115,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
 
   // ally unit is on the destination position
   // currentUnit should stop moving
-  if(anotherUnitIsOnTheWay(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
+  if(anotherUnitIsOnTheWay(units, unit, nextNode.x, nextNode.y) && i === updatedPath.length - 1) {
     console.error('another unit occupying destination position');
     unit.moveToNodeX = unit.x;
     unit.moveToNodeY = unit.y;
@@ -116,7 +123,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     stopMoving(unit, currentNode);
     return;
   }
-  if(anotherUnitIsOnTheWay(units, unit, node.x, node.y)) {
+  if(anotherUnitIsOnTheWay(units, unit, nextNode.x, nextNode.y)) {
     // unit has another allies' unit on its way
     console.error('updateUnit: another unit is on the way x:',node.x,'y:', node.y);
     let currentNode = getNodeFromMap(unit.x, unit.y, map);

@@ -165,17 +165,17 @@ export const launchBattle = () => {
     }
   }); // on context
 
-  setUpAI(); // set up AI engine
-  setTimeout(analyzeMap, 2000);
-  setInterval(spotUnits(units), 1000);
-  //
-  setTimeout(assignTasks, 3000);
-  setTimeout(selectCotrolZone, 1000);
-  //
-  setTimeout(assignBaseNodesForScouts, 3500);
-  //
-  setTimeout(scoutsMovement, 4000);
-  setInterval(defenderMovement, 2000);
+  // setUpAI(); // set up AI engine
+  // setTimeout(analyzeMap, 2000);
+  // setInterval(spotUnits(units), 1000);
+  // //
+  // setTimeout(assignTasks, 3000);
+  // setTimeout(selectCotrolZone, 1000);
+  // //
+  // setTimeout(assignBaseNodesForScouts, 3500);
+  // //
+  // setTimeout(scoutsMovement, 4000);
+  // setInterval(defenderMovement, 2000);
 
 
 
