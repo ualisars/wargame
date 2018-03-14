@@ -9,6 +9,7 @@ import {
   deleteUnitFromArray
 } from '../utils';
 import {getDistanceBetweenUnitAndNodeInGrids} from '../../node';
+import Unit from '../../../unit/types/Unit';
 /*
   get closest computer's unit to specific node
 */
@@ -129,6 +130,25 @@ export const getWorstEnemyByProperty = (property:string, exclusion:any[] = []):a
     }
   }
   return worstUnit;
+}
+
+export const getBestUnitsByProperty = (units:Unit[], property:string):Unit[] => {
+  let updatedUnits:any[] = Object.assign([], units);
+  let bestUnits:Unit[] = [];
+  let bestUnit:any = updatedUnits[0];
+  // get best unit
+  for(let i = 0; i < updatedUnits.length; ++i) {
+    if(bestUnit[property] < updatedUnits[i][property]) {
+      bestUnit = updatedUnits[i];
+    }
+  }
+  // find all best units
+  for(let unit of updatedUnits) {
+      if(unit[property] === bestUnit[property]) {
+        bestUnits.push(unit);
+      }
+  }
+  return bestUnits;
 }
 
 export const getNotFightingUnits = (exclusion:any[] = []):any[] => {
