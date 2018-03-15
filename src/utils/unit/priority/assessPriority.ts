@@ -1,5 +1,10 @@
 import Unit from '../../../unit/types/Unit';
 import {gridSize} from '../../../config/map';
+import {
+  findClosestUnitsToTheNodeCenter,
+  getBestUnitsByProperty
+} from '../actions';
+import {shuffleUnits} from '../shuffle';
 
 /*
   Assess priority of each units and
@@ -13,7 +18,22 @@ import {gridSize} from '../../../config/map';
     3.1 Randomly choose one unit from the remaining units
 
 */
-export const assessPriority = (node:any, units:Unit[]):void => {
+export const getPriorityUnit = (node:any, units:Unit[]):Unit => {
   let updatedUnits:Unit[] = Object.assign([], units);
-
+  let closestUnits:Unit[] = findClosestUnitsToTheNodeCenter(node, updatedUnits);
+  if(closestUnits.length === 1) {
+    return closestUnits[0];
+  }
+  // more than 1 unit in the same distance
+  else if(closestUnits.length > 1){
+    let fastestUnits:Unit[] = getBestUnitsByProperty(closestUnits, 'speed');
+    if(fastestUnits.length === 1) {
+      return fastestUnits[0];
+    }
+    else if(fastestUnits.length > 1) {
+      let shuffledUnits:Unit[] = shuffleUnits(fastestUnits);
+      let chosenUnit:Unit = shuffledUnits[0];
+      return chosenUnit;
+    }
+  }
 }

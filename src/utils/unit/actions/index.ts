@@ -1,8 +1,10 @@
 import {
+  findClosestUnitsToTheNodeCenter,
   getClosestUnitToNode,
   getClosestNodeToUnit,
   getClosestUnitToOtherUnit,
   getBestUnitByProperty,
+  getBestUnitsByProperty,
   getWorstUnitByProperty,
   getBestEnemyByProperty,
   getWorstEnemyByProperty,
@@ -16,10 +18,12 @@ import {
 } from './unitActions';
 
 export {
+  findClosestUnitsToTheNodeCenter,
   getClosestUnitToNode,
   getClosestNodeToUnit,
   getClosestUnitToOtherUnit,
   getBestUnitByProperty,
+  getBestUnitsByProperty,
   getWorstUnitByProperty,
   getBestEnemyByProperty,
   getWorstEnemyByProperty,

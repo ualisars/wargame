@@ -264,7 +264,7 @@ export const getUnitById = (id:number, units:any[]):any => {
 /*
   return Units that are closest to the node center
 */
-export const findClosestUnitsToTheNodeCenter = (node:any, units:Unit):Unit[] => {
+export const findClosestUnitsToTheNodeCenter = (node:any, units:Unit[]):Unit[] => {
   let updatedUnits:Unit[] = Object.assign([], units);
   // calculate the center of the node
   const centerX:number = node.x + (gridSize * 0.5);
