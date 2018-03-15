@@ -5,6 +5,7 @@ import {
   getBestUnitsByProperty
 } from '../actions';
 import {shuffleUnits} from '../shuffle';
+import {units} from '../../../store/unit/units';
 
 /*
   Assess priority of each units and
@@ -34,6 +35,18 @@ export const getPriorityUnit = (node:any, units:Unit[]):Unit => {
       let shuffledUnits:Unit[] = shuffleUnits(fastestUnits);
       let chosenUnit:Unit = shuffledUnits[0];
       return chosenUnit;
+    }
+  }
+}
+
+
+export const unitCanMoveToTheNode = (node:any, unit:Unit):boolean => {
+  const priorityUnit:Unit = getPriorityUnit(node, units);
+  for(let unit of units) {
+    if(unit.id === priorityUnit.id) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
