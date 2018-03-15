@@ -260,3 +260,60 @@ export const getUnitById = (id:number, units:any[]):any => {
     }
   }
 }
+
+/*
+  return Units that are closest to the node center
+*/
+export const findClosestUnitsToTheNodeCenter = (node:any, units:Unit):Unit[] => {
+  let updatedUnits:Unit[] = Object.assign([], units);
+  // calculate the center of the node
+  const centerX:number = node.x + (gridSize * 0.5);
+  const centerY:number = node.y + (gridSize * 0.5);
+  // find closest units
+  let closestUnits:Unit[] = [];
+  let closestDistance:number;
+  let closestUnit:Unit = updatedUnits[0];
+  if(updatedUnits.length > 1) { // more than 1 unit
+    for(let i = 1; i < updatedUnits.length; ++i) {
+      const closestUnitX:number = closestUnit.x;
+      const closestUnitY:number = closestUnit.y;
+      const currentUnitX:number = updatedUnits[i].x;
+      const currentUnitY:number = updatedUnits[i].y;
+
+      // find difference in X and Y
+      const closestUnitDX:number = Math.abs(closestUnitX - centerX);
+      const closestUnitDY:number = Math.abs(closestUnitY - centerY);
+      const currentUnitDX:number = Math.abs(currentUnitX - centerX);
+      const currentUnitDY:number = Math.abs(currentUnitY - centerY);
+
+      // find distance
+      const closestUnitDist:number = Math.sqrt(Math.pow(closestUnitDX, 2) + Math.pow(closestUnitDY, 2));
+      const currentUnitDist:number = Math.sqrt(Math.pow(currentUnitDX, 2) + Math.pow(currentUnitDY, 2));
+      closestDistance = closestUnitDist;
+      // compare distance
+      if(currentUnitDist < closestUnitDist) {
+        // now current unit has become closest unit
+        closestUnit = updatedUnits[i];
+        closestDistance = currentUnitDist;
+      }
+    }
+
+    // now add all units with the closestDistance to closestUnits
+    for(let unit of updatedUnits) {
+      const currentUnitX:number = unit.x;
+      const currentUnitY:number = unit.y;
+
+      // find difference in X and Y
+      const currentUnitDX:number = Math.abs(currentUnitX - centerX);
+      const currentUnitDY:number = Math.abs(currentUnitY - centerY);
+
+      // find distance
+      const currentUnitDist:number = Math.sqrt(Math.pow(currentUnitDX, 2) + Math.pow(currentUnitDY, 2));
+      if(currentUnitDist === closestDistance) {
+        closestUnits.push(unit);
+      }
+    }
+  }
+
+  return closestUnits;
+}

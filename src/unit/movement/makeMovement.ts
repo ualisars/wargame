@@ -28,8 +28,8 @@ import {pursueUnit} from './pursueUnit';
 
 
 export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
-  //console.log('makeMovementInUpdateUnit');
-  if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
+  // unit has reached destination point
+  if(unit.x === nextNode.x && unit.y === nextNode.y) {
     nodeI++;
     updateUnit(unit, allPath, nodeI, currX, currY, null, false);
   }
@@ -50,6 +50,8 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
    ctx.clearRect(deleteX, deleteY, gridSize, gridSize);
    let centerX = path[i].x;
    let centerY = path[i].y;
+   
+   // set unit.x and unit.y
    unit.setX(centerX - (gridSize * 0.5));
    unit.setY(centerY - (gridSize * 0.5));
    drawUnit(unit);
