@@ -50,7 +50,7 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
    ctx.clearRect(deleteX, deleteY, gridSize, gridSize);
    let centerX = path[i].x;
    let centerY = path[i].y;
-   
+
    // set unit.x and unit.y
    unit.setX(centerX - (gridSize * 0.5));
    unit.setY(centerY - (gridSize * 0.5));
