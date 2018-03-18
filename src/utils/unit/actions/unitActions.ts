@@ -297,21 +297,21 @@ export const findClosestUnitsToTheNodeCenter = (node:any, units:Unit[]):Unit[] =
         closestDistance = currentUnitDist;
       }
     }
+  }
 
-    // now add all units with the closestDistance to closestUnits
-    for(let unit of updatedUnits) {
-      const currentUnitX:number = unit.x;
-      const currentUnitY:number = unit.y;
+  // now add all units with the closestDistance to closestUnits
+  for(let unit of updatedUnits) {
+    const currentUnitX:number = unit.x;
+    const currentUnitY:number = unit.y;
 
-      // find difference in X and Y
-      const currentUnitDX:number = Math.abs(currentUnitX - centerX);
-      const currentUnitDY:number = Math.abs(currentUnitY - centerY);
+    // find difference in X and Y
+    const currentUnitDX:number = Math.abs(currentUnitX - centerX);
+    const currentUnitDY:number = Math.abs(currentUnitY - centerY);
 
-      // find distance
-      const currentUnitDist:number = Math.sqrt(Math.pow(currentUnitDX, 2) + Math.pow(currentUnitDY, 2));
-      if(currentUnitDist === closestDistance) {
-        closestUnits.push(unit);
-      }
+    // find distance
+    const currentUnitDist:number = Math.sqrt(Math.pow(currentUnitDX, 2) + Math.pow(currentUnitDY, 2));
+    if(currentUnitDist === closestDistance) {
+      closestUnits.push(unit);
     }
   }
 

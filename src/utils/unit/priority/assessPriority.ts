@@ -42,11 +42,9 @@ export const getPriorityUnit = (node:any, units:Unit[]):Unit => {
 
 export const unitCanMoveToTheNode = (node:any, unit:Unit):boolean => {
   const priorityUnit:Unit = getPriorityUnit(node, units);
-  for(let unit of units) {
-    if(unit.id === priorityUnit.id) {
-      return true;
-    } else {
-      return false;
-    }
+  let permission:boolean = false;
+  if(unit.id === priorityUnit.id) {
+    permission = true;
   }
+  return permission;
 }

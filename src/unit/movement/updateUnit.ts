@@ -120,21 +120,19 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     console.error('another unit occupying destination position');
     unit.moveToNodeX = unit.x;
     unit.moveToNodeY = unit.y;
-    let currentNode = getNodeFromMap(unit.x, unit.y, map);
     stopMoving(unit, currentNode);
     return;
   }
   if(anotherUnitIsOnTheWay(units, unit, node.x, node.y)) {
     // unit has another allies' unit on its way
-    if(unitCanMoveToTheNode(nextNode, unit)) {
-      console.log('unit ' + unit.name + ' can move to the next node');
+    const permission = unitCanMoveToTheNode(nextNode, unit);
+    if(permission) {
+      console.log('unit ' + unit.name + ' can move to the node:', node);
     } else {
-      console.log('unit ' + unit.name + ' cannot move to that node');
+      console.log('unit ' + unit.name + ' cannot move to node:', node);
       console.error('updateUnit: another unit is on the way x:',node.x,'y:', node.y);
-      let currentNode = getNodeFromMap(unit.x, unit.y, map);
-      unit.setCurrentNode(currentNode); // set currentNode
-      unit.setNextNode(currentNode); // set nextNode
-      let updatedMap = map;
+      stopMoving(unit, currentNode);
+      let updatedMap = Object.assign([], map);
       let blockedNodes = getSurroundedBlockedNodes(unit);
       for(let blockedNode of blockedNodes) {
         updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
