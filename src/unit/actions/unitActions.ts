@@ -7,7 +7,7 @@ import {
 import {unitId} from '../../store/unit/unitId';
 import {loadImage} from '../../utils';
 import {ctx} from '../../config/context';
-import {Unit} from '../types';
+import Unit from '../types/Unit';
 // unit types
 import {
   Archers,
@@ -23,7 +23,7 @@ import {
 }  from '../types';
 
 
-export const onChooseUnit = (units:any[], mouseX:number, mouseY:number) => {
+export const onChooseUnit = (units:Unit[], mouseX:number, mouseY:number) => {
   let foundedUnit = null;
   for(let unit of units) {
     let bottomRightX = unit.x + gridSize;
@@ -41,7 +41,7 @@ export const onChooseUnit = (units:any[], mouseX:number, mouseY:number) => {
 
 
 
-export const assignUnitMoveToPosition = (unit:any, x:number, y:number) => {
+export const assignUnitMoveToPosition = (unit:Unit, x:number, y:number) => {
   //console.error('assignMoveToPosition');
   if(unit) {
     unit.moveToNodeX = x;
