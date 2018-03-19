@@ -1,7 +1,7 @@
 // import { expect, should, assert} from 'chai';
 // import {
-//   playersUnits
-// } from '../src/store/unitStore';
+//   playerUnits
+// } from '../src/store/unit/units';
 // import {calculateUnitsToBeware} from '../src/AI/analyzeModule/unitAnalyze';
 //
 // describe('unitAnalyze test', function() {
@@ -30,9 +30,9 @@
 //     name: 'Pikemen'
 //   }
 //
-//   playersUnits.push(enemy1);
-//   playersUnits.push(enemy2);
-//   playersUnits.push(enemy3);
+//   playerUnits.push(enemy1);
+//   playerUnits.push(enemy2);
+//   playerUnits.push(enemy3);
 //
 //
 //   describe('calculateUnitsToBeware', function() {

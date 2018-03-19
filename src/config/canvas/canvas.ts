@@ -5,6 +5,8 @@ import {
 
 export const canvas:any = document.getElementById('canvas');
 
-canvas.width = WIDTH;
-canvas.height = HEIGHT;
-canvas.style.border = "1px solid";
+if(canvas) {
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+  canvas.style.border = "1px solid";
+}

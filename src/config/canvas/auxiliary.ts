@@ -5,5 +5,7 @@ import {
 
 export const auxiliaryCanvas:any = document.getElementById('auxiliary');
 
-auxiliaryCanvas.width = WIDTH;
-auxiliaryCanvas.height = HEIGHT;
+if(auxiliaryCanvas) {
+  auxiliaryCanvas.width = WIDTH;
+  auxiliaryCanvas.height = HEIGHT;
+}

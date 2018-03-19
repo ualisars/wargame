@@ -5,5 +5,7 @@ import {
 
 export const backgroundCanvas:any = document.getElementById('background');
 
-backgroundCanvas.width = WIDTH;
-backgroundCanvas.height = HEIGHT;
+if(backgroundCanvas) {
+  backgroundCanvas.width = WIDTH;
+  backgroundCanvas.height = HEIGHT;
+}

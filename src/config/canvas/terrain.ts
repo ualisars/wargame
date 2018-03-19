@@ -5,5 +5,7 @@ import {
 
 export const terrain:any = document.getElementById('terrain');
 
-terrain.width = WIDTH;
-terrain.height = HEIGHT;
+if(terrain) {
+  terrain.width = WIDTH;
+  terrain.height = HEIGHT;
+}
