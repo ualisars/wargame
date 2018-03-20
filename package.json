@@ -4,7 +4,7 @@
   "description": "Wargame Web game",
   "main": "game.ts",
   "scripts": {
-    "test": "karma start my.conf.js"
+    "test": "mocha -r jsdom-global/register --compilers ts:ts-node/register,tsx:ts-node/register test --recursive"
   },
   "author": "Ualikhan Sarsenbayev",
   "license": "MIT",
@@ -31,6 +31,7 @@
     "webpack": "^3.5.5"
   },
   "dependencies": {
+    "@types/jsdom": "^11.0.4",
     "@types/mocha": "^2.2.42"
   }
 }

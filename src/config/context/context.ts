@@ -8,9 +8,28 @@ import {
 } from '../canvas';
 
 // define 2d context
-export const ctx = canvas.getContext("2d");
-export const auxiliaryCtx  = auxiliaryCanvas.getContext('2d');
-export const backgroundCtx  = backgroundCanvas.getContext('2d');
-export const terrainCtx  = terrain.getContext('2d');
-export const mainMenuCtx = mainMenu.getContext('2d');
-export const dragAndDropCanvasCtx = dragAndDropCanvas.getContext('2d');
+export let ctx:any;
+export let auxiliaryCtx:any;
+export let backgroundCtx:any;
+export let terrainCtx:any;
+export let mainMenuCtx:any;
+export let dragAndDropCanvasCtx:any;
+
+if(canvas) {
+  ctx = canvas.getContext("2d");
+}
+if(auxiliaryCanvas) {
+  auxiliaryCtx  = auxiliaryCanvas.getContext('2d');
+}
+if(terrain) {
+  terrainCtx = terrain.getContext('2d');
+}
+if(backgroundCanvas) {
+  backgroundCtx  = backgroundCanvas.getContext('2d');
+}
+if(mainMenu) {
+  mainMenuCtx.getContext('2d');
+}
+if(dragAndDropCanvas) {
+  dragAndDropCanvasCtx.getContext('2d');
+}
