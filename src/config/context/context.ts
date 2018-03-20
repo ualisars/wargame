@@ -28,8 +28,8 @@ if(backgroundCanvas) {
   backgroundCtx  = backgroundCanvas.getContext('2d');
 }
 if(mainMenu) {
-  mainMenuCtx.getContext('2d');
+  mainMenuCtx = mainMenu.getContext('2d');
 }
 if(dragAndDropCanvas) {
-  dragAndDropCanvasCtx.getContext('2d');
+  dragAndDropCanvasCtx = dragAndDropCanvas.getContext('2d');
 }
