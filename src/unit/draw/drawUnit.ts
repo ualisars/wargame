@@ -18,11 +18,13 @@ export const drawUnit = (unit:any) => {
       return; // unit not visible;
     }
   }
-  ctx.beginPath();
-  ctx.arc(unit.centerX, unit.centerY, unit.radius, 0, Math.PI*2);
-  ctx.fillStyle = color;
-  ctx.fill();
-  ctx.closePath();
+  if(ctx) {
+    ctx.beginPath();
+    ctx.arc(unit.centerX, unit.centerY, unit.radius, 0, Math.PI*2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.closePath();
+  }
 }
 
 export const redrawUnits = (units:any[]) => {

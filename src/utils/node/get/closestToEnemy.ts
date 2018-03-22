@@ -2,7 +2,7 @@ import {
   getMinValueFromNodes
 } from '../../index';
 import {getClosestNodeToUnit} from '../../unit/actions';
-import {hidingEnemies} from '../../../store/AI/enemies/hidingEnemies';;
+import {hidingEnemies} from '../../../store/AI/enemies/hidingEnemies';
 
 export const getClosestToEnemySideNodes = (nodes:any):any[] => {
   let closestNodes:any[] = [];
