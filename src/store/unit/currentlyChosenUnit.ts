@@ -1,6 +1,8 @@
-export let currentlyChosenUnit:any = null;
+import Unit from '../../unit/types/Unit';
 
-export const assignCurrentlyChosenUnit = (unit:any) => {
+export let currentlyChosenUnit:Unit = null;
+
+export const assignCurrentlyChosenUnit = (unit:Unit) => {
   // check unit
   if(unit) {
       currentlyChosenUnit = unit;
