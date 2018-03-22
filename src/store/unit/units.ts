@@ -4,15 +4,16 @@ import {
   isUnitInArray
 } from '../../utils';
 import {removeUnitFromVisibleArray} from './visibleUnits';
+import Unit from '../../unit/types/Unit';
 
-export let units:any[] = [];
-export let playerUnits: any[] = [];
-export let computerUnits: any[] = [];
+export let units:Unit[] = [];
+export let playerUnits:Unit[] = [];
+export let computerUnits:Unit[] = [];
 
 /*
 delete unit from units array
 */
-export const removeUnit = (unit:any) => {
+export const removeUnit = (unit:Unit) => {
   if(unit.controlBy === 'computer') {
     computerUnits = deleteObjectFromArray(unit, computerUnits); // delete from computersUnits
   }
