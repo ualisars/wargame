@@ -2,13 +2,15 @@ import {
   deleteObjectFromArray,
   isObjectInArray
 } from '../../utils';
+import Unit from '../../unit/types/Unit';
+
 /*
   Units that currently visible for player or computer
 */
-export let visibleForPlayerUnits:any[] = [];
-export let visibleForComputerUnits:any[] = [];
+export let visibleForPlayerUnits:Unit[] = [];
+export let visibleForComputerUnits:Unit[] = [];
 
-export const addUnitIntoVisibleArray = (unit:any) => {
+export const addUnitIntoVisibleArray = (unit:Unit) => {
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
     if(!isObjectInArray(unit, visibleForComputerUnits)) {
       visibleForComputerUnits.push(unit);
@@ -21,7 +23,7 @@ export const addUnitIntoVisibleArray = (unit:any) => {
   }
 }
 
-export const removeUnitFromVisibleArray = (unit:any) => {
+export const removeUnitFromVisibleArray = (unit:Unit) => {
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
     if(isObjectInArray(unit, visibleForComputerUnits)) {
       visibleForComputerUnits = deleteObjectFromArray(unit, visibleForComputerUnits);
