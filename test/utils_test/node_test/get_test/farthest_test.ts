@@ -5,7 +5,7 @@ import {
 } from '../../../../src/utils/node/get';
 import {createUnit} from '../../../../src/unit/create';
 
-describe('NodeUtils: get: closestToEnemy test', () => {
+describe('NodeUtils: get: farthest nodes test', () => {
 
   // add cavalry to hidingEnemies
   let enemy = createUnit('lightInfantry', 80, 40, 5, 'player');
