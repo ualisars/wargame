@@ -15,7 +15,7 @@ describe('NodeUtils: get: closestToEnemy test', () => {
   // add cavalry to hidingEnemies
   let cavalry = createUnit('lightInfantry', 130, 60, 5, 'player');
   before(() => {
-    // beforeEach:namedFun
+    //beforeEach:namedFun
     addToHidingEnemies(cavalry);
   });
 

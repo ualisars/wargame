@@ -19,7 +19,8 @@ export const getFarthestNodeFromEnemy = (enemy:any, nodes:any[]):any => {
 
 /*
   get fathestNodes of the area
-  by the x ordinate
+  by the x ordinate, nodes located close
+  to the edge of the map
 */
 export const getFarthestXNodes = (nodes:any[]):any[] => {
   let farthestNodes:any[] = [];
