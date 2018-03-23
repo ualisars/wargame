@@ -19,7 +19,7 @@ import {
   getClosestNodeToUnit
 } from '../../../../utils/unit/actions';
 import {getProtector} from '../../../../utils/unit/protector';
-import {isNodeExploredByScout} from '../../../../utils/node/explore';
+import {isNodeExploredByScouts} from '../../../../utils/node/explore';
 import {computerControlNodes} from '../../../analyzeModule/mapAnalyze';
 import {
   getClosestToEnemyNodes,

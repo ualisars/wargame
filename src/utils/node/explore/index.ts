@@ -1,7 +1,7 @@
 import {
-  isNodeExploredByScout
+  isNodeExploredByScouts
 } from './isNodeExploredByScout';
 
 export {
-  isNodeExploredByScout
+  isNodeExploredByScouts
 }
