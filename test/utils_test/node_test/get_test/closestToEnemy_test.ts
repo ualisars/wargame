@@ -9,11 +9,13 @@ import {
   removeFromHidingEnemies
 } from '../../../../src/store/AI/enemies/hidingEnemies';
 import {createUnit} from '../../../../src/unit/create';
+import {removeUnit} from '../../../../src/store/unit/units';
+import Unit from '../../../../src/unit/types/Unit';
 
 describe('NodeUtils: get: closestToEnemy test', () => {
 
   // add cavalry to hidingEnemies
-  let cavalry = createUnit('lightInfantry', 130, 60, 5, 'player');
+  let cavalry:Unit = createUnit('lightInfantry', 130, 60, 5, 'player');
   before(() => {
     //beforeEach:namedFun
     addToHidingEnemies(cavalry);
@@ -22,6 +24,7 @@ describe('NodeUtils: get: closestToEnemy test', () => {
   // remove cavalry from hidingEnemies
   after(() => {
     removeFromHidingEnemies(cavalry);
+    removeUnit(cavalry);
   });
 
   let nodes:any[] = [
