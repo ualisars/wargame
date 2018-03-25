@@ -18,6 +18,7 @@ export const getSurroundedAllies = (unit:Unit):Unit[] => {
   }
 
   updatedAllies = deleteUnitFromArray(unit, allies);
+  console.log('updatedAllies', updatedAllies);
 
   let nodes = getSurroundedNodes(unit, 3);
   for(let node of nodes) {

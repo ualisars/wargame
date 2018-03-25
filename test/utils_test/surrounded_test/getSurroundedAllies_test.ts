@@ -26,6 +26,7 @@ describe('surroundedUtils test', () => {
 
     it('ally1 and ally3 should be in the surroundedAllies', () => {
       const surroundedAllies:Unit[] = getSurroundedAllies(unit);
+      console.log('surroundedAllies', surroundedAllies);
       let pass:boolean = true;
       for(let ally of surroundedAllies) {
         if(ally.id === ally1ID || ally.id === ally3ID) {

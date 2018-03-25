@@ -3,16 +3,19 @@ import {
   computerUnits
 } from '../../store/unit/units';
 import {getSurroundedNodes} from '../index';
+import {deleteUnitFromArray} from '../unit/utils';
+import Unit from '../../unit/types/Unit';
 
-export const getSurroundedEnemies = (unit:any):any[] => {
-  let surroundedEnemies:any[] = [];
-  let enemies:any[] = [];
+export const getSurroundedEnemies = (unit:Unit, range:number = 3):Unit[] => {
+  let surroundedEnemies:Unit[] = [];
+  let enemies:Unit[] = [];
   if(unit.controlBy === 'computer') {
-    enemies = playerUnits;
+    enemies = Object.assign([], playerUnits);
   } else {
-    enemies = computerUnits;
+    enemies = Object.assign([], computerUnits);
   }
-  let nodes = getSurroundedNodes(unit, 1);
+
+  let nodes = getSurroundedNodes(unit, range);
   for(let node of nodes) {
     for(let enemy of enemies) {
       if(node.x === enemy.x && node.y === enemy.y) {
