@@ -1,10 +1,11 @@
 import {computerUnits} from '../../store/unit/units';
 import {getSurroundedNodes} from './getSurroundedNodes';
+import {getNodeFromMap} from '../node/get/fromMap';
+import Unit from '../../unit/types/Unit';
 
-export const getSurroundedAllies = (unit:any):any[] => {
-  let surroundedAllies:any[] = [];
+export const getSurroundedAllies = (unit:Unit):Unit[] => {
+  let surroundedAllies:Unit[] = [];
   let nodes = getSurroundedNodes(unit, 3);
-  //console.log('nodes', nodes);
   for(let node of nodes) {
     for(let enemy of computerUnits) {
       if(node.x === enemy.x && node.y === enemy.y) {
