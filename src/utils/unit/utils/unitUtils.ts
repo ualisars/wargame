@@ -1,6 +1,7 @@
 import {gridSize} from '../../../config';
+import Unit from '../../../unit/types/Unit';
 
-export const addUnitIntoArray = (unit:any, arr:any[]):any[] => {
+export const addUnitIntoArray = (unit:Unit, arr:any[]):any[] => {
   let updatedArr = Object.assign([], arr);
   if(!isUnitInArray(unit, arr)) {
     updatedArr.push(unit);
@@ -8,7 +9,7 @@ export const addUnitIntoArray = (unit:any, arr:any[]):any[] => {
   return updatedArr;
 }
 
-export const deleteUnitFromArray = (unit:any, arr:any[]):any[] => {
+export const deleteUnitFromArray = (unit:Unit, arr:any[]):any[] => {
   let updatedArr = arr.filter((el) => {
     if(el.id === unit.id) {
       return false;
@@ -28,7 +29,7 @@ export const deleteUnitFromArmy = (unit:any, arr:any[]):any[] => {
   return updatedArr;
 }
 
-export const getDistanceBetweenTwoUnitsInGrids = (unit1:any, unit2:any):number => {
+export const getDistanceBetweenTwoUnitsInGrids = (unit1:Unit, unit2:Unit):number => {
   let unit1X:number = unit1.currentNode.x;
   let unit1Y:number = unit1.currentNode.y;
   let unit2X:number = unit2.currentNode.x;
@@ -39,7 +40,7 @@ export const getDistanceBetweenTwoUnitsInGrids = (unit1:any, unit2:any):number =
   return distance;
 }
 
-export const isUnitInArray = (unitToAdd:any, arr:any[]):boolean => {
+export const isUnitInArray = (unitToAdd:Unit, arr:any[]):boolean => {
   if(arr.length !== 0) {
     for(let unit of arr) {
       if(unitToAdd.id === unit.id) {
