@@ -1,5 +1,4 @@
 import {gridSize} from '../../config';
-import {map} from '../../map/createMap';
 import {
   isObjectEmpty,
   getNodeFromMap
@@ -71,8 +70,8 @@ class Unit {
     this.centerX = x + (gridSize / 2);
     this.centerY = y + (gridSize / 2);
     this.controlBy = controlBy;
-    this.currentNode = getNodeFromMap(x, y, map);
-    this.nextNode = getNodeFromMap(x, y, map);
+    this.currentNode = getNodeFromMap(x, y);
+    this.nextNode = getNodeFromMap(x, y);
   }
 
   setX(x:number) {

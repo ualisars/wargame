@@ -8,7 +8,7 @@ import {
   deleteObjectFromArray
 } from '../../../../utils';
 import {aStar} from '../../../../path';
-import {map} from '../../../../map/createMap';
+import {initialMap} from '../../../../map/createMap/initialMap';
 import Unit from '../../../../unit/types/Unit';
 import {
   getUnitsByTask,
@@ -55,9 +55,9 @@ export const backDown = (unit:Unit, enemy:Unit, nodes:any[]) => {
     let protector = getProtector(unit);
     let protectorSurroundedNodes = getSurroundedNodes(unit, 2);
     let randomNode = getRandomNode(protectorSurroundedNodes);
-    let startNode = getNodeFromMap(unit.x, unit.y, map);
-    let finishNode = getNodeFromMap(randomNode.x, randomNode.y, map);
-    let path:any = aStar(map, startNode, finishNode);
+    let startNode = getNodeFromMap(unit.x, unit.y);
+    let finishNode = getNodeFromMap(randomNode.x, randomNode.y);
+    let path:any = aStar(initialMap, startNode, finishNode);
     if(unit.isMoving) {
       assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
     } else {
@@ -67,9 +67,9 @@ export const backDown = (unit:Unit, enemy:Unit, nodes:any[]) => {
   }
   let farthestNode = getFarthestNodeFromEnemy(enemy, nodes);
   unit.setUnitToPursue(null);
-  let startNode = getNodeFromMap(unit.x, unit.y, map);
-  let finishNode = getNodeFromMap(farthestNode.x, farthestNode.y, map);
-  let path:any = aStar(map, startNode, finishNode);
+  let startNode = getNodeFromMap(unit.x, unit.y);
+  let finishNode = getNodeFromMap(farthestNode.x, farthestNode.y);
+  let path:any = aStar(initialMap, startNode, finishNode);
   if(unit.isMoving) {
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
   } else {
@@ -89,9 +89,9 @@ export const explore = (unit:Unit) => {
   const finishY = unit.baseNode.y;
   console.error('finishX', finishX);
   console.error('finishY', finishY);
-  let startNode = getNodeFromMap(startX, startY, map);
-  let finishNode = getNodeFromMap(finishX, finishY, map);
-  let path:any = aStar(map, startNode, finishNode);
+  let startNode = getNodeFromMap(startX, startY);
+  let finishNode = getNodeFromMap(finishX, finishY);
+  let path:any = aStar(initialMap, startNode, finishNode);
   if(unit.isMoving) {
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
   } else {

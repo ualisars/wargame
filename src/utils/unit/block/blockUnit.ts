@@ -1,4 +1,3 @@
-import {map} from '../../../map/createMap';
 import {getSurroundedNodes} from '../../surrounded';
 import {
   playerUnits,
@@ -13,7 +12,7 @@ import {
 
 export const getBlockingUnit = (units:any[], currentUnit:any, x:number, y:number) => {
   let updatedUnits = deleteObjectFromArray(currentUnit, units);
-  let currentUnitNextNode = getNodeFromMap(x, y, map);
+  let currentUnitNextNode = getNodeFromMap(x, y);
   for(let unit of updatedUnits) {
     //let alliedUnitNode = getNodeFromMap(unit.x, unit.y, map);
     if(currentUnitNextNode.x === unit.currentNode.x && currentUnitNextNode.y === unit.currentNode.y) {

@@ -6,8 +6,6 @@ import {
 import {controlZone} from '../processModule/controlZone/controlZone';
 import {getDistanceBetweenTwoUnitsInGrids} from '../../utils';
 import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/node';
-import {aStar} from '../../path';
-import {map} from '../../map/createMap';
 import {attackEnemy} from '../../unit/movement';
 import {getNodeFromMap} from '../../utils';
 import {occupyControlZone} from './occupyControlZone';

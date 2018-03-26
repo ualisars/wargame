@@ -8,7 +8,7 @@ import {
   getNodeFromMap
 } from '../../utils';
 import {aStar} from '../../path';
-import {map} from '../../map/createMap';
+import {initialMap} from '../../map/createMap/initialMap';
 import {neutralExploration} from '../behaviour/neutral/explorationStage/explorationMoves';
 import {advance} from '../behaviour/neutral/advanceStage/advance';
 import{fight} from '../behaviour/neutral/fightStage/fightStage';
@@ -20,9 +20,9 @@ export const orderToAttackEnemy = () => {
       if(!unit.unitToPursue && !unit.isFighting) {
         console.error('orderToAttackEnemy');
         let enemy = getClosestEnemyToUnit(unit);
-        let startNode = getNodeFromMap(unit.x, unit.y, map);
-        let finishNode = getNodeFromMap(enemy.x, enemy.y, map);
-        let path:any = aStar(map, startNode, finishNode);
+        let startNode = getNodeFromMap(unit.x, unit.y);
+        let finishNode = getNodeFromMap(enemy.x, enemy.y);
+        let path:any = aStar(initialMap, startNode, finishNode);
         unit.setUnitToPursue(enemy);
         pursueUnit(unit, enemy, enemy.currentNode.x, enemy.currentNode.y, 0, path, true);
       }

@@ -1,7 +1,6 @@
 /*
   Functions that works with unit's visibility
 */
-import {map} from '../../map/createMap';
 import {ctx} from '../../config/context';
 import {gridSize} from '../../config';
 import {drawUnit} from '../draw';
@@ -48,11 +47,11 @@ export const spotEnemy = (unit:Unit) => {
   let visibilityRange = visibility * gridSize;
   let unitX:number = unit.currentNode.x;
   let unitY:number = unit.currentNode.y;
-  let unitNode = getNodeFromMap(unitX, unitY, map);
+  let unitNode = getNodeFromMap(unitX, unitY);
   for(let enemy of enemies) {
     let enemyX:number = enemy.currentNode.x;
     let enemyY:number = enemy.currentNode.y;
-    let enemyNode = getNodeFromMap(enemyX, enemyY, map);
+    let enemyNode = getNodeFromMap(enemyX, enemyY);
     let dx = Math.abs(unitNode.x - enemyNode.x);
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
@@ -91,14 +90,14 @@ export const isUnitSpottedByEnemy = (unit:Unit) => {
   }
   let unitX:number = unit.currentNode.x;
   let unitY:number = unit.currentNode.y;
-  let unitNode = getNodeFromMap(unitX, unitY, map);
+  let unitNode = getNodeFromMap(unitX, unitY);
   let isSpotted = false;
   for(let enemy of enemies) {
     let visibility = enemy.visibility;
     let visibilityRange = visibility * gridSize;
     let enemyX:number = enemy.currentNode.x;
     let enemyY:number = enemy.currentNode.y;
-    let enemyNode = getNodeFromMap(enemyX, enemyY, map);
+    let enemyNode = getNodeFromMap(enemyX, enemyY);
     let dx = Math.abs(unitNode.x - enemyNode.x);
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted

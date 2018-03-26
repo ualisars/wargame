@@ -1,4 +1,3 @@
-import {map} from '../../../map/createMap';
 import Unit from '../../../unit/types/Unit';
 import {getNodeFromMap} from '../../index';
 import {deleteUnitFromArray} from '../utils';
@@ -6,7 +5,7 @@ import {deleteUnitFromArray} from '../utils';
 export const anotherUnitIsOnTheWay = (units:Unit[], currentUnit:Unit, nextNodeX:number, nextNodeY:number) => {
   let updatedUnits: Unit[] = Object.assign([], units);
   let otherUnits: Unit[] = deleteUnitFromArray(currentUnit, units);
-  let currentUnitNextNode = getNodeFromMap(nextNodeX, nextNodeY, map);
+  let currentUnitNextNode = getNodeFromMap(nextNodeX, nextNodeY);
 
   for(let otherUnit of otherUnits) {
     if(currentUnitNextNode.x === otherUnit.currentNode.x && currentUnitNextNode.y === otherUnit.currentNode.y) {
@@ -16,6 +15,6 @@ export const anotherUnitIsOnTheWay = (units:Unit[], currentUnit:Unit, nextNodeX:
       return true;
     }
   }
-  
+
   return false;
 }

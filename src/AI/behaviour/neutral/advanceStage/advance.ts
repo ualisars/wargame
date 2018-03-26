@@ -11,7 +11,7 @@ import {
   getNodeFromMap
 } from '../../../../utils';
 import {aStar} from '../../../../path';
-import {map} from '../../../../map/createMap';
+import {initialMap} from '../../../../map/createMap/initialMap';
 import {updateUnit} from '../../../../unit/movement';
 import {assignUnitMoveToPosition} from '../../../../unit/actions/unitActions';
 
@@ -21,9 +21,9 @@ export const advance = () => {
   for(let unit of computerUnits) {
     if(unit.task !== 'exploration') {
       let node = getRandomNode(nodes);
-      let startNode = getNodeFromMap(unit.x, unit.y, map);
-      let finishNode = getNodeFromMap(node.x, node.y, map);
-      let path:any = aStar(map, startNode, finishNode);
+      let startNode = getNodeFromMap(unit.x, unit.y);
+      let finishNode = getNodeFromMap(node.x, node.y);
+      let path:any = aStar(initialMap, startNode, finishNode);
       if(unit.isMoving) {
         console.log('order to unit');
         console.log(unit.name, 'to go to', finishNode);

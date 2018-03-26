@@ -1,6 +1,5 @@
 import {getUnitsByTask} from '../../unit/actions';
 import {getNodeFromMap} from '../get';
-import {map} from '../../../map/createMap';
 
 /*
   check whether any scouts are going to a particular node
@@ -14,7 +13,7 @@ export const isNodeExploredByScouts = (node:any):boolean => {
   for(let unit of scouts) {
     const moveToX:number = unit.moveToNodeX;
     const moveToY:number = unit.moveToNodeY;
-    const moveToNode:any = getNodeFromMap(moveToX, moveToY, map);
+    const moveToNode:any = getNodeFromMap(moveToX, moveToY);
     if(node.x === moveToNode.x && node.y === moveToNode.y) {
       return true;
     }

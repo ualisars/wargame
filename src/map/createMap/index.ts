@@ -1,45 +1,11 @@
 import {
-  WIDTH,
-  HEIGHT,
-  gridSize
-} from '../../config/map';
+  createMap,
+  addObstaclesToMap,
+  initializeMap
+} from './initialMap';
 
-import {
-  deleteObjectFromArray,
-} from '../../utils/object';
-import {
-  createNodes,
-  createOneObstacle,
-  createObstacles,
-  addNeighbors
-} from '../index';
-
-export let map:any[] = [];
-
-export const createMap = () => {
-  return new Promise(resolve => {
-    map = createNodes();
-    resolve();
-  });
+export {
+  createMap,
+  addObstaclesToMap,
+  initializeMap
 }
-
-export let addObstaclesToMap = () => {
-  map = createObstacles(120, 220, 120, 160, 'river');
-  map = createObstacles(640, 800, 160, 160, 'river');
-  map = createObstacles(880, 1120, 160, 160, 'river');
-  map = createOneObstacle(map, 320, 280, 'mountain');
-  map = createObstacles(240, 340, 320, 360, 'mountain');
-  map = createObstacles(480, 580, 400, 440, 'forest');
-  map = createObstacles(960, 1000, 360, 400, 'forest');
-  map = createObstacles(920, 1000, 400, 440, 'forest');
-  addNeighbors(map);
-}
-
-export const initializeMap = () => {
-  console.error('initializeMap');
-  createMap()
-  .then(() => addObstaclesToMap());
-  console.log('map', map);
-}
-
-initializeMap();

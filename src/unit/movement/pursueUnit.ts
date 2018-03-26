@@ -9,7 +9,7 @@ import {
   createUnitObstacle,
   addNeighbors
 } from '../../map';
-import {map} from '../../map/createMap';
+import {initialMap} from '../../map/createMap/initialMap';
 import {ctx} from '../../config/context';
 import {aStar} from '../../path';
 import {units} from '../../store/unit/units';
@@ -39,7 +39,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
       unit.clearFightAgainst(); // now unit not fighting with anyone
       removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
     } else {
-      let currentNode = getNodeFromMap(unit.x, unit.y, map); // get currentNode
+      let currentNode = getNodeFromMap(unit.x, unit.y); // get currentNode
       unit.setCurrentNode(currentNode); // set currentNode
       unit.setNextNode(currentNode); // set nextNode
       unit.setIsMovingToFalse();
@@ -47,9 +47,9 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     }
   }
   if(unit.unitToPursue === null) { // unit isn't pursuing any opponent's units
-    let startNode = getNodeFromMap(unit.x, unit.y, map);
-    let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY, map);
-    let newPath:any = aStar(map, startNode, finishNode);
+    let startNode = getNodeFromMap(unit.x, unit.y);
+    let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY);
+    let newPath:any = aStar(initialMap, startNode, finishNode);
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
     updateUnit(unit,newPath, 0, finishNode.x, finishNode.y, null, false);
     return;
@@ -58,9 +58,9 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     if(pursuedUnit.id !== unit.unitToPursue.id) {
       // unit is pursuing another opponent's unit
       console.log('allies unit is pursuing another oponents unit');
-      let startNode = getNodeFromMap(unit.x, unit.y, map);
-      let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y, map);
-      let newPath:any = aStar(map, startNode, finishNode);
+      let startNode = getNodeFromMap(unit.x, unit.y);
+      let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y);
+      let newPath:any = aStar(initialMap, startNode, finishNode);
       assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
       pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
       return;
@@ -79,8 +79,8 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     return;
   }
 
-  let startNode = getNodeFromMap(unit.x, unit.y, map);
-  let finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, map);
+  let startNode = getNodeFromMap(unit.x, unit.y);
+  let finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y);
   let node = path[i];
   unit.moveToNodeX = pursuedUnit.x;
   unit.moveToNodeY = pursuedUnit.y;
@@ -95,13 +95,13 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     i = 0;
     currentMoveToX = pursuedUnit.x;
     currentMoveToY = pursuedUnit.y;
-    startNode = getNodeFromMap(unit.x, unit.y, map);
-    finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, map);
+    startNode = getNodeFromMap(unit.x, unit.y);
+    finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y);
     // console.error('startNode:', startNode);
     // console.error('finishNode:', finishNode);
     // console.error('pursuedUnit.x:', pursuedUnit.x, 'pursuedUnit.y:', pursuedUnit.y);
     // console.error('map', map);
-    path = aStar(map, startNode, finishNode);
+    path = aStar(initialMap, startNode, finishNode);
     unit.moveToNodeX = pursuedUnit.x;
     unit.moveToNodeY = pursuedUnit.y;
     node = path[i]; // get next node
@@ -130,7 +130,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     console.error('pursueUnit: another unit is on the way x:',node.x, 'y:',node.y);
     let blockedNodes = getSurroundedBlockedNodes(unit);
     // if current node and next node are different
-    let updatedMap = map;
+    let updatedMap = Object.assign([], initialMap);
     for(let blockedNode of blockedNodes) {
       updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
     }

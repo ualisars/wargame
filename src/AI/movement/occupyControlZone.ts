@@ -1,12 +1,7 @@
 import {controlZone} from '../processModule/controlZone/controlZone';
 import {computerUnits} from '../../store/unit/units';
 import {getRandomNode} from '../../utils/node/random';
-import {aStar} from '../../path';
-import {map} from '../../map/createMap';
-import {
-  updateUnit,
-  assignUnitMoveToPosition
-} from '../../unit';
+import {updateUnit} from '../../unit';
 import {getNodeFromMap} from '../../utils';
 import {getUnitsByTask} from '../../utils/unit/actions';
 import Unit from '../../unit/types/Unit';

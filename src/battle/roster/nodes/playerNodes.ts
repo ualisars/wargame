@@ -3,7 +3,6 @@ import {
   HEIGHT,
   WIDTH
 } from '../../../config';
-import {map} from '../../../map/createMap';
 import {
   deleteObjectFromArray,
   getNodeFromMap
@@ -18,7 +17,7 @@ const playerY1 = HEIGHT;
 
 for(let x = playerX0; x <= playerX1; x += gridSize) {
   for(let y = playerY0; y <= playerY1; y+= gridSize) {
-    let node = getNodeFromMap(x,y, map);
+    let node = getNodeFromMap(x, y);
     if(node) {
       playerUnitsNodes.push(node);
     }

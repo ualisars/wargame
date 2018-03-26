@@ -1,6 +1,6 @@
 import NodeStore from '../../store/AI/nodeStore';
 import {gridSize} from '../../config/map/gridSize';
-import {map} from '../../map/createMap';
+import {initialMap} from '../../map/createMap/initialMap';
 import {getClosestNodeToUnit} from '../../utils/unit/actions';
 import {getFarthestXNodes} from '../../utils/node/get';
 import {getNodeFromMap} from '../../utils/node';
@@ -51,7 +51,7 @@ export const fillComputerControlNodes = () => {
       let finishY = unit.currentNode.y + (unit.visibility * gridSize);
       for(let x = startX; x <= finishX; x += gridSize) {
         for(let y = startY; y <= finishY; y += gridSize) {
-          let node = getNodeFromMap(x, y, map);
+          let node = getNodeFromMap(x, y);
           computerControlNodes.addNodeToStore(node);
         }
       }
@@ -83,7 +83,7 @@ export const fillPlayerControlNodes = () => {
     let finishY = unit.currentNode.y + (unit.visibility * gridSize);
     for(let x = startX; x <= finishX; x += gridSize) {
       for(let y = startY; y <= finishY; y += gridSize) {
-        let node = getNodeFromMap(x, y, map);
+        let node = getNodeFromMap(x, y);
         playerControlNodes.addNodeToStore(node);
       }
     }
@@ -92,7 +92,7 @@ export const fillPlayerControlNodes = () => {
 }
 
 export const fillExplorationNodes = () => {
-  for(let node of map) {
+  for(let node of initialMap) {
     let nodeExist:boolean = false;
     for(let computerNode of computerControlNodes.store) {
       if(computerNode.x === node.x && computerNode.y === node.y) {

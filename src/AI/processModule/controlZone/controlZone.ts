@@ -1,4 +1,4 @@
-import {map} from '../../../map/createMap';
+import {initialMap} from '../../../map/createMap/initialMap';
 import {
   gridSize,
   HEIGHT,
@@ -19,7 +19,7 @@ export const filterNodes = ():any[] => {
   const startY:number = gridSize; // avoid first row
   const finishX:number = WIDTH - (gridSize * 2); // avoid last column
   const finishY:number = HEIGHT - (gridSize * 2); // avoid last row
-  for(let node of map) {
+  for(let node of initialMap) {
     if(node.x >= startX && node.x <= finishX && node.y >= startY && node.y <= finishY) {
       computerSideNodes.push(node);
     }
@@ -36,7 +36,7 @@ export const selectCotrolZone = () => {
   const finishY:number = selectedNode.y + (gridSize * 3);
   for(let x = startX; x <= finishX; x += gridSize) {
     for(let y = startY; y <= finishY; y += gridSize) {
-      let node:any = getNodeFromMap(x ,y, map);
+      let node:any = getNodeFromMap(x ,y);
       if(node) {
         controlZone.push(node);
       }

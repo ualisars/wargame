@@ -4,9 +4,9 @@ import {
   createNodes,
 } from '../../map';
 import {
-  initializeMap,
-  map
+  initializeMap
 } from '../../map/createMap';
+import {initialMap} from '../../map/createMap/initialMap';
 import {
   auxiliaryCanvas,
   canvas
@@ -134,8 +134,8 @@ export const launchBattle = () => {
     console.log('Position y', e.offsetY); // get Y
     onChooseUnit(units, x, y);
     console.log('currentlyChosenUnit', currentlyChosenUnit);
-    console.error('map', map);
-    console.log('node', getNodeFromMap(x, y, map));
+    console.error('map', initialMap);
+    console.log('node', getNodeFromMap(x, y));
     // test delete in deployment
     if(currentlyChosenUnit) {
       console.log('surroundedNodes', getSurroundedNodes(currentlyChosenUnit, 1));

@@ -1,4 +1,4 @@
-import {map} from '../createMap';
+import {initialMap} from '../createMap/initialMap';
 import {
   HEIGHT,
   gridSize,
@@ -10,7 +10,7 @@ import {
 } from '../../utils';
 
 export const createObstacles = (startX:number, finishX:number, startY:number, finishY:number, type:string='forest') => {
-  let newMap:any[] = map;
+  let newMap:any[] = initialMap;
   for(let x = startX; x <= finishX; x += gridSize) {
     for(let y = startY; y <= finishY; y += gridSize) {
       let node = {

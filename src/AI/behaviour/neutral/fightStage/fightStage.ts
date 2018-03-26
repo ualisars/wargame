@@ -14,7 +14,7 @@ import {
   getNodeFromMap
 } from '../../../../utils';
 import {aStar} from '../../../../path';
-import {map} from '../../../../map/createMap';
+import {initialMap} from '../../../../map/createMap/initialMap';
 import {
   updateUnit,
   pursueUnit
@@ -68,9 +68,9 @@ export const findWeakestUnitToAttack = () => {
 export const flankUnit = () => {
   let unit:any = getBestUnitByProperty('speed');
   let enemy = getWorstEnemyByProperty('meleeDamage');
-  let startNode = getNodeFromMap(unit.x, unit.y, map);
-  let finishNode = getNodeFromMap(enemy.currentNode.x, enemy.currentNode.y, map);
-  let path:any = aStar(map, startNode, finishNode);
+  let startNode = getNodeFromMap(unit.x, unit.y);
+  let finishNode = getNodeFromMap(enemy.currentNode.x, enemy.currentNode.y);
+  let path:any = aStar(initialMap, startNode, finishNode);
   if(unit.isMoving) {
     assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
   } else {
@@ -82,9 +82,9 @@ export const flankUnit = () => {
 export const attack = () => {
   let unit = getBestUnitByProperty('meleeDamage');
   let enemy = findStrongestUnitToAttack();
-  let startNode = getNodeFromMap(unit.x, unit.y, map);
-  let finishNode = getNodeFromMap(enemy.currentNode.x, enemy.currentNode.y, map);
-  let path:any = aStar(map, startNode, finishNode);
+  let startNode = getNodeFromMap(unit.x, unit.y);
+  let finishNode = getNodeFromMap(enemy.currentNode.x, enemy.currentNode.y);
+  let path:any = aStar(initialMap, startNode, finishNode);
   if(unit.isMoving) {
     console.error('fight stage');
     console.error('unit', unit.name, 'has to go to', finishNode);
@@ -102,9 +102,9 @@ export const surround = () => {
   let nodes = getSurroundedNodes(enemy, 3);
   for(let unit of computerUnits) {
     let node = getRandomNode(nodes);
-    let startNode = getNodeFromMap(unit.x, unit.y, map);
-    let finishNode = getNodeFromMap(node.x, node.y, map);
-    let path:any = aStar(map, startNode, finishNode);
+    let startNode = getNodeFromMap(unit.x, unit.y);
+    let finishNode = getNodeFromMap(node.x, node.y);
+    let path:any = aStar(initialMap, startNode, finishNode);
     if(unit.isMoving) {
       assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
     } else {

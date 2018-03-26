@@ -28,7 +28,6 @@ import {
 } from '../../../config/map';
 import {getNodeFromMap} from '../../../utils/node/get/fromMap';
 import {getRandomNode} from '../../../utils/node/random';
-import {map} from '../../../map/createMap';
 import {shuffleID} from '../../../utils/unit/shuffle';
 
 
@@ -230,7 +229,7 @@ export const assignBaseNodesForScouts = () => {
         }
       }
       // assign base node for unit
-      let node = getNodeFromMap(x, y, map);
+      let node = getNodeFromMap(x, y);
       unit.assignBaseNode(node);
       //console.error('unit', unit.id, 'baseNode', unit.baseNode);
     } // end of ids for loop

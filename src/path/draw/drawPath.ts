@@ -5,7 +5,6 @@ import {
   HEIGHT,
   gridSize
 } from '../../config';
-import {map} from '../../map/createMap';
 
 export const drawPath = (path:any[]) => {
   for(let step of path) {
