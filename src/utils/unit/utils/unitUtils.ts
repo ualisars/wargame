@@ -10,7 +10,7 @@ export const addUnitIntoArray = (unit:Unit, arr:any[]):any[] => {
 }
 
 export const deleteUnitFromArray = (unit:Unit, arr:any[]):any[] => {
-  let updatedArr = arr.filter((el) => {
+  let updatedArr:Unit[] = arr.filter((el) => {
     if(el.id === unit.id) {
       return false;
     }
