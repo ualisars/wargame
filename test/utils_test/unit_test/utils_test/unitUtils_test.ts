@@ -13,18 +13,25 @@ describe('UnitUtils utils test', () => {
   let unit2:Unit = createUnit('scouts', 300, 200, 5, 'computer');
   let unit3:Unit = createUnit('scouts', 40, 160, 5, 'computer');
 
+  // remove units after test
+  after(() => {
+    removeUnit(unit1);
+    removeUnit(unit2);
+    removeUnit(unit3);
+  });
+
   describe('addUnitIntoArray test', () => {
     it('unit1 should be inside units array', () => {
       // add unit1 to units
       units = addUnitIntoArray(unit1, units);
-      let pass:boolean = false;
+      let found:boolean = false;
       for(let unit of units) {
         if(unit.id === unit1.id) {
-          pass = true;
+          found = true;
         }
       }
 
-      assert.equal(pass, true);
+      assert.equal(found, true);
     });
   });
 

@@ -4,11 +4,13 @@ import {
   getFarthestXNodes
 } from '../../../../src/utils/node/get';
 import {createUnit} from '../../../../src/unit/create';
+import {removeUnit} from '../../../../src/store/unit/units';
+import Unit from '../../../../src/unit/types/Unit';
 
 describe('NodeUtils: get: farthest nodes test', () => {
 
   // add cavalry to hidingEnemies
-  let enemy = createUnit('lightInfantry', 80, 40, 5, 'player');
+  let enemy:Unit = createUnit('lightInfantry', 80, 40, 5, 'player');
 
   let nodes:any[] = [
     {x: 80, y: 80},
@@ -18,6 +20,11 @@ describe('NodeUtils: get: farthest nodes test', () => {
     {x: 180, y: 300},
     {x: 0, y: 200}
   ];
+
+  // remove enemy from hidingEnemies
+  after(() => {
+    removeUnit(enemy);
+  });
 
   describe('getFarthestNodeFromEnemy', () => {
 

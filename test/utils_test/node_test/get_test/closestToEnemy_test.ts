@@ -15,16 +15,16 @@ import Unit from '../../../../src/unit/types/Unit';
 describe('NodeUtils: get: closestToEnemy test', () => {
 
   // add cavalry to hidingEnemies
-  let cavalry:Unit = createUnit('lightInfantry', 130, 60, 5, 'player');
+  let pikemen:Unit = createUnit('pikemen', 130, 60, 5, 'player');
   before(() => {
     //beforeEach:namedFun
-    addToHidingEnemies(cavalry);
+    addToHidingEnemies(pikemen);
   });
 
   // remove cavalry from hidingEnemies
   after(() => {
-    removeFromHidingEnemies(cavalry);
-    removeUnit(cavalry);
+    removeFromHidingEnemies(pikemen);
+    removeUnit(pikemen);
   });
 
   let nodes:any[] = [
