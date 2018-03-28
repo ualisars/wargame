@@ -43,6 +43,8 @@ describe('Surrounded utils test', () => {
         }
       }
 
+      assert.equal(equal, true);
+
     });
   });
 });

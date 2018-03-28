@@ -1,7 +1,8 @@
 import {assert} from 'chai';
 import {
   addUnitIntoArray,
-  deleteUnitFromArray
+  deleteUnitFromArray,
+  getDistanceBetweenTwoUnitsInGrids
 } from '../../../../src/utils/unit/utils';
 import Unit from '../../../../src/unit/types/Unit';
 import {createUnit} from '../../../../src/unit/create';
@@ -47,6 +48,16 @@ describe('UnitUtils utils test', () => {
       }
 
       assert.equal(found, false);
+    });
+  });
+
+  describe('getDistanceBetweenTwoUnitsInGrids test', () => {
+    let testUnit1:Unit = createUnit('scouts', 240, 360, 5, 'computer');
+    let testUnit2:Unit = createUnit('scouts', 440, 320, 5, 'computer');
+
+    it('distance between units should be 6 grids', () => {
+      let distance:number = getDistanceBetweenTwoUnitsInGrids(testUnit1, testUnit2);
+      assert.equal(distance, 6);
     });
   });
 });
