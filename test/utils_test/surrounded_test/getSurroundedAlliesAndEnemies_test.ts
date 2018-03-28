@@ -46,7 +46,6 @@ describe('surroundedUtils test', () => {
   });
 
 
-
   describe('getSurroundedAllies test', () => {
 
     let unit:Unit = createUnit('archers', 280, 520, 5, 'player');
@@ -78,7 +77,5 @@ describe('surroundedUtils test', () => {
       done();
     });
   });
-
-
 
 })
