@@ -7,7 +7,7 @@ import {
   getBestEnemyByProperty,
   getWorstEnemyByProperty,
   getUnitsByTask
-} from '../../../../utils/unit/actions';
+} from '../../../../utils/unit/AI';
 import {getRandomNode} from '../../../../utils/node';
 import {getSurroundedNodes} from '../../../../utils/surrounded';
 import {

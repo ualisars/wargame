@@ -1,4 +1,4 @@
-import {getUnitsByTask} from '../../unit/actions';
+import {getUnitsByTask} from '../../unit/AI';
 import {getNodeFromMap} from '../get';
 
 /*

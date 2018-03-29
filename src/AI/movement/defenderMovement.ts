@@ -1,4 +1,4 @@
-import {getUnitsByTask} from '../../utils/unit/actions';
+import {getUnitsByTask} from '../../utils/unit/AI';
 import {
   computerUnits,
   playerUnits

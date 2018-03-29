@@ -3,7 +3,7 @@ import {
   getFreeUnits,
   getUnitsByPropertyValue,
   getClosestUnitToOtherUnit
-} from '../../../utils/unit/actions';
+} from '../../../utils/unit/AI';
 import {
   doesUnitNeedProtection,
   howManyUnitsNeedProtection

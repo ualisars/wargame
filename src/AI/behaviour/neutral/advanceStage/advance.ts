@@ -4,7 +4,7 @@ import {spottedUnits} from '../../../../store/unit/spottedUnits';
 import {
   getClosestUnitToOtherUnit,
   getBestUnitByProperty
-} from '../../../../utils/unit/actions';
+} from '../../../../utils/unit/AI';
 import {getRandomNode} from '../../../../utils/node';
 import {getSurroundedNodes} from '../../../../utils/surrounded';
 import {

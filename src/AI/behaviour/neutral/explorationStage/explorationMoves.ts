@@ -16,8 +16,8 @@ import {
   getBestUnitByProperty,
   getClosestUnitToOtherUnit,
   getClosestEnemyToUnit,
-  getClosestNodeToUnit
-} from '../../../../utils/unit/actions';
+} from '../../../../utils/unit/AI';
+import {getClosestNodeToUnit} from '../../../../utils/unit/actions';
 import {getProtector} from '../../../../utils/unit/protector';
 import {isNodeExploredByScouts} from '../../../../utils/node/explore';
 import {computerControlNodes} from '../../../analyzeModule/mapAnalyze';

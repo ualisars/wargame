@@ -1,5 +1,5 @@
 import {computerUnits} from '../../../store/unit/units';
-import {getUnitsByTask} from '../../../utils/unit/actions/unitActions';
+import {getUnitsByTask} from '../../../utils/unit/AI';
 import {deleteUnitFromArray} from '../../../utils';
 
 export const assignHoldPosition = () => {

@@ -3,12 +3,12 @@ import {assert} from 'chai';
 import {createUnit} from '../../../../src/unit/create';
 import {
   getClosestUnitToNode
-} from '../../../../src/utils/unit/actions';
+} from '../../../../src/utils/unit/AI';
 import {removeUnit} from '../../../../src/store/unit/units';
 import Unit from '../../../../src/unit/types/Unit';
 
 
-describe('unitUtils: actions test', () => {
+describe('unitUtils: AI test', () => {
 
   describe('getClosestUnitToNode test', () => {
     let node:any = {x: 400, y: 160};

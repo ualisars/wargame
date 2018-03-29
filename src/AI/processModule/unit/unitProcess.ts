@@ -19,9 +19,9 @@ import {
 } from '../../../utils';
 import {
   getUnitsByTask,
-  getScoutsNumber,
-  getUnitById
-} from '../../../utils/unit/actions';
+  getScoutsNumber
+} from '../../../utils/unit/AI';
+import {getUnitById} from '../../../utils/unit/actions';
 import {
   HEIGHT,
   gridSize

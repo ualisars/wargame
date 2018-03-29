@@ -1,7 +1,7 @@
 import {
   getBestUnitByProperty,
   getFreeUnits
-} from '../../utils/unit/actions';
+} from '../../utils/unit/AI';
 import{
   getUnitTypesInPercentage,
   calculateUnitTypes,
