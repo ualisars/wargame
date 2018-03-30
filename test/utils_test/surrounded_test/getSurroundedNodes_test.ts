@@ -2,12 +2,20 @@ import {assert} from 'chai';
 
 import {createUnit} from '../../../src/unit/create';
 import {getSurroundedNodes} from '../../../src/utils/surrounded';
-import {removeUnit} from '../../../src/store/unit/units';
+import {
+  removeUnit,
+  removeAllUnits
+} from '../../../src/store/unit/units';
 import Unit from '../../../src/unit/types/Unit';
 
 describe('Surrounded utils test', () => {
 
   describe('getSurroundedNodes test', () => {
+
+    before(() => {
+      removeAllUnits();
+    });
+
     let unit:Unit = createUnit('scouts', 520, 160, 5, 'computer');
 
     // remove unit after test is completed

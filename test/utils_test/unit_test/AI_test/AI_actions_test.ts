@@ -16,11 +16,19 @@ describe('unitUtils: AI test', () => {
 
   describe('getClosestUnitToNode test', () => {
 
-    removeAllUnits();
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('scouts', 280, 200, 5, 'computer');
+      unit2 = createUnit('scouts', 480, 80, 5, 'computer');
+      unit3 = createUnit('scouts', 480, 160, 5, 'computer');
+    });
+
     let node:any = {x: 400, y: 160};
-    let unit1:Unit = createUnit('scouts', 280, 200, 5, 'computer');
-    let unit2:Unit = createUnit('scouts', 480, 80, 5, 'computer');
-    let unit3:Unit = createUnit('scouts', 480, 160, 5, 'computer');
+    // let unit1:Unit = createUnit('scouts', 280, 200, 5, 'computer');
+    // let unit2:Unit = createUnit('scouts', 480, 80, 5, 'computer');
+    // let unit3:Unit = createUnit('scouts', 480, 160, 5, 'computer');
 
     // remove units after test completed
     after(() => {

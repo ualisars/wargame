@@ -4,12 +4,19 @@ import {
   getSurroundedEnemies
 } from '../../../src/utils/surrounded';
 import {createUnit} from '../../../src/unit/create';
-import {removeUnit} from '../../../src/store/unit/units';
+import {
+  removeUnit,
+  removeAllUnits
+} from '../../../src/store/unit/units';
 import Unit from '../../../src/unit/types/Unit';
 
 describe('surroundedUtils test', () => {
 
   describe('getSurroundedEnemies test', () => {
+
+    before(() => {
+      removeAllUnits();
+    });
 
     let unit:Unit = createUnit('lightInfantry', 280, 520, 5, 'player');
     let enemy1:Unit = createUnit('lightInfantry', 280, 440, 5, 'computer');
@@ -47,6 +54,10 @@ describe('surroundedUtils test', () => {
 
 
   describe('getSurroundedAllies test', () => {
+
+    before(() => {
+      removeAllUnits();
+    });
 
     let unit:Unit = createUnit('archers', 280, 520, 5, 'player');
     let ally1:Unit = createUnit('archers', 280, 440, 5, 'player');

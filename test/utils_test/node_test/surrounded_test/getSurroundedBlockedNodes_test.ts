@@ -1,12 +1,19 @@
 import {assert} from 'chai';
 import {getSurroundedBlockedNodes} from '../../../../src/utils/node/surrounded';
 import {createUnit} from '../../../../src/unit/create';
-import {removeUnit} from '../../../../src/store/unit/units';
+import {
+  removeUnit,
+  removeAllUnits
+} from '../../../../src/store/unit/units';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('NodeUtils: surrounded test', () => {
 
   describe('getSurroundedBlockedNodes test', () => {
+
+    before(() => {
+      removeAllUnits();
+    });
 
     // create units
     const unit:Unit = createUnit('scouts', 320, 120, 5, 'computer');

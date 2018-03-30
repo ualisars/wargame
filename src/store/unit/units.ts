@@ -37,7 +37,4 @@ export const removeAllUnits = ():void => {
   removeAllComputerUnits();
   removeAllComputerUnits();
   units = [];
-  console.log('removeAllUnits units', units.length);
-  console.log('removeAllUnits computerUnits', units.length);
-  console.log('removeAllUnits playerUnits', units.length);
 }

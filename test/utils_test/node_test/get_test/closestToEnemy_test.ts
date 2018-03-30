@@ -9,15 +9,19 @@ import {
   removeFromHidingEnemies
 } from '../../../../src/store/AI/enemies/hidingEnemies';
 import {createUnit} from '../../../../src/unit/create';
-import {removeUnit} from '../../../../src/store/unit/units';
+import {
+  removeUnit,
+  removeAllUnits
+} from '../../../../src/store/unit/units';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('NodeUtils: get: closestToEnemy test', () => {
 
+
   // add cavalry to hidingEnemies
   let pikemen:Unit = createUnit('pikemen', 130, 60, 5, 'player');
   before(() => {
-    //beforeEach:namedFun
+    removeAllUnits();
     addToHidingEnemies(pikemen);
   });
 
