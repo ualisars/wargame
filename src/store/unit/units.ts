@@ -23,3 +23,21 @@ export const removeUnit = (unit:Unit) => {
   removeUnitFromVisibleArray(unit);
   units = deleteObjectFromArray(unit, units);
 }
+
+
+export const removeAllComputerUnits = ():void => {
+  computerUnits = [];
+}
+
+export const removeAllPlayerUnits = ():void => {
+  playerUnits = [];
+}
+
+export const removeAllUnits = ():void => {
+  removeAllComputerUnits();
+  removeAllComputerUnits();
+  units = [];
+  console.log('removeAllUnits units', units.length);
+  console.log('removeAllUnits computerUnits', units.length);
+  console.log('removeAllUnits playerUnits', units.length);
+}
