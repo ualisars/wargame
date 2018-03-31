@@ -55,7 +55,7 @@ export const getClosestUnitToOtherUnit = (unit:Unit, units:Unit[] = computerUnit
 
 export const getBestUnitByProperty = (property:string, exclusion:any[] = []):any => {
   let updatedComputersUnits = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searhing
+  if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -74,7 +74,7 @@ export const getBestUnitByProperty = (property:string, exclusion:any[] = []):any
 
 export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):any => {
   let updatedComputersUnits = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searhing
+  if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -93,7 +93,7 @@ export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):an
 
 export const getBestEnemyByProperty = (property:string, exclusion:any[] = []):any => {
   let updatedPlayerUnits = Object.assign([], playerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searhing
+  if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
       updatedPlayerUnits = deleteUnitFromArray(unit, updatedPlayerUnits);
     }
@@ -112,7 +112,7 @@ export const getBestEnemyByProperty = (property:string, exclusion:any[] = []):an
 
 export const getWorstEnemyByProperty = (property:string, exclusion:Unit[] = []):Unit => {
   let updatedPlayerUnits = Object.assign([], playerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searhing
+  if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
       updatedPlayerUnits = deleteUnitFromArray(unit, updatedPlayerUnits);
     }
@@ -126,11 +126,12 @@ export const getWorstEnemyByProperty = (property:string, exclusion:Unit[] = []):
       worstUnit = updatedPlayerUnits[i];
     }
   }
+  return worstUnit;
 }
 
 export const getNotFightingUnits = (exclusion:Unit[] = []):Unit[] => {
   let updatedComputersUnits:Unit[] = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searhing
+  if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -165,7 +166,7 @@ export const getClosestEnemyToUnit = (unit:Unit) => {
 
 export const getFreeUnits = (exclusion:Unit[] = []):Unit[] => {
   let updatedComputersUnits:Unit[] = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searhing
+  if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -184,7 +185,7 @@ export const getFreeUnits = (exclusion:Unit[] = []):Unit[] => {
 
 export const getUnitsByTask = (task:string, exclusion:Unit[] = []):Unit[] => {
   let updatedComputersUnits:Unit[] = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searhing
+  if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -203,7 +204,7 @@ export const getUnitsByTask = (task:string, exclusion:Unit[] = []):Unit[] => {
 
 export const getUnitsByPropertyValue = (property:string, value:any, exclusion:Unit[]=[]):Unit[] => {
   let updatedComputersUnits = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searhing
+  if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }

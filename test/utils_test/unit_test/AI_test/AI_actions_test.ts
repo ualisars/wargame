@@ -6,6 +6,7 @@ import {
   getBestUnitByProperty,
   getClosestUnitToNode,
   getClosestUnitToOtherUnit,
+  getWorstEnemyByProperty,
   getWorstUnitByProperty
 } from '../../../../src/utils/unit/AI';
 import {
@@ -168,6 +169,41 @@ describe('unitUtils: AI test', () => {
     it('enemy with best meleeDamage should be Hoplites', () => {
       let enemyWithBestMeleeDamage:Unit = getBestEnemyByProperty('meleeDamage');
       assert.equal(enemyWithBestMeleeDamage.id, unit3.id);
+    });
+  });
+
+  describe('getWorstEnemyByProperty test', () => {
+    let enemy1:Unit, enemy2:Unit, enemy3:Unit, enemy4:Unit;
+
+    before(() => {
+      removeAllUnits();
+      enemy1 = createUnit('HeavyCavalry', 400, 280, 5, 'player');
+      enemy2 = createUnit('HeavyInfantry', 560, 240, 5, 'player');
+      enemy3 = createUnit('Hoplites', 920, 80, 5, 'player');
+      enemy4 = createUnit('Militia', 160, 480, 5, 'player');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+    });
+
+    it('slowest enemy should be Hoplites', () => {
+      let slowestEnemy:Unit = getWorstEnemyByProperty('speed');
+      assert.equal(slowestEnemy.id, enemy3.id);
+    });
+
+    it('enemy with worst meleeDamage should be Militia', () => {
+      let enemyWithWorstMeleeDamage:Unit = getWorstEnemyByProperty('meleeDamage');
+      assert.equal(enemyWithWorstMeleeDamage.id, enemy4.id);
+    });
+
+    it('enemy with worst armour should be Militia', () => {
+      let enemyWithWorstArmour:Unit = getWorstEnemyByProperty('armour');
+      assert.equal(enemyWithWorstArmour.id, enemy4.id);
     });
   });
 });
