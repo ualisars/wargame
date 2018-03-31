@@ -4,7 +4,8 @@ import {createUnit} from '../../../../src/unit/create';
 import {
   getBestUnitByProperty,
   getClosestUnitToNode,
-  getClosestUnitToOtherUnit
+  getClosestUnitToOtherUnit,
+  getWorstUnitByProperty
 } from '../../../../src/utils/unit/AI';
 import {
   removeUnit,
@@ -101,6 +102,41 @@ describe('unitUtils: AI test', () => {
     it('unit with bestMelee damage should be Hoplites', () => {
       let unitWithBestMeleeDamage:Unit = getBestUnitByProperty('meleeDamage');
       assert.equal(unitWithBestMeleeDamage.id, unit3.id);
+    });
+  });
+
+  describe('getWorstUnitByProperty test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+    });
+
+    it('slowest unit should be Hoplites', () => {
+      let slowestUnit:Unit = getWorstUnitByProperty('speed');
+      assert.equal(slowestUnit.id, unit3.id);
+    });
+
+    it('unit with worst meleeDamage should be Militia', () => {
+      let unitWithWorstMeleeDamage:Unit = getWorstUnitByProperty('meleeDamage');
+      assert.equal(unitWithWorstMeleeDamage.id, unit4.id);
+    });
+
+    it('unit with worst armour should be Militia', () => {
+      let unitWithWorstArmour:Unit = getWorstUnitByProperty('armour');
+      assert.equal(unitWithWorstArmour.id, unit4.id);
     });
   });
 });
