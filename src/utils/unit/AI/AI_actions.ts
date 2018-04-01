@@ -130,17 +130,17 @@ export const getWorstEnemyByProperty = (property:string, exclusion:Unit[] = []):
 }
 
 export const getNotFightingUnits = (exclusion:Unit[] = []):Unit[] => {
-  let updatedComputersUnits:Unit[] = Object.assign([], computerUnits);
+  let updatedComputerUnits:Unit[] = Object.assign([], computerUnits);
   if(exclusion.length !== 0) { // delete exceptional units from searching
     for(let unit of exclusion) {
-      updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
+      updatedComputerUnits = deleteUnitFromArray(unit, updatedComputerUnits);
     }
   }
-  if(updatedComputersUnits.length === 0) {
+  if(updatedComputerUnits.length === 0) {
     return null;
   }
   let notFightingUnits:Unit[] = [];
-  for(let unit of updatedComputersUnits) {
+  for(let unit of updatedComputerUnits) {
     if(!unit.isFighting) {
       notFightingUnits.push(unit);
     }

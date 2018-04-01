@@ -6,6 +6,7 @@ import {
   getBestUnitByProperty,
   getClosestUnitToNode,
   getClosestUnitToOtherUnit,
+  getNotFightingUnits,
   getWorstEnemyByProperty,
   getWorstUnitByProperty
 } from '../../../../src/utils/unit/AI';
@@ -206,4 +207,61 @@ describe('unitUtils: AI test', () => {
       assert.equal(enemyWithWorstArmour.id, enemy4.id);
     });
   });
+
+
+  describe('getNotFightingUnits test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit, unit5:Unit;
+    let exclusion:Unit[] = [];
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit2.setIsFightingToTrue();
+      exclusion.push(unit1);
+      exclusion.push(unit5);
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(unit5);
+    });
+
+    it('not figthing units without exclusion should unit1, unit3, unit4 and unit5', () => {
+      let notFigthingUnits:Unit[] = getNotFightingUnits();
+      let pass:boolean = true;
+      for(let unit of notFigthingUnits) {
+        if(unit.id === unit1.id || unit.id === unit3.id || unit.id === unit4.id || unit.id === unit5.id) {
+          // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+
+    it('not figthing units with exclusion should unit3, unit4', () => {
+      let notFigthingUnits:Unit[] = getNotFightingUnits(exclusion);
+      let pass:boolean = true;
+      for(let unit of notFigthingUnits) {
+        if(unit.id === unit3.id || unit.id === unit4.id) {
+          // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+  })
 });
