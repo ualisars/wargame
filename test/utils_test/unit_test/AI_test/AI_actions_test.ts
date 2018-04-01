@@ -80,13 +80,14 @@ describe('unitUtils: AI test', () => {
 
   describe('getBestUnitByProperty', () => {
     let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit;
-
+    let exclusion:Unit[] = [];
     before(() => {
       removeAllUnits();
       unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
       unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
       unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
       unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+      exclusion.push(unit1);
     });
 
     // remove units after test completed
@@ -105,6 +106,11 @@ describe('unitUtils: AI test', () => {
     it('unit with bestMelee damage should be Hoplites', () => {
       let unitWithBestMeleeDamage:Unit = getBestUnitByProperty('meleeDamage');
       assert.equal(unitWithBestMeleeDamage.id, unit3.id);
+    });
+
+    it('fastest unit without HeavyCavalry should be Militia', () => {
+      let fastestUnit:Unit = getBestUnitByProperty('speed', exclusion);
+      assert.equal(fastestUnit.id, unit4.id);
     });
   });
 
@@ -132,6 +138,16 @@ describe('unitUtils: AI test', () => {
       assert.equal(slowestUnit.id, unit3.id);
     });
 
+    it('slowest unit without Hoplites should be HeavyInfantry', () => {
+      let slowestUnit:Unit = getWorstUnitByProperty('speed', [unit3]);
+      assert.equal(slowestUnit.id, unit2.id);
+    });
+
+    it('slowest unit without Hoplites and HeavyInfantry should be Militia', () => {
+      let slowestUnit:Unit = getWorstUnitByProperty('speed', [unit2, unit3]);
+      assert.equal(slowestUnit.id, unit4.id);
+    });
+
     it('unit with worst meleeDamage should be Militia', () => {
       let unitWithWorstMeleeDamage:Unit = getWorstUnitByProperty('meleeDamage');
       assert.equal(unitWithWorstMeleeDamage.id, unit4.id);
@@ -140,6 +156,11 @@ describe('unitUtils: AI test', () => {
     it('unit with worst armour should be Militia', () => {
       let unitWithWorstArmour:Unit = getWorstUnitByProperty('armour');
       assert.equal(unitWithWorstArmour.id, unit4.id);
+    });
+
+    it('unit with worst armour without Militia should be Hoplites', () => {
+      let unitWithWorstArmour:Unit = getWorstUnitByProperty('armour', [unit4]);
+      assert.equal(unitWithWorstArmour.id, unit3.id);
     });
   });
 
@@ -167,9 +188,19 @@ describe('unitUtils: AI test', () => {
       assert.equal(fastestEnemy.id, unit1.id);
     });
 
+    it('fastest enemy without HeavyCavalry and Militia should be HeavyInfantry', () => {
+      let fastestEnemy:Unit = getBestEnemyByProperty('speed', [unit1, unit4]);
+      assert.equal(fastestEnemy.id, unit2.id);
+    });
+
     it('enemy with best meleeDamage should be Hoplites', () => {
       let enemyWithBestMeleeDamage:Unit = getBestEnemyByProperty('meleeDamage');
       assert.equal(enemyWithBestMeleeDamage.id, unit3.id);
+    });
+
+    it('enemy with best meleeDamage without Hoplites and HeavyCavalry should be HeavyInfantry', () => {
+      let enemyWithBestMeleeDamage:Unit = getBestEnemyByProperty('meleeDamage', [unit1, unit3]);
+      assert.equal(enemyWithBestMeleeDamage.id, unit2.id);
     });
   });
 
@@ -195,6 +226,16 @@ describe('unitUtils: AI test', () => {
     it('slowest enemy should be Hoplites', () => {
       let slowestEnemy:Unit = getWorstEnemyByProperty('speed');
       assert.equal(slowestEnemy.id, enemy3.id);
+    });
+
+    it('slowest enemy without Hoplites should be HeavyInfantry', () => {
+      let slowestEnemy:Unit = getWorstEnemyByProperty('speed', [enemy3]);
+      assert.equal(slowestEnemy.id, enemy2.id);
+    });
+
+    it('slowest enemy without Hoplites and HeavyInfantry should be Militia', () => {
+      let slowestEnemy:Unit = getWorstEnemyByProperty('speed', [enemy2, enemy3]);
+      assert.equal(slowestEnemy.id, enemy4.id);
     });
 
     it('enemy with worst meleeDamage should be Militia', () => {
