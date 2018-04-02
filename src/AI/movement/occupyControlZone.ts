@@ -8,7 +8,7 @@ import Unit from '../../unit/types/Unit';
 import {moveTo} from '../../unit/movement';
 
 export const occupyControlZone = () => {
-  let defenders:any[] = getUnitsByTask('holdPosition');
+  let defenders:Unit[] = getUnitsByTask('holdPosition');
   for(let defender of defenders) {
     occupyNodeInControlZone(defender);
   }

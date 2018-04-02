@@ -1,18 +1,26 @@
-export let enemiesInsideControlZone:any[] = [];
+import Unit from '../../../unit/types/Unit';
 
-export const updateEnemiesInsideControlZone = (newEnemies:any[]) => {
+export let enemiesInsideControlZone:Unit[] = [];
+export let initialCall:boolean = true;
+
+export const updateEnemiesInsideControlZone = (newEnemies:Unit[]) => {
   enemiesInsideControlZone = newEnemies;
 }
 
 // check if new enemies came or went out from the zone
-export const isNumberOfEnemiesChanged = (newEnemies:any[]):boolean => {
-  let previousEnemies:any[] = Object.assign([], enemiesInsideControlZone);
+export const isNumberOfEnemiesChanged = (newEnemies:Unit[]):boolean => {
+  let previousEnemies:Unit[] = Object.assign([], enemiesInsideControlZone);
   if(previousEnemies.length !== newEnemies.length) { // number changed
     return true;
   }
   // enemies number remain the same
   else if(previousEnemies.length === 0 && newEnemies.length === 0) { // remain 0
-    return false;
+    if(initialCall) { // if function calls first time
+      return true;
+    } else {
+      return false;
+    }
+
   } else {
     // need to check if new enemy came in
     for(let previousEnemy of previousEnemies) {
@@ -27,5 +35,6 @@ export const isNumberOfEnemiesChanged = (newEnemies:any[]):boolean => {
       }
     }
   }
+  initialCall = false;
   return false;
 }

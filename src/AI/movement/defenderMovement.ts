@@ -13,13 +13,13 @@ import {
   isNumberOfEnemiesChanged,
   updateEnemiesInsideControlZone
 } from '../processModule/controlZone';
+import Unit from '../../unit/types/Unit';
 
-
-export const findClosestEnemyInZone = (unit:any, enemies:any[]):any => {
+export const findClosestEnemyInZone = (unit:Unit, enemies:Unit[]):Unit => {
   if(enemies.length === 0) { // only one unit remained
     return null;
   }
-  let closestEnemy:any = enemies[0];
+  let closestEnemy:Unit = enemies[0];
   for(let i = 1; i < enemies.length; ++i) {
     let closestUnitDistance = getDistanceBetweenTwoUnitsInGrids(closestEnemy, unit);
     let unitDistance = getDistanceBetweenTwoUnitsInGrids(enemies[i], unit);
@@ -31,8 +31,8 @@ export const findClosestEnemyInZone = (unit:any, enemies:any[]):any => {
 }
 
 
-export const getEnemiesInsideZone = ():any[] => {
-  let enemiesInsideZone:any[] = [];
+export const getEnemiesInsideZone = ():Unit[] => {
+  let enemiesInsideZone:Unit[] = [];
   for(let enemy of playerUnits) {
     for(let node of controlZone) {
       if(enemy.currentNode.x === node.x && enemy.currentNode.y === node.y) {
@@ -44,15 +44,16 @@ export const getEnemiesInsideZone = ():any[] => {
 }
 
 export const defenderMovement = () => {
-  let enemies:any[] = getEnemiesInsideZone();
+  let enemies:Unit[] = getEnemiesInsideZone();
 
-  if(isNumberOfEnemiesChanged(enemies)) { // fire function only if enemies number changed
+  if(isNumberOfEnemiesChanged(enemies)) {
+    // fire function only if enemies number changed
     updateEnemiesInsideControlZone(enemies);
     if(enemies.length > 0) { // enemy try to enter the zone
       console.error('attackEnemy00');
-      let defenders:any[] = getUnitsByTask('holdPosition');
+      let defenders:Unit[] = getUnitsByTask('holdPosition');
       for(let defender of defenders) {
-        let closestEnemy:any = findClosestEnemyInZone(defender, enemies);
+        let closestEnemy:Unit = findClosestEnemyInZone(defender, enemies);
         let defenderX:number = defender.currentNode.x;
         let defenderY:number = defender.currentNode.y;
         let enemyX:number = closestEnemy.currentNode.x;
