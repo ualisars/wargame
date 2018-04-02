@@ -6,7 +6,7 @@ import {getSurroundedNodes} from '../index';
 import {deleteUnitFromArray} from '../unit/utils';
 import Unit from '../../unit/types/Unit';
 
-export const getSurroundedEnemies = (unit:Unit, range:number = 3):Unit[] => {
+export const getSurroundedEnemies = (unit:Unit, range:number = 1):Unit[] => {
   let surroundedEnemies:Unit[] = [];
   let enemies:Unit[] = [];
   if(unit.controlBy === 'computer') {
