@@ -4,6 +4,7 @@ import {createUnit} from '../../../../src/unit/create';
 import {
   getBestEnemyByProperty,
   getBestUnitByProperty,
+  getClosestEnemyToUnit,
   getClosestUnitToNode,
   getClosestUnitToOtherUnit,
   getNotFightingUnits,
@@ -304,5 +305,43 @@ describe('unitUtils: AI test', () => {
 
       assert.equal(pass, true);
     });
-  })
+  });
+
+  describe('getClosestEnemyToUnit test', () => {
+    let unit:Unit, ally1:Unit, ally2:Unit;
+    let enemy1:Unit, enemy2:Unit, enemy3:Unit, enemy4:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit = createUnit('HeavyCavalry', 440, 160, 5, 'player');
+      ally1 = createUnit('HeavyCavalry', 0, 320, 5, 'player');
+      ally2 = createUnit('HeavyCavalry', 880, 280, 5, 'player');
+      enemy1 = createUnit('HeavyCavalry', 400, 280, 5, 'player');
+      enemy2 = createUnit('HeavyInfantry', 560, 240, 5, 'player');
+      enemy3 = createUnit('Hoplites', 920, 80, 5, 'player');
+      enemy4 = createUnit('Militia', 160, 480, 5, 'player');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit);
+      removeUnit(ally1);
+      removeUnit(ally2);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+    });
+
+    it('closest enemy to unit should be enemy1', () => {
+      let closestEnemy:Unit = getClosestEnemyToUnit(unit);
+      assert.equal(closestEnemy.id, enemy1.id);
+      assert.notEqual(closestEnemy.id, enemy2.id);
+      assert.notEqual(closestEnemy.id, enemy3.id);
+      assert.notEqual(closestEnemy.id, enemy4.id);
+      assert.notEqual(closestEnemy.id, unit.id);
+      assert.notEqual(closestEnemy.id, ally1.id);
+      assert.notEqual(closestEnemy.id, ally2.id);
+    });
+  });
 });
