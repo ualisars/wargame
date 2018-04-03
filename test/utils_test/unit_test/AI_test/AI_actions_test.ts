@@ -7,6 +7,7 @@ import {
   getClosestEnemyToUnit,
   getClosestUnitToNode,
   getClosestUnitToOtherUnit,
+  getFreeUnits,
   getNotFightingUnits,
   getWorstEnemyByProperty,
   getWorstUnitByProperty
@@ -344,4 +345,87 @@ describe('unitUtils: AI test', () => {
       assert.notEqual(closestEnemy.id, ally2.id);
     });
   });
+
+
+  describe('getFreeUnits test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit, unit5:Unit;
+    let exclusion:Unit[] = [];
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit1.assignTask('exploration');
+      unit3.assignTask('patrol');
+      exclusion.push(unit2);
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(unit5);
+    });
+
+    it('freeUnits without exclusion should be unit2, unit4 and unit5', () => {
+      let freeUnits:Unit[] = getFreeUnits();
+      let pass:boolean = true;
+      for(let freeUnit of freeUnits) {
+        if(freeUnit.id === unit2.id) {
+            // pass
+        }
+        else if(freeUnit.id === unit4.id) {
+            // pass
+        }
+        else if(freeUnit.id === unit5.id) {
+            // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+
+    it('freeUnits without unit2 should be unit4 and unit5', () => {
+      let freeUnits:Unit[] = getFreeUnits([unit2]);
+      let pass:boolean = true;
+      for(let freeUnit of freeUnits) {
+        if(freeUnit.id === unit4.id) {
+            // pass
+        }
+        else if(freeUnit.id === unit5.id) {
+            // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+
+    it('freeUnits without unit2 and unit4 should consist only of unit5', () => {
+      let freeUnits:Unit[] = getFreeUnits([unit2, unit4]);
+      let pass:boolean = true;
+      for(let freeUnit of freeUnits) {
+        if(freeUnit.id === unit5.id) {
+            // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+
+  });
+
 });
