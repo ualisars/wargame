@@ -9,6 +9,7 @@ import {
   getClosestUnitToOtherUnit,
   getFreeUnits,
   getNotFightingUnits,
+  getUnitsByTask,
   getWorstEnemyByProperty,
   getWorstUnitByProperty
 } from '../../../../src/utils/unit/AI';
@@ -421,6 +422,151 @@ describe('unitUtils: AI test', () => {
           pass = false;
           break;
         }
+      }
+
+      assert.equal(pass, true);
+    });
+
+  });
+
+
+  describe('getUnitsByTask test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit, unit5:Unit;
+    let unit6:Unit, unit7:Unit, unit8:Unit;
+    let exclusion:Unit[] = [];
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit6 = createUnit('Scouts', 600, 40, 5, 'computer');
+      unit7 = createUnit('Scouts', 1160, 40, 5, 'computer');
+      unit8 = createUnit('Scouts', 560, 520, 5, 'computer');
+      unit1.assignTask('exploration');
+      unit2.assignTask('holdPosition');
+      unit3.assignTask('protection');
+      unit4.assignTask('patrol');
+      unit5.assignTask('exploration');
+      unit6.assignTask('exploration');
+      unit7.assignTask('exploration');
+      unit8.assignTask('exploration');
+      exclusion.push(unit2);
+      exclusion.push(unit6);
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(unit5);
+      removeUnit(unit6);
+      removeUnit(unit7);
+      removeUnit(unit8);
+    });
+
+    it('unit1, unit5, unit6, unit7 and unit8 should have exploration task', () => {
+      let scouts:Unit[] = getUnitsByTask('exploration');
+      let pass:boolean = true;
+      for(let scout of scouts) {
+          if(scout.id === unit1.id) {
+            // pass
+          }
+          else if(scout.id === unit5.id) {
+            // pass
+          }
+          else if(scout.id === unit6.id) {
+            // pass
+          }
+          else if(scout.id === unit7.id) {
+            // pass
+          }
+          else if(scout.id === unit8.id) {
+            // pass
+          } else {
+            pass = false;
+            break;
+          }
+      }
+
+      assert.equal(pass, true);
+
+    });
+
+    it('without unit6 only unit1, unit5, unit7 and unit8 should have exploration task', () => {
+      let scouts:Unit[] = getUnitsByTask('exploration', exclusion);
+      let pass:boolean = true;
+      for(let scout of scouts) {
+          if(scout.id === unit1.id) {
+            // pass
+          }
+          else if(scout.id === unit5.id) {
+            // pass
+          }
+          else if(scout.id === unit7.id) {
+            // pass
+          }
+          else if(scout.id === unit8.id) {
+            // pass
+          } else {
+            pass = false;
+            break;
+          }
+      }
+
+      assert.equal(pass, true);
+    });
+
+
+    it('unit2 should hold position', () => {
+      let defenders:Unit[] = getUnitsByTask('holdPosition');
+      let pass:boolean = true;
+      for(let defender of defenders) {
+          if(defender.id === unit2.id) {
+            // pass
+          } else {
+            pass = false;
+            break;
+          }
+      }
+
+      assert.equal(pass, true);
+    });
+
+    it('without unit2 no units should holdPosition', () => {
+      let defenders:Unit[] = getUnitsByTask('holdPosition', exclusion);
+      assert.equal(defenders.length, 0);
+    });
+
+    it('unit3 should patrol', () => {
+      let patrols:Unit[] = getUnitsByTask('patrol', exclusion);
+      let pass:boolean = true;
+      for(let patrol of patrols) {
+          if(patrol.id === unit4.id) {
+            // pass
+          } else {
+            pass = false;
+            break;
+          }
+      }
+
+      assert.equal(pass, true);
+    });
+
+    it('unit4 should protect another unit', () => {
+      let protectors:Unit[] = getUnitsByTask('protection', exclusion);
+      let pass:boolean = true;
+      for(let protector of protectors) {
+          if(protector.id === unit3.id) {
+            // pass
+          } else {
+            pass = false;
+            break;
+          }
       }
 
       assert.equal(pass, true);
