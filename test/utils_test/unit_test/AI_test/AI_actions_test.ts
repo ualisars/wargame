@@ -11,6 +11,7 @@ import {
   getNotFightingUnits,
   getUnitsByTask,
   getUnitsByPropertyValue,
+  getUnitsWhereValue,
   getWorstEnemyByProperty,
   getWorstUnitByProperty
 } from '../../../../src/utils/unit/AI';
@@ -672,5 +673,89 @@ describe('unitUtils: AI test', () => {
       assert.equal(pass, true);
     });
 
+  });
+
+  describe('getUnitsWhereValue test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit, unit5:Unit;
+    let exclusion:Unit[] = [];
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit2.health = 80;
+      unit3.health = 30;
+      unit5.health = 45;
+      unit4.condition = 60;
+      unit5.condition = 32;
+      exclusion.push(unit2);
+      exclusion.push(unit5);
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(unit5);
+    });
+
+    it('units with health more than 50 should unit1, unit2 and unit4', () => {
+      let unitWhereHealthMoreThan50:Unit[] = getUnitsWhereValue('health', '>', 50);
+      let pass:boolean = true;
+      for(let unit of unitWhereHealthMoreThan50) {
+        if(unit.id === unit1.id) {
+          // pass
+        }
+        else if(unit.id === unit2.id) {
+          // pass
+        }
+        else if(unit.id === unit4.id) {
+          // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+
+    it('units where condition less or equal to 60 should be unit4 and unit5', () => {
+      let unitWhereConditionLessOrEqualTo60:Unit[] = getUnitsWhereValue('condition', '<=', 60);
+      let pass:boolean = true;
+      for(let unit of unitWhereConditionLessOrEqualTo60) {
+        if(unit.id === unit4.id) {
+          // pass
+        }
+        else if(unit.id === unit5.id) {
+          // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+
+    it('units where condition less or equal to 60 without unit5 should consist only of unit4', () => {
+      let unitWhereConditionLessOrEqualTo60:Unit[] = getUnitsWhereValue('condition', 'lessOrEqual', 60, exclusion);
+      let pass:boolean = true;
+      for(let unit of unitWhereConditionLessOrEqualTo60) {
+        if(unit.id === unit4.id) {
+          // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
   });
 });

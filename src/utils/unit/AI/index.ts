@@ -10,7 +10,8 @@ import {
   getFreeUnits,
   getUnitsByTask,
   getUnitsByPropertyValue,
-  getScoutsNumber
+  getScoutsNumber,
+  getUnitsWhereValue
 } from './AI_actions';
 
 export {
@@ -25,5 +26,6 @@ export {
   getFreeUnits,
   getUnitsByTask,
   getUnitsByPropertyValue,
-  getScoutsNumber
+  getScoutsNumber,
+  getUnitsWhereValue
 }

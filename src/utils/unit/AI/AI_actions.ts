@@ -212,10 +212,53 @@ export const getUnitsByPropertyValue = (property:string, value:any, exclusion:Un
   if(updatedComputersUnits.length === 0) {
     return null;
   }
-  let units:any[] = [];
+  let units:Unit[] = [];
   for(let unit of updatedComputersUnits) {
     if(unit[property] === value) {
       units.push(unit);
+    }
+  }
+  return units;
+}
+
+export const getUnitsWhereValue = (property:string, operator:string, value:any, exclusion:Unit[] = []):Unit[] => {
+  let updatedComputersUnits = Object.assign([], computerUnits);
+  if(exclusion.length !== 0) { // delete exceptional units from searching
+    for(let unit of exclusion) {
+      updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
+    }
+  }
+  if(updatedComputersUnits.length === 0) {
+    return null;
+  }
+
+  let units:Unit[] = [];
+  for(let unit of updatedComputersUnits) {
+    operator.toLowerCase();
+    if(operator === '=' || operator === 'equal' || operator === '==' || operator === '===') {
+      if(unit[property] == value) {
+        units.push(unit);
+      }
+    }
+    else if(operator === '>' || operator === 'greater') {
+      if(unit[property] > value) {
+        units.push(unit);
+      }
+    }
+    else if(operator === '>=' || operator === '>==' || operator === 'greaterOrEqual') {
+      if(unit[property] >= value) {
+        units.push(unit);
+      }
+    }
+    else if(operator === '<' || operator === 'less') {
+      if(unit[property] < value) {
+        units.push(unit);
+      }
+    }
+    else if(operator === '<=' || operator === '<==' || operator === 'lessOrEqual') {
+      if(unit[property] <= value) {
+        units.push(unit);
+      }
     }
   }
   return units;
