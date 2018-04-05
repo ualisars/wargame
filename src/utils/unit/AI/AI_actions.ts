@@ -267,9 +267,9 @@ export const getUnitsWhereValue = (property:string, operator:string, value:any, 
 /*
   return total number of scouts
 */
-export const getScoutsNumber = () => {
+export const getScoutsNumber = ():number => {
   for(let unit of computerUnits) {
-      let scouts = getUnitsByTask('exploration');
+      let scouts:Unit[] = getUnitsByTask('exploration');
       return scouts.length;
   }
 }

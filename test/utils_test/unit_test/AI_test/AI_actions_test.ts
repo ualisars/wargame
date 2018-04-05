@@ -9,6 +9,7 @@ import {
   getClosestUnitToOtherUnit,
   getFreeUnits,
   getNotFightingUnits,
+  getScoutsNumber,
   getUnitsByTask,
   getUnitsByPropertyValue,
   getUnitsWhereValue,
@@ -36,9 +37,6 @@ describe('unitUtils: AI test', () => {
     });
 
     let node:any = {x: 400, y: 160};
-    // let unit1:Unit = createUnit('scouts', 280, 200, 5, 'computer');
-    // let unit2:Unit = createUnit('scouts', 480, 80, 5, 'computer');
-    // let unit3:Unit = createUnit('scouts', 480, 160, 5, 'computer');
 
     // remove units after test completed
     after(() => {
@@ -756,6 +754,49 @@ describe('unitUtils: AI test', () => {
       }
 
       assert.equal(pass, true);
+    });
+  });
+
+  describe('getScoutsNumber test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit, unit5:Unit;
+    let unit6:Unit, unit7:Unit, unit8:Unit;
+    let exclusion:Unit[] = [];
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit6 = createUnit('Scouts', 600, 40, 5, 'computer');
+      unit7 = createUnit('Scouts', 1160, 40, 5, 'computer');
+      unit8 = createUnit('Scouts', 560, 520, 5, 'computer');
+      unit1.assignTask('exploration');
+      unit2.assignTask('holdPosition');
+      unit3.assignTask('protection');
+      unit4.assignTask('patrol');
+      unit5.assignTask('exploration');
+      unit6.assignTask('exploration');
+      unit7.assignTask('exploration');
+      unit8.assignTask('exploration');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(unit5);
+      removeUnit(unit6);
+      removeUnit(unit7);
+      removeUnit(unit8);
+    });
+
+    it('number of scouts should be equal to 5', () => {
+      let scoutsNumber:number = getScoutsNumber();
+      assert.equal(scoutsNumber, 5);
     });
   });
 });
