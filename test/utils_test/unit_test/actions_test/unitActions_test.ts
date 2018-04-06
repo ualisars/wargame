@@ -4,9 +4,16 @@ import {
   removeUnit,
   removeAllUnits
 } from '../../../../src/store/unit/units';
+import {
+  computerUnits,
+  playerUnits
+} from '../../../../src/store/unit/units';
 import Unit from '../../../../src/unit/types/Unit';
 
-import {getClosestNodeToUnit} from '../../../../src/utils/unit/actions';
+import {
+  getBestUnitsByProperty,
+  getClosestNodeToUnit
+} from '../../../../src/utils/unit/actions';
 
 describe('unitActionsUtils test', () => {
 
@@ -40,4 +47,63 @@ describe('unitActionsUtils test', () => {
       assert.equal(closestNode.y, 80);
     });
   });
+
+  describe('getBestUnitsByProperty test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+    let enemy1:Unit, enemy2:Unit, enemy3:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 560, 120, 5, 'player');
+      unit2 = createUnit('LightCavalry', 560, 120, 5, 'player');
+      unit3 = createUnit('Pikemen', 560, 120, 5, 'player');
+      enemy1 = createUnit('HeavyInfantry', 560, 120, 5, 'computer');
+      enemy2 = createUnit('HeavyCavalry', 560, 120, 5, 'computer');
+      enemy3 = createUnit('Militia', 560, 120, 5, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+    });
+
+    it('best player units by speed should be unit2', () => {
+      let fastestUnits:Unit[] = getBestUnitsByProperty(playerUnits, 'speed');
+      let pass:boolean = true;
+      for(let unit of fastestUnits) {
+        if(unit.id === unit2.id) {
+          // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+
+    it('best computer units by meleeDamage should be enemy1 and enemy2', () => {
+      let units:Unit[] = getBestUnitsByProperty(computerUnits, 'meleeDamage');
+      let pass:boolean = true;
+      for(let unit of units) {
+        if(unit.id === enemy1.id) {
+          // pass
+        }
+        else if(unit.id === enemy2.id) {
+          // pass
+        } else {
+          pass = false;
+          break;
+        }
+      }
+
+      assert.equal(pass, true);
+    });
+  });
+
 });
