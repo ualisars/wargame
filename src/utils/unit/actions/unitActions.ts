@@ -1,6 +1,7 @@
 import {
   computerUnits,
-  playerUnits
+  playerUnits,
+  units
 } from '../../../store/unit/units';
 
 import {gridSize} from '../../../config/map';
@@ -46,8 +47,8 @@ export const getBestUnitsByProperty = (units:Unit[], property:string):Unit[] => 
   return bestUnits;
 }
 
-export const getUnitById = (id:number, units:Unit[]):Unit => {
-  for(let unit of units) {
+export const getUnitById = (id:number, arr:Unit[] = units):Unit => {
+  for(let unit of arr) {
     if(id === unit.id) {
       return unit;
     }
