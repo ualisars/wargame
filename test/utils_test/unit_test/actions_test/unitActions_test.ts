@@ -9,10 +9,11 @@ import {
   playerUnits
 } from '../../../../src/store/unit/units';
 import Unit from '../../../../src/unit/types/Unit';
-
+import {isUnitInArray} from '../../../../src/utils/unit/utils';
 import {
   getBestUnitsByProperty,
   getClosestNodeToUnit,
+  findClosestUnitsToTheNodeCenter,
   getUnitById
 } from '../../../../src/utils/unit/actions';
 
@@ -132,6 +133,64 @@ describe('unitActionsUtils test', () => {
     it('fetchedEnemy should be enemy1', () => {
       let fetchedEnemy:Unit = getUnitById(enemy1.id);
       assert.equal(fetchedEnemy.id, enemy1.id);
+    });
+  });
+
+  describe('findClosestUnitsToTheNodeCenter test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit, unit5:Unit;
+    const node = {x:440, y:280};
+    let units:Unit[] = [];
+    let updatedUnits:Unit[] = [];
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 440, 240, 5, 'player');
+      unit2 = createUnit('Scouts', 400, 320, 5, 'computer');
+      unit3 = createUnit('Pikemen', 480, 320, 5, 'computer');
+      unit4 = createUnit('Militia', 440, 320, 5, 'computer');
+      unit5 = createUnit('LightCavalry', 440, 280, 5, 'computer');
+      unit1.setX(450);
+      unit1.setY(250);
+      unit3.setX(470);
+      unit3.setY(305);
+      unit4.setY(315);
+      unit5.setX(470);
+      unit5.setY(305);
+      units.push(unit1);
+      units.push(unit2);
+      units.push(unit3);
+      units.push(unit4);
+      updatedUnits.push(unit1);
+      updatedUnits.push(unit2);
+      updatedUnits.push(unit3);
+      updatedUnits.push(unit4);
+      updatedUnits.push(unit5);
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+    });
+
+    it('closestUnits to the nodeCenter should only consist of unit3', () => {
+      let closestUnits:Unit[] = findClosestUnitsToTheNodeCenter(node, units);
+      assert.equal(closestUnits.length, 1);
+      assert.equal(isUnitInArray(unit3, closestUnits), true);
+      assert.equal(isUnitInArray(unit1, closestUnits), false);
+      assert.equal(isUnitInArray(unit2, closestUnits), false);
+      assert.equal(isUnitInArray(unit4, closestUnits), false);
+    });
+
+    it('closestUnits to the nodeCenter should be unit3 and unit5', () => {
+      let closestUnits:Unit[] = findClosestUnitsToTheNodeCenter(node, updatedUnits);
+      assert.equal(closestUnits.length, 2);
+      assert.equal(isUnitInArray(unit3, closestUnits), true);
+      assert.equal(isUnitInArray(unit1, closestUnits), false);
+      assert.equal(isUnitInArray(unit2, closestUnits), false);
+      assert.equal(isUnitInArray(unit4, closestUnits), false);
+      assert.equal(isUnitInArray(unit5, closestUnits), true);
     });
   });
 

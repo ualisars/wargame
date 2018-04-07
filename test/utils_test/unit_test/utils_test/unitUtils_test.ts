@@ -69,28 +69,18 @@ describe('UnitUtils utils test', () => {
 
   describe('isUnitInArray', () => {
     let testUnits:Unit[] = [];
-    let u1:Unit = createUnit('scouts', 240, 360, 5, 'computer');
-    let u2:Unit = createUnit('scouts', 240, 360, 5, 'computer');
-    let u3:Unit = createUnit('scouts', 240, 360, 5, 'computer');
+    let unit1:Unit = createUnit('scouts', 240, 360, 5, 'computer');
+    let unit2:Unit = createUnit('scouts', 240, 360, 5, 'computer');
+    let unit3:Unit = createUnit('scouts', 240, 360, 5, 'computer');
 
-    testUnits.push(u1);
-    testUnits.push(u3);
-    it('u1 and u3 should be the testUnits array', (done) => {
-      let u1Found:boolean = false;
-      let u2Found:boolean = false;
-      let u3Found:boolean = false;
+    testUnits.push(unit1);
+    testUnits.push(unit3);
 
-      for(let unit of testUnits) {
-        if(unit.id === u1.id) u1Found = true;
-        else if(unit.id === u2.id) u2Found = true;
-        else if(unit.id === u3.id) u3Found = true;
-      }
+    it('unit1 and unit3 should be the testUnits array', () => {
+      assert.equal(isUnitInArray(unit1, testUnits), true);
+      assert.equal(isUnitInArray(unit2, testUnits), false);
+      assert.equal(isUnitInArray(unit3, testUnits), true);
+    });
 
-      assert.equal(u1Found, true);
-      assert.equal(u2Found, false);
-      assert.equal(u3Found, true);
-
-      done();
-    })
   });
 });

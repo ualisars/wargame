@@ -40,10 +40,10 @@ export const getDistanceBetweenTwoUnitsInGrids = (unit1:Unit, unit2:Unit):number
   return distance;
 }
 
-export const isUnitInArray = (unitToAdd:Unit, arr:any[]):boolean => {
+export const isUnitInArray = (checkedUnit:Unit, arr:any[]):boolean => {
   if(arr.length !== 0) {
     for(let unit of arr) {
-      if(unitToAdd.id === unit.id) {
+      if(unit.id === checkedUnit.id) {
         return true;
       }
     }
