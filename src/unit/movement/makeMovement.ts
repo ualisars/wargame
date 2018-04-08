@@ -1,27 +1,6 @@
-import {
-  drawUnit,
-  spotEnemy,
-  meleeCombat,
-  meleeAttack,
-  charge
-} from '../index';
-import {
-    gridSize,
-    WIDTH
-} from '../../config';
-import {deleteObjectFromArray} from '../../utils';
-import {createUnitObstacle} from '../../map';
+import {drawUnit} from '../index';
+import {gridSize} from '../../config';
 import {ctx} from '../../config/context';
-import {
-  aStar,
-  findPathFromOneNodeToAnother
-} from '../../path';
-import {
-  anotherUnitIsOnTheWay,
-  getBlockingUnit,
-  giveWay,
-  isUnitOutOfCombat
-} from '../../utils';
 import Unit from '../types/Unit';
 import {updateUnit} from './updateUnit';
 import {pursueUnit} from './pursueUnit';

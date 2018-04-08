@@ -9,10 +9,12 @@ import {
   addNodeIntoArray,
   deleteUnitFromArray
 } from '../../index';
+import Unit from '../../../unit/types/Unit';
 
-export const getBlockingUnit = (units:any[], currentUnit:any, x:number, y:number) => {
-  let updatedUnits = deleteObjectFromArray(currentUnit, units);
+export const getBlockingUnit = (units:Unit[], currentUnit:Unit, x:number, y:number):Unit => {
+  let updatedUnits:Unit[] = deleteObjectFromArray(currentUnit, units);
   let currentUnitNextNode = getNodeFromMap(x, y);
+
   for(let unit of updatedUnits) {
     //let alliedUnitNode = getNodeFromMap(unit.x, unit.y, map);
     if(currentUnitNextNode.x === unit.currentNode.x && currentUnitNextNode.y === unit.currentNode.y) {
@@ -22,5 +24,6 @@ export const getBlockingUnit = (units:any[], currentUnit:any, x:number, y:number
       return unit;
     }
   }
+  
   return null;
 }

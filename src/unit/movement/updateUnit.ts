@@ -18,11 +18,9 @@ import {
 import {units} from '../../store/unit/units';
 import {
   anotherUnitIsOnTheWay,
-  getBlockingUnit,
-  giveWay,
-  isUnitOutOfCombat,
   getSurroundedEnemies
 } from '../../utils';
+import {isUnitOutOfCombat,} from '../../utils/unit/movementUtils';
 import Unit from '../types/Unit';
 import {getSurroundedBlockedNodes} from '../../utils/node';
 import {stopMoving} from './stopMoving';
@@ -125,7 +123,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
   }
   if(anotherUnitIsOnTheWay(units, unit, node.x, node.y)) {
     // unit has another allies' unit on its way
-    const permission = unitCanMoveToTheNode(nextNode, unit);
+    const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
     if(permission) {
       console.log('unit ' + unit.name + ' can move to the node:', node);
     } else {

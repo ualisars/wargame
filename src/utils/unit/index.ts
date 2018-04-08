@@ -1,13 +1,4 @@
 import {
-  getBlockingUnit
-} from './block';
-import {
-  giveWay
-} from './giveWay';
-import {
-  isUnitOutOfCombat
-} from './outOfCombat';
-import {
   getUnitsMinProperty,
   getUnitsMaxProperty
 } from './property';
@@ -27,11 +18,8 @@ export {
   anotherUnitIsOnTheWay,
   deleteUnitFromArray,
   deleteUnitFromArmy,
-  getBlockingUnit,
   getDistanceBetweenTwoUnitsInGrids,
   getUnitsMinProperty,
   getUnitsMaxProperty,
-  giveWay,
-  isUnitInArray,
-  isUnitOutOfCombat
+  isUnitInArray
 }

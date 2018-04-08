@@ -15,11 +15,9 @@ import {aStar} from '../../path';
 import {units} from '../../store/unit/units';
 import {
   anotherUnitIsOnTheWay,
-  getBlockingUnit,
-  giveWay,
-  isUnitOutOfCombat,
   getSurroundedEnemies
 } from '../../utils';
+import {isUnitOutOfCombat} from '../../utils/unit/movementUtils';
 import {getSurroundedBlockedNodes} from '../../utils/node';
 import {stopMoving} from './stopMoving';
 import {moveToNextNodeInPursueUnit} from './moveToNextNode';

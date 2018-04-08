@@ -19,13 +19,10 @@ import {
   anotherUnitIsOnTheWay,
   deleteUnitFromArray,
   deleteUnitFromArmy,
-  getBlockingUnit,
   getDistanceBetweenTwoUnitsInGrids,
   getUnitsMinProperty,
   getUnitsMaxProperty,
-  giveWay,
-  isUnitInArray,
-  isUnitOutOfCombat
+  isUnitInArray
 } from './unit';
 import {
   getSurroundedNodes,
@@ -55,9 +52,6 @@ export {
   getDistanceBetweenTwoUnitsInGrids,
   isUnitInArray,
   randomizeMeleeDamage,
-  getBlockingUnit,
-  giveWay,
-  isUnitOutOfCombat,
   anotherUnitIsOnTheWay,
   getUnitsMinProperty,
   getUnitsMaxProperty,
