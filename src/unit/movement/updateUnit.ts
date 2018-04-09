@@ -20,7 +20,7 @@ import {
   anotherUnitIsOnTheWay,
   getSurroundedEnemies
 } from '../../utils';
-import {isUnitOutOfCombat,} from '../../utils/unit/movementUtils';
+import {unitCanGetOutOfCombat,} from '../../utils/unit/movementUtils';
 import Unit from '../types/Unit';
 import {getSurroundedBlockedNodes} from '../../utils/node';
 import {stopMoving} from './stopMoving';
@@ -42,7 +42,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
   }
 
   if(unit.isFighting) { // stop moving if unit is fighting
-    if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
+    if(newMovement && unitCanGetOutOfCombat(unit)) { // unit is trying to out of combat
       console.log('unit can get out of combat');
       unit.setUnitToPursueToNull();
       unit.setIsFightingToFalse(); // unit is not fighting now

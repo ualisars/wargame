@@ -1,9 +1,9 @@
-import {getBlockingUnit} from './getBlockingUnit';
-import {giveWay} from './giveWay';
-import {isUnitOutOfCombat} from './outOfCombat';
+import {
+  calculateChanceToGetOutOfCombat,
+  unitCanGetOutOfCombat
+} from './outOfCombat';
 
 export {
-  getBlockingUnit,
-  giveWay,
-  isUnitOutOfCombat
+  calculateChanceToGetOutOfCombat,
+  unitCanGetOutOfCombat
 }

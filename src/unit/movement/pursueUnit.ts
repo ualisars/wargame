@@ -17,7 +17,7 @@ import {
   anotherUnitIsOnTheWay,
   getSurroundedEnemies
 } from '../../utils';
-import {isUnitOutOfCombat} from '../../utils/unit/movementUtils';
+import {unitCanGetOutOfCombat} from '../../utils/unit/movementUtils';
 import {getSurroundedBlockedNodes} from '../../utils/node';
 import {stopMoving} from './stopMoving';
 import {moveToNextNodeInPursueUnit} from './moveToNextNode';
@@ -31,7 +31,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   // console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
   if(unit.isFighting) {
     unit.setUnitToPursueToNull();
-    if(newMovement && isUnitOutOfCombat(unit)) { // unit is trying to out of combat
+    if(newMovement && unitCanGetOutOfCombat(unit)) { // unit is trying to out of combat
       console.log('unit can get out of combat');
       unit.setIsFightingToFalse(); // unit is not fighting now
       unit.clearFightAgainst(); // now unit not fighting with anyone

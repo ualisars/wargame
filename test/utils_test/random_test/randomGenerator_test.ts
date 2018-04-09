@@ -3,12 +3,12 @@ import {randomizeMeleeDamage} from '../../../src/utils';
 
 describe('randomUtils test', function() {
   describe('randomGenerator test', function() {
-    let meeleAttack = 10;
-    let randomAttack1 = randomizeMeleeDamage(meeleAttack);
-    let randomAttack2 = randomizeMeleeDamage(meeleAttack);
-    let randomAttack3 = randomizeMeleeDamage(meeleAttack);
-    let randomAttack4 = randomizeMeleeDamage(meeleAttack);
-    let randomAttack5 = randomizeMeleeDamage(meeleAttack);
+    let meleeAttack = 10;
+    let randomAttack1 = randomizeMeleeDamage(meleeAttack);
+    let randomAttack2 = randomizeMeleeDamage(meleeAttack);
+    let randomAttack3 = randomizeMeleeDamage(meleeAttack);
+    let randomAttack4 = randomizeMeleeDamage(meleeAttack);
+    let randomAttack5 = randomizeMeleeDamage(meleeAttack);
     it('randomAttack should be more or equal than 8', function() {
       expect(randomAttack1).to.be.least(8);
       expect(randomAttack2).to.be.least(8);

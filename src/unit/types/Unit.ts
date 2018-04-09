@@ -137,7 +137,7 @@ class Unit {
     this.nextNode = node;
   }
 
-  assignEnemy(enemy:any) {
+  assignEnemy(enemy:Unit) {
     if(isObjectEmpty(this.figthAgainst.front)) { // don't have front enemy
       this.figthAgainst.front = enemy;
     } else { // unit is already have front line enemy

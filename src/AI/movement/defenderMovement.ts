@@ -50,7 +50,7 @@ export const defenderMovement = () => {
     // fire function only if enemies number changed
     updateEnemiesInsideControlZone(enemies);
     if(enemies.length > 0) { // enemy try to enter the zone
-      console.error('attackEnemy00');
+      console.error('attackEnemy');
       let defenders:Unit[] = getUnitsByTask('holdPosition');
       for(let defender of defenders) {
         let closestEnemy:Unit = findClosestEnemyInZone(defender, enemies);
