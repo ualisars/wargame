@@ -22,6 +22,7 @@ import {units} from '../../../store/unit/units';
 export const getPriorityUnit = (node:any, units:Unit[]):Unit => {
   let updatedUnits:Unit[] = Object.assign([], units);
   let closestUnits:Unit[] = findClosestUnitsToTheNodeCenter(node, updatedUnits);
+  //console.log('closestUnits', closestUnits);
   if(closestUnits.length === 1) {
     return closestUnits[0];
   }
