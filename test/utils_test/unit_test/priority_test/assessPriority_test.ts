@@ -21,11 +21,11 @@ describe('unitPriorityUtils test', () => {
       removeAllUnits();
       unit1 = createUnit('Pikemen', 440, 160, 5, 'computer');
       unit2 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
-      unit3 = createUnit('Scouts', 480, 200, 5, 'computer');
+      unit3 = createUnit('Militia', 480, 200, 5, 'computer');
       unit4 = createUnit('Militia', 440, 240, 5, 'computer');
 
       // move unit1 towards the node
-    
+      unit1.setY(170);
 
       // add units to the array
       units.push(unit1);
@@ -42,35 +42,48 @@ describe('unitPriorityUtils test', () => {
       removeUnit(unit4);
     });
 
-    it('unit1 should be priority unit', () => {
+    it('unit1 should be priority unit', (done) => {
       let priorityUnit:Unit = getPriorityUnit(node, units);
-      //console.log('priorityUnit.id', priorityUnit.id);
-      let nodeCenterX:number = node.x + 20;
-      let nodeCenterY:number = node.y + 20;
+      assert.equal(priorityUnit.id, unit1.id);
+      done();
+    });
 
-      // console.log('nodeCenterX', nodeCenterX);
-      // console.log('nodeCenterY', nodeCenterY);
-      //
-      // console.log('unit1.centerX', unit1.centerX);
-      // console.log('unit1.centerY', unit1.centerY);
-      //
-      // console.log('unit2.centerX', unit2.centerX);
-      // console.log('unit2.centerY', unit2.centerY);
-      //
-      //
-      // console.log('unit3.centerX', unit3.centerX);
-      // console.log('unit3.centerY', unit3.centerY);
-      //
-      //
-      // console.log('unit4.centerX', unit4.centerX);
-      // console.log('unit4.centerY', unit4.centerY);
-      //
-      //
-      // console.log('unit1.id', unit1.id);
-      // console.log('unit2.id', unit2.id);
-      // console.log('unit3.id', unit3.id);
-      // console.log('unit4.id', unit4.id);
-      //assert.equal(priorityUnit.id, unit1.id);
+    it('unit1 and unit4 in the same distance, unit4 with more speed should be priority unit', (done) => {
+      unit4.setY(230);
+      const priorityUnit:Unit = getPriorityUnit(node, units);
+      assert.equal(priorityUnit.id, unit4.id);
+      done();
+    });
+
+    it('unit3 or unit4 should be priority unit', (done) => {
+      unit3.setX(470);
+      let priorityUnit1:Unit = getPriorityUnit(node, units);
+      let priorityUnit2:Unit = getPriorityUnit(node, units);
+      let priorityUnit3:Unit = getPriorityUnit(node, units);
+      let priorityUnit4:Unit = getPriorityUnit(node, units);
+      let pass1:boolean = true;
+      let pass2:boolean = true;
+      let pass3:boolean = true;
+      let pass4:boolean = true;
+      
+      if(priorityUnit1.id === unit3.id && priorityUnit1.id === unit4.id) {
+        pass1 = true;
+      }
+      if(priorityUnit2.id === unit3.id && priorityUnit2.id === unit4.id) {
+        pass2 = true;
+      }
+      if(priorityUnit3.id === unit3.id && priorityUnit3.id === unit4.id) {
+        pass3 = true;
+      }
+      if(priorityUnit4.id === unit3.id && priorityUnit4.id === unit4.id) {
+        pass4 = true;
+      }
+
+      assert.equal(pass1, true);
+      assert.equal(pass2, true);
+      assert.equal(pass3, true);
+      assert.equal(pass4, true);
+      done();
     });
   });
 });
