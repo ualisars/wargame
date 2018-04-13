@@ -137,7 +137,7 @@ export const chanceUnitToFlee = (unit:any):string => {
   let chance:string;
   let unitSpeed = unit.speed;
   let surroundedEnemies = getSurroundedEnemies(unit);
-  let enemySpeed = getUnitsMaxProperty(surroundedEnemies, 'speed');
+  let enemySpeed = getUnitsMaxProperty('speed', surroundedEnemies);
   let diffInSpeed = unitSpeed - enemySpeed;
   if(diffInSpeed > -10 && diffInSpeed <= 10) {
     chance = 'medium';
