@@ -65,7 +65,7 @@ describe('unitPriorityUtils test', () => {
       let pass2:boolean = true;
       let pass3:boolean = true;
       let pass4:boolean = true;
-      
+
       if(priorityUnit1.id === unit3.id && priorityUnit1.id === unit4.id) {
         pass1 = true;
       }
@@ -84,6 +84,44 @@ describe('unitPriorityUtils test', () => {
       assert.equal(pass3, true);
       assert.equal(pass4, true);
       done();
+    });
+  });
+
+  describe('unitCanMoveToTheNode test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit;
+    let units:Unit[] = [];
+    let node = {x: 440, y: 200};
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Pikemen', 440, 160, 5, 'computer');
+      unit2 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
+      unit3 = createUnit('Militia', 480, 200, 5, 'computer');
+      unit4 = createUnit('Militia', 440, 240, 5, 'computer');
+
+      // move unit1 towards the node
+      unit1.setY(170);
+      unit3.setX(470);
+      // add units to the array
+      units.push(unit1);
+      units.push(unit2);
+      units.push(unit3);
+      units.push(unit4);
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+    });
+
+    it('unit3 can move to the node', () => {
+      assert.equal(unitCanMoveToTheNode(node, unit1), false);
+      assert.equal(unitCanMoveToTheNode(node, unit2), false);
+      assert.equal(unitCanMoveToTheNode(node, unit3), true);
+      assert.equal(unitCanMoveToTheNode(node, unit4), false);
     });
   });
 });
