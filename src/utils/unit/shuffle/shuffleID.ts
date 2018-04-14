@@ -1,4 +1,6 @@
-const setRandomValue = (units:any[]):any[] => {
+import Unit from '../../../unit/types/Unit';
+
+export const setRandomValue = (units:Unit[]):any[] => {
   let ids = [];
   for(let unit of units) {
     let value = Math.random();
@@ -12,7 +14,7 @@ const setRandomValue = (units:any[]):any[] => {
 }
 
 
-const swap = (arr:any[], a:number, b:number) => {
+export const swap = (arr:any[], a:number, b:number) => {
 	let temp = arr[a];
 	arr[a] = arr[b];
 	arr[b] = temp;
