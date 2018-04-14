@@ -234,7 +234,7 @@ class Unit {
   setIsUnitUnderProtectionToFalse() {
     this.isUnitUnderProtection = false;
   }
-  assignUnitToProtect(unit:any) {
+  assignUnitToProtect(unit:Unit) {
     this.unitToProtect = unit;
   }
   clearUnitToProtect() {

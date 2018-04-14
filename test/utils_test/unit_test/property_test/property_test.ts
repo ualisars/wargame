@@ -15,7 +15,6 @@ describe('unitPropertyUtils test',  () => {
   describe('getUnitsMinProperty test', () => {
     let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit;
     let units:Unit[] = [];
-    let node = {x: 440, y: 200};
 
     before(() => {
       removeAllUnits();
