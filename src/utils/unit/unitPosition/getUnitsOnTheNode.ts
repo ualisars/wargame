@@ -1,13 +1,19 @@
 import Unit from '../../../unit/types/Unit';
 import {deleteUnitFromArray} from '../utils';
+
+
 /*
   return all units that is located
   or moving to the particular node
 */
 
-export const getUnitsOnTheNode = (node:any, currentUnit:Unit, units:Unit[]):Unit[] => {
-  let updatedUnits: Unit[] = Object.assign([], units);
-  const otherUnits: Unit[] = deleteUnitFromArray(currentUnit, units);
+export const getUnitsOnTheNode = (node:any, units:Unit[], currentUnit:Unit = null):Unit[] => {
+  let updatedUnits:Unit[] = Object.assign([], units);
+  let otherUnits:Unit[] = Object.assign([], units);
+  if(currentUnit) {
+    otherUnits = deleteUnitFromArray(currentUnit, units);
+  }
+
   const nodeX:number = node.x;
   const nodeY:number = node.y;
   let unitsOnTheNode:Unit[] = [];
@@ -26,5 +32,6 @@ export const getUnitsOnTheNode = (node:any, currentUnit:Unit, units:Unit[]):Unit
       unitsOnTheNode.push(otherUnit);
     }
   }
+
   return unitsOnTheNode;
 }

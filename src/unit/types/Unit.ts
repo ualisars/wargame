@@ -12,6 +12,7 @@ class Unit {
   centerX: number;
   centerY: number;
   radius: number;
+  moveToNode:any;
   moveToNodeX: number;
   moveToNodeY: number;
   currentNode: any;
@@ -135,6 +136,10 @@ class Unit {
 
   setNextNode(node:any) {
     this.nextNode = node;
+  }
+
+  setMoveToNode(node:any) {
+    this.moveToNode = node;
   }
 
   assignEnemy(enemy:Unit) {
