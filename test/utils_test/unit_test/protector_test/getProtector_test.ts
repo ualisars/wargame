@@ -3,10 +3,8 @@ import {createUnit} from '../../../../src/unit/create';
 import {
   getProtector
 } from '../../../../src/utils/unit/protector';
-import {
-  removeUnit,
-  removeAllUnits
-} from '../../../../src/store/unit/units';
+import {removeAllUnits} from '../../../../src/store/unit/units';
+import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('unitProtectorUtils test', () => {

@@ -7,22 +7,27 @@ import {
 } from '../../../../src/utils/unit/utils';
 import Unit from '../../../../src/unit/types/Unit';
 import {createUnit} from '../../../../src/unit/create';
-import {removeUnit} from '../../../../src/store/unit/units';
+import {removeAllUnits} from '../../../../src/store/unit/units';
+import {removeUnit} from '../../../../src/unit/remove';
 
 describe('UnitUtils utils test', () => {
-  let units:Unit[] = [];
-  let unit1:Unit = createUnit('scouts', 120, 0, 5, 'computer');
-  let unit2:Unit = createUnit('scouts', 300, 200, 5, 'computer');
-  let unit3:Unit = createUnit('scouts', 40, 160, 5, 'computer');
-
-  // remove units after test
-  after(() => {
-    removeUnit(unit1);
-    removeUnit(unit2);
-    removeUnit(unit3);
-  });
 
   describe('addUnitIntoArray test', () => {
+
+    let unit1:Unit;
+    let units:Unit[];
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('scouts', 120, 0, 5, 'computer');
+      units = [];
+    });
+
+    after(() => {
+      removeUnit(unit1);
+    });
+
+
     it('unit1 should be inside units array', () => {
       // add unit1 to units
       units = addUnitIntoArray(unit1, units);
@@ -39,6 +44,20 @@ describe('UnitUtils utils test', () => {
 
   describe('deleteUnitFromArray test', () => {
 
+    let unit1:Unit;
+    let units:Unit[];
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('scouts', 120, 0, 5, 'computer');
+      units = [];
+      units = addUnitIntoArray(unit1, units);
+    });
+
+    after(() => {
+      removeUnit(unit1);
+    });
+
     it('unit1 should no longer be in the units', () => {
       let unitsAfter:Unit[] = deleteUnitFromArray(unit1, units);
       let found:boolean = false;
@@ -53,33 +72,56 @@ describe('UnitUtils utils test', () => {
   });
 
   describe('getDistanceBetweenTwoUnitsInGrids test', () => {
-    let testUnit1:Unit = createUnit('scouts', 240, 360, 5, 'computer');
-    let testUnit2:Unit = createUnit('scouts', 440, 320, 5, 'computer');
 
-    after(() => {
-      removeUnit(testUnit1);
-      removeUnit(testUnit2);
+    let unit1:Unit;
+    let unit2:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('scouts', 480, 240, 5, 'computer');
+      unit2 = createUnit('scouts', 520, 160, 5, 'computer');
     });
 
-    it('distance between units should be 6 grids', () => {
-      let distance:number = getDistanceBetweenTwoUnitsInGrids(testUnit1, testUnit2);
-      assert.equal(distance, 6);
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+    });
+
+    it('distance between units should be 3 grids', () => {
+      let distance:number = getDistanceBetweenTwoUnitsInGrids(unit1, unit2);
+      assert.equal(distance, 3);
     });
   });
 
-  describe('isUnitInArray', () => {
-    let testUnits:Unit[] = [];
-    let unit1:Unit = createUnit('scouts', 240, 360, 5, 'computer');
-    let unit2:Unit = createUnit('scouts', 240, 360, 5, 'computer');
-    let unit3:Unit = createUnit('scouts', 240, 360, 5, 'computer');
+  describe('isUnitInArray test', () => {
 
-    testUnits.push(unit1);
-    testUnits.push(unit3);
+    let units:Unit[];
+    let unit1:Unit;
+    let unit2:Unit;
+    let unit3:Unit;
 
-    it('unit1 and unit3 should be the testUnits array', () => {
-      assert.equal(isUnitInArray(unit1, testUnits), true);
-      assert.equal(isUnitInArray(unit2, testUnits), false);
-      assert.equal(isUnitInArray(unit3, testUnits), true);
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('scouts', 440, 240, 5, 'computer');
+      unit2 = createUnit('scouts', 120, 320, 5, 'computer');
+      unit3 = createUnit('scouts', 240, 440, 5, 'computer');
+
+      units = [];
+      units.push(unit1);
+      units.push(unit3);
+    });
+
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+    });
+
+
+    it('unit1 and unit3 should be the units array', () => {
+      assert.equal(isUnitInArray(unit1, units), true);
+      assert.equal(isUnitInArray(unit2, units), false);
+      assert.equal(isUnitInArray(unit3, units), true);
     });
 
   });

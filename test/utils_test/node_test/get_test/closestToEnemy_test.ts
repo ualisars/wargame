@@ -9,10 +9,8 @@ import {
   removeFromHidingEnemies
 } from '../../../../src/store/AI/enemies/hidingEnemies';
 import {createUnit} from '../../../../src/unit/create';
-import {
-  removeUnit,
-  removeAllUnits
-} from '../../../../src/store/unit/units';
+import {removeAllUnits} from '../../../../src/store/unit/units';
+import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('NodeUtils: get: closestToEnemy test', () => {

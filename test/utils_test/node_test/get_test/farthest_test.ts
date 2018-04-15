@@ -4,10 +4,8 @@ import {
   getFarthestXNodes
 } from '../../../../src/utils/node/get';
 import {createUnit} from '../../../../src/unit/create';
-import {
-  removeUnit,
-  removeAllUnits
-} from '../../../../src/store/unit/units';
+import {removeAllUnits} from '../../../../src/store/unit/units';
+import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('NodeUtils: get: farthest nodes test', () => {

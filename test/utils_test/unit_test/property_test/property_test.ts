@@ -4,10 +4,8 @@ import {
   getUnitsMinProperty,
   getUnitsMaxProperty
 } from '../../../../src/utils/unit/property';
-import {
-  removeUnit,
-  removeAllUnits
-} from '../../../../src/store/unit/units';
+import {removeAllUnits} from '../../../../src/store/unit/units';
+import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('unitPropertyUtils test',  () => {

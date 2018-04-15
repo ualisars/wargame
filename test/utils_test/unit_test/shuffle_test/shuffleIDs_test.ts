@@ -1,10 +1,8 @@
 import {assert} from 'chai';
 import {createUnit} from '../../../../src/unit/create';
 import {shuffleID} from '../../../../src/utils/unit/shuffle';
-import {
-  removeUnit,
-  removeAllUnits
-} from '../../../../src/store/unit/units';
+import {removeAllUnits} from '../../../../src/store/unit/units';
+import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('unitShuffleUtils test', () => {

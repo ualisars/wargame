@@ -16,10 +16,8 @@ import {
   getWorstEnemyByProperty,
   getWorstUnitByProperty
 } from '../../../../src/utils/unit/AI';
-import {
-  removeUnit,
-  removeAllUnits
-} from '../../../../src/store/unit/units';
+import {removeAllUnits} from '../../../../src/store/unit/units';
+import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
 
 

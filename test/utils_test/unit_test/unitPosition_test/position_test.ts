@@ -1,10 +1,8 @@
 import {assert} from 'chai';
 import {createUnit} from '../../../../src/unit/create';
 import {anotherUnitIsOnTheWay} from '../../../../src/utils/unit/unitPosition';
-import {
-  removeUnit,
-  removeAllUnits
-} from '../../../../src/store/unit/units';
+import {removeAllUnits} from '../../../../src/store/unit/units';
+import {removeUnit} from '../../../../src/unit/remove';
 import {isUnitInArray} from '../../../../src/utils/unit/utils';
 import Unit from '../../../../src/unit/types/Unit';
 
