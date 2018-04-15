@@ -13,7 +13,7 @@ import {
 import {aStar} from '../../../../path';
 import {initialMap} from '../../../../map/createMap/initialMap';
 import {updateUnit} from '../../../../unit/movement';
-import {assignUnitMoveToPosition} from '../../../../unit/actions/unitActions';
+import {assignUnitMoveToPosition} from '../../../../unit/position';
 
 
 export const advance = () => {

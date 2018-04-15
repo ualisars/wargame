@@ -5,12 +5,13 @@ import {
 } from '../../store/unit/units';
 import {incUnitId} from '../../store/unit/unitId';
 import {drawUnit} from '../draw/drawUnit';
+import Unit from '../types/Unit';
 
-import {chooseUnitType} from '../actions/unitActions';
+import {chooseUnitType} from '../choose';
 
 // create Unit and immediatly push it into units array
 export let createUnit = (type:string, x:number, y:number, radius:number, controlBy:string) => {
-  let unit:any;
+  let unit:Unit;
   unit = chooseUnitType(type, x, y, radius, controlBy);
   units.push(unit);
   if(controlBy === 'player') playerUnits.push(unit);

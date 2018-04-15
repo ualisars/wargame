@@ -1,8 +1,10 @@
 import {
-  onChooseUnit,
   assignUnitMoveToPosition,
+} from './position';
+import {
+  onChooseUnit,
   chooseUnitType
-} from './actions';
+} from './choose';
 import {
   createUnit
 } from './create';

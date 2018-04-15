@@ -5,7 +5,7 @@ import {
 import {
   getNodeFromMap
 } from '../../utils';
-import {assignUnitMoveToPosition} from '../actions';
+import {assignUnitMoveToPosition} from '../position';
 import {
   createUnitObstacle,
   addNeighbors

@@ -1,13 +1,3 @@
-import {gridSize} from '../../config';
-import {units} from '../../store/unit/units';
-import {
-  currentlyChosenUnit,
-  assignCurrentlyChosenUnit,
-} from '../../store/unit/currentlyChosenUnit';
-import {unitId} from '../../store/unit/unitId';
-import {loadImage} from '../../utils';
-import {ctx} from '../../config/context';
-import Unit from '../types/Unit';
 // unit types
 import {
   Archers,
@@ -21,36 +11,7 @@ import {
   Pikemen,
   Scouts
 }  from '../types';
-
-
-export const onChooseUnit = (units:Unit[], mouseX:number, mouseY:number) => {
-  let foundedUnit = null;
-  for(let unit of units) {
-    let bottomRightX = unit.x + gridSize;
-    let bottomRightY = unit.y + gridSize;
-    if(mouseX >= unit.x && mouseX < bottomRightX && mouseY >= unit.y && mouseY < bottomRightY) {
-      console.log('unit', unit.name, ' was chosen');
-      unit.isCurrentlyChosen = true;
-      foundedUnit = unit;
-    }
-  }
-  assignCurrentlyChosenUnit(foundedUnit);
-}
-
-
-
-
-
-export const assignUnitMoveToPosition = (unit:Unit, x:number, y:number) => {
-  //console.error('assignMoveToPosition');
-  if(unit) {
-    unit.moveToNodeX = x;
-    unit.moveToNodeY = y;
-    console.log(unit.name + ' is moving to node:' + unit.moveToNodeX + ' y:' + unit.moveToNodeY);
-  } else {
-    console.log('warrior not chosen');
-  }
-}
+import {unitId} from '../../store/unit/unitId';
 
 export const chooseUnitType = (type:string, x:number, y:number, radius:number, controlBy:string) => {
   let unit:any;

@@ -3,7 +3,7 @@ import {getNodeFromMap} from '../../utils/node/get/fromMap';
 import {initialMap} from '../../map/createMap/initialMap';
 import {updateUnit} from './updateUnit';
 import {aStar} from '../../path/aStar/AStar';
-import {assignUnitMoveToPosition} from '../actions';
+import {assignUnitMoveToPosition} from '../position';
 
 export const moveTo = (unit:Unit, moveToX:number, moveToY:number):void => {
   if(unit.isMoving) {

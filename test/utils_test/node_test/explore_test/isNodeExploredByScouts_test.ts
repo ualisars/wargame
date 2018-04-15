@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {createUnit} from '../../../../src/unit/create';
 import {isNodeExploredByScouts} from '../../../../src/utils/node/explore';
-import {assignUnitMoveToPosition} from '../../../../src/unit/actions';
+import {assignUnitMoveToPosition} from '../../../../src/unit/position';
 import {
   removeUnit,
   removeAllUnits

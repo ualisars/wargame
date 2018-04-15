@@ -19,7 +19,7 @@ import {
   updateUnit,
   pursueUnit
 } from '../../../../unit/movement';
-import {assignUnitMoveToPosition} from '../../../../unit/actions/unitActions';
+import {assignUnitMoveToPosition} from '../../../../unit/position';
 /*
   What neutral AI should do in fightStage
   1. Powerful units attacks
