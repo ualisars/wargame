@@ -114,14 +114,14 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
 
   // ally unit is on the destination position
   // currentUnit should stop moving
-  if(anotherUnitIsOnTheWay(units, unit, node.x, node.y) && i === updatedPath.length - 1) {
+  if(anotherUnitIsOnTheWay(units, unit, node) && i === updatedPath.length - 1) {
     console.error('another unit occupying destination position');
     unit.moveToNodeX = unit.x;
     unit.moveToNodeY = unit.y;
     stopMoving(unit, currentNode);
     return;
   }
-  if(anotherUnitIsOnTheWay(units, unit, node.x, node.y)) {
+  if(anotherUnitIsOnTheWay(units, unit, node)) {
     // unit has another allies' unit on its way
     const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
     if(permission) {

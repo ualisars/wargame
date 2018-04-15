@@ -123,7 +123,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     return;
   }
 
-  if(anotherUnitIsOnTheWay(units, unit, node.x, node.y)) {
+  if(anotherUnitIsOnTheWay(units, unit, node)) {
     // unit has another allies' unit on its way
     console.error('pursueUnit: another unit is on the way x:',node.x, 'y:',node.y);
     let blockedNodes = getSurroundedBlockedNodes(unit);
