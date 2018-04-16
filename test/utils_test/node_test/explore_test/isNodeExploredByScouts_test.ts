@@ -15,7 +15,7 @@ describe('NodeUtils test: explore test', () => {
 
     before(() => {
       removeAllUnits();
-      scout = createUnit('scouts', 120, 0, 5, 'computer');
+      scout = createUnit('scouts', 120, 0, 'computer');
       scout.assignTask('exploration');
       const x:number = 242;
       const y:number = 167;

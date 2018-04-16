@@ -15,11 +15,11 @@ describe('unitProtectorUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      currentUnit = createUnit('Militia', 440, 160, 5, 'computer');
-      unit1 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
-      unit2 = createUnit('HeavyCavalry', 480, 200, 5, 'computer');
-      unit3 = createUnit('Pikemen', 360, 120, 5, 'computer');
-      unit4 = createUnit('Scouts', 440, 240, 5, 'computer');
+      currentUnit = createUnit('Militia', 440, 160, 'computer');
+      unit1 = createUnit('HeavyInfantry', 400, 160, 'computer');
+      unit2 = createUnit('HeavyCavalry', 480, 200, 'computer');
+      unit3 = createUnit('Pikemen', 360, 120, 'computer');
+      unit4 = createUnit('Scouts', 440, 240, 'computer');
 
       // assign unit3 to protect current unit
       unit3.assignUnitToProtect(currentUnit);

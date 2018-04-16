@@ -17,10 +17,10 @@ describe('unitPriorityUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('Pikemen', 440, 160, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
-      unit3 = createUnit('Militia', 480, 200, 5, 'computer');
-      unit4 = createUnit('Militia', 440, 240, 5, 'computer');
+      unit1 = createUnit('Pikemen', 440, 160, 'computer');
+      unit2 = createUnit('HeavyInfantry', 400, 160, 'computer');
+      unit3 = createUnit('Militia', 480, 200, 'computer');
+      unit4 = createUnit('Militia', 440, 240, 'computer');
 
       // move unit1 towards the node
       unit1.setY(170);
@@ -92,10 +92,10 @@ describe('unitPriorityUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('Pikemen', 440, 160, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
-      unit3 = createUnit('Militia', 480, 200, 5, 'computer');
-      unit4 = createUnit('Militia', 440, 240, 5, 'computer');
+      unit1 = createUnit('Pikemen', 440, 160, 'computer');
+      unit2 = createUnit('HeavyInfantry', 400, 160, 'computer');
+      unit3 = createUnit('Militia', 480, 200, 'computer');
+      unit4 = createUnit('Militia', 440, 240, 'computer');
 
       // move unit1 towards the node
       unit1.setY(170);

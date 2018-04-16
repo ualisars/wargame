@@ -26,8 +26,8 @@ class Peltasts extends Unit {
   charge: number = 1;
   discipline: number = 50;
 
-  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
-    super(id, x, y, radius, controlBy);
+  constructor(id:number, x:number, y:number, controlBy:string='player') {
+    super(id, x, y, controlBy);
   }
 }
 

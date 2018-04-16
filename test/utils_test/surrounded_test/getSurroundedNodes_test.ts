@@ -14,7 +14,7 @@ describe('Surrounded utils test', () => {
       removeAllUnits();
     });
 
-    let unit:Unit = createUnit('scouts', 520, 160, 5, 'computer');
+    let unit:Unit = createUnit('scouts', 520, 160, 'computer');
 
     // remove unit after test is completed
     after(() => {

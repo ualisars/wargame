@@ -3,6 +3,7 @@ import {
   isObjectEmpty,
   getNodeFromMap
 } from '../../utils';
+import {radius} from '../../config/unit';
 
 class Unit {
   id: number;
@@ -11,7 +12,7 @@ class Unit {
   y: number;
   centerX: number;
   centerY: number;
-  radius: number;
+  radius: number = radius;
   moveToNode:any;
   moveToNodeX: number;
   moveToNodeY: number;
@@ -19,7 +20,7 @@ class Unit {
   nextNode:any;
   isCurrentlyChosen: boolean = false;
   controlBy: string;
-  imgSrc:string = './src/img/units/pikemen.jpg';
+  imgSrc: string = './src/img/units/pikemen.jpg';
   isMoving: boolean = false;
   isVisible:boolean = false;
   unitToPursue: any = null;
@@ -63,11 +64,10 @@ class Unit {
   beCloseTo:any[] = [];
   frozen:boolean = false; // to prevent too many orders in short period of time
 
-  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
+  constructor(id:number, x:number, y:number, controlBy:string='player') {
     this.id = id;
     this.x = x;
     this.y = y;
-    this.radius = radius;
     this.centerX = x + (gridSize / 2);
     this.centerY = y + (gridSize / 2);
     this.controlBy = controlBy;

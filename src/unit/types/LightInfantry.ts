@@ -20,8 +20,8 @@ class LightInfantry extends Unit {
   charge: number = 2;
   discipline: number = 30;
 
-  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
-    super(id, x, y, radius, controlBy);
+  constructor(id:number, x:number, y:number, controlBy:string='player') {
+    super(id, x, y, controlBy);
   }
 }
 

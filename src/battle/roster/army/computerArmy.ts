@@ -12,7 +12,7 @@ export const createComputerArmy = () => {
       let type = unit.name;
       let x = node.x;
       let y = node.y;
-      createUnit(type, x, y, 15, 'computer');
+      createUnit(type, x, y, 'computer');
       deleteNodeFromComputerNodes(node);
     }
 }

@@ -20,8 +20,8 @@ class Scouts extends Unit {
   charge: number = 1;
   discipline: number = 10;
 
-  constructor(id:number, x:number, y:number, radius:number, controlBy:string='player') {
-    super(id, x, y, radius, controlBy);
+  constructor(id:number, x:number, y:number, controlBy:string='player') {
+    super(id, x, y, controlBy);
   }
 }
 

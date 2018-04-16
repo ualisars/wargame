@@ -29,9 +29,9 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('scouts', 280, 200, 5, 'computer');
-      unit2 = createUnit('scouts', 480, 80, 5, 'computer');
-      unit3 = createUnit('scouts', 480, 160, 5, 'computer');
+      unit1 = createUnit('scouts', 280, 200, 'computer');
+      unit2 = createUnit('scouts', 480, 80, 'computer');
+      unit3 = createUnit('scouts', 480, 160, 'computer');
     });
 
     let node:any = {x: 400, y: 160};
@@ -58,10 +58,10 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('scouts', 400, 280, 5, 'computer');
-      unit2 = createUnit('scouts', 560, 240, 5, 'computer');
-      unit3 = createUnit('scouts', 920, 80, 5, 'computer');
-      unit4 = createUnit('scouts', 160, 480, 5, 'computer');
+      unit1 = createUnit('scouts', 400, 280, 'computer');
+      unit2 = createUnit('scouts', 560, 240, 'computer');
+      unit3 = createUnit('scouts', 920, 80, 'computer');
+      unit4 = createUnit('scouts', 160, 480, 'computer');
     });
 
     // remove units after test completed
@@ -84,10 +84,10 @@ describe('unitUtils: AI test', () => {
     let exclusion:Unit[] = [];
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
-      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 'computer');
       exclusion.push(unit1);
     });
 
@@ -120,10 +120,10 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
-      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 'computer');
     });
 
     // remove units after test completed
@@ -170,10 +170,10 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'player');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'player');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'player');
-      unit4 = createUnit('Militia', 160, 480, 5, 'player');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'player');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'player');
+      unit3 = createUnit('Hoplites', 920, 80, 'player');
+      unit4 = createUnit('Militia', 160, 480, 'player');
     });
 
     // remove units after test completed
@@ -210,10 +210,10 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      enemy1 = createUnit('HeavyCavalry', 400, 280, 5, 'player');
-      enemy2 = createUnit('HeavyInfantry', 560, 240, 5, 'player');
-      enemy3 = createUnit('Hoplites', 920, 80, 5, 'player');
-      enemy4 = createUnit('Militia', 160, 480, 5, 'player');
+      enemy1 = createUnit('HeavyCavalry', 400, 280, 'player');
+      enemy2 = createUnit('HeavyInfantry', 560, 240, 'player');
+      enemy3 = createUnit('Hoplites', 920, 80, 'player');
+      enemy4 = createUnit('Militia', 160, 480, 'player');
     });
 
     // remove units after test completed
@@ -257,11 +257,11 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
-      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
-      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 'computer');
       unit2.setIsFightingToTrue();
       exclusion.push(unit1);
       exclusion.push(unit5);
@@ -313,13 +313,13 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit = createUnit('HeavyCavalry', 440, 160, 5, 'player');
-      ally1 = createUnit('HeavyCavalry', 0, 320, 5, 'player');
-      ally2 = createUnit('HeavyCavalry', 880, 280, 5, 'player');
-      enemy1 = createUnit('HeavyCavalry', 400, 280, 5, 'player');
-      enemy2 = createUnit('HeavyInfantry', 560, 240, 5, 'player');
-      enemy3 = createUnit('Hoplites', 920, 80, 5, 'player');
-      enemy4 = createUnit('Militia', 160, 480, 5, 'player');
+      unit = createUnit('HeavyCavalry', 440, 160, 'player');
+      ally1 = createUnit('HeavyCavalry', 0, 320, 'player');
+      ally2 = createUnit('HeavyCavalry', 880, 280, 'player');
+      enemy1 = createUnit('HeavyCavalry', 400, 280, 'player');
+      enemy2 = createUnit('HeavyInfantry', 560, 240, 'player');
+      enemy3 = createUnit('Hoplites', 920, 80, 'player');
+      enemy4 = createUnit('Militia', 160, 480, 'player');
     });
 
     // remove units after test completed
@@ -352,11 +352,11 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
-      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
-      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 'computer');
       unit1.assignTask('exploration');
       unit3.assignTask('patrol');
       exclusion.push(unit2);
@@ -435,14 +435,14 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
-      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
-      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
-      unit6 = createUnit('Scouts', 600, 40, 5, 'computer');
-      unit7 = createUnit('Scouts', 1160, 40, 5, 'computer');
-      unit8 = createUnit('Scouts', 560, 520, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 'computer');
+      unit6 = createUnit('Scouts', 600, 40, 'computer');
+      unit7 = createUnit('Scouts', 1160, 40, 'computer');
+      unit8 = createUnit('Scouts', 560, 520, 'computer');
       unit1.assignTask('exploration');
       unit2.assignTask('holdPosition');
       unit3.assignTask('protection');
@@ -579,11 +579,11 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
-      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
-      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 'computer');
       unit2.health = 80;
       unit3.health = 30;
       unit5.health = 45;
@@ -677,11 +677,11 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
-      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
-      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 'computer');
       unit2.health = 80;
       unit3.health = 30;
       unit5.health = 45;
@@ -762,14 +762,14 @@ describe('unitUtils: AI test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 400, 280, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 240, 5, 'computer');
-      unit3 = createUnit('Hoplites', 920, 80, 5, 'computer');
-      unit4 = createUnit('Militia', 160, 480, 5, 'computer');
-      unit5 = createUnit('Scouts', 1200, 480, 5, 'computer');
-      unit6 = createUnit('Scouts', 600, 40, 5, 'computer');
-      unit7 = createUnit('Scouts', 1160, 40, 5, 'computer');
-      unit8 = createUnit('Scouts', 560, 520, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 400, 280, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('Militia', 160, 480, 'computer');
+      unit5 = createUnit('Scouts', 1200, 480, 'computer');
+      unit6 = createUnit('Scouts', 600, 40, 'computer');
+      unit7 = createUnit('Scouts', 1160, 40, 'computer');
+      unit8 = createUnit('Scouts', 560, 520, 'computer');
       unit1.assignTask('exploration');
       unit2.assignTask('holdPosition');
       unit3.assignTask('protection');

@@ -19,7 +19,7 @@ describe('UnitUtils utils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('scouts', 120, 0, 5, 'computer');
+      unit1 = createUnit('scouts', 120, 0, 'computer');
       units = [];
     });
 
@@ -49,7 +49,7 @@ describe('UnitUtils utils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('scouts', 120, 0, 5, 'computer');
+      unit1 = createUnit('scouts', 120, 0, 'computer');
       units = [];
       units = addUnitIntoArray(unit1, units);
     });
@@ -78,8 +78,8 @@ describe('UnitUtils utils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('scouts', 480, 240, 5, 'computer');
-      unit2 = createUnit('scouts', 520, 160, 5, 'computer');
+      unit1 = createUnit('scouts', 480, 240, 'computer');
+      unit2 = createUnit('scouts', 520, 160, 'computer');
     });
 
     after(() => {
@@ -102,9 +102,9 @@ describe('UnitUtils utils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('scouts', 440, 240, 5, 'computer');
-      unit2 = createUnit('scouts', 120, 320, 5, 'computer');
-      unit3 = createUnit('scouts', 240, 440, 5, 'computer');
+      unit1 = createUnit('scouts', 440, 240, 'computer');
+      unit2 = createUnit('scouts', 120, 320, 'computer');
+      unit3 = createUnit('scouts', 240, 440, 'computer');
 
       units = [];
       units.push(unit1);

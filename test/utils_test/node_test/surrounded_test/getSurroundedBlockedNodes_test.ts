@@ -14,9 +14,9 @@ describe('NodeUtils: surrounded test', () => {
     });
 
     // create units
-    const unit:Unit = createUnit('scouts', 320, 120, 5, 'computer');
-    const alliedUnit1:Unit = createUnit('scouts', 320, 80, 5, 'computer');
-    const alliedUnit2:Unit = createUnit('scouts', 280, 80, 5, 'computer');
+    const unit:Unit = createUnit('scouts', 320, 120, 'computer');
+    const alliedUnit1:Unit = createUnit('scouts', 320, 80, 'computer');
+    const alliedUnit2:Unit = createUnit('scouts', 280, 80, 'computer');
 
     alliedUnit2.setNextNode({x: 280, y: 120});
 

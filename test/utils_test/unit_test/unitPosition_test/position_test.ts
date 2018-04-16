@@ -16,13 +16,13 @@ describe('unitPositionUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyInfantry', 480, 160, 5, 'computer');
-      unit2 = createUnit('HeavyCavalry', 400, 200, 5, 'computer');
-      unit3 = createUnit('Pikemen', 560, 160, 5, 'computer');
-      unit4 = createUnit('Scouts', 440, 120, 5, 'computer');
-      unit5 = createUnit('Scouts', 440, 160, 5, 'computer');
-      unit6 = createUnit('Scouts', 520, 200, 5, 'computer');
-      unit7 = createUnit('Scouts', 520, 240, 5, 'computer');
+      unit1 = createUnit('HeavyInfantry', 480, 160, 'computer');
+      unit2 = createUnit('HeavyCavalry', 400, 200, 'computer');
+      unit3 = createUnit('Pikemen', 560, 160, 'computer');
+      unit4 = createUnit('Scouts', 440, 120, 'computer');
+      unit5 = createUnit('Scouts', 440, 160, 'computer');
+      unit6 = createUnit('Scouts', 520, 200, 'computer');
+      unit7 = createUnit('Scouts', 520, 240, 'computer');
 
       // assign movement
       unit1.setNextNode({x: 440, y: 160});

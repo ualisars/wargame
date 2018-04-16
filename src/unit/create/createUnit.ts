@@ -10,9 +10,9 @@ import Unit from '../types/Unit';
 import {chooseUnitType} from '../choose';
 
 // create Unit and immediatly push it into units array
-export let createUnit = (type:string, x:number, y:number, radius:number, controlBy:string) => {
+export let createUnit = (type:string, x:number, y:number, controlBy:string) => {
   let unit:Unit;
-  unit = chooseUnitType(type, x, y, radius, controlBy);
+  unit = chooseUnitType(type, x, y, controlBy);
   units.push(unit);
   if(controlBy === 'player') playerUnits.push(unit);
   else if(controlBy === 'computer') computerUnits.push(unit);

@@ -17,7 +17,7 @@ describe('NodeUtils: get: closestToEnemy test', () => {
 
 
   // add cavalry to hidingEnemies
-  let pikemen:Unit = createUnit('pikemen', 130, 60, 5, 'player');
+  let pikemen:Unit = createUnit('pikemen', 130, 60, 'player');
   before(() => {
     removeAllUnits();
     addToHidingEnemies(pikemen);

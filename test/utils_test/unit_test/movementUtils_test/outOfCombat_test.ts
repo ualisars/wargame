@@ -14,9 +14,9 @@ describe('unitMovementUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit = createUnit('HeavyCavalry', 400, 160, 5, 'computer');
-      enemy1 = createUnit('LightInfantry', 320, 120, 5, 'player');
-      enemy2 = createUnit('Pikemen', 400, 120, 5, 'player');
+      unit = createUnit('HeavyCavalry', 400, 160, 'computer');
+      enemy1 = createUnit('LightInfantry', 320, 120, 'player');
+      enemy2 = createUnit('Pikemen', 400, 120, 'player');
 
       // explicitly assign speed and mobility
       // in order to avoid problem when characterictics will be changed

@@ -22,7 +22,7 @@ describe('unitActionsUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit = createUnit('scouts', 560, 120, 5, 'computer');
+      unit = createUnit('scouts', 560, 120, 'computer');
     });
 
     let node:any = {x: 400, y: 160};
@@ -54,12 +54,12 @@ describe('unitActionsUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 560, 120, 5, 'player');
-      unit2 = createUnit('LightCavalry', 560, 120, 5, 'player');
-      unit3 = createUnit('Pikemen', 560, 120, 5, 'player');
-      enemy1 = createUnit('HeavyInfantry', 560, 120, 5, 'computer');
-      enemy2 = createUnit('HeavyCavalry', 560, 120, 5, 'computer');
-      enemy3 = createUnit('Militia', 560, 120, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 560, 120, 'player');
+      unit2 = createUnit('LightCavalry', 560, 120, 'player');
+      unit3 = createUnit('Pikemen', 560, 120, 'player');
+      enemy1 = createUnit('HeavyInfantry', 560, 120, 'computer');
+      enemy2 = createUnit('HeavyCavalry', 560, 120, 'computer');
+      enemy3 = createUnit('Militia', 560, 120, 'computer');
     });
 
     // remove units after test completed
@@ -113,8 +113,8 @@ describe('unitActionsUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 560, 120, 5, 'player');
-      enemy1 = createUnit('HeavyInfantry', 560, 120, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 560, 120, 'player');
+      enemy1 = createUnit('HeavyInfantry', 560, 120, 'computer');
     });
 
     // remove units after test completed
@@ -145,17 +145,17 @@ describe('unitActionsUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 440, 160, 5, 'computer');
-      unit2 = createUnit('Scouts', 400, 160, 5, 'computer');
-      unit3 = createUnit('Pikemen', 480, 200, 5, 'computer');
-      unit4 = createUnit('Militia', 440, 240, 5, 'computer');
-      unit5 = createUnit('LightCavalry', 400, 200, 5, 'computer');
+      unit1 = createUnit('HeavyCavalry', 440, 160, 'computer');
+      unit2 = createUnit('Scouts', 400, 160, 'computer');
+      unit3 = createUnit('Pikemen', 480, 200, 'computer');
+      unit4 = createUnit('Militia', 440, 240, 'computer');
+      unit5 = createUnit('LightCavalry', 400, 200, 'computer');
 
-      unit6 = createUnit('HeavyCavalry', 440, 160, 5, 'computer');
-      unit7 = createUnit('Scouts', 400, 160, 5, 'computer');
-      unit8 = createUnit('Pikemen', 480, 200, 5, 'computer');
-      unit9 = createUnit('Militia', 440, 240, 5, 'computer');
-      unit10 = createUnit('LightCavalry', 400, 200, 5, 'computer');
+      unit6 = createUnit('HeavyCavalry', 440, 160, 'computer');
+      unit7 = createUnit('Scouts', 400, 160, 'computer');
+      unit8 = createUnit('Pikemen', 480, 200, 'computer');
+      unit9 = createUnit('Militia', 440, 240, 'computer');
+      unit10 = createUnit('LightCavalry', 400, 200, 'computer');
 
 
 

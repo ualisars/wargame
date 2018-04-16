@@ -14,13 +14,13 @@ describe('unitShuffleUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('Militia', 440, 160, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
-      unit3 = createUnit('HeavyCavalry', 480, 200, 5, 'computer');
-      unit4 = createUnit('Pikemen', 360, 120, 5, 'computer');
-      unit5 = createUnit('Scouts', 440, 240, 5, 'computer');
-      unit6 = createUnit('Militia', 440, 160, 5, 'computer');
-      unit7 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
+      unit1 = createUnit('Militia', 440, 160, 'computer');
+      unit2 = createUnit('HeavyInfantry', 400, 160, 'computer');
+      unit3 = createUnit('HeavyCavalry', 480, 200, 'computer');
+      unit4 = createUnit('Pikemen', 360, 120, 'computer');
+      unit5 = createUnit('Scouts', 440, 240, 'computer');
+      unit6 = createUnit('Militia', 440, 160, 'computer');
+      unit7 = createUnit('HeavyInfantry', 400, 160, 'computer');
 
       units.push(unit1);
       units.push(unit2);

@@ -15,7 +15,7 @@ export const createPlayerArmy = () => {
       let type = unit.name;
       let x = node.x;
       let y = node.y;
-      createUnit(type, x, y, 15, 'player');
+      createUnit(type, x, y, 'player');
       deleteNodeFromPlayerNodes(node);
     }
     resolve();

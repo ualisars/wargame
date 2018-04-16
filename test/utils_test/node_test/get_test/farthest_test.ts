@@ -15,7 +15,7 @@ describe('NodeUtils: get: farthest nodes test', () => {
   });
 
   // add cavalry to hidingEnemies
-  let enemy:Unit = createUnit('lightInfantry', 80, 40, 5, 'player');
+  let enemy:Unit = createUnit('lightInfantry', 80, 40, 'player');
 
   let nodes:any[] = [
     {x: 80, y: 80},

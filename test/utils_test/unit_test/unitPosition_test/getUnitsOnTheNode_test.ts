@@ -15,12 +15,12 @@ describe('unitPositionUtils test', () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('Militia', 480, 160, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 560, 80, 5, 'computer');
-      unit3 = createUnit('HeavyCavalry', 1160, 320, 5, 'computer');
-      unit4 = createUnit('Pikemen', 160, 320, 5, 'computer');
-      unit5 = createUnit('Scouts', 480, 480, 5, 'computer');
-      unit6 = createUnit('Scouts', 440, 160, 5, 'computer');
+      unit1 = createUnit('Militia', 480, 160, 'computer');
+      unit2 = createUnit('HeavyInfantry', 560, 80, 'computer');
+      unit3 = createUnit('HeavyCavalry', 1160, 320, 'computer');
+      unit4 = createUnit('Pikemen', 160, 320, 'computer');
+      unit5 = createUnit('Scouts', 480, 480, 'computer');
+      unit6 = createUnit('Scouts', 440, 160, 'computer');
 
       // unit1, unit2 and unit5 are going to that node
       unit1.setNextNode(node);

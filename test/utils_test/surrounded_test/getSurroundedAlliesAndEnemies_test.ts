@@ -16,10 +16,10 @@ describe('surroundedUtils test', () => {
       removeAllUnits();
     });
 
-    let unit:Unit = createUnit('lightInfantry', 280, 520, 5, 'player');
-    let enemy1:Unit = createUnit('lightInfantry', 280, 440, 5, 'computer');
-    let enemy2:Unit = createUnit('lightInfantry', 760, 320, 5, 'computer');
-    let enemy3:Unit = createUnit('lightInfantry', 320, 520, 5, 'computer');
+    let unit:Unit = createUnit('lightInfantry', 280, 520,'player');
+    let enemy1:Unit = createUnit('lightInfantry', 280, 440, 'computer');
+    let enemy2:Unit = createUnit('lightInfantry', 760, 320, 'computer');
+    let enemy3:Unit = createUnit('lightInfantry', 320, 520, 'computer');
 
     let enemy1ID:number = enemy1.id;
     let enemy2ID:number = enemy2.id;
@@ -57,10 +57,10 @@ describe('surroundedUtils test', () => {
       removeAllUnits();
     });
 
-    let unit:Unit = createUnit('archers', 280, 520, 5, 'player');
-    let ally1:Unit = createUnit('archers', 280, 440, 5, 'player');
-    let ally2:Unit = createUnit('archers', 760, 320, 5, 'player');
-    let ally3:Unit = createUnit('archers', 320, 520, 5, 'player');
+    let unit:Unit = createUnit('archers', 280, 520, 'player');
+    let ally1:Unit = createUnit('archers', 280, 440, 'player');
+    let ally2:Unit = createUnit('archers', 760, 320, 'player');
+    let ally3:Unit = createUnit('archers', 320, 520, 'player');
 
     // remove units
     after(() => {

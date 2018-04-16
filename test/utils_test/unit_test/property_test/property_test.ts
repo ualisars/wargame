@@ -16,10 +16,10 @@ describe('unitPropertyUtils test',  () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('Hoplites', 440, 160, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
-      unit3 = createUnit('HeavyCavalry', 480, 200, 5, 'computer');
-      unit4 = createUnit('Scouts', 440, 240, 5, 'computer');
+      unit1 = createUnit('Hoplites', 440, 160, 'computer');
+      unit2 = createUnit('HeavyInfantry', 400, 160, 'computer');
+      unit3 = createUnit('HeavyCavalry', 480, 200, 'computer');
+      unit4 = createUnit('Scouts', 440, 240, 'computer');
 
       // explicitly assign property to the units in order to
       // prevent test crashing in case of units' properties charge
@@ -67,10 +67,10 @@ describe('unitPropertyUtils test',  () => {
 
     before(() => {
       removeAllUnits();
-      unit1 = createUnit('Hoplites', 440, 160, 5, 'computer');
-      unit2 = createUnit('HeavyInfantry', 400, 160, 5, 'computer');
-      unit3 = createUnit('HeavyCavalry', 480, 200, 5, 'computer');
-      unit4 = createUnit('Scouts', 440, 240, 5, 'computer');
+      unit1 = createUnit('Hoplites', 440, 160, 'computer');
+      unit2 = createUnit('HeavyInfantry', 400, 160, 'computer');
+      unit3 = createUnit('HeavyCavalry', 480, 200, 'computer');
+      unit4 = createUnit('Scouts', 440, 240, 'computer');
 
       // explicitly assign property to the units in order to
       // prevent test crashing in case of units' properties charge
