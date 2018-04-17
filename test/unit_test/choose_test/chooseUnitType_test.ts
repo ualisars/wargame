@@ -1,6 +1,5 @@
 import {assert} from 'chai';
 
-import {createUnit} from '../../../src/unit/create';
 import {
   chooseUnitType
 } from '../../../src/unit/choose';
