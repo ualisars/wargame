@@ -1,8 +1,8 @@
 import {
   isObjectInArray,
-  deleteObjectFromArray,
   isUnitInArray
 } from '../../utils';
+import {deleteUnitFromArray} from '../../utils/unit/utils';
 import Unit from '../../unit/types/Unit';
 
 export let units:Unit[] = [];
@@ -15,7 +15,7 @@ delete unit from units array
 
 export const removeFromUnits = (unit:Unit) => {
   if(unit) {
-    units = deleteObjectFromArray(unit, units);
+    units = deleteUnitFromArray(unit, units);
     if(unit.controlBy === 'computer') {
       removeFromComputerUnits(unit);
     }
@@ -27,13 +27,13 @@ export const removeFromUnits = (unit:Unit) => {
 
 export const removeFromPlayerUnits = (unit:Unit) => {
   if(unit && unit.controlBy === 'player') {
-    playerUnits = deleteObjectFromArray(unit, playerUnits);
+    playerUnits = deleteUnitFromArray(unit, playerUnits);
   }
 }
 
 export const removeFromComputerUnits = (unit:Unit) => {
   if(unit && unit.controlBy === 'computer') {
-    computerUnits = deleteObjectFromArray(unit, computerUnits);
+    computerUnits = deleteUnitFromArray(unit, computerUnits);
   }
 }
 
