@@ -1,6 +1,5 @@
 import {
-  updateUnit,
-  assignUnitMoveToPosition
+  updateUnit
 } from '../../../../unit';
 import {
   getDistanceBetweenTwoUnitsInGrids,
@@ -59,9 +58,9 @@ export const backDown = (unit:Unit, enemy:Unit, nodes:any[]) => {
     let finishNode = getNodeFromMap(randomNode.x, randomNode.y);
     let path:any = aStar(initialMap, startNode, finishNode);
     if(unit.isMoving) {
-      assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+      unit.assignMoveToPosition(finishNode.x, finishNode.y);
     } else {
-      assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+      unit.assignMoveToPosition(finishNode.x, finishNode.y);
       updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
     }
   }
@@ -71,9 +70,9 @@ export const backDown = (unit:Unit, enemy:Unit, nodes:any[]) => {
   let finishNode = getNodeFromMap(farthestNode.x, farthestNode.y);
   let path:any = aStar(initialMap, startNode, finishNode);
   if(unit.isMoving) {
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
   } else {
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
     updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
   }
 }
@@ -93,9 +92,9 @@ export const explore = (unit:Unit) => {
   let finishNode = getNodeFromMap(finishX, finishY);
   let path:any = aStar(initialMap, startNode, finishNode);
   if(unit.isMoving) {
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
   } else {
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
     updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
   }
 }

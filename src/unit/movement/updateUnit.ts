@@ -5,7 +5,6 @@ import {
 import {
   getNodeFromMap
 } from '../../utils';
-import {assignUnitMoveToPosition} from '../position';
 import {
   createUnitObstacle,
   addNeighbors
@@ -77,19 +76,19 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     unit.setNextNode(startNode); // set nextNode
     let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y);
     let newPath:any = aStar(initialMap, startNode, finishNode);
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
     pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
     return;
   }
 
-  if(currentMoveToX !== unit.moveToNodeX || currentMoveToY !== unit.moveToNodeY) { // new destination
+  if(currentMoveToX !== unit.moveToNode.x || currentMoveToY !== unit.moveToNode.y) { // new destination
     console.log('new destination has been chosen');
     let startNode = getNodeFromMap(unit.x, unit.y);
-    let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY);
+    let finishNode = getNodeFromMap(unit.moveToNode.x, unit.moveToNode.y);
     unit.setCurrentNode(startNode); // set currentNode
     unit.setNextNode(startNode); // set nextNode
     let newPath:any = aStar(initialMap, startNode, finishNode);
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
     updateUnit(unit,newPath, 0, finishNode.x, finishNode.y, null, false);
     return;
   }
@@ -116,8 +115,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
   // currentUnit should stop moving
   if(anotherUnitIsOnTheWay(units, unit, node) && i === updatedPath.length - 1) {
     console.error('another unit occupying destination position');
-    unit.moveToNodeX = unit.x;
-    unit.moveToNodeY = unit.y;
+    unit.assignMoveToPosition(unit.x, unit.y);
     stopMoving(unit, currentNode);
     return;
   }

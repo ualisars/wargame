@@ -35,7 +35,6 @@ import {getSurroundedBlockedNodes} from '../../utils/node';
 import {
   Unit,
   onChooseUnit,
-  assignUnitMoveToPosition,
   createUnit,
   updateUnit,
   pursueUnit,

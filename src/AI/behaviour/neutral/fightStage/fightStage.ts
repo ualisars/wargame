@@ -19,7 +19,6 @@ import {
   updateUnit,
   pursueUnit
 } from '../../../../unit/movement';
-import {assignUnitMoveToPosition} from '../../../../unit/position';
 /*
   What neutral AI should do in fightStage
   1. Powerful units attacks
@@ -72,9 +71,9 @@ export const flankUnit = () => {
   let finishNode = getNodeFromMap(enemy.currentNode.x, enemy.currentNode.y);
   let path:any = aStar(initialMap, startNode, finishNode);
   if(unit.isMoving) {
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
   } else {
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
     pursueUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
   }
 }
@@ -106,9 +105,9 @@ export const surround = () => {
     let finishNode = getNodeFromMap(node.x, node.y);
     let path:any = aStar(initialMap, startNode, finishNode);
     if(unit.isMoving) {
-      assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+      unit.assignMoveToPosition(finishNode.x, finishNode.y);
     } else {
-      assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+      unit.assignMoveToPosition(finishNode.x, finishNode.y);
       updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
     }
   }

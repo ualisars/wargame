@@ -14,8 +14,6 @@ class Unit {
   centerY: number;
   radius: number = radius;
   moveToNode:any;
-  moveToNodeX: number;
-  moveToNodeY: number;
   currentNode: any;
   nextNode:any;
   isCurrentlyChosen: boolean = false;
@@ -109,7 +107,16 @@ class Unit {
     this.isFighting = false;
   }
 
-  removeUnitFromFlank(opponent:any) {
+  assignMoveToPosition(x:number, y:number) {
+    let node:any = getNodeFromMap(x, y);
+    if(node) {
+      this.moveToNode = node;
+      console.log(this.name + ' is moving to node:' + node.x + ' y:' + node.y);
+    }
+
+  }
+
+  removeUnitFromFlank(opponent:Unit) {
     for(let i = 0; i < this.figthAgainst.flank.length; ++i) {
       if(this.figthAgainst.flank[i].id === opponent.id) {
         this.figthAgainst.flank = this.figthAgainst.flank.splice(i, 1);
@@ -138,10 +145,6 @@ class Unit {
     this.nextNode = node;
   }
 
-  setMoveToNode(node:any) {
-    this.moveToNode = node;
-  }
-
   assignEnemy(enemy:Unit) {
     if(isObjectEmpty(this.figthAgainst.front)) { // don't have front enemy
       this.figthAgainst.front = enemy;
@@ -168,7 +171,7 @@ class Unit {
     }
   }
 
-  removeEnemyFromFightAgainst(enemy:any) {
+  removeEnemyFromFightAgainst(enemy:Unit) {
     if(enemy.id === this.figthAgainst.front.id) {
       this.figthAgainst.front = {};
       // set another enemy as a front-line enemy

@@ -1,7 +1,4 @@
 import {
-  assignUnitMoveToPosition,
-} from './position';
-import {
   onChooseUnit,
   chooseUnitType
 } from './choose';
@@ -54,7 +51,6 @@ import {
 
 export {
   onChooseUnit,
-  assignUnitMoveToPosition,
   chooseUnitType,
   createUnit,
   drawUnitImage,

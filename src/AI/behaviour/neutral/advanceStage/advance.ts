@@ -13,7 +13,6 @@ import {
 import {aStar} from '../../../../path';
 import {initialMap} from '../../../../map/createMap/initialMap';
 import {updateUnit} from '../../../../unit/movement';
-import {assignUnitMoveToPosition} from '../../../../unit/position';
 
 
 export const advance = () => {
@@ -28,12 +27,12 @@ export const advance = () => {
         console.log('order to unit');
         console.log(unit.name, 'to go to', finishNode);
         unit.setUnitToPursue(null);
-        assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+        unit.assignMoveToPosition(finishNode.x, finishNode.y);
       } else {
         console.log('order to unit');
         console.log(unit, 'to go to', finishNode);
         unit.setUnitToPursue(null);
-        assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+        unit.assignMoveToPosition(finishNode.x, finishNode.y);
         updateUnit(unit,path, 0, finishNode.x, finishNode.y, null, true);
       }
     }

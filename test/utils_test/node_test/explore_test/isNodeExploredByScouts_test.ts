@@ -1,7 +1,6 @@
 import {assert} from 'chai';
 import {createUnit} from '../../../../src/unit/create';
 import {isNodeExploredByScouts} from '../../../../src/utils/node/explore';
-import {assignUnitMoveToPosition} from '../../../../src/unit/position';
 import {removeAllUnits} from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
@@ -19,7 +18,7 @@ describe('NodeUtils test: explore test', () => {
       scout.assignTask('exploration');
       const x:number = 242;
       const y:number = 167;
-      assignUnitMoveToPosition(scout, x, y);
+      scout.assignMoveToPosition(x, y);
     });
 
     // remove scout

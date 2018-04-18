@@ -4,7 +4,6 @@ import {
   removeUnitFromEnemiesFightAgainst
 } from '../index';
 import {getNodeFromMap} from '../../utils';
-import {assignUnitMoveToPosition} from '../position';
 import {
   createUnitObstacle,
   addNeighbors
@@ -48,7 +47,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     let startNode = getNodeFromMap(unit.x, unit.y);
     let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY);
     let newPath:any = aStar(initialMap, startNode, finishNode);
-    assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y);
     updateUnit(unit,newPath, 0, finishNode.x, finishNode.y, null, false);
     return;
   }
@@ -59,7 +58,7 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
       let startNode = getNodeFromMap(unit.x, unit.y);
       let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y);
       let newPath:any = aStar(initialMap, startNode, finishNode);
-      assignUnitMoveToPosition(unit, finishNode.x, finishNode.y);
+      unit.assignUnitMoveToPosition(finishNode.x, finishNode.y)
       pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
       return;
     }
