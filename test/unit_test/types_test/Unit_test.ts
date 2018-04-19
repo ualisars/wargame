@@ -123,4 +123,40 @@ describe('Unit class test', () => {
     });
   });
 
+  describe('assignMoveToPosition test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('scouts', 480, 200, 'player');
+      unit2 = createUnit('Hoplites', 720, 40, 'computer');
+      unit3 = createUnit('Archers', 1140, 320, 'player');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+    });
+
+    it('unit1 has to move to node {x: 480, y: 320}', () => {
+      unit1.assignMoveToPosition(508, 357);
+      assert.equal(unit1.moveToNode.x, 480);
+      assert.equal(unit1.moveToNode.y, 320);
+    });
+
+    it('unit2 has to move to node {x: 360, y: 200}', () => {
+      unit2.assignMoveToPosition(376, 223);
+      assert.equal(unit2.moveToNode.x, 360);
+      assert.equal(unit2.moveToNode.y, 200);
+    });
+
+    it('unit3 has to move to node {x: 520, y: 80}', () => {
+      unit3.assignMoveToPosition(538, 107);
+      assert.equal(unit3.moveToNode.x, 520);
+      assert.equal(unit3.moveToNode.y, 80);
+    });
+  });
+
 });
