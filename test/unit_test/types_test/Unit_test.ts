@@ -295,4 +295,40 @@ describe('Unit class test', () => {
 
   });
 
+
+  describe('increaseCondition and decreaseCondition test', () => {
+    let unit1:Unit;
+    let unit2:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Pikemen', 440, 280, 'player');
+      unit2 = createUnit('Scouts', 480, 280, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+    });
+
+    it('unit1 condition should equal to 100, and unit2 condition is 79', (done) => {
+      unit1.increaseCondition(4);
+      unit2.decreaseCondition(21);
+      assert.equal(unit1.condition, 100);
+      assert.equal(unit2.condition, 79);
+      done();
+    });
+
+    it('unit1 condition should equal to 98, and unit2 condition is 81', (done) => {
+      unit1.decreaseCondition(1);
+      unit1.decreaseCondition(1);
+      unit2.increaseCondition(1);
+      unit2.increaseCondition(1);
+      assert.equal(unit1.condition, 98);
+      assert.equal(unit2.condition, 81);
+      done();
+    });
+  });
+
 });
