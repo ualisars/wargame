@@ -3,6 +3,9 @@ import {
   isObjectEmpty,
   getNodeFromMap
 } from '../../utils';
+import {
+  deleteUnitFromArray
+} from '../../utils/unit/utils';
 import {radius} from '../../config/unit';
 
 class Unit {
@@ -116,10 +119,10 @@ class Unit {
 
   }
 
-  removeUnitFromFlank(opponent:Unit) {
+  removeEnemyFromFlank(opponent:Unit) {
     for(let i = 0; i < this.figthAgainst.flank.length; ++i) {
       if(this.figthAgainst.flank[i].id === opponent.id) {
-        this.figthAgainst.flank = this.figthAgainst.flank.splice(i, 1);
+        this.figthAgainst.flank = deleteUnitFromArray(opponent, this.figthAgainst.flank);
       }
     }
   }
@@ -190,7 +193,7 @@ class Unit {
     else if(this.figthAgainst.flank.length !== 0) {
       for(let unit of this.figthAgainst.flank) {
         if(unit.id === enemy.id) {
-          this.removeUnitFromFlank(enemy);
+          this.removeEnemyFromFlank(enemy);
         }
       }
     }
