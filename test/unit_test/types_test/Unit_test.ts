@@ -159,4 +159,71 @@ describe('Unit class test', () => {
     });
   });
 
+
+  describe('assignEnemy test', () => {
+    let unit:Unit;
+    let enemy1:Unit, enemy2:Unit, enemy3:Unit;
+    let enemy4:Unit, enemy5:Unit, enemy6:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit = createUnit('Pikemen', 440, 280, 'player');
+      enemy1 = createUnit('Scouts', 480, 280, 'computer');
+      enemy2 = createUnit('Hoplites', 480, 240, 'computer');
+      enemy3 = createUnit('Militia', 440, 320, 'computer');
+      enemy4 = createUnit('HeavyInfantry', 400, 280, 'computer');
+      enemy5 = createUnit('Hoplites', 400, 240, 'computer');
+      enemy6 = createUnit('HeavyCavalry', 480, 320, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+      removeUnit(enemy5);
+      removeUnit(enemy6);
+    });
+
+    it('enemy1 should be front enemy for unit', (done) => {
+      unit.assignEnemy(enemy1);
+      assert.equal(unit.figthAgainst.front.id, enemy1.id);
+      done();
+    });
+
+    it('enemy2 should be flank enemy for unit', (done) => {
+      unit.assignEnemy(enemy2);
+      assert.equal(isUnitInArray(enemy2, unit.figthAgainst.flank), true);
+      done();
+    });
+
+    it('enemy3 should be flank enemy for unit', (done) => {
+      unit.assignEnemy(enemy3);
+      assert.equal(isUnitInArray(enemy3, unit.figthAgainst.flank), true);
+      done();
+    });
+
+    it('enemy4 should be rear enemy for unit', (done) => {
+      unit.assignEnemy(enemy4);
+      assert.equal(unit.figthAgainst.rear.id, enemy4.id);
+      done();
+    });
+
+    it('enemy5 should be flank enemy for unit', (done) => {
+      unit.assignEnemy(enemy5);
+      assert.equal(isUnitInArray(enemy5, unit.figthAgainst.flank), true);
+      done();
+    });
+
+    it('enemy6 should be flank enemy for unit', (done) => {
+      unit.assignEnemy(enemy6);
+      assert.equal(isUnitInArray(enemy6, unit.figthAgainst.flank), true);
+      done();
+    });
+
+
+  });
+
 });
