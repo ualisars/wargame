@@ -175,21 +175,16 @@ class Unit {
   }
 
   removeEnemyFromFightAgainst(enemy:Unit) {
+    console.log('removeEnemyFromFightAgainst');
     if(enemy.id === this.figthAgainst.front.id) {
       this.figthAgainst.front = {};
-      // set another enemy as a front-line enemy
-      if(this.figthAgainst.flank.length === 0) {
-        if(!isObjectEmpty(this.figthAgainst.rear)) {
-          this.figthAgainst.front = this.figthAgainst.rear;
-        }
-      } else {
-        this.figthAgainst.front = this.figthAgainst.flank[0]; // change to closest enemy in future
-      }
       this.arrangeFightAgainst();
     }
+
     else if(enemy.id === this.figthAgainst.rear.id) {
       this.figthAgainst.rear = {};
     }
+
     else if(this.figthAgainst.flank.length !== 0) {
       for(let unit of this.figthAgainst.flank) {
         if(unit.id === enemy.id) {
@@ -200,13 +195,21 @@ class Unit {
   }
 
   arrangeFightAgainst() {
-    if(this.figthAgainst.flank.length > 0) {
-      for(let enemy of this.figthAgainst.flank) {
+    // copy flank and rear units
+    let updatedFlank:Unit[] = Object.assign([], this.figthAgainst.flank);
+    let updatedRear:Unit = Object.assign({}, this.figthAgainst.rear);
+
+    // clear fight against
+    this.figthAgainst.flank = [];
+    this.figthAgainst.rear = {};
+
+    if(updatedFlank.length > 0) {
+      for(let enemy of updatedFlank) {
           this.assignEnemy(enemy);
       }
     }
-    if(!isObjectEmpty(this.figthAgainst.rear)) {
-      this.assignEnemy(this.figthAgainst.rear);
+    if(!isObjectEmpty(updatedRear)) {
+      this.assignEnemy(updatedRear);
     }
   }
 

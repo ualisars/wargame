@@ -7,6 +7,7 @@ import {removeAllUnits} from '../../../src/store/unit/units';
 import {removeUnit} from '../../../src/unit/remove';
 import Unit from '../../../src/unit/types/Unit';
 import {isUnitInArray} from '../../../src/utils/unit/utils';
+import {isObjectEmpty} from '../../../src/utils';
 import {
   computerUnits,
   playerUnits,
@@ -362,6 +363,103 @@ describe('Unit class test', () => {
       assert.equal(isUnitInArray(enemy2, unit.figthAgainst.flank), true);
       done();
     });
+  });
+
+
+  describe('removeEnemyFromFightAgainst test', () => {
+    let unit:Unit;
+    let enemy1:Unit, enemy2:Unit, enemy3:Unit;
+    let enemy4:Unit, enemy5:Unit, enemy6:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit = createUnit('Pikemen', 440, 280, 'player');
+      enemy1 = createUnit('Scouts', 480, 280, 'computer');
+      enemy2 = createUnit('Hoplites', 480, 240, 'computer');
+      enemy3 = createUnit('Militia', 440, 320, 'computer');
+      enemy4 = createUnit('HeavyInfantry', 400, 280, 'computer');
+      enemy5 = createUnit('Hoplites', 400, 240, 'computer');
+      enemy6 = createUnit('HeavyCavalry', 480, 320, 'computer');
+      unit.assignEnemy(enemy1);
+      unit.assignEnemy(enemy2);
+      unit.assignEnemy(enemy3);
+      unit.assignEnemy(enemy4);
+      unit.assignEnemy(enemy5);
+      unit.assignEnemy(enemy6);
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+      removeUnit(enemy5);
+      removeUnit(enemy6);
+    });
+
+    it('enemy4 should be removed from figthAgainst', (done) => {
+
+      unit.removeEnemyFromFightAgainst(enemy4);
+      assert.equal(isUnitInArray(enemy4, unit.figthAgainst.flank), false);
+      assert.notEqual(unit.figthAgainst.front.id, enemy4.id);
+      assert.notEqual(unit.figthAgainst.rear.id, enemy4.id);
+      done();
+    });
+
+    it('enemy2 should be removed from figthAgainst', (done) => {
+
+      unit.removeEnemyFromFightAgainst(enemy2);
+      assert.equal(isUnitInArray(enemy2, unit.figthAgainst.flank), false);
+      assert.notEqual(unit.figthAgainst.front.id, enemy2.id);
+      assert.notEqual(unit.figthAgainst.rear.id, enemy2.id);
+
+      done();
+    });
+
+    it('enemy3 should be removed from figthAgainst', (done) => {
+
+      unit.removeEnemyFromFightAgainst(enemy3);
+      assert.equal(isUnitInArray(enemy3, unit.figthAgainst.flank), false);
+      assert.notEqual(unit.figthAgainst.front.id, enemy3.id);
+      assert.notEqual(unit.figthAgainst.rear.id, enemy3.id);
+      done();
+    });
+
+    it('enemy1 should no longer be in figthAgainst', (done) => {
+
+      unit.removeEnemyFromFightAgainst(enemy1);
+      assert.equal(isUnitInArray(enemy1, unit.figthAgainst.flank), false);
+      assert.notEqual(unit.figthAgainst.front.id, enemy1.id);
+      assert.notEqual(unit.figthAgainst.rear.id, enemy1.id);
+      assert.equal(unit.figthAgainst.flank.length, 0);
+      done();
+    });
+
+    it('enemy6 should no longer be in figthAgainst', (done) => {
+
+      unit.removeEnemyFromFightAgainst(enemy6);
+      assert.equal(isUnitInArray(enemy6, unit.figthAgainst.flank), false);
+      assert.notEqual(unit.figthAgainst.front.id, enemy6.id);
+      assert.equal(unit.figthAgainst.front.id, enemy5.id);
+      assert.notEqual(unit.figthAgainst.rear.id, enemy6.id);
+      assert.equal(unit.figthAgainst.flank.length, 0);
+      assert.equal(isObjectEmpty(unit.figthAgainst.rear), true);
+      done();
+    });
+
+    it('no units should be inside figthAgainst', (done) => {
+
+      unit.removeEnemyFromFightAgainst(enemy5);
+      assert.equal(unit.figthAgainst.flank.length, 0);
+      assert.equal(isObjectEmpty(unit.figthAgainst.front), true);
+      assert.equal(isObjectEmpty(unit.figthAgainst.rear), true);
+      done();
+    });
+
+
+
   });
 
 });
