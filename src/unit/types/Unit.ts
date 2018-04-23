@@ -200,9 +200,7 @@ class Unit {
   }
 
   arrangeFightAgainst() {
-    this.figthAgainst.flank = [];
-    this.figthAgainst.rear = {};
-    if(this.figthAgainst.flank !== 0) {
+    if(this.figthAgainst.flank.length > 0) {
       for(let enemy of this.figthAgainst.flank) {
           this.assignEnemy(enemy);
       }

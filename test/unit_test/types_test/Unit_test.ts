@@ -331,4 +331,37 @@ describe('Unit class test', () => {
     });
   });
 
+  describe('arrangeFightAgainst test', () => {
+    let unit:Unit;
+    let enemy1:Unit;
+    let enemy2:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit = createUnit('Pikemen', 440, 280, 'player');
+      enemy1 = createUnit('Scouts', 480, 240, 'computer');
+      enemy2 = createUnit('Scouts', 400, 280, 'computer');
+
+      // explicitly assign enemy 1 to a flank
+      unit.figthAgainst.flank.push(enemy1);
+      unit.figthAgainst.rear = enemy2;
+
+
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+    });
+
+    it('enemy2 shoudl become front enemy and enemy3 flank', (done) => {
+      unit.arrangeFightAgainst();
+      assert.equal(unit.figthAgainst.front.id, enemy1.id);
+      assert.equal(isUnitInArray(enemy2, unit.figthAgainst.flank), true);
+      done();
+    });
+  });
+
 });
