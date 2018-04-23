@@ -458,8 +458,48 @@ describe('Unit class test', () => {
       done();
     });
 
+  });
 
+  describe('clearFightAgainst test', () => {
+    let unit:Unit;
+    let enemy1:Unit, enemy2:Unit, enemy3:Unit;
+    let enemy4:Unit, enemy5:Unit, enemy6:Unit;
 
+    before(() => {
+      removeAllUnits();
+      unit = createUnit('Pikemen', 440, 280, 'player');
+      enemy1 = createUnit('Scouts', 480, 280, 'computer');
+      enemy2 = createUnit('Hoplites', 480, 240, 'computer');
+      enemy3 = createUnit('Militia', 440, 320, 'computer');
+      enemy4 = createUnit('HeavyInfantry', 400, 280, 'computer');
+      enemy5 = createUnit('Hoplites', 400, 240, 'computer');
+      enemy6 = createUnit('HeavyCavalry', 480, 320, 'computer');
+      unit.assignEnemy(enemy1);
+      unit.assignEnemy(enemy2);
+      unit.assignEnemy(enemy3);
+      unit.assignEnemy(enemy4);
+      unit.assignEnemy(enemy5);
+      unit.assignEnemy(enemy6);
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+      removeUnit(enemy5);
+      removeUnit(enemy6);
+    });
+
+    it('figthAgainst should be empty', (done) => {
+      unit.clearFightAgainst();
+      assert.equal(unit.figthAgainst.flank.length, 0);
+      assert.equal(isObjectEmpty(unit.figthAgainst.front), true);
+      assert.equal(isObjectEmpty(unit.figthAgainst.rear), true);
+      done();
+    })
   });
 
 });
