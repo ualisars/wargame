@@ -78,16 +78,16 @@ import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
 import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
 import {assignBaseNodesForScouts} from '../../AI/processModule/unit'; // remove
-import {scoutsMovement} from '../../AI/behaviour/neutral/explorationStage/explorationMoves'; //remove
+import {scoutsMovement} from '../../unit/movement/computer/exploration/explorationMoves'; //remove
 import {
   selectCotrolZone,
   isNumberOfEnemiesChanged
 } from '../../AI/processModule/controlZone';
-import {occupyControlZone} from '../../AI/movement/occupyControlZone';
+import {occupyControlZone} from '../../unit/movement/computer/controlZone/occupyControlZone';
 import {
   getEnemiesInsideZone,
   defenderMovement
-} from '../../AI/movement/defenderMovement';
+} from '../../unit/movement/computer/defender/defenderMovement';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');

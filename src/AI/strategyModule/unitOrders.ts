@@ -9,9 +9,9 @@ import {
 } from '../../utils';
 import {aStar} from '../../path';
 import {initialMap} from '../../map/createMap/initialMap';
-import {neutralExploration} from '../behaviour/neutral/explorationStage/explorationMoves';
-import {advance} from '../behaviour/neutral/advanceStage/advance';
-import{fight} from '../behaviour/neutral/fightStage/fightStage';
+import {neutralExploration} from '../../unit/movement/computer/exploration/explorationMoves';
+import {advance} from '../../unit/movement/computer/advance/advance';
+import{fight} from '../../unit/movement/computer/fight/fightStage';
 import {combatStage} from '../../store/AI/stage/combatStage';
 
 export const orderToAttackEnemy = () => {

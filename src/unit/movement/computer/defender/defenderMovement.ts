@@ -1,19 +1,19 @@
-import {getUnitsByTask} from '../../utils/unit/AI';
+import {getUnitsByTask} from '../../../../utils/unit/AI';
 import {
   computerUnits,
   playerUnits
-} from '../../store/unit/units';
-import {controlZone} from '../processModule/controlZone/controlZone';
-import {getDistanceBetweenTwoUnitsInGrids} from '../../utils';
-import {getDistanceBetweenUnitAndNodeInGrids} from '../../utils/node';
-import {attackEnemy} from '../../unit/movement';
-import {getNodeFromMap} from '../../utils';
-import {occupyControlZone} from './occupyControlZone';
+} from '../../../../store/unit/units';
+import {controlZone} from '../../../../AI/processModule/controlZone/controlZone';
+import {getDistanceBetweenTwoUnitsInGrids} from '../../../../utils';
+import {getDistanceBetweenUnitAndNodeInGrids} from '../../../../utils/node';
+import {attackEnemy} from '../../common';
+import {getNodeFromMap} from '../../../../utils';
+import {occupyControlZone} from '../controlZone/occupyControlZone';
 import {
   isNumberOfEnemiesChanged,
   updateEnemiesInsideControlZone
-} from '../processModule/controlZone';
-import Unit from '../../unit/types/Unit';
+} from '../../../../AI/processModule/controlZone';
+import Unit from '../../../types/Unit';
 
 export const findClosestEnemyInZone = (unit:Unit, enemies:Unit[]):Unit => {
   if(enemies.length === 0) { // only one unit remained
@@ -54,10 +54,6 @@ export const defenderMovement = () => {
       let defenders:Unit[] = getUnitsByTask('holdPosition');
       for(let defender of defenders) {
         let closestEnemy:Unit = findClosestEnemyInZone(defender, enemies);
-        let defenderX:number = defender.currentNode.x;
-        let defenderY:number = defender.currentNode.y;
-        let enemyX:number = closestEnemy.currentNode.x;
-        let enemyY:number = closestEnemy.currentNode.y;
         if(closestEnemy && closestEnemy.isVisible) {
           attackEnemy(defender, closestEnemy);
         }
