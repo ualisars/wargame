@@ -141,11 +141,21 @@ class Unit {
   }
 
   setCurrentNode(node:any) {
-    this.currentNode = node;
+    let foundNode:any = getNodeFromMap(node.x, node.y);
+    if(foundNode) {
+      this.currentNode = foundNode;
+    } else {
+      throw 'Error: Node not found in the map';
+    }
   }
 
   setNextNode(node:any) {
-    this.nextNode = node;
+    let foundNode:any = getNodeFromMap(node.x, node.y);
+    if(foundNode) {
+      this.nextNode = foundNode;
+    } else {
+      throw 'Error: Node not found in the map';
+    }
   }
 
   assignEnemy(enemy:Unit) {

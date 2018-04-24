@@ -502,4 +502,81 @@ describe('Unit class test', () => {
     })
   });
 
+
+  describe('setCurrentNode test', () => {
+    let unit:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit = createUnit('Pikemen', 440, 280, 'player');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit);
+    });
+
+    it('unit currentNode should be {x: 280, y: 80}', (done) => {
+      let node = {x:301, y:118};
+      unit.setCurrentNode(node);
+      assert.equal(unit.currentNode.x, 280);
+      assert.equal(unit.currentNode.y, 80);
+      done();
+    });
+
+    it('unit currentNode should be {x: 600, y: 240}', (done) => {
+      let node = {x:600, y:240};
+      unit.setCurrentNode(node);
+      assert.equal(unit.currentNode.x, 600);
+      assert.equal(unit.currentNode.y, 240);
+      done();
+    });
+
+    it('unit currentNode should be {x: 640, y: 40}', (done) => {
+      let node = {x: 659, y:64};
+      unit.setCurrentNode(node);
+      assert.equal(unit.currentNode.x, 640);
+      assert.equal(unit.currentNode.y, 40);
+      done();
+    });
+  });
+
+  describe('setNextNode test', () => {
+    let unit:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit = createUnit('Pikemen', 440, 280, 'player');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit);
+    });
+
+    it('unit nextNode should be {x: 280, y: 80}', (done) => {
+      let node = {x:301, y:118};
+      unit.setNextNode(node);
+      assert.equal(unit.nextNode.x, 280);
+      assert.equal(unit.nextNode.y, 80);
+      done();
+    });
+
+    it('unit nextNode should be {x: 600, y: 240}', (done) => {
+      let node = {x:600, y:240};
+      unit.setNextNode(node);
+      assert.equal(unit.nextNode.x, 600);
+      assert.equal(unit.nextNode.y, 240);
+      done();
+    });
+
+    it('unit nextNode should be {x: 640, y: 40}', (done) => {
+      let node = {x: 659, y:64};
+      unit.setNextNode(node);
+      assert.equal(unit.nextNode.x, 640);
+      assert.equal(unit.nextNode.y, 40);
+      done();
+    });
+  });
+
 });
