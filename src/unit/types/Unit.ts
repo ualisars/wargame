@@ -244,10 +244,13 @@ class Unit {
       this.task = task;
     }
     else {
-      this.task = null;
-      console.error('cannot assign task, no task', task);
+      throw new Error('Cannot assign task for unit ' + this.name);
     }
     console.error(' new task for unit', this.name, 'is', task);
+  }
+
+  clearTask() {
+    this.task = '';
   }
 
   setIsUnitUnderProtectionToTrue() {

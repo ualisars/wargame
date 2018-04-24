@@ -579,4 +579,83 @@ describe('Unit class test', () => {
     });
   });
 
+
+  describe('assignTask test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Scouts', 480, 280, 'computer');
+      unit2 = createUnit('Hoplites', 640, 320, 'computer');
+      unit3 = createUnit('Militia', 1080, 560, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+    });
+
+    it('unit1 task should be exploration', (done) => {
+      unit1.assignTask('exploration');
+      assert.equal(unit1.task, 'exploration');
+      done();
+    });
+
+    it('unit2 task should be patrol', (done) => {
+      unit2.assignTask('patrol');
+      assert.equal(unit1.task, 'exploration');
+      assert.equal(unit2.task, 'patrol');
+      done();
+    });
+
+    it('unit3 task should be holdPosition', (done) => {
+      unit3.assignTask('holdPosition');
+      assert.equal(unit1.task, 'exploration');
+      assert.equal(unit2.task, 'patrol');
+      assert.equal(unit3.task, 'holdPosition');
+      done();
+    });
+    //
+    it('unit1 task should be protection', (done) => {
+      unit1.assignTask('protection');
+      assert.equal(unit1.task, 'protection');
+      assert.equal(unit2.task, 'patrol');
+      assert.equal(unit3.task, 'holdPosition');
+      done();
+    });
+  });
+
+  describe('clearTask test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Scouts', 480, 280, 'computer');
+      unit2 = createUnit('Hoplites', 640, 320, 'computer');
+      unit3 = createUnit('Militia', 1080, 560, 'computer');
+
+      unit1.assignTask('exploration');
+      unit2.assignTask('patrol');
+      unit3.assignTask('holdPosition');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+    });
+
+    it('unit1 and unit2 tasks should be empty', () => {
+      unit1.clearTask();
+      unit2.clearTask();
+
+      assert.equal(unit1.task, '');
+      assert.equal(unit2.task, '');
+      assert.equal(unit3.task, 'holdPosition');
+    })
+  });
+
 });
