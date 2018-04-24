@@ -1,8 +1,8 @@
-import Unit from '../types/Unit';
-import {getNodeFromMap} from '../../utils/node/get/fromMap';
-import {initialMap} from '../../map/createMap/initialMap';
+import Unit from '../../types/Unit';
+import {getNodeFromMap} from '../../../utils/node/get/fromMap';
+import {initialMap} from '../../../map/createMap/initialMap';
 import {pursueUnit} from './pursueUnit';
-import {aStar} from '../../path/aStar/AStar';
+import {aStar} from '../../../path/aStar/AStar';
 
 export const attackEnemy = (unit:Unit, enemy:Unit):void => {
   if(unit.isMoving) { // if unit's moving don't fire pursue function

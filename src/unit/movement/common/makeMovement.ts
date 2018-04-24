@@ -1,7 +1,7 @@
-import {drawUnit} from '../index';
-import {gridSize} from '../../config';
-import {ctx} from '../../config/context';
-import Unit from '../types/Unit';
+import {drawUnit} from '../../index';
+import {gridSize} from '../../../config';
+import {ctx} from '../../../config/context';
+import Unit from '../../types/Unit';
 import {updateUnit} from './updateUnit';
 import {pursueUnit} from './pursueUnit';
 

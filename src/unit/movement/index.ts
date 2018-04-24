@@ -1,7 +1,13 @@
-import {attackEnemy} from './attack';
-import {moveTo} from './moveTo';
-import {pursueUnit} from './pursueUnit';
-import {updateUnit} from './updateUnit';
+import {
+  attackEnemy,
+  moveTo,
+  pursueUnit,
+  updateUnit
+} from './common';
+
+import {
+
+} from './computer';
 
 export {
   attackEnemy,

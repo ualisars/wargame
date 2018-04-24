@@ -1,31 +1,31 @@
 import {
   spotEnemy,
   removeUnitFromEnemiesFightAgainst
-} from '../index';
+} from '../../index';
 import {
   getNodeFromMap
-} from '../../utils';
+} from '../../../utils';
 import {
   createUnitObstacle,
   addNeighbors
-} from '../../map';
-import {initialMap} from '../../map/createMap/initialMap';
-import {ctx} from '../../config/context';
+} from '../../../map';
+import {initialMap} from '../../../map/createMap/initialMap';
+import {ctx} from '../../../config/context';
 import {
   aStar
-} from '../../path';
-import {units} from '../../store/unit/units';
+} from '../../../path';
+import {units} from '../../../store/unit/units';
 import {
   anotherUnitIsOnTheWay,
   getSurroundedEnemies
-} from '../../utils';
-import {unitCanGetOutOfCombat,} from '../../utils/unit/movementUtils';
-import Unit from '../types/Unit';
-import {getSurroundedBlockedNodes} from '../../utils/node';
+} from '../../../utils';
+import {unitCanGetOutOfCombat,} from '../../../utils/unit/movementUtils';
+import Unit from '../../types/Unit';
+import {getSurroundedBlockedNodes} from '../../../utils/node';
 import {stopMoving} from './stopMoving';
 import {moveToNextNodeInUpdateUnit} from './moveToNextNode';
 import {pursueUnit} from './pursueUnit'
-import {unitCanMoveToTheNode} from '../../utils/unit/priority';
+import {unitCanMoveToTheNode} from '../../../utils/unit/priority';
 
 export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   if(unit.health <= 0) {
