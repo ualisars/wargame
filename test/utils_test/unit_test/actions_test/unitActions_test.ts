@@ -11,8 +11,7 @@ import {isUnitInArray} from '../../../../src/utils/unit/utils';
 import {
   getBestUnitsByProperty,
   getClosestNodeToUnit,
-  findClosestUnitsToTheNodeCenter,
-  getUnitById
+  findClosestUnitsToTheNodeCenter
 } from '../../../../src/utils/unit/actions';
 
 describe('unitActionsUtils test', () => {
@@ -103,34 +102,6 @@ describe('unitActionsUtils test', () => {
       }
 
       assert.equal(pass, true);
-    });
-  });
-
-
-  describe('getUnitById test', () => {
-    let unit1:Unit;
-    let enemy1:Unit;
-
-    before(() => {
-      removeAllUnits();
-      unit1 = createUnit('HeavyCavalry', 560, 120, 'player');
-      enemy1 = createUnit('HeavyInfantry', 560, 120, 'computer');
-    });
-
-    // remove units after test completed
-    after(() => {
-      removeUnit(unit1);
-      removeUnit(enemy1);
-    });
-
-    it('fetchedUnit should be unit1', () => {
-      let fetchedUnit:Unit = getUnitById(unit1.id);
-      assert.equal(fetchedUnit.id, unit1.id);
-    });
-
-    it('fetchedEnemy should be enemy1', () => {
-      let fetchedEnemy:Unit = getUnitById(enemy1.id);
-      assert.equal(fetchedEnemy.id, enemy1.id);
     });
   });
 

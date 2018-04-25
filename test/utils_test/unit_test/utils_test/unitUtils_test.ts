@@ -3,6 +3,7 @@ import {
   addUnitIntoArray,
   deleteUnitFromArray,
   getDistanceBetweenTwoUnitsInGrids,
+  getUnitById,
   isUnitInArray
 } from '../../../../src/utils/unit/utils';
 import Unit from '../../../../src/unit/types/Unit';
@@ -90,6 +91,33 @@ describe('UnitUtils utils test', () => {
     it('distance between units should be 3 grids', () => {
       let distance:number = getDistanceBetweenTwoUnitsInGrids(unit1, unit2);
       assert.equal(distance, 3);
+    });
+  });
+
+  describe('getUnitById test', () => {
+    let unit1:Unit;
+    let enemy1:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 560, 120, 'player');
+      enemy1 = createUnit('HeavyInfantry', 560, 120, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(enemy1);
+    });
+
+    it('fetchedUnit should be unit1', () => {
+      let fetchedUnit:Unit = getUnitById(unit1.id);
+      assert.equal(fetchedUnit.id, unit1.id);
+    });
+
+    it('fetchedEnemy should be enemy1', () => {
+      let fetchedEnemy:Unit = getUnitById(enemy1.id);
+      assert.equal(fetchedEnemy.id, enemy1.id);
     });
   });
 

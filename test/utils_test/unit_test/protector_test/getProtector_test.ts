@@ -22,7 +22,7 @@ describe('unitProtectorUtils test', () => {
       unit4 = createUnit('Scouts', 440, 240, 'computer');
 
       // assign unit3 to protect current unit
-      unit3.assignUnitToProtect(currentUnit);
+      unit3.assignUnitToProtect(currentUnit.id);
 
     });
 

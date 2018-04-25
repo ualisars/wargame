@@ -1,5 +1,6 @@
 import {gridSize} from '../../../config';
 import Unit from '../../../unit/types/Unit';
+import {units} from '../../../store/unit/units';
 
 export const addUnitIntoArray = (unit:Unit, arr:any[]):any[] => {
   let updatedArr = Object.assign([], arr);
@@ -49,4 +50,12 @@ export const isUnitInArray = (checkedUnit:Unit, arr:any[]):boolean => {
     }
   }
   return false;
+}
+
+export const getUnitById = (id:number, arr:Unit[] = units):Unit => {
+  for(let unit of arr) {
+    if(id === unit.id) {
+      return unit;
+    }
+  }
 }

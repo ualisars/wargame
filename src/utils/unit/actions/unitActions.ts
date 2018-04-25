@@ -47,14 +47,6 @@ export const getBestUnitsByProperty = (units:Unit[], property:string):Unit[] => 
   return bestUnits;
 }
 
-export const getUnitById = (id:number, arr:Unit[] = units):Unit => {
-  for(let unit of arr) {
-    if(id === unit.id) {
-      return unit;
-    }
-  }
-}
-
 /*
   return Units that are closest to the node center
 */

@@ -1,13 +1,11 @@
 import {
   findClosestUnitsToTheNodeCenter,
   getClosestNodeToUnit,
-  getBestUnitsByProperty,
-  getUnitById
+  getBestUnitsByProperty
 } from './unitActions';
 
 export {
   findClosestUnitsToTheNodeCenter,
   getClosestNodeToUnit,
-  getBestUnitsByProperty,
-  getUnitById
+  getBestUnitsByProperty
 }

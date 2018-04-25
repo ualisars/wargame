@@ -3,6 +3,7 @@ import {
   deleteUnitFromArray,
   deleteUnitFromArmy,
   getDistanceBetweenTwoUnitsInGrids,
+  getUnitById,
   isUnitInArray
 } from './unitUtils';
 
@@ -11,5 +12,6 @@ export {
   deleteUnitFromArray,
   deleteUnitFromArmy,
   getDistanceBetweenTwoUnitsInGrids,
+  getUnitById,
   isUnitInArray
 }

@@ -695,4 +695,41 @@ describe('Unit class test', () => {
     });
   });
 
+  describe('assignUnitToProtect test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+    let unit4:Unit, unit5:Unit, unit6:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Scouts', 480, 280, 'computer');
+      unit2 = createUnit('Hoplites', 640, 320, 'computer');
+      unit3 = createUnit('Militia', 1080, 560, 'computer');
+      unit4 = createUnit('Archers', 480, 280, 'computer');
+      unit5 = createUnit('LightCavalry', 640, 320, 'computer');
+      unit6 = createUnit('HeavyCavalry', 1080, 560, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+    });
+
+    it('unit6 should protect unit4 and unit3 should protect unit2', (done) => {
+      unit6.assignUnitToProtect(unit4.id);
+      unit3.assignUnitToProtect(unit2.id);
+      assert.equal(unit6.unitToProtect, unit4.id);
+      assert.equal(unit3.unitToProtect, unit2.id);
+      done();
+    });
+
+    it('unit3 should not protect any units', (done) => {
+      unit3.clearUnitToProtect();
+      assert.equal(unit6.unitToProtect, unit4.id);
+      assert.equal(unit3.unitToProtect, null);
+      done();
+    });
+  });
+
 });

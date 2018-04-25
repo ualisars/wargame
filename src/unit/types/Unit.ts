@@ -57,7 +57,7 @@ class Unit {
   // AI attributes
   position:string; // position in formation
   task:string;
-  unitToProtect:any = {};
+  unitToProtect:number;
   baseNode:any = {};
   isUnitUnderProtection:boolean = false;
   unitToHelp:any = {};
@@ -259,11 +259,11 @@ class Unit {
   setIsUnitUnderProtectionToFalse() {
     this.isUnitUnderProtection = false;
   }
-  assignUnitToProtect(unit:Unit) {
-    this.unitToProtect = unit;
+  assignUnitToProtect(unitId:number) {
+    this.unitToProtect = unitId;
   }
   clearUnitToProtect() {
-    this.unitToProtect = {}
+    this.unitToProtect = null;
   }
   setIsUnitNeedHelpToTrue() {
     this.isUnitNeedHelp = true;
