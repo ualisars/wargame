@@ -658,4 +658,41 @@ describe('Unit class test', () => {
     })
   });
 
+  describe('isUnitUnderProtection test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Scouts', 480, 280, 'computer');
+      unit2 = createUnit('Hoplites', 640, 320, 'computer');
+      unit3 = createUnit('Militia', 1080, 560, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+    });
+
+    it('unit1, unit2 and unit3 should be under protection', (done) => {
+      unit1.setIsUnitUnderProtectionToTrue();
+      unit2.setIsUnitUnderProtectionToTrue();
+      unit3.setIsUnitUnderProtectionToTrue();
+      assert.equal(unit1.isUnitUnderProtection, true);
+      assert.equal(unit2.isUnitUnderProtection, true);
+      assert.equal(unit3.isUnitUnderProtection, true);
+      done();
+    });
+
+    it('only unit2 should be under protection', (done) => {
+      unit1.setIsUnitUnderProtectionToFalse();
+      unit3.setIsUnitUnderProtectionToFalse();
+      assert.equal(unit1.isUnitUnderProtection, false);
+      assert.equal(unit2.isUnitUnderProtection, true);
+      assert.equal(unit3.isUnitUnderProtection, false);
+      done();
+    });
+  });
+
 });
