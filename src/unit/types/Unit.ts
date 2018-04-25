@@ -5,7 +5,7 @@ import {
 } from '../../utils';
 import {
   deleteUnitFromArray
-} from '../../utils/unit/utils';
+} from '../../utils/unit/general';
 import {radius} from '../../config/unit';
 
 class Unit {

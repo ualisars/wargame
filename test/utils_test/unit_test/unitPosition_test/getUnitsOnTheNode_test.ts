@@ -3,7 +3,7 @@ import {createUnit} from '../../../../src/unit/create';
 import {getUnitsOnTheNode} from '../../../../src/utils/unit/unitPosition';
 import {removeAllUnits} from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
-import {isUnitInArray} from '../../../../src/utils/unit/utils';
+import {isUnitInArray} from '../../../../src/utils/unit/general';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('unitPositionUtils test', () => {

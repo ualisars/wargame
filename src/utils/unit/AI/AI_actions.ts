@@ -13,7 +13,7 @@ import {
 import {
   getDistanceBetweenTwoUnitsInGrids,
   deleteUnitFromArray
-} from '../utils';
+} from '../general';
 import {getDistanceBetweenUnitAndNodeInGrids} from '../../node';
 import Unit from '../../../unit/types/Unit';
 

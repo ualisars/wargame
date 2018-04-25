@@ -4,7 +4,7 @@ import {
 } from '../../store/unit/units';
 import {getSurroundedNodes} from './getSurroundedNodes';
 import {getNodeFromMap} from '../node/get/fromMap';
-import {deleteUnitFromArray} from '../unit/utils';
+import {deleteUnitFromArray} from '../unit/general';
 import Unit from '../../unit/types/Unit';
 
 export const getSurroundedAllies = (unit:Unit):Unit[] => {

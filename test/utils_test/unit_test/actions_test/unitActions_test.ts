@@ -7,7 +7,7 @@ import {
   playerUnits
 } from '../../../../src/store/unit/units';
 import Unit from '../../../../src/unit/types/Unit';
-import {isUnitInArray} from '../../../../src/utils/unit/utils';
+import {isUnitInArray} from '../../../../src/utils/unit/general';
 import {
   getBestUnitsByProperty,
   getClosestNodeToUnit,

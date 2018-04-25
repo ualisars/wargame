@@ -5,7 +5,7 @@ import {
   getDistanceBetweenTwoUnitsInGrids,
   getUnitById,
   isUnitInArray
-} from './unitUtils';
+} from './generalUtils';
 
 export {
   addUnitIntoArray,

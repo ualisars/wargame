@@ -1,5 +1,5 @@
 import Unit from '../../../unit/types/Unit';
-import {deleteUnitFromArray} from '../utils';
+import {deleteUnitFromArray} from '../general';
 
 
 /*

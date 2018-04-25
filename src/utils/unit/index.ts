@@ -11,7 +11,7 @@ import {
   deleteUnitFromArmy,
   getDistanceBetweenTwoUnitsInGrids,
   isUnitInArray
-} from './utils';
+} from './general';
 
 export {
   addUnitIntoArray,

@@ -2,7 +2,7 @@ import {
   isObjectInArray,
   isUnitInArray
 } from '../../utils';
-import {deleteUnitFromArray} from '../../utils/unit/utils';
+import {deleteUnitFromArray} from '../../utils/unit/general';
 import Unit from '../../unit/types/Unit';
 
 export let units:Unit[] = [];

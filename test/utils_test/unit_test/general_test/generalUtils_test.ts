@@ -5,7 +5,7 @@ import {
   getDistanceBetweenTwoUnitsInGrids,
   getUnitById,
   isUnitInArray
-} from '../../../../src/utils/unit/utils';
+} from '../../../../src/utils/unit/general';
 import Unit from '../../../../src/unit/types/Unit';
 import {createUnit} from '../../../../src/unit/create';
 import {removeAllUnits} from '../../../../src/store/unit/units';

@@ -1,6 +1,6 @@
 import Unit from '../../../unit/types/Unit';
 import {getNodeFromMap} from '../../index';
-import {deleteUnitFromArray} from '../utils';
+import {deleteUnitFromArray} from '../general';
 
 export const anotherUnitIsOnTheWay = (units:Unit[], currentUnit:Unit, nextNode:any):boolean => {
   let updatedUnits: Unit[] = Object.assign([], units);
