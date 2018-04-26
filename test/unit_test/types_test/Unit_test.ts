@@ -773,4 +773,47 @@ describe('Unit class test', () => {
     });
   });
 
+  describe('assignUnitToHelp test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+    let unit4:Unit, unit5:Unit, unit6:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Scouts', 480, 280, 'computer');
+      unit2 = createUnit('Hoplites', 640, 320, 'computer');
+      unit3 = createUnit('Militia', 1080, 560, 'computer');
+      unit4 = createUnit('Archers', 480, 280, 'computer');
+      unit5 = createUnit('LightCavalry', 640, 320, 'computer');
+      unit6 = createUnit('HeavyCavalry', 1080, 560, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(unit5);
+      removeUnit(unit6);
+    });
+
+    it('unit1 should help unit5, unit3 should help unit2', (done) => {
+      unit1.assignUnitToHelp(unit5.id);
+      unit3.assignUnitToHelp(unit2.id);
+      
+      assert.equal(unit1.unitToHelp, unit5.id);
+      assert.equal(unit3.unitToHelp, unit2.id);
+      done();
+    });
+
+    it('unit1 and unit3 should not help other units', (done) => {
+      unit1.clearUnitToHelp();
+      unit3.clearUnitToHelp();
+      
+      assert.equal(unit1.unitToHelp, null);
+      assert.equal(unit3.unitToHelp, null);
+      done();
+    });
+  });
+
 });

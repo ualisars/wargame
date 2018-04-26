@@ -60,7 +60,7 @@ class Unit {
   unitToProtect:number;
   baseNode:any = {};
   isUnitUnderProtection:boolean = false;
-  unitToHelp:any = {};
+  unitToHelp:number;
   isUnitNeedHelp:boolean = false;
   beCloseTo:any[] = [];
   frozen:boolean = false; // to prevent too many orders in short period of time
@@ -271,11 +271,11 @@ class Unit {
   setIsUnitNeedHelpToFalse() {
     this.isUnitNeedHelp = false;
   }
-  assignUnitToHelp(unit:any) {
-    this.unitToHelp = unit;
+  assignUnitToHelp(id:number) {
+    this.unitToHelp = id;
   }
   clearUnitToHelp() {
-    this.unitToHelp = {};
+    this.unitToHelp = null;
   }
   assignBaseNode(node:any) {
     if(node) {
