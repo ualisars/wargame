@@ -714,6 +714,9 @@ describe('Unit class test', () => {
       removeUnit(unit1);
       removeUnit(unit2);
       removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(unit5);
+      removeUnit(unit6);
     });
 
     it('unit6 should protect unit4 and unit3 should protect unit2', (done) => {
@@ -728,6 +731,44 @@ describe('Unit class test', () => {
       unit3.clearUnitToProtect();
       assert.equal(unit6.unitToProtect, unit4.id);
       assert.equal(unit3.unitToProtect, null);
+      done();
+    });
+  });
+
+  describe('setIsUnitNeedHelp test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Scouts', 480, 280, 'computer');
+      unit2 = createUnit('Hoplites', 640, 320, 'computer');
+      unit3 = createUnit('Militia', 1080, 560, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+    });
+
+    it('unit1 and unit2 need help', (done) => {
+      unit1.setIsUnitNeedHelpToTrue();
+      unit2.setIsUnitNeedHelpToTrue();
+
+      assert.equal(unit1.isUnitNeedHelp, true);
+      assert.equal(unit2.isUnitNeedHelp, true);
+      assert.equal(unit3.isUnitNeedHelp, false);
+      done();
+    });
+
+    it(' only unit1 should need help', (done) => {
+      unit1.setIsUnitNeedHelpToTrue();
+      unit2.setIsUnitNeedHelpToFalse();
+
+      assert.equal(unit1.isUnitNeedHelp, true);
+      assert.equal(unit2.isUnitNeedHelp, false);
+      assert.equal(unit3.isUnitNeedHelp, false);
       done();
     });
   });
