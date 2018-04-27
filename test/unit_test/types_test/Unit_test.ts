@@ -816,4 +816,44 @@ describe('Unit class test', () => {
     });
   });
 
+  describe('assignBaseNode test', () => {
+    let unit1:Unit, unit2:Unit;
+
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Scouts', 480, 280, 'computer');
+      unit2 = createUnit('Hoplites', 640, 320, 'computer');
+    });
+
+    // remove units after test completed
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+    });
+
+    it('unit1 base node should be {x: 480, y: 280}', () => {
+      let node:any = {x: 480, y: 280};
+      unit1.assignBaseNode(node);
+
+      assert.equal(unit1.baseNode.x, 480);
+      assert.equal(unit1.baseNode.y, 280);
+    });
+
+    it('unit2 base node should be {x: 1040, y: 540}', () => {
+      let node:any = {x: 1040, y: 540};
+      unit2.assignBaseNode(node);
+
+      assert.equal(unit2.baseNode.x, 1040);
+      assert.equal(unit2.baseNode.y, 540);
+    });
+
+    it('unit1 base node should become {x: 1000, y: 80}', () => {
+      let node:any = {x: 1000, y: 80};
+      unit1.assignBaseNode(node);
+
+      assert.equal(unit1.baseNode.x, 1000);
+      assert.equal(unit1.baseNode.y, 80);
+    });
+  });
+
 });

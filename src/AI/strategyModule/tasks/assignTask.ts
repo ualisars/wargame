@@ -1,20 +1,20 @@
 import{
   getUnitTypesInPercentage,
   calculateUnitTypes,
-} from '../../../analyzeModule/unitAnalyze';
+} from '../../analyzeModule/unitAnalyze';
 import {
   computerUnits,
   playerUnits
-} from '../../../../store/unit/units';
-import {visibleForComputerUnits} from '../../../../store/unit/visibleUnits';
-import {hidingEnemies} from '../../../../store/AI/enemies/hidingEnemies';
-import {combatStage} from '../../../../store/AI/stage/combatStage';
+} from '../../../store/unit/units';
+import {visibleForComputerUnits} from '../../../store/unit/visibleUnits';
+import {hidingEnemies} from '../../../store/AI/enemies/hidingEnemies';
+import {combatStage} from '../../../store/AI/stage/combatStage';
 import {
   assignHoldPosition,
   assignPatrol,
   assignProtection,
   assignExploration
-} from '../../../processModule/task';
+} from '../../processModule/task';
 
 
 export let assignTasksForNeutral = () => {
