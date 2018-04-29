@@ -24,6 +24,7 @@ class Archers extends Unit {
   shotsRemained:number = 10;
   charge: number = 1;
   discipline: number = 40;
+  weight: number = 20;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);

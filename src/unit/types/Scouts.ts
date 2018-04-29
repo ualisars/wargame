@@ -11,7 +11,7 @@ class Scouts extends Unit {
   type: string = 'scouts';
   imgSrc:string = './src/img/units/pikemen.jpg';
   health: number = 60;
-  speed: number = 25;
+  speed: number = 27;
   armour: number = 1;
   range: number = 0;
   mobility: number = 9;
@@ -19,6 +19,7 @@ class Scouts extends Unit {
   missileDamage: number = 0;
   charge: number = 1;
   discipline: number = 10;
+  weight: 20;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);

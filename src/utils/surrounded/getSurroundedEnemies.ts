@@ -2,7 +2,7 @@ import {
   playerUnits,
   computerUnits
 } from '../../store/unit/units';
-import {getSurroundedNodes} from '../index';
+import {getSurroundedNodes} from './getSurroundedNodes';
 import {deleteUnitFromArray} from '../unit/general';
 import Unit from '../../unit/types/Unit';
 

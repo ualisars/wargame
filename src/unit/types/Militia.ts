@@ -19,6 +19,7 @@ class Militia extends Unit {
   missileDamage: number = 0;
   charge: number = 1;
   discipline: number = 10;
+  weight: number = 30;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);
