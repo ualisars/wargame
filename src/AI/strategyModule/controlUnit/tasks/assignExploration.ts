@@ -3,10 +3,10 @@ import {
   getFreeUnits,
   getUnitsByPropertyValue,
   getClosestUnitToOtherUnit
-} from '../../../utils/unit/AI';
+} from '../../../../utils/unit/AI';
 import {
   computerUnits
-} from '../../../store/unit/units';
+} from '../../../../store/unit/units';
 
 export const assignExploration = (unitTypes:any, percentage:number):any => {
   return new Promise(resolve => {

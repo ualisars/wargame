@@ -1,4 +1,4 @@
-import {computerUnits} from '../../../store/unit/units';
+import {computerUnits} from '../../../../store/unit/units';
 
 /*
   All units no assigned to be scouts

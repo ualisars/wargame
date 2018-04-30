@@ -14,7 +14,7 @@ import {
   assignPatrol,
   assignProtection,
   assignExploration
-} from '../../../processModule/task';
+} from './index';
 
 
 export let assignTasksForNeutral = () => {

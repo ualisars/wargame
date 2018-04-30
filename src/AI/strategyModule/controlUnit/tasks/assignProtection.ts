@@ -3,15 +3,15 @@ import {
   getFreeUnits,
   getUnitsByPropertyValue,
   getClosestUnitToOtherUnit
-} from '../../../utils/unit/AI';
+} from '../../../../utils/unit/AI';
 import {
   doesUnitNeedProtection,
   howManyUnitsNeedProtection
-} from '../unit';
+} from '../../../processModule/unit';
 import {
   computerUnits,
   playerUnits
-} from '../../../store/unit/units';
+} from '../../../../store/unit/units';
 
 /*
   Assign one unit to protect another
