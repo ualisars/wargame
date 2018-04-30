@@ -9,8 +9,8 @@ import {
   computerUnits,
   playerUnits,
   units,
-  addUnitIntoVisibleArray,
-  removeUnitFromVisibleArray,
+  addUnitIntoVisibleUnits,
+  removeUnitFromVisibleUnits,
   visibleForComputerUnits,
   visibleForPlayerUnits
 } from './unit';
@@ -33,8 +33,8 @@ export {
   computerUnits,
   playerUnits,
   units,
-  addUnitIntoVisibleArray,
-  removeUnitFromVisibleArray,
+  addUnitIntoVisibleUnits,
+  removeUnitFromVisibleUnits,
   visibleForComputerUnits,
   visibleForPlayerUnits,
   computerPower,

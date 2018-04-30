@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {
-    addUnitIntoVisibleArray,
-    removeUnitFromVisibleArray,
+    addUnitIntoVisibleUnits,
+    removeUnitFromVisibleUnits,
     visibleForComputerUnits,
     visibleForPlayerUnits
 } from '../../../src/store/unit/visibleUnits';
@@ -35,9 +35,9 @@ describe('store AI test', () => {
         });
 
         it('unit1, unit4 and unit5 should be inside visibleForComputer units', (done) => {
-            addUnitIntoVisibleArray(unit1);
-            addUnitIntoVisibleArray(unit4);
-            addUnitIntoVisibleArray(unit5);
+            addUnitIntoVisibleUnits(unit1);
+            addUnitIntoVisibleUnits(unit4);
+            addUnitIntoVisibleUnits(unit5);
 
             assert.equal(isUnitInArray(unit1, visibleForComputerUnits), true);
             assert.equal(isUnitInArray(unit2, visibleForComputerUnits), false);
@@ -48,8 +48,8 @@ describe('store AI test', () => {
         });
 
         it('unit2 and unit3 should be inside visibleForPlayer units', (done) => {
-            addUnitIntoVisibleArray(unit2);
-            addUnitIntoVisibleArray(unit3);
+            addUnitIntoVisibleUnits(unit2);
+            addUnitIntoVisibleUnits(unit3);
 
             assert.equal(isUnitInArray(unit1, visibleForPlayerUnits), false);
             assert.equal(isUnitInArray(unit2, visibleForPlayerUnits), true);
@@ -71,11 +71,11 @@ describe('store AI test', () => {
             unit4 = createUnit('militia', 560, 0, 'player');
             unit5 = createUnit('hoplites', 560, 40, 'player');
 
-            addUnitIntoVisibleArray(unit1);
-            addUnitIntoVisibleArray(unit2);
-            addUnitIntoVisibleArray(unit3);
-            addUnitIntoVisibleArray(unit4);
-            addUnitIntoVisibleArray(unit5);
+            addUnitIntoVisibleUnits(unit1);
+            addUnitIntoVisibleUnits(unit2);
+            addUnitIntoVisibleUnits(unit3);
+            addUnitIntoVisibleUnits(unit4);
+            addUnitIntoVisibleUnits(unit5);
         });
 
         // remove units after test completed
@@ -88,8 +88,8 @@ describe('store AI test', () => {
         });
 
         it('unit1 and unit5 should not be inside visibleForComputer units', (done) => {
-            removeUnitFromVisibleArray(unit1);
-            removeUnitFromVisibleArray(unit5);
+            removeUnitFromVisibleUnits(unit1);
+            removeUnitFromVisibleUnits(unit5);
 
             assert.equal(isUnitInArray(unit1, visibleForComputerUnits), false);
             assert.equal(isUnitInArray(unit2, visibleForComputerUnits), false);
@@ -101,7 +101,7 @@ describe('store AI test', () => {
         });
 
         it('unit 2 should not be inside visibleForPlayer units', (done) => {
-            removeUnitFromVisibleArray(unit2);
+            removeUnitFromVisibleUnits(unit2);
 
             assert.equal(isUnitInArray(unit1, visibleForPlayerUnits), false);
             assert.equal(isUnitInArray(unit2, visibleForPlayerUnits), false);
@@ -113,7 +113,7 @@ describe('store AI test', () => {
         });
 
         it('no units should not be inside visibleForPlayer units', (done) => {
-            removeUnitFromVisibleArray(unit3);
+            removeUnitFromVisibleUnits(unit3);
 
             assert.equal(isUnitInArray(unit1, visibleForPlayerUnits), false);
             assert.equal(isUnitInArray(unit2, visibleForPlayerUnits), false);

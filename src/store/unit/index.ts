@@ -17,8 +17,8 @@ import {
   units
 } from './units';
 import {
-  addUnitIntoVisibleArray,
-  removeUnitFromVisibleArray,
+  addUnitIntoVisibleUnits,
+  removeUnitFromVisibleUnits,
   visibleForComputerUnits,
   visibleForPlayerUnits
 } from './visibleUnits';
@@ -34,8 +34,8 @@ export {
   computerUnits,
   playerUnits,
   units,
-  addUnitIntoVisibleArray,
-  removeUnitFromVisibleArray,
+  addUnitIntoVisibleUnits,
+  removeUnitFromVisibleUnits,
   visibleForComputerUnits,
   visibleForPlayerUnits
 }

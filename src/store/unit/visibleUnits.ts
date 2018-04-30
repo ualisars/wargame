@@ -10,7 +10,7 @@ import Unit from '../../unit/types/Unit';
 export let visibleForPlayerUnits:Unit[] = [];
 export let visibleForComputerUnits:Unit[] = [];
 
-export const addUnitIntoVisibleArray = (unit:Unit) => {
+export const addUnitIntoVisibleUnits = (unit:Unit) => {
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
     if(!isObjectInArray(unit, visibleForComputerUnits)) {
       visibleForComputerUnits.push(unit);
@@ -23,7 +23,7 @@ export const addUnitIntoVisibleArray = (unit:Unit) => {
   }
 }
 
-export const removeUnitFromVisibleArray = (unit:Unit) => {
+export const removeUnitFromVisibleUnits = (unit:Unit) => {
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
     if(isObjectInArray(unit, visibleForComputerUnits)) {
       visibleForComputerUnits = deleteObjectFromArray(unit, visibleForComputerUnits);

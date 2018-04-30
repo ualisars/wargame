@@ -5,8 +5,8 @@ import {ctx} from '../../config/context';
 import {gridSize} from '../../config';
 import {drawUnit} from '../draw';
 import {
-  addUnitIntoVisibleArray,
-  removeUnitFromVisibleArray,
+  addUnitIntoVisibleUnits,
+  removeUnitFromVisibleUnits,
   addUnitToSpottedUnits,
 } from '../../store';
 import {spottedUnits} from '../../store/unit/spottedUnits';
@@ -61,7 +61,7 @@ export const spotEnemy = (unit:Unit) => {
       }
       enemy.isVisible = true;
       drawUnit(enemy); // show enemy on the map
-      addUnitIntoVisibleArray(enemy);
+      addUnitIntoVisibleUnits(enemy);
       if(unit.controlBy === 'computer') { // for computer add enemy into spottedUnits
         addUnitToSpottedUnits(enemy);
       }
@@ -102,7 +102,7 @@ export const isUnitSpottedByEnemy = (unit:Unit) => {
     let dy = Math.abs(unitNode.y - enemyNode.y);
     if(visibilityRange >= dx && visibilityRange >= dy) { // enemy has been spotted
       //console.error(unit.name, 'has been spotted by enemy', enemy.name);
-      addUnitIntoVisibleArray(unit);
+      addUnitIntoVisibleUnits(unit);
       isSpotted = true;
       if(unit.isVisible === false && unit.controlBy === 'player') {
         removeFromHidingEnemies(unit);
@@ -117,7 +117,7 @@ export const isUnitSpottedByEnemy = (unit:Unit) => {
     }
   }
   if(!isSpotted) { // unit is not in range of any enemies
-    removeUnitFromVisibleArray(unit);
+    removeUnitFromVisibleUnits(unit);
     if(unit.controlBy === 'player' && unit.isVisible === true) { // unit has been in the spottedUnits
       addToHidingEnemies(unit);
     }

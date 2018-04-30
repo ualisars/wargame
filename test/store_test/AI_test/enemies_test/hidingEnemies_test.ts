@@ -5,8 +5,8 @@ import {
     hidingEnemies
 } from '../../../../src/store/AI/enemies/hidingEnemies';
 import {
-    addUnitIntoVisibleArray,
-    removeUnitFromVisibleArray
+    addUnitIntoVisibleUnits,
+    removeUnitFromVisibleUnits
 } from '../../../../src/store/unit/visibleUnits';
 import {isUnitInArray} from '../../../../src/utils/unit/general';
 import {createUnit} from '../../../../src/unit/create';
@@ -79,7 +79,7 @@ describe('store AI test', () => {
         });
 
         it('unit2 should not be inside hidingEnemies', (done) => {
-            addUnitIntoVisibleArray(unit2);
+            addUnitIntoVisibleUnits(unit2);
             removeFromHidingEnemies(unit2);
             assert.equal(isUnitInArray(unit1, hidingEnemies), true);
             assert.equal(isUnitInArray(unit2, hidingEnemies), false);
@@ -90,8 +90,8 @@ describe('store AI test', () => {
         });
 
         it('unit1, unit2 and unit5 should not be inside hidingEnemies', (done) => {
-            addUnitIntoVisibleArray(unit1);
-            addUnitIntoVisibleArray(unit5);
+            addUnitIntoVisibleUnits(unit1);
+            addUnitIntoVisibleUnits(unit5);
             removeFromHidingEnemies(unit1);
             removeFromHidingEnemies(unit5);
             assert.equal(isUnitInArray(unit1, hidingEnemies), false);
