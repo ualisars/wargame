@@ -1,5 +1,5 @@
-import {getUnitTypesInPercentage} from '../analyzeModule/unitAnalyze';
-import {changeFormation} from '../../store/AI/formation';
+import {getUnitTypesInPercentage} from '../../analyzeModule/unitAnalyze';
+import {changeFormation} from '../../../store/AI/formation';
 /*
   formations:
   1. Heavy infantry and skirmishers - center, cavalry and light infantry - flank

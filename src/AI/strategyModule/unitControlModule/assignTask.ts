@@ -1,3 +1,7 @@
+import {
+  getBestUnitByProperty,
+  getFreeUnits
+} from '../../../utils/unit/AI';
 import{
   getUnitTypesInPercentage,
   calculateUnitTypes,
@@ -7,31 +11,29 @@ import {
   playerUnits
 } from '../../../store/unit/units';
 import {visibleForComputerUnits} from '../../../store/unit/visibleUnits';
+
 import {hidingEnemies} from '../../../store/AI/enemies/hidingEnemies';
-import {combatStage} from '../../../store/AI/stage/combatStage';
-import {
-  assignHoldPosition,
-  assignPatrol,
-  assignProtection,
-  assignExploration
-} from '../../processModule/task';
+import {assignTasksForNeutral} from './tasks/assignTask';
 
 
-export let assignTasksForNeutral = () => {
+/*
+  Task depends on:
+  1. Unit ability
+  2. Stage
+  3. Allies Units
+*/
+export const assignTasks = ():any => {
+  let behaviour = 'neutral'; // change to dynamic in future
   let numberOfUnits = computerUnits.length;
   let numberOfEnemies = playerUnits.length;
   let spottedEnemies = visibleForComputerUnits.length + hidingEnemies.length;
   let visibleEnemies = visibleForComputerUnits.length;
   let percentage = getUnitTypesInPercentage();
   let unitTypes = calculateUnitTypes();
-  if(combatStage === 'exploration') {
-    assignExploration(unitTypes, 60)
-    .then(assignPatrol)
-    .then(assignHoldPosition)
-    .then(() => {
-      for(let unit of computerUnits) {
-        console.log('id', unit.id, 'name', unit.name, 'task is', unit.task);
-      }
-    });
+  // assign scouts
+  if(behaviour === 'neutral') {
+    assignTasksForNeutral();
   }
+
+
 }

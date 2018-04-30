@@ -63,16 +63,16 @@ import {
   getUnitTypesInPercentage,
 } from '../../AI/analyzeModule/unitAnalyze';
 import {getSurroundedNodes} from '../../utils/surrounded';
-import {chooseFormation} from '../../AI/strategyModule/formation';
+import {chooseFormation} from '../../AI/strategyModule/unitControlModule/formation';
 // strategy module
 import {
   hidingEnemies
 } from '../../store/AI/enemies/hidingEnemies';
-import{orderToAttackEnemy} from '../../AI/strategyModule/unitOrders';
-import {assignTasks} from '../../AI/strategyModule/assignTask';
+import{orderToAttackEnemy} from '../../AI/strategyModule/decisionModule/unitOrders';
+import {assignTasks} from '../../AI/strategyModule/unitControlModule/assignTask';
 import {assignCombatStage} from '../../AI/processModule/combatStage';
 import {calculateTotalPower} from '../../AI/analyzeModule/powerAnalyze';
-import {AIMovement} from '../../AI/strategyModule/unitOrders';
+import {AIMovement} from '../../AI/strategyModule/decisionModule/unitOrders';
 import {isBattleEnd, checkWinner} from '../../gameLoop';
 import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
