@@ -10,7 +10,7 @@ import Unit from '../../../unit/types/Unit';
 export let hidingEnemies:any[] = [];
 
 export const addToHidingEnemies = (unit:Unit) => {
-  if(!isUnitInArray(unit, visibleForComputerUnits)) { // hided enemy cannot be visible at the same time
+  if(!isUnitInArray(unit, visibleForComputerUnits)) { // hiding enemy cannot be visible at the same time
     let updatedUnit:Unit = Object.assign({}, unit);
     if(!isUnitInArray(unit, hidingEnemies) && unit.controlBy === 'player') { // unit's already added
       hidingEnemies.push(updatedUnit);
