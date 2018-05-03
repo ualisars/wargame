@@ -47,6 +47,6 @@ export const removeAllPlayerUnits = ():void => {
 
 export const removeAllUnits = ():void => {
   removeAllComputerUnits();
-  removeAllComputerUnits();
+  removeAllPlayerUnits();
   units = [];
 }
