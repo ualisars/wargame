@@ -7,7 +7,7 @@ import {
 } from '../../unit/visibleUnits';
 import Unit from '../../../unit/types/Unit';
 
-export let hidingEnemies:any[] = [];
+export let hidingEnemies: Unit[] = [];
 
 export const addToHidingEnemies = (unit:Unit) => {
   if(!isUnitInArray(unit, visibleForComputerUnits)) { // hiding enemy cannot be visible at the same time

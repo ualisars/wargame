@@ -20,7 +20,7 @@ describe('store AI test', () => {
         let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit, unit5:Unit;
 
         before(() => {
-        removeAllUnits();
+            removeAllUnits();
             unit1 = createUnit('lightCavalry', 1000, 80, 'player');
             unit2 = createUnit('scouts', 1249, 400, 'player');
             unit3 = createUnit('pikemen', 120, 560, 'player');

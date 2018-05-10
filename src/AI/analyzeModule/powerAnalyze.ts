@@ -10,6 +10,7 @@ import {
 } from '../../store/unit/units';
 import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 import {visiblePlayerUnitsPower} from '../../store/AI/power/visiblePlayerUnitsPower';
+import {revealedUnitsPower} from '../../store/AI/power/revealedUnitsPower';
 
 export const calculateTotalComputerPower = () => {
   computerPower.resetAllProperties();
@@ -23,6 +24,10 @@ export const calculateTotalPlayerPower = () => {
   for(let unit of playerUnits) {
     decomposeUnitProps(unit);
   }
+}
+
+export const calculateRevealedUnitsPower = () => {
+  revealedUnitsPower.resetAllProperties();
 }
 
 export const calculateVisiblePlayerPower = () => {
