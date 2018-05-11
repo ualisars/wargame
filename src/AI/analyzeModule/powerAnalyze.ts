@@ -8,6 +8,7 @@ import {
   playerUnits,
   computerUnits
 } from '../../store/unit/units';
+import {revealedUnits} from '../../store/AI/enemies/revealedEnemies';
 import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
 import {visiblePlayerUnitsPower} from '../../store/AI/power/visiblePlayerUnitsPower';
 import {revealedUnitsPower} from '../../store/AI/power/revealedUnitsPower';
@@ -28,6 +29,9 @@ export const calculateTotalPlayerPower = () => {
 
 export const calculateRevealedUnitsPower = () => {
   revealedUnitsPower.resetAllProperties();
+  for(let unit of revealedUnits) {
+    decomposeUnitProps(unit, 'revealedUnits');
+  }
 }
 
 export const calculateVisiblePlayerPower = () => {
@@ -116,5 +120,17 @@ export const decomposeUnitProps = (unit:any, side:string='player') => {
     initialPlayerPower.addDiscipline(unit.discipline);
     initialPlayerPower.addMorale(unit.morale);
     initialPlayerPower.addCondition(unit.condition);
+  }
+
+  else if(side === 'revealedUnits') {
+    revealedUnitsPower.incrementQuantity();
+    revealedUnitsPower.addHealth(unit.health);
+    revealedUnitsPower.addSpeed(unit.speed);
+    revealedUnitsPower.addArmour(unit.armour);
+    revealedUnitsPower.addMeleeDamage(unit.meleeDamage);
+    revealedUnitsPower.addMissileDamage(unit.missileDamage);
+    revealedUnitsPower.addDiscipline(unit.discipline);
+    revealedUnitsPower.addMorale(unit.morale);
+    revealedUnitsPower.addCondition(unit.condition);
   }
 }

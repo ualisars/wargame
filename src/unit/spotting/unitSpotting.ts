@@ -11,6 +11,9 @@ import {
 } from '../../store';
 import {spottedUnits} from '../../store/unit/spottedUnits';
 import {
+  addToRevealedUnits
+} from '../../store/AI/enemies/revealedEnemies';
+import {
   visibleForPlayerUnits,
   visibleForComputerUnits
 } from '../../store/unit/visibleUnits';
@@ -64,6 +67,7 @@ export const spotEnemy = (unit:Unit) => {
       addUnitIntoVisibleUnits(enemy);
       if(unit.controlBy === 'computer') { // for computer add enemy into spottedUnits
         addUnitToSpottedUnits(enemy);
+        addToRevealedUnits(enemy);
       }
     }
   }
