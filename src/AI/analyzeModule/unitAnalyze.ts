@@ -13,6 +13,7 @@ import {
   getSurroundedAllies,
   getSurroundedEnemies
 } from '../../utils/surrounded';
+import { Unit } from '../../unit';
 
 export const analyzeUnit = (unit:any):any => {
   //console.log(calculateUnitsToBeware(unit));
@@ -136,7 +137,7 @@ export const calculatePowerAdvantageInTheArea = (unit:any) => {
   }
 }
 
-export const calculateUnitTypes = ():any => {
+export const calculateUnitTypes = (side:string='computer'):any => {
   let types:any = {
     infantry: 0,
     spearmen: 0,
@@ -146,7 +147,19 @@ export const calculateUnitTypes = ():any => {
     skirmishers: 0,
     cavalry: 0
   }
-  for(let unit of computerUnits) {
+
+  let units:Unit[];
+
+  if(side === 'computer') {
+    units = Object.assign([], computerUnits);
+  } 
+  else if(side === 'player') {
+    units = Object.assign([], playerUnits);
+  } else {
+    throw new Error('incorrect side argument');
+  }
+
+  for(let unit of units) {
     if(unit.type === 'infantry' || unit.type === 'spearmen' || unit.type === 'scouts') {
       types.infantry += 1;
     }
@@ -169,6 +182,7 @@ export const calculateUnitTypes = ():any => {
       types.cavalry += 1;
     }
   }
+  
   return types;
 }
 
