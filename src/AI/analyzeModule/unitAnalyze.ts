@@ -4,6 +4,7 @@ import {
   playerUnits,
   computerUnits
 } from '../../store/unit/units';
+import {revealedUnits} from '../../store/AI/enemies/revealedEnemies';
 import {gridSize} from '../../config';
 import {getNodeFromMap} from '../../utils';
 import {
@@ -153,6 +154,9 @@ export const calculateUnitTypes = (side:string='computer'):any => {
   if(side === 'computer') {
     units = Object.assign([], computerUnits);
   } 
+  else if(side === 'revealed') {
+    units = Object.assign([], revealedUnits);
+  }
   else if(side === 'player') {
     units = Object.assign([], playerUnits);
   } else {
