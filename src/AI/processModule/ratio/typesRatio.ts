@@ -21,9 +21,6 @@ export const calculateTypesRatio = ():any => {
     let playerSkirmishersNumber:number = playerTypes.skirmishers;
     let playerCavalryNumber:number = playerTypes.cavalry;
 
-    console.log('infantryNumber', infantryNumber);
-    console.log('playerInfantryNumber', playerInfantryNumber);
-
     let infantryRatio:number = calculatePercentRatio(infantryNumber, playerInfantryNumber);
     let spearmenRatio:number = calculatePercentRatio(spearmenNumber, playerSpearmenNumber);
     let lightInfantryRatio:number = calculatePercentRatio(lightInfantryNumber, playerLightInfantryNumber);
