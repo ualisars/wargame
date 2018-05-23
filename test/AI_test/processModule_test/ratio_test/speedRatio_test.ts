@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {
-    calculateTypesRatio
-} from '../../../../src/AI/processModule/ratio/typesRatio';
+    calculateSpeedRatio
+} from '../../../../src/AI/processModule/ratio/speedRatio';
 import {createUnit} from '../../../../src/unit/create';
 import {removeAllUnits} from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
@@ -13,7 +13,7 @@ import Unit from '../../../../src/unit/types/Unit';
 
 describe('AI processModule ratioTest', () => {
 
-    describe('calculateTypesRatio test', () => {
+    describe('calculateSpeedRatio test', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
@@ -39,6 +39,20 @@ describe('AI processModule ratioTest', () => {
             playerUnit5 = createUnit('Scouts', 880, 280, 'player');
             playerUnit6 = createUnit('Pikemen', 560, 240, 'player');
 
+            // assign speed manually in order to avoid future issues
+            computerUnit1.speed = 20;
+            computerUnit2.speed = 18;
+            computerUnit3.speed = 12;
+            computerUnit4.speed = 7;
+            computerUnit5.speed = 8;
+            computerUnit6.speed = 11;
+
+            playerUnit1.speed = 7;
+            playerUnit2.speed = 9;
+            playerUnit3.speed = 11;
+            playerUnit4.speed = 8;
+            playerUnit5.speed = 5;
+            playerUnit6.speed = 6;
 
             addToRevealedUnits(playerUnit1);
             addToRevealedUnits(playerUnit2);
@@ -46,7 +60,6 @@ describe('AI processModule ratioTest', () => {
             addToRevealedUnits(playerUnit4);
             addToRevealedUnits(playerUnit5);
             addToRevealedUnits(playerUnit6);
-
 
         });
 
@@ -68,42 +81,13 @@ describe('AI processModule ratioTest', () => {
 
         });
 
-        it('infantry ratio should be equal to 0.33', () => {
-            let {infantryRatio} = calculateTypesRatio();
+        it('speedRatio should be equal to 0.62', () => {
 
-            assert.equal(infantryRatio, 0.33);
+            let speedRatio: number = calculateSpeedRatio();
+
+            assert.equal(speedRatio, 0.62);
+
         });
-
-        it('spearmenRatio should be equal to 0.5', () => {
-            let {spearmenRatio} = calculateTypesRatio();
-
-            assert.equal(spearmenRatio, 0.5);
-        });
-
-        it('lightInfantryRatio should be equal to 0.33', () => {
-            let {lightInfantryRatio} = calculateTypesRatio();
-
-            assert.equal(lightInfantryRatio, 0.33);
-        });
-
-        it('heavyInfantryRatio should be equal to 0', () => {
-            let {heavyInfantryRatio} = calculateTypesRatio();
-
-            assert.equal(heavyInfantryRatio, 0);
-        });
-
-        it('skirmisherRatio should be equal to 1', () => {
-            let {skirmisherRatio} = calculateTypesRatio();
-
-            assert.equal(skirmisherRatio, 1);
-        });
-
-        it('cavalryRatio should be equal to 0', () => {
-            let {cavalryRatio} = calculateTypesRatio();
-
-            assert.equal(cavalryRatio, 1);
-        });
-
     });
 
 });

@@ -1,4 +1,5 @@
 import {calculateUnitTypes} from '../../analyzeModule/unitAnalyze';
+import {calculatePercentRatio} from './percentRatio';
 
 export const calculateTypesRatio = ():any => {
 
@@ -38,13 +39,3 @@ export const calculateTypesRatio = ():any => {
     }
 }
 
-export const calculatePercentRatio = (computerUnits:number, playerUnits:number):number => {
-    
-    let computerRatio:number = 0;
-    const totalUnits:number = computerUnits + playerUnits;
-    
-    computerRatio = (Math.round((computerUnits * 100) / totalUnits)) * 0.01;
-
-    return computerRatio;
-
-}
