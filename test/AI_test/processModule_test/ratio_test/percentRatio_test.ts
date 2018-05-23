@@ -50,5 +50,12 @@ describe('AI processModule ratioTest', () => {
 
         });
 
+        it('ratio should be equal to 0.47', () => {
+
+            let ratio:number = calculatePercentRatio(58, 65);
+            assert.equal(ratio, 0.47);
+
+        });
+
     });
 });
