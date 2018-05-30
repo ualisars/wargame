@@ -1,22 +1,22 @@
 import {assert} from 'chai';
 import {
-    calculateSpeedRatio
-} from '../../../../src/AI/processModule/ratio/speedRatio';
+    calculateTotalRatio
+} from '../../../../src/AI/processModule/ratio';
 import {createUnit} from '../../../../src/unit/create';
 import {
+    computerUnits,
     removeAllUnits,
     removeAllComputerUnits
 } from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
 import {
-    addToRevealedUnits,
-    revealedUnits
+    addToRevealedUnits
 } from '../../../../src/store/AI/enemies/revealedEnemies';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('AI processModule ratioTest', () => {
 
-    describe('calculateSpeedRatio test', () => {
+    describe('calculateTotalRatio test', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
@@ -42,20 +42,21 @@ describe('AI processModule ratioTest', () => {
             playerUnit5 = createUnit('Scouts', 880, 280, 'player');
             playerUnit6 = createUnit('Pikemen', 560, 240, 'player');
 
-            // assign speed manually in order to avoid future issues
-            computerUnit1.speed = 20;
-            computerUnit2.speed = 18;
-            computerUnit3.speed = 12;
-            computerUnit4.speed = 7;
-            computerUnit5.speed = 8;
-            computerUnit6.speed = 11;
+            // assign weight manually in order to avoid future issues
+            // computerUnit1.speed = 90;
+            // computerUnit2.speed = 100;
+            // computerUnit3.speed = 30;
+            // computerUnit4.speed = 40;
+            // computerUnit5.speed = 80;
+            // computerUnit6.speed = 20;
 
-            playerUnit1.speed = 7;
-            playerUnit2.speed = 9;
-            playerUnit3.speed = 11;
-            playerUnit4.speed = 8;
-            playerUnit5.speed = 5;
-            playerUnit6.speed = 6;
+            playerUnit1.speed = 60;
+            playerUnit2.speed = 20;
+            playerUnit3.speed = 40;
+            playerUnit4.speed = 20;
+            playerUnit5.speed = 20;
+            playerUnit6.speed = 90;
+
 
             addToRevealedUnits(playerUnit1);
             addToRevealedUnits(playerUnit2);
@@ -84,14 +85,14 @@ describe('AI processModule ratioTest', () => {
 
         });
 
-        it('speedRatio should be equal to 0.62', () => {
+        it('total ratio should be 0.56', () => {
 
-            let speedRatio: number = calculateSpeedRatio();
+            let totalRatio: number = calculateTotalRatio();
 
-            assert.equal(speedRatio, 0.62);
+            assert.equal(totalRatio, 0.56);
 
         });
 
-    });
 
+    });
 });

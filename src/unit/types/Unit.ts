@@ -50,6 +50,7 @@ class Unit {
   shotsRemained:number = 0;
   charge:number = 2;
   discipline: number = 5;
+  weight: number = 0;
   visibility:number = 5;
   morale: number = 100;
   condition: number = 100;
