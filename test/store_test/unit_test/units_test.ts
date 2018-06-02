@@ -1,5 +1,8 @@
 import {assert} from 'chai';
 import {
+    addToComputerUnits,
+    addToPlayerUnits,
+    addToUnits,
     computerUnits,
     playerUnits,
     removeFromUnits,
@@ -11,11 +14,240 @@ import {
     units
 } from '../../../src/store/unit/units';
 import {isUnitInArray} from '../../../src/utils/unit/general';
+import {chooseUnitType} from '../../../src/unit/choose';
 import {createUnit} from '../../../src/unit/create';
 import {removeUnit} from '../../../src/unit/remove';
+import {incUnitId} from '../../../src/store/unit/unitId';
 import Unit from '../../../src/unit/types/Unit';
 
 describe('Unit store test',() => {
+
+    describe('addToComputerUnits test', () => {
+
+        let unit1:Unit, unit2:Unit, unit3:Unit, unit4: Unit;
+
+        before(() => {
+
+            removeAllUnits();
+
+            unit1 = chooseUnitType('LightCavalry', 400, 200, 'computer');
+            incUnitId();
+            unit2 = chooseUnitType('Scouts', 440, 280, 'computer');
+            incUnitId();
+            unit3 = chooseUnitType('Pikemen', 1080, 320, 'computer');
+            incUnitId();
+            unit4 = chooseUnitType('Archers', 80, 360, 'computer');
+            incUnitId();
+        });
+
+        // remove units after test completed
+        after(() => {
+
+            removeUnit(unit1);
+            removeUnit(unit2);
+            removeUnit(unit3);
+            removeUnit(unit4);
+
+        });
+
+        it('unit1 should be in computerUnits', () => {
+
+            addToComputerUnits(unit1);
+
+            assert.equal(isUnitInArray(unit1, computerUnits), true);
+        });
+
+        it('unit2 should be in computerUnits', () => {
+
+            addToComputerUnits(unit2);
+
+            assert.equal(isUnitInArray(unit2, computerUnits), true);
+        });
+
+        it('unit3 should be in computerUnits', () => {
+
+            addToComputerUnits(unit3);
+
+            assert.equal(isUnitInArray(unit3, computerUnits), true);
+        });
+
+        it('unit4 should be in computerUnits', () => {
+
+            addToComputerUnits(unit4);
+
+            assert.equal(isUnitInArray(unit4, computerUnits), true);
+        });
+
+        
+    });
+
+    describe('addToPlayerUnits test', () => {
+
+        let unit1:Unit, unit2:Unit, unit3:Unit, unit4: Unit;
+
+        before(() => {
+
+            removeAllUnits();
+
+            unit1 = chooseUnitType('LightCavalry', 400, 200, 'player');
+            incUnitId();
+            unit2 = chooseUnitType('Scouts', 440, 280, 'player');
+            incUnitId();
+            unit3 = chooseUnitType('Pikemen', 1080, 320, 'player');
+            incUnitId();
+            unit4 = chooseUnitType('Archers', 80, 360, 'player');
+            incUnitId();
+
+        });
+
+        // remove units after test completed
+        after(() => {
+
+            removeUnit(unit1);
+            removeUnit(unit2);
+            removeUnit(unit3);
+            removeUnit(unit4);
+
+        });
+
+        it('unit1 should be in playerUnits', () => {
+
+            addToPlayerUnits(unit1);
+
+            assert.equal(isUnitInArray(unit1, playerUnits), true);
+
+        });
+
+        it('unit2 should be in playerUnits', () => {
+
+            addToPlayerUnits(unit2);
+
+            assert.equal(isUnitInArray(unit2, playerUnits), true);
+
+        });
+
+        it('unit3 should be in playerUnits', () => {
+
+            addToPlayerUnits(unit3);
+
+            assert.equal(isUnitInArray(unit3, playerUnits), true);
+
+        });
+
+        it('unit4 should be in playerUnits', () => {
+
+            addToPlayerUnits(unit4);
+
+            assert.equal(isUnitInArray(unit4, playerUnits), true);
+
+        });
+
+    });
+
+    describe('addToUnits test', () => {
+
+        let unit1:Unit, unit2:Unit, unit3:Unit, unit4: Unit;
+
+        before(() => {
+
+            removeAllUnits();
+
+            unit1 = chooseUnitType('LightCavalry', 400, 200, 'player');
+            incUnitId();
+            unit2 = chooseUnitType('Scouts', 440, 280, 'computer');
+            incUnitId();
+            unit3 = chooseUnitType('Pikemen', 1080, 320, 'computer');
+            incUnitId();
+            unit4 = chooseUnitType('Archers', 80, 360, 'player');
+            incUnitId();
+
+        });
+
+        // remove units after test completed
+        after(() => {
+
+            removeUnit(unit1);
+            removeUnit(unit2);
+            removeUnit(unit3);
+            removeUnit(unit4);
+
+        });
+
+        it('unit1 should be in units', (done) => {
+
+            addToUnits(unit1);
+
+            assert.equal(isUnitInArray(unit1, units), true);
+
+            done();
+
+        });
+
+        it('unit1 should be in playerUnits', (done) => {
+
+            assert.equal(isUnitInArray(unit1, playerUnits), true);
+
+            done();
+
+        });
+
+        
+
+        it('unit2 should be in units', (done) => {
+
+            addToUnits(unit2);
+
+            assert.equal(isUnitInArray(unit2, units), true);
+
+            done();
+
+        });
+
+        it('unit2 should be in computerUnits', (done) => {
+
+            assert.equal(isUnitInArray(unit2, computerUnits), true);
+           
+            done();
+
+        });
+
+        it('unit3 should be in units', (done) => {
+
+            addToUnits(unit3);
+
+            assert.equal(isUnitInArray(unit3, units), true);
+
+            done();
+
+        });
+
+        it('unit3 should be in computerUnits', (done) => {
+
+            assert.equal(isUnitInArray(unit3, computerUnits), true);
+
+            done();
+
+        });
+
+        it('unit4 should be in units', (done) => {
+
+            addToUnits(unit4);
+
+            assert.equal(isUnitInArray(unit4, units), true);
+
+            done();
+
+        });
+
+        it('unit4 should be in playerUnits', (done) => {
+
+            assert.equal(isUnitInArray(unit4, playerUnits), true);
+
+            done();
+
+        });
+
+    });
 
     describe('removeFromPlayerUnits test', () => {
 

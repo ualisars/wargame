@@ -9,10 +9,50 @@ export let units:Unit[] = [];
 export let playerUnits:Unit[] = [];
 export let computerUnits:Unit[] = [];
 
+export const addToUnits = (unit:Unit) => {
+ 
+  if(unit) {
+    if(!isUnitInArray(unit, units)) {
+      if(unit.controlBy === 'computer') {
+        addToComputerUnits(unit);
+        units.push(unit);
+      }
+      else if(unit.controlBy === 'player') {
+        addToPlayerUnits(unit);
+        units.push(unit);
+      } else {
+        throw new Error('Undefined unit control');
+      }
+    } else {
+      throw new Error('unit is already added');
+    }
+  }
+}
+
+export const addToComputerUnits = (unit:Unit) => {
+  if(unit) {
+    if(!isUnitInArray(unit, computerUnits)) {
+      if(unit.controlBy === 'computer') {
+        computerUnits.push(unit);
+      }
+    }
+  }
+}
+
+export const addToPlayerUnits = (unit:Unit) => {
+  if(unit) {
+    if(!isUnitInArray(unit, playerUnits)) {
+      if(unit.controlBy === 'player') {
+        playerUnits.push(unit);
+      }
+    }
+  }
+}
+
+
 /*
 delete unit from units array
 */
-
 export const removeFromUnits = (unit:Unit) => {
   if(unit) {
     units = deleteUnitFromArray(unit, units);
