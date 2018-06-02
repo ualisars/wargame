@@ -1,7 +1,5 @@
 import {
-  playerUnits,
-  computerUnits,
-  units
+ addToUnits
 } from '../../store/unit/units';
 import {incUnitId} from '../../store/unit/unitId';
 import {drawUnit} from '../draw/drawUnit';
@@ -13,9 +11,7 @@ import {chooseUnitType} from '../choose';
 export let createUnit = (type:string, x:number, y:number, controlBy:string) => {
   let unit:Unit;
   unit = chooseUnitType(type, x, y, controlBy);
-  units.push(unit);
-  if(controlBy === 'player') playerUnits.push(unit);
-  else if(controlBy === 'computer') computerUnits.push(unit);
+  addToUnits(unit);
   drawUnit(unit);
   incUnitId();
   return unit;
