@@ -13,7 +13,6 @@ import {
   isObjectInArray,
   isObjectEmpty
 } from './object/objUtils';
-import {randomizeMeleeDamage} from './random/randomGenerator';
 import {
   addUnitIntoArray,
   anotherUnitIsOnTheWay,
@@ -51,7 +50,6 @@ export {
   addUnitIntoArray,
   getDistanceBetweenTwoUnitsInGrids,
   isUnitInArray,
-  randomizeMeleeDamage,
   anotherUnitIsOnTheWay,
   getUnitsMinProperty,
   getUnitsMaxProperty,

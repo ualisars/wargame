@@ -1,4 +1,4 @@
-import {randomizeMeleeDamage} from '../../../utils';
+import {randomizeMeleeDamage} from '../../../utils/random/meleeDamage';
 import {
   calculateDamage,
   calculateDamageBaseOnEnemyPosition

@@ -1,8 +1,8 @@
 import {assert, expect} from 'chai';
-import {randomizeMeleeDamage} from '../../../src/utils';
+import {randomizeMeleeDamage} from '../../../src/utils/random/meleeDamage';
 
 describe('randomUtils test', function() {
-  describe('randomGenerator test', function() {
+  describe('randomizeMeleeDamage test', function() {
     let meleeAttack = 10;
     let randomAttack1 = randomizeMeleeDamage(meleeAttack);
     let randomAttack2 = randomizeMeleeDamage(meleeAttack);

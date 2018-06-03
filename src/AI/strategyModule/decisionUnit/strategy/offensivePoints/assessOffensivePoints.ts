@@ -1,8 +1,5 @@
 import {strategy} from '../../../../../store/AI/strategy/computerStrategy';
 import {
-    calculateMeleeDamageRatio,
-    calculateSpeedRatio,
-    calculateTypesRatio,
     calculateTotalRatio
 } from '../../../../processModule/ratio';
 
@@ -51,7 +48,7 @@ export const assessOffensivePoints = (): number => {
 
 
 
-    if(offensivePoints >= 0 && offensivePoints <= 1) {
+    if(offensivePoints >= 0 && offensivePoints <= 100) {
         return offensivePoints;
     } else {
         throw new Error('incorrect offensivePoints');
