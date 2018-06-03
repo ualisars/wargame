@@ -39,7 +39,7 @@ import {
   if true, change property isVisible to true
 */
 export const spotEnemy = (unit:Unit) => {
-  let enemies:any[];
+  let enemies:Unit[];
   if(unit.controlBy === 'player') { // if unit is control by player enemies will be computer's units
     enemies = Object.assign([], computerUnits);
   }
