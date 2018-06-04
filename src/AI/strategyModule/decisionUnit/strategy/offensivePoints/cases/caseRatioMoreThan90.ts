@@ -11,7 +11,7 @@ import {
 
 export const caseRatioMoreThan90 = (): number => {
 
-    let offensivePoints: number = 0;
+    let offensivePoints: number = 100;
 
     // get ratio for each unit type
     const {
@@ -23,6 +23,25 @@ export const caseRatioMoreThan90 = (): number => {
         cavalryRatio
     } = calculateTypesRatio();
 
+    let deduction: number = 0;
+
+    if(skirmisherRatio >= 60) {
+        deduction = 8;
+    }
+
+    if(infantryRatio >= 60) {
+        if(heavyInfantryRatio >= 40) {
+            deduction = 5;
+        }
+
+        else if(heavyInfantryRatio >= 30) {
+            deduction = 2;
+        }
+
+        else {
+            deduction = 1;
+        }
+    }
     
 
     return offensivePoints;
