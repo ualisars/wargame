@@ -1,59 +1,63 @@
 import {assert} from 'chai';
 import {
-    calculatePercentRatio
-} from '../../../../src/AI/processModule/ratio/percentRatio';
+    calculateOneSideRatio
+} from '../../../../src/AI/processModule/ratio/oneSideRatio';
 import {createUnit} from '../../../../src/unit/create';
 import {removeAllUnits} from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
-import {
-    addToRevealedUnits,
-    revealedUnits
-} from '../../../../src/store/AI/enemies/revealedEnemies';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('AI processModule ratioTest', () => {
 
-    describe('calculatePercentRatio test', () => {
+    describe('calculateOneSideRatio test', () => {
 
-        it('percent ratio should be equal to 0.42', () => {
+        let totalNumberOfUnits: number = 10;
+        let archers: number = 3;
+        let spearmen: number = 1;
+        let cavalry: number = 2;
+        let infantry: number = 4;
+        let lightInfantry: number = 2;
+        let heavyInfantry: number = 2;
 
-            let ratio:number = calculatePercentRatio(5, 7);
-            assert.equal(ratio, 0.42);
+        it('archersRatio should be equal to 0.3', () => {
 
-        });
-
-        it('ratio should be equal to 0.75', () => {
-
-            let ratio:number = calculatePercentRatio(3, 1);
-            assert.equal(ratio, 0.75);
-
-        });
-
-        it('ratio should be equal to 0', () => {
-
-            let ratio:number = calculatePercentRatio(0, 2);
-            assert.equal(ratio, 0);
+            let archersRatio:number = calculateOneSideRatio(archers, totalNumberOfUnits);
+            assert.equal(archersRatio, 0.30);
 
         });
 
-        it('ratio should be equal to 1', () => {
+        it('spearmenRatio should be equal to 0.1', () => {
 
-            let ratio:number = calculatePercentRatio(4, 0);
-            assert.equal(ratio, 1);
-
-        });
-
-        it('ratio should be equal to 0.5', () => {
-
-            let ratio:number = calculatePercentRatio(2, 2);
-            assert.equal(ratio, 0.5);
+            let spearmenRatio:number = calculateOneSideRatio(spearmen, totalNumberOfUnits);
+            assert.equal(spearmenRatio, 0.1);
 
         });
 
-        it('ratio should be equal to 0.47', () => {
+        it('cavalryRatio should be equal to 0.2', () => {
 
-            let ratio:number = calculatePercentRatio(58, 65);
-            assert.equal(ratio, 0.47);
+            let cavalryRatio:number = calculateOneSideRatio(cavalry, totalNumberOfUnits);
+            assert.equal(cavalryRatio, 0.2);
+
+        });
+
+        it('infantryRatio should be equal to 0.4', () => {
+
+            let infantryRatio:number = calculateOneSideRatio(infantry, totalNumberOfUnits);
+            assert.equal(infantryRatio, 0.4);
+
+        });
+
+        it('lightInfantryRatio should be equal to 0.2', () => {
+
+            let lightInfantryRatio:number = calculateOneSideRatio(lightInfantry, totalNumberOfUnits);
+            assert.equal(lightInfantryRatio, 0.2);
+
+        });
+
+        it('heavyInfantryRatio should be equal to 0.2', () => {
+
+            let heavyInfantryRatio:number = calculateOneSideRatio(heavyInfantry, totalNumberOfUnits);
+            assert.equal(heavyInfantryRatio, 0.2);
 
         });
 

@@ -4,6 +4,7 @@ import {
     calculateTypesRatio,
     calculateTotalRatio
 } from '../../../../../processModule/ratio';
+import {getRandomValueInRange} from '../../../../../../utils/random';
 
 /*
     this function return ratio in range from 90 to 100
@@ -11,7 +12,7 @@ import {
 
 export const caseRatioMoreThan90 = (): number => {
 
-    let offensivePoints: number = 100;
+    let offensivePoints: number = 90;
 
     // get ratio for each unit type
     const {
@@ -23,24 +24,24 @@ export const caseRatioMoreThan90 = (): number => {
         cavalryRatio
     } = calculateTypesRatio();
 
-    let deduction: number = 0;
-
     if(skirmisherRatio >= 60) {
-        deduction = 8;
+        offensivePoints += getRandomValueInRange(0, 2);
     }
 
     if(infantryRatio >= 60) {
         if(heavyInfantryRatio >= 40) {
-            deduction = 5;
+            offensivePoints += getRandomValueInRange(0, 4);
         }
 
         else if(heavyInfantryRatio >= 30) {
-            deduction = 2;
+            offensivePoints += getRandomValueInRange(0, 8);
         }
 
         else {
-            deduction = 1;
+            offensivePoints += getRandomValueInRange(0, 5);
         }
+    } else {
+        offensivePoints += getRandomValueInRange(0, 10);
     }
     
 
