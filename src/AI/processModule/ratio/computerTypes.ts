@@ -1,19 +1,34 @@
 import {computerUnits} from '../../../store/unit/units';
+import {calculateUnitTypes} from '../../analyzeModule/unitAnalyze';
+import {calculateRatioBasedOnTotal} from './ratioBasedOnTotal';
 
-export const calculateComputerTypesRatio = (calculated:number, total:number):number => {
+export const calculateComputerTypesRatio = ():any => {
 
-    let computerRatio:number = 0;
-    let stringRatio: string;
-    let processedRatio: number;
+    let computerTypes:any = calculateUnitTypes();
+    let totalNumber: number = computerUnits.length;
 
-    if(!total) {
-        throw new Error('total cannot be null or zero');
-    }
+    let infantryNumber:number = computerTypes.infantry;
+    let spearmenNumber:number = computerTypes.spearmen;
+    let lightInfantryNumber:number = computerTypes.lightInfantry;
+    let heavyInfantryNumber:number = computerTypes.heavyInfantry;
+    let scoutsNumber:number = computerTypes.scouts;
+    let skirmishersNumber:number = computerTypes.skirmishers;
+    let cavalryNumber:number = computerTypes.cavalry;
+
+    let computerInfantryRatio:number = calculateRatioBasedOnTotal(infantryNumber, totalNumber);
+    let computerSpearmenRatio:number = calculateRatioBasedOnTotal(spearmenNumber, totalNumber);
+    let computerLightInfantryRatio:number = calculateRatioBasedOnTotal(lightInfantryNumber, totalNumber);
+    let computerHeavyInfantryRatio:number = calculateRatioBasedOnTotal(heavyInfantryNumber, totalNumber);
+    let computerSkirmisherRatio:number = calculateRatioBasedOnTotal(skirmishersNumber, totalNumber);
+    let computerCavalryRatio:number = calculateRatioBasedOnTotal(cavalryNumber, totalNumber)
     
-    computerRatio = (Math.round((calculated * 100) / total)) * 0.01;
-    stringRatio = computerRatio.toFixed(2);
-    processedRatio = Number(stringRatio);
-
-    return processedRatio;
+    return {
+        computerInfantryRatio,
+        computerSpearmenRatio,
+        computerLightInfantryRatio,
+        computerHeavyInfantryRatio,
+        computerSkirmisherRatio,
+        computerCavalryRatio
+    }
     
 }
