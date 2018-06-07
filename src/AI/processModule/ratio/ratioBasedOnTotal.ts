@@ -1,4 +1,4 @@
-export const calculateOneSideRatio = (calculated:number, total:number):number => {
+export const calculateRatioBasedOnTotal = (calculated:number, total:number):number => {
 
     let computerRatio:number = 0;
     let stringRatio: string;
