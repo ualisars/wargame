@@ -1,7 +1,7 @@
 import {
     calculateMeleeDamageRatio,
     calculateSpeedRatio,
-    calculateTypesRatio,
+    calculateComputerTypesRatio,
     calculateTotalRatio
 } from '../../../../../processModule/ratio';
 import {getRandomValueInRange} from '../../../../../../utils/random';
@@ -16,34 +16,33 @@ export const caseRatioMoreThan90 = (): number => {
 
     // get ratio for each unit type
     const {
-        infantryRatio,
-        spearmenRatio,
-        lightInfantryRatio,
-        heavyInfantryRatio,
-        skirmisherRatio,
-        cavalryRatio
-    } = calculateTypesRatio();
+        computerInfantryRatio,
+        computerSpearmenRatio,
+        computerLightInfantryRatio,
+        computerHeavyInfantryRatio,
+        computerSkirmisherRatio,
+        computerCavalryRatio
+    } = calculateComputerTypesRatio();
 
-    if(skirmisherRatio >= 60) {
+    if(computerSkirmisherRatio >= 0.6) {
         offensivePoints += getRandomValueInRange(0, 2);
-    }
-
-    if(infantryRatio >= 60) {
-        if(heavyInfantryRatio >= 40) {
-            offensivePoints += getRandomValueInRange(0, 4);
-        }
-
-        else if(heavyInfantryRatio >= 30) {
-            offensivePoints += getRandomValueInRange(0, 8);
-        }
-
-        else {
-            offensivePoints += getRandomValueInRange(0, 5);
-        }
     } else {
-        offensivePoints += getRandomValueInRange(0, 10);
-    }
+        if(computerInfantryRatio >= 0.6) {
+            if(computerHeavyInfantryRatio >= 40) {
+                offensivePoints += getRandomValueInRange(0, 4);
+            }
     
+            else if(computerHeavyInfantryRatio >= 0.3) {
+                offensivePoints += getRandomValueInRange(0, 8);
+            }
+    
+            else {
+                offensivePoints += getRandomValueInRange(0, 5);
+            }
+        } else {
+            offensivePoints += getRandomValueInRange(0, 10);
+        }
+    }
 
     return offensivePoints;
 }

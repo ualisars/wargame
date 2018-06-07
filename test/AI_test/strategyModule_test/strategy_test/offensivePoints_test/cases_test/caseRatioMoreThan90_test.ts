@@ -104,17 +104,17 @@ describe('strategy OffensivePoints test', () => {
             let offensivePoints4: number = caseRatioMoreThan90();
             let offensivePoints5: number = caseRatioMoreThan90();
 
-            // expect(offensivePoints1).to.be.least(90);
-            // expect(offensivePoints2).to.be.least(90);
-            // expect(offensivePoints3).to.be.least(90);
-            // expect(offensivePoints4).to.be.least(90);
-            // expect(offensivePoints5).to.be.least(90);
+            expect(offensivePoints1).to.be.least(90);
+            expect(offensivePoints2).to.be.least(90);
+            expect(offensivePoints3).to.be.least(90);
+            expect(offensivePoints4).to.be.least(90);
+            expect(offensivePoints5).to.be.least(90);
 
-            // expect(offensivePoints1).to.be.at.most(92);
-            // expect(offensivePoints2).to.be.at.most(92);
-            // expect(offensivePoints3).to.be.at.most(92);
-            // expect(offensivePoints4).to.be.at.most(92);
-            // expect(offensivePoints5).to.be.at.most(92);
+            expect(offensivePoints1).to.be.at.most(92);
+            expect(offensivePoints2).to.be.at.most(92);
+            expect(offensivePoints3).to.be.at.most(92);
+            expect(offensivePoints4).to.be.at.most(92);
+            expect(offensivePoints5).to.be.at.most(92);
 
         });
     });
