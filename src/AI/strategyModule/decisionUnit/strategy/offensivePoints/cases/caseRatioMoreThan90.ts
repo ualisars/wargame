@@ -28,7 +28,7 @@ export const caseRatioMoreThan90 = (): number => {
         offensivePoints += getRandomValueInRange(0, 2);
     } else {
         if(computerInfantryRatio >= 0.6) {
-            if(computerHeavyInfantryRatio >= 40) {
+            if(computerHeavyInfantryRatio >= 0.4) {
                 offensivePoints += getRandomValueInRange(0, 4);
             }
     
