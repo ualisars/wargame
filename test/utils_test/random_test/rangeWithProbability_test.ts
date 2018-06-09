@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+import {assert, expect} from 'chai';
 import {getRandomValueInRangeWithProbability} from '../../../src/utils/random';
 
 describe('randomUtils test', function() {
@@ -86,6 +86,7 @@ describe('randomUtils test', function() {
             expect(count).to.be.least(5);
 
         });
+
     });
 
 });

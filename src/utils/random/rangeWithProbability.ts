@@ -20,12 +20,61 @@ export const getRandomValueInRangeWithProbability = (
     probabilities: any 
 ): number => {
 
+    // check for errors
+    if(min < 0 || min >= 100) {
+        throw new Error('invalid min argument');
+    }
+
+    if(max <= 0 || max > 100) {
+        throw new Error('invalid max argument');
+    }
+
+    if(min >= max) {
+        throw new Error('min cannot be more or equal to max');
+    }
+
+    if(!probabilities.interval) {
+        throw new Error('probability interval is required');
+    }
+
+    if(probabilities.interval.length != 2) {
+        throw new Error('invalid probability interval syntax');
+    }
+
+    if(probabilities.interval[0] < min || probabilities.interval[1] < min) {
+        throw new Error('probability interval is less than min');
+    }
+
+    if(probabilities.interval[0] > max || probabilities.interval[1] > max) {
+        throw new Error('probability interval is more than max');
+    }
+
+    if(probabilities.interval[0] >= probabilities.interval[1]) {
+        throw new Error('invalid probability interval');
+    }
+
+    if(!probabilities.probability) {
+        throw new Error('probabilities argument required');
+    }
+
+    if(probabilities.probability < 0 || probabilities.probability > 100) {
+        throw new Error('invalid probability value');
+    }
+
+    if(probabilities.probability > 0 && probabilities.probability < 1) {
+        throw new Error('invalid probability value');
+    }
+
+    // end of checking for errors
+
     let randomValue: number = Math.random();
     let intervalMin: number = probabilities.interval[0];
     let intervalMax: number = probabilities.interval[1];
     let value: number;
 
     let probability: number = (probabilities.probability * 0.01);
+
+    
 
     if(randomValue >= 0 && randomValue <= probability) {
         value = getRandomValueInRange(intervalMin, intervalMax);
