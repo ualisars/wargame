@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {
     calculateComputerTypesRatio
-} from '../../../../src/AI/processModule/ratio/computerTypes';
+} from '../../../../src/AI/processModule/ratio';
 import {createUnit} from '../../../../src/unit/create';
 import {removeAllUnits} from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
