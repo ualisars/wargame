@@ -18,6 +18,7 @@ export const calculateComputerTypesRatio = ():any => {
     let computerInfantryRatio:number = calculateRatioBasedOnTotal(infantryNumber, totalNumber);
     let computerSpearmenRatio:number = calculateRatioBasedOnTotal(spearmenNumber, totalNumber);
     let computerLightInfantryRatio:number = calculateRatioBasedOnTotal(lightInfantryNumber, totalNumber);
+    let computerScoutsRatio:number = calculateRatioBasedOnTotal(scoutsNumber, totalNumber);
     let computerHeavyInfantryRatio:number = calculateRatioBasedOnTotal(heavyInfantryNumber, totalNumber);
     let computerSkirmisherRatio:number = calculateRatioBasedOnTotal(skirmishersNumber, totalNumber);
     let computerCavalryRatio:number = calculateRatioBasedOnTotal(cavalryNumber, totalNumber)
@@ -27,6 +28,7 @@ export const calculateComputerTypesRatio = ():any => {
         computerSpearmenRatio,
         computerLightInfantryRatio,
         computerHeavyInfantryRatio,
+        computerScoutsRatio,
         computerSkirmisherRatio,
         computerCavalryRatio
     }

@@ -62,6 +62,12 @@ describe('AI processModule ratioTest', () => {
             assert.equal(computerHeavyInfantryRatio, 0);
         });
 
+        it('computerScoutsRatio should be equal to 0.17', () => {
+            let {computerScoutsRatio} = calculateComputerTypesRatio();
+
+            assert.equal(computerScoutsRatio, 0.17);
+        });
+
         it('computerSkirmisherRatio should be equal to 0.17', () => {
             let {computerSkirmisherRatio} = calculateComputerTypesRatio();
 
