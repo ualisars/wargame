@@ -115,5 +115,14 @@ describe('randomUtils test', () => {
 
         });
 
+        it('should not throw error', () => {
+
+            let randomValue1: number = getRandomValueInRange(0, 100);
+            let randomValue2: number = getRandomValueInRange(0, 1);
+            let randomValue3: number = getRandomValueInRange(50, 51);
+            let randomValue4: number = getRandomValueInRange(99, 100);
+
+        });
+
     });
 });

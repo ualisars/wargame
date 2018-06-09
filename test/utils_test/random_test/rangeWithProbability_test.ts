@@ -89,4 +89,38 @@ describe('randomUtils test', function() {
 
     });
 
+    it('should not throw error', () => {
+
+        let randomValue = getRandomValueInRangeWithProbability(0, 100, {
+            interval: [0, 100],
+            probability: 70
+        });
+
+        let randomValue1 = getRandomValueInRangeWithProbability(0, 1, {
+            interval: [0, 1],
+            probability: 30
+        });
+
+        let randomValue2 = getRandomValueInRangeWithProbability(5, 6, {
+            interval: [5, 6],
+            probability: 30
+        });
+
+        let randomValue3 = getRandomValueInRangeWithProbability(-50, 60, {
+            interval: [-30, 40],
+            probability: 20
+        });
+
+        let randomValue4 = getRandomValueInRangeWithProbability(-50, 60, {
+            interval: [-31, -30],
+            probability: 20
+        });
+
+        let randomValue5 = getRandomValueInRangeWithProbability(-50, -30, {
+            interval: [-42, -41],
+            probability: 80
+        });
+
+    });
+
 });

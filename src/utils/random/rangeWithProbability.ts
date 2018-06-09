@@ -21,13 +21,6 @@ export const getRandomValueInRangeWithProbability = (
 ): number => {
 
     // check for errors
-    if(min < 0 || min >= 100) {
-        throw new Error('invalid min argument');
-    }
-
-    if(max <= 0 || max > 100) {
-        throw new Error('invalid max argument');
-    }
 
     if(min >= max) {
         throw new Error('min cannot be more or equal to max');
@@ -42,11 +35,11 @@ export const getRandomValueInRangeWithProbability = (
     }
 
     if(probabilities.interval[0] < min || probabilities.interval[1] < min) {
-        throw new Error('probability interval is less than min');
+        throw new Error('one of probability interval is less than min');
     }
 
     if(probabilities.interval[0] > max || probabilities.interval[1] > max) {
-        throw new Error('probability interval is more than max');
+        throw new Error('one of probability interval is more than max');
     }
 
     if(probabilities.interval[0] >= probabilities.interval[1]) {
