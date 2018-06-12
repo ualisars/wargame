@@ -49,17 +49,37 @@ export const caseRatioMoreThan60 = (): number => {
 
     // case computer have speedAdvantage
 
-    if(speedRatio >= 0.8) {
+    console.log('speedRatio', speedRatio);
 
-        if(skirmisherRatio <= 0.33 && playerSkirmisherRatio != 0) {
+    if(speedRatio >= 0.7) {
+
+        if(playerSkirmisherRatio >= 0.6 && playerSkirmisherRatio != 0) {
             offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
                 interval: [90, 100],
                 probability: 90
             });
         }
+
+        else if(playerSkirmisherRatio >= 0.4 && playerSkirmisherRatio != 0) {
+            offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
+                interval: [90, 100],
+                probability: 70
+            });
+        }
+
+        else if(meleeDamageRatio > 0.8) {
+            offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
+                interval: [90, 100],
+                probability: 90
+            });
+        }
+
+        else {
+            offensivePoints = getRandomValueInRange(50, 90);
+        }
     }
 
-    else if(speedRatio >= 0.6 && speedRatio < 0.8) {
+    else if(speedRatio >= 0.6 && speedRatio < 0.7) {
 
         if(playerSkirmisherRatio >= 0.6 && playerSkirmisherRatio != 0) {
             offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
@@ -87,7 +107,7 @@ export const caseRatioMoreThan60 = (): number => {
         }
     }
 
-    else if(speedRatio >= 0.3 && speedRatio < 0.6) {
+    else if(speedRatio >= 0.4 && speedRatio < 0.6) {
 
         if(playerSkirmisherRatio >= 0.6 && playerSkirmisherRatio != 0) {
             offensivePoints = getRandomValueInRangeWithProbability(80, 95, {
@@ -129,7 +149,7 @@ export const caseRatioMoreThan60 = (): number => {
         }
     }
 
-    else if(speedRatio < 0.3) {
+    else if(speedRatio < 0.4) {
 
         if(playerSkirmisherRatio >= 0.6 && playerSkirmisherRatio != 0) {
             offensivePoints = getRandomValueInRangeWithProbability(70, 90, {
