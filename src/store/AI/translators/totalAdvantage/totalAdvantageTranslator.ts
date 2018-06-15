@@ -5,33 +5,31 @@ export let computerCompletelyDisadvantage: boolean;
 
 
 export const setComputerCompletelyAdvantageToTrue = () => {
+    resetAllProperties();
     computerCompletelyAdvantage = true;
 }
 
-export const setComputerCompletelyAdvantageToFalse = () => {
-    computerCompletelyAdvantage = false;
-}
-
 export const setComputerAdvantageToTrue = () => {
+    resetAllProperties();
     computerAdvantage = true;
 }
 
-export const setComputerAdvantageToFalse = () => {
-    computerAdvantage = false;
-}
-
 export const setComputerDisadvantageToTrue = () => {
+    resetAllProperties();
     computerDisadvantage = true;
 }
 
-export const setComputerDisadvantageToFalse = () => {
-    computerDisadvantage = false;
-}
 
 export const setComputerCompletelyDisadvantageToTrue = () => {
+    resetAllProperties();
     computerCompletelyDisadvantage = true;
 }
 
-export const setComputerCompletelyDisadvantageToFalse = () => {
+const resetAllProperties = () => {
+    computerCompletelyAdvantage = false;
+    computerAdvantage = false;
+    computerDisadvantage = false;
     computerCompletelyDisadvantage = false;
 }
+
+

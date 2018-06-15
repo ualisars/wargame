@@ -8,13 +8,9 @@ import {
 
 import {
     setComputerCompletelyAdvantageToTrue,
-    setComputerCompletelyAdvantageToFalse,
     setComputerAdvantageToTrue,
-    setComputerAdvantageToFalse,
     setComputerDisadvantageToTrue,
-    setComputerDisadvantageToFalse,
-    setComputerCompletelyDisadvantageToTrue,
-    setComputerCompletelyDisadvantageToFalse
+    setComputerCompletelyDisadvantageToTrue
 } from '../../../../src/store/AI/translators/totalAdvantage';
 
 describe('Translators store test', () => {
@@ -26,76 +22,51 @@ describe('Translators store test', () => {
             setComputerCompletelyAdvantageToTrue();
             
             assert.equal(computerCompletelyAdvantage, true);
+            assert.equal(computerAdvantage, false);
+            assert.equal(computerDisadvantage, false);
+            assert.equal(computerCompletelyDisadvantage, false);
 
             done();
 
         });
 
-        it('computerCompletelyAdvantage should be equal to false', (done) => {
-            
-            setComputerCompletelyAdvantageToFalse();
-            
-            assert.equal(computerCompletelyAdvantage, false);
-
-            done();
-
-        });
 
         it('computerAdvantage should be equal to true', (done) => {
             
             setComputerAdvantageToTrue();
             
+            assert.equal(computerCompletelyAdvantage, false);
             assert.equal(computerAdvantage, true);
+            assert.equal(computerDisadvantage, false);
+            assert.equal(computerCompletelyDisadvantage, false);
 
             done();
 
         });
 
-        it('computerAdvantage should be equal to false', (done) => {
-            
-            setComputerAdvantageToFalse();
-            
-            assert.equal(computerAdvantage, false);
-
-            done();
-
-        });
 
         it('computerDisadvantage should be equal to true', (done) => {
             
             setComputerDisadvantageToTrue();
             
+            assert.equal(computerCompletelyAdvantage, false);
+            assert.equal(computerAdvantage, false);
             assert.equal(computerDisadvantage, true);
+            assert.equal(computerCompletelyDisadvantage, false);
 
             done();
 
         });
 
-        it('computerDisadvantage should be equal to false', (done) => {
-            
-            setComputerDisadvantageToFalse();
-            
-            assert.equal(computerDisadvantage, false);
-
-            done();
-
-        });
 
         it('computerCompletelyDisadvantage should be equal to true', (done) => {
             
             setComputerCompletelyDisadvantageToTrue();
             
+            assert.equal(computerCompletelyAdvantage, false);
+            assert.equal(computerAdvantage, false);
+            assert.equal(computerDisadvantage, false);
             assert.equal(computerCompletelyDisadvantage, true);
-
-            done();
-
-        });
-
-        it('computerCompletelyDisadvantage should be equal to false', (done) => {
-            
-            setComputerCompletelyDisadvantageToFalse();
-            
-            assert.equal(computerCompletelyDisadvantage, false);
 
             done();
 

@@ -1,21 +1,13 @@
 import {
     setComputerCompletelyAdvantageToTrue,
-    setComputerCompletelyAdvantageToFalse,
     setComputerAdvantageToTrue,
-    setComputerAdvantageToFalse,
     setComputerDisadvantageToTrue,
-    setComputerDisadvantageToFalse,
-    setComputerCompletelyDisadvantageToTrue,
-    setComputerCompletelyDisadvantageToFalse,
+    setComputerCompletelyDisadvantageToTrue
 } from './totalAdvantageTranslator';
 
 export {
     setComputerCompletelyAdvantageToTrue,
-    setComputerCompletelyAdvantageToFalse,
     setComputerAdvantageToTrue,
-    setComputerAdvantageToFalse,
     setComputerDisadvantageToTrue,
-    setComputerDisadvantageToFalse,
-    setComputerCompletelyDisadvantageToTrue,
-    setComputerCompletelyDisadvantageToFalse
+    setComputerCompletelyDisadvantageToTrue
 }
