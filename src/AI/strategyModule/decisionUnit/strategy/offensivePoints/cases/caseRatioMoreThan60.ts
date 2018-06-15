@@ -49,8 +49,6 @@ export const caseRatioMoreThan60 = (): number => {
 
     // case computer have speedAdvantage
 
-    console.log('speedRatio', speedRatio);
-
     if(speedRatio >= 0.7) {
 
         if(playerSkirmisherRatio >= 0.6 && playerSkirmisherRatio != 0) {
