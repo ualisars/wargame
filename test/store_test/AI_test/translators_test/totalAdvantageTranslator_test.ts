@@ -13,7 +13,7 @@ import {
     setComputerCompletelyDisadvantageToTrue
 } from '../../../../src/store/AI/translators/totalAdvantage';
 
-describe('Translators store test', () => {
+describe('translators store test', () => {
 
     describe('totalAdvantageTranslator test', () => {
 
