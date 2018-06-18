@@ -11,6 +11,7 @@ import {
     setPlayerHasManySkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
+    setEqualNumberOfSkirmishers,
     setSkirmisherMinority,
     setNoSkirmishers,
     setSkirmisherStoreToDefault
@@ -45,11 +46,15 @@ export const translateSkirmishers = () => {
         setPlayerHasManySkirmishers();
     }
 
-    if(skirmisherRatio > 0.5) {
+    if(skirmisherRatio > 0.55) {
         setComputerHasMoreSkirmishers();
     }
 
-    else if(skirmisherRatio < 0.5 && playerSkirmisherRatio != 0) {
+    else if(skirmisherRatio >= 0.45 && skirmisherRatio <= 0.55) {
+        setEqualNumberOfSkirmishers();
+    }
+
+    else if(skirmisherRatio < 0.45 && playerSkirmisherRatio != 0) {
         setPlayerHasMoreSkirmishers();
     }
 

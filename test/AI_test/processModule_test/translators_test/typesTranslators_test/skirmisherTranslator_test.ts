@@ -20,6 +20,7 @@ import {
     playerHasManySkirmishers,
     computerHasMoreSkirmishers,
     playerHasMoreSkirmishers,
+    equalNumberOfSkirmishers,
     skirmisherMinority,
     noSkirmishers
 } from '../../../../../src/store/AI/translators/typesTranslators/shirmisherTranslatorStore/skirmisherTranslatorStore';
@@ -105,6 +106,10 @@ describe('types translators test', () => {
 
         it('playerHasMoreSkirmishers should be false', () => {
             assert.equal(playerHasMoreSkirmishers, false);
+        });
+
+        it('equalNumberOfSkirmishers should be false', () => {
+            assert.equal(equalNumberOfSkirmishers, false);
         });
 
         it('skirmisherMinority should be false', () => {
@@ -197,6 +202,10 @@ describe('types translators test', () => {
             assert.equal(playerHasMoreSkirmishers, false);
         });
 
+        it('equalNumberOfSkirmishers should be true', () => {
+            assert.equal(equalNumberOfSkirmishers, true);
+        });
+
         it('skirmisherMinority should be false', () => {
             assert.equal(skirmisherMinority, false);
         });
@@ -287,6 +296,10 @@ describe('types translators test', () => {
             assert.equal(playerHasMoreSkirmishers, false);
         });
 
+        it('equalNumberOfSkirmishers should be true', () => {
+            assert.equal(equalNumberOfSkirmishers, true);
+        });
+
         it('skirmisherMinority should be true', () => {
             assert.equal(skirmisherMinority, true);
         });
@@ -375,6 +388,10 @@ describe('types translators test', () => {
 
         it('playerHasMoreSkirmishers should be false', () => {
             assert.equal(playerHasMoreSkirmishers, false);
+        });
+
+        it('equalNumberOfSkirmishers should be false', () => {
+            assert.equal(equalNumberOfSkirmishers, false);
         });
 
         it('skirmisherMinority should be false', () => {
