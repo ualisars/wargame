@@ -7,6 +7,7 @@ import {
     setPlayerHasMoreSkirmishers,
     setSkirmisherMinority,
     setNoSkirmishers,
+    setEqualNumberOfSkirmishers,
     setSkirmisherStoreToDefault
 } from './skirmisherTranslatorStore';
 
@@ -19,5 +20,6 @@ export {
     setPlayerHasMoreSkirmishers,
     setSkirmisherMinority,
     setNoSkirmishers,
+    setEqualNumberOfSkirmishers,
     setSkirmisherStoreToDefault
 }

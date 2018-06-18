@@ -6,8 +6,10 @@ import {
     setPlayerHasManySkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
+    setEqualNumberOfSkirmishers,
     setSkirmisherMinority,
-    setNoSkirmishers
+    setNoSkirmishers,
+    setSkirmisherStoreToDefault
 } from '../../../../../src/store/AI/translators/typesTranslators/shirmisherTranslatorStore';
 
 import {
@@ -17,6 +19,7 @@ import {
     playerHasManySkirmishers,
     computerHasMoreSkirmishers,
     playerHasMoreSkirmishers,
+    equalNumberOfSkirmishers,
     skirmisherMinority,
     noSkirmishers
 } from '../../../../../src/store/AI/translators/typesTranslators/shirmisherTranslatorStore/skirmisherTranslatorStore';
@@ -84,6 +87,7 @@ describe('translators store test', () => {
 
             assert.equal(computerHasMoreSkirmishers, true);
             assert.equal(playerHasMoreSkirmishers, false);
+            assert.equal(equalNumberOfSkirmishers, false);
 
             done();
 
@@ -95,6 +99,19 @@ describe('translators store test', () => {
 
             assert.equal(computerHasMoreSkirmishers, false);
             assert.equal(playerHasMoreSkirmishers, true);
+            assert.equal(equalNumberOfSkirmishers, false);
+
+            done();
+
+        });
+
+        it('equalNumberOfSkirmishers should be true', (done) => {
+
+            setEqualNumberOfSkirmishers();
+
+            assert.equal(computerHasMoreSkirmishers, false);
+            assert.equal(playerHasMoreSkirmishers, false);
+            assert.equal(equalNumberOfSkirmishers, true);
 
             done();
 
@@ -105,6 +122,24 @@ describe('translators store test', () => {
             setSkirmisherMinority();
 
             assert.equal(skirmisherMinority, true);
+            assert.equal(noSkirmishers, false);
+
+            done();
+
+        });
+
+        it('all values should be false', (done) => {
+
+            setSkirmisherStoreToDefault();
+
+            assert.equal(computerHasTooManySkirmishers, false);
+            assert.equal(playerHasTooManySkirmishers, false);
+            assert.equal(computerHasManySkirmishers, false);
+            assert.equal(playerHasManySkirmishers, false);
+            assert.equal(computerHasMoreSkirmishers, false);
+            assert.equal(equalNumberOfSkirmishers, false);
+            assert.equal(playerHasMoreSkirmishers, false);
+            assert.equal(skirmisherMinority, false);
             assert.equal(noSkirmishers, false);
 
             done();
