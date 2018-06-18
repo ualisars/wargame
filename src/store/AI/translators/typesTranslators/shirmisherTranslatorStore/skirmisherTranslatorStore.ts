@@ -14,17 +14,13 @@ export let noSkirmishers: boolean = false;
 
 export const setComputerHasTooManySkirmishers = () => {
     computerHasTooManySkirmishers = true;
-    playerHasTooManySkirmishers = false;
     computerHasManySkirmishers = false;
-    playerHasManySkirmishers = false;
     skirmisherMinority = false;
     noSkirmishers = false;
 } 
 
 export const setPlayerHasTooManySkirmishers = () => {
-    computerHasTooManySkirmishers = false;
     playerHasTooManySkirmishers = true;
-    computerHasManySkirmishers = false;
     playerHasManySkirmishers = false;
     skirmisherMinority = false;
     noSkirmishers = false;
@@ -32,17 +28,13 @@ export const setPlayerHasTooManySkirmishers = () => {
 
 export const setComputerHasManySkirmishers = () => {
     computerHasTooManySkirmishers = false;
-    playerHasTooManySkirmishers = false;
     computerHasManySkirmishers = true;
-    playerHasManySkirmishers = false;
     skirmisherMinority = false;
     noSkirmishers = false;
 }
 
 export const setPlayerHasManySkirmishers = () => {
-    computerHasTooManySkirmishers = false;
     playerHasTooManySkirmishers = false;
-    computerHasManySkirmishers = false;
     playerHasManySkirmishers = true;
     skirmisherMinority = false;
     noSkirmishers = false;
@@ -59,16 +51,15 @@ export const setPlayerHasMoreSkirmishers = () => {
 }
 
 export const setSkirmisherMinority = () => {
-    setDefault();
     skirmisherMinority = true;
 }
 
 export const setNoSkirmishers = () => {
-    setDefault();
+    setSkirmisherStoreToDefault();
     noSkirmishers = true;
 }
 
-const setDefault = () => {
+export const setSkirmisherStoreToDefault = () => {
     computerHasTooManySkirmishers = false;
     playerHasTooManySkirmishers = false;
     computerHasManySkirmishers = false;
