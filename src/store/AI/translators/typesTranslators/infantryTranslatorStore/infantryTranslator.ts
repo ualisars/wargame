@@ -119,7 +119,6 @@ export const resetInfantryTranslatorStore = () => {
     playerHasMoreInfantry = false;
     equalNumberOfInfantry = false;
     noInfantry = false;
-
 }
 
 
