@@ -1,22 +1,22 @@
-export let computerHasTooManyInfantry: boolean = false;
-export let playerHasTooManyInfantry: boolean = false;
+let computerHasTooManyInfantry: boolean = false;
+let playerHasTooManyInfantry: boolean = false;
 
-export let computerHasManyInfantry: boolean = false;
-export let playerHasManyInfantry: boolean = false;
+let computerHasManyInfantry: boolean = false;
+let playerHasManyInfantry: boolean = false;
 
-export let computerHasFewInfantry: boolean = false;
-export let playerHasFewInfantry: boolean = false;
+let computerHasFewInfantry: boolean = false;
+let playerHasFewInfantry: boolean = false;
 
-export let computerHasNoInfantry: boolean = false;
-export let playerHasNoInfantry: boolean = false;
+let computerHasNoInfantry: boolean = false;
+let playerHasNoInfantry: boolean = false;
 
-export let computerHasMoreInfantry: boolean = false;
-export let playerHasMoreInfantry: boolean = false;
-export let equalNumberOfInfantry: boolean = false;
+let computerHasMoreInfantry: boolean = false;
+let playerHasMoreInfantry: boolean = false;
+let equalNumberOfInfantry: boolean = false;
 
-export let noInfantry: boolean = false;
+let noInfantry: boolean = false;
 
-export const setComputerHasTooManyInfantry = () => {
+const setComputerHasTooManyInfantry = () => {
     computerHasTooManyInfantry = true;
     computerHasManyInfantry = false;
     computerHasFewInfantry = false;
@@ -24,7 +24,7 @@ export const setComputerHasTooManyInfantry = () => {
     noInfantry = false;
 }
 
-export const setPlayerHasTooManyInfantry = () => {
+const setPlayerHasTooManyInfantry = () => {
     playerHasTooManyInfantry = true;
     playerHasManyInfantry = false;
     playerHasFewInfantry = false;
@@ -32,7 +32,7 @@ export const setPlayerHasTooManyInfantry = () => {
     noInfantry = false;
 }
 
-export const setComputerHasManyInfantry = () => {
+const setComputerHasManyInfantry = () => {
     computerHasTooManyInfantry = false;
     computerHasManyInfantry = true;
     computerHasFewInfantry = false;
@@ -40,7 +40,7 @@ export const setComputerHasManyInfantry = () => {
     noInfantry = false;
 }
 
-export const setPlayerHasManyInfantry = () => {
+const setPlayerHasManyInfantry = () => {
     playerHasTooManyInfantry = false;
     playerHasManyInfantry = true;
     playerHasFewInfantry = false;
@@ -48,7 +48,7 @@ export const setPlayerHasManyInfantry = () => {
     noInfantry = false;
 }
 
-export const setComputerHasFewInfantry = () => {
+const setComputerHasFewInfantry = () => {
     computerHasTooManyInfantry = false;
     computerHasManyInfantry = false;
     computerHasFewInfantry = true;
@@ -56,7 +56,7 @@ export const setComputerHasFewInfantry = () => {
     noInfantry = false;
 }
 
-export const setPlayerHasFewInfantry = () => {
+const setPlayerHasFewInfantry = () => {
     playerHasTooManyInfantry = false;
     playerHasManyInfantry = false;
     playerHasFewInfantry = true;
@@ -64,47 +64,47 @@ export const setPlayerHasFewInfantry = () => {
     noInfantry = false;
 }
 
-export const setComputerHasNoInfantry = () => {
+const setComputerHasNoInfantry = () => {
     computerHasTooManyInfantry = false;
     computerHasManyInfantry = false;
     computerHasFewInfantry = false;
     computerHasNoInfantry = true;
 }
 
-export const setPlayerHasNoInfantry = () => {
+const setPlayerHasNoInfantry = () => {
     playerHasTooManyInfantry = false;
     playerHasManyInfantry = false;
     playerHasFewInfantry = false;
     playerHasNoInfantry = true;
 }
 
-export const setComputerHasMoreInfantry = () => {
+const setComputerHasMoreInfantry = () => {
     computerHasMoreInfantry = true;
     playerHasMoreInfantry = false;
     equalNumberOfInfantry = false;
     noInfantry = false;
 }
 
-export const setPlayerHasMoreInfantry = () => {
+const setPlayerHasMoreInfantry = () => {
     computerHasMoreInfantry = false;
     playerHasMoreInfantry = true;
     equalNumberOfInfantry = false;
     noInfantry = false;
 }
 
-export const setEqualNumberOfInfantry = () => {
+const setEqualNumberOfInfantry = () => {
     computerHasMoreInfantry = false;
     playerHasMoreInfantry = false;
     equalNumberOfInfantry = true;
     noInfantry = false;
 }
 
-export const setNoInfantry = () => {
+const setNoInfantry = () => {
     resetInfantryTranslatorStore();
     noInfantry = true;
 }
 
-export const resetInfantryTranslatorStore = () => {
+const resetInfantryTranslatorStore = () => {
     computerHasTooManyInfantry = false;
     computerHasManyInfantry = false;
     computerHasFewInfantry = false;
@@ -119,6 +119,35 @@ export const resetInfantryTranslatorStore = () => {
     playerHasMoreInfantry = false;
     equalNumberOfInfantry = false;
     noInfantry = false;
+}
+
+export {
+    computerHasTooManyInfantry,
+    playerHasTooManyInfantry,
+    computerHasManyInfantry,
+    playerHasManyInfantry,
+    computerHasFewInfantry,
+    playerHasFewInfantry,
+    computerHasNoInfantry,
+    playerHasNoInfantry,
+    computerHasMoreInfantry,
+    playerHasMoreInfantry,
+    equalNumberOfInfantry,
+    noInfantry,
+
+    setComputerHasTooManyInfantry,
+    setPlayerHasTooManyInfantry,
+    setComputerHasManyInfantry,
+    setPlayerHasManyInfantry,
+    setComputerHasFewInfantry,
+    setPlayerHasFewInfantry,
+    setComputerHasNoInfantry,
+    setPlayerHasNoInfantry,
+    setComputerHasMoreInfantry,
+    setPlayerHasMoreInfantry,
+    setEqualNumberOfInfantry,
+    setNoInfantry,
+    resetInfantryTranslatorStore
 }
 
 
