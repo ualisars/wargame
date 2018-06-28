@@ -1,22 +1,23 @@
-export let computerHasTooManyLightInfantry: boolean = false;
-export let playerHasTooManyLightInfantry: boolean = false;
+let computerHasTooManyLightInfantry: boolean = false;
+let playerHasTooManyLightInfantry: boolean = false;
 
-export let computerHasManyLightInfantry: boolean = false;
-export let playerHasManyLightInfantry: boolean = false;
+let computerHasManyLightInfantry: boolean = false;
+let playerHasManyLightInfantry: boolean = false;
 
-export let computerHasFewLightInfantry: boolean = false;
-export let playerHasFewLightInfantry: boolean = false;
+let computerHasFewLightInfantry: boolean = false;
+let playerHasFewLightInfantry: boolean = false;
 
-export let computerHasNoLightInfantry: boolean = false;
-export let playerHasNoLightInfantry: boolean = false;
+let computerHasNoLightInfantry: boolean = false;
+let playerHasNoLightInfantry: boolean = false;
 
-export let computerHasMoreLightInfantry: boolean = false;
-export let playerHasMoreLightInfantry: boolean = false;
-export let equalNumberOfLightInfantry: boolean = false;
+let computerHasMoreLightInfantry: boolean = false;
+let playerHasMoreLightInfantry: boolean = false;
+let equalNumberOfLightInfantry: boolean = false;
 
-export let noLightInfantry: boolean = false;
+let noLightInfantry: boolean = false;
 
-export const setComputerHasTooManyLightInfantry = () => {
+
+const setComputerHasTooManyLightInfantry = () => {
     computerHasTooManyLightInfantry = true;
     computerHasManyLightInfantry = false;
     computerHasFewLightInfantry = false;
@@ -24,7 +25,7 @@ export const setComputerHasTooManyLightInfantry = () => {
     noLightInfantry = false;
 }
 
-export const setPlayerHasTooManyLightInfantry = () => {
+const setPlayerHasTooManyLightInfantry = () => {
     playerHasTooManyLightInfantry = true;
     playerHasManyLightInfantry = false;
     playerHasFewLightInfantry = false;
@@ -32,7 +33,7 @@ export const setPlayerHasTooManyLightInfantry = () => {
     noLightInfantry = false;
 }
 
-export const setComputerHasManyLightInfantry = () => {
+const setComputerHasManyLightInfantry = () => {
     computerHasTooManyLightInfantry = false;
     computerHasManyLightInfantry = true;
     computerHasFewLightInfantry = false;
@@ -40,7 +41,7 @@ export const setComputerHasManyLightInfantry = () => {
     noLightInfantry = false;
 }
 
-export const setPlayerHasManyLightInfantry = () => {
+const setPlayerHasManyLightInfantry = () => {
     playerHasTooManyLightInfantry = false;
     playerHasManyLightInfantry = true;
     playerHasFewLightInfantry = false;
@@ -48,7 +49,7 @@ export const setPlayerHasManyLightInfantry = () => {
     noLightInfantry = false;
 }
 
-export const setComputerHasFewLightInfantry = () => {
+const setComputerHasFewLightInfantry = () => {
     computerHasTooManyLightInfantry = false;
     computerHasManyLightInfantry = false;
     computerHasFewLightInfantry = true;
@@ -56,7 +57,7 @@ export const setComputerHasFewLightInfantry = () => {
     noLightInfantry = false;
 }
 
-export const setPlayerHasFewLightInfantry = () => {
+const setPlayerHasFewLightInfantry = () => {
     playerHasTooManyLightInfantry = false;
     playerHasManyLightInfantry = false;
     playerHasFewLightInfantry = true;
@@ -64,47 +65,47 @@ export const setPlayerHasFewLightInfantry = () => {
     noLightInfantry = false;
 }
 
-export const setComputerHasNoLightInfantry = () => {
+const setComputerHasNoLightInfantry = () => {
     computerHasTooManyLightInfantry = false;
     computerHasManyLightInfantry = false;
     computerHasFewLightInfantry = false;
     computerHasNoLightInfantry = true;
 }
 
-export const setPlayerHasNoLightInfantry = () => {
+const setPlayerHasNoLightInfantry = () => {
     playerHasTooManyLightInfantry = false;
     playerHasManyLightInfantry = false;
     playerHasFewLightInfantry = false;
     playerHasNoLightInfantry = true;
 }
 
-export const setComputerHasMoreLightInfantry = () => {
+const setComputerHasMoreLightInfantry = () => {
     computerHasMoreLightInfantry = true;
     playerHasMoreLightInfantry = false;
     equalNumberOfLightInfantry = false;
     noLightInfantry = false;
 }
 
-export const setPlayerHasMoreLightInfantry = () => {
+const setPlayerHasMoreLightInfantry = () => {
     computerHasMoreLightInfantry = false;
     playerHasMoreLightInfantry = true;
     equalNumberOfLightInfantry = false;
     noLightInfantry = false;
 }
 
-export const setEqualNumberOfLightInfantry = () => {
+const setEqualNumberOfLightInfantry = () => {
     computerHasMoreLightInfantry = false;
     playerHasMoreLightInfantry = false;
     equalNumberOfLightInfantry = true;
     noLightInfantry = false;
 }
 
-export const setNoLightInfantry = () => {
+const setNoLightInfantry = () => {
     resetLightInfantryTranslatorStore();
     noLightInfantry = true;
 }
 
-export const resetLightInfantryTranslatorStore = () => {
+const resetLightInfantryTranslatorStore = () => {
     computerHasTooManyLightInfantry = false;
     computerHasManyLightInfantry = false;
     computerHasFewLightInfantry = false;
@@ -119,4 +120,33 @@ export const resetLightInfantryTranslatorStore = () => {
     playerHasMoreLightInfantry = false;
     equalNumberOfLightInfantry = false;
     noLightInfantry = false;
+}
+
+export {
+    computerHasTooManyLightInfantry,
+    playerHasTooManyLightInfantry,
+    computerHasManyLightInfantry,
+    playerHasManyLightInfantry,
+    computerHasFewLightInfantry,
+    playerHasFewLightInfantry,
+    computerHasNoLightInfantry,
+    playerHasNoLightInfantry,
+    computerHasMoreLightInfantry,
+    playerHasMoreLightInfantry,
+    equalNumberOfLightInfantry,
+    noLightInfantry,
+
+    setComputerHasTooManyLightInfantry,
+    setPlayerHasTooManyLightInfantry,
+    setComputerHasManyLightInfantry,
+    setPlayerHasManyLightInfantry,
+    setComputerHasFewLightInfantry,
+    setPlayerHasFewLightInfantry,
+    setComputerHasNoLightInfantry,
+    setPlayerHasNoLightInfantry,
+    setComputerHasMoreLightInfantry,
+    setPlayerHasMoreLightInfantry,
+    setEqualNumberOfLightInfantry,
+    setNoLightInfantry,
+    resetLightInfantryTranslatorStore
 }
