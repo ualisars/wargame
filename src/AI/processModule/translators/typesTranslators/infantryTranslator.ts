@@ -92,7 +92,7 @@ export const translateInfantry = () => {
         setEqualNumberOfInfantry();
     }
 
-    else if(infantryRatio > 0 && infantryRatio < 0.45 && playerInfantryRatio !== 0) {
+    else if(infantryRatio >= 0 && infantryRatio < 0.45 && playerInfantryRatio !== 0) {
         setPlayerHasMoreInfantry();
     }
 
