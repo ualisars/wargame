@@ -6,8 +6,8 @@ import {
     playerHasManyCavalry,
     computerHasFewCavalry,
     playerHasFewCavalry,
-    computerDontHaveCavalry,
-    playerDontHaveCavalry,
+    computerHasNoCavalry,
+    playerHasNoCavalry,
     computerHasMoreCavalry,
     playerHasMoreCavalry,
     equalNumberOfCavalry,
@@ -20,8 +20,8 @@ import {
     setPlayerHasManyCavalry,
     setComputerHasFewCavalry,
     setPlayerHasFewCavalry,
-    setComputerDontHaveCavalry,
-    setPlayerDontHaveCavalry,
+    setComputerHasNoCavalry,
+    setPlayerHasNoCavalry,
     setComputerHasMoreCavalry,
     setPlayerHasMoreCavalry,
     setEqualNumberOfCavalry,
@@ -40,7 +40,7 @@ describe('translators store test', () => {
             assert.equal(computerHasTooManyCavalry, true);
             assert.equal(computerHasManyCavalry, false);
             assert.equal(computerHasFewCavalry, false);
-            assert.equal(computerDontHaveCavalry, false);
+            assert.equal(computerHasNoCavalry, false);
             assert.equal(noCavalry, false);
 
             done();
@@ -54,7 +54,7 @@ describe('translators store test', () => {
             assert.equal(playerHasTooManyCavalry, true);
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, false);
-            assert.equal(playerDontHaveCavalry, false);
+            assert.equal(playerHasNoCavalry, false);
             assert.equal(noCavalry, false);
 
             done();
@@ -68,7 +68,7 @@ describe('translators store test', () => {
             assert.equal(computerHasTooManyCavalry, false);
             assert.equal(computerHasManyCavalry, true);
             assert.equal(computerHasFewCavalry, false);
-            assert.equal(computerDontHaveCavalry, false);
+            assert.equal(computerHasNoCavalry, false);
             assert.equal(noCavalry, false);
 
             done();
@@ -82,7 +82,7 @@ describe('translators store test', () => {
             assert.equal(playerHasTooManyCavalry, false);
             assert.equal(playerHasManyCavalry, true);
             assert.equal(playerHasFewCavalry, false);
-            assert.equal(playerDontHaveCavalry, false);
+            assert.equal(playerHasNoCavalry, false);
             assert.equal(noCavalry, false);
 
             done();
@@ -96,7 +96,7 @@ describe('translators store test', () => {
             assert.equal(computerHasTooManyCavalry, false);
             assert.equal(computerHasManyCavalry, false);
             assert.equal(computerHasFewCavalry, true);
-            assert.equal(computerDontHaveCavalry, false);
+            assert.equal(computerHasNoCavalry, false);
             assert.equal(noCavalry, false);
 
             done();
@@ -110,35 +110,35 @@ describe('translators store test', () => {
             assert.equal(playerHasTooManyCavalry, false);
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, true);
-            assert.equal(playerDontHaveCavalry, false);
+            assert.equal(playerHasNoCavalry, false);
             assert.equal(noCavalry, false);
 
             done();
 
         });
 
-        it('computerDontHaveCavalry should be true', (done) => {
+        it('computerHasNoCavalry should be true', (done) => {
             
-            setComputerDontHaveCavalry();
+            setComputerHasNoCavalry();
 
             assert.equal(computerHasTooManyCavalry, false);
             assert.equal(computerHasManyCavalry, false);
             assert.equal(computerHasFewCavalry, false);
-            assert.equal(computerDontHaveCavalry, true);
+            assert.equal(computerHasNoCavalry, true);
             assert.equal(noCavalry, false);
 
             done();
 
         });
 
-        it('playerDontHaveCavalry should be true', (done) => {
+        it('playerHasNoCavalry should be true', (done) => {
             
-            setPlayerDontHaveCavalry();
+            setPlayerHasNoCavalry();
             
             assert.equal(playerHasTooManyCavalry, false);
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, false);
-            assert.equal(playerDontHaveCavalry, true);
+            assert.equal(playerHasNoCavalry, true);
             assert.equal(noCavalry, false);
 
             done();
@@ -191,12 +191,12 @@ describe('translators store test', () => {
             assert.equal(computerHasTooManyCavalry, false);
             assert.equal(computerHasManyCavalry, false);
             assert.equal(computerHasFewCavalry, false);
-            assert.equal(computerDontHaveCavalry, false);
+            assert.equal(computerHasNoCavalry, false);
 
             assert.equal(playerHasTooManyCavalry, false);
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, false);
-            assert.equal(playerDontHaveCavalry, false);
+            assert.equal(playerHasNoCavalry, false);
 
             assert.equal(computerHasMoreCavalry, false);
             assert.equal(playerHasMoreCavalry, false);
@@ -214,12 +214,12 @@ describe('translators store test', () => {
             assert.equal(computerHasTooManyCavalry, false);
             assert.equal(computerHasManyCavalry, false);
             assert.equal(computerHasFewCavalry, false);
-            assert.equal(computerDontHaveCavalry, false);
+            assert.equal(computerHasNoCavalry, false);
 
             assert.equal(playerHasTooManyCavalry, false);
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, false);
-            assert.equal(playerDontHaveCavalry, false);
+            assert.equal(playerHasNoCavalry, false);
 
             assert.equal(computerHasMoreCavalry, false);
             assert.equal(playerHasMoreCavalry, false);

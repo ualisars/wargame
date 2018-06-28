@@ -1,128 +1,153 @@
-export let computerHasTooManyCavalry: boolean = false;
-export let playerHasTooManyCavalry: boolean = false;
+let computerHasTooManyCavalry: boolean = false;
+let playerHasTooManyCavalry: boolean = false;
 
-export let computerHasManyCavalry: boolean = false;
-export let playerHasManyCavalry: boolean = false;
+let computerHasManyCavalry: boolean = false;
+let playerHasManyCavalry: boolean = false;
 
-export let computerHasFewCavalry: boolean = false;
-export let playerHasFewCavalry: boolean = false;
+let computerHasFewCavalry: boolean = false;
+let playerHasFewCavalry: boolean = false;
 
-export let computerDontHaveCavalry: boolean = false;
-export let playerDontHaveCavalry: boolean = false;
+let computerHasNoCavalry: boolean = false;
+let playerHasNoCavalry: boolean = false;
 
-export let computerHasMoreCavalry: boolean = false;
-export let playerHasMoreCavalry: boolean = false;
-export let equalNumberOfCavalry: boolean = false;
+let computerHasMoreCavalry: boolean = false;
+let playerHasMoreCavalry: boolean = false;
 
-export let noCavalry: boolean;
+let equalNumberOfCavalry: boolean = false;
+
+let noCavalry: boolean;
 
 
-export const setComputerHasTooManyCavalry = () => {
+const setComputerHasTooManyCavalry = () => {
     computerHasTooManyCavalry = true;
     computerHasManyCavalry = false;
     computerHasFewCavalry = false;
-    computerDontHaveCavalry = false;
+    computerHasNoCavalry = false;
     noCavalry = false;
 }
 
-export const setPlayerHasTooManyCavalry = () => {
+const setPlayerHasTooManyCavalry = () => {
     playerHasTooManyCavalry = true;
     playerHasManyCavalry = false;
     playerHasFewCavalry = false;
-    playerDontHaveCavalry = false;
+    playerHasNoCavalry = false;
     noCavalry = false;
 }
 
-export const setComputerHasManyCavalry = () => {
+const setComputerHasManyCavalry = () => {
     computerHasTooManyCavalry = false;
     computerHasManyCavalry = true;
     computerHasFewCavalry = false;
-    computerDontHaveCavalry = false;
+    computerHasNoCavalry = false;
     noCavalry = false;
 }
 
-export const setPlayerHasManyCavalry = () => {
+const setPlayerHasManyCavalry = () => {
     playerHasTooManyCavalry = false;
     playerHasManyCavalry = true;
     playerHasFewCavalry = false;
-    playerDontHaveCavalry = false;
+    playerHasNoCavalry = false;
     noCavalry = false;
 }
 
-export const setComputerHasFewCavalry = () => {
+const setComputerHasFewCavalry = () => {
     computerHasTooManyCavalry = false;
     computerHasManyCavalry = false;
     computerHasFewCavalry = true;
-    computerDontHaveCavalry = false;
+    computerHasNoCavalry = false;
     noCavalry = false;
 }
 
-export const setPlayerHasFewCavalry = () => {
+const setPlayerHasFewCavalry = () => {
     playerHasTooManyCavalry = false;
     playerHasManyCavalry = false;
     playerHasFewCavalry = true;
-    playerDontHaveCavalry = false;
+    playerHasNoCavalry = false;
     noCavalry = false;
 }
 
-export const setComputerDontHaveCavalry = () => {
+const setComputerHasNoCavalry = () => {
     computerHasTooManyCavalry = false;
     computerHasManyCavalry = false;
     computerHasFewCavalry = false;
-    computerDontHaveCavalry = true;
+    computerHasNoCavalry = true;
     noCavalry = false;
 }
 
-export const setPlayerDontHaveCavalry = () => {
+const setPlayerHasNoCavalry = () => {
     playerHasTooManyCavalry = false;
     playerHasManyCavalry = false;
     playerHasFewCavalry = false;
-    playerDontHaveCavalry = true;
+    playerHasNoCavalry = true;
     noCavalry = false;
 }
 
-export const setComputerHasMoreCavalry = () => {
+const setComputerHasMoreCavalry = () => {
     computerHasMoreCavalry = true;
     playerHasMoreCavalry = false;
     equalNumberOfCavalry = false;
     noCavalry = false;
 }
 
-export const setPlayerHasMoreCavalry = () => {
+const setPlayerHasMoreCavalry = () => {
     computerHasMoreCavalry = false;
     playerHasMoreCavalry = true;
     equalNumberOfCavalry = false;
     noCavalry = false;
 }
 
-export const setEqualNumberOfCavalry = () => {
+const setEqualNumberOfCavalry = () => {
     computerHasMoreCavalry = false;
     playerHasMoreCavalry = false;
     equalNumberOfCavalry = true;
     noCavalry = false;
 }
 
-export const setNoCavalry = () => {
-
+const setNoCavalry = () => {
     resetCavalryTranslatorStore();
-    
-    computerHasMoreCavalry = false;
-    playerHasMoreCavalry = false;
-    equalNumberOfCavalry = false;
     noCavalry = true;
 }
 
-export const resetCavalryTranslatorStore = () => {
+const resetCavalryTranslatorStore = () => {
     computerHasTooManyCavalry = false;
     playerHasTooManyCavalry = false;
     computerHasManyCavalry = false;
     playerHasManyCavalry = false;
     computerHasFewCavalry = false;
     playerHasFewCavalry = false;
-    computerDontHaveCavalry = false;
-    playerDontHaveCavalry = false;
+    computerHasNoCavalry = false;
+    playerHasNoCavalry = false;
     computerHasMoreCavalry = false;
     playerHasMoreCavalry = false;
     equalNumberOfCavalry = false;
     noCavalry = false;
+}
+
+export {
+    computerHasTooManyCavalry,
+    playerHasTooManyCavalry,
+    computerHasManyCavalry,
+    playerHasManyCavalry,
+    computerHasFewCavalry,
+    playerHasFewCavalry,
+    computerHasNoCavalry,
+    playerHasNoCavalry,
+    computerHasMoreCavalry,
+    playerHasMoreCavalry,
+    equalNumberOfCavalry,
+    noCavalry,
+
+    setComputerHasTooManyCavalry,
+    setPlayerHasTooManyCavalry,
+    setComputerHasManyCavalry,
+    setPlayerHasManyCavalry,
+    setComputerHasFewCavalry,
+    setPlayerHasFewCavalry,
+    setComputerHasNoCavalry,
+    setPlayerHasNoCavalry,
+    setComputerHasMoreCavalry,
+    setPlayerHasMoreCavalry,
+    setEqualNumberOfCavalry,
+    setNoCavalry,
+    resetCavalryTranslatorStore
 }
