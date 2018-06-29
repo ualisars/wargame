@@ -1,22 +1,22 @@
-export let computerHasTooManyScouts: boolean = false;
-export let playerHasTooManyScouts: boolean = false;
+let computerHasTooManyScouts: boolean = false;
+let playerHasTooManyScouts: boolean = false;
 
-export let computerHasManyScouts: boolean = false;
-export let playerHasManyScouts: boolean = false;
+let computerHasManyScouts: boolean = false;
+let playerHasManyScouts: boolean = false;
 
-export let computerHasFewScouts: boolean = false;
-export let playerHasFewScouts: boolean = false;
+let computerHasFewScouts: boolean = false;
+let playerHasFewScouts: boolean = false;
 
-export let computerHasNoScouts: boolean = false;
-export let playerHasNoScouts: boolean = false;
+let computerHasNoScouts: boolean = false;
+let playerHasNoScouts: boolean = false;
 
-export let computerHasMoreScouts: boolean = false;
-export let playerHasMoreScouts: boolean = false;
-export let equalNumberOfScouts: boolean = false;
+let computerHasMoreScouts: boolean = false;
+let playerHasMoreScouts: boolean = false;
+let equalNumberOfScouts: boolean = false;
 
-export let noScouts: boolean = false;
+let noScouts: boolean = false;
 
-export const setComputerHasTooManyScouts = () => {
+const setComputerHasTooManyScouts = () => {
     computerHasTooManyScouts = true;
     computerHasManyScouts = false;
     computerHasFewScouts = false;
@@ -24,7 +24,7 @@ export const setComputerHasTooManyScouts = () => {
     noScouts = false;
 }
 
-export const setPlayerHasTooManyScouts = () => {
+const setPlayerHasTooManyScouts = () => {
     playerHasTooManyScouts = true;
     playerHasManyScouts = false;
     playerHasFewScouts = false;
@@ -32,7 +32,7 @@ export const setPlayerHasTooManyScouts = () => {
     noScouts = false;
 }
 
-export const setComputerHasManyScouts = () => {
+const setComputerHasManyScouts = () => {
     computerHasTooManyScouts = false;
     computerHasManyScouts = true;
     computerHasFewScouts = false;
@@ -40,7 +40,7 @@ export const setComputerHasManyScouts = () => {
     noScouts = false;
 }
 
-export const setPlayerHasManyScouts = () => {
+const setPlayerHasManyScouts = () => {
     playerHasTooManyScouts = false;
     playerHasManyScouts = true;
     playerHasFewScouts = false;
@@ -48,7 +48,7 @@ export const setPlayerHasManyScouts = () => {
     noScouts = false;
 }
 
-export const setComputerHasFewScouts = () => {
+const setComputerHasFewScouts = () => {
     computerHasTooManyScouts = false;
     computerHasManyScouts = false;
     computerHasFewScouts = true;
@@ -56,7 +56,7 @@ export const setComputerHasFewScouts = () => {
     noScouts = false;
 }
 
-export const setPlayerHasFewScouts = () => {
+const setPlayerHasFewScouts = () => {
     playerHasTooManyScouts = false;
     playerHasManyScouts = false;
     playerHasFewScouts = true;
@@ -64,47 +64,47 @@ export const setPlayerHasFewScouts = () => {
     noScouts = false;
 }
 
-export const setComputerHasNoScouts = () => {
+const setComputerHasNoScouts = () => {
     computerHasTooManyScouts = false;
     computerHasManyScouts = false;
     computerHasFewScouts = false;
     computerHasNoScouts = true;
 }
 
-export const setPlayerHasNoScouts = () => {
+const setPlayerHasNoScouts = () => {
     playerHasTooManyScouts = false;
     playerHasManyScouts = false;
     playerHasFewScouts = false;
     playerHasNoScouts = true;
 }
 
-export const setComputerHasMoreScouts = () => {
+const setComputerHasMoreScouts = () => {
     computerHasMoreScouts = true;
     playerHasMoreScouts = false;
     equalNumberOfScouts = false;
     noScouts = false;
 }
 
-export const setPlayerHasMoreScouts = () => {
+const setPlayerHasMoreScouts = () => {
     computerHasMoreScouts = false;
     playerHasMoreScouts = true;
     equalNumberOfScouts = false;
     noScouts = false;
 }
 
-export const setEqualNumberOfScouts = () => {
+const setEqualNumberOfScouts = () => {
     computerHasMoreScouts = false;
     playerHasMoreScouts = false;
     equalNumberOfScouts = true;
     noScouts = false;
 }
 
-export const setNoScouts = () => {
+const setNoScouts = () => {
     resetScoutsTranslatorStore();
     noScouts = true;
 }
 
-export const resetScoutsTranslatorStore = () => {
+const resetScoutsTranslatorStore = () => {
     computerHasTooManyScouts = false;
     computerHasManyScouts = false;
     computerHasFewScouts = false;
@@ -119,4 +119,33 @@ export const resetScoutsTranslatorStore = () => {
     playerHasMoreScouts = false;
     equalNumberOfScouts = false;
     noScouts = false;
+}
+
+export {
+    computerHasTooManyScouts,
+    playerHasTooManyScouts,
+    computerHasManyScouts,
+    playerHasManyScouts,
+    computerHasFewScouts,
+    playerHasFewScouts,
+    computerHasNoScouts,
+    playerHasNoScouts,
+    computerHasMoreScouts,
+    playerHasMoreScouts,
+    equalNumberOfScouts,
+    noScouts,
+
+    setComputerHasTooManyScouts,
+    setPlayerHasTooManyScouts,
+    setComputerHasManyScouts,
+    setPlayerHasManyScouts,
+    setComputerHasFewScouts,
+    setPlayerHasFewScouts,
+    setComputerHasNoScouts,
+    setPlayerHasNoScouts,
+    setComputerHasMoreScouts,
+    setPlayerHasMoreScouts,
+    setEqualNumberOfScouts,
+    setNoScouts,
+    resetScoutsTranslatorStore
 }
