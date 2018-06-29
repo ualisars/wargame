@@ -101,6 +101,9 @@ const setEqualNumberOfInfantry = () => {
 
 const setNoInfantry = () => {
     resetInfantryTranslatorStore();
+    equalNumberOfInfantry = true;
+    computerHasNoInfantry = true;
+    playerHasNoInfantry = true;
     noInfantry = true;
 }
 
