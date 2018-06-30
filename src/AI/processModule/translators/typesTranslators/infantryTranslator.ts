@@ -84,15 +84,15 @@ export const translateInfantry = () => {
         throw new Error('Invalid playerRatio value');
     }
 
-    if(infantryRatio >= 0.55 && infantryRatio <= 1) {
+    if(infantryRatio > 0.5 && infantryRatio <= 1) {
         setComputerHasMoreInfantry();
     }
 
-    else if(infantryRatio > 0.45 && infantryRatio < 0.55) {
+    else if(infantryRatio === 0.5) {
         setEqualNumberOfInfantry();
     }
 
-    else if(infantryRatio >= 0 && infantryRatio < 0.45 && playerInfantryRatio !== 0) {
+    else if(infantryRatio >= 0 && infantryRatio < 0.5 && playerInfantryRatio !== 0) {
         setPlayerHasMoreInfantry();
     }
 

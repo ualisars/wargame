@@ -96,7 +96,6 @@ const setEqualNumberOfInfantry = () => {
     computerHasMoreInfantry = false;
     playerHasMoreInfantry = false;
     equalNumberOfInfantry = true;
-    noInfantry = false;
 }
 
 const setNoInfantry = () => {
