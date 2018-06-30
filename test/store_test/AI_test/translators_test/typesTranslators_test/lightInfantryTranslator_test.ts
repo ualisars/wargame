@@ -1,5 +1,4 @@
 import {assert} from 'chai';
-
 import {
    computerHasTooManyLightInfantry,
    playerHasTooManyLightInfantry,
@@ -190,16 +189,16 @@ describe('translators store test', () => {
             assert.equal(computerHasTooManyLightInfantry, false);
             assert.equal(computerHasManyLightInfantry, false);
             assert.equal(computerHasFewLightInfantry, false);
-            assert.equal(computerHasNoLightInfantry, false);
+            assert.equal(computerHasNoLightInfantry, true);
 
             assert.equal(playerHasTooManyLightInfantry, false);
             assert.equal(playerHasManyLightInfantry, false);
             assert.equal(playerHasFewLightInfantry, false);
-            assert.equal(playerHasNoLightInfantry, false);
+            assert.equal(playerHasNoLightInfantry, true);
 
             assert.equal(computerHasMoreLightInfantry, false);
             assert.equal(playerHasMoreLightInfantry, false);
-            assert.equal(equalNumberOfLightInfantry, false);
+            assert.equal(equalNumberOfLightInfantry, true);
             assert.equal(noLightInfantry, true);
 
             done();

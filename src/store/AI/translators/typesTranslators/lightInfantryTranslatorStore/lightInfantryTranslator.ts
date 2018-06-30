@@ -97,11 +97,13 @@ const setEqualNumberOfLightInfantry = () => {
     computerHasMoreLightInfantry = false;
     playerHasMoreLightInfantry = false;
     equalNumberOfLightInfantry = true;
-    noLightInfantry = false;
 }
 
 const setNoLightInfantry = () => {
     resetLightInfantryTranslatorStore();
+    computerHasNoLightInfantry = true;
+    playerHasNoLightInfantry = true;
+    equalNumberOfLightInfantry = true;
     noLightInfantry = true;
 }
 
