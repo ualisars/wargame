@@ -46,15 +46,15 @@ export const translateSkirmishers = () => {
         setPlayerHasManySkirmishers();
     }
 
-    if(skirmisherRatio > 0.55) {
+    if(skirmisherRatio > 0.5) {
         setComputerHasMoreSkirmishers();
     }
 
-    else if(skirmisherRatio >= 0.45 && skirmisherRatio <= 0.55) {
+    else if(skirmisherRatio === 0.5) {
         setEqualNumberOfSkirmishers();
     }
 
-    else if(skirmisherRatio < 0.45 && playerSkirmisherRatio != 0) {
+    else if(skirmisherRatio < 0.5 && playerSkirmisherRatio != 0) {
         setPlayerHasMoreSkirmishers();
     }
 
