@@ -1,22 +1,23 @@
-export let computerHasTooManySpearmen: boolean = false;
-export let playerHasTooManySpearmen: boolean = false;
+let computerHasTooManySpearmen: boolean = false;
+let playerHasTooManySpearmen: boolean = false;
 
-export let computerHasManySpearmen: boolean = false;
-export let playerHasManySpearmen: boolean = false;
+let computerHasManySpearmen: boolean = false;
+let playerHasManySpearmen: boolean = false;
 
-export let computerHasFewSpearmen: boolean = false;
-export let playerHasFewSpearmen: boolean = false;
+let computerHasFewSpearmen: boolean = false;
+let playerHasFewSpearmen: boolean = false;
 
-export let computerHasNoSpearmen: boolean = false;
-export let playerHasNoSpearmen: boolean = false;
+let computerHasNoSpearmen: boolean = false;
+let playerHasNoSpearmen: boolean = false;
 
-export let computerHasMoreSpearmen: boolean = false;
-export let playerHasMoreSpearmen: boolean = false;
-export let equalNumberOfSpearmen: boolean = false;
+let computerHasMoreSpearmen: boolean = false;
+let playerHasMoreSpearmen: boolean = false;
+let equalNumberOfSpearmen: boolean = false;
 
-export let noSpearmen: boolean = false;
+let noSpearmen: boolean = false;
 
-export const setComputerHasTooManySpearmen = () => {
+
+const setComputerHasTooManySpearmen = () => {
     computerHasTooManySpearmen = true;
     computerHasManySpearmen = false;
     computerHasFewSpearmen = false;
@@ -24,7 +25,7 @@ export const setComputerHasTooManySpearmen = () => {
     noSpearmen = false;
 }
 
-export const setPlayerHasTooManySpearmen = () => {
+const setPlayerHasTooManySpearmen = () => {
     playerHasTooManySpearmen = true;
     playerHasManySpearmen = false;
     playerHasFewSpearmen = false;
@@ -32,7 +33,7 @@ export const setPlayerHasTooManySpearmen = () => {
     noSpearmen = false;
 }
 
-export const setComputerHasManySpearmen = () => {
+const setComputerHasManySpearmen = () => {
     computerHasTooManySpearmen = false;
     computerHasManySpearmen = true;
     computerHasFewSpearmen = false;
@@ -40,7 +41,7 @@ export const setComputerHasManySpearmen = () => {
     noSpearmen = false;
 }
 
-export const setPlayerHasManySpearmen = () => {
+const setPlayerHasManySpearmen = () => {
     playerHasTooManySpearmen = false;
     playerHasManySpearmen = true;
     playerHasFewSpearmen = false;
@@ -48,7 +49,7 @@ export const setPlayerHasManySpearmen = () => {
     noSpearmen = false;
 }
 
-export const setComputerHasFewSpearmen = () => {
+const setComputerHasFewSpearmen = () => {
     computerHasTooManySpearmen = false;
     computerHasManySpearmen = false;
     computerHasFewSpearmen = true;
@@ -56,7 +57,7 @@ export const setComputerHasFewSpearmen = () => {
     noSpearmen = false;
 }
 
-export const setPlayerHasFewSpearmen = () => {
+const setPlayerHasFewSpearmen = () => {
     playerHasTooManySpearmen = false;
     playerHasManySpearmen = false;
     playerHasFewSpearmen = true;
@@ -64,47 +65,47 @@ export const setPlayerHasFewSpearmen = () => {
     noSpearmen = false;
 }
 
-export const setComputerHasNoSpearmen = () => {
+const setComputerHasNoSpearmen = () => {
     computerHasTooManySpearmen = false;
     computerHasManySpearmen = false;
     computerHasFewSpearmen = false;
     computerHasNoSpearmen = true;
 }
 
-export const setPlayerHasNoSpearmen = () => {
+const setPlayerHasNoSpearmen = () => {
     playerHasTooManySpearmen = false;
     playerHasManySpearmen = false;
     playerHasFewSpearmen = false;
     playerHasNoSpearmen = true;
 }
 
-export const setComputerHasMoreSpearmen = () => {
+const setComputerHasMoreSpearmen = () => {
     computerHasMoreSpearmen = true;
     playerHasMoreSpearmen = false;
     equalNumberOfSpearmen = false;
     noSpearmen = false;
 }
 
-export const setPlayerHasMoreSpearmen = () => {
+const setPlayerHasMoreSpearmen = () => {
     computerHasMoreSpearmen = false;
     playerHasMoreSpearmen = true;
     equalNumberOfSpearmen = false;
     noSpearmen = false;
 }
 
-export const setEqualNumberOfSpearmen = () => {
+const setEqualNumberOfSpearmen = () => {
     computerHasMoreSpearmen = false;
     playerHasMoreSpearmen = false;
     equalNumberOfSpearmen = true;
     noSpearmen = false;
 }
 
-export const setNoSpearmen = () => {
+const setNoSpearmen = () => {
     resetSpearmenTranslatorStore();
     noSpearmen = true;
 }
 
-export const resetSpearmenTranslatorStore = () => {
+const resetSpearmenTranslatorStore = () => {
     computerHasTooManySpearmen = false;
     computerHasManySpearmen = false;
     computerHasFewSpearmen = false;
@@ -119,4 +120,33 @@ export const resetSpearmenTranslatorStore = () => {
     playerHasMoreSpearmen = false;
     equalNumberOfSpearmen = false;
     noSpearmen = false;
+}
+
+export {
+    computerHasTooManySpearmen,
+    playerHasTooManySpearmen,
+    computerHasManySpearmen,
+    playerHasManySpearmen,
+    computerHasFewSpearmen,
+    playerHasFewSpearmen,
+    computerHasNoSpearmen,
+    playerHasNoSpearmen,
+    computerHasMoreSpearmen,
+    playerHasMoreSpearmen,
+    equalNumberOfSpearmen,
+    noSpearmen,
+
+    setComputerHasTooManySpearmen,
+    setPlayerHasTooManySpearmen,
+    setComputerHasManySpearmen,
+    setPlayerHasManySpearmen,
+    setComputerHasFewSpearmen,
+    setPlayerHasFewSpearmen,
+    setComputerHasNoSpearmen,
+    setPlayerHasNoSpearmen,
+    setComputerHasMoreSpearmen,
+    setPlayerHasMoreSpearmen,
+    setEqualNumberOfSpearmen,
+    setNoSpearmen,
+    resetSpearmenTranslatorStore 
 }
