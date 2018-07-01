@@ -1,4 +1,7 @@
 import {
+    translateHeavyInfantry
+} from './heavyInfantryTranslator';
+import {
     translateInfantry
 } from './infantryTranslator';
 import {
@@ -9,6 +12,7 @@ import {
 } from './skirmisherTranslator';
 
 export {
+    translateHeavyInfantry,
     translateInfantry,
     translateLightInfantry,
     translateSkirmishers

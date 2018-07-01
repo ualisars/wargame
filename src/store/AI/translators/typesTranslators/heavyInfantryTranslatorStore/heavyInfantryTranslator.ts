@@ -96,11 +96,13 @@ const setEqualNumberOfHeavyInfantry = () => {
     computerHasMoreHeavyInfantry = false;
     playerHasMoreHeavyInfantry = false;
     equalNumberOfHeavyInfantry = true;
-    noHeavyInfantry = false;
 }
 
 const setNoHeavyInfantry = () => {
     resetHeavyInfantryTranslatorStore();
+    computerHasNoHeavyInfantry = true;
+    playerHasNoHeavyInfantry = true;
+    equalNumberOfHeavyInfantry = true;
     noHeavyInfantry = true;
 }
 
