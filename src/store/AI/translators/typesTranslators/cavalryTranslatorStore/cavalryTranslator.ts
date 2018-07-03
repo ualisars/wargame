@@ -100,11 +100,13 @@ const setEqualNumberOfCavalry = () => {
     computerHasMoreCavalry = false;
     playerHasMoreCavalry = false;
     equalNumberOfCavalry = true;
-    noCavalry = false;
 }
 
 const setNoCavalry = () => {
     resetCavalryTranslatorStore();
+    computerHasNoCavalry = true;
+    playerHasNoCavalry = true;
+    equalNumberOfCavalry = true;
     noCavalry = true;
 }
 

@@ -61,7 +61,7 @@ export const translateInfantry = () => {
     }
 
     else {
-        throw new Error('Invalid computerRatio value');
+        throw new Error('Invalid computerInfantryRatio value');
     }
 
     if(playerInfantryRatio >= 0.7 && playerInfantryRatio <= 1) {
@@ -81,7 +81,7 @@ export const translateInfantry = () => {
     } 
 
     else {
-        throw new Error('Invalid playerRatio value');
+        throw new Error('Invalid playerInfantryRatio value');
     }
 
     if(infantryRatio > 0.5 && infantryRatio <= 1) {
