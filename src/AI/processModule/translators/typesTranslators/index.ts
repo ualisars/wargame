@@ -4,6 +4,7 @@ import {translateInfantry} from './infantryTranslator';
 import {translateLightInfantry} from './lightInfantryTranslator';
 import {translateScouts} from './scoutTranslator';
 import {translateSkirmishers} from './skirmisherTranslator';
+import {translateSpearmen} from './spearmenTranslator';
 
 export {
     translateCavalry,
@@ -11,5 +12,6 @@ export {
     translateInfantry,
     translateLightInfantry,
     translateScouts,
-    translateSkirmishers
+    translateSkirmishers,
+    translateSpearmen
 }

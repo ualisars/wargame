@@ -190,16 +190,16 @@ describe('translators store test', () => {
             assert.equal(computerHasTooManySpearmen, false);
             assert.equal(computerHasManySpearmen, false);
             assert.equal(computerHasFewSpearmen, false);
-            assert.equal(computerHasNoSpearmen, false);
+            assert.equal(computerHasNoSpearmen, true);
 
             assert.equal(playerHasTooManySpearmen, false);
             assert.equal(playerHasManySpearmen, false);
             assert.equal(playerHasFewSpearmen, false);
-            assert.equal(playerHasNoSpearmen, false);
+            assert.equal(playerHasNoSpearmen, true);
 
             assert.equal(computerHasMoreSpearmen, false);
             assert.equal(playerHasMoreSpearmen, false);
-            assert.equal(equalNumberOfSpearmen, false);
+            assert.equal(equalNumberOfSpearmen, true);
             assert.equal(noSpearmen, true);
 
             done();

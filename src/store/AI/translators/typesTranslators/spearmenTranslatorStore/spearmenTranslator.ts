@@ -97,11 +97,13 @@ const setEqualNumberOfSpearmen = () => {
     computerHasMoreSpearmen = false;
     playerHasMoreSpearmen = false;
     equalNumberOfSpearmen = true;
-    noSpearmen = false;
 }
 
 const setNoSpearmen = () => {
     resetSpearmenTranslatorStore();
+    computerHasNoSpearmen = true;
+    playerHasNoSpearmen = true;
+    equalNumberOfSpearmen = true;
     noSpearmen = true;
 }
 
