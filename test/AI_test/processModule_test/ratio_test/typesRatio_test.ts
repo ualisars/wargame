@@ -70,37 +70,36 @@ describe('AI processModule ratioTest', () => {
 
         it('infantry ratio should be equal to 0.33', () => {
             let {infantryRatio} = calculateTypesRatio();
-
             assert.equal(infantryRatio, 0.33);
         });
 
         it('spearmenRatio should be equal to 0.5', () => {
             let {spearmenRatio} = calculateTypesRatio();
-
             assert.equal(spearmenRatio, 0.5);
         });
 
         it('lightInfantryRatio should be equal to 0.33', () => {
             let {lightInfantryRatio} = calculateTypesRatio();
-
             assert.equal(lightInfantryRatio, 0.33);
         });
 
         it('heavyInfantryRatio should be equal to 0', () => {
             let {heavyInfantryRatio} = calculateTypesRatio();
-
             assert.equal(heavyInfantryRatio, 0);
         });
 
         it('skirmisherRatio should be equal to 1', () => {
             let {skirmisherRatio} = calculateTypesRatio();
-
             assert.equal(skirmisherRatio, 1);
         });
 
+        it("scoutsRatio should be equal to 0.33", () => {
+            let {scoutsRatio} = calculateTypesRatio();
+            assert.equal(scoutsRatio, 0.33);
+        }); 
+
         it('cavalryRatio should be equal to 0', () => {
             let {cavalryRatio} = calculateTypesRatio();
-
             assert.equal(cavalryRatio, 1);
         });
 
