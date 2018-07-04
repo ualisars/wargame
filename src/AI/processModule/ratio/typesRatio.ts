@@ -27,6 +27,7 @@ export const calculateTypesRatio = ():any => {
     let lightInfantryRatio:number = calculatePercentRatio(lightInfantryNumber, playerLightInfantryNumber);
     let heavyInfantryRatio:number = calculatePercentRatio(heavyInfantryNumber, playerHeavyInfantryNumber);
     let skirmisherRatio:number = calculatePercentRatio(skirmishersNumber, playerSkirmishersNumber);
+    let scoutsRatio:number = calculatePercentRatio(scoutsNumber, playerScoutsNumber)
     let cavalryRatio:number = calculatePercentRatio(cavalryNumber, playerCavalryNumber)
     
     return {
@@ -35,6 +36,7 @@ export const calculateTypesRatio = ():any => {
         lightInfantryRatio,
         heavyInfantryRatio,
         skirmisherRatio,
+        scoutsRatio,
         cavalryRatio
     }
 }

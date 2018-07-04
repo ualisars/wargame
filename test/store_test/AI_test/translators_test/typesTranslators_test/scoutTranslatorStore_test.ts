@@ -190,16 +190,16 @@ describe('translators store test', () => {
             assert.equal(computerHasTooManyScouts, false);
             assert.equal(computerHasManyScouts, false);
             assert.equal(computerHasFewScouts, false);
-            assert.equal(computerHasNoScouts, false);
+            assert.equal(computerHasNoScouts, true);
 
             assert.equal(playerHasTooManyScouts, false);
             assert.equal(playerHasManyScouts, false);
             assert.equal(playerHasFewScouts, false);
-            assert.equal(playerHasNoScouts, false);
+            assert.equal(playerHasNoScouts, true);
 
             assert.equal(computerHasMoreScouts, false);
             assert.equal(playerHasMoreScouts, false);
-            assert.equal(equalNumberOfScouts, false);
+            assert.equal(equalNumberOfScouts, true);
             assert.equal(noScouts, true);
 
             done();

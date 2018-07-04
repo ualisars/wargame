@@ -96,11 +96,13 @@ const setEqualNumberOfScouts = () => {
     computerHasMoreScouts = false;
     playerHasMoreScouts = false;
     equalNumberOfScouts = true;
-    noScouts = false;
 }
 
 const setNoScouts = () => {
     resetScoutsTranslatorStore();
+    computerHasNoScouts = true;
+    playerHasNoScouts = true;
+    equalNumberOfScouts = true;
     noScouts = true;
 }
 
