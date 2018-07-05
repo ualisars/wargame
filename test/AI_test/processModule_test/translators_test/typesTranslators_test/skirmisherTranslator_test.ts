@@ -18,17 +18,20 @@ import {
     playerHasTooManySkirmishers,
     computerHasManySkirmishers,
     playerHasManySkirmishers,
+    computerHasFewSkirmishers,
+    playerHasFewSkirmishers,
+    computerHasNoSkirmishers,
+    playerHasNoSkirmishers,
     computerHasMoreSkirmishers,
     playerHasMoreSkirmishers,
     equalNumberOfSkirmishers,
-    skirmisherMinority,
     noSkirmishers
-} from '../../../../../src/store/AI/translators/typesTranslators/shirmisherTranslatorStore/skirmisherTranslatorStore';
+} from '../../../../../src/store/AI/translators/typesTranslators/skirmisherTranslatorStore/skirmisherTranslatorStore';
 import { assessOffensivePoints } from '../../../../../src/AI/strategyModule/decisionUnit/strategy/offensivePoints/assessOffensivePoints';
 
 describe('types translators test', () => {
 
-    describe('translateSkirmishers test (computer has too many skirmishers)', () => {
+    describe('translateSkirmishers test (computerHasTooMany, playerHasMany)', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
@@ -100,7 +103,23 @@ describe('types translators test', () => {
             assert.equal(playerHasManySkirmishers, true);
         });
 
-        it('computerHasMoreSkirmishers should be false', () => {
+        it('computerHasFewSkirmishers should be false', () => {
+            assert.equal(computerHasFewSkirmishers, false);
+        });
+
+        it('playerHasFewSkirmishers should be false', () => {
+            assert.equal(playerHasFewSkirmishers, false);
+        });
+
+        it('computerHasNoSkirmishers should be false', () => {
+            assert.equal(computerHasNoSkirmishers, false);
+        });
+
+        it('playerHasNoSkirmishers should be false', () => {
+            assert.equal(playerHasNoSkirmishers, false);
+        });
+
+        it('computerHasMoreSkirmishers should be true', () => {
             assert.equal(computerHasMoreSkirmishers, true);
         });
 
@@ -112,17 +131,13 @@ describe('types translators test', () => {
             assert.equal(equalNumberOfSkirmishers, false);
         });
 
-        it('skirmisherMinority should be false', () => {
-            assert.equal(skirmisherMinority, false);
-        });
-
         it('noSkirmishers should be false', () => {
             assert.equal(noSkirmishers, false);
         });
 
     });
 
-    describe('translateSkirmishers test (computer has many skirmishers)', () => {
+    describe('translateSkirmishers test (computerHasMany, playerHasMany)', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
@@ -178,7 +193,7 @@ describe('types translators test', () => {
 
         });
 
-        it('computerHasTooManySkirmishers should be true', () => {
+        it('computerHasTooManySkirmishers should be false', () => {
             assert.equal(computerHasTooManySkirmishers, false);
         });
 
@@ -194,6 +209,22 @@ describe('types translators test', () => {
             assert.equal(playerHasManySkirmishers, true);
         });
 
+        it('computerHasFewSkirmishers should be false', () => {
+            assert.equal(computerHasFewSkirmishers, false);
+        });
+
+        it('playerHasFewSkirmishers should be false', () => {
+            assert.equal(playerHasFewSkirmishers, false);
+        });
+
+        it('computerHasNoSkirmishers should be false', () => {
+            assert.equal(computerHasNoSkirmishers, false);
+        });
+
+        it('playerHasNoSkirmishers should be false', () => {
+            assert.equal(playerHasNoSkirmishers, false);
+        });
+
         it('computerHasMoreSkirmishers should be false', () => {
             assert.equal(computerHasMoreSkirmishers, false);
         });
@@ -206,17 +237,13 @@ describe('types translators test', () => {
             assert.equal(equalNumberOfSkirmishers, true);
         });
 
-        it('skirmisherMinority should be false', () => {
-            assert.equal(skirmisherMinority, false);
-        });
-
         it('noSkirmishers should be false', () => {
             assert.equal(noSkirmishers, false);
         });
 
     });
 
-    describe('translateSkirmishers test (skirmishers minority)', () => {
+    describe('translateSkirmishers test (computerHasFew, playerHasFew)', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
@@ -288,6 +315,22 @@ describe('types translators test', () => {
             assert.equal(playerHasManySkirmishers, false);
         });
 
+        it('computerHasFewSkirmishers should be true', () => {
+            assert.equal(computerHasFewSkirmishers, true);
+        });
+
+        it('playerHasFewSkirmishers should be true', () => {
+            assert.equal(playerHasFewSkirmishers, true);
+        });
+
+        it('computerHasNoSkirmishers should be false', () => {
+            assert.equal(computerHasNoSkirmishers, false);
+        });
+
+        it('playerHasNoSkirmishers should be false', () => {
+            assert.equal(playerHasNoSkirmishers, false);
+        });
+
         it('computerHasMoreSkirmishers should be false', () => {
             assert.equal(computerHasMoreSkirmishers, false);
         });
@@ -298,10 +341,6 @@ describe('types translators test', () => {
 
         it('equalNumberOfSkirmishers should be true', () => {
             assert.equal(equalNumberOfSkirmishers, true);
-        });
-
-        it('skirmisherMinority should be true', () => {
-            assert.equal(skirmisherMinority, true);
         });
 
         it('noSkirmishers should be false', () => {
@@ -382,6 +421,22 @@ describe('types translators test', () => {
             assert.equal(playerHasManySkirmishers, false);
         });
 
+        it('computerHasFewSkirmishers should be false', () => {
+            assert.equal(computerHasFewSkirmishers, false);
+        });
+
+        it('playerHasFewSkirmishers should be false', () => {
+            assert.equal(playerHasFewSkirmishers, false);
+        });
+
+        it('computerHasNoSkirmishers should be true', () => {
+            assert.equal(computerHasNoSkirmishers, true);
+        });
+
+        it('playerHasNoSkirmishers should be true', () => {
+            assert.equal(playerHasNoSkirmishers, true);
+        });
+
         it('computerHasMoreSkirmishers should be false', () => {
             assert.equal(computerHasMoreSkirmishers, false);
         });
@@ -390,18 +445,12 @@ describe('types translators test', () => {
             assert.equal(playerHasMoreSkirmishers, false);
         });
 
-        it('equalNumberOfSkirmishers should be false', () => {
-            assert.equal(equalNumberOfSkirmishers, false);
-        });
-
-        it('skirmisherMinority should be false', () => {
-            assert.equal(skirmisherMinority, false);
+        it('equalNumberOfSkirmishers should be true', () => {
+            assert.equal(equalNumberOfSkirmishers, true);
         });
 
         it('noSkirmishers should be true', () => {
             assert.equal(noSkirmishers, true);
         });
-
     });
-
 });

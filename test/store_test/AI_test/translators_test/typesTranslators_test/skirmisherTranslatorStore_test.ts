@@ -4,25 +4,31 @@ import {
     setPlayerHasTooManySkirmishers,
     setComputerHasManySkirmishers,
     setPlayerHasManySkirmishers,
+    setComputerHasFewSkirmishers,
+    setPlayerHasFewSkirmishers,
+    setComputerHasNoSkirmishers,
+    setPlayerHasNoSkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
-    setEqualNumberOfSkirmishers,
-    setSkirmisherMinority,
     setNoSkirmishers,
-    setSkirmisherStoreToDefault
-} from '../../../../../src/store/AI/translators/typesTranslators/shirmisherTranslatorStore';
+    setEqualNumberOfSkirmishers,
+    resetSkirmisherTranslatorStore
+} from '../../../../../src/store/AI/translators/typesTranslators/skirmisherTranslatorStore';
 
 import {
     computerHasTooManySkirmishers,
     playerHasTooManySkirmishers,
     computerHasManySkirmishers,
     playerHasManySkirmishers,
+    computerHasFewSkirmishers,
+    playerHasFewSkirmishers,
+    computerHasNoSkirmishers,
+    playerHasNoSkirmishers,
     computerHasMoreSkirmishers,
     playerHasMoreSkirmishers,
     equalNumberOfSkirmishers,
-    skirmisherMinority,
     noSkirmishers
-} from '../../../../../src/store/AI/translators/typesTranslators/shirmisherTranslatorStore/skirmisherTranslatorStore';
+} from '../../../../../src/store/AI/translators/typesTranslators/skirmisherTranslatorStore/skirmisherTranslatorStore';
 
 
 describe('translators store test', () => {
@@ -35,7 +41,8 @@ describe('translators store test', () => {
 
             assert.equal(computerHasTooManySkirmishers, true);
             assert.equal(computerHasManySkirmishers, false);
-            assert.equal(skirmisherMinority, false);
+            assert.equal(computerHasFewSkirmishers, false);
+            assert.equal(computerHasNoSkirmishers, false);
             assert.equal(noSkirmishers, false);
 
             done();
@@ -48,7 +55,8 @@ describe('translators store test', () => {
 
             assert.equal(playerHasTooManySkirmishers, true);
             assert.equal(playerHasManySkirmishers, false);
-            assert.equal(skirmisherMinority, false);
+            assert.equal(playerHasFewSkirmishers, false);
+            assert.equal(playerHasNoSkirmishers, false);
             assert.equal(noSkirmishers, false);
 
             done();
@@ -61,7 +69,8 @@ describe('translators store test', () => {
 
             assert.equal(computerHasTooManySkirmishers, false);
             assert.equal(computerHasManySkirmishers, true);
-            assert.equal(skirmisherMinority, false);
+            assert.equal(computerHasFewSkirmishers, false);
+            assert.equal(computerHasNoSkirmishers, false);
             assert.equal(noSkirmishers, false);
 
             done();
@@ -74,7 +83,64 @@ describe('translators store test', () => {
 
             assert.equal(playerHasTooManySkirmishers, false);
             assert.equal(playerHasManySkirmishers, true);
-            assert.equal(skirmisherMinority, false);
+            assert.equal(playerHasFewSkirmishers, false);
+            assert.equal(playerHasNoSkirmishers, false);
+            assert.equal(noSkirmishers, false);
+
+            done();
+
+        });
+
+        it('computerHasFewSkirmishers should be true', (done) => {
+
+            setComputerHasFewSkirmishers();
+
+            assert.equal(computerHasTooManySkirmishers, false);
+            assert.equal(computerHasManySkirmishers, false);
+            assert.equal(computerHasFewSkirmishers, true);
+            assert.equal(computerHasNoSkirmishers, false);
+            assert.equal(noSkirmishers, false);
+
+            done();
+
+        });
+
+        it('playerHasManySkirmishers should be true', (done) => {
+
+            setPlayerHasFewSkirmishers();
+
+            assert.equal(playerHasTooManySkirmishers, false);
+            assert.equal(playerHasManySkirmishers, false);
+            assert.equal(playerHasFewSkirmishers, true);
+            assert.equal(playerHasNoSkirmishers, false);
+            assert.equal(noSkirmishers, false);
+
+            done();
+
+        });
+
+        it('computerHasNoSkirmishers should be true', (done) => {
+
+            setComputerHasNoSkirmishers();
+
+            assert.equal(computerHasTooManySkirmishers, false);
+            assert.equal(computerHasManySkirmishers, false);
+            assert.equal(computerHasFewSkirmishers, false);
+            assert.equal(computerHasNoSkirmishers, true);
+            assert.equal(noSkirmishers, false);
+
+            done();
+
+        });
+
+        it('playerHasManySkirmishers should be true', (done) => {
+
+            setPlayerHasNoSkirmishers();
+
+            assert.equal(playerHasTooManySkirmishers, false);
+            assert.equal(playerHasManySkirmishers, false);
+            assert.equal(playerHasFewSkirmishers, false);
+            assert.equal(playerHasNoSkirmishers, true);
             assert.equal(noSkirmishers, false);
 
             done();
@@ -88,6 +154,8 @@ describe('translators store test', () => {
             assert.equal(computerHasMoreSkirmishers, true);
             assert.equal(playerHasMoreSkirmishers, false);
             assert.equal(equalNumberOfSkirmishers, false);
+            assert.equal(computerHasNoSkirmishers, false);
+            assert.equal(noSkirmishers, false);
 
             done();
 
@@ -100,6 +168,8 @@ describe('translators store test', () => {
             assert.equal(computerHasMoreSkirmishers, false);
             assert.equal(playerHasMoreSkirmishers, true);
             assert.equal(equalNumberOfSkirmishers, false);
+            assert.equal(playerHasNoSkirmishers, false);
+            assert.equal(noSkirmishers, false);
 
             done();
 
@@ -117,29 +187,21 @@ describe('translators store test', () => {
 
         });
 
-        it('skirmisherMinority should be true', (done) => {
-
-            setSkirmisherMinority();
-
-            assert.equal(skirmisherMinority, true);
-            assert.equal(noSkirmishers, false);
-
-            done();
-
-        });
-
         it('all values should be false', (done) => {
 
-            setSkirmisherStoreToDefault();
+            resetSkirmisherTranslatorStore();
 
             assert.equal(computerHasTooManySkirmishers, false);
             assert.equal(playerHasTooManySkirmishers, false);
             assert.equal(computerHasManySkirmishers, false);
             assert.equal(playerHasManySkirmishers, false);
+            assert.equal(computerHasFewSkirmishers, false);
+            assert.equal(playerHasFewSkirmishers, false);
+            assert.equal(computerHasNoSkirmishers, false);
+            assert.equal(computerHasNoSkirmishers, false);
             assert.equal(computerHasMoreSkirmishers, false);
             assert.equal(equalNumberOfSkirmishers, false);
             assert.equal(playerHasMoreSkirmishers, false);
-            assert.equal(skirmisherMinority, false);
             assert.equal(noSkirmishers, false);
 
             done();
@@ -155,9 +217,13 @@ describe('translators store test', () => {
             assert.equal(playerHasTooManySkirmishers, false);
             assert.equal(computerHasManySkirmishers, false);
             assert.equal(playerHasManySkirmishers, false);
+            assert.equal(computerHasFewSkirmishers, false);
+            assert.equal(playerHasFewSkirmishers, false);
+            assert.equal(computerHasNoSkirmishers, true);
+            assert.equal(computerHasNoSkirmishers, true);
             assert.equal(computerHasMoreSkirmishers, false);
+            assert.equal(equalNumberOfSkirmishers, true);
             assert.equal(playerHasMoreSkirmishers, false);
-            assert.equal(skirmisherMinority, false);
             assert.equal(noSkirmishers, true);
 
             done();

@@ -3,12 +3,15 @@ import {
     setPlayerHasTooManySkirmishers,
     setComputerHasManySkirmishers,
     setPlayerHasManySkirmishers,
+    setComputerHasFewSkirmishers,
+    setPlayerHasFewSkirmishers,
+    setComputerHasNoSkirmishers,
+    setPlayerHasNoSkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
-    setSkirmisherMinority,
     setNoSkirmishers,
     setEqualNumberOfSkirmishers,
-    setSkirmisherStoreToDefault
+    resetSkirmisherTranslatorStore
 } from './skirmisherTranslatorStore';
 
 export {
@@ -16,10 +19,13 @@ export {
     setPlayerHasTooManySkirmishers,
     setComputerHasManySkirmishers,
     setPlayerHasManySkirmishers,
+    setComputerHasFewSkirmishers,
+    setPlayerHasFewSkirmishers,
+    setComputerHasNoSkirmishers,
+    setPlayerHasNoSkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
-    setSkirmisherMinority,
     setNoSkirmishers,
     setEqualNumberOfSkirmishers,
-    setSkirmisherStoreToDefault
+    resetSkirmisherTranslatorStore
 }

@@ -9,19 +9,22 @@ import {
     setPlayerHasTooManySkirmishers,
     setComputerHasManySkirmishers,
     setPlayerHasManySkirmishers,
+    setComputerHasFewSkirmishers,
+    setPlayerHasFewSkirmishers,
+    setComputerHasNoSkirmishers,
+    setPlayerHasNoSkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
-    setEqualNumberOfSkirmishers,
-    setSkirmisherMinority,
     setNoSkirmishers,
-    setSkirmisherStoreToDefault
-} from '../../../../store/AI/translators/typesTranslators/shirmisherTranslatorStore';
+    setEqualNumberOfSkirmishers,
+    resetSkirmisherTranslatorStore
+} from '../../../../store/AI/translators/typesTranslators/skirmisherTranslatorStore';
 
 
 
 export const translateSkirmishers = () => {
 
-    setSkirmisherStoreToDefault();
+    resetSkirmisherTranslatorStore();
 
     // get ratio for each unit type
     const {computerSkirmisherRatio} = calculateComputerTypesRatio();
@@ -29,21 +32,49 @@ export const translateSkirmishers = () => {
     const {playerSkirmisherRatio} = calculatePlayerTypesRatio();
 
     const {skirmisherRatio} = calculateTypesRatio();
+
+    console.log('computerSkirmisherRatio', computerSkirmisherRatio);
+    console.log('playerSkirmisherRatio', playerSkirmisherRatio);
+    console.log('skirmisherRatio', skirmisherRatio);
    
     if(computerSkirmisherRatio >= 0.6) {
         setComputerHasTooManySkirmishers();
     }
 
-    else if(computerSkirmisherRatio >= 0.4 && computerSkirmisherRatio < 0.6) {
+    else if(computerSkirmisherRatio >= 0.3 && computerSkirmisherRatio < 0.6) {
         setComputerHasManySkirmishers();
+    }
+
+    else if(computerSkirmisherRatio > 0 && computerSkirmisherRatio < 0.3) {
+        setComputerHasFewSkirmishers();
+    }
+
+    else if(computerSkirmisherRatio === 0) {
+        setComputerHasNoSkirmishers();
+    }
+
+    else {
+        throw new Error('invalid computerRatio value');
     }
 
     if(playerSkirmisherRatio >= 0.6) {
         setPlayerHasTooManySkirmishers();
     }
 
-    else if(playerSkirmisherRatio >= 0.4 && playerSkirmisherRatio < 0.6) {
+    else if(playerSkirmisherRatio >= 0.3 && playerSkirmisherRatio < 0.6) {
         setPlayerHasManySkirmishers();
+    }
+
+    else if(playerSkirmisherRatio > 0 && playerSkirmisherRatio < 0.3) {
+        setPlayerHasFewSkirmishers();
+    }
+
+    else if(playerSkirmisherRatio === 0) {
+        setPlayerHasNoSkirmishers();
+    }
+
+    else {
+        throw new Error('invalid playerRatio value');
     }
 
     if(skirmisherRatio > 0.5) {
@@ -58,15 +89,8 @@ export const translateSkirmishers = () => {
         setPlayerHasMoreSkirmishers();
     }
 
-    if(computerSkirmisherRatio != 0 || playerSkirmisherRatio != 0) {
-        if(computerSkirmisherRatio <= 0.4 && playerSkirmisherRatio <= 0.4) {
-            setSkirmisherMinority();
-        }
-    }
-
     if(playerSkirmisherRatio == 0 && computerSkirmisherRatio == 0) {
         setNoSkirmishers();
     }
-
-
+    
 }
