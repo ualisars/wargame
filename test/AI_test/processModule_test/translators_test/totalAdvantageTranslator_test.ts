@@ -3,8 +3,9 @@ import {
     translateTotalAdvantage
 } from '../../../../src/AI/processModule/translators/totalAdvantageTranslator';
 import {
-    computerCompletelyAdvantage,
+    computerSuperiority,
     computerAdvantage,
+    equality,
     computerDisadvantage,
     computerCompletelyDisadvantage
 } from '../../../../src/store/AI/translators/totalAdvantage/totalAdvantageTranslator';
@@ -75,12 +76,13 @@ describe('translators test', () => {
 
         });
 
-        it('computerCompletelyAdvantage should be true', () => {
+        it('computerSuperiority should be true', () => {
 
             translateTotalAdvantage();
 
-            assert.equal(computerCompletelyAdvantage, true);
+            assert.equal(computerSuperiority, true);
             assert.equal(computerAdvantage, false);
+            assert.equal(equality, false);
             assert.equal(computerDisadvantage, false);
             assert.equal(computerCompletelyDisadvantage, false);
 
@@ -146,8 +148,9 @@ describe('translators test', () => {
 
             translateTotalAdvantage();
 
-            assert.equal(computerCompletelyAdvantage, false);
+            assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, true);
+            assert.equal(equality, false);
             assert.equal(computerDisadvantage, false);
             assert.equal(computerCompletelyDisadvantage, false);
 
@@ -156,7 +159,54 @@ describe('translators test', () => {
 
     });
 
+    describe('translateTotalAdvantage test (equality)', () => {
 
+        let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
+
+        let playerUnit1:Unit, playerUnit2:Unit, playerUnit3:Unit;
+
+        before(() => {
+
+            removeAllUnits();
+
+            computerUnit1 = createUnit('Hoplites', 560, 120, 'computer');
+            computerUnit2 = createUnit('Militia', 440, 200, 'computer');
+            computerUnit3 = createUnit('HeavyCavalry', 280, 200, 'computer');
+
+            playerUnit1 = createUnit('Militia', 440, 160, 'player');
+            playerUnit2 = createUnit('Hoplites', 920, 80, 'player');
+            playerUnit3 = createUnit('HeavyCavalry', 160, 480, 'player');
+
+            addToRevealedUnits(playerUnit1);
+            addToRevealedUnits(playerUnit2);
+            addToRevealedUnits(playerUnit3);
+
+        });
+
+        after(() => {
+
+            removeUnit(computerUnit1);
+            removeUnit(computerUnit2);
+            removeUnit(computerUnit3);
+
+            removeUnit(playerUnit1);
+            removeUnit(playerUnit2);
+            removeUnit(playerUnit3);
+
+        });
+
+        it('computerCompletelyDisadvantage should be true', () => {
+
+            translateTotalAdvantage();
+
+            assert.equal(computerSuperiority, false);
+            assert.equal(computerAdvantage, false);
+            assert.equal(equality, true);
+            assert.equal(computerDisadvantage, false);
+            assert.equal(computerCompletelyDisadvantage, false);
+
+        });
+    });
 
     describe('translateTotalAdvantage test (computerDisadvantage)', () => {
 
@@ -215,8 +265,9 @@ describe('translators test', () => {
 
             translateTotalAdvantage();
 
-            assert.equal(computerCompletelyAdvantage, false);
+            assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, false);
+            assert.equal(equality, false);
             assert.equal(computerDisadvantage, true);
             assert.equal(computerCompletelyDisadvantage, false);
 
@@ -276,13 +327,12 @@ describe('translators test', () => {
 
             translateTotalAdvantage();
 
-            assert.equal(computerCompletelyAdvantage, false);
+            assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, false);
+            assert.equal(equality, false);
             assert.equal(computerDisadvantage, false);
             assert.equal(computerCompletelyDisadvantage, true);
 
         });
-
-
     });
 });

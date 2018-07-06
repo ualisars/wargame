@@ -1,35 +1,56 @@
-export let computerCompletelyAdvantage: boolean;
-export let computerAdvantage: boolean;
-export let computerDisadvantage: boolean;
-export let computerCompletelyDisadvantage: boolean;
+let computerSuperiority: boolean;
+let computerAdvantage: boolean;
+let equality: boolean = false;
+let computerDisadvantage: boolean;
+let computerCompletelyDisadvantage: boolean;
 
-
-export const setComputerCompletelyAdvantageToTrue = () => {
+const setComputerSuperiority = () => {
     resetAllProperties();
-    computerCompletelyAdvantage = true;
+    computerSuperiority = true;
 }
 
-export const setComputerAdvantageToTrue = () => {
+const setComputerAdvantage = () => {
     resetAllProperties();
     computerAdvantage = true;
 }
 
-export const setComputerDisadvantageToTrue = () => {
+const setEquality = () => {
+    resetAllProperties();
+    equality = true;
+}
+
+const setComputerDisadvantage = () => {
     resetAllProperties();
     computerDisadvantage = true;
 }
 
 
-export const setComputerCompletelyDisadvantageToTrue = () => {
+const setComputerCompletelyDisadvantage = () => {
     resetAllProperties();
     computerCompletelyDisadvantage = true;
 }
 
 const resetAllProperties = () => {
-    computerCompletelyAdvantage = false;
+    computerSuperiority = false;
+    equality = false;
     computerAdvantage = false;
     computerDisadvantage = false;
     computerCompletelyDisadvantage = false;
+}
+
+export {
+    computerSuperiority,
+    computerAdvantage,
+    equality,
+    computerDisadvantage,
+    computerCompletelyDisadvantage,
+
+    setComputerSuperiority,   
+    setComputerAdvantage,
+    setEquality,
+    setComputerDisadvantage,
+    setComputerCompletelyDisadvantage,
+    resetAllProperties
 }
 
 

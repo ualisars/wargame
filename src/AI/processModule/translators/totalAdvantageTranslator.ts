@@ -1,8 +1,9 @@
 import {
-    setComputerCompletelyAdvantageToTrue,
-    setComputerAdvantageToTrue,
-    setComputerDisadvantageToTrue,
-    setComputerCompletelyDisadvantageToTrue
+    setComputerSuperiority,   
+    setComputerAdvantage,
+    setEquality,
+    setComputerDisadvantage,
+    setComputerCompletelyDisadvantage
 } from '../../../store/AI/translators/totalAdvantage/totalAdvantageTranslator';
 
 import {
@@ -12,27 +13,30 @@ import {
 export const translateTotalAdvantage = () => {
 
     const totalRatio: number = calculateTotalRatio();
-    let offensivePoints: number;
-
-    console.log('translateTotalAdvantage ratio', totalRatio);
+    
+    console.log('totalRatio', totalRatio);
 
     if(totalRatio >= 0.7) {
-        setComputerCompletelyAdvantageToTrue();
+        setComputerSuperiority();
     }
 
-    else if(totalRatio >= 0.5 && totalRatio < 0.7) {
-        setComputerAdvantageToTrue();
+    else if(totalRatio > 0.5 && totalRatio < 0.7) {
+        setComputerAdvantage();
+    }
+
+    else if(totalRatio === 0.5) {
+        setEquality();
     }
 
     else if(totalRatio >= 0.3 && totalRatio < 0.5) {
-        setComputerDisadvantageToTrue();
+        setComputerDisadvantage();
     }
 
     else if(totalRatio >= 0 && totalRatio < 0.3) {
-        setComputerCompletelyDisadvantageToTrue();
+        setComputerCompletelyDisadvantage();
     }
 
     else {
-        throw new Error('incorrent total ratio ' + totalRatio);
+        throw new Error('incorrent total ratio value ' + totalRatio);
     }
 }
