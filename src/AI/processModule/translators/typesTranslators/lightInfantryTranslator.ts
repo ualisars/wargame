@@ -44,10 +44,6 @@ export const translateLightInfantry = () => {
 
     const {lightInfantryRatio} = calculateTypesRatio();
 
-    console.log('computerLightInfantryRatio', computerLightInfantryRatio);
-    console.log('playerLightInfantryRatio', playerLightInfantryRatio);
-    console.log('lightInfantryRatio', lightInfantryRatio);
-
     // computerLightInfantryRatio check
     if(computerLightInfantryRatio >= 0.7 && computerLightInfantryRatio <= 1) {
         setComputerHasTooManyLightInfantry();

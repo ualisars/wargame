@@ -32,10 +32,6 @@ export const translateSkirmishers = () => {
     const {playerSkirmisherRatio} = calculatePlayerTypesRatio();
 
     const {skirmisherRatio} = calculateTypesRatio();
-
-    console.log('computerSkirmisherRatio', computerSkirmisherRatio);
-    console.log('playerSkirmisherRatio', playerSkirmisherRatio);
-    console.log('skirmisherRatio', skirmisherRatio);
    
     if(computerSkirmisherRatio >= 0.6) {
         setComputerHasTooManySkirmishers();
