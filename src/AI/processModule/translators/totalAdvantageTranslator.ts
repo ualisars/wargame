@@ -1,9 +1,9 @@
 import {
     setComputerSuperiority,   
     setComputerAdvantage,
-    setEquality,
+    setForceEquality,
     setComputerDisadvantage,
-    setComputerCompletelyDisadvantage
+    setComputerCompleteDisadvantage
 } from '../../../store/AI/translators/totalAdvantage/totalAdvantageTranslator';
 
 import {
@@ -13,8 +13,6 @@ import {
 export const translateTotalAdvantage = () => {
 
     const totalRatio: number = calculateTotalRatio();
-    
-    console.log('totalRatio', totalRatio);
 
     if(totalRatio >= 0.7) {
         setComputerSuperiority();
@@ -25,7 +23,7 @@ export const translateTotalAdvantage = () => {
     }
 
     else if(totalRatio === 0.5) {
-        setEquality();
+        setForceEquality();
     }
 
     else if(totalRatio >= 0.3 && totalRatio < 0.5) {
@@ -33,7 +31,7 @@ export const translateTotalAdvantage = () => {
     }
 
     else if(totalRatio >= 0 && totalRatio < 0.3) {
-        setComputerCompletelyDisadvantage();
+        setComputerCompleteDisadvantage();
     }
 
     else {

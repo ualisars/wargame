@@ -1,8 +1,8 @@
-let computerSuperiority: boolean;
-let computerAdvantage: boolean;
-let equality: boolean = false;
-let computerDisadvantage: boolean;
-let computerCompletelyDisadvantage: boolean;
+let computerSuperiority: boolean = false;
+let computerAdvantage: boolean = false;
+let forceEquality: boolean = false;
+let computerDisadvantage: boolean = false;
+let computerCompleteDisadvantage: boolean = false;
 
 const setComputerSuperiority = () => {
     resetAllProperties();
@@ -14,9 +14,9 @@ const setComputerAdvantage = () => {
     computerAdvantage = true;
 }
 
-const setEquality = () => {
+const setForceEquality = () => {
     resetAllProperties();
-    equality = true;
+    forceEquality = true;
 }
 
 const setComputerDisadvantage = () => {
@@ -25,31 +25,31 @@ const setComputerDisadvantage = () => {
 }
 
 
-const setComputerCompletelyDisadvantage = () => {
+const setComputerCompleteDisadvantage = () => {
     resetAllProperties();
-    computerCompletelyDisadvantage = true;
+    computerCompleteDisadvantage = true;
 }
 
 const resetAllProperties = () => {
     computerSuperiority = false;
-    equality = false;
+    forceEquality = false;
     computerAdvantage = false;
     computerDisadvantage = false;
-    computerCompletelyDisadvantage = false;
+    computerCompleteDisadvantage = false;
 }
 
 export {
     computerSuperiority,
     computerAdvantage,
-    equality,
+    forceEquality,
     computerDisadvantage,
-    computerCompletelyDisadvantage,
+    computerCompleteDisadvantage,
 
     setComputerSuperiority,   
     setComputerAdvantage,
-    setEquality,
+    setForceEquality,
     setComputerDisadvantage,
-    setComputerCompletelyDisadvantage,
+    setComputerCompleteDisadvantage,
     resetAllProperties
 }
 

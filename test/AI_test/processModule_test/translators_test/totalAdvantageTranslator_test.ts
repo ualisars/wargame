@@ -5,9 +5,9 @@ import {
 import {
     computerSuperiority,
     computerAdvantage,
-    equality,
+    forceEquality,
     computerDisadvantage,
-    computerCompletelyDisadvantage
+    computerCompleteDisadvantage
 } from '../../../../src/store/AI/translators/totalAdvantage/totalAdvantageTranslator';
 import {createUnit} from '../../../../src/unit/create';
 import {
@@ -23,7 +23,7 @@ import Unit from '../../../../src/unit/types/Unit';
 
 describe('translators test', () => {
 
-    describe('translateTotalAdvantage test (computerCompletelyAdvantage)', () => {
+    describe('translateTotalAdvantage test (computerSuperiority)', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
@@ -82,13 +82,11 @@ describe('translators test', () => {
 
             assert.equal(computerSuperiority, true);
             assert.equal(computerAdvantage, false);
-            assert.equal(equality, false);
+            assert.equal(forceEquality, false);
             assert.equal(computerDisadvantage, false);
-            assert.equal(computerCompletelyDisadvantage, false);
+            assert.equal(computerCompleteDisadvantage, false);
 
         });
-
-
     });
 
     describe('translateTotalAdvantage test (computerAdvantage)', () => {
@@ -150,16 +148,14 @@ describe('translators test', () => {
 
             assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, true);
-            assert.equal(equality, false);
+            assert.equal(forceEquality, false);
             assert.equal(computerDisadvantage, false);
-            assert.equal(computerCompletelyDisadvantage, false);
+            assert.equal(computerCompleteDisadvantage, false);
 
         });
-
-
     });
 
-    describe('translateTotalAdvantage test (equality)', () => {
+    describe('translateTotalAdvantage test (forceEquality)', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
 
@@ -195,15 +191,15 @@ describe('translators test', () => {
 
         });
 
-        it('computerCompletelyDisadvantage should be true', () => {
+        it('forceEquality should be true', () => {
 
             translateTotalAdvantage();
 
             assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, false);
-            assert.equal(equality, true);
+            assert.equal(forceEquality, true);
             assert.equal(computerDisadvantage, false);
-            assert.equal(computerCompletelyDisadvantage, false);
+            assert.equal(computerCompleteDisadvantage, false);
 
         });
     });
@@ -267,17 +263,14 @@ describe('translators test', () => {
 
             assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, false);
-            assert.equal(equality, false);
+            assert.equal(forceEquality, false);
             assert.equal(computerDisadvantage, true);
-            assert.equal(computerCompletelyDisadvantage, false);
+            assert.equal(computerCompleteDisadvantage, false);
 
         });
-
-
     });
 
-
-    describe('translateTotalAdvantage test (computerCompletelyDisadvantage)', () => {
+    describe('translateTotalAdvantage test (computerCompleteDisadvantage)', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
 
@@ -329,9 +322,9 @@ describe('translators test', () => {
 
             assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, false);
-            assert.equal(equality, false);
+            assert.equal(forceEquality, false);
             assert.equal(computerDisadvantage, false);
-            assert.equal(computerCompletelyDisadvantage, true);
+            assert.equal(computerCompleteDisadvantage, true);
 
         });
     });

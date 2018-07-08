@@ -2,17 +2,17 @@ import {assert} from 'chai';
 import {
     computerSuperiority,
     computerAdvantage,
-    equality,
+    forceEquality,
     computerDisadvantage,
-    computerCompletelyDisadvantage
+    computerCompleteDisadvantage
 } from '../../../../src/store/AI/translators/totalAdvantage/totalAdvantageTranslator';
 
 import {
     setComputerSuperiority,   
     setComputerAdvantage,
-    setEquality,
+    setForceEquality,
     setComputerDisadvantage,
-    setComputerCompletelyDisadvantage,
+    setComputerCompleteDisadvantage,
     resetAllProperties
 } from '../../../../src/store/AI/translators/totalAdvantage';
 
@@ -26,9 +26,9 @@ describe('translators store test', () => {
             
             assert.equal(computerSuperiority, true);
             assert.equal(computerAdvantage, false);
-            assert.equal(equality, false);
+            assert.equal(forceEquality, false);
             assert.equal(computerDisadvantage, false);
-            assert.equal(computerCompletelyDisadvantage, false);
+            assert.equal(computerCompleteDisadvantage, false);
 
             done();
 
@@ -41,9 +41,9 @@ describe('translators store test', () => {
             
             assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, true);
-            assert.equal(equality, false);
+            assert.equal(forceEquality, false);
             assert.equal(computerDisadvantage, false);
-            assert.equal(computerCompletelyDisadvantage, false);
+            assert.equal(computerCompleteDisadvantage, false);
 
             done();
 
@@ -51,13 +51,13 @@ describe('translators store test', () => {
 
         it('equality should be true', (done) => {
             
-            setEquality();
+            setForceEquality();
             
             assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, false);
-            assert.equal(equality, true);
+            assert.equal(forceEquality, true);
             assert.equal(computerDisadvantage, false);
-            assert.equal(computerCompletelyDisadvantage, false);
+            assert.equal(computerCompleteDisadvantage, false);
 
             done();
 
@@ -70,24 +70,24 @@ describe('translators store test', () => {
             
             assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, false);
-            assert.equal(equality, false);
+            assert.equal(forceEquality, false);
             assert.equal(computerDisadvantage, true);
-            assert.equal(computerCompletelyDisadvantage, false);
+            assert.equal(computerCompleteDisadvantage, false);
 
             done();
 
         });
 
 
-        it('computerCompletelyDisadvantage should true', (done) => {
+        it('computerCompleteDisadvantage should true', (done) => {
             
-            setComputerCompletelyDisadvantage();
+            setComputerCompleteDisadvantage();
             
             assert.equal(computerSuperiority, false);
             assert.equal(computerAdvantage, false);
-            assert.equal(equality, false);
+            assert.equal(forceEquality, false);
             assert.equal(computerDisadvantage, false);
-            assert.equal(computerCompletelyDisadvantage, true);
+            assert.equal(computerCompleteDisadvantage, true);
 
             done();
 

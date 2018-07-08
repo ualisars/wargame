@@ -1,17 +1,17 @@
 import {
     setComputerSuperiority,   
     setComputerAdvantage,
-    setEquality,
+    setForceEquality,
     setComputerDisadvantage,
-    setComputerCompletelyDisadvantage,
+    setComputerCompleteDisadvantage,
     resetAllProperties
 } from './totalAdvantageTranslator';
 
 export {
     setComputerSuperiority,   
     setComputerAdvantage,
-    setEquality,
+    setForceEquality,
     setComputerDisadvantage,
-    setComputerCompletelyDisadvantage,
+    setComputerCompleteDisadvantage,
     resetAllProperties
 }
