@@ -81,12 +81,57 @@ describe('AI processModule ratioTest', () => {
 
         });
 
+        it('computerUnit1.meleeDamage = 8', () => {
+            assert.equal(computerUnit1.meleeDamage, 8);
+        });
+
+        it('computerUnit2.meleeDamage = 12', () => {
+            assert.equal(computerUnit2.meleeDamage, 12);
+        });
+
+        it('computerUnit3.meleeDamage = 7', () => {
+            assert.equal(computerUnit3.meleeDamage, 7);
+        });
+
+        it('computerUnit4.meleeDamage = 8', () => {
+            assert.equal(computerUnit4.meleeDamage, 8);
+        });
+
+        it('computerUnit5.meleeDamage = 16', () => {
+            assert.equal(computerUnit5.meleeDamage, 16);
+        });
+
+        it('computerUnit6.meleeDamage = 7', () => {
+            assert.equal(computerUnit6.meleeDamage, 7);
+        });
+
+        it('playerUnit1.meleeDamage = 12', () => {
+            assert.equal(playerUnit1.meleeDamage, 12);
+        });
+
+        it('playerUnit2.meleeDamage = 7', () => {
+            assert.equal(playerUnit2.meleeDamage, 7);
+        });
+
+        it('playerUnit3.meleeDamage = 8', () => {
+            assert.equal(playerUnit3.meleeDamage, 8);
+        });
+
+        it('playerUnit4.meleeDamage = 7', () => {
+            assert.equal(playerUnit4.meleeDamage, 7);
+        });
+
+        it('playerUnit5.meleeDamage = 7', () => {
+            assert.equal(playerUnit5.meleeDamage, 7);
+        });
+
+        it('playerUnit6.meleeDamage = 24', () => {
+            assert.equal(playerUnit6.meleeDamage, 24);
+        });
+
         it('meleeRatio should be equal to 0.48', () => {
-
             let meleeRatio: number = calculateMeleeDamageRatio();
-
-            assert.equal(meleeRatio, 0.48);
-
+            assert.equal(meleeRatio, 0.47);
         });
     });
 

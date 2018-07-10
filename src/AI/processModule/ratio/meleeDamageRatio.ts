@@ -20,12 +20,8 @@ export const calculateMeleeDamageRatio = () => {
         totalPlayerMeleeDamage += unit.meleeDamage; 
     }
 
-    // measure average speed
-    averageComputerMeleeDamage = Math.round(totalComputerMeleeDamage / computerUnits.length);
-    averagePlayerMeleeDamage = Math.round(totalPlayerMeleeDamage / revealedUnits.length);
-
     // find ratio
-    ratio = calculatePercentRatio(averageComputerMeleeDamage, averagePlayerMeleeDamage);
+    ratio = calculatePercentRatio(totalComputerMeleeDamage, totalPlayerMeleeDamage);
 
     return ratio;
     

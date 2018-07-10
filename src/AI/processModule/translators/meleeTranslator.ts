@@ -14,12 +14,6 @@ export const translateMelee = () => {
 
     const meleeRatio = calculateMeleeDamageRatio();
 
-    console.log(`-------------------------------------
-    --------------------------------------------
-    MELEE RATIO    ${meleeRatio} ----------------------------
-    ---------------------------------
-    -----------------------------------------------`)
-
     if(meleeRatio >= 0.7 && meleeRatio <= 1) {
         setMeleeSuperiority();
     }

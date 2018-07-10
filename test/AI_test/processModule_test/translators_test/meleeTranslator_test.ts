@@ -29,7 +29,6 @@ describe('translators test', () => {
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
 
         let playerUnit1:Unit, playerUnit2:Unit, playerUnit3:Unit;
-        let playerUnit4:Unit, playerUnit5:Unit, playerUnit6:Unit;
 
         before(() => {
 
@@ -45,16 +44,11 @@ describe('translators test', () => {
             playerUnit1 = createUnit('Scouts', 440, 160, 'player');
             playerUnit2 = createUnit('Scouts', 920, 80, 'player');
             playerUnit3 = createUnit('LightInfantry', 160, 480, 'player');
-            playerUnit4 = createUnit('Scouts', 400, 280, 'player');
-            playerUnit5 = createUnit('Scouts', 880, 280, 'player');
-            playerUnit6 = createUnit('Scouts', 560, 240, 'player');
+         
 
             addToRevealedUnits(playerUnit1);
             addToRevealedUnits(playerUnit2);
             addToRevealedUnits(playerUnit3);
-            addToRevealedUnits(playerUnit4);
-            addToRevealedUnits(playerUnit5);
-            addToRevealedUnits(playerUnit6);
 
         });
 
@@ -70,9 +64,6 @@ describe('translators test', () => {
             removeUnit(playerUnit1);
             removeUnit(playerUnit2);
             removeUnit(playerUnit3);
-            removeUnit(playerUnit4);
-            removeUnit(playerUnit5);
-            removeUnit(playerUnit6);
 
         });
 
