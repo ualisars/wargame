@@ -19,13 +19,6 @@ export const calculateTotalRatio = () => {
     for(let unit of revealedUnits) {
         totalPlayerWeight += unit.weight;
     }
-
-    averageComputerWeight = Math.round(totalComputerWeight / computerUnits.length);
     
-    averagePlayerWeight = Math.round(totalPlayerWeight / revealedUnits.length);
-
-    ratio = calculatePercentRatio(averageComputerWeight, averagePlayerWeight);
-
-    return ratio;
-
+    return calculatePercentRatio(totalComputerWeight, totalPlayerWeight);
 }
