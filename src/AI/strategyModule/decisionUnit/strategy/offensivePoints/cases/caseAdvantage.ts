@@ -1,5 +1,4 @@
-export const caseRatioFrom20To40 = (): number => {
-
+export const caseAdvantage = () => {
     let offensivePoints: number = 0;
 
     return offensivePoints;

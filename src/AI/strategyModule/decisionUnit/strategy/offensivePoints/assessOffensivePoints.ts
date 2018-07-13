@@ -4,54 +4,42 @@ import {
 } from '../../../../processModule/ratio';
 
 import {
-    caseRatioFrom20To40,
-    caseRatioFrom40To60,
-    caseRatioLessThan20,
-    caseRatioMoreThan60,
-    caseRatioMoreThan80,
-    caseRatioMoreThan90
+    caseSuperiority,
+    caseAdvantage,
+    caseDisadvantage,
+    caseCompleteDisadvantage,
+    caseEquality
 } from './cases';
+import { computerSuperiority, computerAdvantage, forceEquality, computerDisadvantage, computerCompleteDisadvantage } from '../../../../../store/AI/translators/totalAdvantage/totalAdvantageTranslator';
 
 
 export const assessOffensivePoints = (): number => {
-    
     const totalRatio: number = calculateTotalRatio();
     let offensivePoints: number;
 
-    if(totalRatio >= 90) {
-        offensivePoints = caseRatioMoreThan90();
+    if(computerSuperiority) {
+        offensivePoints = caseSuperiority();
     }
 
-    else if(totalRatio >= 80) {
-        offensivePoints = caseRatioMoreThan80();
+    else if(computerAdvantage) {
+        offensivePoints = caseAdvantage();
     }
 
-    else if(totalRatio >= 60) {
-        offensivePoints = caseRatioMoreThan60();
+    else if(forceEquality) {
+        offensivePoints = caseEquality();
     }
 
-    else if(totalRatio >= 40 && totalRatio < 60) {
-        offensivePoints = caseRatioFrom40To60();
+    else if(computerDisadvantage) {
+        offensivePoints = caseDisadvantage();
     }
 
-    else if(totalRatio >= 20 && totalRatio < 40) {
-        offensivePoints = caseRatioFrom20To40();
-    }
-
-    else if(totalRatio >= 0 && totalRatio < 20) {
-        offensivePoints = caseRatioLessThan20();
+    else if(computerCompleteDisadvantage) {
+        offensivePoints = caseCompleteDisadvantage();
     }
 
     else {
         throw new Error('incorrect totalRatio');
     }
 
-
-
-    if(offensivePoints >= 0 && offensivePoints <= 100) {
-        return offensivePoints;
-    } else {
-        throw new Error('incorrect offensivePoints');
-    }
-
+    return offensivePoints;
 }
