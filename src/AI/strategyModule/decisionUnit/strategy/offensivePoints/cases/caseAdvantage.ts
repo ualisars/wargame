@@ -53,7 +53,7 @@ export const caseAdvantage = (): number => {
     else if(
         (computerHasTooManyCavalry || computerHasManyCavalry) &&
         (playerHasTooManySkirmishers || playerHasManySkirmishers) &&
-        (playerHasManySpearmen || playerHasFewSpearmen)
+        (playerHasTooManySpearmen || playerHasManySpearmen || playerHasFewSpearmen)
     ) {
         offensivePoints = getRandomValueInRangeWithProbability(60, 90, {
             interval: [70, 80],
@@ -63,32 +63,11 @@ export const caseAdvantage = (): number => {
 
     else if(
         (computerHasTooManyCavalry || computerHasManyCavalry) &&
-        (playerHasTooManySkirmishers || playerHasManySkirmishers)
-    ) {
-        offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
-            interval: [95, 100],
-            probability: 90
-        });
-    }
-
-    else if(
-        (computerHasTooManyCavalry || computerHasManyCavalry) &&
         (playerHasTooManyCavalry || playerHasManyCavalry) &&
-        computerHasNoSkirmishers
-    ) {
-        offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
-            interval: [95, 100],
-            probability: 90
-        });
-    }
-
-    else if(
-        (computerHasTooManyCavalry || computerHasManyCavalry) &&
-        (playerHasTooManyCavalry || playerHasManyCavalry) &&
-        (   computerHasTooManySpearmen 
+        ((   computerHasTooManySpearmen 
             || computerHasManySpearmen 
             || computerHasFewSpearmen
-        ) 
+        ) || computerHasNoSkirmishers) 
     ) {
         offensivePoints = getRandomValueInRangeWithProbability(70, 100, {
             interval: [90, 100],
@@ -97,6 +76,30 @@ export const caseAdvantage = (): number => {
     }
 
     // computer has many infantry
+
+    else if(
+        (computerHasTooManyInfantry || computerHasManyInfantry) &&
+        (playerHasTooManyInfantry || playerHasManyInfantry) &&
+        (computerHasTooManySkirmishers || computerHasManySkirmishers || computerHasFewSkirmishers) &&
+        (playerHasTooManyCavalry || playerHasManyCavalry || playerHasFewCavalry) 
+    ) {
+        offensivePoints = getRandomValueInRangeWithProbability(60, 90, {
+            interval: [60, 80],
+            probability: 80
+        });
+    }
+
+    else if(
+        (computerHasTooManyInfantry || computerHasManyInfantry) &&
+        (playerHasTooManyInfantry || playerHasManyInfantry) &&
+        (playerHasTooManyCavalry || playerHasManyCavalry || playerHasFewCavalry)
+    ) {
+        offensivePoints = getRandomValueInRangeWithProbability(70, 95, {
+            interval: [80, 90],
+            probability: 70
+        }); 
+    }
+
     else if(
         speedAdvantage &&
         (computerHasTooManyInfantry || computerHasManyInfantry) &&
@@ -118,18 +121,6 @@ export const caseAdvantage = (): number => {
         });
     }
 
-    else if(
-        (computerHasTooManyInfantry || computerHasManyInfantry) &&
-        (playerHasTooManyInfantry || playerHasManyInfantry) &&
-        (computerHasTooManySkirmishers || computerHasManySkirmishers || computerHasFewSkirmishers) &&
-        (playerHasTooManyCavalry || playerHasManyCavalry || playerHasFewCavalry) 
-    ) {
-        offensivePoints = getRandomValueInRangeWithProbability(60, 90, {
-            interval: [60, 80],
-            probability: 80
-        });
-    }
-
     // computer has many skirmishers
     else if(
         (computerHasTooManySkirmishers || computerHasManySkirmishers) &&
@@ -144,8 +135,8 @@ export const caseAdvantage = (): number => {
 
     // computer lots of skirmishers, player lots of cavalry
     else if(
-        (computerHasTooManySkirmishers && computerHasManySkirmishers) &&
-        (playerHasTooManyCavalry && playerHasManyCavalry) 
+        (computerHasTooManySkirmishers || computerHasManySkirmishers) &&
+        (playerHasTooManyCavalry || playerHasManyCavalry) 
     ) {
         offensivePoints = getRandomValueInRangeWithProbability(10, 60, {
             interval: [30, 50],
@@ -154,7 +145,7 @@ export const caseAdvantage = (): number => {
     }
 
     else {
-        offensivePoints = getRandomValueInRange(20, 70);
+        offensivePoints = getRandomValueInRange(40, 80);
     }
 
     // validator

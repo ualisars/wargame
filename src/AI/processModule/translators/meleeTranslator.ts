@@ -26,7 +26,7 @@ export const translateMelee = () => {
         setEqualMelee();
     }
 
-    else if(meleeRatio >= 0.2 && meleeRatio < 0.45) {
+    else if(meleeRatio >= 0.2 && meleeRatio <= 0.45) {
         setMeleeDisadvantage();
     }
 
