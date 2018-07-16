@@ -10,6 +10,10 @@ import {
     setComputerHasMoreCavalry,
     setPlayerHasMoreCavalry,
     setEqualNumberOfCavalry,
+    setComputerHasLotsOfCavalry,
+    setPlayerHasLotsOfCavalry,
+    setComputerHasCavalry,
+    setPlayerHasCavalry,
     setNoCavalry,
     resetCavalryTranslatorStore
 } from './cavalryTranslator';
@@ -26,6 +30,10 @@ export {
     setComputerHasMoreCavalry,
     setPlayerHasMoreCavalry,
     setEqualNumberOfCavalry,
+    setComputerHasLotsOfCavalry,
+    setPlayerHasLotsOfCavalry,
+    setComputerHasCavalry,
+    setPlayerHasCavalry,
     setNoCavalry,
     resetCavalryTranslatorStore 
 }

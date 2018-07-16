@@ -11,6 +11,10 @@ import {
     computerHasMoreCavalry,
     playerHasMoreCavalry,
     equalNumberOfCavalry,
+    computerHasLotsOfCavalry,
+    playerHasLotsOfCavalry,
+    computerHasCavalry,
+    playerHasCavalry,
     noCavalry
 } from '../../../../../src/store/AI/translators/typesTranslators/cavalryTranslatorStore/cavalryTranslator';
 import {
@@ -25,8 +29,12 @@ import {
     setComputerHasMoreCavalry,
     setPlayerHasMoreCavalry,
     setEqualNumberOfCavalry,
+    setComputerHasLotsOfCavalry,
+    setPlayerHasLotsOfCavalry,
+    setComputerHasCavalry,
+    setPlayerHasCavalry,
     setNoCavalry,
-    resetCavalryTranslatorStore 
+    resetCavalryTranslatorStore
 } from '../../../../../src/store/AI/translators/typesTranslators/cavalryTranslatorStore';
 
 describe('translators store test', () => {
@@ -41,6 +49,8 @@ describe('translators store test', () => {
             assert.equal(computerHasManyCavalry, false);
             assert.equal(computerHasFewCavalry, false);
             assert.equal(computerHasNoCavalry, false);
+            assert.equal(computerHasLotsOfCavalry, true);
+            assert.equal(computerHasCavalry, true);
             assert.equal(noCavalry, false);
 
             done();
@@ -55,6 +65,8 @@ describe('translators store test', () => {
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, false);
             assert.equal(playerHasNoCavalry, false);
+            assert.equal(playerHasLotsOfCavalry, true);
+            assert.equal(playerHasCavalry, true);
             assert.equal(noCavalry, false);
 
             done();
@@ -69,6 +81,8 @@ describe('translators store test', () => {
             assert.equal(computerHasManyCavalry, true);
             assert.equal(computerHasFewCavalry, false);
             assert.equal(computerHasNoCavalry, false);
+            assert.equal(computerHasLotsOfCavalry, true);
+            assert.equal(computerHasCavalry, true);
             assert.equal(noCavalry, false);
 
             done();
@@ -83,6 +97,8 @@ describe('translators store test', () => {
             assert.equal(playerHasManyCavalry, true);
             assert.equal(playerHasFewCavalry, false);
             assert.equal(playerHasNoCavalry, false);
+            assert.equal(playerHasLotsOfCavalry, true);
+            assert.equal(playerHasCavalry, true);
             assert.equal(noCavalry, false);
 
             done();
@@ -97,6 +113,8 @@ describe('translators store test', () => {
             assert.equal(computerHasManyCavalry, false);
             assert.equal(computerHasFewCavalry, true);
             assert.equal(computerHasNoCavalry, false);
+            assert.equal(computerHasLotsOfCavalry, false);
+            assert.equal(computerHasCavalry, true);
             assert.equal(noCavalry, false);
 
             done();
@@ -111,6 +129,8 @@ describe('translators store test', () => {
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, true);
             assert.equal(playerHasNoCavalry, false);
+            assert.equal(playerHasLotsOfCavalry, false);
+            assert.equal(playerHasCavalry, true);
             assert.equal(noCavalry, false);
 
             done();
@@ -125,6 +145,8 @@ describe('translators store test', () => {
             assert.equal(computerHasManyCavalry, false);
             assert.equal(computerHasFewCavalry, false);
             assert.equal(computerHasNoCavalry, true);
+            assert.equal(computerHasLotsOfCavalry, false);
+            assert.equal(computerHasCavalry, false);
             assert.equal(noCavalry, false);
 
             done();
@@ -139,6 +161,8 @@ describe('translators store test', () => {
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, false);
             assert.equal(playerHasNoCavalry, true);
+            assert.equal(playerHasLotsOfCavalry, false);
+            assert.equal(playerHasCavalry, false);
             assert.equal(noCavalry, false);
 
             done();
@@ -196,6 +220,11 @@ describe('translators store test', () => {
             assert.equal(playerHasManyCavalry, false);
             assert.equal(playerHasFewCavalry, false);
             assert.equal(playerHasNoCavalry, false);
+
+            assert.equal(computerHasLotsOfCavalry, false);
+            assert.equal(playerHasLotsOfCavalry, false);
+            assert.equal(computerHasCavalry, false);
+            assert.equal(playerHasCavalry, false);
 
             assert.equal(computerHasMoreCavalry, false);
             assert.equal(playerHasMoreCavalry, false);
