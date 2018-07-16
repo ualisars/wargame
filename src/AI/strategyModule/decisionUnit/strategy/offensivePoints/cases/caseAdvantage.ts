@@ -75,6 +75,20 @@ export const caseAdvantage = (): number => {
         });
     }
 
+    else if(
+        (computerHasTooManyCavalry || computerHasManyCavalry) &&
+        (playerHasTooManyCavalry || playerHasManyCavalry) &&
+        (   computerHasTooManySkirmishers 
+            || computerHasManySkirmishers 
+            || computerHasFewSkirmishers
+        ) 
+    ) {
+        offensivePoints = getRandomValueInRangeWithProbability(50, 80, {
+            interval: [60, 70],
+            probability: 70
+        });
+    }
+
     // computer has many infantry
 
     else if(

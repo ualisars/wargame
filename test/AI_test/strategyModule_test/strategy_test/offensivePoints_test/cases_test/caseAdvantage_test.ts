@@ -325,24 +325,107 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 80 to 100', () => {
+        it('offensivePoints should be in range from 70 to 100', () => {
             let offensivePoints1: number = caseAdvantage();
             let offensivePoints2: number = caseAdvantage();
             let offensivePoints3: number = caseAdvantage();
             let offensivePoints4: number = caseAdvantage();
             let offensivePoints5: number = caseAdvantage();
 
-            expect(offensivePoints1).to.be.least(80);
-            expect(offensivePoints2).to.be.least(80);
-            expect(offensivePoints3).to.be.least(80);
-            expect(offensivePoints4).to.be.least(80);
-            expect(offensivePoints5).to.be.least(80);
+            expect(offensivePoints1).to.be.least(70);
+            expect(offensivePoints2).to.be.least(70);
+            expect(offensivePoints3).to.be.least(70);
+            expect(offensivePoints4).to.be.least(70);
+            expect(offensivePoints5).to.be.least(70);
 
             expect(offensivePoints1).to.be.at.most(100);
             expect(offensivePoints2).to.be.at.most(100);
             expect(offensivePoints3).to.be.at.most(100);
             expect(offensivePoints4).to.be.at.most(100);
             expect(offensivePoints5).to.be.at.most(100);
+        });
+    });
+
+    describe('caseAdvantage (computerLotsOfCavalry and hasArchers, playerLotsOfCavalry)', () => {
+
+        let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
+        let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
+        let computerUnit7:Unit, computerUnit8:Unit, computerUnit9:Unit;
+
+        let playerUnit1:Unit, playerUnit2:Unit, playerUnit3:Unit;
+        let playerUnit4:Unit, playerUnit5:Unit, playerUnit6:Unit;
+
+        before(() => {
+
+            removeAllUnits();
+
+            computerUnit1 = createUnit('LightCavalry', 560, 120, 'computer');
+            computerUnit2 = createUnit('LightInfantry', 440, 200, 'computer');
+            computerUnit3 = createUnit('LightCavalry', 280, 200, 'computer');
+            computerUnit4 = createUnit('LightCavalry', 480, 80, 'computer');
+            computerUnit5 = createUnit('LightCavalry', 480, 160, 'computer');
+            computerUnit6 = createUnit('Archers', 0, 320, 'computer');
+            computerUnit7 = createUnit('Archers', 600, 240, 'computer');
+            computerUnit8 = createUnit('Archers', 920, 240, 'computer');
+            computerUnit9 = createUnit('Archers', 920, 160, 'computer');
+
+            playerUnit1 = createUnit('LightCavalry', 840, 480, 'player');
+            playerUnit2 = createUnit('LightCavalry', 280, 440, 'player');
+            playerUnit3 = createUnit('LightCavalry', 160, 320, 'player');
+            playerUnit4 = createUnit('LightCavalry', 840, 80, 'player');
+            playerUnit5 = createUnit('LightCavalry', 0, 360, 'player');
+            playerUnit6 = createUnit('LightCavalry', 160, 480, 'player');
+
+            addToRevealedUnits(playerUnit1);
+            addToRevealedUnits(playerUnit2);
+            addToRevealedUnits(playerUnit3);
+            addToRevealedUnits(playerUnit4);
+            addToRevealedUnits(playerUnit5);
+            addToRevealedUnits(playerUnit6);
+
+            translateAll();
+
+        });
+
+        after(() => {
+
+            removeUnit(computerUnit1);
+            removeUnit(computerUnit2);
+            removeUnit(computerUnit3);
+            removeUnit(computerUnit4);
+            removeUnit(computerUnit5);
+            removeUnit(computerUnit6);
+            removeUnit(computerUnit7);
+            removeUnit(computerUnit8);
+            removeUnit(computerUnit9);
+
+            removeUnit(playerUnit1);
+            removeUnit(playerUnit2);
+            removeUnit(playerUnit3);
+            removeUnit(playerUnit4);
+            removeUnit(playerUnit5);
+            removeUnit(playerUnit6);
+
+        });
+
+        it('offensivePoints should be in range from 50 to 80', () => {
+            let offensivePoints1: number = caseAdvantage();
+            let offensivePoints2: number = caseAdvantage();
+            let offensivePoints3: number = caseAdvantage();
+            let offensivePoints4: number = caseAdvantage();
+            let offensivePoints5: number = caseAdvantage();
+
+            expect(offensivePoints1).to.be.least(50);
+            expect(offensivePoints2).to.be.least(50);
+            expect(offensivePoints3).to.be.least(50);
+            expect(offensivePoints4).to.be.least(50);
+            expect(offensivePoints5).to.be.least(50);
+
+            expect(offensivePoints1).to.be.at.most(80);
+            expect(offensivePoints2).to.be.at.most(80);
+            expect(offensivePoints3).to.be.at.most(80);
+            expect(offensivePoints4).to.be.at.most(80);
+            expect(offensivePoints5).to.be.at.most(80);
         });
     });
 
