@@ -11,6 +11,10 @@ import {
     setPlayerHasMoreHeavyInfantry,
     setEqualNumberOfHeavyInfantry,
     setNoHeavyInfantry,
+    setComputerHasLotsOfHeavyInfantry,
+    setPlayerHasLotsOfHeavyInfantry,
+    setComputerHasHeavyInfantry,
+    setPlayerHasHeavyInfantry,
     resetHeavyInfantryTranslatorStore
 } from './heavyInfantryTranslator';
 
@@ -27,5 +31,9 @@ export {
     setPlayerHasMoreHeavyInfantry,
     setEqualNumberOfHeavyInfantry,
     setNoHeavyInfantry,
+    setComputerHasLotsOfHeavyInfantry,
+    setPlayerHasLotsOfHeavyInfantry,
+    setComputerHasHeavyInfantry,
+    setPlayerHasHeavyInfantry,
     resetHeavyInfantryTranslatorStore
 }

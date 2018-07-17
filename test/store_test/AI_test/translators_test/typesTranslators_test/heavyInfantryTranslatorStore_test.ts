@@ -1,18 +1,22 @@
 import {assert} from 'chai';
 
 import {
-   computerHasTooManyHeavyInfantry,
-   playerHasTooManyHeavyInfantry,
-   computerHasManyHeavyInfantry,
-   playerHasManyHeavyInfantry,
-   computerHasFewHeavyInfantry,
-   playerHasFewHeavyInfantry,
-   computerHasNoHeavyInfantry,
-   playerHasNoHeavyInfantry,
-   computerHasMoreHeavyInfantry,
-   playerHasMoreHeavyInfantry,
-   equalNumberOfHeavyInfantry,
-   noHeavyInfantry
+    computerHasTooManyHeavyInfantry,
+    playerHasTooManyHeavyInfantry,
+    computerHasManyHeavyInfantry,
+    playerHasManyHeavyInfantry,
+    computerHasFewHeavyInfantry,
+    playerHasFewHeavyInfantry,
+    computerHasNoHeavyInfantry,
+    playerHasNoHeavyInfantry,
+    computerHasMoreHeavyInfantry,
+    playerHasMoreHeavyInfantry,
+    equalNumberOfHeavyInfantry,
+    noHeavyInfantry,
+    computerHasLotsOfHeavyInfantry,
+    playerHasLotsOfHeavyInfantry,
+    computerHasHeavyInfantry,
+    playerHasHeavyInfantry
 } from '../../../../../src/store/AI/translators/typesTranslators/heavyInfantryTranslatorStore/heavyInfantryTranslator';
 import {
     setComputerHasTooManyHeavyInfantry,
@@ -27,6 +31,10 @@ import {
     setPlayerHasMoreHeavyInfantry,
     setEqualNumberOfHeavyInfantry,
     setNoHeavyInfantry,
+    setComputerHasLotsOfHeavyInfantry,
+    setPlayerHasLotsOfHeavyInfantry,
+    setComputerHasHeavyInfantry,
+    setPlayerHasHeavyInfantry,
     resetHeavyInfantryTranslatorStore
 } from '../../../../../src/store/AI/translators/typesTranslators/heavyInfantryTranslatorStore';
 
@@ -42,10 +50,11 @@ describe('translators store test', () => {
             assert.equal(computerHasManyHeavyInfantry, false);
             assert.equal(computerHasFewHeavyInfantry, false);
             assert.equal(computerHasNoHeavyInfantry, false);
+            assert.equal(computerHasLotsOfHeavyInfantry, true);
+            assert.equal(computerHasHeavyInfantry, true);
             assert.equal(noHeavyInfantry, false);
 
             done();
-
         });
 
         it('computerHasTooManyHeavyInfantry should be true', (done) => {
@@ -56,10 +65,11 @@ describe('translators store test', () => {
             assert.equal(playerHasManyHeavyInfantry, false);
             assert.equal(playerHasFewHeavyInfantry, false);
             assert.equal(playerHasNoHeavyInfantry, false);
+            assert.equal(playerHasLotsOfHeavyInfantry, true);
+            assert.equal(playerHasHeavyInfantry, true);
             assert.equal(noHeavyInfantry, false);
 
             done();
-
         });
 
         it('computerHasManyHeavyInfantry should be true', (done) => {
@@ -70,10 +80,11 @@ describe('translators store test', () => {
             assert.equal(computerHasManyHeavyInfantry, true);
             assert.equal(computerHasFewHeavyInfantry, false);
             assert.equal(computerHasNoHeavyInfantry, false);
+            assert.equal(computerHasLotsOfHeavyInfantry, true);
+            assert.equal(computerHasHeavyInfantry, true);
             assert.equal(noHeavyInfantry, false);
 
             done();
-
         });
 
         it('playerHasManyHeavyInfantry should be true', (done) => {
@@ -84,10 +95,11 @@ describe('translators store test', () => {
             assert.equal(playerHasManyHeavyInfantry, true);
             assert.equal(playerHasFewHeavyInfantry, false);
             assert.equal(playerHasNoHeavyInfantry, false);
+            assert.equal(playerHasLotsOfHeavyInfantry, true);
+            assert.equal(playerHasHeavyInfantry, true);
             assert.equal(noHeavyInfantry, false);
 
             done();
-
         });
 
         it('computerHasFewHeavyInfantry should be true', (done) => {
@@ -98,10 +110,11 @@ describe('translators store test', () => {
             assert.equal(computerHasManyHeavyInfantry, false);
             assert.equal(computerHasFewHeavyInfantry, true);
             assert.equal(computerHasNoHeavyInfantry, false);
+            assert.equal(computerHasLotsOfHeavyInfantry, false);
+            assert.equal(computerHasHeavyInfantry, true);
             assert.equal(noHeavyInfantry, false);
 
             done();
-
         });
 
         it('playerHasManyHeavyInfantry should be true', (done) => {
@@ -112,10 +125,11 @@ describe('translators store test', () => {
             assert.equal(playerHasManyHeavyInfantry, false);
             assert.equal(playerHasFewHeavyInfantry, true);
             assert.equal(playerHasNoHeavyInfantry, false);
+            assert.equal(playerHasLotsOfHeavyInfantry, false);
+            assert.equal(playerHasHeavyInfantry, true);
             assert.equal(noHeavyInfantry, false);
 
             done();
-
         });
 
         it('computerHasNoHeavyInfantry should be true', (done) => {
@@ -126,9 +140,10 @@ describe('translators store test', () => {
             assert.equal(computerHasManyHeavyInfantry, false);
             assert.equal(computerHasFewHeavyInfantry, false);
             assert.equal(computerHasNoHeavyInfantry, true);
+            assert.equal(computerHasLotsOfHeavyInfantry, false);
+            assert.equal(computerHasHeavyInfantry, false);
 
             done();
-
         });
 
         it('playerHasNoHeavyInfantry should be true', (done) => {
@@ -139,10 +154,60 @@ describe('translators store test', () => {
             assert.equal(playerHasManyHeavyInfantry, false);
             assert.equal(playerHasFewHeavyInfantry, false);
             assert.equal(playerHasNoHeavyInfantry, true);
+            assert.equal(playerHasLotsOfHeavyInfantry, false);
+            assert.equal(playerHasHeavyInfantry, false);
 
             done();
-
         });
+
+        it("computerHasLotsOfHeavyInfantry should be true", (done) => {
+
+            setComputerHasLotsOfHeavyInfantry();
+
+            assert.equal(computerHasLotsOfHeavyInfantry, true);
+            assert.equal(computerHasHeavyInfantry, true);
+            assert.equal(computerHasNoHeavyInfantry, false);
+            assert.equal(noHeavyInfantry, false);
+
+            done();
+        });
+
+        it("playerHasLotsOfHeavyInfantry should be true", (done) => {
+
+            setPlayerHasLotsOfHeavyInfantry();
+
+            assert.equal(playerHasLotsOfHeavyInfantry, true);
+            assert.equal(playerHasHeavyInfantry, true);
+            assert.equal(playerHasNoHeavyInfantry, false);
+            assert.equal(noHeavyInfantry, false);
+
+            done();
+        });
+
+        it("computerHasHeavyInfantry should be true", (done) => {
+
+            setComputerHasHeavyInfantry();
+
+            assert.equal(computerHasLotsOfHeavyInfantry, false);
+            assert.equal(computerHasHeavyInfantry, true);
+            assert.equal(computerHasNoHeavyInfantry, false);
+            assert.equal(noHeavyInfantry, false);
+
+            done();
+        });
+
+        it("playerHasLotsOfHeavyInfantry should be true", (done) => {
+
+            setPlayerHasHeavyInfantry();
+
+            assert.equal(playerHasLotsOfHeavyInfantry, false);
+            assert.equal(playerHasHeavyInfantry, true);
+            assert.equal(playerHasNoHeavyInfantry, false);
+            assert.equal(noHeavyInfantry, false);
+
+            done();
+        });
+
 
         it('computerHasMoreHeavyInfantry should be true', (done) => {
 
@@ -154,7 +219,6 @@ describe('translators store test', () => {
             assert.equal(noHeavyInfantry, false);
 
             done();
-
         });
 
         it('playerHasMoreHeavyInfantry should be true', (done) => {
@@ -167,7 +231,6 @@ describe('translators store test', () => {
             assert.equal(noHeavyInfantry, false);
 
             done();
-            
         });
 
         it('equalNumberOfHeavyInfantry should be true', (done) => {
@@ -180,7 +243,6 @@ describe('translators store test', () => {
             assert.equal(noHeavyInfantry, false);
 
             done();
-            
         });
 
         it('noInfantry should be true', (done) => {
@@ -202,8 +264,12 @@ describe('translators store test', () => {
             assert.equal(equalNumberOfHeavyInfantry, true);
             assert.equal(noHeavyInfantry, true);
 
+            assert.equal(computerHasLotsOfHeavyInfantry, false);
+            assert.equal(computerHasHeavyInfantry, false);
+            assert.equal(playerHasLotsOfHeavyInfantry, false);
+            assert.equal(playerHasHeavyInfantry, false);
+
             done();
-            
         });
 
         it('all properties should be false', (done) => {
@@ -225,9 +291,12 @@ describe('translators store test', () => {
             assert.equal(equalNumberOfHeavyInfantry, false);
             assert.equal(noHeavyInfantry, false);
 
+            assert.equal(computerHasLotsOfHeavyInfantry, false);
+            assert.equal(computerHasHeavyInfantry, false);
+            assert.equal(playerHasLotsOfHeavyInfantry, false);
+            assert.equal(playerHasHeavyInfantry, false);
+
             done();
-
         });
-
     });
 });

@@ -10,6 +10,12 @@ let playerHasFewHeavyInfantry: boolean = false;
 let computerHasNoHeavyInfantry: boolean = false;
 let playerHasNoHeavyInfantry: boolean = false;
 
+let computerHasLotsOfHeavyInfantry: boolean = false;
+let playerHasLotsOfHeavyInfantry: boolean = false;
+
+let computerHasHeavyInfantry: boolean = false;
+let playerHasHeavyInfantry: boolean = false;
+
 let computerHasMoreHeavyInfantry: boolean = false;
 let playerHasMoreHeavyInfantry: boolean = false;
 let equalNumberOfHeavyInfantry: boolean = false;
@@ -22,6 +28,8 @@ const setComputerHasTooManyHeavyInfantry = () => {
     computerHasFewHeavyInfantry = false;
     computerHasNoHeavyInfantry = false;
     noHeavyInfantry = false;
+    computerHasLotsOfHeavyInfantry = true;
+    computerHasHeavyInfantry = true;
 }
 
 const setPlayerHasTooManyHeavyInfantry = () => {
@@ -30,6 +38,8 @@ const setPlayerHasTooManyHeavyInfantry = () => {
     playerHasFewHeavyInfantry = false;
     playerHasNoHeavyInfantry = false;
     noHeavyInfantry = false;
+    playerHasLotsOfHeavyInfantry = true;
+    playerHasHeavyInfantry = true;
 }
 
 const setComputerHasManyHeavyInfantry = () => {
@@ -38,6 +48,8 @@ const setComputerHasManyHeavyInfantry = () => {
     computerHasFewHeavyInfantry = false;
     computerHasNoHeavyInfantry = false;
     noHeavyInfantry = false;
+    computerHasLotsOfHeavyInfantry = true;
+    computerHasHeavyInfantry = true;
 }
 
 const setPlayerHasManyHeavyInfantry = () => {
@@ -46,6 +58,8 @@ const setPlayerHasManyHeavyInfantry = () => {
     playerHasFewHeavyInfantry = false;
     playerHasNoHeavyInfantry = false;
     noHeavyInfantry = false;
+    playerHasLotsOfHeavyInfantry = true;
+    playerHasHeavyInfantry = true;
 }
 
 const setComputerHasFewHeavyInfantry = () => {
@@ -54,6 +68,8 @@ const setComputerHasFewHeavyInfantry = () => {
     computerHasFewHeavyInfantry = true;
     computerHasNoHeavyInfantry = false;
     noHeavyInfantry = false;
+    computerHasLotsOfHeavyInfantry = false;
+    computerHasHeavyInfantry = true;
 }
 
 const setPlayerHasFewHeavyInfantry = () => {
@@ -62,6 +78,8 @@ const setPlayerHasFewHeavyInfantry = () => {
     playerHasFewHeavyInfantry = true;
     playerHasNoHeavyInfantry = false;
     noHeavyInfantry = false;
+    playerHasLotsOfHeavyInfantry = false;
+    playerHasHeavyInfantry = true;
 }
 
 const setComputerHasNoHeavyInfantry = () => {
@@ -69,6 +87,8 @@ const setComputerHasNoHeavyInfantry = () => {
     computerHasManyHeavyInfantry = false;
     computerHasFewHeavyInfantry = false;
     computerHasNoHeavyInfantry = true;
+    computerHasLotsOfHeavyInfantry = false;
+    computerHasHeavyInfantry = false;
 }
 
 const setPlayerHasNoHeavyInfantry = () => {
@@ -76,6 +96,36 @@ const setPlayerHasNoHeavyInfantry = () => {
     playerHasManyHeavyInfantry = false;
     playerHasFewHeavyInfantry = false;
     playerHasNoHeavyInfantry = true;
+    playerHasLotsOfHeavyInfantry = false;
+    playerHasHeavyInfantry = false;
+}
+
+const setComputerHasLotsOfHeavyInfantry = () => {
+    computerHasLotsOfHeavyInfantry = true;
+    computerHasHeavyInfantry = true;
+    computerHasNoHeavyInfantry = false;
+    noHeavyInfantry = false;
+}
+
+const setPlayerHasLotsOfHeavyInfantry = () => {
+    playerHasLotsOfHeavyInfantry = true;
+    playerHasHeavyInfantry = true;
+    playerHasNoHeavyInfantry = false;
+    noHeavyInfantry = false;
+}
+
+const setComputerHasHeavyInfantry = () => {
+    computerHasLotsOfHeavyInfantry = false;
+    computerHasHeavyInfantry = true;
+    computerHasNoHeavyInfantry = false;
+    noHeavyInfantry = false;
+}
+
+const setPlayerHasHeavyInfantry = () => {
+    playerHasLotsOfHeavyInfantry = false;
+    playerHasHeavyInfantry = true;
+    playerHasNoHeavyInfantry = false;
+    noHeavyInfantry = false;
 }
 
 const setComputerHasMoreHeavyInfantry = () => {
@@ -121,6 +171,11 @@ const resetHeavyInfantryTranslatorStore = () => {
     playerHasMoreHeavyInfantry = false;
     equalNumberOfHeavyInfantry = false;
     noHeavyInfantry = false;
+
+    computerHasLotsOfHeavyInfantry = false;
+    computerHasHeavyInfantry = false;
+    playerHasLotsOfHeavyInfantry = false;
+    playerHasHeavyInfantry = false;
 }
 
 export {
@@ -136,6 +191,10 @@ export {
     playerHasMoreHeavyInfantry,
     equalNumberOfHeavyInfantry,
     noHeavyInfantry,
+    computerHasLotsOfHeavyInfantry,
+    playerHasLotsOfHeavyInfantry,
+    computerHasHeavyInfantry,
+    playerHasHeavyInfantry,
 
     setComputerHasTooManyHeavyInfantry,
     setPlayerHasTooManyHeavyInfantry,
@@ -149,5 +208,9 @@ export {
     setPlayerHasMoreHeavyInfantry,
     setEqualNumberOfHeavyInfantry,
     setNoHeavyInfantry,
+    setComputerHasLotsOfHeavyInfantry,
+    setPlayerHasLotsOfHeavyInfantry,
+    setComputerHasHeavyInfantry,
+    setPlayerHasHeavyInfantry,
     resetHeavyInfantryTranslatorStore
 }
