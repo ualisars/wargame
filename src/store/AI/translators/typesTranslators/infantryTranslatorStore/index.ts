@@ -10,6 +10,10 @@ import {
     setComputerHasMoreInfantry,
     setPlayerHasMoreInfantry,
     setEqualNumberOfInfantry,
+    setComputerHasLotsOfInfantry,
+    setPlayerHasLotsOfInfantry,
+    setComputerHasInfantry,
+    setPlayerHasInfantry,
     setNoInfantry,
     resetInfantryTranslatorStore
 } from './infantryTranslator';
@@ -26,6 +30,10 @@ export {
     setComputerHasMoreInfantry,
     setPlayerHasMoreInfantry,
     setEqualNumberOfInfantry,
+    setComputerHasLotsOfInfantry,
+    setPlayerHasLotsOfInfantry,
+    setComputerHasInfantry,
+    setPlayerHasInfantry,
     setNoInfantry,
     resetInfantryTranslatorStore  
 }
