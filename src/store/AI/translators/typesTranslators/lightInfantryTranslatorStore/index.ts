@@ -10,6 +10,10 @@ import {
     setComputerHasMoreLightInfantry,
     setPlayerHasMoreLightInfantry,
     setEqualNumberOfLightInfantry,
+    setComputerHasLotsOfLightInfantry,
+    setPlayerHasLotsOfLightInfantry,
+    setComputerHasLightInfantry,
+    setPlayerHasLightInfantry,
     setNoLightInfantry,
     resetLightInfantryTranslatorStore
 } from './lightInfantryTranslator';
@@ -26,6 +30,10 @@ export {
     setComputerHasMoreLightInfantry,
     setPlayerHasMoreLightInfantry,
     setEqualNumberOfLightInfantry,
+    setComputerHasLotsOfLightInfantry,
+    setPlayerHasLotsOfLightInfantry,
+    setComputerHasLightInfantry,
+    setPlayerHasLightInfantry,
     setNoLightInfantry,
     resetLightInfantryTranslatorStore
 }

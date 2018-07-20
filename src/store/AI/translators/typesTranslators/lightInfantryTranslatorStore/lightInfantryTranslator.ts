@@ -12,15 +12,24 @@ let playerHasNoLightInfantry: boolean = false;
 
 let computerHasMoreLightInfantry: boolean = false;
 let playerHasMoreLightInfantry: boolean = false;
+
 let equalNumberOfLightInfantry: boolean = false;
 
-let noLightInfantry: boolean = false;
+let computerHasLotsOfLightInfantry: boolean = false;
+let playerHasLotsOfLightInfantry: boolean = false;
+
+let computerHasLightInfantry: boolean = false;
+let playerHasLightInfantry: boolean = false;
+
+let noLightInfantry: boolean;
 
 
 const setComputerHasTooManyLightInfantry = () => {
     computerHasTooManyLightInfantry = true;
     computerHasManyLightInfantry = false;
     computerHasFewLightInfantry = false;
+    computerHasLotsOfLightInfantry = true;
+    computerHasLightInfantry = true;
     computerHasNoLightInfantry = false;
     noLightInfantry = false;
 }
@@ -29,6 +38,8 @@ const setPlayerHasTooManyLightInfantry = () => {
     playerHasTooManyLightInfantry = true;
     playerHasManyLightInfantry = false;
     playerHasFewLightInfantry = false;
+    playerHasLotsOfLightInfantry = true;
+    playerHasLightInfantry = true;
     playerHasNoLightInfantry = false;
     noLightInfantry = false;
 }
@@ -37,6 +48,8 @@ const setComputerHasManyLightInfantry = () => {
     computerHasTooManyLightInfantry = false;
     computerHasManyLightInfantry = true;
     computerHasFewLightInfantry = false;
+    computerHasLotsOfLightInfantry = true;
+    computerHasLightInfantry = true;
     computerHasNoLightInfantry = false;
     noLightInfantry = false;
 }
@@ -46,6 +59,8 @@ const setPlayerHasManyLightInfantry = () => {
     playerHasManyLightInfantry = true;
     playerHasFewLightInfantry = false;
     playerHasNoLightInfantry = false;
+    playerHasLotsOfLightInfantry = true;
+    playerHasLightInfantry = true;
     noLightInfantry = false;
 }
 
@@ -53,6 +68,8 @@ const setComputerHasFewLightInfantry = () => {
     computerHasTooManyLightInfantry = false;
     computerHasManyLightInfantry = false;
     computerHasFewLightInfantry = true;
+    computerHasLotsOfLightInfantry = false;
+    computerHasLightInfantry = true;
     computerHasNoLightInfantry = false;
     noLightInfantry = false;
 }
@@ -61,6 +78,8 @@ const setPlayerHasFewLightInfantry = () => {
     playerHasTooManyLightInfantry = false;
     playerHasManyLightInfantry = false;
     playerHasFewLightInfantry = true;
+    playerHasLotsOfLightInfantry = false;
+    playerHasLightInfantry = true;
     playerHasNoLightInfantry = false;
     noLightInfantry = false;
 }
@@ -70,6 +89,8 @@ const setComputerHasNoLightInfantry = () => {
     computerHasManyLightInfantry = false;
     computerHasFewLightInfantry = false;
     computerHasNoLightInfantry = true;
+    computerHasLotsOfLightInfantry = false;
+    computerHasLightInfantry = false;
 }
 
 const setPlayerHasNoLightInfantry = () => {
@@ -77,6 +98,8 @@ const setPlayerHasNoLightInfantry = () => {
     playerHasManyLightInfantry = false;
     playerHasFewLightInfantry = false;
     playerHasNoLightInfantry = true;
+    playerHasLotsOfLightInfantry = false;
+    playerHasLightInfantry = false;
 }
 
 const setComputerHasMoreLightInfantry = () => {
@@ -99,6 +122,34 @@ const setEqualNumberOfLightInfantry = () => {
     equalNumberOfLightInfantry = true;
 }
 
+const setComputerHasLotsOfLightInfantry = () => {
+    computerHasLotsOfLightInfantry = true;
+    computerHasLightInfantry = true;
+    computerHasNoLightInfantry = false;
+    noLightInfantry = false;
+}
+
+const setPlayerHasLotsOfLightInfantry = () => {
+    playerHasLotsOfLightInfantry = true;
+    playerHasLightInfantry = true;
+    playerHasNoLightInfantry = false;
+    noLightInfantry = false;
+}
+
+const setComputerHasLightInfantry = () => {
+    computerHasLotsOfLightInfantry = false;
+    computerHasLightInfantry = true;
+    computerHasNoLightInfantry = false;
+    noLightInfantry = false;
+}
+
+const setPlayerHasLightInfantry = () => {
+    playerHasLotsOfLightInfantry = false;
+    playerHasLightInfantry = true;
+    playerHasNoLightInfantry = false;
+    noLightInfantry = false;
+}
+
 const setNoLightInfantry = () => {
     resetLightInfantryTranslatorStore();
     computerHasNoLightInfantry = true;
@@ -109,18 +160,20 @@ const setNoLightInfantry = () => {
 
 const resetLightInfantryTranslatorStore = () => {
     computerHasTooManyLightInfantry = false;
-    computerHasManyLightInfantry = false;
-    computerHasFewLightInfantry = false;
-    computerHasNoLightInfantry = false;
-
     playerHasTooManyLightInfantry = false;
+    computerHasManyLightInfantry = false;
     playerHasManyLightInfantry = false;
+    computerHasFewLightInfantry = false;
     playerHasFewLightInfantry = false;
+    computerHasNoLightInfantry = false;
     playerHasNoLightInfantry = false;
-
     computerHasMoreLightInfantry = false;
     playerHasMoreLightInfantry = false;
     equalNumberOfLightInfantry = false;
+    computerHasLotsOfLightInfantry = false;
+    playerHasLotsOfLightInfantry = false;
+    computerHasLightInfantry = false;
+    playerHasLightInfantry = false;
     noLightInfantry = false;
 }
 
@@ -136,6 +189,10 @@ export {
     computerHasMoreLightInfantry,
     playerHasMoreLightInfantry,
     equalNumberOfLightInfantry,
+    computerHasLotsOfLightInfantry,
+    playerHasLotsOfLightInfantry,
+    computerHasLightInfantry,
+    playerHasLightInfantry,
     noLightInfantry,
 
     setComputerHasTooManyLightInfantry,
@@ -149,6 +206,10 @@ export {
     setComputerHasMoreLightInfantry,
     setPlayerHasMoreLightInfantry,
     setEqualNumberOfLightInfantry,
+    setComputerHasLotsOfLightInfantry,
+    setPlayerHasLotsOfLightInfantry,
+    setComputerHasLightInfantry,
+    setPlayerHasLightInfantry,
     setNoLightInfantry,
     resetLightInfantryTranslatorStore
 }
