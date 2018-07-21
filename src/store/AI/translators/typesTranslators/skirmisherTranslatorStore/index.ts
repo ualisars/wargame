@@ -9,8 +9,12 @@ import {
     setPlayerHasNoSkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
-    setNoSkirmishers,
     setEqualNumberOfSkirmishers,
+    setComputerHasLotsOfSkirmishers,
+    setPlayerHasLotsOfSkirmishers,
+    setComputerHasSkirmishers,
+    setPlayerHasSkirmishers,
+    setNoSkirmishers,
     resetSkirmisherTranslatorStore
 } from './skirmisherTranslatorStore';
 
@@ -25,7 +29,11 @@ export {
     setPlayerHasNoSkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
-    setNoSkirmishers,
     setEqualNumberOfSkirmishers,
+    setComputerHasLotsOfSkirmishers,
+    setPlayerHasLotsOfSkirmishers,
+    setComputerHasSkirmishers,
+    setPlayerHasSkirmishers,
+    setNoSkirmishers,
     resetSkirmisherTranslatorStore
 }

@@ -1,8 +1,8 @@
 let computerHasTooManySkirmishers: boolean = false;
 let playerHasTooManySkirmishers: boolean = false;
 
-let computerHasManySkirmishers: boolean = false; // in comparison with all computer units
-let playerHasManySkirmishers: boolean = false; // in comparison with all player units
+let computerHasManySkirmishers: boolean = false;
+let playerHasManySkirmishers: boolean = false;
 
 let computerHasFewSkirmishers: boolean = false;
 let playerHasFewSkirmishers: boolean = false;
@@ -10,25 +10,36 @@ let playerHasFewSkirmishers: boolean = false;
 let computerHasNoSkirmishers: boolean = false;
 let playerHasNoSkirmishers: boolean = false;
 
-let computerHasMoreSkirmishers: boolean = false; // in comparison with player 
-let playerHasMoreSkirmishers: boolean = false; // in comparison with compuer
+let computerHasMoreSkirmishers: boolean = false;
+let playerHasMoreSkirmishers: boolean = false;
 
 let equalNumberOfSkirmishers: boolean = false;
 
-let noSkirmishers: boolean = false;
+let computerHasLotsOfSkirmishers: boolean = false;
+let playerHasLotsOfSkirmishers: boolean = false;
+
+let computerHasSkirmishers: boolean = false;
+let playerHasSkirmishers: boolean = false;
+
+let noSkirmishers: boolean;
+
 
 const setComputerHasTooManySkirmishers = () => {
     computerHasTooManySkirmishers = true;
     computerHasManySkirmishers = false;
     computerHasFewSkirmishers = false;
+    computerHasLotsOfSkirmishers = true;
+    computerHasSkirmishers = true;
     computerHasNoSkirmishers = false;
     noSkirmishers = false;
-} 
+}
 
 const setPlayerHasTooManySkirmishers = () => {
     playerHasTooManySkirmishers = true;
     playerHasManySkirmishers = false;
     playerHasFewSkirmishers = false;
+    playerHasLotsOfSkirmishers = true;
+    playerHasSkirmishers = true;
     playerHasNoSkirmishers = false;
     noSkirmishers = false;
 }
@@ -37,6 +48,8 @@ const setComputerHasManySkirmishers = () => {
     computerHasTooManySkirmishers = false;
     computerHasManySkirmishers = true;
     computerHasFewSkirmishers = false;
+    computerHasLotsOfSkirmishers = true;
+    computerHasSkirmishers = true;
     computerHasNoSkirmishers = false;
     noSkirmishers = false;
 }
@@ -46,6 +59,8 @@ const setPlayerHasManySkirmishers = () => {
     playerHasManySkirmishers = true;
     playerHasFewSkirmishers = false;
     playerHasNoSkirmishers = false;
+    playerHasLotsOfSkirmishers = true;
+    playerHasSkirmishers = true;
     noSkirmishers = false;
 }
 
@@ -53,6 +68,8 @@ const setComputerHasFewSkirmishers = () => {
     computerHasTooManySkirmishers = false;
     computerHasManySkirmishers = false;
     computerHasFewSkirmishers = true;
+    computerHasLotsOfSkirmishers = false;
+    computerHasSkirmishers = true;
     computerHasNoSkirmishers = false;
     noSkirmishers = false;
 }
@@ -61,6 +78,8 @@ const setPlayerHasFewSkirmishers = () => {
     playerHasTooManySkirmishers = false;
     playerHasManySkirmishers = false;
     playerHasFewSkirmishers = true;
+    playerHasLotsOfSkirmishers = false;
+    playerHasSkirmishers = true;
     playerHasNoSkirmishers = false;
     noSkirmishers = false;
 }
@@ -70,6 +89,8 @@ const setComputerHasNoSkirmishers = () => {
     computerHasManySkirmishers = false;
     computerHasFewSkirmishers = false;
     computerHasNoSkirmishers = true;
+    computerHasLotsOfSkirmishers = false;
+    computerHasSkirmishers = false;
 }
 
 const setPlayerHasNoSkirmishers = () => {
@@ -77,6 +98,8 @@ const setPlayerHasNoSkirmishers = () => {
     playerHasManySkirmishers = false;
     playerHasFewSkirmishers = false;
     playerHasNoSkirmishers = true;
+    playerHasLotsOfSkirmishers = false;
+    playerHasSkirmishers = false;
 }
 
 const setComputerHasMoreSkirmishers = () => {
@@ -101,6 +124,36 @@ const setEqualNumberOfSkirmishers = () => {
     equalNumberOfSkirmishers = true;
 }
 
+const setComputerHasLotsOfSkirmishers = () => {
+    computerHasFewSkirmishers = false;
+    computerHasLotsOfSkirmishers = true;
+    computerHasSkirmishers = true;
+    computerHasNoSkirmishers = false;
+    noSkirmishers = false;
+}
+
+const setPlayerHasLotsOfSkirmishers = () => {
+    playerHasFewSkirmishers = false;
+    playerHasLotsOfSkirmishers = true;
+    playerHasSkirmishers = true;
+    playerHasNoSkirmishers = false;
+    noSkirmishers = false;
+}
+
+const setComputerHasSkirmishers = () => {
+    computerHasLotsOfSkirmishers = false;
+    computerHasSkirmishers = true;
+    computerHasNoSkirmishers = false;
+    noSkirmishers = false;
+}
+
+const setPlayerHasSkirmishers = () => {
+    playerHasLotsOfSkirmishers = false;
+    playerHasSkirmishers = true;
+    playerHasNoSkirmishers = false;
+    noSkirmishers = false;
+}
+
 const setNoSkirmishers = () => {
     resetSkirmisherTranslatorStore();
     computerHasNoSkirmishers = true;
@@ -121,8 +174,13 @@ const resetSkirmisherTranslatorStore = () => {
     computerHasMoreSkirmishers = false;
     playerHasMoreSkirmishers = false;
     equalNumberOfSkirmishers = false;
+    computerHasLotsOfSkirmishers = false;
+    playerHasLotsOfSkirmishers = false;
+    computerHasSkirmishers = false;
+    playerHasSkirmishers = false;
     noSkirmishers = false;
 }
+
 export {
     computerHasTooManySkirmishers,
     playerHasTooManySkirmishers,
@@ -135,6 +193,10 @@ export {
     computerHasMoreSkirmishers,
     playerHasMoreSkirmishers,
     equalNumberOfSkirmishers,
+    computerHasLotsOfSkirmishers,
+    playerHasLotsOfSkirmishers,
+    computerHasSkirmishers,
+    playerHasSkirmishers,
     noSkirmishers,
 
     setComputerHasTooManySkirmishers,
@@ -147,7 +209,11 @@ export {
     setPlayerHasNoSkirmishers,
     setComputerHasMoreSkirmishers,
     setPlayerHasMoreSkirmishers,
-    setNoSkirmishers,
     setEqualNumberOfSkirmishers,
+    setComputerHasLotsOfSkirmishers,
+    setPlayerHasLotsOfSkirmishers,
+    setComputerHasSkirmishers,
+    setPlayerHasSkirmishers,
+    setNoSkirmishers,
     resetSkirmisherTranslatorStore
 }
