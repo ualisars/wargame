@@ -10,6 +10,10 @@ import {
     setComputerHasMoreScouts,
     setPlayerHasMoreScouts,
     setEqualNumberOfScouts,
+    setComputerHasLotsOfScouts,
+    setPlayerHasLotsOfScouts,
+    setComputerHasScouts,
+    setPlayerHasScouts,
     setNoScouts,
     resetScoutsTranslatorStore
 } from './scoutTranslator';
@@ -26,6 +30,10 @@ export {
     setComputerHasMoreScouts,
     setPlayerHasMoreScouts,
     setEqualNumberOfScouts,
+    setComputerHasLotsOfScouts,
+    setPlayerHasLotsOfScouts,
+    setComputerHasScouts,
+    setPlayerHasScouts,
     setNoScouts,
-    resetScoutsTranslatorStore  
+    resetScoutsTranslatorStore
 }

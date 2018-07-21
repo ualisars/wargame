@@ -1,18 +1,22 @@
 import {assert} from 'chai';
 
 import {
-   computerHasTooManyScouts,
-   playerHasTooManyScouts,
-   computerHasManyScouts,
-   playerHasManyScouts,
-   computerHasFewScouts,
-   playerHasFewScouts,
-   computerHasNoScouts,
-   playerHasNoScouts,
-   computerHasMoreScouts,
-   playerHasMoreScouts,
-   equalNumberOfScouts,
-   noScouts
+    computerHasTooManyScouts,
+    playerHasTooManyScouts,
+    computerHasManyScouts,
+    playerHasManyScouts,
+    computerHasFewScouts,
+    playerHasFewScouts,
+    computerHasNoScouts,
+    playerHasNoScouts,
+    computerHasMoreScouts,
+    playerHasMoreScouts,
+    equalNumberOfScouts,
+    computerHasLotsOfScouts,
+    playerHasLotsOfScouts,
+    computerHasScouts,
+    playerHasScouts,
+    noScouts
 } from '../../../../../src/store/AI/translators/typesTranslators/scoutTranslatorStore/scoutTranslator';
 import {
     setComputerHasTooManyScouts,
@@ -26,125 +30,164 @@ import {
     setComputerHasMoreScouts,
     setPlayerHasMoreScouts,
     setEqualNumberOfScouts,
+    setComputerHasLotsOfScouts,
+    setPlayerHasLotsOfScouts,
+    setComputerHasScouts,
+    setPlayerHasScouts,
     setNoScouts,
     resetScoutsTranslatorStore
 } from '../../../../../src/store/AI/translators/typesTranslators/scoutTranslatorStore';
+import { assessOffensivePoints } from '../../../../../src/AI/strategyModule/decisionUnit/strategy/offensivePoints/assessOffensivePoints';
 
 describe('translators store test', () => {
 
     describe('scout types translator test', () => {
 
-        it('computerHasTooManyScouts should be true', (done) => {
+        it('computerHasTooManyScouts should be true', () => {
             
             setComputerHasTooManyScouts();
 
             assert.equal(computerHasTooManyScouts, true);
             assert.equal(computerHasManyScouts, false);
             assert.equal(computerHasFewScouts, false);
+            assert.equal(computerHasLotsOfScouts, true);
+            assert.equal(computerHasScouts, true);
             assert.equal(computerHasNoScouts, false);
             assert.equal(noScouts, false);
-
-            done();
-
         });
 
-        it('computerHasTooManyScouts should be true', (done) => {
+        it('playerHasTooManyScouts should be true', () => {
             
             setPlayerHasTooManyScouts();
 
             assert.equal(playerHasTooManyScouts, true);
             assert.equal(playerHasManyScouts, false);
             assert.equal(playerHasFewScouts, false);
+            assert.equal(playerHasLotsOfScouts, true);
+            assert.equal(playerHasScouts, true);
             assert.equal(playerHasNoScouts, false);
             assert.equal(noScouts, false);
-
-            done();
-
         });
 
-        it('computerHasManyScouts should be true', (done) => {
+        it('computerHasManyScouts should be true', () => {
             
             setComputerHasManyScouts();
 
             assert.equal(computerHasTooManyScouts, false);
             assert.equal(computerHasManyScouts, true);
             assert.equal(computerHasFewScouts, false);
+            assert.equal(computerHasLotsOfScouts, true);
+            assert.equal(computerHasScouts, true);
             assert.equal(computerHasNoScouts, false);
             assert.equal(noScouts, false);
-
-            done();
-
         });
 
-        it('playerHasManyScouts should be true', (done) => {
+        it('playerHasManyScouts should be true', () => {
             
             setPlayerHasManyScouts();
 
             assert.equal(playerHasTooManyScouts, false);
             assert.equal(playerHasManyScouts, true);
             assert.equal(playerHasFewScouts, false);
+            assert.equal(playerHasLotsOfScouts, true);
+            assert.equal(playerHasScouts, true);
             assert.equal(playerHasNoScouts, false);
             assert.equal(noScouts, false);
-
-            done();
-
         });
 
-        it('computerHasFewScouts should be true', (done) => {
+        it('computerHasFewScouts should be true', () => {
             
             setComputerHasFewScouts();
 
             assert.equal(computerHasTooManyScouts, false);
             assert.equal(computerHasManyScouts, false);
             assert.equal(computerHasFewScouts, true);
+            assert.equal(computerHasLotsOfScouts, false);
+            assert.equal(computerHasScouts, true);
             assert.equal(computerHasNoScouts, false);
             assert.equal(noScouts, false);
-
-            done();
-
         });
 
-        it('playerHasManyScouts should be true', (done) => {
+        it('playerHasManyScouts should be true', () => {
             
             setPlayerHasFewScouts();
 
             assert.equal(playerHasTooManyScouts, false);
             assert.equal(playerHasManyScouts, false);
             assert.equal(playerHasFewScouts, true);
+            assert.equal(playerHasLotsOfScouts, false);
+            assert.equal(playerHasScouts, true);
             assert.equal(playerHasNoScouts, false);
             assert.equal(noScouts, false);
-
-            done();
-
         });
 
-        it('computerHasNoScouts should be true', (done) => {
+        it('computerHasNoScouts should be true', () => {
             
             setComputerHasNoScouts();
 
             assert.equal(computerHasTooManyScouts, false);
             assert.equal(computerHasManyScouts, false);
             assert.equal(computerHasFewScouts, false);
+            assert.equal(computerHasLotsOfScouts, false);
+            assert.equal(computerHasScouts, false);
             assert.equal(computerHasNoScouts, true);
-
-            done();
-
         });
 
-        it('playerHasNoScouts should be true', (done) => {
+        it('playerHasNoScouts should be true', () => {
             
             setPlayerHasNoScouts();
 
             assert.equal(playerHasTooManyScouts, false);
             assert.equal(playerHasManyScouts, false);
             assert.equal(playerHasFewScouts, false);
+            assert.equal(playerHasLotsOfScouts, false);
+            assert.equal(playerHasScouts, false);
             assert.equal(playerHasNoScouts, true);
-
-            done();
-
         });
 
-        it('computerHasMoreScouts should be true', (done) => {
+        it('computerHasLotsOfScouts should be true', () => {
+
+            setComputerHasLotsOfScouts();
+
+            assert.equal(computerHasFewScouts, false);
+            assert.equal(computerHasLotsOfScouts, true);
+            assert.equal(computerHasScouts, true);
+            assert.equal(computerHasNoScouts, false);  
+            assert.equal(noScouts, false);                
+        });
+
+        it('playerHasLotsOfScouts should be true', () => {
+
+            setPlayerHasLotsOfScouts();
+
+            assert.equal(playerHasFewScouts, false);
+            assert.equal(playerHasLotsOfScouts, true);
+            assert.equal(playerHasScouts, true);
+            assert.equal(playerHasNoScouts, false);
+            assert.equal(noScouts, false);      
+        });
+
+        it('computerHasScouts should be true', () => {
+
+            setComputerHasScouts();
+
+            assert.equal(computerHasLotsOfScouts, false);
+            assert.equal(computerHasScouts, true);
+            assert.equal(computerHasNoScouts, false);
+            assert.equal(noScouts, false);            
+        });
+
+        it('playerHasScouts should be true', () => {
+
+            setPlayerHasScouts();
+
+            assert.equal(playerHasLotsOfScouts, false);
+            assert.equal(playerHasScouts, true);
+            assert.equal(playerHasNoScouts, false);
+            assert.equal(noScouts, false);      
+        });
+
+        it('computerHasMoreScouts should be true', () => {
 
             setComputerHasMoreScouts();
 
@@ -152,38 +195,29 @@ describe('translators store test', () => {
             assert.equal(playerHasMoreScouts, false);
             assert.equal(equalNumberOfScouts, false);
             assert.equal(noScouts, false);
-
-            done();
-
         });
 
-        it('playerHasMoreScouts should be true', (done) => {
+        it('playerHasMoreScouts should be true', () => {
 
             setPlayerHasMoreScouts();
 
             assert.equal(computerHasMoreScouts, false);
             assert.equal(playerHasMoreScouts, true);
             assert.equal(equalNumberOfScouts, false);
-            assert.equal(noScouts, false);
-
-            done();
-            
+            assert.equal(noScouts, false); 
         });
 
-        it('equalNumberOfScouts should be true', (done) => {
+        it('equalNumberOfScouts should be true', () => {
 
             setEqualNumberOfScouts();
 
             assert.equal(computerHasMoreScouts, false);
             assert.equal(playerHasMoreScouts, false);
             assert.equal(equalNumberOfScouts, true);
-            assert.equal(noScouts, false);
-
-            done();
-            
+            assert.equal(noScouts, false);            
         });
 
-        it('noScouts should be true', (done) => {
+        it('noScouts should be true', () => {
 
             setNoScouts();
 
@@ -202,11 +236,13 @@ describe('translators store test', () => {
             assert.equal(equalNumberOfScouts, true);
             assert.equal(noScouts, true);
 
-            done();
-            
+            assert.equal(computerHasLotsOfScouts, false);
+            assert.equal(computerHasScouts, false);
+            assert.equal(playerHasLotsOfScouts, false);
+            assert.equal(playerHasScouts, false);    
         });
 
-        it('all properties should be false', (done) => {
+        it('all properties should be false', () => {
 
             resetScoutsTranslatorStore();
 
@@ -225,9 +261,10 @@ describe('translators store test', () => {
             assert.equal(equalNumberOfScouts, false);
             assert.equal(noScouts, false);
 
-            done();
-
+            assert.equal(computerHasLotsOfScouts, false);
+            assert.equal(computerHasScouts, false);
+            assert.equal(playerHasLotsOfScouts, false);
+            assert.equal(playerHasScouts, false);
         });
-
     });
 });
