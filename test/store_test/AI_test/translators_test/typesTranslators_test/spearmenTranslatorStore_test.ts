@@ -1,18 +1,22 @@
 import {assert} from 'chai';
 
 import {
-   computerHasTooManySpearmen,
-   playerHasTooManySpearmen,
-   computerHasManySpearmen,
-   playerHasManySpearmen,
-   computerHasFewSpearmen,
-   playerHasFewSpearmen,
-   computerHasNoSpearmen,
-   playerHasNoSpearmen,
-   computerHasMoreSpearmen,
-   playerHasMoreSpearmen,
-   equalNumberOfSpearmen,
-   noSpearmen
+    computerHasTooManySpearmen,
+    playerHasTooManySpearmen,
+    computerHasManySpearmen,
+    playerHasManySpearmen,
+    computerHasFewSpearmen,
+    playerHasFewSpearmen,
+    computerHasNoSpearmen,
+    playerHasNoSpearmen,
+    computerHasMoreSpearmen,
+    playerHasMoreSpearmen,
+    equalNumberOfSpearmen,
+    computerHasLotsOfSpearmen,
+    playerHasLotsOfSpearmen,
+    computerHasSpearmen,
+    playerHasSpearmen,
+    noSpearmen,
 } from '../../../../../src/store/AI/translators/typesTranslators/spearmenTranslatorStore/spearmenTranslator';
 import {
     setComputerHasTooManySpearmen,
@@ -26,6 +30,10 @@ import {
     setComputerHasMoreSpearmen,
     setPlayerHasMoreSpearmen,
     setEqualNumberOfSpearmen,
+    setComputerHasLotsOfSpearmen,
+    setPlayerHasLotsOfSpearmen,
+    setComputerHasSpearmen,
+    setPlayerHasSpearmen,
     setNoSpearmen,
     resetSpearmenTranslatorStore
 } from '../../../../../src/store/AI/translators/typesTranslators/spearmenTranslatorStore';
@@ -34,117 +42,151 @@ describe('translators store test', () => {
 
     describe('spearmen types translator test', () => {
 
-        it('computerHasTooManySpearmen should be true', (done) => {
+        it('computerHasTooManySpearmen should be true', () => {
             
             setComputerHasTooManySpearmen();
 
             assert.equal(computerHasTooManySpearmen, true);
             assert.equal(computerHasManySpearmen, false);
             assert.equal(computerHasFewSpearmen, false);
+            assert.equal(computerHasLotsOfSpearmen, true);
+            assert.equal(computerHasSpearmen, true);
             assert.equal(computerHasNoSpearmen, false);
             assert.equal(noSpearmen, false);
-
-            done();
-
         });
 
-        it('computerHasTooManySpearmen should be true', (done) => {
+        it('playerHasTooManySpearmen should be true', () => {
             
             setPlayerHasTooManySpearmen();
 
             assert.equal(playerHasTooManySpearmen, true);
             assert.equal(playerHasManySpearmen, false);
             assert.equal(playerHasFewSpearmen, false);
+            assert.equal(playerHasLotsOfSpearmen, true);
+            assert.equal(playerHasSpearmen, true);
             assert.equal(playerHasNoSpearmen, false);
             assert.equal(noSpearmen, false);
-
-            done();
-
         });
 
-        it('computerHasManySpearmen should be true', (done) => {
+        it('computerHasManySpearmen should be true', () => {
             
             setComputerHasManySpearmen();
 
             assert.equal(computerHasTooManySpearmen, false);
             assert.equal(computerHasManySpearmen, true);
             assert.equal(computerHasFewSpearmen, false);
+            assert.equal(computerHasLotsOfSpearmen, true);
+            assert.equal(computerHasSpearmen, true);
             assert.equal(computerHasNoSpearmen, false);
             assert.equal(noSpearmen, false);
-
-            done();
-
         });
 
-        it('playerHasManySpearmen should be true', (done) => {
+        it('playerHasManySpearmen should be true', () => {
             
             setPlayerHasManySpearmen();
 
             assert.equal(playerHasTooManySpearmen, false);
             assert.equal(playerHasManySpearmen, true);
             assert.equal(playerHasFewSpearmen, false);
+            assert.equal(playerHasLotsOfSpearmen, true);
+            assert.equal(playerHasSpearmen, true);
             assert.equal(playerHasNoSpearmen, false);
             assert.equal(noSpearmen, false);
-
-            done();
-
         });
 
-        it('computerHasFewSpearmen should be true', (done) => {
+        it('computerHasFewSpearmen should be true', () => {
             
             setComputerHasFewSpearmen();
 
             assert.equal(computerHasTooManySpearmen, false);
             assert.equal(computerHasManySpearmen, false);
             assert.equal(computerHasFewSpearmen, true);
+            assert.equal(computerHasLotsOfSpearmen, false);
+            assert.equal(computerHasSpearmen, true);
             assert.equal(computerHasNoSpearmen, false);
             assert.equal(noSpearmen, false);
-
-            done();
-
         });
 
-        it('playerHasManySpearmen should be true', (done) => {
+        it('playerHasFewSpearmen should be true', () => {
             
             setPlayerHasFewSpearmen();
 
             assert.equal(playerHasTooManySpearmen, false);
             assert.equal(playerHasManySpearmen, false);
             assert.equal(playerHasFewSpearmen, true);
+            assert.equal(playerHasLotsOfSpearmen, false);
+            assert.equal(playerHasSpearmen, true);
             assert.equal(playerHasNoSpearmen, false);
             assert.equal(noSpearmen, false);
-
-            done();
-
         });
 
-        it('computerHasNoSpearmen should be true', (done) => {
+        it('computerHasNoSpearmen should be true', () => {
             
             setComputerHasNoSpearmen();
 
             assert.equal(computerHasTooManySpearmen, false);
             assert.equal(computerHasManySpearmen, false);
             assert.equal(computerHasFewSpearmen, false);
+            assert.equal(computerHasLotsOfSpearmen, false);
+            assert.equal(computerHasSpearmen, false);
             assert.equal(computerHasNoSpearmen, true);
-
-            done();
-
         });
 
-        it('playerHasNoSpearmen should be true', (done) => {
+        it('playerHasNoSpearmen should be true', () => {
             
             setPlayerHasNoSpearmen();
 
             assert.equal(playerHasTooManySpearmen, false);
             assert.equal(playerHasManySpearmen, false);
             assert.equal(playerHasFewSpearmen, false);
+            assert.equal(playerHasLotsOfSpearmen, false);
+            assert.equal(playerHasSpearmen, false);
             assert.equal(playerHasNoSpearmen, true);
-
-            done();
-
         });
 
-        it('computerHasMoreSpearmen should be true', (done) => {
+        it('computerHasLotsOfSpearmen should be true', () => {
+
+            setComputerHasLotsOfSpearmen();
+
+            assert.equal(computerHasFewSpearmen, false);
+            assert.equal(computerHasLotsOfSpearmen, true);
+            assert.equal(computerHasSpearmen, true);
+            assert.equal(computerHasNoSpearmen, false);
+            assert.equal(noSpearmen, false);
+        });
+
+        it('playerHasLotsOfSpearmen should be true', () => {
+
+            setPlayerHasLotsOfSpearmen();
+
+            assert.equal(playerHasFewSpearmen, false);
+            assert.equal(playerHasLotsOfSpearmen, true);
+            assert.equal(playerHasSpearmen, true);
+            assert.equal(playerHasNoSpearmen, false);
+            assert.equal(noSpearmen, false);
+        });
+
+        it('computerHasSpearmen should be true', () => {
+
+            setComputerHasSpearmen();
+
+            assert.equal(computerHasLotsOfSpearmen, false);
+            assert.equal(computerHasSpearmen, true);
+            assert.equal(computerHasNoSpearmen, false);
+            assert.equal(noSpearmen, false);
+        });
+
+        it('playerHasSpearmen should be true', () => {
+
+            setPlayerHasSpearmen();
+
+            assert.equal(playerHasLotsOfSpearmen, false);
+            assert.equal(playerHasSpearmen, true);
+            assert.equal(playerHasNoSpearmen, false);
+            assert.equal(noSpearmen, false);
+        });
+
+        it('computerHasMoreSpearmen should be true', () => {
 
             setComputerHasMoreSpearmen();
 
@@ -152,12 +194,9 @@ describe('translators store test', () => {
             assert.equal(playerHasMoreSpearmen, false);
             assert.equal(equalNumberOfSpearmen, false);
             assert.equal(noSpearmen, false);
-
-            done();
-
         });
 
-        it('playerHasMoreSpearmen should be true', (done) => {
+        it('playerHasMoreSpearmen should be true', () => {
 
             setPlayerHasMoreSpearmen();
 
@@ -165,12 +204,9 @@ describe('translators store test', () => {
             assert.equal(playerHasMoreSpearmen, true);
             assert.equal(equalNumberOfSpearmen, false);
             assert.equal(noSpearmen, false);
-
-            done();
-            
         });
 
-        it('equalNumberOfSpearmen should be true', (done) => {
+        it('equalNumberOfSpearmen should be true', () => {
 
             setEqualNumberOfSpearmen();
 
@@ -178,12 +214,9 @@ describe('translators store test', () => {
             assert.equal(playerHasMoreSpearmen, false);
             assert.equal(equalNumberOfSpearmen, true);
             assert.equal(noSpearmen, false);
-
-            done();
-            
         });
 
-        it('noSpearmen should be true', (done) => {
+        it('noSpearmen should be true', () => {
 
             setNoSpearmen();
 
@@ -202,11 +235,13 @@ describe('translators store test', () => {
             assert.equal(equalNumberOfSpearmen, true);
             assert.equal(noSpearmen, true);
 
-            done();
-            
+            assert.equal(computerHasLotsOfSpearmen, false);
+            assert.equal(computerHasSpearmen, false);
+            assert.equal(playerHasLotsOfSpearmen, false);
+            assert.equal(playerHasSpearmen, false);
         });
 
-        it('all properties should be false', (done) => {
+        it('all properties should be false', () => {
 
             resetSpearmenTranslatorStore();
 
@@ -225,9 +260,10 @@ describe('translators store test', () => {
             assert.equal(equalNumberOfSpearmen, false);
             assert.equal(noSpearmen, false);
 
-            done();
-
+            assert.equal(computerHasLotsOfSpearmen, false);
+            assert.equal(computerHasSpearmen, false);
+            assert.equal(playerHasLotsOfSpearmen, false);
+            assert.equal(playerHasSpearmen, false);
         });
-
     });
 });

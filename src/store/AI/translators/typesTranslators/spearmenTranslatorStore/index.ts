@@ -10,6 +10,10 @@ import {
     setComputerHasMoreSpearmen,
     setPlayerHasMoreSpearmen,
     setEqualNumberOfSpearmen,
+    setComputerHasLotsOfSpearmen,
+    setPlayerHasLotsOfSpearmen,
+    setComputerHasSpearmen,
+    setPlayerHasSpearmen,
     setNoSpearmen,
     resetSpearmenTranslatorStore
 } from './spearmenTranslator';
@@ -26,6 +30,10 @@ export {
     setComputerHasMoreSpearmen,
     setPlayerHasMoreSpearmen,
     setEqualNumberOfSpearmen,
+    setComputerHasLotsOfSpearmen,
+    setPlayerHasLotsOfSpearmen,
+    setComputerHasSpearmen,
+    setPlayerHasSpearmen,
     setNoSpearmen,
-    resetSpearmenTranslatorStore  
+    resetSpearmenTranslatorStore 
 }
