@@ -25,7 +25,11 @@ import {
     computerHasMoreCavalry,
     playerHasMoreCavalry,
     equalNumberOfCavalry,
-    noCavalry
+    computerHasLotsOfCavalry,
+    playerHasLotsOfCavalry,
+    computerHasCavalry,
+    playerHasCavalry,
+    noCavalry,
 } from '../../../../../src/store/AI/translators/typesTranslators/cavalryTranslatorStore/cavalryTranslator';
 
 describe('types translators test', () => {
@@ -87,6 +91,22 @@ describe('types translators test', () => {
 
         it('playerHasFewCavalry should be false', () => {
             assert.equal(playerHasFewCavalry, false);
+        });
+
+        it('computerHasLotsOfCavalry should be false', () => {
+            assert.equal(computerHasLotsOfCavalry, false);
+        });
+
+        it('playerHasLotsOfCavalry should be false', () => {
+            assert.equal(playerHasLotsOfCavalry, false);
+        });
+
+        it('computerHasCavalry should be true', () => {
+            assert.equal(computerHasCavalry, true);
+        });
+
+        it('playerHasCavalry should be false', () => {
+            assert.equal(playerHasCavalry, false);
         });
 
         it('computerHasNoCavalry should be false', () => {
@@ -197,6 +217,22 @@ describe('types translators test', () => {
             assert.equal(playerHasFewCavalry, false);
         });
 
+        it('computerHasLotsOfCavalry should be false', () => {
+            assert.equal(computerHasLotsOfCavalry, false);
+        });
+
+        it('playerHasLotsOfCavalry should be true', () => {
+            assert.equal(playerHasLotsOfCavalry, true);
+        });
+
+        it('computerHasCavalry should be true', () => {
+            assert.equal(computerHasCavalry, true);
+        });
+
+        it('playerHasCavalry should be true', () => {
+            assert.equal(playerHasCavalry, true);
+        });
+
         it('computerHasNoCavalry should be false', () => {
             assert.equal(computerHasNoCavalry, false);
         });
@@ -296,6 +332,22 @@ describe('types translators test', () => {
             assert.equal(playerHasFewCavalry, false);
         });
 
+        it('computerHasLotsOfCavalry should be true', () => {
+            assert.equal(computerHasLotsOfCavalry, true);
+        });
+
+        it('playerHasLotsOfCavalry should be true', () => {
+            assert.equal(playerHasLotsOfCavalry, true);
+        });
+
+        it('computerHasCavalry should be true', () => {
+            assert.equal(computerHasCavalry, true);
+        });
+
+        it('playerHasCavalry should be true', () => {
+            assert.equal(playerHasCavalry, true);
+        });
+
         it('computerHasNoCavalry should be false', () => {
             assert.equal(computerHasNoCavalry, false);
         });
@@ -368,6 +420,22 @@ describe('types translators test', () => {
 
         it('playerHasFewCavalry should be false', () => {
             assert.equal(playerHasFewCavalry, false);
+        });
+
+        it('computerHasLotsOfCavalry should be false', () => {
+            assert.equal(computerHasLotsOfCavalry, false);
+        });
+
+        it('playerHasLotsOfCavalry should be false', () => {
+            assert.equal(playerHasLotsOfCavalry, false);
+        });
+
+        it('computerHasCavalry should be false', () => {
+            assert.equal(computerHasCavalry, false);
+        });
+
+        it('playerHasCavalry should be false', () => {
+            assert.equal(playerHasCavalry, false);
         });
 
         it('computerHasNoCavalry should be true', () => {
