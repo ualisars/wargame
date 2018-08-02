@@ -25,7 +25,11 @@ import {
     computerHasMoreHeavyInfantry,
     playerHasMoreHeavyInfantry,
     equalNumberOfHeavyInfantry,
-    noHeavyInfantry
+    noHeavyInfantry,
+    computerHasLotsOfHeavyInfantry,
+    playerHasLotsOfHeavyInfantry,
+    computerHasHeavyInfantry,
+    playerHasHeavyInfantry,
 } from '../../../../../src/store/AI/translators/typesTranslators/heavyInfantryTranslatorStore/heavyInfantryTranslator';
 
 
@@ -109,6 +113,22 @@ describe('types translators test', () => {
 
         it('playerHasFewHeavyInfantry should be true', () => {
             assert.equal(playerHasFewHeavyInfantry, true);
+        });
+
+        it('computerHasLotsOfHeavyInfantry should be false', () => {
+            assert.equal(computerHasLotsOfHeavyInfantry, false);
+        });
+
+        it('playerHasLotsOfHeavyInfantry should be false', () => {
+            assert.equal(playerHasLotsOfHeavyInfantry, false);
+        });
+
+        it('computerHasHeavyInfantry should be false', () => {
+            assert.equal(computerHasHeavyInfantry, false);
+        });
+
+        it('playerHasHeavyInfantry should be true', () => {
+            assert.equal(playerHasHeavyInfantry, true);
         });
 
         it('computerHasNoHeavyInfantry should be true', () => {
@@ -227,6 +247,22 @@ describe('types translators test', () => {
             assert.equal(playerHasFewHeavyInfantry, false);
         });
 
+        it('computerHasLotsOfHeavyInfantry should be true', () => {
+            assert.equal(computerHasLotsOfHeavyInfantry, true);
+        });
+
+        it('playerHasLotsOfHeavyInfantry should be true', () => {
+            assert.equal(playerHasLotsOfHeavyInfantry, true);
+        });
+
+        it('computerHasHeavyInfantry should be true', () => {
+            assert.equal(computerHasHeavyInfantry, true);
+        });
+
+        it('playerHasHeavyInfantry should be true', () => {
+            assert.equal(playerHasHeavyInfantry, true);
+        });
+
         it('computerHasNoHeavyInfantry should be false', () => {
             assert.equal(computerHasNoHeavyInfantry, false);
         });
@@ -325,6 +361,22 @@ describe('types translators test', () => {
             assert.equal(playerHasFewHeavyInfantry, false);
         });
 
+        it('computerHasLotsOfHeavyInfantry should be false', () => {
+            assert.equal(computerHasLotsOfHeavyInfantry, false);
+        });
+
+        it('playerHasLotsOfHeavyInfantry should be true', () => {
+            assert.equal(playerHasLotsOfHeavyInfantry, true);
+        });
+
+        it('computerHasHeavyInfantry should be true', () => {
+            assert.equal(computerHasHeavyInfantry, true);
+        });
+
+        it('playerHasHeavyInfantry should be true', () => {
+            assert.equal(playerHasHeavyInfantry, true);
+        });
+
         it('computerHasNoHeavyInfantry should be false', () => {
             assert.equal(computerHasNoHeavyInfantry, false);
         });
@@ -348,7 +400,6 @@ describe('types translators test', () => {
         it('noHeavyInfantry should be false', () => {
             assert.equal(noHeavyInfantry, false);
         });
-
     });
 
     describe('heavyInfantryTranslator (computerHasNoHeavyInfantry, playerHasNoHeavyInfantry)', () => {
@@ -411,6 +462,22 @@ describe('types translators test', () => {
 
         it('playerHasFewHeavyInfantry should be false', () => {
             assert.equal(playerHasFewHeavyInfantry, false);
+        });
+
+        it('computerHasLotsOfHeavyInfantry should be false', () => {
+            assert.equal(computerHasLotsOfHeavyInfantry, false);
+        });
+
+        it('playerHasLotsOfHeavyInfantry should be false', () => {
+            assert.equal(playerHasLotsOfHeavyInfantry, false);
+        });
+
+        it('computerHasHeavyInfantry should be false', () => {
+            assert.equal(computerHasHeavyInfantry, false);
+        });
+
+        it('playerHasHeavyInfantry should be false', () => {
+            assert.equal(playerHasHeavyInfantry, false);
         });
 
         it('computerHasNoHeavyInfantry should be true', () => {
