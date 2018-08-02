@@ -25,6 +25,10 @@ import {
     computerHasMoreInfantry,
     playerHasMoreInfantry,
     equalNumberOfInfantry,
+    computerHasLotsOfInfantry,
+    playerHasLotsOfInfantry,
+    computerHasInfantry,
+    playerHasInfantry,
     noInfantry
 } from '../../../../../src/store/AI/translators/typesTranslators/infantryTranslatorStore/infantryTranslator';
 
@@ -108,6 +112,22 @@ describe('types translators test', () => {
 
         it('playerHasFewInfantry should be false', () => {
             assert.equal(playerHasFewInfantry, false);
+        });
+
+        it('computerHasLotsOfInfantry should be true', () => {
+            assert.equal(computerHasLotsOfInfantry, true);
+        });
+
+        it('playerHasLotsOfInfantry should be false', () => {
+            assert.equal(playerHasLotsOfInfantry, false);
+        });
+
+        it('computerHasInfantry should be true', () => {
+            assert.equal(computerHasInfantry, true);
+        });
+
+        it('playerHasInfantry should be false', () => {
+            assert.equal(playerHasInfantry, false);
         });
 
         it('computerHasNoInfantry should be false', () => {
@@ -214,6 +234,22 @@ describe('types translators test', () => {
 
         it('playerHasFewInfantry should be false', () => {
             assert.equal(playerHasFewInfantry, false);
+        });
+
+        it('computerHasLotsOfInfantry should be true', () => {
+            assert.equal(computerHasLotsOfInfantry, true);
+        });
+
+        it('playerHasLotsOfInfantry should be true', () => {
+            assert.equal(playerHasLotsOfInfantry, true);
+        });
+
+        it('computerHasInfantry should be true', () => {
+            assert.equal(computerHasInfantry, true);
+        });
+
+        it('playerHasInfantry should be true', () => {
+            assert.equal(playerHasInfantry, true);
         });
 
         it('computerHasNoInfantry should be false', () => {
@@ -334,6 +370,22 @@ describe('types translators test', () => {
             assert.equal(playerHasFewInfantry, false);
         });
 
+        it('computerHasLotsOfInfantry should be false', () => {
+            assert.equal(computerHasLotsOfInfantry, false);
+        });
+
+        it('playerHasLotsOfInfantry should be true', () => {
+            assert.equal(playerHasLotsOfInfantry, true);
+        });
+
+        it('computerHasInfantry should be true', () => {
+            assert.equal(computerHasInfantry, true);
+        });
+
+        it('playerHasInfantry should be true', () => {
+            assert.equal(playerHasInfantry, true);
+        });
+
         it('computerHasNoInfantry should be false', () => {
             assert.equal(computerHasNoInfantry, false);
         });
@@ -438,6 +490,22 @@ describe('types translators test', () => {
 
         it('playerHasFewInfantry should be true', () => {
             assert.equal(playerHasFewInfantry, true);
+        });
+
+        it('computerHasLotsOfInfantry should be false', () => {
+            assert.equal(computerHasLotsOfInfantry, false);
+        });
+
+        it('playerHasLotsOfInfantry should be false', () => {
+            assert.equal(playerHasLotsOfInfantry, false);
+        });
+
+        it('computerHasInfantry should be false', () => {
+            assert.equal(computerHasInfantry, false);
+        });
+
+        it('playerHasInfantry should be true', () => {
+            assert.equal(playerHasInfantry, true);
         });
 
         it('computerHasNoInfantry should be true', () => {
@@ -546,6 +614,22 @@ describe('types translators test', () => {
             assert.equal(playerHasFewInfantry, false);
         });
 
+        it('computerHasLotsOfInfantry should be false', () => {
+            assert.equal(computerHasLotsOfInfantry, false);
+        });
+
+        it('playerHasLotsOfInfantry should be false', () => {
+            assert.equal(playerHasLotsOfInfantry, false);
+        });
+
+        it('computerHasInfantry should be false', () => {
+            assert.equal(computerHasInfantry, false);
+        });
+
+        it('playerHasInfantry should be false', () => {
+            assert.equal(playerHasInfantry, false);
+        });
+
         it('computerHasNoInfantry should be true', () => {
             assert.equal(computerHasNoInfantry, true);
         });
@@ -569,6 +653,5 @@ describe('types translators test', () => {
         it('noInfantry should be true', () => {
             assert.equal(noInfantry, true);
         });
-
     });
 });
