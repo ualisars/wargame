@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "@types/jsdom": "^11.0.4",
-    "@types/mocha": "^2.2.42"
+    "@types/mocha": "^2.2.42" 
   }
 }
