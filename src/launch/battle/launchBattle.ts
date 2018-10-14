@@ -69,14 +69,6 @@ import {
   hidingEnemies
 } from '../../store/AI/enemies/hidingEnemies';
 import {createArmy} from '../../battle';
-import {
-  selectCotrolZone,
-  isNumberOfEnemiesChanged
-} from '../../AI/processModule/controlZone';
-import {
-  getEnemiesInsideZone,
-  defenderMovement
-} from '../../unit/movement/computer/defender/defenderMovement';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
