@@ -63,7 +63,6 @@ import {
   getUnitTypesInPercentage,
 } from '../../AI/analyzeModule/unitAnalyze';
 import {getSurroundedNodes} from '../../utils/surrounded';
-import {chooseFormation} from '../../AI/strategyModule/controlUnit/formation';
 // strategy module
 import {
   hidingEnemies
@@ -74,12 +73,7 @@ export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
   createArmy();
 
-
-  //drawGrid();
-
   console.log('monitor: height', window.screen.availHeight, 'width:',window.screen.availWidth);
-
-
 
   auxiliaryCanvas.addEventListener('mousemove', (e:any) => {
     let mouseX = e.offsetX; // get X
