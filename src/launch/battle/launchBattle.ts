@@ -68,22 +68,11 @@ import {chooseFormation} from '../../AI/strategyModule/controlUnit/formation';
 import {
   hidingEnemies
 } from '../../store/AI/enemies/hidingEnemies';
-import{orderToAttackEnemy} from '../../AI/strategyModule/decisionUnit/unitOrders';
-import {assignTasks} from '../../AI/strategyModule/controlUnit/assignTask';
-import {assignCombatStage} from '../../AI/processModule/combatStage';
-import {calculateTotalPower} from '../../AI/analyzeModule/powerAnalyze';
-import {AIMovement} from '../../AI/strategyModule/decisionUnit/unitOrders';
-import {isBattleEnd, checkWinner} from '../../gameLoop';
-import {battleFinish} from '../../config';
 import {createArmy} from '../../battle';
-import {analyzeMap} from '../../AI/analyzeModule/mapAnalyze';
-import {assignBaseNodesForScouts} from '../../AI/processModule/unit'; // remove
-import {scoutsMovement} from '../../unit/movement/computer/exploration/explorationMoves'; //remove
 import {
   selectCotrolZone,
   isNumberOfEnemiesChanged
 } from '../../AI/processModule/controlZone';
-import {occupyControlZone} from '../../unit/movement/computer/controlZone/occupyControlZone';
 import {
   getEnemiesInsideZone,
   defenderMovement
@@ -163,75 +152,4 @@ export const launchBattle = () => {
       }
     }
   }); // on context
-
-  setUpAI(); // set up AI engine
-  setTimeout(analyzeMap, 2000);
-  setInterval(spotUnits(units), 1000);
-  //
-  setTimeout(assignTasks, 3000);
-  setTimeout(selectCotrolZone, 1000);
-  //
-  setTimeout(assignBaseNodesForScouts, 3500);
-  //
-  setTimeout(scoutsMovement, 4000);
-  setInterval(defenderMovement, 2000);
-
-
-
-
-
-  //set behaviour
-  //console.log('behaviour', personality.behaviour);
-
-  // setInterval(() => console.log('hidedEmenies', hidedEmenies.store), 4000);
-  //
-
-
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     checkHealth().
-    //     then(() => meleeCombat());
-    //   }
-    // }, 800);
-    // // // // // //
-    //AIMovement();
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     analyzeMap()
-    //     .then(() => {
-    //       //AIMovement()
-    //       orderToAttackEnemy();
-    //     });
-    //   }
-    // }, 3000);
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     analyzeUnits();
-    //   }
-    // }, 4000);
-
-    // setInterval(() => console.log('types', calculateUnitTypes()), 3000);
-    // console.log('percentage', getUnitTypesInPercentage())
-    // chooseFormation();
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     assignTasks();
-    //     console.log('computersUnits', computerUnits);
-    //   }
-    // }, 10000);
-    // assignTasks();
-    // // console.log('computersUnits', computersUnits);
-    //  setInterval(() => calculateTotalPower(), 8000);
-    //
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     assignCombatStage();
-    //   }
-    // }, 10000);
-    // setInterval(() => {
-    //   if(!battleFinish) {
-    //     isBattleEnd();
-    //   }
-    // }, 3000);
-
 }
