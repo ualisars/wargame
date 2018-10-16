@@ -1,5 +1,5 @@
 import Unit from '../../../unit/types/Unit';
-import {getNodeFromMap} from '../../index';
+import {getNodeFromMap} from '../..';
 import {deleteUnitFromArray} from '../general';
 
 export const anotherUnitIsOnTheWay = (units:Unit[], currentUnit:Unit, nextNode:any):boolean => {

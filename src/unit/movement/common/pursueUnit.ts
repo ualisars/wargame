@@ -2,7 +2,7 @@ import {
   spotEnemy,
   charge,
   removeUnitFromEnemiesFightAgainst
-} from '../../index';
+} from '../..';
 import {getNodeFromMap} from '../../../utils';
 import {
   createUnitObstacle,

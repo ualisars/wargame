@@ -1,7 +1,7 @@
-import {WIDTH, HEIGHT} from '../../../../config';
+import {WIDTH, HEIGHT} from '../../..';
 import {
   infoLayoutHeight
-} from '../index';
+} from '..';
 import {titleHeight} from '../upperLayout';
 // start battle
 export let startBattleStartY:number = titleHeight + infoLayoutHeight;

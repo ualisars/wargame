@@ -10,7 +10,7 @@ import {
   terrain
 } from '../../config/canvas';
 import {setMainMenuMode} from '../../config';
-import {launchGame} from '../index';
+import {launchGame} from '..';
 
 export const activateMainMenuMode = () => {
   dragAndDropCanvas.style.zIndex = '6';

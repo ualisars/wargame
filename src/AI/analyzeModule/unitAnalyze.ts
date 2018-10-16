@@ -9,7 +9,7 @@ import {gridSize} from '../../config';
 import {getNodeFromMap} from '../../utils';
 import {
   calculateTotalPower
-} from '../analyzeModule/powerAnalyze';
+} from './powerAnalyze';
 import {
   getSurroundedAllies,
   getSurroundedEnemies

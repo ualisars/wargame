@@ -2,7 +2,7 @@ import {
   displayComputer,
   displayPlayer,
   displayRemainGold
-} from '../display';
+} from '.';
 import {
   titleHeight
 } from '../../../../../config/mainMenu';

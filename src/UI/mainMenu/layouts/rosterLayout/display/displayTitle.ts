@@ -2,7 +2,7 @@ import {
   titleHeight
 } from '../../../../../config/mainMenu';
 import {mainMenuCtx} from '../../../../../config/context';
-import {displayRosterUnits} from './index';
+import {displayRosterUnits} from '.';
 
 export const displayRosterTitle = () => {
   mainMenuCtx.fillStyle =  '#000';

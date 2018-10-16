@@ -1,7 +1,7 @@
 import {
   WIDTH,
   HEIGHT
-} from '../../config';
+} from '..';
 
 export const backgroundCanvas:any = document.getElementById('background');
 

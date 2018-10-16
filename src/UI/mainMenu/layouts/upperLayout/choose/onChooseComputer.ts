@@ -12,7 +12,7 @@ import {
   displayTitle
 } from '../display';
 
-import {displayChosenUnits} from '../../index';
+import {displayChosenUnits} from '../..';
 
 export const onChooseComputer = (mouseX:number, mouseY:number) => {
   if(mouseX >= computerSwitcherX0 && mouseX < computerSwitcherX1 && mouseY >= computerSwitcherY0 && mouseY < computerSwitcherY1) {

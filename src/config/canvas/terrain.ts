@@ -1,7 +1,7 @@
 import {
   WIDTH,
   HEIGHT
-} from '../../config';
+} from '..';
 
 export const terrain:any = document.getElementById('terrain');
 

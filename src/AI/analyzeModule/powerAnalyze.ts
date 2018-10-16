@@ -1,7 +1,7 @@
 import {
   initialComputerPower,
   initialPlayerPower,
-} from '../../store/';
+} from '../../store';
 import {playerPower} from '../../store/AI/power/playerPower';
 import {computerPower} from '../../store/AI/power/computerPower';
 import {

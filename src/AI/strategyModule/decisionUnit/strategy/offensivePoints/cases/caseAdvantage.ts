@@ -2,54 +2,30 @@ import {
     getRandomValueInRange,
     getRandomValueInRangeWithProbability
 } from '../../../../../../utils/random';
-import { 
-    computerHasTooManyCavalry, 
-    computerHasManyCavalry, 
+import {  
     playerHasNoCavalry, 
-    playerHasTooManyCavalry,
-    playerHasManyCavalry,
-    computerHasMoreCavalry,
-    playerHasFewCavalry,
     computerHasLotsOfCavalry,
     playerHasLotsOfCavalry,
     playerHasCavalry
 } from "../../../../../../store/AI/translators/typesTranslators/cavalryTranslatorStore/cavalryTranslator";
 import { 
-    computerHasTooManySkirmishers,
-    computerHasManySkirmishers, 
-    playerHasTooManySkirmishers, 
-    playerHasManySkirmishers,
     computerHasNoSkirmishers,
-    computerHasFewSkirmishers,
     playerHasSkirmishers,
     playerHasLotsOfSkirmishers,
     computerHasSkirmishers,
     computerHasLotsOfSkirmishers
 } from "../../../../../../store/AI/translators/typesTranslators/skirmisherTranslatorStore/skirmisherTranslatorStore";
 import { 
-    computerHasTooManyInfantry, 
-    computerHasManyInfantry, 
-    playerHasTooManyInfantry,
-    playerHasManyInfantry, 
-    setPlayerHasTooManyInfantry,
     computerHasLotsOfInfantry,
     playerHasLotsOfInfantry
 } from '../../../../../../store/AI/translators/typesTranslators/infantryTranslatorStore/infantryTranslator';
 import { speedAdvantage } from '../../../../../../store/AI/translators/speedTranslator/speedTranslatorStore';
 import { 
-    playerHasTooManySpearmen, 
     playerHasNoSpearmen, 
-    playerHasManySpearmen, 
-    playerHasFewSpearmen, 
-    computerHasTooManySpearmen,
-    computerHasManySpearmen,
-    computerHasFewSpearmen,
     playerHasSpearmen,
     computerHasSpearmen,
     playerHasLotsOfSpearmen
 } from '../../../../../../store/AI/translators/typesTranslators/spearmenTranslatorStore/spearmenTranslator';
-import { computerHasTooManyScouts } from '../../../../../../store/AI/translators/typesTranslators/scoutTranslatorStore/scoutTranslator';
-import { playerHasLotsOfHeavyInfantry } from '../../../../../../store/AI/translators/typesTranslators/heavyInfantryTranslatorStore/heavyInfantryTranslator';
 
 export const caseAdvantage = (): number => {
     let offensivePoints: number = 0;

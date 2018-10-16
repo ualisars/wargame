@@ -13,7 +13,7 @@ import {
 import {
   unitRosterWidth
 } from '../../../../../config/mainMenu';
-import {displayChosenUnits} from '../../index';
+import {displayChosenUnits} from '../..';
 
 export const onChoosePlayer = (mouseX:number, mouseY:number) => {
   if(mouseX >= unitRosterWidth && mouseX < playerSwitcherX1 && mouseY >= playerSwitcherY0 && mouseY < playerSwitcherY1) {

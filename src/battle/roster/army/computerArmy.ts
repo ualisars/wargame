@@ -1,7 +1,7 @@
 import {
   computerArmy
 } from '../../../store/roster/army';
-import {deleteNodeFromComputerNodes} from '../index';
+import {deleteNodeFromComputerNodes} from '..';
 import {getRandomNode} from '../../../utils/node';
 import {computerUnitsNodes} from '../nodes/computerNodes';
 import {createUnit} from '../../../unit';

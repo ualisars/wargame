@@ -1,7 +1,7 @@
 import {
   playerArmy
 } from '../../../store/roster/army';
-import {deleteNodeFromPlayerNodes} from '../index';
+import {deleteNodeFromPlayerNodes} from '..';
 import {getRandomNode} from '../../../utils/node';
 import {
   playerUnitsNodes

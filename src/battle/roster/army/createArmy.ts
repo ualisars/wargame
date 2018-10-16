@@ -1,7 +1,7 @@
 import {
   createComputerArmy,
   createPlayerArmy
-} from '../index';
+} from '..';
 
 export const createArmy = () => {
   return new Promise(resolve => {

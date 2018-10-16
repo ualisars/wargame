@@ -11,7 +11,7 @@ import {
 } from '../../config/canvas';
 
 import {setBattleMode} from '../../config';
-import {launchGame} from '../index';
+import {launchGame} from '..';
 
 export const activateBattleMode = () => {
   console.error('activateBattleMode');
