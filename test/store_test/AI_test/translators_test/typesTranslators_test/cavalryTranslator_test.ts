@@ -29,10 +29,6 @@ import {
     setComputerHasMoreCavalry,
     setPlayerHasMoreCavalry,
     setEqualNumberOfCavalry,
-    setComputerHasLotsOfCavalry,
-    setPlayerHasLotsOfCavalry,
-    setComputerHasCavalry,
-    setPlayerHasCavalry,
     setNoCavalry,
     resetCavalryTranslatorStore
 } from '../../../../../src/store/AI/translators/typesTranslators/cavalryTranslatorStore';

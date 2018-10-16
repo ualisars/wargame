@@ -1,51 +1,19 @@
-import {
-  drawGrid,
-  addNeighbors,
-  createNodes,
-} from '../../map';
-import {
-  initializeMap
-} from '../../map/createMap';
 import {initialMap} from '../../map/createMap/initialMap';
-import {
-  auxiliaryCanvas,
-  canvas
-} from '../../config/canvas';
-import {
-  auxiliaryCtx,
-  ctx
-} from '../../config/context';
-
+import {auxiliaryCanvas} from '../../config/canvas';
+import {auxiliaryCtx} from '../../config/context';
 import {
   WIDTH,
   HEIGHT,
   gridSize,
 } from '../../config';
-
-
-import {
-  aStar
-} from '../../path';
 import {
   getNodeFromMap,
   drawBackground
 } from '../../utils';
 import {getSurroundedBlockedNodes} from '../../utils/node';
-
-import {
-  Unit,
-  onChooseUnit,
-  createUnit,
-  updateUnit,
-  pursueUnit,
-  spotUnits,
-  meleeCombat,
-  checkHealth
-} from '../../unit';
-
+import {onChooseUnit} from '../../unit';
 import {
   units,
-  playerUnits,
   computerUnits
 } from '../../store/unit/units';
 import {
@@ -53,20 +21,7 @@ import {
   moveTo
 } from '../../unit/movement';
 import {currentlyChosenUnit} from '../../store/unit/currentlyChosenUnit';
-
-// AI testing
-import {setUpAI} from '../../AI/setUpAI';
-//import {analyzeMap} from './AI/analyzeModule/mapAnalyze';
-import {
-  analyzeUnits,
-  calculateUnitTypes,
-  getUnitTypesInPercentage,
-} from '../../AI/analyzeModule/unitAnalyze';
 import {getSurroundedNodes} from '../../utils/surrounded';
-// strategy module
-import {
-  hidingEnemies
-} from '../../store/AI/enemies/hidingEnemies';
 import {createArmy} from '../../battle';
 
 export const launchBattle = () => {

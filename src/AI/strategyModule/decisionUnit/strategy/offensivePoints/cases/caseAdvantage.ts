@@ -9,7 +9,10 @@ import {
     playerHasTooManyCavalry,
     playerHasManyCavalry,
     computerHasMoreCavalry,
-    playerHasFewCavalry
+    playerHasFewCavalry,
+    computerHasLotsOfCavalry,
+    playerHasLotsOfCavalry,
+    playerHasCavalry
 } from "../../../../../../store/AI/translators/typesTranslators/cavalryTranslatorStore/cavalryTranslator";
 import { 
     computerHasTooManySkirmishers,
@@ -17,14 +20,20 @@ import {
     playerHasTooManySkirmishers, 
     playerHasManySkirmishers,
     computerHasNoSkirmishers,
-    computerHasFewSkirmishers
+    computerHasFewSkirmishers,
+    playerHasSkirmishers,
+    playerHasLotsOfSkirmishers,
+    computerHasSkirmishers,
+    computerHasLotsOfSkirmishers
 } from "../../../../../../store/AI/translators/typesTranslators/skirmisherTranslatorStore/skirmisherTranslatorStore";
 import { 
     computerHasTooManyInfantry, 
     computerHasManyInfantry, 
     playerHasTooManyInfantry,
     playerHasManyInfantry, 
-    setPlayerHasTooManyInfantry
+    setPlayerHasTooManyInfantry,
+    computerHasLotsOfInfantry,
+    playerHasLotsOfInfantry
 } from '../../../../../../store/AI/translators/typesTranslators/infantryTranslatorStore/infantryTranslator';
 import { speedAdvantage } from '../../../../../../store/AI/translators/speedTranslator/speedTranslatorStore';
 import { 
@@ -34,27 +43,23 @@ import {
     playerHasFewSpearmen, 
     computerHasTooManySpearmen,
     computerHasManySpearmen,
-    computerHasFewSpearmen
+    computerHasFewSpearmen,
+    playerHasSpearmen,
+    computerHasSpearmen,
+    playerHasLotsOfSpearmen
 } from '../../../../../../store/AI/translators/typesTranslators/spearmenTranslatorStore/spearmenTranslator';
 import { computerHasTooManyScouts } from '../../../../../../store/AI/translators/typesTranslators/scoutTranslatorStore/scoutTranslator';
+import { playerHasLotsOfHeavyInfantry } from '../../../../../../store/AI/translators/typesTranslators/heavyInfantryTranslatorStore/heavyInfantryTranslator';
 
 export const caseAdvantage = (): number => {
     let offensivePoints: number = 0;
 
     // computer has many cavalry
-    if(
-        (computerHasTooManyCavalry || computerHasManyCavalry) &&
-        (playerHasTooManySkirmishers || playerHasManySkirmishers) &&
-        (playerHasNoSpearmen)
-    ) {
+    if(computerHasLotsOfCavalry && playerHasSkirmishers && playerHasNoSpearmen) {
         offensivePoints = getRandomValueInRange(95, 100);
     }
 
-    else if(
-        (computerHasTooManyCavalry || computerHasManyCavalry) &&
-        (playerHasTooManySkirmishers || playerHasManySkirmishers) &&
-        (playerHasTooManySpearmen || playerHasManySpearmen || playerHasFewSpearmen)
-    ) {
+    else if(computerHasLotsOfCavalry && playerHasLotsOfSkirmishers && playerHasSpearmen) {
         offensivePoints = getRandomValueInRangeWithProbability(60, 90, {
             interval: [70, 80],
             probability: 80
@@ -62,12 +67,8 @@ export const caseAdvantage = (): number => {
     }
 
     else if(
-        (computerHasTooManyCavalry || computerHasManyCavalry) &&
-        (playerHasTooManyCavalry || playerHasManyCavalry) &&
-        ((   computerHasTooManySpearmen 
-            || computerHasManySpearmen 
-            || computerHasFewSpearmen
-        ) || computerHasNoSkirmishers) 
+        computerHasLotsOfCavalry && playerHasLotsOfCavalry &&
+        (computerHasSpearmen || computerHasNoSkirmishers) 
     ) {
         offensivePoints = getRandomValueInRangeWithProbability(70, 100, {
             interval: [90, 100],
@@ -75,14 +76,7 @@ export const caseAdvantage = (): number => {
         });
     }
 
-    else if(
-        (computerHasTooManyCavalry || computerHasManyCavalry) &&
-        (playerHasTooManyCavalry || playerHasManyCavalry) &&
-        (   computerHasTooManySkirmishers 
-            || computerHasManySkirmishers 
-            || computerHasFewSkirmishers
-        ) 
-    ) {
+    else if(computerHasLotsOfCavalry && playerHasLotsOfCavalry && computerHasSkirmishers) {
         offensivePoints = getRandomValueInRangeWithProbability(50, 80, {
             interval: [60, 70],
             probability: 70
@@ -92,10 +86,8 @@ export const caseAdvantage = (): number => {
     // computer has many infantry
 
     else if(
-        (computerHasTooManyInfantry || computerHasManyInfantry) &&
-        (playerHasTooManyInfantry || playerHasManyInfantry) &&
-        (computerHasTooManySkirmishers || computerHasManySkirmishers || computerHasFewSkirmishers) &&
-        (playerHasTooManyCavalry || playerHasManyCavalry || playerHasFewCavalry) 
+        computerHasLotsOfInfantry && playerHasLotsOfInfantry &&
+        computerHasSkirmishers && playerHasCavalry
     ) {
         offensivePoints = getRandomValueInRangeWithProbability(60, 90, {
             interval: [60, 80],
@@ -103,31 +95,21 @@ export const caseAdvantage = (): number => {
         });
     }
 
-    else if(
-        (computerHasTooManyInfantry || computerHasManyInfantry) &&
-        (playerHasTooManyInfantry || playerHasManyInfantry) &&
-        (playerHasTooManyCavalry || playerHasManyCavalry || playerHasFewCavalry)
-    ) {
+    else if(computerHasLotsOfInfantry && playerHasLotsOfInfantry && playerHasCavalry) {
         offensivePoints = getRandomValueInRangeWithProbability(70, 95, {
             interval: [80, 90],
             probability: 70
         }); 
     }
 
-    else if(
-        speedAdvantage &&
-        (computerHasTooManyInfantry || computerHasManyInfantry) &&
-        (playerHasTooManyInfantry || playerHasManyInfantry)
-    ) {
+    else if(speedAdvantage && computerHasLotsOfInfantry && playerHasLotsOfInfantry) {
         offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
             interval: [90, 100],
             probability: 90
         }); 
     }
 
-    else if(
-        (computerHasTooManyInfantry || computerHasManyInfantry) &&
-        (playerHasTooManyInfantry || playerHasManyInfantry)
+    else if(computerHasLotsOfInfantry && playerHasLotsOfInfantry
     ) {
         offensivePoints = getRandomValueInRangeWithProbability(70, 100, {
             interval: [90, 100],
@@ -136,22 +118,14 @@ export const caseAdvantage = (): number => {
     }
 
     // computer has many skirmishers
-    else if(
-        (computerHasTooManySkirmishers || computerHasManySkirmishers) &&
-        (playerHasTooManySpearmen || playerHasManySkirmishers) &&
-        (playerHasNoCavalry)
-    ) {
+    else if(computerHasLotsOfSkirmishers && playerHasLotsOfSpearmen && playerHasNoCavalry) {
         offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
             interval: [90, 100],
             probability: 90
         });
     }
 
-    // computer lots of skirmishers, player lots of cavalry
-    else if(
-        (computerHasTooManySkirmishers || computerHasManySkirmishers) &&
-        (playerHasTooManyCavalry || playerHasManyCavalry) 
-    ) {
+    else if(computerHasLotsOfSkirmishers && playerHasLotsOfCavalry) {
         offensivePoints = getRandomValueInRangeWithProbability(10, 60, {
             interval: [30, 50],
             probability: 70
