@@ -1,5 +1,5 @@
 import {terrainCtx} from '../../config/context';
-import {loadImage} from '../../utils';
+import {loadImage} from '..';
 import {WIDTH, HEIGHT} from '../../config';
 
 export const drawObstacle = (x:number, y:number, width:number, height:number, src:string) => {

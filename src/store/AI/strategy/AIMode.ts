@@ -8,6 +8,7 @@ export default class AIMode {
     activeRange: MinMax = new MinMax(60, 74)
     aggresiveRange: MinMax = new MinMax(75, 89);
     offensiveRange: MinMax = new MinMax(90, 100);
+    randomRange: MinMax = new MinMax(0, 100);
 
     setDefensive() {
         this.offensivePoints = getRandomValueInRangeWithProbability(0, 20, {
@@ -48,6 +49,13 @@ export default class AIMode {
         this.offensivePoints = getRandomValueInRangeWithProbability(90, 100, {
             interval: [95, 100],
             probability: 70
+        });
+    }
+
+    setRandom() {
+        this.offensivePoints = getRandomValueInRangeWithProbability(0, 100, {
+            interval: [30, 60],
+            probability: 90
         });
     }
 

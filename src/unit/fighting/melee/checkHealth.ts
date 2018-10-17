@@ -1,5 +1,5 @@
 import {units} from '../../../store/unit/units';
-import {removeUnit} from '../../../unit/remove';
+import {removeUnit} from '../../remove';
 import {
   spottedUnits,
   removeUnitFromSpottedUnits,

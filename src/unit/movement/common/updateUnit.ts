@@ -1,7 +1,7 @@
 import {
   spotEnemy,
   removeUnitFromEnemiesFightAgainst
-} from '../../index';
+} from '../..';
 import {
   getNodeFromMap
 } from '../../../utils';

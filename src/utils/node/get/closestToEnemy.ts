@@ -1,6 +1,6 @@
 import {
   getMinValueFromNodes
-} from '../../index';
+} from '../..';
 import {getClosestNodeToUnit} from '../../unit/actions';
 import {hidingEnemies} from '../../../store/AI/enemies/hidingEnemies';
 

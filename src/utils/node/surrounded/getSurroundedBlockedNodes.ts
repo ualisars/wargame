@@ -6,7 +6,7 @@ import {
 import {
   addNodeIntoArray,
   deleteUnitFromArray
-} from '../../index';
+} from '../..';
 import Unit from '../../../unit/types/Unit';
 /*
  get closest to unit nodes where alliedUnits are located

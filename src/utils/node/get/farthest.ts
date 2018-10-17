@@ -3,7 +3,7 @@ import {
   getMaxValueFromNodes,
   getNodeFromMap,
   getDistanceBetweenUnitAndNodeInGrids
-} from '../../index';
+} from '../..';
 
 export const getFarthestNodeFromEnemy = (enemy:any, nodes:any[]):any => {
   let farthestNode:any = nodes[0];

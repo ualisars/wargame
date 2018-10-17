@@ -12,7 +12,7 @@ import {
   createOneObstacle,
   createObstacles,
   addNeighbors
-} from '../index';
+} from '..';
 
 export let initialMap:any[] = [];
 

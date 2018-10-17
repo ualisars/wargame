@@ -3,7 +3,7 @@ import {
 } from '../../store/unit/units';
 import {removeUnitFromVisibleUnits} from '../../store/unit/visibleUnits';
 import {removeFromRevealedUnits} from '../../store/AI/enemies/revealedEnemies';
-import Unit from '../../unit/types/Unit';
+import Unit from '../types/Unit';
 
 export const removeUnit = (unit:Unit) => {
   if(unit) {

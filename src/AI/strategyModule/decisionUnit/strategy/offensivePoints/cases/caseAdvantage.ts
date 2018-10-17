@@ -1,7 +1,4 @@
-import {
-    getRandomValueInRange,
-    getRandomValueInRangeWithProbability
-} from '../../../../../../utils/random';
+import {computerMode} from '../../../../../../store/AI/strategy/computerMode';
 import {  
     playerHasNoCavalry, 
     computerHasLotsOfCavalry,
@@ -27,36 +24,25 @@ import {
     playerHasLotsOfSpearmen
 } from '../../../../../../store/AI/translators/typesTranslators/spearmenTranslatorStore/spearmenTranslator';
 
-export const caseAdvantage = (): number => {
-    let offensivePoints: number = 0;
-
+export const caseAdvantage = () => {
     // computer has many cavalry
     if(computerHasLotsOfCavalry && playerHasSkirmishers && playerHasNoSpearmen) {
-        offensivePoints = getRandomValueInRange(95, 100);
+        computerMode.setOffensive();
     }
 
     else if(computerHasLotsOfCavalry && playerHasLotsOfSkirmishers && playerHasSpearmen) {
-        offensivePoints = getRandomValueInRangeWithProbability(60, 90, {
-            interval: [70, 80],
-            probability: 80
-        });
+        computerMode.setActive();
     }
 
     else if(
         computerHasLotsOfCavalry && playerHasLotsOfCavalry &&
         (computerHasSpearmen || computerHasNoSkirmishers) 
     ) {
-        offensivePoints = getRandomValueInRangeWithProbability(70, 100, {
-            interval: [90, 100],
-            probability: 80
-        });
+        computerMode.setAggressive();
     }
 
     else if(computerHasLotsOfCavalry && playerHasLotsOfCavalry && computerHasSkirmishers) {
-        offensivePoints = getRandomValueInRangeWithProbability(50, 80, {
-            interval: [60, 70],
-            probability: 70
-        });
+       computerMode.setActive();
     }
 
     // computer has many infantry
@@ -65,57 +51,31 @@ export const caseAdvantage = (): number => {
         computerHasLotsOfInfantry && playerHasLotsOfInfantry &&
         computerHasSkirmishers && playerHasCavalry
     ) {
-        offensivePoints = getRandomValueInRangeWithProbability(60, 90, {
-            interval: [60, 80],
-            probability: 80
-        });
+        computerMode.setNeutral();
     }
 
     else if(computerHasLotsOfInfantry && playerHasLotsOfInfantry && playerHasCavalry) {
-        offensivePoints = getRandomValueInRangeWithProbability(70, 95, {
-            interval: [80, 90],
-            probability: 70
-        }); 
+       computerMode.setActive();
     }
 
     else if(speedAdvantage && computerHasLotsOfInfantry && playerHasLotsOfInfantry) {
-        offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
-            interval: [90, 100],
-            probability: 90
-        }); 
+       computerMode.setOffensive();
     }
 
-    else if(computerHasLotsOfInfantry && playerHasLotsOfInfantry
-    ) {
-        offensivePoints = getRandomValueInRangeWithProbability(70, 100, {
-            interval: [90, 100],
-            probability: 80
-        });
+    else if(computerHasLotsOfInfantry && playerHasLotsOfInfantry) {
+       computerMode.setAggressive();
     }
 
     // computer has many skirmishers
     else if(computerHasLotsOfSkirmishers && playerHasLotsOfSpearmen && playerHasNoCavalry) {
-        offensivePoints = getRandomValueInRangeWithProbability(80, 100, {
-            interval: [90, 100],
-            probability: 90
-        });
+       computerMode.setOffensive();
     }
 
     else if(computerHasLotsOfSkirmishers && playerHasLotsOfCavalry) {
-        offensivePoints = getRandomValueInRangeWithProbability(10, 60, {
-            interval: [30, 50],
-            probability: 70
-        });
+        computerMode.setDefensive();
     }
 
     else {
-        offensivePoints = getRandomValueInRange(40, 80);
+        computerMode.setRandom();
     }
-
-    // validator
-    if(offensivePoints < 0 || offensivePoints > 100) {
-        throw new Error('incorrect offensivePoints value');
-    }
-
-    return offensivePoints;
 }

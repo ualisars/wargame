@@ -1,5 +1,5 @@
 import {backgroundCtx} from '../../config/context';
-import {loadImage} from '../../utils';
+import {loadImage} from '..';
 import {WIDTH, HEIGHT} from '../../config';
 
 export const drawBackground = (src:string) => {

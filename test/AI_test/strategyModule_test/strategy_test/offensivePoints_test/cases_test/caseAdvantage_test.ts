@@ -1,15 +1,11 @@
 import {expect} from 'chai';
-import {
-    caseAdvantage
-} from '../../../../../../src/AI/strategyModule/decisionUnit/strategy/offensivePoints/cases';
 import {translateAll} from '../../../../../../src/AI/processModule/translators';
+import {caseAdvantage} from '../../../../../../src/AI/strategyModule/decisionUnit/strategy/offensivePoints/cases/caseAdvantage';
 import {createUnit} from '../../../../../../src/unit/create';
 import {removeAllUnits} from '../../../../../../src/store/unit/units';
+import {computerMode} from '../../../../../../src/store/AI/strategy/computerMode';
 import {removeUnit} from '../../../../../../src/unit/remove';
-import {
-    addToRevealedUnits,
-    revealedUnits
-} from '../../../../../../src/store/AI/enemies/revealedEnemies';
+import {addToRevealedUnits} from '../../../../../../src/store/AI/enemies/revealedEnemies';
 import Unit from '../../../../../../src/unit/types/Unit';
 
 describe('strategy OffensivePoints test', () => {
@@ -52,7 +48,6 @@ describe('strategy OffensivePoints test', () => {
             addToRevealedUnits(playerUnit6);
 
             translateAll();
-
         });
 
         after(() => {
@@ -76,24 +71,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 95 to 100', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(95);
-            expect(offensivePoints2).to.be.least(95);
-            expect(offensivePoints3).to.be.least(95);
-            expect(offensivePoints4).to.be.least(95);
-            expect(offensivePoints5).to.be.least(95);
-
-            expect(offensivePoints1).to.be.at.most(100);
-            expect(offensivePoints2).to.be.at.most(100);
-            expect(offensivePoints3).to.be.at.most(100);
-            expect(offensivePoints4).to.be.at.most(100);
-            expect(offensivePoints5).to.be.at.most(100);
+        it('offensivePoints should be in offensive range', () => {
+            caseAdvantage();
+            let range = computerMode.offensiveRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -135,7 +118,6 @@ describe('strategy OffensivePoints test', () => {
             addToRevealedUnits(playerUnit6);
 
             translateAll();
-
         });
 
         after(() => {
@@ -159,28 +141,16 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 60 to 90', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(60);
-            expect(offensivePoints2).to.be.least(60);
-            expect(offensivePoints3).to.be.least(60);
-            expect(offensivePoints4).to.be.least(60);
-            expect(offensivePoints5).to.be.least(60);
-
-            expect(offensivePoints1).to.be.at.most(90);
-            expect(offensivePoints2).to.be.at.most(90);
-            expect(offensivePoints3).to.be.at.most(90);
-            expect(offensivePoints4).to.be.at.most(90);
-            expect(offensivePoints5).to.be.at.most(90);
+        it('offensivePoints should be in active range', () => {
+            caseAdvantage();
+            let range = computerMode.activeRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
-    describe('caseAdvantage (computerLotsOfCavalry and noArchers, playerLotsOfCavalry)', () => {
+    describe('caseAdvantage (computerLotsOfCavalry, spearmen and noArchers, playerLotsOfCavalry)', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
@@ -242,28 +212,16 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 70 to 100', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(70);
-            expect(offensivePoints2).to.be.least(70);
-            expect(offensivePoints3).to.be.least(70);
-            expect(offensivePoints4).to.be.least(70);
-            expect(offensivePoints5).to.be.least(70);
-
-            expect(offensivePoints1).to.be.at.most(100);
-            expect(offensivePoints2).to.be.at.most(100);
-            expect(offensivePoints3).to.be.at.most(100);
-            expect(offensivePoints4).to.be.at.most(100);
-            expect(offensivePoints5).to.be.at.most(100);
+        it('offensivePoints should be in aggressive range', () => {
+            caseAdvantage();
+            let range = computerMode.aggresiveRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
-    describe('caseAdvantage (computerLotsOfCavalry and noArchers, playerLotsOfCavalry)', () => {
+    describe('caseAdvantage (computerLotsOfCavalry and no archers, playerLotsOfCavalry)', () => {
 
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
@@ -325,24 +283,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 70 to 100', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(70);
-            expect(offensivePoints2).to.be.least(70);
-            expect(offensivePoints3).to.be.least(70);
-            expect(offensivePoints4).to.be.least(70);
-            expect(offensivePoints5).to.be.least(70);
-
-            expect(offensivePoints1).to.be.at.most(100);
-            expect(offensivePoints2).to.be.at.most(100);
-            expect(offensivePoints3).to.be.at.most(100);
-            expect(offensivePoints4).to.be.at.most(100);
-            expect(offensivePoints5).to.be.at.most(100);
+        it('offensivePoints should be aggressive range', () => {
+            caseAdvantage();
+            let range = computerMode.aggresiveRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -408,24 +354,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 50 to 80', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(50);
-            expect(offensivePoints2).to.be.least(50);
-            expect(offensivePoints3).to.be.least(50);
-            expect(offensivePoints4).to.be.least(50);
-            expect(offensivePoints5).to.be.least(50);
-
-            expect(offensivePoints1).to.be.at.most(80);
-            expect(offensivePoints2).to.be.at.most(80);
-            expect(offensivePoints3).to.be.at.most(80);
-            expect(offensivePoints4).to.be.at.most(80);
-            expect(offensivePoints5).to.be.at.most(80);
+        it('offensivePoints should be in active range', () => {
+            caseAdvantage();
+            let range = computerMode.activeRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -491,24 +425,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 80 to 100', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(80);
-            expect(offensivePoints2).to.be.least(80);
-            expect(offensivePoints3).to.be.least(80);
-            expect(offensivePoints4).to.be.least(80);
-            expect(offensivePoints5).to.be.least(80);
-
-            expect(offensivePoints1).to.be.at.most(100);
-            expect(offensivePoints2).to.be.at.most(100);
-            expect(offensivePoints3).to.be.at.most(100);
-            expect(offensivePoints4).to.be.at.most(100);
-            expect(offensivePoints5).to.be.at.most(100);
+        it('offensivePoints should be in offensive range', () => {
+            caseAdvantage();
+            let range = computerMode.offensiveRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -574,24 +496,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 60 to 90', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(60);
-            expect(offensivePoints2).to.be.least(60);
-            expect(offensivePoints3).to.be.least(60);
-            expect(offensivePoints4).to.be.least(60);
-            expect(offensivePoints5).to.be.least(60);
-
-            expect(offensivePoints1).to.be.at.most(90);
-            expect(offensivePoints2).to.be.at.most(90);
-            expect(offensivePoints3).to.be.at.most(90);
-            expect(offensivePoints4).to.be.at.most(90);
-            expect(offensivePoints5).to.be.at.most(90);
+        it('offensivePoints should be in neutral mode', () => {
+            caseAdvantage();
+            let range = computerMode.neutralRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -657,24 +567,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 70 to 95', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(70);
-            expect(offensivePoints2).to.be.least(70);
-            expect(offensivePoints3).to.be.least(70);
-            expect(offensivePoints4).to.be.least(70);
-            expect(offensivePoints5).to.be.least(70);
-
-            expect(offensivePoints1).to.be.at.most(95);
-            expect(offensivePoints2).to.be.at.most(95);
-            expect(offensivePoints3).to.be.at.most(95);
-            expect(offensivePoints4).to.be.at.most(95);
-            expect(offensivePoints5).to.be.at.most(95);
+        it('offensivePoints should be in active range', () => {
+            caseAdvantage();
+            let range = computerMode.activeRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -740,24 +638,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 70 to 100', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(70);
-            expect(offensivePoints2).to.be.least(70);
-            expect(offensivePoints3).to.be.least(70);
-            expect(offensivePoints4).to.be.least(70);
-            expect(offensivePoints5).to.be.least(70);
-
-            expect(offensivePoints1).to.be.at.most(100);
-            expect(offensivePoints2).to.be.at.most(100);
-            expect(offensivePoints3).to.be.at.most(100);
-            expect(offensivePoints4).to.be.at.most(100);
-            expect(offensivePoints5).to.be.at.most(100);
+        it('offensivePoints should be in aggressive range', () => {
+            caseAdvantage();
+            let range = computerMode.aggresiveRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -780,7 +666,7 @@ describe('strategy OffensivePoints test', () => {
             computerUnit4 = createUnit('Archers', 480, 80, 'computer');
             computerUnit5 = createUnit('Archers', 480, 160, 'computer');
             computerUnit6 = createUnit('Archers', 0, 320, 'computer');
-            computerUnit7 = createUnit('Hoplites', 600, 240, 'computer');
+            computerUnit7 = createUnit('Archers', 600, 240, 'computer');
             computerUnit8 = createUnit('Hoplites', 920, 240, 'computer');
             computerUnit9 = createUnit('Hoplites', 920, 160, 'computer');
 
@@ -823,24 +709,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 80 to 100', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(80);
-            expect(offensivePoints2).to.be.least(80);
-            expect(offensivePoints3).to.be.least(80);
-            expect(offensivePoints4).to.be.least(80);
-            expect(offensivePoints5).to.be.least(80);
-
-            expect(offensivePoints1).to.be.at.most(100);
-            expect(offensivePoints2).to.be.at.most(100);
-            expect(offensivePoints3).to.be.at.most(100);
-            expect(offensivePoints4).to.be.at.most(100);
-            expect(offensivePoints5).to.be.at.most(100);
+        it('offensivePoints should be in offensive range', () => {
+            caseAdvantage();
+            let range = computerMode.offensiveRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -906,24 +780,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 10 to 60', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(10);
-            expect(offensivePoints2).to.be.least(10);
-            expect(offensivePoints3).to.be.least(10);
-            expect(offensivePoints4).to.be.least(10);
-            expect(offensivePoints5).to.be.least(10);
-
-            expect(offensivePoints1).to.be.at.most(60);
-            expect(offensivePoints2).to.be.at.most(60);
-            expect(offensivePoints3).to.be.at.most(60);
-            expect(offensivePoints4).to.be.at.most(60);
-            expect(offensivePoints5).to.be.at.most(60);
+        it('offensivePoints should be in defensive range', () => {
+            caseAdvantage();
+            let range = computerMode.defensiveRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 
@@ -989,24 +851,12 @@ describe('strategy OffensivePoints test', () => {
 
         });
 
-        it('offensivePoints should be in range from 40 to 80', () => {
-            let offensivePoints1: number = caseAdvantage();
-            let offensivePoints2: number = caseAdvantage();
-            let offensivePoints3: number = caseAdvantage();
-            let offensivePoints4: number = caseAdvantage();
-            let offensivePoints5: number = caseAdvantage();
-
-            expect(offensivePoints1).to.be.least(40);
-            expect(offensivePoints2).to.be.least(40);
-            expect(offensivePoints3).to.be.least(40);
-            expect(offensivePoints4).to.be.least(40);
-            expect(offensivePoints5).to.be.least(40);
-
-            expect(offensivePoints1).to.be.at.most(80);
-            expect(offensivePoints2).to.be.at.most(80);
-            expect(offensivePoints3).to.be.at.most(80);
-            expect(offensivePoints4).to.be.at.most(80);
-            expect(offensivePoints5).to.be.at.most(80);
+        it('offensivePoints should be in random range', () => {
+            caseAdvantage();
+            let range = computerMode.randomRange;
+            let offensivePoints: number = computerMode.getOffensivePoints();
+            expect(offensivePoints).to.be.least(range.min);
+            expect(offensivePoints).to.be.at.most(range.max);
         });
     });
 }); 

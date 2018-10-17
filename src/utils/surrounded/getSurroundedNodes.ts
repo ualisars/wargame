@@ -1,5 +1,5 @@
 import {gridSize} from '../../config';
-import {getNodeFromMap} from '../index';
+import {getNodeFromMap} from '..';
 import Unit from '../../unit/types/Unit';
 /*
   return nodes that surround unit in some distance

@@ -1,4 +1,4 @@
-import {isObjectEmpty} from '../../index';
+import {isObjectEmpty} from '../..';
 import Unit from '../../../unit/types/Unit';
 /*
   Analyze chance to get out from the combat

@@ -1,4 +1,4 @@
-import {WIDTH, HEIGHT} from '../index';
+import {WIDTH, HEIGHT} from '..';
 
 export const dragAndDropCanvas:any = document.getElementById('dragAndDrop');
 

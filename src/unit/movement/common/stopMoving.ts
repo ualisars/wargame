@@ -1,4 +1,4 @@
-import Unit from '../../../unit/types/Unit';
+import Unit from '../../types/Unit';
 
 export const stopMoving = (unit:Unit, currentNode:any) => {
   unit.setIsMovingToFalse();

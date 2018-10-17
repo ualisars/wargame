@@ -83,4 +83,14 @@ describe('Offensive Points Class test', () => {
         expect(points).to.be.at.most(maxRange);
         done();
     });
+
+    it("offensive points in random range", (done) => {
+        mode.setRandom();
+        const points = mode.getOffensivePoints();
+        const minRange = mode.randomRange.min; 
+        const maxRange = mode.randomRange.max;
+        expect(points).to.be.at.least(minRange);
+        expect(points).to.be.at.most(maxRange);
+        done();
+    });
 });

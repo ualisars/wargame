@@ -1,4 +1,4 @@
-import {drawUnit} from '../../index';
+import {drawUnit} from '../..';
 import {gridSize} from '../../../config';
 import {ctx} from '../../../config/context';
 import Unit from '../../types/Unit';
