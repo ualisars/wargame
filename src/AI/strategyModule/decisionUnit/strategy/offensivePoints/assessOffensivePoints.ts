@@ -1,4 +1,3 @@
-import {strategy} from '../../../../../store/AI/strategy/computerStrategy';
 import {
     calculateTotalRatio
 } from '../../../../processModule/ratio';
@@ -22,7 +21,7 @@ export const assessOffensivePoints = (): number => {
     }
 
     else if(computerAdvantage) {
-        offensivePoints = caseAdvantage();
+        caseAdvantage();
     }
 
     else if(forceEquality) {
