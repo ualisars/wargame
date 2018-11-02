@@ -1,11 +1,3 @@
-/**
-  * @file
-  * Provides frequently used functions
-  * required for AI
-  *
-  *
-*/
-
 import {
   computerUnits,
   playerUnits
@@ -17,15 +9,8 @@ import {
 import {getDistanceBetweenUnitAndNodeInGrids} from '../../node';
 import Unit from '../../../unit/types/Unit';
 
-/*
-  get closest computer's unit to specific node
-*/
-export const getClosestUnitToNode = (node:any):Unit => {
-  /**
-    * The getClosestUnitToNode definition.
-    *
-    * @param {any} node - Node from which distance will be calculated.
-    */
+
+export const getClosestUnitToNode = (node:any): Unit => {
   let closestUnit:any = computerUnits[0];
   for(let i = 1; i < computerUnits.length; ++i) {
     let closestUnitDistance = getDistanceBetweenUnitAndNodeInGrids(closestUnit, node);
@@ -39,7 +24,7 @@ export const getClosestUnitToNode = (node:any):Unit => {
 
 export const getClosestUnitToOtherUnit = (unit:Unit, units:Unit[] = computerUnits):any => {
   let updatedComputersUnits = Object.assign([], deleteUnitFromArray(unit, units));
-  if(updatedComputersUnits.length === 0) { // only one unit remained
+  if(updatedComputersUnits.length === 0) {
     return unit;
   }
   let closestUnit:any = updatedComputersUnits[0];
@@ -55,7 +40,7 @@ export const getClosestUnitToOtherUnit = (unit:Unit, units:Unit[] = computerUnit
 
 export const getBestUnitByProperty = (property:string, exclusion:any[] = []):any => {
   let updatedComputersUnits = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -74,7 +59,7 @@ export const getBestUnitByProperty = (property:string, exclusion:any[] = []):any
 
 export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):any => {
   let updatedComputersUnits = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -93,7 +78,7 @@ export const getWorstUnitByProperty = (property:string, exclusion:any[] = []):an
 
 export const getBestEnemyByProperty = (property:string, exclusion:any[] = []):any => {
   let updatedPlayerUnits = Object.assign([], playerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedPlayerUnits = deleteUnitFromArray(unit, updatedPlayerUnits);
     }
@@ -112,7 +97,7 @@ export const getBestEnemyByProperty = (property:string, exclusion:any[] = []):an
 
 export const getWorstEnemyByProperty = (property:string, exclusion:Unit[] = []):Unit => {
   let updatedPlayerUnits = Object.assign([], playerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedPlayerUnits = deleteUnitFromArray(unit, updatedPlayerUnits);
     }
@@ -131,7 +116,7 @@ export const getWorstEnemyByProperty = (property:string, exclusion:Unit[] = []):
 
 export const getNotFightingUnits = (exclusion:Unit[] = []):Unit[] => {
   let updatedComputerUnits:Unit[] = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedComputerUnits = deleteUnitFromArray(unit, updatedComputerUnits);
     }
@@ -150,7 +135,7 @@ export const getNotFightingUnits = (exclusion:Unit[] = []):Unit[] => {
 
 export const getClosestEnemyToUnit = (unit:Unit) => {
   let updatedPlayerUnits = Object.assign([], deleteUnitFromArray(unit, playerUnits));
-  if(updatedPlayerUnits.length === 0) { // only one unit remained
+  if(updatedPlayerUnits.length === 0) {
     return null;
   }
   let closestUnit:any = updatedPlayerUnits[0];
@@ -166,7 +151,7 @@ export const getClosestEnemyToUnit = (unit:Unit) => {
 
 export const getFreeUnits = (exclusion:Unit[] = []):Unit[] => {
   let updatedComputersUnits:Unit[] = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -185,7 +170,7 @@ export const getFreeUnits = (exclusion:Unit[] = []):Unit[] => {
 
 export const getUnitsByTask = (task:string, exclusion:Unit[] = []):Unit[] => {
   let updatedComputersUnits:Unit[] = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -204,7 +189,7 @@ export const getUnitsByTask = (task:string, exclusion:Unit[] = []):Unit[] => {
 
 export const getUnitsByPropertyValue = (property:string, value:any, exclusion:Unit[]=[]):Unit[] => {
   let updatedComputersUnits = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -223,7 +208,7 @@ export const getUnitsByPropertyValue = (property:string, value:any, exclusion:Un
 
 export const getUnitsWhereValue = (property:string, operator:string, value:any, exclusion:Unit[] = []):Unit[] => {
   let updatedComputersUnits = Object.assign([], computerUnits);
-  if(exclusion.length !== 0) { // delete exceptional units from searching
+  if(exclusion.length !== 0) {
     for(let unit of exclusion) {
       updatedComputersUnits = deleteUnitFromArray(unit, updatedComputersUnits);
     }
@@ -264,9 +249,28 @@ export const getUnitsWhereValue = (property:string, operator:string, value:any, 
   return units;
 }
 
-/*
-  return total number of scouts
-*/
+export const getDangerousUnits = (unit: Unit): Unit[] => {
+  let enemies: Unit[] = [];
+  let dangerousEnemies: Unit[] = [];
+  if(unit.controlBy === 'computer') {
+    enemies = Object.assign([], playerUnits);
+  } 
+  else if(unit.controlBy === 'player') {
+    enemies = Object.assign([], computerUnits);
+  }
+
+  for(let enemy of enemies) {
+    for(let dangerousEnemy of unit.vulnerableAgainst) {
+      if(enemy.name == dangerousEnemy) {
+        dangerousEnemies.push(enemy);
+        break;
+      }
+    }
+  }
+  
+  return dangerousEnemies;
+}
+
 export const getScoutsNumber = ():number => {
   for(let unit of computerUnits) {
       let scouts:Unit[] = getUnitsByTask('exploration');

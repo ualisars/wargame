@@ -19,6 +19,7 @@ import {
 import {removeAllUnits} from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
+import { getDangerousUnits } from '../../../../src/utils/unit/AI/AI_actions';
 
 
 describe('unitUtils: AI test', () => {
@@ -795,6 +796,56 @@ describe('unitUtils: AI test', () => {
     it('number of scouts should be equal to 5', () => {
       let scoutsNumber:number = getScoutsNumber();
       assert.equal(scoutsNumber, 5);
+    });
+  });
+
+  describe("getDangerousUnits test", () => {
+    let unit1: Unit, unit2: Unit, unit3: Unit, unit4: Unit;
+    let enemy1: Unit, enemy2: Unit, enemy3: Unit, enemy4: Unit, enemy5: Unit;
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('LightCavalry', 400, 280, 'computer');
+      unit2 = createUnit('Archers', 560, 240, 'computer');
+      unit3 = createUnit('Hoplites', 920, 80, 'computer');
+      unit4 = createUnit('HeavyInfantry', 960, 120, 'computer');
+
+      enemy1 = createUnit('HeavyCavalry', 160, 480, 'player');
+      enemy2 = createUnit('Archers', 1200, 480, 'player');
+      enemy3 = createUnit('Archers', 600, 40, 'player');
+      enemy4 = createUnit('LightInfantry', 1160, 40, 'player');
+      enemy5 = createUnit('Scouts', 560, 520, 'player');
+    });
+
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+      removeUnit(enemy5);
+    });
+
+    it("LightCavalry has no dangerous units", () => {
+      const dangerousUnits = getDangerousUnits(unit1);
+      assert.equal(dangerousUnits.length, 0);
+    }); 
+
+    it("Archers has 1 dangerous unit", () => {
+      const dangerousUnits = getDangerousUnits(unit2);
+      assert.equal(dangerousUnits.length, 1);
+    }); 
+
+    it("Hoplites has 2 dangerous unit", () => {
+      const dangerousUnits = getDangerousUnits(unit3);
+      assert.equal(dangerousUnits.length, 2);
+    }); 
+
+    it("HeavyInfantry has no dangerous unit", () => {
+      const dangerousUnits = getDangerousUnits(unit4);
+      assert.equal(dangerousUnits.length, 0);
     });
   });
 });
