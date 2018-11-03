@@ -6,7 +6,7 @@ import {
   getDistanceBetweenTwoUnitsInGrids,
   deleteUnitFromArray
 } from '../general';
-import {getDistanceBetweenUnitAndNodeInGrids} from '../../node';
+import { getDistanceBetweenUnitAndNodeInGrids } from '../../node';
 import Unit from '../../../unit/types/Unit';
 
 
@@ -269,6 +269,17 @@ export const getDangerousUnits = (unit: Unit): Unit[] => {
   }
   
   return dangerousEnemies;
+}
+
+export const containsDangerousUnits = (unit: Unit, units: Unit[]): boolean => {
+  for(let enemy of units) {
+    for(let dangerousEnemy of unit.vulnerableAgainst) {
+      if(enemy.name == dangerousEnemy) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 export const getScoutsNumber = ():number => {

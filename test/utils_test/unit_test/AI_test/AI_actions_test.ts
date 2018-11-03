@@ -1,6 +1,5 @@
-import {assert} from 'chai';
-
-import {createUnit} from '../../../../src/unit/create';
+import { assert } from 'chai';
+import { createUnit } from '../../../../src/unit/create';
 import {
   getBestEnemyByProperty,
   getBestUnitByProperty,
@@ -16,14 +15,14 @@ import {
   getWorstEnemyByProperty,
   getWorstUnitByProperty
 } from '../../../../src/utils/unit/AI';
-import {removeAllUnits} from '../../../../src/store/unit/units';
-import {removeUnit} from '../../../../src/unit/remove';
+import { removeAllUnits } from '../../../../src/store/unit/units';
+import { removeUnit } from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
-import { getDangerousUnits } from '../../../../src/utils/unit/AI/AI_actions';
+import { getDangerousUnits, containsDangerousUnits } from '../../../../src/utils/unit/AI/AI_actions';
 
 
 describe('unitUtils: AI test', () => {
-
+  
   describe('getClosestUnitToNode test', () => {
 
     let unit1:Unit, unit2:Unit, unit3:Unit;
@@ -846,6 +845,49 @@ describe('unitUtils: AI test', () => {
     it("HeavyInfantry has no dangerous unit", () => {
       const dangerousUnits = getDangerousUnits(unit4);
       assert.equal(dangerousUnits.length, 0);
+    });
+  });
+
+  describe('containsDangerousUnits test', () => {
+    let unit1: Unit, unit2: Unit, unit3: Unit;
+    let enemy1: Unit, enemy2: Unit, enemy3: Unit, enemy4: Unit, enemy5: Unit;
+    let enemies: Unit[];
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('LightCavalry', 400, 280, 'computer');
+      unit2 = createUnit('Archers', 560, 240, 'computer');
+      unit3 = createUnit('HeavyInfantry', 920, 80, 'computer');
+
+      enemy1 = createUnit('HeavyCavalry', 160, 480, 'player');
+      enemy2 = createUnit('Archers', 1200, 480, 'player');
+      enemy3 = createUnit('Archers', 600, 40, 'player');
+      enemy4 = createUnit('LightInfantry', 1160, 40, 'player');
+      enemy5 = createUnit('Scouts', 560, 520, 'player');
+      enemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
+    });
+
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+      removeUnit(enemy5);
+    });
+
+    it("unit1 does not have any dangerous units", () => {
+      const isDangerousUnits = containsDangerousUnits(unit1, enemies);
+      assert.equal(isDangerousUnits, false);
+    });
+    it("unit2 has any dangerous units", () => {
+      const isDangerousUnits = containsDangerousUnits(unit2, enemies);
+      assert.equal(isDangerousUnits, true);
+    });
+    it("unit3 does not have any dangerous units", () => {
+      const isDangerousUnits = containsDangerousUnits(unit3, enemies);
+      assert.equal(isDangerousUnits, false);
     });
   });
 });
