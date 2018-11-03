@@ -10,8 +10,8 @@ import {
   export const getSurroundedUnits = (
       unit: Unit, 
       units: Unit[], 
-      range: number = 1, 
-      countOneself: false
+      range: number = 3, 
+      countOneself: boolean = false
     ): Unit[] => {
     let surroundedUnits:Unit[] = [];
     let updatedUnits:Unit[] = Object.assign([], units);
@@ -22,7 +22,7 @@ import {
     
     let nodes = getSurroundedNodes(unit, range);
     for(let node of nodes) {
-      for(let currentUnit of units) {
+      for(let currentUnit of updatedUnits) {
         let currentUnitNode = getNodeFromMap(currentUnit.x, currentUnit.y);
         if(node.x === currentUnitNode.x && node.y === currentUnitNode.y) {
           surroundedUnits.push(currentUnit);
