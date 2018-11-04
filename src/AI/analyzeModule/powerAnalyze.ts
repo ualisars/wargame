@@ -1,17 +1,15 @@
-import {
-  initialComputerPower,
-  initialPlayerPower,
-} from '../../store';
-import {playerPower} from '../../store/AI/power/playerPower';
-import {computerPower} from '../../store/AI/power/computerPower';
+import { initialComputerPower } from '../../store/AI/power/initialComputerPower';
+import { initialPlayerPower } from '../../store/AI/power/initialPlayerPower';
+import { playerPower } from '../../store/AI/power/playerPower';
+import { computerPower } from '../../store/AI/power/computerPower';
 import {
   playerUnits,
   computerUnits
 } from '../../store/unit/units';
-import {revealedUnits} from '../../store/AI/enemies/revealedEnemies';
-import {visibleForComputerUnits} from '../../store/unit/visibleUnits';
-import {visiblePlayerUnitsPower} from '../../store/AI/power/visiblePlayerUnitsPower';
-import {revealedUnitsPower} from '../../store/AI/power/revealedUnitsPower';
+import { revealedUnits } from '../../store/AI/enemies/revealedEnemies';
+import { visibleForComputerUnits } from '../../store/unit/visibleUnits';
+import { visiblePlayerUnitsPower } from '../../store/AI/power/visiblePlayerUnitsPower';
+import { revealedUnitsPower } from '../../store/AI/power/revealedUnitsPower';
 
 export const calculateTotalComputerPower = () => {
   computerPower.resetAllProperties();

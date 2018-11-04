@@ -59,7 +59,6 @@ describe('AI unitAnalyze module test', () => {
 
         it('computer should have 2 cavalry, 1 skirmisher, 1 light infantry, 1 spearmen and 3 infantry', () => {
             let computerTypes:any = calculateUnitTypes();
-
             assert.equal(computerTypes.infantry, 3);
             assert.equal(computerTypes.spearmen, 1);
             assert.equal(computerTypes.lightInfantry, 1);

@@ -12,15 +12,8 @@ import {
   unitId
 } from './unitId';
 import {
-  computerUnits,
-  playerUnits,
-  units
-} from './units';
-import {
   addUnitIntoVisibleUnits,
-  removeUnitFromVisibleUnits,
-  visibleForComputerUnits,
-  visibleForPlayerUnits
+  removeUnitFromVisibleUnits
 } from './visibleUnits';
 
 export {
@@ -31,11 +24,6 @@ export {
   removeUnitFromSpottedUnits,
   incUnitId,
   unitId,
-  computerUnits,
-  playerUnits,
-  units,
   addUnitIntoVisibleUnits,
-  removeUnitFromVisibleUnits,
-  visibleForComputerUnits,
-  visibleForPlayerUnits
+  removeUnitFromVisibleUnits
 }

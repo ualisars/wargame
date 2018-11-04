@@ -78,6 +78,10 @@ describe("surroundedUtils test", () => {
             let surroundedAllies = getSurroundedUnits(computerUnit1, computerUnits, 2);
             assert.equal(surroundedAllies.length, 2);
         });
+        it("computerUnit1 should have 2 surrounded allies with 5 grids", () => {
+            let surroundedAllies = getSurroundedUnits(computerUnit1, computerUnits, 5);
+            assert.equal(surroundedAllies.length, 2);
+        });
         it("computerUnit1 should have 3 surrounded allies including oneself", () => {
             let surroundedAllies = getSurroundedUnits(computerUnit1, computerUnits, 3, true);
             assert.equal(surroundedAllies.length, 3);
