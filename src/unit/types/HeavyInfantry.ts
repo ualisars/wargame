@@ -21,7 +21,8 @@ class HeavyInfantry extends Unit {
   missileDamage: number = 0;
   charge: number = 4;
   discipline: number = 70;
-  weight: number = 60;
+  initialWeight: number = 60;
+  weight: number = this.initialWeight;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);

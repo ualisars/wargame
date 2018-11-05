@@ -19,7 +19,8 @@ class Scouts extends Unit {
   missileDamage: number = 0;
   charge: number = 1;
   discipline: number = 10;
-  weight: number = 20;
+  initialWeight: number = 20;
+  weight: number = this.initialWeight;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);

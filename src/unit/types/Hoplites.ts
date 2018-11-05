@@ -23,7 +23,8 @@ class Hoplites extends Unit {
   missileDamage: number = 0;
   charge: number = 1;
   discipline: number = 90;
-  weight: number = 70;
+  initialWeight: number = 70;
+  weight = this.initialWeight;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);

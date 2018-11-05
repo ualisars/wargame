@@ -25,7 +25,8 @@ class Peltasts extends Unit {
   shotsRemained:number = 5;
   charge: number = 1;
   discipline: number = 50;
-  weight: number = 25;
+  initialWeight: number = 25;
+  weight: number = this.initialWeight;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);

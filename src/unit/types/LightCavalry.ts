@@ -23,7 +23,8 @@ class LightCavalry extends Unit {
   missileDamage: number = 0;
   charge: number = 6;
   discipline: number = 40;
-  weight: number = 80;
+  initialWeight: number = 80;
+  weight: number = this.initialWeight;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);
