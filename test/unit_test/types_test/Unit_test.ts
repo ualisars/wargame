@@ -856,4 +856,39 @@ describe('Unit class test', () => {
     });
   });
 
+  describe("increaseWeightInPercentage test", () => {
+    let unit1:Unit, unit2:Unit;
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('Scouts', 480, 280, 'computer');
+      unit2 = createUnit('Hoplites', 640, 320, 'computer');
+      unit1.weight = 10;
+      unit2.weight = 80;
+    });
+
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+    });
+    it("unit1 weight should be 15 more", (done) => {
+      unit1.increaseWeightInPercentage(50);
+      assert.equal(unit1.weight, 15);
+      done();
+    });
+    it("unit1 weight should be 23", (done) => {
+      unit1.increaseWeightInPercentage(50);
+      assert.equal(unit1.weight, 23);
+      done();
+    });
+    it("unit2 weight should be 64", (done) => {
+      unit2.increaseWeightInPercentage(-20);
+      assert.equal(unit2.weight, 64);
+      done();
+    });
+    it("unit2 weight should be 64", (done) => {
+      unit2.increaseWeightInPercentage(0);
+      assert.equal(unit2.weight, 64);
+      done();
+    });
+  });
 });

@@ -186,7 +186,7 @@ class Unit {
   }
 
   increaseWeightInPercentage(percentage: number) {
-    let newWeight = this.weight + (this.weight * (percentage * 0.1));
+    let newWeight = this.weight + (this.weight * (percentage * 0.01));
     if(newWeight < 0) newWeight = 0;
     else if(newWeight > 100) newWeight = 100;
     this.weight = Math.round(newWeight);
