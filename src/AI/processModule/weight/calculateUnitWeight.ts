@@ -12,18 +12,29 @@ export const calculateUnitWeight = (unit:Unit) => {
     }
     const confortableUnits = calculateComfortableUnitsNumber(unit);
     const uncomfortableUnits = calculateUncomfortableUnitsNumber(unit);
-    if(enemies.length / confortableUnits >= 0.5) {
-        unit.increaseWeightInPercentage(50);
+    let percentage: number = 0;
+    if(enemies.length === 0) {
+        return;
     }
-    else if(enemies.length / confortableUnits >= 0.3) {
-        unit.increaseWeightInPercentage(30);
+    if(confortableUnits / enemies.length >= 0.5) {
+        percentage += 70;
     }
-    if(enemies.length / uncomfortableUnits >= 0.5) {
-        unit.increaseWeightInPercentage(-50);
+    else if(confortableUnits / enemies.length >= 0.3) {
+        percentage += 50;
     }
-    else if(enemies.length / uncomfortableUnits >= 0.3) {
-        unit.increaseWeightInPercentage(-20);
+    else if(confortableUnits / enemies.length >= 0.2) {
+        percentage += 40;
     }
+    if(uncomfortableUnits / enemies.length >= 0.5) {
+        percentage -= 40;
+    }
+    else if(uncomfortableUnits / enemies.length >= 0.3) {
+        percentage -= 30;
+    }
+    else if(uncomfortableUnits / enemies.length >= 0.2) {
+        percentage -= 20;
+    }
+    unit.increaseWeightInPercentage(percentage);
 }
 
 const calculateComfortableUnitsNumber = (unit:Unit): number => {
@@ -32,7 +43,7 @@ const calculateComfortableUnitsNumber = (unit:Unit): number => {
     if(unit.controlBy === 'computer') {
         enemies = Object.assign([], revealedUnits);
     } 
-    else if(unit.controlBy == 'player') {
+    else if(unit.controlBy === 'player') {
         enemies = Object.assign([], computerUnits);
     }
     for(let enemy of enemies) {
@@ -52,7 +63,7 @@ const calculateUncomfortableUnitsNumber = (unit: Unit): number => {
     if(unit.controlBy === 'computer') {
         enemies = Object.assign([], revealedUnits);
     } 
-    else if(unit.controlBy == 'player') {
+    else if(unit.controlBy === 'player') {
         enemies = Object.assign([], computerUnits);
     }
     for(let enemy of enemies) {

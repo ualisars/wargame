@@ -4,7 +4,7 @@ class Scouts extends Unit {
   // general
   description: string = `small and mobile band that inteded to descover the map`;
   cost: number = 20;
-  advantageOver: string[];
+  advantageOver: string[] = [];
   vulnerableAgainst: string[] = [];
   // Characteristics
   name: string = 'Scouts';

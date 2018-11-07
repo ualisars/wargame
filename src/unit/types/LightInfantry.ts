@@ -4,7 +4,7 @@ class LightInfantry extends Unit {
   // general
   description: string = 'Frontline soldiers trained for hand-to-hand combat with their enemies';
   cost: number = 30;
-  advantageOver: string[];
+  advantageOver: string[] = [];
   vulnerableAgainst: string[] = [];
   // Characteristics
   name: string = 'LightInfantry';

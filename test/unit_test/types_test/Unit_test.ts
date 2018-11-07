@@ -870,7 +870,7 @@ describe('Unit class test', () => {
       removeUnit(unit1);
       removeUnit(unit2);
     });
-    it("unit1 weight should be 15 more", (done) => {
+    it("unit1 weight should be 15", (done) => {
       unit1.increaseWeightInPercentage(50);
       assert.equal(unit1.weight, 15);
       done();
