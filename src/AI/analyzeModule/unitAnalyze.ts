@@ -1,45 +1,18 @@
-import {playerPower} from '../../store/AI/power/playerPower';
-import {computerPower} from '../../store/AI/power/computerPower';
+import { playerPower } from '../../store/AI/power/playerPower';
+import { computerPower } from '../../store/AI/power/computerPower';
 import {
   playerUnits,
   computerUnits
 } from '../../store/unit/units';
-import {revealedUnits} from '../../store/AI/enemies/revealedEnemies';
-import {gridSize} from '../../config';
-import {getNodeFromMap} from '../../utils';
-import {
-  calculateTotalPower
-} from './powerAnalyze';
+import { revealedUnits } from '../../store/AI/enemies/revealedEnemies';
 import {
   getSurroundedAllies,
   getSurroundedEnemies
 } from '../../utils/surrounded';
 import { Unit } from '../../unit';
 
-export const analyzeUnit = (unit:any):any => {
-  //console.log(calculateUnitsToBeware(unit));
-  //console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
-}
-
-export const analyzeUnits = ():any => {
-  for(let unit of computerUnits) {
-    //console.log('surrounded enemy power:', calculateSurroundedEnemyPower(unit));
-  }
-}
-
-export const assignProtector = (unit:any) => {
-
-}
-
-
-
-/*
-  if player's units are dangerous for
-  the unit, it will increase total number of
-  the unitsToBeware
-*/
-export const calculateUnitsToBeware = (unit:any):number => {
-  let unitsToBeware:number = 0;
+export const calculateUnitsToBeware = (unit: Unit):number => {
+  let unitsToBeware: number = 0;
   if(playerUnits.length !== 0) {
     for(let enemy of playerUnits) {
       if(unit.vulnerableAgainst.length !== 0) {
@@ -54,11 +27,7 @@ export const calculateUnitsToBeware = (unit:any):number => {
   return unitsToBeware;
 }
 
-/*
-  Calculate how many player's units and their power nearby
-  the computer units
-*/
-export const calculateSurroundedEnemyPower = (unit:any) => {
+export const calculateSurroundedEnemyPower = (unit: Unit) => {
   let power = {
     health: 0,
     speed: 0,
@@ -87,7 +56,7 @@ export const calculateSurroundedEnemyPower = (unit:any) => {
   Calculate how many player's units and their power nearby
   the computer units
 */
-export const calculateSurroundedAlliesPower = (unit:any) => {
+export const calculateSurroundedAlliesPower = (unit: Unit) => {
   let power = {
     health: 0,
     speed: 0,
@@ -117,7 +86,7 @@ export const calculateSurroundedAlliesPower = (unit:any) => {
   player's power in the small area
 */
 
-export const calculatePowerAdvantageInTheArea = (unit:any) => {
+export const calculatePowerAdvantageInTheArea = (unit: Unit) => {
   let playerPower = calculateSurroundedEnemyPower(unit);
   let computerPower = calculateSurroundedAlliesPower(unit);
   let health = computerPower.health - playerPower.health;
@@ -190,10 +159,6 @@ export const calculateUnitTypes = (side:string='computer'):any => {
   return types;
 }
 
-/*
-  calculate units' types in percentage
-  e.g cavalry - 30%, infantry: 40% etc
-*/
 export const getUnitTypesInPercentage = ():any => {
   let percentage = {
     infantry: 0,
