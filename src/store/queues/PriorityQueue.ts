@@ -2,12 +2,15 @@ import Positions from "../AI/positions/Positions";
 
 class PriorityQueue {
    private elements: any = [];
+   private positionId: number = 1;
 
    insert(efficiency: number, positions: Positions) {
         this.elements.push({
             efficiency: efficiency,
-            positions: positions
+            positions: positions,
+            positionId: this.positionId
         });
+        this.positionId += 1;
     }
     
     extractMax() {
@@ -20,7 +23,7 @@ class PriorityQueue {
             }
         }
         this.elements = this.elements.filter((el: any) => {
-            if(el.key === max.key) {
+            if(el.positionId === max.positionId) {
               return false;
             }
             return true;
