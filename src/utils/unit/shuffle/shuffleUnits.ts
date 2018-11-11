@@ -17,7 +17,7 @@ const swap = (arr:any[], a:number, b:number) => {
 
 export const shuffleUnits = (units:Unit[]):Unit[] => {
   let originalUnits:Unit[] = Object.assign([], units);
-  let updatedUnits:any[] = Object.assign([], units);
+  let updatedUnits:any[] = setRandomValue(units);
 
   for(let i = 0; i < updatedUnits.length; ++i) {
 		let min = i;
