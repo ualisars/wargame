@@ -1,15 +1,22 @@
 import { Unit } from "../../../unit";
+import { getExplorationNode } from "../../../utils/unit/exploration/getExplorationNode";
+import { getDistanceBetweenTwoNodesInGrids } from "../../../utils";
+import { assignExplorationTask } from "../tasks/assignExploration";
+import { visibleForComputerUnits } from "../../../store/unit/visibleUnits";
 
 export const calculateEfficiency = (unit: Unit) => {
-
+    if(visibleForComputerUnits.length === 0) {
+        efficiencyInExplorationStage(unit);
+    }
 }
 
 export const efficiencyInExplorationStage = (unit: Unit) => {
-    const appropriateSpeed: number = 20;
-    if(unit.type === 'scouts') {
-        
+    assignExplorationTask();
+    const maxEfficiency: number = 100;
+    const percentage: number = 10;
+    let explorationNode = getExplorationNode();
+    const distance = getDistanceBetweenTwoNodesInGrids(unit.currentNode, explorationNode);
+    if(unit.task === 'exploration') {
+        return maxEfficiency - distance * percentage;
     }
-    if(unit.speed >= appropriateSpeed) {
-
-    } 
 }

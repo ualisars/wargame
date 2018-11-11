@@ -29,8 +29,15 @@ describe('Node Utils Tests', function() {
       x: 400,
       y: 400
     }
+    let node3 = {
+      x: 400,
+      y: 400
+    }
     it('distance between node1 and node2 should be 15 grids', function() {
       assert.equal(getDistanceBetweenTwoNodesInGrids(node1, node2), 15);
+    });
+    it("distance between node2 and node3 should be 0", () => {
+      assert.equal(getDistanceBetweenTwoNodesInGrids(node2, node3), 0);
     });
   });
 });

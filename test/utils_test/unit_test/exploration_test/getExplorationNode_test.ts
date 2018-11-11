@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { Unit, createUnit } from "../../../../src/unit";
 import { removeAllUnits } from "../../../../src/store/unit/units";
 import { removeUnit } from "../../../../src/unit/remove";
-import { getExplorationNodes } from '../../../../src/utils/unit/exploration/getExplorationNode';
+import { getExplorationNode } from '../../../../src/utils/unit/exploration/getExplorationNode';
 
 describe("unit exploration utils", () => {
     describe("getExplorationNode test", () => {
@@ -23,37 +23,37 @@ describe("unit exploration utils", () => {
         describe("get first exploration node", () => {
             let explorationNode: any;
             before(() => {
-                explorationNode = getExplorationNodes();
+                explorationNode = getExplorationNode();
             });
             it("exploration node x should be at least be 240", () => {
                 expect(explorationNode.x).to.be.at.least(240);
             });
-            it("exploration node x should be at most be 560", () => {
-                expect(explorationNode.x).to.be.at.most(560);
+            it("exploration node x should be at most be 640", () => {
+                expect(explorationNode.x).to.be.at.most(640);
             });
             it("exploration node y should be at least be 0", () => {
                 expect(explorationNode.y).to.be.at.least(0);
             });
-            it("exploration node y should be at most be 320", () => {
-                expect(explorationNode.y).to.be.at.most(320);
+            it("exploration node y should be at most be 400", () => {
+                expect(explorationNode.y).to.be.at.most(400);
             });
         });
         describe("get second exploration node", () => {
             let explorationNode: any;
             before(() => {
-                explorationNode = getExplorationNodes();
+                explorationNode = getExplorationNode();
             });
             it("exploration node x should be at least be 240", () => {
                 expect(explorationNode.x).to.be.at.least(240);
             });
-            it("exploration node x should be at most be 560", () => {
-                expect(explorationNode.x).to.be.at.most(560);
+            it("exploration node x should be at most be 640", () => {
+                expect(explorationNode.x).to.be.at.most(640);
             });
             it("exploration node y should be at least be 0", () => {
                 expect(explorationNode.y).to.be.at.least(0);
             });
-            it("exploration node y should be at most be 320", () => {
-                expect(explorationNode.y).to.be.at.most(320);
+            it("exploration node y should be at most be 400", () => {
+                expect(explorationNode.y).to.be.at.most(400);
             });
         });
     });
