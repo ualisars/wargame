@@ -1,5 +1,5 @@
-import {assert, expect} from 'chai';
-import {getRandomValueInRange} from '../../../src/utils/random';
+import { expect } from 'chai';
+import { getRandomValueInRange } from '../../../src/utils/random';
 
 describe('randomUtils test', () => {
 
