@@ -18,7 +18,7 @@ import {
 import { removeAllUnits } from '../../../../src/store/unit/units';
 import { removeUnit } from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
-import { getDangerousUnits, containsDangerousUnits } from '../../../../src/utils/unit/AI/AI_actions';
+import { getDangerousUnits, containsDangerousUnits, isEnemyDangerousForUnit, isEnemyVulnerableToUnit } from '../../../../src/utils/unit/AI/AI_actions';
 
 
 describe('unitUtils: AI test', () => {
@@ -888,6 +888,116 @@ describe('unitUtils: AI test', () => {
     it("unit3 does not have any dangerous units", () => {
       const isDangerousUnits = containsDangerousUnits(unit3, enemies);
       assert.equal(isDangerousUnits, false);
+    });
+  });
+
+  describe("isEnemyDangerousForUnit test", () => {
+    let unit1: Unit, unit2: Unit;
+    let enemy1: Unit, enemy2: Unit, enemy3: Unit, enemy4: Unit;
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('LightCavalry', 400, 280, 'computer');
+      unit2 = createUnit('Archers', 560, 240, 'computer');
+
+      enemy1 = createUnit('HeavyCavalry', 160, 480, 'player');
+      enemy2 = createUnit('Archers', 1200, 480, 'player');
+      enemy3 = createUnit('Pikemen', 600, 40, 'player');
+      enemy4 = createUnit('LightInfantry', 1160, 40, 'player');
+    });
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+    });
+    it("enemy1 is not dangerous for unit1", () => {
+      const isEnemyDangerous = isEnemyDangerousForUnit(unit1, enemy1);
+      assert.equal(isEnemyDangerous, false);
+    });
+    it("enemy2 is not dangerous for unit1", () => {
+      const isEnemyDangerous = isEnemyDangerousForUnit(unit1, enemy2);
+      assert.equal(isEnemyDangerous, false);
+    });
+    it("enemy3 is dangerous for unit1", () => {
+      const isEnemyDangerous = isEnemyDangerousForUnit(unit1, enemy3);
+      assert.equal(isEnemyDangerous, true);
+    });
+    it("enemy4 is not dangerous for unit1", () => {
+      const isEnemyDangerous = isEnemyDangerousForUnit(unit1, enemy4);
+      assert.equal(isEnemyDangerous, false);
+    });
+    it("enemy1 is dangerous for unit2", () => {
+      const isEnemyDangerous = isEnemyDangerousForUnit(unit2, enemy1);
+      assert.equal(isEnemyDangerous, true);
+    });
+    it("enemy2 is not dangerous for unit1", () => {
+      const isEnemyDangerous = isEnemyDangerousForUnit(unit2, enemy2);
+      assert.equal(isEnemyDangerous, false);
+    });
+    it("enemy3 is not dangerous for unit1", () => {
+      const isEnemyDangerous = isEnemyDangerousForUnit(unit2, enemy3);
+      assert.equal(isEnemyDangerous, false);
+    });
+    it("enemy4 is not dangerous for unit1", () => {
+      const isEnemyDangerous = isEnemyDangerousForUnit(unit2, enemy4);
+      assert.equal(isEnemyDangerous, false);
+    });
+  });
+
+  describe("isEnemyVulnerableToUnit test", () => {
+    let unit1: Unit, unit2: Unit;
+    let enemy1: Unit, enemy2: Unit, enemy3: Unit, enemy4: Unit;
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('LightCavalry', 400, 280, 'computer');
+      unit2 = createUnit('Archers', 560, 240, 'computer');
+
+      enemy1 = createUnit('HeavyCavalry', 160, 480, 'player');
+      enemy2 = createUnit('Archers', 1200, 480, 'player');
+      enemy3 = createUnit('Pikemen', 600, 40, 'player');
+      enemy4 = createUnit('LightInfantry', 1160, 40, 'player');
+    });
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(enemy1);
+      removeUnit(enemy2);
+      removeUnit(enemy3);
+      removeUnit(enemy4);
+    });
+    it("enemy1 is not vulnerable to unit1", () => {
+      const isEnemyVulnerable = isEnemyVulnerableToUnit(unit1, enemy1);
+      assert.equal(isEnemyVulnerable, false);
+    });
+    it("enemy2 is vulnerable to unit2", () => {
+      const isEnemyVulnerable = isEnemyVulnerableToUnit(unit1, enemy2);
+      assert.equal(isEnemyVulnerable, true);
+    });
+    it("enemy3 is not vulnerable to unit1", () => {
+      const isEnemyVulnerable = isEnemyVulnerableToUnit(unit1, enemy3);
+      assert.equal(isEnemyVulnerable, false);
+    });
+    it("enemy4 is not vulnerable to unit1", () => {
+      const isEnemyVulnerable = isEnemyVulnerableToUnit(unit1, enemy4);
+      assert.equal(isEnemyVulnerable, false);
+    });
+    it("enemy1 is not vulnerable to unit2", () => {
+      const isEnemyVulnerable = isEnemyVulnerableToUnit(unit2, enemy1);
+      assert.equal(isEnemyVulnerable, false);
+    });
+    it("enemy2 is not vulnerable to unit2", () => {
+      const isEnemyVulnerable = isEnemyVulnerableToUnit(unit2, enemy2);
+      assert.equal(isEnemyVulnerable, false);
+    });
+    it("enemy3 is vulnerable to unit2", () => {
+      const isEnemyVulnerable = isEnemyVulnerableToUnit(unit2, enemy3);
+      assert.equal(isEnemyVulnerable, true);
+    });
+    it("enemy4 is not vulnerable to unit2", () => {
+      const isEnemyVulnerable = isEnemyVulnerableToUnit(unit2, enemy4);
+      assert.equal(isEnemyVulnerable, false);
     });
   });
 });

@@ -7,6 +7,10 @@ import { visibleForComputerUnits } from "../../../store/unit/visibleUnits";
 export const calculateEfficiency = (unit: Unit) => {
     if(visibleForComputerUnits.length === 0) {
         efficiencyInExplorationStage(unit);
+    } else {
+        for(let enemy of visibleForComputerUnits) {
+           
+        }
     }
 }
 

@@ -282,6 +282,24 @@ export const containsDangerousUnits = (unit: Unit, units: Unit[]): boolean => {
   return false;
 }
 
+export const isEnemyDangerousForUnit = (unit: Unit, enemy: Unit) => {
+  for(let dangerousEnemy of unit.vulnerableAgainst) {
+    if(enemy.name == dangerousEnemy) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export const isEnemyVulnerableToUnit = (unit: Unit, enemy: Unit) => {
+  for(let vulnerableEnemy of unit.advantageOver) {
+    if(enemy.name == vulnerableEnemy) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export const getScoutsNumber = ():number => {
   for(let unit of computerUnits) {
       let scouts:Unit[] = getUnitsByTask('exploration');
