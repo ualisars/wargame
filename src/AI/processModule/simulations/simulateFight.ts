@@ -8,7 +8,7 @@ export const simulateFight = (unit: Unit, enemy: Unit) => {
     let enemyHealthRemain: number = 100;
     let unitHealth = unit.health;
     let enemyHealth = enemy.health;
-    while(unitHealth > 0 && enemyHealth > 0) {
+    while(unitHealth >= 0 && enemyHealth >= 0) {
         let unitDamage = calculateDamage(unit, unit.meleeDamage);
         let enemyDamage = calculateDamage(enemy, enemy.meleeDamage);
         unitHealth -= armourPenetration(enemyDamage, unit.armour);
