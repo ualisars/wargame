@@ -1,4 +1,3 @@
-// unit types
 import {
   Archers,
   HeavyInfantry,
@@ -11,11 +10,9 @@ import {
   Pikemen,
   Scouts
 }  from '../types';
-import {unitId} from '../../store/unit/unitId';
-import {radius} from '../../config/unit';
+import { unitId } from '../../store/unit/unitId';
 
 export const chooseUnitType = (type:string, x:number, y:number, controlBy:string) => {
-  let unit:any;
   if(type === 'archers' || type === 'Archers') {
     return new Archers(unitId, x, y, controlBy);
   }
