@@ -18,3 +18,5 @@ class MapNode {
         }
     }
 }
+
+export default MapNode;
