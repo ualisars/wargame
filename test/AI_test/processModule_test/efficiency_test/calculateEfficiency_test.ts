@@ -7,7 +7,7 @@ import { addUnitIntoVisibleUnits } from '../../../../src/store';
 import { AssertionError } from 'assert';
 
 describe("AI process module test", () => {
-    describe("calculateEfficiency test", () => {
+    describe("calculateEfficiency with revealed enemies test", () => {
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit, computerUnit5:Unit, computerUnit6:Unit;
         let computerUnit7: Unit, computerUnit8: Unit;
@@ -161,6 +161,32 @@ describe("AI process module test", () => {
             it("computerUnit1 efficiency should be 0", () => {
                 assert.equal(efficiency, 0);
             });
+        });
+    });
+
+    describe("calculateEfficiency no revealed enemies", () => {
+        let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
+        let computerUnit4:Unit;
+        let playerUnit1:Unit, playerUnit2:Unit;
+
+        before(() => {
+            removeAllUnits();
+            computerUnit1 = createUnit('HeavyInfantry', 1200, 40, 'computer');
+            computerUnit2 = createUnit('LightInfantry', 1160, 320, 'computer');
+            computerUnit3 = createUnit('Archers', 1160, 400, 'computer');
+            computerUnit4 = createUnit('Pikemen', 1200, 480, 'computer');
+            playerUnit1 = createUnit('Hoplites', 80, 280, 'player');
+            playerUnit2 = createUnit('Archers', 40, 80, 'player');
+        });
+
+        after(() => {
+            removeUnit(computerUnit1);
+            removeUnit(computerUnit2);
+            removeUnit(computerUnit3);
+            removeUnit(computerUnit4);
+
+            removeUnit(playerUnit1);
+            removeUnit(playerUnit2);
         });
     });
 });
