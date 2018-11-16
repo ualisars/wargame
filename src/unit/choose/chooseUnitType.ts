@@ -45,5 +45,8 @@ export const chooseUnitType = (type:string, x:number, y:number, controlBy:string
   }
   else if(type === 'scouts' || type === 'Scouts') {
     return new Scouts(unitId, x, y, controlBy);
+  } 
+  else {
+    throw new Error("No existing unit type " + type);
   }
 }
