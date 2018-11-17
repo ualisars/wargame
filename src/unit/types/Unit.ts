@@ -7,6 +7,7 @@ import {
   deleteUnitFromArray
 } from '../../utils/unit/general';
 import {radius} from '../../config/unit';
+import MapNode from '../../map/nodes/MapNode';
 
 class Unit {
   id: number;
@@ -16,9 +17,9 @@ class Unit {
   centerX: number;
   centerY: number;
   radius: number = radius;
-  moveToNode:any;
-  currentNode: any;
-  nextNode:any;
+  moveToNode: MapNode;
+  currentNode: MapNode;
+  nextNode: MapNode;
   isCurrentlyChosen: boolean = false;
   controlBy: string;
   imgSrc: string = './src/img/units/pikemen.jpg';
@@ -112,7 +113,7 @@ class Unit {
   }
 
   assignMoveToPosition(x:number, y:number) {
-    let node:any = getNodeFromMap(x, y);
+    let node: MapNode = getNodeFromMap(x, y);
     if(node) {
       this.moveToNode = node;
       console.log(this.name + ' is moving to node:' + node.x + ' y:' + node.y);
@@ -141,8 +142,8 @@ class Unit {
 
   }
 
-  setCurrentNode(node:any) {
-    let foundNode:any = getNodeFromMap(node.x, node.y);
+  setCurrentNode(node: MapNode) {
+    let foundNode: MapNode = getNodeFromMap(node.x, node.y);
     if(foundNode) {
       this.currentNode = foundNode;
     } else {
@@ -150,8 +151,8 @@ class Unit {
     }
   }
 
-  setNextNode(node:any) {
-    let foundNode:any = getNodeFromMap(node.x, node.y);
+  setNextNode(node: MapNode) {
+    let foundNode: MapNode = getNodeFromMap(node.x, node.y);
     if(foundNode) {
       this.nextNode = foundNode;
     } else {
@@ -193,7 +194,6 @@ class Unit {
   }
 
   removeEnemyFromFightAgainst(enemy:Unit) {
-    console.log('removeEnemyFromFightAgainst');
     if(enemy.id === this.figthAgainst.front.id) {
       this.figthAgainst.front = {};
       this.arrangeFightAgainst();
@@ -213,11 +213,9 @@ class Unit {
   }
 
   arrangeFightAgainst() {
-    // copy flank and rear units
     let updatedFlank:Unit[] = Object.assign([], this.figthAgainst.flank);
     let updatedRear:Unit = Object.assign({}, this.figthAgainst.rear);
 
-    // clear fight against
     this.figthAgainst.flank = [];
     this.figthAgainst.rear = {};
 

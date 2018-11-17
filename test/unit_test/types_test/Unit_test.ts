@@ -7,7 +7,7 @@ import {removeAllUnits} from '../../../src/store/unit/units';
 import {removeUnit} from '../../../src/unit/remove';
 import Unit from '../../../src/unit/types/Unit';
 import {isUnitInArray} from '../../../src/utils/unit/general';
-import {isObjectEmpty} from '../../../src/utils';
+import {isObjectEmpty, getNodeFromMap} from '../../../src/utils';
 import {
   computerUnits,
   playerUnits,
@@ -517,7 +517,8 @@ describe('Unit class test', () => {
     });
 
     it('unit currentNode should be {x: 280, y: 80}', (done) => {
-      let node = {x:301, y:118};
+      let coordinates = {x:301, y:118};
+      let node = getNodeFromMap(coordinates.x, coordinates.y);
       unit.setCurrentNode(node);
       assert.equal(unit.currentNode.x, 280);
       assert.equal(unit.currentNode.y, 80);
@@ -525,7 +526,8 @@ describe('Unit class test', () => {
     });
 
     it('unit currentNode should be {x: 600, y: 240}', (done) => {
-      let node = {x:600, y:240};
+      let coordinates = {x:600, y:240};
+      let node = getNodeFromMap(coordinates.x, coordinates.y);
       unit.setCurrentNode(node);
       assert.equal(unit.currentNode.x, 600);
       assert.equal(unit.currentNode.y, 240);
@@ -533,7 +535,8 @@ describe('Unit class test', () => {
     });
 
     it('unit currentNode should be {x: 640, y: 40}', (done) => {
-      let node = {x: 659, y:64};
+      let coordinates = {x: 659, y:64};
+      let node = getNodeFromMap(coordinates.x, coordinates.y);
       unit.setCurrentNode(node);
       assert.equal(unit.currentNode.x, 640);
       assert.equal(unit.currentNode.y, 40);
@@ -555,7 +558,8 @@ describe('Unit class test', () => {
     });
 
     it('unit nextNode should be {x: 280, y: 80}', (done) => {
-      let node = {x:301, y:118};
+      let coordinates = {x:301, y:118};
+      let node = getNodeFromMap(coordinates.x, coordinates.y);
       unit.setNextNode(node);
       assert.equal(unit.nextNode.x, 280);
       assert.equal(unit.nextNode.y, 80);
@@ -563,7 +567,8 @@ describe('Unit class test', () => {
     });
 
     it('unit nextNode should be {x: 600, y: 240}', (done) => {
-      let node = {x:600, y:240};
+      let coordinates = {x:600, y:240};
+      let node = getNodeFromMap(coordinates.x, coordinates.y);
       unit.setNextNode(node);
       assert.equal(unit.nextNode.x, 600);
       assert.equal(unit.nextNode.y, 240);
@@ -571,7 +576,8 @@ describe('Unit class test', () => {
     });
 
     it('unit nextNode should be {x: 640, y: 40}', (done) => {
-      let node = {x: 659, y:64};
+      let coordinates = {x: 659, y:64};
+      let node = getNodeFromMap(coordinates.x, coordinates.y);
       unit.setNextNode(node);
       assert.equal(unit.nextNode.x, 640);
       assert.equal(unit.nextNode.y, 40);

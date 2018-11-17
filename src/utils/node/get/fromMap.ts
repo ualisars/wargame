@@ -1,7 +1,8 @@
 import {gridSize} from '../../../config';
 import {initialMap} from '../../../map/createMap/initialMap';
+import MapNode from '../../../map/nodes/MapNode';
 
-export let getNodeFromMap = (x:number, y:number, map=initialMap) => {
+export let getNodeFromMap = (x:number, y:number, map=initialMap): MapNode => {
   let node:any;
   for(let grid of map) {
     let bottomRightX = grid.x + gridSize;

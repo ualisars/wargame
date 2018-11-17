@@ -4,6 +4,7 @@ import {createUnit} from '../../../../src/unit/create';
 import {removeAllUnits} from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
+import { getNodeFromMap } from '../../../../src/utils';
 
 describe('NodeUtils: surrounded test', () => {
 
@@ -18,7 +19,8 @@ describe('NodeUtils: surrounded test', () => {
     const alliedUnit1:Unit = createUnit('scouts', 320, 80, 'computer');
     const alliedUnit2:Unit = createUnit('scouts', 280, 80, 'computer');
 
-    alliedUnit2.setNextNode({x: 280, y: 120});
+    let node = getNodeFromMap(280, 120);
+    alliedUnit2.setNextNode(node);
 
     // remove units
     after(() => {

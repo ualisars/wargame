@@ -5,6 +5,7 @@ import {removeAllUnits} from '../../../../src/store/unit/units';
 import {removeUnit} from '../../../../src/unit/remove';
 import {isUnitInArray} from '../../../../src/utils/unit/general';
 import Unit from '../../../../src/unit/types/Unit';
+import { getNodeFromMap } from '../../../../src/utils';
 
 describe('unitPositionUtils test', () => {
 
@@ -25,12 +26,19 @@ describe('unitPositionUtils test', () => {
       unit7 = createUnit('Scouts', 520, 240, 'computer');
 
       // assign movement
-      unit1.setNextNode({x: 440, y: 160});
-      unit2.setNextNode({x: 440, y: 200});
-      unit3.setNextNode({x: 560, y: 120});
-      unit4.setNextNode({x: 440, y: 160});
-      unit5.setNextNode({x: 440, y: 200});
-      unit7.setNextNode({x: 520, y: 200});
+      let node1 = getNodeFromMap(440, 160);
+      let node2 = getNodeFromMap(440, 200);
+      let node3 = getNodeFromMap(560, 120);
+      let node4 = getNodeFromMap(440, 160);
+      let node5 = getNodeFromMap(440, 200);
+      let node6 = getNodeFromMap(520, 200);
+
+      unit1.setNextNode(node1);
+      unit2.setNextNode(node2);
+      unit3.setNextNode(node3);
+      unit4.setNextNode(node4);
+      unit5.setNextNode(node5);
+      unit7.setNextNode(node6);
 
       units.push(unit1);
       units.push(unit2);
