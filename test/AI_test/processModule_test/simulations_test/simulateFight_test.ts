@@ -35,7 +35,7 @@ describe("Process module tests", () => {
                 expect(unitHealth).lessThan(enemyHealth);
             });
             it("unit should be destroyed", () => {
-                expect(unitHealth).lessThan(0);
+                expect(unitHealth).to.be.at.most(0);
             });
             it("enemy should be alive", () => {
                 expect(enemyHealth).greaterThan(0);
