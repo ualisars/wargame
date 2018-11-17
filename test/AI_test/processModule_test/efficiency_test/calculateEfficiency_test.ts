@@ -4,7 +4,8 @@ import { removeAllUnits, computerUnits } from "../../../../src/store/unit/units"
 import { removeUnit } from "../../../../src/unit/remove";
 import { calculateEfficiency } from "../../../../src/AI/processModule/efficiency/calculateEfficiency";
 import { addUnitIntoVisibleUnits } from '../../../../src/store';
-import { AssertionError } from 'assert';
+import { gridSize } from '../../../../src/config';
+import { getNodeFromMap } from '../../../../src/utils';
 
 describe("AI process module test", () => {
     describe("calculateEfficiency with revealed enemies test", () => {
@@ -167,16 +168,30 @@ describe("AI process module test", () => {
     describe("calculateEfficiency no revealed enemies", () => {
         let computerUnit1:Unit, computerUnit2:Unit, computerUnit3:Unit;
         let computerUnit4:Unit;
-        let playerUnit1:Unit, playerUnit2:Unit;
-
+        let playerUnit1:Unit;
+        let updatedComputerUnit1: Unit, updatedComputerUnit3: Unit;
+        let updatedUnits: Unit[] = [];
         before(() => {
             removeAllUnits();
-            computerUnit1 = createUnit('HeavyInfantry', 1200, 40, 'computer');
+            computerUnit1 = createUnit('Scouts', 1200, 40, 'computer');
             computerUnit2 = createUnit('LightInfantry', 1160, 320, 'computer');
-            computerUnit3 = createUnit('Archers', 1160, 400, 'computer');
+            computerUnit3 = createUnit('Scouts', 1160, 400, 'computer');
             computerUnit4 = createUnit('Pikemen', 1200, 480, 'computer');
             playerUnit1 = createUnit('Hoplites', 80, 280, 'player');
-            playerUnit2 = createUnit('Archers', 40, 80, 'player');
+            
+            updatedComputerUnit1 = Object.create(computerUnit1);
+            updatedComputerUnit1.setX(playerUnit1.x - gridSize);
+            updatedComputerUnit1.setY(playerUnit1.y);
+            updatedComputerUnit1.setCurrentNode(getNodeFromMap(updatedComputerUnit1.x, updatedComputerUnit1.y));
+            updatedComputerUnit3 = Object.create(computerUnit3);
+            updatedComputerUnit3.setX(playerUnit1.x);
+            updatedComputerUnit3.setY(playerUnit1.y + gridSize * 2);
+            updatedComputerUnit3.setCurrentNode(getNodeFromMap(updatedComputerUnit1.x, updatedComputerUnit1.y));
+
+            updatedUnits.push(updatedComputerUnit1);
+            updatedUnits.push(computerUnit2);
+            updatedUnits.push(updatedComputerUnit3);
+            updatedUnits.push(computerUnit4);
         });
 
         after(() => {
@@ -184,9 +199,74 @@ describe("AI process module test", () => {
             removeUnit(computerUnit2);
             removeUnit(computerUnit3);
             removeUnit(computerUnit4);
-
             removeUnit(playerUnit1);
-            removeUnit(playerUnit2);
+        });
+
+        describe('calculate efficiency for computerUnit1 with initial position', () => {
+            let efficiency: number;
+            before(() => {
+                efficiency = calculateEfficiency(computerUnit1, computerUnits);
+            });
+            it("computerUnit1 efficiency should be 0", () => {
+                assert.equal(efficiency, 0);
+            });
+        });
+        describe('calculate efficiency for computerUnit2', () => {
+            let efficiency: number;
+            before(() => {
+                efficiency = calculateEfficiency(computerUnit2, computerUnits);
+            });
+            it("computerUnit1 efficiency should at least 0", () => {
+                expect(efficiency).to.be.at.least(0);
+            });
+            it("computerUnit2 efficiency should at most 100", () => {
+                expect(efficiency).to.be.at.most(100);
+            });
+        });
+        describe('calculate efficiency for computerUnit3 with initial position', () => {
+            let efficiency: number;
+            before(() => {
+                efficiency = calculateEfficiency(computerUnit3, computerUnits);
+            });
+            it("computerUnit1 efficiency should be 0", () => {
+                assert.equal(efficiency, 0);
+            });
+        });
+        describe('calculate efficiency for computerUnit4', () => {
+            let efficiency: number;
+            before(() => {
+                efficiency = calculateEfficiency(computerUnit4, computerUnits);
+            });
+            it("computerUnit1 efficiency should at least 0", () => {
+                expect(efficiency).to.be.at.least(0);
+            });
+            it("computerUnit2 efficiency should at most 100", () => {
+                expect(efficiency).to.be.at.most(100);
+            });
+        });
+        describe('calculate efficiency for computerUnit1 with updated position', () => {
+            let efficiency: number;
+            before(() => {
+                efficiency = calculateEfficiency(updatedComputerUnit1, updatedUnits);
+            });
+            it("computerUnit1 efficiency should be at least 60", () => {
+                expect(efficiency).to.be.at.least(60);
+            });
+            it("computerUnit1 efficiency should be at most 100", () => {
+                expect(efficiency).to.be.at.most(100);
+            });
+        });
+        describe('calculate efficiency for computerUnit3 with updated position', () => {
+            let efficiency: number;
+            before(() => {
+                efficiency = calculateEfficiency(updatedComputerUnit3, updatedUnits);
+            });
+            it("computerUnit1 efficiency should be at least 40", () => {
+                expect(efficiency).to.be.at.least(40);
+            });
+            it("computerUnit1 efficiency should be at most 100", () => {
+                expect(efficiency).to.be.at.most(100);
+            });
         });
     });
 });

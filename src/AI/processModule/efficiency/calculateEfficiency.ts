@@ -26,7 +26,9 @@ export const explorationUnitEfficiency = (unit: Unit, computerUnitsWithSimulatin
     let explorationNode = getExplorationNode();
     const distance = getDistanceBetweenTwoNodesInGrids(unit.currentNode, explorationNode);
     if(unit.task === 'exploration') {
-        return maxEfficiency - distance * percentage;
+        let efficiency = maxEfficiency - distance * percentage;
+        efficiency = efficiency > 0 ? efficiency : 0;
+        return efficiency;
     } else {
         return unitEfficiency(unit, computerUnitsWithSimulatingPositions);
     }
