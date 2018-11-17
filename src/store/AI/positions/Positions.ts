@@ -1,9 +1,10 @@
+import MapNode from "../../../map/nodes/MapNode";
+
 class Positions {
     private positions: any = {};
    
-    addPosition(unitId: number, nodeX: number, nodeY: number) {
-        let newPosition = new Position(nodeX, nodeY);
-        this.positions[unitId] = newPosition;
+    addPosition(unitId: number, node: MapNode) {
+        this.positions[unitId] = node;
     }
 
     clearPositions() {
@@ -14,15 +15,5 @@ class Positions {
         return this.positions[unitId];
     }
 } 
-
-class Position {
-    nodeX: number;
-    nodeY: number;
-
-    constructor(nodeX: number, nodeY: number) {
-        this.nodeX = nodeX;
-        this.nodeY = nodeY;
-    }
-}
 
 export default Positions;
