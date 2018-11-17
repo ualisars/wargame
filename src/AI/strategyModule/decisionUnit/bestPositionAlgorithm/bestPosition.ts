@@ -3,6 +3,7 @@ import { initialMap } from "../../../../map/createMap/initialMap";
 import PriorityQueue from "../../../../store/queues/PriorityQueue";
 import { Unit } from "../../../../unit";
 import Positions from "../../../../store/AI/positions/Positions";
+import { calculateEfficiency } from "../../../processModule/efficiency/calculateEfficiency";
 
 
 export const bestPosition = () => {
@@ -11,7 +12,9 @@ export const bestPosition = () => {
         for(let node of initialMap) {
             let positions = addAllUnitPositions();
             positions.addPosition(unit.id, node);
-            positionsQueue.insert
+            let unitsWithSimulatingPositions = positions.getUnitsWithSimulatingPositions();
+            let efficiency = calculateEfficiency(unit, unitsWithSimulatingPositions);
+            positionsQueue.insert(efficiency, positions);
         }
     }
 }

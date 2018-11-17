@@ -10,16 +10,16 @@ import { simulateFight } from "../simulations/simulateFight";
 import { calculateTotalUnitsWeight } from "../weight/calculateUnitsWeight";
 import { calculateTotalVulnerability } from "../vulnerability/totalVulnerability";
 
-export const calculateEfficiency = (unit: Unit) => {
+export const calculateEfficiency = (unit: Unit, computerUnitsWithSimulatingPositions: Unit[]) => {
     if(visibleForComputerUnits.length === 0) {
-        return explorationUnitEfficiency(unit);
+        return explorationUnitEfficiency(unit, computerUnitsWithSimulatingPositions);
     } 
     else {
-        return unitEfficiency(unit);
+        return unitEfficiency(unit, computerUnitsWithSimulatingPositions);
     }
 }
 
-export const explorationUnitEfficiency = (unit: Unit): number => {
+export const explorationUnitEfficiency = (unit: Unit, computerUnitsWithSimulatingPositions: Unit[]): number => {
     assignExplorationTask();
     const maxEfficiency: number = 100;
     const percentage: number = 10;
@@ -28,13 +28,13 @@ export const explorationUnitEfficiency = (unit: Unit): number => {
     if(unit.task === 'exploration') {
         return maxEfficiency - distance * percentage;
     } else {
-        return unitEfficiency(unit);
+        return unitEfficiency(unit, computerUnitsWithSimulatingPositions);
     }
 }
 
-export const unitEfficiency = (unit: Unit): number => {
+export const unitEfficiency = (unit: Unit, computerUnitsWithSimulatingPositions: Unit[]): number => {
     let closeEnemies = getSurroundedUnits(unit, visibleForComputerUnits, 5);
-    let closeAllies =  getSurroundedUnits(unit, computerUnits, 5);
+    let closeAllies =  getSurroundedUnits(unit, computerUnitsWithSimulatingPositions, 5);
     let closeEnemiesNumber = closeEnemies.length;
     let closeAlliesNumber = closeAllies.length;
     const closeAlliesWeight: number = calculateTotalUnitsWeight(closeAllies) + unit.weight;

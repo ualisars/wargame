@@ -23,6 +23,7 @@ describe('AI store Positions test', () => {
     });
     it("unit1 position should be 400, 440", (done) => {
         let node = getNodeFromMap(400, 440);
+        positions.addPosition(unit1.id, getNodeFromMap(160, 320));
         positions.addPosition(unit1.id, node);
         const position = positions.getPositionByUnitId(unit1.id);
         assert.equal(position.x, 400);
