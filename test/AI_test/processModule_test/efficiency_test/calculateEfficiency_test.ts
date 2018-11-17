@@ -1,6 +1,6 @@
 import { assert, expect } from 'chai';
 import { Unit, createUnit } from "../../../../src/unit";
-import { removeAllUnits } from "../../../../src/store/unit/units";
+import { removeAllUnits, computerUnits } from "../../../../src/store/unit/units";
 import { removeUnit } from "../../../../src/unit/remove";
 import { calculateEfficiency } from "../../../../src/AI/processModule/efficiency/calculateEfficiency";
 import { addUnitIntoVisibleUnits } from '../../../../src/store';
@@ -65,7 +65,7 @@ describe("AI process module test", () => {
         describe("calculate effficiency for computerUnit1", () => {
             let efficiency: number;
             before(() => {
-                efficiency = calculateEfficiency(computerUnit1);
+                efficiency = calculateEfficiency(computerUnit1, computerUnits);
             });
             it("computerUnit1 efficiency should be more than 80", () => {
                 expect(efficiency).to.be.at.least(80);
@@ -78,7 +78,7 @@ describe("AI process module test", () => {
         describe("calculate effficiency for computerUnit2", () => {
             let efficiency: number;
             before(() => {
-                efficiency = calculateEfficiency(computerUnit2);
+                efficiency = calculateEfficiency(computerUnit2, computerUnits);
             });
             it("computerUnit1 efficiency should be less than 30", () => {
                 expect(efficiency).to.be.at.most(30);
@@ -91,7 +91,7 @@ describe("AI process module test", () => {
         describe("calculate effficiency for computerUnit3", () => {
             let efficiency: number;
             before(() => {
-                efficiency = calculateEfficiency(computerUnit3);
+                efficiency = calculateEfficiency(computerUnit3, computerUnits);
             });
             it("computerUnit1 efficiency should be more than 60", () => {
                 expect(efficiency).to.be.at.least(60);
@@ -104,7 +104,7 @@ describe("AI process module test", () => {
         describe("calculate effficiency for computerUnit4", () => {
             let efficiency: number;
             before(() => {
-                efficiency = calculateEfficiency(computerUnit4);
+                efficiency = calculateEfficiency(computerUnit4, computerUnits);
             });
             it("computerUnit1 efficiency should be more than 60", () => {
                 expect(efficiency).to.be.at.least(60);
@@ -117,7 +117,7 @@ describe("AI process module test", () => {
         describe("calculate effficiency for computerUnit5", () => {
             let efficiency: number;
             before(() => {
-                efficiency = calculateEfficiency(computerUnit5);
+                efficiency = calculateEfficiency(computerUnit5, computerUnits);
             });
             it("computerUnit1 efficiency should be more than 70", () => {
                 expect(efficiency).to.be.at.least(70);
@@ -130,7 +130,7 @@ describe("AI process module test", () => {
         describe("calculate effficiency for computerUnit6", () => {
             let efficiency: number;
             before(() => {
-                efficiency = calculateEfficiency(computerUnit6);
+                efficiency = calculateEfficiency(computerUnit6, computerUnits);
             });
             it("computerUnit1 efficiency should be more than 70", () => {
                 expect(efficiency).to.be.at.least(70);
@@ -143,7 +143,7 @@ describe("AI process module test", () => {
         describe("calculate effficiency for computerUnit7", () => {
             let efficiency: number;
             before(() => {
-                efficiency = calculateEfficiency(computerUnit7);
+                efficiency = calculateEfficiency(computerUnit7, computerUnits);
             });
             it("computerUnit1 efficiency should be more than 70", () => {
                 expect(efficiency).to.be.at.least(70);
@@ -156,7 +156,7 @@ describe("AI process module test", () => {
         describe("calculate effficiency for computerUnit8", () => {
             let efficiency: number;
             before(() => {
-                efficiency = calculateEfficiency(computerUnit8);
+                efficiency = calculateEfficiency(computerUnit8, computerUnits);
             });
             it("computerUnit1 efficiency should be 0", () => {
                 assert.equal(efficiency, 0);
