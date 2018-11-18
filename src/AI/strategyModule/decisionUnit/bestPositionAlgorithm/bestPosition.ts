@@ -4,6 +4,7 @@ import PriorityQueue from "../../../../store/queues/PriorityQueue";
 import { Unit } from "../../../../unit";
 import Positions from "../../../../store/AI/positions/Positions";
 import { calculateEfficiency } from "../../../processModule/efficiency/calculateEfficiency";
+import { fillSimulationNodes } from "../../../analyzeModule/fillSimulationNodes";
 
 
 export const bestPosition = () => {
@@ -17,6 +18,18 @@ export const bestPosition = () => {
             positionsQueue.insert(efficiency, positions);
         }
     }
+    // sample
+    let simulationNodes = fillSimulationNodes();
+    let positions = new Positions();
+    let unit = computerUnits[0];
+    // for(let node of simutationNodes) {
+    //     positions.addPosition(unit.id, node);
+    //     for(let i = 1; i < computerUnits.length; ++i) {
+    //         for(let node of simulationNodes) {
+
+    //         }
+    //     }
+    // }
 }
 
 const addAllUnitPositions = (): Positions => {
