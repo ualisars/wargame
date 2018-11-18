@@ -1,8 +1,11 @@
+import MapNode from "../../../map/nodes/MapNode";
+
 class SimulationNodes {
 
     private maxSize: number = 1000;
     private top = -1;
-    private elements: any[] = [];
+    private elements: MapNode[] = [];
+    private nodesMemo: any = {};
    
     isEmpty() {
         if(this.top === -1) {
@@ -12,12 +15,15 @@ class SimulationNodes {
         }
     }
     
-    push(x: any) {
+    push(node: MapNode) {
         if(this.top === this.maxSize) {
             return new Error('Stack overflow');
         } else {
-            this.top += 1;
-            this.elements[this.top] = x;
+            if(!this.nodesMemo.hasOwnProperty(node.id)) {
+                this.nodesMemo[node.id] = true;
+                this.top += 1;
+                this.elements[this.top] = node;
+            }
         }
     }
 
