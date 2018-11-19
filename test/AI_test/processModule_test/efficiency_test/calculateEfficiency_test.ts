@@ -180,12 +180,12 @@ describe("AI process module test", () => {
             playerUnit1 = createUnit('Hoplites', 80, 280, 'player');
             
             updatedComputerUnit1 = Object.create(computerUnit1);
-            updatedComputerUnit1.setX(playerUnit1.x - gridSize);
-            updatedComputerUnit1.setY(playerUnit1.y);
+            updatedComputerUnit1.setX(playerUnit1.currentNode.x - gridSize);
+            updatedComputerUnit1.setY(playerUnit1.currentNode.y);
             updatedComputerUnit1.setCurrentNode(getNodeFromMap(updatedComputerUnit1.x, updatedComputerUnit1.y));
             updatedComputerUnit3 = Object.create(computerUnit3);
-            updatedComputerUnit3.setX(playerUnit1.x);
-            updatedComputerUnit3.setY(playerUnit1.y + gridSize * 2);
+            updatedComputerUnit3.setX(playerUnit1.currentNode.x);
+            updatedComputerUnit3.setY(playerUnit1.currentNode.y + gridSize * 2);
             updatedComputerUnit3.setCurrentNode(getNodeFromMap(updatedComputerUnit1.x, updatedComputerUnit1.y));
 
             updatedUnits.push(updatedComputerUnit1);
