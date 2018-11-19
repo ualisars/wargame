@@ -17,7 +17,7 @@ class SimulationNodes {
     
     push(node: MapNode) {
         if(this.top === this.maxSize) {
-            return new Error('Stack overflow');
+            throw new Error('Stack overflow');
         } else {
             if(!this.nodesMemo.hasOwnProperty(node.id)) {
                 this.nodesMemo[node.id] = true;
@@ -28,14 +28,18 @@ class SimulationNodes {
     }
 
     moveTop(position: number) {
-        if(position >= -1 && position <= this.maxSize) {
-            this.top = position;
+        if(position <= this.top) {
+            this.top -= position;
         }
+    }
+
+    clearMemo() {
+        this.nodesMemo = {};
     }
 
     pop() {
         if(this.isEmpty()) {
-            return new Error('Stack underflow');
+            throw new Error('Stack underflow');
         } else {
             this.top -= 1;
             return this.elements[this.top + 1];

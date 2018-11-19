@@ -182,11 +182,11 @@ describe("AI process module test", () => {
             updatedComputerUnit1 = Object.create(computerUnit1);
             updatedComputerUnit1.setX(playerUnit1.currentNode.x - gridSize);
             updatedComputerUnit1.setY(playerUnit1.currentNode.y);
-            updatedComputerUnit1.setCurrentNode(getNodeFromMap(updatedComputerUnit1.x, updatedComputerUnit1.y));
+            updatedComputerUnit1.setCurrentNode(getNodeFromMap(playerUnit1.currentNode.x - gridSize, playerUnit1.currentNode.y));
             updatedComputerUnit3 = Object.create(computerUnit3);
             updatedComputerUnit3.setX(playerUnit1.currentNode.x);
-            updatedComputerUnit3.setY(playerUnit1.currentNode.y + gridSize * 2);
-            updatedComputerUnit3.setCurrentNode(getNodeFromMap(updatedComputerUnit1.x, updatedComputerUnit1.y));
+            updatedComputerUnit3.setY(playerUnit1.currentNode.y + gridSize);
+            updatedComputerUnit3.setCurrentNode(getNodeFromMap(playerUnit1.currentNode.x, playerUnit1.currentNode.y + gridSize * 2));
 
             updatedUnits.push(updatedComputerUnit1);
             updatedUnits.push(computerUnit2);
@@ -249,8 +249,8 @@ describe("AI process module test", () => {
             before(() => {
                 efficiency = calculateEfficiency(updatedComputerUnit1, updatedUnits);
             });
-            it("computerUnit1 efficiency should be at least 60", () => {
-                expect(efficiency).to.be.at.least(60);
+            it("computerUnit1 efficiency should be at least 40", () => {
+                expect(efficiency).to.be.at.least(40);
             });
             it("computerUnit1 efficiency should be at most 100", () => {
                 expect(efficiency).to.be.at.most(100);
