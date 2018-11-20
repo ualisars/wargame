@@ -5,8 +5,9 @@ import { getNodeFromMap } from "../../../utils";
 
 class Positions {
     private positions: any = {};
-   
+    static count = 0; // TODO: remove after tests
     addPosition(unitId: number, node: MapNode) {
+        Positions.count += 1; // TODO: remove after tests
         this.positions[unitId] = node;
     }
 
@@ -21,7 +22,7 @@ class Positions {
     getUnitsWithSimulatingPositions() {
         let unitsWithSimulatingPositions: Unit[] = [];
         for(let unit of computerUnits) {
-            let updatedUnit = Object.assign({}, unit);
+            let updatedUnit = Object.create(unit);
             let position = this.getPositionByUnitId(updatedUnit.id);
             updatedUnit.setX(position.x);
             updatedUnit.setY(position.y);

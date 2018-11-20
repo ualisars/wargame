@@ -5,7 +5,6 @@ import { assignExplorationTask } from "../tasks/assignExploration";
 import { visibleForComputerUnits } from "../../../store/unit/visibleUnits";
 import { isEnemyVulnerableToUnit, isEnemyDangerousForUnit } from "../../../utils/unit/AI/AI_actions";
 import { getSurroundedUnits } from "../../../utils/surrounded/getSurroundedUnits";
-import { computerUnits } from "../../../store/unit/units";
 import { simulateFight } from "../simulations/simulateFight";
 import { calculateTotalUnitsWeight } from "../weight/calculateUnitsWeight";
 import { calculateTotalVulnerability } from "../vulnerability/totalVulnerability";
