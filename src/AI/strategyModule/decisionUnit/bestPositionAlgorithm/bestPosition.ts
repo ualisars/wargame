@@ -9,7 +9,7 @@ export const bestPosition = (): Positions => {
     let positionsQueue = new PriorityQueue();
     let currentUnitIndex = computerUnits.length - 1;
     algorithm(currentUnitIndex, positionsQueue);
-    return positionsQueue.extractMax();
+    return positionsQueue.extractMax().positions;
 }
 
 const algorithm = (currentUnitIndex: number, positionsQueue: PriorityQueue, i: number = 1) => {
