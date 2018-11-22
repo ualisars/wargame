@@ -12,7 +12,7 @@ class Commands {
         this.commands = {};
     }
 
-    getCommandsByUnitId(unitId: number) {
+    getCommandsByUnitId(unitId: number): Action {
         return this.commands[unitId];
     }
 

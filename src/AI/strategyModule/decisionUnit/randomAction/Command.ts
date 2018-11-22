@@ -1,5 +1,5 @@
 export enum Command {
     Attack,
-    Protect,
+    BeCloseToUnit,
     MoveToNode
 }

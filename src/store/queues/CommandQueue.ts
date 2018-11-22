@@ -29,7 +29,7 @@ class CommandQueue {
             }
             return true;
         });
-        return max;
+        return max.commands;
     }
 
     isEmpty() {

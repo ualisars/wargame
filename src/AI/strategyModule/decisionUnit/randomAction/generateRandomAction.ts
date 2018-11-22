@@ -27,7 +27,7 @@ export const generateRandomAction = (unit: Unit): Action => {
         let nodes = getSurroundedNodes(unit);
         actionNode = getRandomNode(nodes);
     }
-    else if(command === Command.Protect) {
+    else if(command === Command.BeCloseToUnit) {
         actionUnit = getRandomUnit(computerUnits);
         actionNode = actionUnit.currentNode;
     }
@@ -37,6 +37,6 @@ export const generateRandomAction = (unit: Unit): Action => {
 
 const chooseRandomCommand = (): Command => {
     let randomNumber = getRandomValueInRange(0, 2);
-    let actions: Command[] = [Command.Protect, Command.Attack, Command.MoveToNode];
+    let actions: Command[] = [Command.BeCloseToUnit, Command.Attack, Command.MoveToNode];
     return actions[randomNumber];
 }

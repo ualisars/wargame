@@ -23,6 +23,7 @@ import {
 import {currentlyChosenUnit} from '../../store/unit/currentlyChosenUnit';
 import {getSurroundedNodes} from '../../utils/surrounded';
 import {createArmy} from '../../battle';
+import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
 
 export const launchBattle = () => {
   drawBackground('./src/img/terrain/terrain.png');
@@ -94,3 +95,8 @@ export const launchBattle = () => {
     }
   }); // on context
 }
+
+moveUnits();
+setInterval(() => {
+  moveUnits();
+}, 10000);

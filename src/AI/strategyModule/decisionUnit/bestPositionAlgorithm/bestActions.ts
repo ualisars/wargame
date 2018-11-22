@@ -5,8 +5,8 @@ import CommandQueue from "../../../../store/queues/CommandQueue";
 import Commands from "../../../../store/AI/commands/Commands";
 import { calculateTotalEfficiency } from "../../../processModule/efficiency/totalEfficiency";
 
-export const bestActionAlgorithm = (): Action => {
-    const maxAttempts = 1000;
+export const bestActionAlgorithm = (): Commands => {
+    const maxAttempts = 10;
     let commandQueue: CommandQueue = new CommandQueue();
     let i = 0;
     while(i <= maxAttempts) {
@@ -18,6 +18,7 @@ export const bestActionAlgorithm = (): Action => {
         let unitsWithSimulatingPositions = commands.getUnitsWithSimulatingPositions();
         let efficiency = calculateTotalEfficiency(unitsWithSimulatingPositions);
         commandQueue.insert(efficiency, commands);
+        i = i + 1;
     }
     return commandQueue.extractMax();
 }
