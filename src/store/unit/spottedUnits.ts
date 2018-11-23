@@ -7,7 +7,7 @@ import Unit from '../../unit/types/Unit';
 export let spottedUnits:Unit[] = [];
 
 export const addUnitToSpottedUnits = (unit:Unit) => {
-  if(!isUnitInArray(unit, spottedUnits)) { // unit is not spotted yet
+  if(!isUnitInArray(unit, spottedUnits)) {
     spottedUnits.push(unit);
   }
 }

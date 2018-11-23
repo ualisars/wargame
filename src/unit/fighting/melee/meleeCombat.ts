@@ -1,11 +1,7 @@
-import {units} from '../../../store/unit/units';
-import {isObjectEmpty} from '../../../utils';
-import {meleeAttack} from '.';
-/*
-  Go through all units and
-  fire meleeAttack for all enemies that
-  unit is currently fighting
-*/
+import { units } from '../../../store/unit/units';
+import { isObjectEmpty } from '../../../utils';
+import { meleeAttack } from '.';
+
 export const meleeCombat = () => {
   for(let unit of units) {
     if(!isObjectEmpty(unit.figthAgainst.front)) { // unit have front enemy
