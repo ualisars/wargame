@@ -30,7 +30,9 @@ export const drawUnit = (unit: Unit) => {
 }
 
 export const clearUnitImage = (unit: Unit) => {
-  ctx.clearRect(unit.x, unit.y, gridSize, gridSize);
+  if(ctx) {
+    ctx.clearRect(unit.x, unit.y, gridSize, gridSize);
+  }
 } 
 
 export const redrawUnits = (units: Unit[]) => {
