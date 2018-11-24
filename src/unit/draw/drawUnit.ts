@@ -1,5 +1,7 @@
-import {ctx} from '../../config/context';
-import {loadImage} from '../../utils';
+import { ctx } from '../../config/context';
+import { loadImage } from '../../utils';
+import { Unit } from '../types';
+import { gridSize } from '../../config';
 
 export const drawUnitImage = (x:number, y:number, width:number, height:number, src:string) => {
   loadImage(src, (err:any, img:any) => {
@@ -7,7 +9,7 @@ export const drawUnitImage = (x:number, y:number, width:number, height:number, s
   });
 }
 
-export const drawUnit = (unit:any) => {
+export const drawUnit = (unit: Unit) => {
   let color;
   if(unit.controlBy === 'player') {
     color = '#dbdb0d';
@@ -15,7 +17,7 @@ export const drawUnit = (unit:any) => {
   else if(unit.controlBy === 'computer') {
     color = '#d30c0c';
     if(!unit.isVisible) {
-      return; // unit not visible;
+      return;
     }
   }
   if(ctx) {
@@ -27,7 +29,11 @@ export const drawUnit = (unit:any) => {
   }
 }
 
-export const redrawUnits = (units:any[]) => {
+export const clearUnitImage = (unit: Unit) => {
+  ctx.clearRect(unit.x, unit.y, gridSize, gridSize);
+} 
+
+export const redrawUnits = (units: Unit[]) => {
   for(let unit of units) {
     if(unit.isMoving !== true) {
       drawUnit(unit);
