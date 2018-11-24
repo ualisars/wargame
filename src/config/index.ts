@@ -5,9 +5,6 @@ import {
 } from './map';
 
 import {
-  battleMode,
-  battleFinish,
-  finishBattle,
   mainMenuMode,
   setBattleMode,
   setMainMenuMode
@@ -17,9 +14,6 @@ export {
   HEIGHT,
   WIDTH,
   gridSize,
-  battleMode,
-  battleFinish,
-  finishBattle,
   mainMenuMode,
   setBattleMode,
   setMainMenuMode

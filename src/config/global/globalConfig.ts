@@ -3,13 +3,19 @@ export let battleFinish:boolean = false;
 export let mainMenuMode:boolean = true;
 
 export const setBattleMode = () => {
-  mainMenuMode = false;
-  battleMode = true;
+  return new Promise(resolve => {
+    mainMenuMode = false;
+    battleMode = true;
+    resolve();
+  });
 }
 
 export const setMainMenuMode = () => {
-  mainMenuMode = false;
-  battleMode = true;
+  return new Promise(resolve => {
+    mainMenuMode = false;
+    battleMode = true;
+    resolve();
+  });
 }
 
 export const finishBattle = () => {

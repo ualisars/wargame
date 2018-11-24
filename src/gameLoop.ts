@@ -3,18 +3,18 @@ import {
   playerUnits,
   units
 } from './store/unit/units';
-import {finishBattle} from './config';
-import {drawMessage} from './UI/messages/drawMessage';
-import { spotEnemy, isUnitSpottedByEnemy } from './unit';
+import { drawMessage } from './UI/messages/drawMessage';
+import { isUnitSpottedByEnemy, meleeCombat } from './unit';
+import { finishBattle } from './config/global/globalConfig';
 
 export const battleListener = () => {
   for(let unit of units) {
-    spotEnemy(unit);
     isUnitSpottedByEnemy(unit)
   }
+  meleeCombat();
   setTimeout(() => {
    battleListener();
-  }, 30);
+  }, 600);
 }
 
 export const isBattleEnd = () => {
@@ -22,20 +22,16 @@ export const isBattleEnd = () => {
   let playerNumber = playerUnits.length;
   if(computerNumber === 0 || playerNumber === 0) {
     finishBattle();
-    checkWinner();
+    checkWinner(computerNumber, playerNumber);
   }
 }
 
-export const checkWinner = () => {
-  let computerNumber = computerUnits.length;
-  let playerNumber = playerUnits.length;
+export const checkWinner = (computerNumber: number, playerNumber: number) => {
   if(computerNumber === 0) {
-    console.error('victory');
     drawMessage('Victory');
   }
   else if(playerNumber === 0) {
     finishBattle();
-    console.error('defeat');
     drawMessage('Defeat');
   }
 }

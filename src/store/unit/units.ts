@@ -1,6 +1,7 @@
 import { isUnitInArray } from '../../utils';
 import { deleteUnitFromArray } from '../../utils/unit/general';
 import Unit from '../../unit/types/Unit';
+import { removeUnitFromVisibleUnits, removeUnitFromSpottedUnits } from '..';
 
 export let units:Unit[] = [];
 export let playerUnits:Unit[] = [];
@@ -48,6 +49,8 @@ export const addToPlayerUnits = (unit:Unit) => {
 export const removeFromUnits = (unit:Unit) => {
   if(unit) {
     units = deleteUnitFromArray(unit, units);
+    removeUnitFromVisibleUnits(unit);
+    removeUnitFromSpottedUnits(unit);
     if(unit.controlBy === 'computer') {
       removeFromComputerUnits(unit);
     }

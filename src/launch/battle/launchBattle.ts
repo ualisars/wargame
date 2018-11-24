@@ -1,10 +1,10 @@
-import {initialMap} from '../../map/createMap/initialMap';
-import {auxiliaryCanvas} from '../../config/canvas';
-import {auxiliaryCtx} from '../../config/context';
+import { initialMap } from '../../map/createMap/initialMap';
+import { auxiliaryCanvas } from '../../config/canvas';
+import { auxiliaryCtx } from '../../config/context';
 import {
   WIDTH,
   HEIGHT,
-  gridSize,
+  gridSize
 } from '../../config';
 import {
   getNodeFromMap,
@@ -20,18 +20,16 @@ import {
   attackEnemy,
   moveTo
 } from '../../unit/movement';
-import {currentlyChosenUnit} from '../../store/unit/currentlyChosenUnit';
-import {getSurroundedNodes} from '../../utils/surrounded';
-import {createArmy} from '../../battle';
+import { currentlyChosenUnit } from '../../store/unit/currentlyChosenUnit';
+import { getSurroundedNodes } from '../../utils/surrounded';
 import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
-import { battleListener } from '../../gameLoop';
+import { battleListener, isBattleEnd } from '../../gameLoop';
+import { battleMode } from '../../config/global/globalConfig';
+import { createArmy } from '../../battle/roster/army/createArmy';
 
 export const launchBattle = () => {
-  drawBackground('./src/img/terrain/terrain.png');
-  createArmy();
-
+  console.log('battle mode', battleMode);
   console.log('monitor: height', window.screen.availHeight, 'width:',window.screen.availWidth);
-
   auxiliaryCanvas.addEventListener('mousemove', (e:any) => {
     let mouseX = e.offsetX; // get X
     let mouseY = e.offsetY; // get Y
@@ -95,10 +93,23 @@ export const launchBattle = () => {
       }
     }
   }); // on context
+
+ 
+  drawBackground('./src/img/terrain/terrain.png');
+  createArmy().then(() => {
+    battleListener();
+    moveUnits();
+    setInterval(() => {
+      moveUnits();
+    }, 3000);
+
+    setInterval(() => {
+      isBattleEnd();
+    }, 15000);
+  });
+  
 }
 
-battleListener();
-moveUnits();
-setInterval(() => {
-  moveUnits();
-}, 100);
+
+
+

@@ -2,9 +2,6 @@ import {
   clearMap
 } from './clearMap';
 import {
-  initializeMap
-} from './createMap';
-import {
   drawGrid
 } from './grid';
 import {
@@ -22,7 +19,6 @@ import {
 
 export {
   clearMap,
-  initializeMap,
   drawGrid,
   addNeighbors,
   neighbors,

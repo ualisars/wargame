@@ -1,7 +1,5 @@
 import {
   addUnitToArmy,
-  computerArmy,
-  playerArmy,
   removeUnitFromArmy
 } from './army';
 import {
@@ -14,8 +12,6 @@ import {
 
 export {
   addUnitToArmy,
-  computerArmy,
-  playerArmy,
   removeUnitFromArmy,
   roster,
   selectedUnitInRoster,

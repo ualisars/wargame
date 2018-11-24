@@ -2,25 +2,23 @@ import {
   mainMenu,
   dragAndDropCanvas
 } from '../../config/canvas';
-import {clearMap} from '../../map';
 import {
   canvas,
   auxiliaryCanvas,
   backgroundCanvas,
   terrain
 } from '../../config/canvas';
-
-import {setBattleMode} from '../../config';
-import {launchGame} from '..';
+import { setBattleMode } from '../../config';
+import { launchGame } from '..';
 
 export const activateBattleMode = () => {
-  console.error('activateBattleMode');
-  dragAndDropCanvas.style.zIndex = '0';
-  mainMenu.style.zIndex = '0';
-  auxiliaryCanvas.style.zIndex = '4';
-  canvas.style.zIndex = '3';
-  terrain.style.zIndex = '2';
-  backgroundCanvas.style.zIndex = '1';
-  setBattleMode();
-  launchGame();
+  setBattleMode().then(() => {
+    dragAndDropCanvas.style.zIndex = '0';
+    mainMenu.style.zIndex = '0';
+    auxiliaryCanvas.style.zIndex = '4';
+    canvas.style.zIndex = '3';
+    terrain.style.zIndex = '2';
+    backgroundCanvas.style.zIndex = '1';
+    launchGame()
+  });
 }
