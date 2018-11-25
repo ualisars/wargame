@@ -35,7 +35,7 @@ describe("analyze module test", () => {
                 let nodesNumber: number = 0;
                 before(() => {
                     while(!simulationNodes.isEmpty()) {
-                        let node = simulationNodes.pop();
+                        simulationNodes.pop();
                         nodesNumber += 1;
                     }
                 });
