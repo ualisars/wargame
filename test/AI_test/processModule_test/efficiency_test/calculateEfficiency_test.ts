@@ -250,7 +250,7 @@ describe("AI process module test", () => {
                 efficiency = calculateEfficiency(updatedComputerUnit1, updatedUnits);
             });
             it("computerUnit1 efficiency should be at least 20", () => {
-                expect(efficiency).to.be.at.least(40);
+                expect(efficiency).to.be.at.least(20);
             });
             it("computerUnit1 efficiency should be at most 100", () => {
                 expect(efficiency).to.be.at.most(100);

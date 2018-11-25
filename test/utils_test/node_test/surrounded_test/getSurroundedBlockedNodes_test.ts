@@ -12,14 +12,16 @@ describe('NodeUtils: surrounded test', () => {
 
   describe('getSurroundedBlockedNodes test', () => {
     let unit: Unit, ally1: Unit, ally2: Unit;
-    let node: MapNode;
+    let node1: MapNode, node2: MapNode;
     before(() => {
       removeAllUnits();
-      unit = createUnit('scouts', 320, 80, 'computer');
-      ally1 = createUnit('scouts', 320, 120, 'computer');
-      ally2 = createUnit('scouts', 280, 80, 'computer');
-      node = getNodeFromMap(360, 80);
-      ally2.setNextNode(node);
+      unit = createUnit('scouts', 320, 120, 'computer');
+      ally1 = createUnit('scouts', 280, 120, 'computer');
+      ally2 = createUnit('scouts', 360, 120, 'computer');
+      node1 = getNodeFromMap(280, 80);
+      node2 = getNodeFromMap(360, 160);
+      ally1.setNextNode(node1);
+      ally2.setNextNode(node2);
     });
 
     after(() => {
@@ -33,20 +35,36 @@ describe('NodeUtils: surrounded test', () => {
       before(() => {
         blockedNodes = getSurroundedBlockedNodes(unit);
       });
-      it("node (320, 120) should be in blockedNodes", () => {
-        let node = getNodeFromMap(320, 120);
-        assert.equal(isNodeInArray(node, blockedNodes), true);
-      });
-      it("node (320, 80) should be in blockedNodes", () => {
-        let node = getNodeFromMap(320, 80);
-        assert.equal(isNodeInArray(node, blockedNodes), true);
-      });
       it("node (280, 80) should be in blockedNodes", () => {
         let node = getNodeFromMap(280, 80);
         assert.equal(isNodeInArray(node, blockedNodes), true);
       });
-      it("node (360, 80) should be in blockedNodes", () => {
+      it("node (320, 80) should not be in blockedNodes", () => {
+        let node = getNodeFromMap(320, 80);
+        assert.equal(isNodeInArray(node, blockedNodes), false);
+      });
+      it("node (360, 80) should not be in blockedNodes", () => {
         let node = getNodeFromMap(360, 80);
+        assert.equal(isNodeInArray(node, blockedNodes), false);
+      });
+      it("node (280, 120) should be in blockedNodes", () => {
+        let node = getNodeFromMap(280, 120);
+        assert.equal(isNodeInArray(node, blockedNodes), true);
+      });
+      it("node (360, 120) should be in blockedNodes", () => {
+        let node = getNodeFromMap(360, 120);
+        assert.equal(isNodeInArray(node, blockedNodes), true);
+      });
+      it("node (280, 160) should not be in blockedNodes", () => {
+        let node = getNodeFromMap(280, 160);
+        assert.equal(isNodeInArray(node, blockedNodes), false);
+      });
+      it("node (320, 160) should not be in blockedNodes", () => {
+        let node = getNodeFromMap(320, 160);
+        assert.equal(isNodeInArray(node, blockedNodes), false);
+      });
+      it("node (360, 160) should not be in blockedNodes", () => {
+        let node = getNodeFromMap(360, 160);
         assert.equal(isNodeInArray(node, blockedNodes), true);
       });
     });
