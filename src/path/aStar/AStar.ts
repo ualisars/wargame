@@ -10,10 +10,12 @@ import {
   isObjectInMapKeys,
   getNeighborDistance
 } from './aStarUtils';
+import MapNode from '../../map/nodes/MapNode';
 
-export const aStar = (map:any[], startNode:any, finishNode:any) => {
+export const aStar = (map: MapNode[], startNode:any, finishNode:any) => {
   // the set of currently discovered nodes that are not evaluated yet
   // Initially only the start node is known
+  let updatedMap = Object.assign([], map);
   if(!startNode || !finishNode) return;
   let open:any[] = [];
 
@@ -47,7 +49,7 @@ export const aStar = (map:any[], startNode:any, finishNode:any) => {
         neighbor.fScore = neighbor.gScore + h(neighbor, finishNode);
       }
       if(!isObjectInArray(neighbor, open)) { // create function
-        let nodeNeighbors = neighbors(map, neighbor);
+        let nodeNeighbors = neighbors(updatedMap, neighbor);
         neighbor.neighbors = nodeNeighbors;
         open.push(neighbor);
       }

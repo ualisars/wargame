@@ -1,19 +1,21 @@
-import {assert} from 'chai';
-import {createUnit} from '../../../../src/unit/create';
+import { assert } from 'chai';
+import { createUnit } from '../../../../src/unit/create';
 import {
   getPriorityUnit,
   unitCanMoveToTheNode
 } from '../../../../src/utils/unit/priority';
-import {removeAllUnits} from '../../../../src/store/unit/units';
-import {removeUnit} from '../../../../src/unit/remove';
+import { removeAllUnits } from '../../../../src/store/unit/units';
+import { removeUnit } from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
+import { getNodeFromMap } from '../../../../src/utils';
+import MapNode from '../../../../src/map/nodes/MapNode';
 
 describe('unitPriorityUtils test', () => {
 
   describe('getPriorityUnit test', () => {
     let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit;
     let units:Unit[] = [];
-    let node = {x: 440, y: 200};
+    let node: MapNode;
 
     before(() => {
       removeAllUnits();
@@ -21,7 +23,7 @@ describe('unitPriorityUtils test', () => {
       unit2 = createUnit('HeavyInfantry', 400, 160, 'computer');
       unit3 = createUnit('Militia', 480, 200, 'computer');
       unit4 = createUnit('Militia', 440, 240, 'computer');
-
+      node = getNodeFromMap(440, 200);
       // move unit1 towards the node
       unit1.setY(170);
 
@@ -88,26 +90,25 @@ describe('unitPriorityUtils test', () => {
   describe('unitCanMoveToTheNode test', () => {
     let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit;
     let units:Unit[] = [];
-    let node = {x: 440, y: 200};
-
+    let node: MapNode;
     before(() => {
       removeAllUnits();
       unit1 = createUnit('Pikemen', 440, 160, 'computer');
       unit2 = createUnit('HeavyInfantry', 400, 160, 'computer');
       unit3 = createUnit('Militia', 480, 200, 'computer');
       unit4 = createUnit('Militia', 440, 240, 'computer');
+      node = getNodeFromMap(440, 200);
 
       // move unit1 towards the node
       unit1.setY(170);
       unit3.setX(470);
-      // add units to the array
+     
       units.push(unit1);
       units.push(unit2);
       units.push(unit3);
       units.push(unit4);
     });
 
-    // remove units after test completed
     after(() => {
       removeUnit(unit1);
       removeUnit(unit2);

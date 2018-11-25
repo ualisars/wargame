@@ -6,6 +6,7 @@ import {
 } from '../actions';
 import {shuffleUnits} from '../shuffle';
 import {units} from '../../../store/unit/units';
+import MapNode from '../../../map/nodes/MapNode';
 
 /*
   Assess priority of each units and
@@ -19,7 +20,7 @@ import {units} from '../../../store/unit/units';
     3.1 Randomly choose one unit from the remaining units
 
 */
-export const getPriorityUnit = (node:any, units:Unit[]):Unit => {
+export const getPriorityUnit = (node: MapNode, units:Unit[]):Unit => {
   let updatedUnits:Unit[] = Object.assign([], units);
   let closestUnits:Unit[] = findClosestUnitsToTheNodeCenter(node, updatedUnits);
   //console.log('closestUnits', closestUnits);
@@ -41,9 +42,9 @@ export const getPriorityUnit = (node:any, units:Unit[]):Unit => {
 }
 
 
-export const unitCanMoveToTheNode = (node:any, unit:Unit):boolean => {
-  const priorityUnit:Unit = getPriorityUnit(node, units);
-  let permission:boolean = false;
+export const unitCanMoveToTheNode = (node: MapNode, unit: Unit):boolean => {
+  const priorityUnit: Unit = getPriorityUnit(node, units);
+  let permission: boolean = false;
   if(unit.id === priorityUnit.id) {
     permission = true;
   }

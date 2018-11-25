@@ -35,7 +35,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
   unit.setIsMovingToTrue();
   if(i === path.length) { // unit approach its end position
     console.log(unit.name, 'is on position');
-    let currentNode = getNodeFromMap(unit.x, unit.y); // get currentNode
+    let currentNode = getNodeFromMap(unit.x, unit.y);
     stopMoving(unit, currentNode);
     return;
   }
@@ -48,7 +48,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
       unit.clearFightAgainst(); // now unit not fighting with anyone
       removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
     } else {
-      let currentNode = getNodeFromMap(unit.x, unit.y); // get currentNode
+      let currentNode = getNodeFromMap(unit.x, unit.y);
       stopMoving(unit, currentNode);
       return;
     }
@@ -70,10 +70,10 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
 
   if(unit.unitToPursue) {
     // unit now is pursuing opponent's unit
-    console.log('allies unit is pursuing another oponents unit');
+    console.log('unit is pursuing another opponents unit');
     let startNode = getNodeFromMap(unit.x, unit.y);
-    unit.setCurrentNode(startNode); // set currentNode
-    unit.setNextNode(startNode); // set nextNode
+    unit.setCurrentNode(startNode); 
+    unit.setNextNode(startNode);
     let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y);
     let newPath:any = aStar(initialMap, startNode, finishNode);
     unit.assignMoveToPosition(finishNode.x, finishNode.y);
@@ -85,8 +85,8 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     console.log('new destination has been chosen');
     let startNode = getNodeFromMap(unit.x, unit.y);
     let finishNode = getNodeFromMap(unit.moveToNode.x, unit.moveToNode.y);
-    unit.setCurrentNode(startNode); // set currentNode
-    unit.setNextNode(startNode); // set nextNode
+    unit.setCurrentNode(startNode); 
+    unit.setNextNode(startNode);
     let newPath:any = aStar(initialMap, startNode, finishNode);
     unit.assignMoveToPosition(finishNode.x, finishNode.y);
     updateUnit(unit,newPath, 0, finishNode.x, finishNode.y, null, false);
@@ -113,13 +113,13 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
 
   // ally unit is on the destination position
   // currentUnit should stop moving
-  if(anotherUnitIsOnTheWay(units, unit, node) && i === updatedPath.length - 1) {
+  if(anotherUnitIsOnTheWay(unit) && i === updatedPath.length - 1) {
     console.error('another unit occupying destination position');
     unit.assignMoveToPosition(unit.x, unit.y);
     stopMoving(unit, currentNode);
     return;
   }
-  if(anotherUnitIsOnTheWay(units, unit, node)) {
+  if(anotherUnitIsOnTheWay(unit)) {
     // unit has another allies' unit on its way
     const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
     if(permission) {

@@ -1,15 +1,11 @@
 import Unit from '../../../unit/types/Unit';
-import {getNodeFromMap} from '../..';
 import {deleteUnitFromArray} from '../general';
+import { units } from '../../../store/unit/units';
 
-export const anotherUnitIsOnTheWay = (units:Unit[], currentUnit:Unit, nextNode:any):boolean => {
+export const anotherUnitIsOnTheWay = (currentUnit: Unit): boolean => {
   let updatedUnits: Unit[] = Object.assign([], units);
-  let otherUnits: Unit[] = deleteUnitFromArray(currentUnit, units);
-
-  const nextNodeX:number = nextNode.x;
-  const nextNodeY:number = nextNode.y;
-
-  let currentUnitNextNode = getNodeFromMap(nextNodeX, nextNodeY);
+  let otherUnits: Unit[] = deleteUnitFromArray(currentUnit, updatedUnits);
+  let currentUnitNextNode = currentUnit.nextNode;
 
   for(let otherUnit of otherUnits) {
     if(currentUnitNextNode.x === otherUnit.currentNode.x && currentUnitNextNode.y === otherUnit.currentNode.y) {
