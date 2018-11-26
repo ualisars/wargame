@@ -3,38 +3,34 @@ import {
   charge,
   removeUnitFromEnemiesFightAgainst
 } from '../..';
-import {getNodeFromMap} from '../../../utils';
+import { getNodeFromMap } from '../../../utils';
 import {
   createUnitObstacle,
   addNeighbors
 } from '../../../map';
-import {initialMap} from '../../../map/createMap/initialMap';
-import {ctx} from '../../../config/context';
-import {aStar} from '../../../path';
-import {units} from '../../../store/unit/units';
+import { initialMap } from '../../../map/createMap/initialMap';
+import { aStar } from '../../../path';
 import {
   anotherUnitIsOnTheWay,
   getSurroundedEnemies
 } from '../../../utils';
-import {unitCanGetOutOfCombat} from '../../../utils/unit/movementUtils';
-import {getSurroundedBlockedNodes} from '../../../utils/node';
-import {stopMoving} from './stopMoving';
-import {moveToNextNodeInPursueUnit} from './moveToNextNode';
+import { unitCanGetOutOfCombat } from '../../../utils/unit/movementUtils';
+import { getSurroundedBlockedNodes } from '../../../utils/node';
+import { moveToNextNodeInPursueUnit } from './moveToNextNode';
+import { updateUnit } from './updateUnit';
+import { Unit } from '../../types';
+import { stopMoving } from './stopMoving';
+import { unitCanMoveToTheNode } from '../../../utils/unit/priority';
+import MapNode from '../../../map/nodes/MapNode';
 
-import {updateUnit} from './updateUnit';
-
-export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, currentMoveToY:number, i:number, path:any, newMovement:boolean) => {
-  unit.setIsMovingToTrue();
-  // console.error('pursueUnit');
-  // console.log('unit.x', unit.x, 'unit.y', unit.y);
-  // console.log('current moveToX:', currentMoveToX, 'moveToY:', currentMoveToY);
+export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number, currentMoveToY:number, i:number, path:any, newMovement:boolean) => {
   if(unit.isFighting) {
     unit.setUnitToPursueToNull();
     if(newMovement && unitCanGetOutOfCombat(unit)) { // unit is trying to out of combat
-      console.log('unit can get out of combat');
       unit.setIsFightingToFalse(); // unit is not fighting now
       unit.clearFightAgainst(); // now unit not fighting with anyone
-      removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
+      removeUnitFromEnemiesFightAgainst(unit);
+      unit.setIsMovingToTrue();
     } else {
       let currentNode = getNodeFromMap(unit.x, unit.y); // get currentNode
       unit.setCurrentNode(currentNode); // set currentNode
@@ -45,23 +41,19 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
   }
   if(unit.unitToPursue === null) { // unit isn't pursuing any opponent's units
     let startNode = getNodeFromMap(unit.x, unit.y);
-    let finishNode = getNodeFromMap(unit.moveToNodeX, unit.moveToNodeY);
+    let finishNode = getNodeFromMap(unit.moveToNode.x, unit.moveToNode.y);
     let newPath:any = aStar(initialMap, startNode, finishNode);
     unit.assignMoveToPosition(finishNode.x, finishNode.y);
     updateUnit(unit,newPath, 0, finishNode.x, finishNode.y, null, false);
     return;
   }
-  if(unit.unitToPursue !== null) {
-    if(pursuedUnit.id !== unit.unitToPursue.id) {
-      // unit is pursuing another opponent's unit
-      console.log('allies unit is pursuing another oponents unit');
-      let startNode = getNodeFromMap(unit.x, unit.y);
-      let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y);
-      let newPath:any = aStar(initialMap, startNode, finishNode);
-      unit.assignUnitMoveToPosition(finishNode.x, finishNode.y)
-      pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
-      return;
-    }
+  if(unit.unitToPursue !== null && pursuedUnit.id !== unit.unitToPursue.id) {
+    let startNode = getNodeFromMap(unit.x, unit.y);
+    let finishNode = getNodeFromMap(unit.unitToPursue.x, unit.unitToPursue.y);
+    let newPath:any = aStar(initialMap, startNode, finishNode);
+    unit.assignMoveToPosition(finishNode.x, finishNode.y)
+    pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
+    return;
   }
 
   if(getSurroundedEnemies(unit).length !== 0) { // enemy is on the neighbour node
@@ -70,85 +62,79 @@ export const pursueUnit = (unit:any, pursuedUnit:any, currentMoveToX:number, cur
     unit.setIsFightingToTrue();
     for(let enemy of getSurroundedEnemies(unit)) {
       enemy.setIsFightingToTrue();
+      enemy.setIsMovingToFalse();
       unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
       enemy.assignEnemy(unit);
     }
     return;
   }
 
-  let startNode = getNodeFromMap(unit.x, unit.y);
-  let finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y);
-  let node = path[i];
-  unit.moveToNodeX = pursuedUnit.x;
-  unit.moveToNodeY = pursuedUnit.y;
-  let previousNode = node;
-  if(i !== 0) {
-    previousNode = path[i-1];
+  let updatedPath = Object.assign([], path);
+  let node = updatedPath[i]; // get next node
+  if(!node) return;
+  let nextNode: MapNode;
+  if(i + 1 === updatedPath.length) { // last node
+    nextNode = node;
+  } else {
+    nextNode = updatedPath[i + 1];
   }
 
+  let currentNode = getNodeFromMap(unit.x, unit.y);
+  unit.setCurrentNode(currentNode); 
+  unit.setNextNode(nextNode);
+  let startNode = getNodeFromMap(unit.x, unit.y);
+  let finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y);
+  
   // if pursued unit changed position
   if(currentMoveToX !== pursuedUnit.x || currentMoveToY !== pursuedUnit.y) {
-    //console.error('pursue unit: pursuedUnit change position')
     i = 0;
     currentMoveToX = pursuedUnit.x;
     currentMoveToY = pursuedUnit.y;
     startNode = getNodeFromMap(unit.x, unit.y);
     finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y);
-    // console.error('startNode:', startNode);
-    // console.error('finishNode:', finishNode);
-    // console.error('pursuedUnit.x:', pursuedUnit.x, 'pursuedUnit.y:', pursuedUnit.y);
-    // console.error('map', map);
+    
     path = aStar(initialMap, startNode, finishNode);
-    unit.moveToNodeX = pursuedUnit.x;
-    unit.moveToNodeY = pursuedUnit.y;
-    node = path[i]; // get next node
-    previousNode = node;
-    if(i !== 0) {
-      previousNode = path[i-1];
-    }
+    unit.assignMoveToPosition(pursuedUnit.currentNode.x, pursuedUnit.currentNode.y);
+    node = path[i];
   }
 
-  if(node.x === pursuedUnit.x && node.y === pursuedUnit.y) {
-    // unit is reached oponents's unit
-    console.log(`unit is reached oponents's unit`);
-    unit.setIsMovingToFalse();
+  // unit is reached oponents's unit
+  if(nextNode.x === pursuedUnit.currentNode.x && nextNode.y === pursuedUnit.currentNode.y) {
+    stopMoving(unit, currentNode);
     unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();
     pursuedUnit.setIsFightingToTrue();
     unit.assignEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
     pursuedUnit.assignEnemy(unit);
     charge(unit, pursuedUnit);
-    console.error('unit frontEnemy:', unit.figthAgainst.front);
     return;
   }
 
   if(anotherUnitIsOnTheWay(unit)) {
     // unit has another allies' unit on its way
-    console.error('pursueUnit: another unit is on the way x:',node.x, 'y:',node.y);
-    let blockedNodes = getSurroundedBlockedNodes(unit);
-    // if current node and next node are different
-    let updatedMap = Object.assign([], initialMap);
-    for(let blockedNode of blockedNodes) {
-      updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
+    console.error("ANOTHER UNIT IS ON THE WAY");
+    const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
+    console.log('PERMISSION', permission);
+    if(!permission) {
+      stopMoving(unit, currentNode);
+      let updatedMap = Object.assign([], initialMap);
+      let blockedNodes = getSurroundedBlockedNodes(unit);
+      for(let blockedNode of blockedNodes) {
+        updatedMap = createUnitObstacle(updatedMap, blockedNode.x, blockedNode.y); // create obstacle for currentNode
+      }
+      addNeighbors(updatedMap); // create new neighbours for updated map
+      let startNode = getNodeFromMap(unit.x, unit.y, updatedMap);
+      let finishNode = getNodeFromMap(currentMoveToX, currentMoveToY, updatedMap);
+
+      let newPath:any = aStar(updatedMap, startNode, finishNode);
+      pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, i, newPath, false);
+      return;
     }
-    addNeighbors(updatedMap);
-    // console.log('deleted Node', node);
-    // console.log('updatedMap', updatedMap);
-    // console.log('node', node);
-    startNode = getNodeFromMap(unit.x, unit.y, updatedMap);
-    finishNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y, updatedMap);
-    unit.moveToNodeX = pursuedUnit.x;
-    unit.moveToNodeY = pursuedUnit.y;
-    let newPath:any = aStar(updatedMap, startNode, finishNode);
-    previousNode = newPath[0]; // get previous unit's position
-    node = newPath[1]; // get next node
-    //console.error('unit is going to node x:', node.x, 'y:',node.y);
-    moveToNextNodeInPursueUnit(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
-    return;
   }
-  // console.error('previousNode', previousNode);
-  // console.error('currentNode', node);
+
+  unit.assignMoveToPosition(pursuedUnit.currentNode.x, pursuedUnit.currentNode.y);
+  unit.setIsMovingToTrue();
   spotEnemy(unit); // check for enemy units
   unit.decreaseCondition(1); // decreaseCondition while moving
-  moveToNextNodeInPursueUnit(unit, pursuedUnit, previousNode, node, currentMoveToX, currentMoveToY, path, i);
+  moveToNextNodeInPursueUnit(unit, pursuedUnit, currentNode, nextNode, currentMoveToX, currentMoveToY, path, i);
 }
