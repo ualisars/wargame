@@ -10,10 +10,7 @@ import {
 } from '../../../map';
 import { initialMap } from '../../../map/createMap/initialMap';
 import { aStar } from '../../../path';
-import {
-  anotherUnitIsOnTheWay,
-  getSurroundedEnemies
-} from '../../../utils';
+import { anotherUnitIsOnTheWay } from '../../../utils';
 import { unitCanGetOutOfCombat } from '../../../utils/unit/movementUtils';
 import { getSurroundedBlockedNodes } from '../../../utils/node';
 import { moveToNextNodeInPursueUnit } from './moveToNextNode';
@@ -54,19 +51,6 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
     let newPath:any = aStar(initialMap, startNode, finishNode);
     unit.assignMoveToPosition(finishNode.x, finishNode.y)
     pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
-    return;
-  }
-
-  if(getInterceptedEnemies(unit).length !== 0) { // enemy is on the neighbour node
-    unit.setIsMovingToFalse();
-    unit.setUnitToPursueToNull();
-    unit.setIsFightingToTrue();
-    for(let enemy of getInterceptedEnemies(unit)) {
-      enemy.setIsFightingToTrue();
-      enemy.setIsMovingToFalse();
-      unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
-      enemy.assignEnemy(unit);
-    }
     return;
   }
 
