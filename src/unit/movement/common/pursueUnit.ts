@@ -22,6 +22,7 @@ import { Unit } from '../../types';
 import { stopMoving } from './stopMoving';
 import { unitCanMoveToTheNode } from '../../../utils/unit/priority';
 import MapNode from '../../../map/nodes/MapNode';
+import { getInterceptedEnemies } from '../../../utils/unit/interception/getInterceptedEnemies';
 
 export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number, currentMoveToY:number, i:number, path:any, newMovement:boolean) => {
   if(unit.isFighting) {
@@ -56,11 +57,11 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
     return;
   }
 
-  if(getSurroundedEnemies(unit).length !== 0) { // enemy is on the neighbour node
+  if(getInterceptedEnemies(unit).length !== 0) { // enemy is on the neighbour node
     unit.setIsMovingToFalse();
     unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();
-    for(let enemy of getSurroundedEnemies(unit)) {
+    for(let enemy of getInterceptedEnemies(unit)) {
       enemy.setIsFightingToTrue();
       enemy.setIsMovingToFalse();
       unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy

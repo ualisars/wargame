@@ -26,6 +26,7 @@ import {stopMoving} from './stopMoving';
 import {moveToNextNodeInUpdateUnit} from './moveToNextNode';
 import {pursueUnit} from './pursueUnit'
 import {unitCanMoveToTheNode} from '../../../utils/unit/priority';
+import { getInterceptedEnemies } from '../../../utils/unit/interception/getInterceptedEnemies';
 
 export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   if(unit.health <= 0) {
@@ -50,12 +51,12 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     }
   }
 
-  if(getSurroundedEnemies(unit).length !== 0) { // enemy is on the neighbour node
+  if(getInterceptedEnemies(unit).length !== 0) { // enemy is on the neighbour node
     let currentNode = getNodeFromMap(unit.x, unit.y);
     stopMoving(unit, currentNode);
     unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();
-    for(let enemy of getSurroundedEnemies(unit)) {
+    for(let enemy of getInterceptedEnemies(unit)) {
       stopMoving(enemy, enemy.nextNode);
       enemy.setIsFightingToTrue();
       unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
