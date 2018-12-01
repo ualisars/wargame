@@ -20,6 +20,7 @@ import { stopMoving } from './stopMoving';
 import { unitCanMoveToTheNode } from '../../../utils/unit/priority';
 import MapNode from '../../../map/nodes/MapNode';
 import { getInterceptedEnemies } from '../../../utils/unit/interception/getInterceptedEnemies';
+import { getBlockedEnemies } from '../../../utils/unit/unitPosition/getBlockedEnemies';
 
 export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number, currentMoveToY:number, i:number, path:any, newMovement:boolean) => {
   if(unit.isFighting) {
@@ -51,6 +52,19 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
     let newPath:any = aStar(initialMap, startNode, finishNode);
     unit.assignMoveToPosition(finishNode.x, finishNode.y)
     pursueUnit(unit, unit.unitToPursue, finishNode.x, finishNode.y, 0, newPath, false);
+    return;
+  }
+
+  if(getInterceptedEnemies(unit).length !== 0) { // enemy is on the neighbour node
+    unit.setIsMovingToFalse();
+    unit.setUnitToPursueToNull();
+    unit.setIsFightingToTrue();
+    for(let enemy of getInterceptedEnemies(unit)) {
+      enemy.setIsFightingToTrue();
+      enemy.setIsMovingToFalse();
+      unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
+      enemy.assignEnemy(unit);
+    }
     return;
   }
 
@@ -101,6 +115,17 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
     const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
     console.log('PERMISSION', permission);
     if(!permission) {
+      if(getBlockedEnemies(unit).length > 0) { // unit is blocked by enemy
+        stopMoving(unit, currentNode);
+        unit.setUnitToPursueToNull();
+        unit.setIsFightingToTrue();
+        for(let enemy of getBlockedEnemies(unit)) {
+          enemy.setIsFightingToTrue();
+          unit.assignEnemy(enemy);
+          enemy.assignEnemy(unit);
+        }
+        return;
+      } 
       stopMoving(unit, currentNode);
       let updatedMap = Object.assign([], initialMap);
       let blockedNodes = getSurroundedBlockedNodes(unit);

@@ -27,6 +27,7 @@ import {moveToNextNodeInUpdateUnit} from './moveToNextNode';
 import {pursueUnit} from './pursueUnit'
 import {unitCanMoveToTheNode} from '../../../utils/unit/priority';
 import { getInterceptedEnemies } from '../../../utils/unit/interception/getInterceptedEnemies';
+import { getBlockedEnemies } from '../../../utils/unit/unitPosition/getBlockedEnemies';
 
 export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   if(unit.health <= 0) {
@@ -49,6 +50,20 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
       stopMoving(unit, currentNode);
       return;
     }
+  }
+
+  if(getInterceptedEnemies(unit).length !== 0) { // enemy is on the neighbour node
+    let currentNode = getNodeFromMap(unit.x, unit.y);
+    stopMoving(unit, currentNode);
+    unit.setUnitToPursueToNull();
+    unit.setIsFightingToTrue();
+    for(let enemy of getInterceptedEnemies(unit)) {
+      stopMoving(enemy, enemy.nextNode);
+      enemy.setIsFightingToTrue();
+      unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
+      enemy.assignEnemy(unit);
+    }
+    return;
   }
 
   if(unit.unitToPursue) {
@@ -102,6 +117,17 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     // unit has another allies' unit on its way
     const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
     if(!permission) {
+      if(getBlockedEnemies(unit).length > 0) { // unit is blocked by enemy
+        stopMoving(unit, currentNode);
+        unit.setUnitToPursueToNull();
+        unit.setIsFightingToTrue();
+        for(let enemy of getBlockedEnemies(unit)) {
+          enemy.setIsFightingToTrue();
+          unit.assignEnemy(enemy);
+          enemy.assignEnemy(unit);
+        }
+        return;
+      } 
       stopMoving(unit, currentNode);
       let updatedMap = Object.assign([], initialMap);
       let blockedNodes = getSurroundedBlockedNodes(unit);
