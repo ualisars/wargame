@@ -10,9 +10,11 @@ import {
 } from '../../config/canvas';
 import { setBattleMode } from '../../config';
 import { launchGame } from '..';
+import { clearMainMenu } from '../../UI/mainMenu/settings/clearMainMenu';
 
 export const activateBattleMode = () => {
   setBattleMode().then(() => {
+    clearMainMenu();
     dragAndDropCanvas.style.zIndex = '0';
     mainMenu.style.zIndex = '0';
     auxiliaryCanvas.style.zIndex = '4';
