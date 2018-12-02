@@ -28,7 +28,7 @@ import {
 } from '../layouts/rosterLayout/rosterSettings';
 import {isUnitSelectedInRoster} from '../layouts/rosterLayout/unit/isUnitSelectedInRoster';
 import {loadImage} from '../../../utils'
-import {WIDTH, HEIGHT} from '../../../config';
+import {MAP_WIDTH, CANVAS_HEIGHT} from '../../../config';
 import {
   onChoosePlayer,
   onChooseComputer,
@@ -69,7 +69,7 @@ export const dragAndDrop = () => {
       removeUnitFromArmy(unit);
       displayChosenUnits();
       displayTitle(); // redraw totalGold in title
-      dragAndDropCanvasCtx.clearRect(0,0, WIDTH, HEIGHT);
+      dragAndDropCanvasCtx.clearRect(0,0, MAP_WIDTH, CANVAS_HEIGHT);
       isStartBattleAvailable();
     }
     if(startBattleAvailable && isStartBattleButtonSelected(x,y)) {
@@ -83,11 +83,11 @@ export const dragAndDrop = () => {
         displayChosenUnits();
         increaseSpentGold(unit.cost);
         displayTitle(); // redraw totalGold in title
-        dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
+        dragAndDropCanvasCtx.clearRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT); // clear canvas
         isStartBattleAvailable();
       } else {
         displayChosenUnits();
-        dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT); // clear canvas
+        dragAndDropCanvasCtx.clearRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT); // clear canvas
       }
     }
     onChooseRoster(x, y);
@@ -141,7 +141,7 @@ export let onDragUnit = (mouseX:number, mouseY:number) => {
     let x = mouseX - (width / 2);
     let y = mouseY - (height / 2);
     loadImage(selectedUnitInRoster.imgSrc, (err:any, img:any) => {
-      dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+      dragAndDropCanvasCtx.clearRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT);
       dragAndDropCanvasCtx.drawImage(img, x, y, rosterImgWidth, rosterImgHeight);
     });
   }

@@ -1,7 +1,7 @@
 import {
-  HEIGHT,
+  MAP_HEIGHT,
   gridSize,
-  WIDTH
+  MAP_WIDTH
 } from '../../config';
 
 export const neighbors = (map: any[], node:any) => {
@@ -21,7 +21,7 @@ export const neighbors = (map: any[], node:any) => {
       x: node.x + dir.x,
       y: node.y + dir.y
     }
-    if(neighbor.x >= 0 && neighbor.x <= WIDTH && neighbor.y >= 0 && neighbor.y <= HEIGHT) {
+    if(neighbor.x >= 0 && neighbor.x <= MAP_WIDTH && neighbor.y >= 0 && neighbor.y <= MAP_HEIGHT) {
         let finded:boolean = false;
         for(let node of map) {
           if(neighbor.x === node.x && neighbor.y === node.y) {

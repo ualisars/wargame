@@ -1,6 +1,6 @@
 import {side} from '../../../../../config/mainMenu/sides/side';
 import {dragAndDropCanvasCtx} from '../../../../../config/context';
-import {WIDTH, HEIGHT} from '../../../../../config';
+import {MAP_WIDTH, CANVAS_HEIGHT} from '../../../../../config';
 import {selectedUnitInRoster} from '../../../../../store/roster/selectedUnit';
 import {drawRemoveIcon} from '../icon';
 import {
@@ -30,7 +30,7 @@ export const onChooseUnitInArmy = (mouseX:number, mouseY:number) => {
         selectedUnit = unit;
       } else {
         if(!selectedUnitInRoster) { // unit is not dragged
-          dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+          dragAndDropCanvasCtx.clearRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT);
         }
       }
   }

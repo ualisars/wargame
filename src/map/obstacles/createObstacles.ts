@@ -1,9 +1,5 @@
 import {initialMap} from '../createMap/initialMap';
-import {
-  HEIGHT,
-  gridSize,
-  WIDTH
-} from '../../config';
+import { gridSize } from '../../config';
 import {
   deleteObjectFromArray,
   drawObstacle

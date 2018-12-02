@@ -1,12 +1,12 @@
 import {
-  WIDTH,
-  HEIGHT
+  CANVAS_HEIGHT,
+  MAP_WIDTH
 } from '..';
 
 export const canvas:any = document.getElementById('canvas');
 
 if(canvas) {
-  canvas.width = WIDTH;
-  canvas.height = HEIGHT;
+  canvas.width = MAP_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
   canvas.style.border = "1px solid";
 }

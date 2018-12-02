@@ -1,4 +1,4 @@
-import { WIDTH, HEIGHT, gridSize } from "../../config";
+import { MAP_WIDTH, MAP_HEIGHT, gridSize } from "../../config";
 
 class MapNode {
     id: number;
@@ -9,7 +9,7 @@ class MapNode {
         if(x % gridSize !== 0 || y % gridSize !== 0) {
             throw new Error("Node coordinates do not corresponds to map grid size");
         }
-        if(x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT) {
+        if(x >= 0 && x <= MAP_WIDTH && y >= 0 && y <= MAP_HEIGHT) {
             this.id = id;
             this.x = x;
             this.y = y;

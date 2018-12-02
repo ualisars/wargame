@@ -1,6 +1,6 @@
 import {
   gridSize,
-  HEIGHT,
+  MAP_HEIGHT,
 } from '../../../config';
 import {
   deleteObjectFromArray,
@@ -15,7 +15,7 @@ export const initializePlayerUnitsNodes = () => {
     const playerX0 = 0;
     const playerX1 = gridSize * 2;
     const playerY0 = 0;
-    const playerY1 = HEIGHT;
+    const playerY1 = MAP_HEIGHT;
     for(let x = playerX0; x <= playerX1; x += gridSize) {
       for(let y = playerY0; y <= playerY1; y+= gridSize) {
         let node = getNodeFromMap(x, y);

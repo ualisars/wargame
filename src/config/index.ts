@@ -1,6 +1,7 @@
 import {
-  HEIGHT,
-  WIDTH,
+  MAP_HEIGHT,
+  MAP_WIDTH,
+  CANVAS_HEIGHT,
   gridSize
 } from './map';
 
@@ -11,8 +12,9 @@ import {
 } from './global';
 
 export {
-  HEIGHT,
-  WIDTH,
+  MAP_HEIGHT,
+  MAP_WIDTH,
+  CANVAS_HEIGHT,
   gridSize,
   mainMenuMode,
   setBattleMode,

@@ -1,11 +1,11 @@
 import {
-  WIDTH,
-  HEIGHT
+  MAP_HEIGHT,
+  MAP_WIDTH
 } from '..';
 
 export const auxiliaryCanvas:any = document.getElementById('auxiliary');
 
 if(auxiliaryCanvas) {
-  auxiliaryCanvas.width = WIDTH;
-  auxiliaryCanvas.height = HEIGHT;
+  auxiliaryCanvas.width = MAP_WIDTH;
+  auxiliaryCanvas.height = MAP_HEIGHT;
 }

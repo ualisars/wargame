@@ -1,11 +1,11 @@
 import {
-  WIDTH,
-  HEIGHT
+  MAP_HEIGHT,
+  MAP_WIDTH
 } from '..';
 
 export const backgroundCanvas:any = document.getElementById('background');
 
 if(backgroundCanvas) {
-  backgroundCanvas.width = WIDTH;
-  backgroundCanvas.height = HEIGHT;
+  backgroundCanvas.width = MAP_WIDTH;
+  backgroundCanvas.height = MAP_HEIGHT;
 }

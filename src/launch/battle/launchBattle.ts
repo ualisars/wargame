@@ -2,8 +2,8 @@ import { initialMap } from '../../map/createMap/initialMap';
 import { auxiliaryCanvas } from '../../config/canvas';
 import { auxiliaryCtx } from '../../config/context';
 import {
-  WIDTH,
-  HEIGHT,
+  MAP_WIDTH,
+  MAP_HEIGHT,
   gridSize
 } from '../../config';
 import {
@@ -50,7 +50,7 @@ export const launchBattle = () => {
         auxiliaryCtx.font = "14px Arial";
         auxiliaryCtx.fillText("Attack", pointedUnit.x, pointedUnit.y + gridSize / 2);
       } else {
-        auxiliaryCtx.clearRect(0, 0, WIDTH, HEIGHT);
+        auxiliaryCtx.clearRect(0, 0, MAP_WIDTH, MAP_HEIGHT);
       }
     }
   });

@@ -1,7 +1,7 @@
 import {
   gridSize,
-  HEIGHT,
-  WIDTH
+  MAP_HEIGHT,
+  MAP_WIDTH
 } from '../../../config';
 import {
   deleteObjectFromArray,
@@ -13,10 +13,10 @@ export let computerUnitsNodes: MapNode[] = [];
 
 export const initializeComputerUnitsNodes = () => {
   return new Promise(resolve => {
-    const computerX0 = WIDTH - (gridSize * 2);
-    const computerX1 = WIDTH;
+    const computerX0 = MAP_WIDTH - (gridSize * 2);
+    const computerX1 = MAP_WIDTH;
     const computerY0 = 0;
-    const computerY1 = HEIGHT;
+    const computerY1 = MAP_HEIGHT;
 
     for(let x = computerX0; x <= computerX1; x += gridSize) {
       for(let y = computerY0; y <= computerY1; y+= gridSize) {

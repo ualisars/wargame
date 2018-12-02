@@ -1,5 +1,5 @@
 import { mainMenuCtx } from '../../config/context';
-import { WIDTH, HEIGHT } from '../../config';
+import { MAP_WIDTH, CANVAS_HEIGHT } from '../../config';
 import { displayRoster } from '../../UI/mainMenu/layouts/rosterLayout';
 import { displayChosenUnits } from '../../UI/mainMenu/layouts/armyLayout';
 import { displayInfo } from '../../UI/mainMenu/layouts/infoLayout';
@@ -11,7 +11,7 @@ import { initializeMap } from '../../map/createMap/initialMap';
 export const launchMainMenu = () => {
   initializeMap().then(
     () => {
-      mainMenuCtx.fillRect(0, 0, WIDTH, HEIGHT);
+      mainMenuCtx.fillRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT);
       displayRoster();
       displayChosenUnits();
       displayInfo();

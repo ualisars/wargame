@@ -1,11 +1,13 @@
 import {
-  HEIGHT,
-  WIDTH
+  MAP_HEIGHT,
+  MAP_WIDTH,
+  CANVAS_HEIGHT
 } from './map';
 import {gridSize} from './gridSize';
 
 export {
   gridSize,
-  HEIGHT,
-  WIDTH
+  MAP_HEIGHT,
+  MAP_WIDTH,
+  CANVAS_HEIGHT
 }

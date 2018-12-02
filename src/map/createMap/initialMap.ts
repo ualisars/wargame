@@ -1,6 +1,6 @@
 import {
-  WIDTH,
-  HEIGHT,
+  MAP_WIDTH,
+  MAP_HEIGHT,
   gridSize
 } from '../../config/map';
 import {

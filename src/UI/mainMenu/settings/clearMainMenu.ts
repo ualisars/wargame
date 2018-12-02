@@ -1,6 +1,6 @@
 import {
-  HEIGHT,
-  WIDTH
+  MAP_WIDTH,
+  CANVAS_HEIGHT
 } from '../../../config';
 import {
   dragAndDropCanvasCtx,
@@ -9,6 +9,6 @@ import {
 
 
 export const clearMainMenu = () => {
-  mainMenuCtx.clearRect(0, 0, WIDTH, HEIGHT);
-  dragAndDropCanvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+  mainMenuCtx.clearRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT);
+  dragAndDropCanvasCtx.clearRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT);
 }

@@ -1,8 +1,8 @@
 import {ctx} from '../../../config/context';
 import {
   gridSize,
-  WIDTH,
-  HEIGHT
+  MAP_WIDTH,
+  MAP_HEIGHT
 } from '../../../config';
 import {randomizeMeleeDamage} from '../../../utils/random/meleeDamage';
 
@@ -67,11 +67,11 @@ export const getShootingSide = (unit:any, enemy:any) => {
           x0: 0,
           x1: enemyPos.x,
           y0: enemyPos.y,
-          y1: HEIGHT - gridSize
+          y1: MAP_HEIGHT - gridSize
         };
         frontSquare = {
           x0: frontUnitPos.x,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: 0,
           y1: frontUnitPos.y
         };
@@ -79,7 +79,7 @@ export const getShootingSide = (unit:any, enemy:any) => {
       else if(enemyPos.x > frontUnitPos.x && enemyPos.y < frontUnitPos.y) {
         backQuare = {
           x0: frontUnitPos.x,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: 0,
           y1: frontUnitPos.y
         }
@@ -87,7 +87,7 @@ export const getShootingSide = (unit:any, enemy:any) => {
           x0: 0,
           x1: enemyPos.x,
           y0: enemyPos.y,
-          y1: HEIGHT - gridSize
+          y1: MAP_HEIGHT - gridSize
         };
       }
 
@@ -100,17 +100,17 @@ export const getShootingSide = (unit:any, enemy:any) => {
         }
         frontSquare = {
           x0: frontUnitPos.x,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: frontUnitPos.y,
-          y1: HEIGHT - gridSize
+          y1: MAP_HEIGHT - gridSize
         };
       }
       else {
         backQuare = {
           x0: frontUnitPos.x,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: frontUnitPos.y,
-          y1: HEIGHT - gridSize
+          y1: MAP_HEIGHT - gridSize
         }
         frontSquare = {
           x0: 0,
@@ -126,13 +126,13 @@ export const getShootingSide = (unit:any, enemy:any) => {
       if(enemyPos.y > frontUnitPos.y) {
         backQuare = {
           x0: 0,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: enemyPos.y + gridSize,
-          y1: HEIGHT - gridSize
+          y1: MAP_HEIGHT - gridSize
         }
         frontSquare = {
           x0: 0,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: 0,
           y1: frontUnitPos.y
         };
@@ -140,15 +140,15 @@ export const getShootingSide = (unit:any, enemy:any) => {
       else if(enemyPos.y < frontUnitPos.y) {
         backQuare = {
           x0: 0,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: 0,
           y1: frontUnitPos.y
         }
         frontSquare = {
           x0: 0,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: enemyPos.y + gridSize,
-          y1: HEIGHT - gridSize
+          y1: MAP_HEIGHT - gridSize
         };
       }
     }
@@ -157,9 +157,9 @@ export const getShootingSide = (unit:any, enemy:any) => {
       if(enemyPos.x > frontUnitPos.x) {
         backQuare = {
           x0: enemyPos.x,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: 0,
-          y1: HEIGHT - gridSize
+          y1: MAP_HEIGHT - gridSize
         }
         frontSquare = {
           x0: 0,
@@ -177,9 +177,9 @@ export const getShootingSide = (unit:any, enemy:any) => {
         }
         frontSquare = {
           x0: enemyPos.x,
-          x1: WIDTH - gridSize,
+          x1: MAP_WIDTH - gridSize,
           y0: 0,
-          y1: HEIGHT - gridSize
+          y1: MAP_HEIGHT - gridSize
         };
       }
     }
