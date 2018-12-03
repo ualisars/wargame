@@ -14,5 +14,5 @@ export const displayComputer = () => {
   mainMenuCtx.strokeRect(unitRosterWidth + (armyLayoutWidth / 2), 0, (armyLayoutWidth / 2), (titleHeight / 2));
   mainMenuCtx.fillStyle =  '#000';
   mainMenuCtx.font = '28px serif';
-  mainMenuCtx.fillText('Computer', armyLayoutWidth + 300, (titleHeight / 2) - 10);
+  mainMenuCtx.fillText('Computer', armyLayoutWidth + 360, (titleHeight / 2) - 10);
 }
