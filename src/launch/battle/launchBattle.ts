@@ -26,6 +26,7 @@ import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
 import { battleListener, isBattleEnd } from '../../gameLoop';
 import { battleMode } from '../../config/global/globalConfig';
 import { createArmy } from '../../battle/roster/army/createArmy';
+import { displayUnitIcons } from '../../UI/battleUI/unitPanel/display/displayUnitIcons';
 
 export const launchBattle = () => {
   console.log('battle mode', battleMode);
@@ -97,15 +98,16 @@ export const launchBattle = () => {
  
   drawBackground('./src/img/terrain/terrain.png');
   createArmy().then(() => {
-    battleListener();
-    moveUnits();
-    setInterval(() => {
-      moveUnits();
-    }, 3000);
+    displayUnitIcons();
+    // battleListener();
+    // moveUnits();
+    // setInterval(() => {
+    //   moveUnits();
+    // }, 3000);
 
-    setInterval(() => {
-      isBattleEnd();
-    }, 15000);
+    // setInterval(() => {
+    //   isBattleEnd();
+    // }, 15000);
   });
   
 }

@@ -1,0 +1,11 @@
+import { CANVAS_HEIGHT, MAP_HEIGHT, MAP_WIDTH } from "../../../config";
+
+export const UNIT_PANEL_HEIGHT = CANVAS_HEIGHT - MAP_HEIGHT;
+export const UNIT_PANEL_WIDTH = MAP_WIDTH;
+export const UNIT_LEFT_PANEL_WIDTH = 260;
+export const UNIT_RIGHT_PANEL_WIDTH = 260;
+export const UNIT_ICONS_PANEL_WIDTH = 1000;
+
+// ICONS
+export const UNIT_ICON_WIDTH = 100;
+export const UNIT_ICON_HEIGHT = UNIT_PANEL_HEIGHT;
