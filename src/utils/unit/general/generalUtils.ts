@@ -59,3 +59,12 @@ export const getUnitById = (id:number, arr:Unit[] = units):Unit => {
     }
   }
 }
+
+export const getUnitPositionInArray = (unitId: number, arr: Unit[]): number => {
+  for(let i = 0; i < arr.length; ++i) {
+    if(arr[i].id === unitId) {
+      return i;
+    }
+  }
+  return null;
+}
