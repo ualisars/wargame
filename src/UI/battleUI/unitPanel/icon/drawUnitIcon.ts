@@ -10,9 +10,9 @@ export const drawUnitIcon = (x: number, y: number, unit: Unit, half: boolean = f
     let iconWidth = UNIT_ICON_WIDTH * k;
     ctx.strokeRect(x, y, iconWidth, UNIT_ICON_HEIGHT);
     drawMovementIcon(x, y, half);
-    x += movementIcon.width;
+    x += movementIcon.width * k;
     drawFightIcon(x, y, half);
-    x += fightIcon.width;
+    x += fightIcon.width * k;
     drawArrowIcon(x, y, half);
     x = initialX;
     y += attributesHeight;
