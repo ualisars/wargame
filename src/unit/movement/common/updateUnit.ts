@@ -28,6 +28,7 @@ import {pursueUnit} from './pursueUnit'
 import {unitCanMoveToTheNode} from '../../../utils/unit/priority';
 import { getInterceptedEnemies } from '../../../utils/unit/interception/getInterceptedEnemies';
 import { getBlockedEnemies } from '../../../utils/unit/unitPosition/getBlockedEnemies';
+import { drawUnitIcon } from '../../../UI/battleUI/unitPanel/icon/drawUnitIcon';
 
 export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
   if(unit.health <= 0) {
@@ -145,6 +146,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
   }
 
   unit.setIsMovingToTrue();
+  drawUnitIcon(unit);
   let nodeToClear = node;
   spotEnemy(unit); // check for enemy units
   if(i !== 0) {

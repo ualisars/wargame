@@ -21,6 +21,7 @@ import { unitCanMoveToTheNode } from '../../../utils/unit/priority';
 import MapNode from '../../../map/nodes/MapNode';
 import { getInterceptedEnemies } from '../../../utils/unit/interception/getInterceptedEnemies';
 import { getBlockedEnemies } from '../../../utils/unit/unitPosition/getBlockedEnemies';
+import { drawUnitIcon } from '../../../UI/battleUI/unitPanel/icon/drawUnitIcon';
 
 export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number, currentMoveToY:number, i:number, path:any, newMovement:boolean) => {
   if(unit.isFighting) {
@@ -144,6 +145,7 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
 
   unit.assignMoveToPosition(pursuedUnit.currentNode.x, pursuedUnit.currentNode.y);
   unit.setIsMovingToTrue();
+  drawUnitIcon(unit);
   spotEnemy(unit); // check for enemy units
   unit.decreaseCondition(1); // decreaseCondition while moving
   moveToNextNodeInPursueUnit(unit, pursuedUnit, currentNode, nextNode, currentMoveToX, currentMoveToY, path, i);
