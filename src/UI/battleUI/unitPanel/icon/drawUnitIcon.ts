@@ -19,7 +19,7 @@ export const drawUnitIcon = (unit: Unit, half: boolean = false) => {
     ctx.strokeRect(x, y, iconWidth, UNIT_ICON_HEIGHT);
     drawMovementIcon(x, y, unit, half);
     x += movementIcon.width * k;
-    drawFightIcon(x, y, half);
+    drawFightIcon(x, y, unit, half);
     x += fightIcon.width * k;
     drawArrowIcon(x, y, half);
     x = initialX;
@@ -36,9 +36,11 @@ export const drawMovementIcon = (x: number, y: number, unit: Unit, half: boolean
     }
 }
 
-export const drawFightIcon = (x: number, y: number, half: boolean = false) => {
-    let k = (half) ? 0.5 : 1;
-    ctx.drawImage(fightIconImage, x, y,  fightIcon.width * k, fightIcon.height);
+export const drawFightIcon = (x: number, y: number, unit: Unit, half: boolean = false) => {
+    if(unit.isFighting) {
+        let k = (half) ? 0.5 : 1;
+        ctx.drawImage(fightIconImage, x, y,  fightIcon.width * k, fightIcon.height);
+    }
 }
 
 export const drawArrowIcon = (x: number, y: number, half: boolean = false) => {

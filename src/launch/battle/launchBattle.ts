@@ -24,6 +24,8 @@ import { currentlyChosenUnit } from '../../store/unit/currentlyChosenUnit';
 import { getSurroundedNodes } from '../../utils/surrounded';
 import { battleMode } from '../../config/global/globalConfig';
 import { displayUnitIcons } from '../../UI/battleUI/unitPanel/display/displayUnitIcons';
+import { battleListener, isBattleEnd } from '../../gameLoop';
+import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
 
 export const launchBattle = () => {
   console.log('battle mode', battleMode);
@@ -95,17 +97,15 @@ export const launchBattle = () => {
  
   drawBackground('./src/img/terrain/terrain.png');
   displayUnitIcons();
-    // battleListener();
-    // moveUnits();
-    // setInterval(() => {
-    //   moveUnits();
-    // }, 3000);
+  battleListener();
+  moveUnits();
+  setInterval(() => {
+    moveUnits();
+  }, 3000);
 
-    // setInterval(() => {
-    //   isBattleEnd();
-    // }, 15000);
- 
-  
+  setInterval(() => {
+    isBattleEnd();
+  }, 15000);
 }
 
 

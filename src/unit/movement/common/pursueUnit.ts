@@ -60,6 +60,7 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
     unit.setIsMovingToFalse();
     unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();
+    drawUnitIcon(unit);
     for(let enemy of getInterceptedEnemies(unit)) {
       enemy.setIsFightingToTrue();
       enemy.setIsMovingToFalse();
@@ -104,8 +105,10 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
     unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();
     pursuedUnit.setIsFightingToTrue();
+    drawUnitIcon(unit);
     unit.assignEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
     pursuedUnit.assignEnemy(unit);
+    pursuedUnit.setIsFightingToTrue();
     charge(unit, pursuedUnit);
     return;
   }
@@ -120,6 +123,7 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
         stopMoving(unit, currentNode);
         unit.setUnitToPursueToNull();
         unit.setIsFightingToTrue();
+        drawUnitIcon(unit);
         for(let enemy of getBlockedEnemies(unit)) {
           enemy.setIsFightingToTrue();
           unit.assignEnemy(enemy);

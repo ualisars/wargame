@@ -1,17 +1,20 @@
 import { units } from '../../../store/unit/units';
 import { isObjectEmpty } from '../../../utils';
 import { meleeAttack } from '.';
+import { drawUnitIcon } from '../../../UI/battleUI/unitPanel/icon/drawUnitIcon';
 
 export const meleeCombat = () => {
   for(let unit of units) {
     if(!isObjectEmpty(unit.figthAgainst.front)) { // unit have front enemy
       if(!unit.figthAgainst.front.isFighting) { // unit is getting out of combat
+        drawUnitIcon(unit);
         return;
       }
       meleeAttack(unit, unit.figthAgainst.front, 'front');
     }
     if(!isObjectEmpty(unit.figthAgainst.rear)) { // unit have rear enemy
       if(!unit.figthAgainst.rear.isFighting) { // unit is getting out of combat
+        drawUnitIcon(unit);
         return;
       }
       meleeAttack(unit, unit.figthAgainst.rear, 'rear');
@@ -19,6 +22,7 @@ export const meleeCombat = () => {
     if(unit.figthAgainst.flank.length > 0) { // unit have flnk enemies
       for(let enemy of unit.figthAgainst.flank) {
         if(!enemy.isFighting) { // unit is getting out of combat
+          drawUnitIcon(unit);
           return;
         }
         meleeAttack(unit, enemy, 'flank');

@@ -10,14 +10,11 @@ import {
   addNeighbors
 } from '../../../map';
 import {initialMap} from '../../../map/createMap/initialMap';
-import {ctx} from '../../../config/context';
 import {
   aStar
 } from '../../../path';
-import {units} from '../../../store/unit/units';
 import {
   anotherUnitIsOnTheWay,
-  getSurroundedEnemies
 } from '../../../utils';
 import {unitCanGetOutOfCombat,} from '../../../utils/unit/movementUtils';
 import Unit from '../../types/Unit';
@@ -41,6 +38,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
   }
 
   if(unit.isFighting) { // stop moving if unit is fighting
+    drawUnitIcon(unit);
     if(newMovement && unitCanGetOutOfCombat(unit)) { // unit is trying to out of combat
       unit.setUnitToPursueToNull();
       unit.setIsFightingToFalse(); // unit is not fighting now
@@ -58,6 +56,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     stopMoving(unit, currentNode);
     unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();
+    drawUnitIcon(unit);
     for(let enemy of getInterceptedEnemies(unit)) {
       stopMoving(enemy, enemy.nextNode);
       enemy.setIsFightingToTrue();
@@ -122,6 +121,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
         stopMoving(unit, currentNode);
         unit.setUnitToPursueToNull();
         unit.setIsFightingToTrue();
+        drawUnitIcon(unit);
         for(let enemy of getBlockedEnemies(unit)) {
           enemy.setIsFightingToTrue();
           unit.assignEnemy(enemy);
