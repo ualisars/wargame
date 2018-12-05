@@ -1,11 +1,11 @@
 import { UNIT_ICON_WIDTH, UNIT_ICON_HEIGHT, UNIT_LEFT_PANEL_WIDTH, UNIT_PANEL_HEIGHT } from "../settings";
 import { ctx } from "../../../../config/context";
-import { loadImage } from "../../../../utils";
-import { moveIconSrc, movementIcon, fightIcon, fightIconSrc, arrowIcon, attributesHeight, healthPointsHeight, iconHeight } from "./iconSettings";
+import { movementIcon, fightIcon, fightIconSrc, arrowIcon, attributesHeight, healthPointsHeight, iconHeight } from "./iconSettings";
 import { Unit } from "../../../../unit";
 import { getUnitPositionInArray } from "../../../../utils/unit/general/generalUtils";
 import { playerUnits } from "../../../../store/unit/units";
 import { CANVAS_HEIGHT } from "../../../../config";
+import { movementIconImage, fightIconImage, unitIconImages } from "../../../../store/images/unitIconImages";
 
 export const drawUnitIcon = (unit: Unit, half: boolean = false) => {
     let unitIndex = getUnitPositionInArray(unit.id, playerUnits) + 1;
@@ -32,17 +32,13 @@ export const drawUnitIcon = (unit: Unit, half: boolean = false) => {
 export const drawMovementIcon = (x: number, y: number, unit: Unit, half: boolean = false) => {
     if(unit.isMoving) {
         let k = (half) ? 0.5 : 1;
-        loadImage(moveIconSrc, (err: any, img: any) => {
-            ctx.drawImage(img, x, y,  movementIcon.width * k, movementIcon.height);
-        });
+        ctx.drawImage(movementIconImage, x, y,  movementIcon.width * k, movementIcon.height);
     }
 }
 
 export const drawFightIcon = (x: number, y: number, half: boolean = false) => {
     let k = (half) ? 0.5 : 1;
-    loadImage(fightIconSrc, (err: any, img: any) => {
-        ctx.drawImage(img, x, y,  fightIcon.width * k, fightIcon.height);
-    });
+    ctx.drawImage(fightIconImage, x, y,  fightIcon.width * k, fightIcon.height);
 }
 
 export const drawArrowIcon = (x: number, y: number, half: boolean = false) => {
@@ -58,7 +54,5 @@ export const fillHealthPoints = (x: number, y: number, half: boolean = false) =>
 
 export const drawIcon = (x: number, y: number, unit: Unit, half: boolean = false) => {
     let k = (half) ? 0.5 : 1;
-    loadImage(unit.imgSrc, (err: any, img: any) => {
-        ctx.drawImage(img, x, y, UNIT_ICON_WIDTH * k, iconHeight);
-    });
+    ctx.drawImage(unitIconImages[unit.name], x, y, UNIT_ICON_WIDTH * k, iconHeight);
 }

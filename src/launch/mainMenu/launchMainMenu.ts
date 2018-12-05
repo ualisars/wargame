@@ -7,6 +7,7 @@ import { displayTitle } from '../../UI/mainMenu/layouts/upperLayout';
 import { dragAndDrop } from '../../UI/mainMenu/main';
 import { drawBottomLayout } from '../../UI/mainMenu/layouts/bottomLayout';
 import { initializeMap } from '../../map/createMap/initialMap';
+import { loadIcons } from '../../store/images/unitIconImages';
 
 export const launchMainMenu = () => {
   initializeMap().then(
@@ -18,6 +19,7 @@ export const launchMainMenu = () => {
       displayTitle();
       dragAndDrop();
       drawBottomLayout();
+      loadIcons();
     }
   );
 }

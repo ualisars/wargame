@@ -22,10 +22,7 @@ import {
 } from '../../unit/movement';
 import { currentlyChosenUnit } from '../../store/unit/currentlyChosenUnit';
 import { getSurroundedNodes } from '../../utils/surrounded';
-import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
-import { battleListener, isBattleEnd } from '../../gameLoop';
 import { battleMode } from '../../config/global/globalConfig';
-import { createArmy } from '../../battle/roster/army/createArmy';
 import { displayUnitIcons } from '../../UI/battleUI/unitPanel/display/displayUnitIcons';
 
 export const launchBattle = () => {
@@ -97,8 +94,7 @@ export const launchBattle = () => {
 
  
   drawBackground('./src/img/terrain/terrain.png');
-  createArmy().then(() => {
-    displayUnitIcons();
+  displayUnitIcons();
     // battleListener();
     // moveUnits();
     // setInterval(() => {
@@ -108,7 +104,7 @@ export const launchBattle = () => {
     // setInterval(() => {
     //   isBattleEnd();
     // }, 15000);
-  });
+ 
   
 }
 
