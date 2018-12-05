@@ -7,6 +7,7 @@ import { armourPenetration } from '../armour';
 import { removeUnit } from '../../remove';
 import { Unit } from '../../types';
 import { drawUnitIcon } from '../../../UI/battleUI/unitPanel/icon/drawUnitIcon';
+import { displayUnitIcons } from '../../../UI/battleUI/unitPanel/display/displayUnitIcons';
 
 export const meleeAttack = (attackUnit: Unit, defendUnit: Unit, enemyPosition:string='front') => {
   return new Promise(resolve => {
@@ -17,9 +18,8 @@ export const meleeAttack = (attackUnit: Unit, defendUnit: Unit, enemyPosition:st
     let armour = defendUnit.armour;
     if(defendUnit.health <= 0) {
       console.error('defendUnit is destroyed');
-      attackUnit.removeEnemyFromFightAgainst(defendUnit);
-      drawUnitIcon(attackUnit);
       removeUnit(defendUnit);
+      displayUnitIcons();
       return;
     }
     defendUnit.health = Math.round(defendUnit.health - (armourPenetration(damage, armour)));

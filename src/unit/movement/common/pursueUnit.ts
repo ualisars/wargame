@@ -99,7 +99,7 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
     node = path[i];
   }
 
-  // unit is reached oponents's unit
+  // unit is reached opponents's unit
   if(nextNode.x === pursuedUnit.currentNode.x && nextNode.y === pursuedUnit.currentNode.y) {
     stopMoving(unit, currentNode);
     unit.setUnitToPursueToNull();
@@ -109,6 +109,7 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
     unit.assignEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
     pursuedUnit.assignEnemy(unit);
     pursuedUnit.setIsFightingToTrue();
+    drawUnitIcon(pursuedUnit);
     charge(unit, pursuedUnit);
     return;
   }
