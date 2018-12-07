@@ -25,9 +25,11 @@ class Hoplites extends Unit {
   discipline: number = 90;
   initialWeight: number = 70;
   weight = this.initialWeight;
+  initialHealth: number;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);
+    this.initialHealth = this.health;
   }
 }
 

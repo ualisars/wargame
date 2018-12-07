@@ -24,6 +24,7 @@ export const meleeAttack = (attackUnit: Unit, defendUnit: Unit, enemyPosition:st
     }
     defendUnit.health = Math.round(defendUnit.health - (armourPenetration(damage, armour)));
     attackUnit.condition -= 1;
+    drawUnitIcon(defendUnit);
     resolve();
   });
 }

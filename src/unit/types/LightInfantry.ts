@@ -21,9 +21,11 @@ class LightInfantry extends Unit {
   discipline: number = 30;
   initialWeight: number = 40;
   weight: number = this.initialWeight;
+  initialHealth: number;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);
+    this.initialHealth = this.health;
   }
 }
 

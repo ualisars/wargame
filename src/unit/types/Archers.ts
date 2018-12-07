@@ -25,9 +25,11 @@ class Archers extends Unit {
   charge: number = 1;
   discipline: number = 40;
   weight: number = 20;
+  initialHealth: number;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);
+    this.initialHealth = this.health;
   }
 }
 

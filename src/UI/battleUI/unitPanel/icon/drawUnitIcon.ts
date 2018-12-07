@@ -8,25 +8,27 @@ import { CANVAS_HEIGHT } from "../../../../config";
 import { movementIconImage, fightIconImage, unitIconImages } from "../../../../store/images/unitIconImages";
 
 export const drawUnitIcon = (unit: Unit, half: boolean = false) => {
-    let unitIndex = getUnitPositionInArray(unit.id, playerUnits) + 1;
-    let startX = UNIT_LEFT_PANEL_WIDTH;
-    let x = startX + (UNIT_ICON_WIDTH * unitIndex);
-    let y = CANVAS_HEIGHT - UNIT_PANEL_HEIGHT;
-    ctx.clearRect(x, y, UNIT_ICON_WIDTH, UNIT_ICON_HEIGHT);
-    let k = (half) ? 0.5 : 1;
-    const initialX = x;
-    let iconWidth = UNIT_ICON_WIDTH * k;
-    ctx.strokeRect(x, y, iconWidth, UNIT_ICON_HEIGHT);
-    drawMovementIcon(x, y, unit, half);
-    x += movementIcon.width * k;
-    drawFightIcon(x, y, unit, half);
-    x += fightIcon.width * k;
-    drawArrowIcon(x, y, half);
-    x = initialX;
-    y += attributesHeight;
-    fillHealthPoints(x, y, half);
-    y += healthPointsHeight;
-    drawIcon(x, y, unit, half);
+    if(unit.controlBy === 'player') {
+        let unitIndex = getUnitPositionInArray(unit.id, playerUnits) + 1;
+        let startX = UNIT_LEFT_PANEL_WIDTH;
+        let x = startX + (UNIT_ICON_WIDTH * unitIndex);
+        let y = CANVAS_HEIGHT - UNIT_PANEL_HEIGHT;
+        ctx.clearRect(x, y, UNIT_ICON_WIDTH, UNIT_ICON_HEIGHT);
+        let k = (half) ? 0.5 : 1;
+        const initialX = x;
+        let iconWidth = UNIT_ICON_WIDTH * k;
+        ctx.strokeRect(x, y, iconWidth, UNIT_ICON_HEIGHT);
+        drawMovementIcon(x, y, unit, half);
+        x += movementIcon.width * k;
+        drawFightIcon(x, y, unit, half);
+        x += fightIcon.width * k;
+        drawArrowIcon(x, y, half);
+        x = initialX;
+        y += attributesHeight;
+        fillHealthPoints(x, y, unit, half);
+        y += healthPointsHeight;
+        drawIcon(x, y, unit, half);
+    }
 }
 
 export const drawMovementIcon = (x: number, y: number, unit: Unit, half: boolean = false) => {
@@ -48,10 +50,17 @@ export const drawArrowIcon = (x: number, y: number, half: boolean = false) => {
     ctx.strokeRect(x, y, arrowIcon.width * k, arrowIcon.height);
 }
 
-export const fillHealthPoints = (x: number, y: number, half: boolean = false) => {
+export const fillHealthPoints = (x: number, y: number, unit: Unit, half: boolean = false) => {
     let k = (half) ? 0.5 : 1;
-    ctx.fillStyle = "green";
-    ctx.fillRect(x, y, UNIT_ICON_WIDTH * k, healthPointsHeight);
+    let width = UNIT_ICON_WIDTH * k;
+    let initialHealth = unit.initialHealth;
+    let healthPercentage = Math.round((unit.health / initialHealth) * 100) * 0.01;
+    let healthPointsWidth = width * healthPercentage;
+    if(healthPercentage >= 0.7) ctx.fillStyle = "green";
+    else if(healthPercentage >= 0.4 && healthPercentage < 0.7) ctx.fillStyle = "yellow";
+    else if(healthPercentage > 0 && healthPercentage < 0.4) ctx.fillStyle = "red";
+    if(healthPointsWidth < 0) healthPointsWidth = 0;
+    ctx.fillRect(x, y, healthPointsWidth, healthPointsHeight);
 }
 
 export const drawIcon = (x: number, y: number, unit: Unit, half: boolean = false) => {

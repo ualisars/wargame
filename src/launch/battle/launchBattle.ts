@@ -97,15 +97,15 @@ export const launchBattle = () => {
  
   drawBackground('./src/img/terrain/terrain.png');
   displayUnitIcons();
-  // battleListener();
-  // moveUnits();
-  // setInterval(() => {
-  //   moveUnits();
-  // }, 3000);
+  battleListener();
+  moveUnits();
+  setInterval(() => {
+    moveUnits();
+  }, 3000);
 
-  // setInterval(() => {
-  //   isBattleEnd();
-  // }, 15000);
+  setInterval(() => {
+    isBattleEnd();
+  }, 15000);
 }
 
 

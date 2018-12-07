@@ -25,9 +25,11 @@ class LightCavalry extends Unit {
   discipline: number = 40;
   initialWeight: number = 80;
   weight: number = this.initialWeight;
+  initialHealth: number;
 
   constructor(id:number, x:number, y:number, controlBy:string='player') {
     super(id, x, y, controlBy);
+    this.initialHealth = this.health;
   }
 }
 
