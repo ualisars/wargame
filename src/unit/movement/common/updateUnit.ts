@@ -62,6 +62,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
       enemy.setIsFightingToTrue();
       unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
       enemy.assignEnemy(unit);
+      drawUnitIcon(enemy);
     }
     return;
   }
@@ -114,6 +115,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
     return;
   }
   if(anotherUnitIsOnTheWay(unit)) {
+    console.log('another unit is on the way');
     // unit has another allies' unit on its way
     const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
     if(!permission) {
