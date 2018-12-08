@@ -1,14 +1,16 @@
 import { loadImage } from "../../utils";
 import { units } from "../unit/units";
-import { moveIconSrc, fightIconSrc } from "../../UI/battleUI/unitPanel/icon/iconSettings";
+import { moveIconSrc, fightIconSrc, swordIconSrc } from "../../UI/battleUI/unitPanel/icon/iconSettings";
 
 export let unitIconImages: any = {};
 export let movementIconImage: any;
 export let fightIconImage: any;
+export let swordIconImage: any;
 
 export const loadIcons = () => {
     loadFightIconImage();
     loadMovementIconImage();
+    loadSwordIconImage();
 }
 
 export const loadUnitIcons = () => {
@@ -41,6 +43,12 @@ const loadUnitIconImages = (i: number = 0) => {
             unitIconImages[units[i].name] = img;
             resolve(loadUnitIconImages(i + 1));
         });
+    });
+}
+
+export const loadSwordIconImage = () => {
+    loadImage(swordIconSrc, (err: any, img: any) => {
+        swordIconImage = img;
     });
 }
 

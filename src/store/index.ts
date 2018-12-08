@@ -1,5 +1,4 @@
 import {
-  currentlyChosenUnit,
   assignCurrentlyChosenUnit,
   addUnitToSpottedUnits,
   removeUnitFromSpottedUnits,
@@ -9,7 +8,6 @@ import {
 } from './unit';
 
 export {
-  currentlyChosenUnit,
   assignCurrentlyChosenUnit,
   addUnitToSpottedUnits,
   removeUnitFromSpottedUnits,
