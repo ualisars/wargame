@@ -67,6 +67,7 @@ export const launchBattle = () => {
     console.error('map', initialMap);
     console.log('node', getNodeFromMap(x, y));
     redrawPlayerUnits();
+    displayUnitIcons();
     // test delete in deployment
     if(currentlyChosenUnit) {
       console.log('surroundedNodes', getSurroundedNodes(currentlyChosenUnit, 1));

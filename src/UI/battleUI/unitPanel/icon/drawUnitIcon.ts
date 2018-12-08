@@ -6,6 +6,7 @@ import { getUnitPositionInArray } from "../../../../utils/unit/general/generalUt
 import { playerUnits } from "../../../../store/unit/units";
 import { CANVAS_HEIGHT } from "../../../../config";
 import { movementIconImage, fightIconImage, unitIconImages } from "../../../../store/images/unitIconImages";
+import { currentlyChosenUnit } from "../../../../store/unit/currentlyChosenUnit";
 
 export const drawUnitIcon = (unit: Unit, half: boolean = false) => {
     if(unit.controlBy === 'player') {
@@ -64,6 +65,11 @@ export const fillHealthPoints = (x: number, y: number, unit: Unit, half: boolean
 }
 
 export const drawIcon = (x: number, y: number, unit: Unit, half: boolean = false) => {
+    ctx.save();
+    if(!currentlyChosenUnit || (currentlyChosenUnit && currentlyChosenUnit.id !== unit.id)) {
+        ctx.filter = 'brightness(0.8)';
+    }
     let k = (half) ? 0.5 : 1;
     ctx.drawImage(unitIconImages[unit.name], x, y, UNIT_ICON_WIDTH * k, iconHeight);
+    ctx.restore();
 }
