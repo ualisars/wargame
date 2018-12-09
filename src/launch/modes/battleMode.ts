@@ -13,6 +13,7 @@ import { launchGame } from '..';
 import { clearMainMenu } from '../../UI/mainMenu/settings/clearMainMenu';
 import { createArmy } from '../../battle/roster/army/createArmy';
 import { loadUnitIcons } from '../../store/images/unitIconImages';
+import { pathCanvas } from '../../config/canvas/path';
 
 export const activateBattleMode = () => {
   setBattleMode().then(() => {
@@ -21,7 +22,8 @@ export const activateBattleMode = () => {
     .then(() => {
       dragAndDropCanvas.style.zIndex = '0';
       mainMenu.style.zIndex = '0';
-      auxiliaryCanvas.style.zIndex = '4';
+      auxiliaryCanvas.style.zIndex = '5';
+      pathCanvas.style.zIndex = '4';
       canvas.style.zIndex = '3';
       terrain.style.zIndex = '2';
       backgroundCanvas.style.zIndex = '1';
