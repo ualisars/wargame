@@ -7,6 +7,7 @@ import {
   terrain
 } from '../canvas';
 import { pathCanvas } from '../canvas/path';
+import { eventCanvas } from '../canvas/event';
 
 // define 2d context
 export let ctx:any;
@@ -16,6 +17,7 @@ export let terrainCtx:any;
 export let mainMenuCtx:any;
 export let dragAndDropCanvasCtx:any;
 export let pathCtx: any;
+export let eventCtx: any;
 
 if(canvas) {
   ctx = canvas.getContext("2d");
@@ -37,4 +39,7 @@ if(dragAndDropCanvas) {
 }
 if(pathCanvas) {
   pathCtx = pathCanvas.getContext('2d');
+}
+if(eventCanvas) {
+  eventCtx = eventCanvas.getContext('2d');
 }
