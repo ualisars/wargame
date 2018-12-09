@@ -1,4 +1,3 @@
-import MapNode from "../../../../map/nodes/MapNode";
 import { pathCtx } from "../../../../config/context/context";
 import { gridSize, MAP_WIDTH, MAP_HEIGHT } from "../../../../config";
 import { getNodeFromMap } from "../../../../utils";
