@@ -27,6 +27,7 @@ import { displayUnitIcons } from '../../UI/battleUI/unitPanel/display/displayUni
 import { battleListener, isBattleEnd } from '../../gameLoop';
 import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
 import { redrawPlayerUnits } from '../../unit/draw/drawUnit';
+import { drawClickedIcon } from '../../UI/battleUI/unitPanel/icon/clickIcon';
 
 export const launchBattle = () => {
   console.log('battle mode', battleMode);
@@ -93,6 +94,7 @@ export const launchBattle = () => {
         attackEnemy(currentlyChosenUnit, pursuedUnit);
       } else {
         moveTo(currentlyChosenUnit, x, y);
+        drawClickedIcon(x, y);
       }
     }
   }); // on context
