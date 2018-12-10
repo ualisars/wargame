@@ -1,5 +1,5 @@
 import {gridSize} from '../../../config';
-import {findPathFromOneNodeToAnother} from '../../../path';
+import {findPathFromOneNodeToAnother, drawPath} from '../../../path';
 import {
   makeMovementInPursueUnit,
   makeMovementInUpdateUnit
@@ -16,6 +16,7 @@ export const moveToNextNodeInPursueUnit = (unit:Unit, pursuedUnit:Unit, currentN
 }
 
 export const moveToNextNodeInUpdateUnit = (unit:Unit, currentNode:any, nextNode:any, currX:number, currY:number, allPath:any[], nodeI:number) => {
+  drawPath(unit, allPath, nodeI);
   let startX = currentNode.x + (gridSize * 0.5);
   let startY = currentNode.y + (gridSize * 0.5);
   let finishX = nextNode.x + (gridSize * 0.5);
