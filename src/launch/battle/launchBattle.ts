@@ -47,8 +47,6 @@ export const launchBattle = () => {
       }
 
       if(pointedUnit && pointedUnit.isVisible) {
-        let finishX = pointedUnit.x + gridSize;
-        let finishY = pointedUnit.y + gridSize;
         auxiliaryCtx.fillStyle = '#000';
         auxiliaryCtx.font = "14px Arial";
         auxiliaryCtx.fillText("Attack", pointedUnit.x, pointedUnit.y + gridSize / 2);
@@ -98,6 +96,7 @@ export const launchBattle = () => {
         moveTo(currentlyChosenUnit, x, y);
         drawClickedIcon(x, y);
       }
+      clearPath();
     }
   }); // on context
 
