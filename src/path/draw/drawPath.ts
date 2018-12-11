@@ -5,7 +5,7 @@ import { currentlyChosenUnit } from '../../store/unit/currentlyChosenUnit';
 import { getNodeFromMap } from '../../utils';
 
 export const drawPath = (unit: Unit, path:any[], startIndex: number = 0) => {
-  if(currentlyChosenUnit.id === unit.id) {
+  if(currentlyChosenUnit && currentlyChosenUnit.id === unit.id) {
     clearPath();
     if(startIndex != 0) {
       startIndex -= 1;

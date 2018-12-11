@@ -28,6 +28,7 @@ import { battleListener, isBattleEnd } from '../../gameLoop';
 import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
 import { redrawPlayerUnits } from '../../unit/draw/drawUnit';
 import { drawClickedIcon } from '../../UI/battleUI/unitPanel/icon/clickIcon';
+import { clearPath } from '../../path/draw/drawPath';
 
 export const launchBattle = () => {
   console.log('battle mode', battleMode);
@@ -69,6 +70,7 @@ export const launchBattle = () => {
     console.log('node', getNodeFromMap(x, y));
     redrawPlayerUnits();
     displayUnitIcons();
+    clearPath();
     // test delete in deployment
     if(currentlyChosenUnit) {
       console.log('surroundedNodes', getSurroundedNodes(currentlyChosenUnit, 1));
