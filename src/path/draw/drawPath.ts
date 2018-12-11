@@ -10,6 +10,7 @@ export const drawPath = (unit: Unit, path:any[], startIndex: number = 0) => {
     if(startIndex != 0) {
       startIndex -= 1;
     }
+    let firstNode: boolean = true;
     for(let i = startIndex; i != path.length - 1; ++i) {
       let currentNodeCenterX = path[i].x + (gridSize / 2);
       let currentNodeCenterY = path[i].y + (gridSize / 2);
@@ -18,7 +19,12 @@ export const drawPath = (unit: Unit, path:any[], startIndex: number = 0) => {
       pathCtx.save();
       pathCtx.strokeStyle = 'yellow';
       pathCtx.beginPath();
-      pathCtx.moveTo(currentNodeCenterX, currentNodeCenterY);
+      if(firstNode) {
+        pathCtx.moveTo(unit.centerX, unit.centerY);
+        firstNode = false;
+      } else {
+        pathCtx.moveTo(currentNodeCenterX, currentNodeCenterY);
+      }
       pathCtx.lineTo(nextNodeCenterX, nextNodeCenterY);
       pathCtx.stroke();
       if(i == path.length - 2) {
@@ -27,7 +33,6 @@ export const drawPath = (unit: Unit, path:any[], startIndex: number = 0) => {
         pathCtx.arc(nextNodeCenterX, nextNodeCenterY, radius, 0, Math.PI*2);
         pathCtx.fill();
         pathCtx.closePath();
-        
       }
       pathCtx.restore();
     }

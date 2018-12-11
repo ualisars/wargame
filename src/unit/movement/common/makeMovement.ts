@@ -5,6 +5,7 @@ import Unit from '../../types/Unit';
 import {updateUnit} from './updateUnit';
 import {pursueUnit} from './pursueUnit';
 import { pathCtx } from '../../../config/context/context';
+import { drawPath } from '../../../path';
 
 
 export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
@@ -13,7 +14,6 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
     nodeI++;
     updateUnit(unit, allPath, nodeI, currX, currY, null, false);
   }
-
   if(i >= path.length) {
     return;
   }
@@ -27,7 +27,6 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
      deleteY = path[i].y - (gridSize * 0.5);
    }
    
-   pathCtx.clearRect(deleteX, deleteY, gridSize, gridSize);
    ctx.clearRect(deleteX, deleteY, gridSize, gridSize);
    let centerX = path[i].x;
    let centerY = path[i].y;
@@ -35,8 +34,12 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
    // set unit.x and unit.y
    unit.setX(centerX - (gridSize * 0.5));
    unit.setY(centerY - (gridSize * 0.5));
+
    
    drawUnit(unit);
+   drawPath(unit, allPath, nodeI);
+   pathCtx.clearRect(deleteX, deleteY, gridSize / 2, gridSize / 2);
+
    setTimeout(() => {
      i++;
      makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
