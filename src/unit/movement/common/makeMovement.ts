@@ -18,32 +18,35 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
     return;
   }
   // delete previous state
-   let deleteX, deleteY;
-   if(i > 0) {
-     deleteX = path[i - 1].x - (gridSize * 0.5);
-     deleteY = path[i - 1].y - (gridSize * 0.5);
-   } else {
-     deleteX = path[i].x  - (gridSize * 0.5);
-     deleteY = path[i].y - (gridSize * 0.5);
-   }
-   
-   ctx.clearRect(deleteX, deleteY, gridSize, gridSize);
-   let centerX = path[i].x;
-   let centerY = path[i].y;
+  let deleteX, deleteY;
+  if(i > 0) {
+    deleteX = path[i - 1].x - (gridSize * 0.5);
+    deleteY = path[i - 1].y - (gridSize * 0.5);
+  } else {
+    deleteX = path[i].x  - (gridSize * 0.5);
+    deleteY = path[i].y - (gridSize * 0.5);
+  }
+  
+  let clearX = unit.centerX - unit.radius;
+  let clearY =  unit.centerY - unit.radius;
+  let unitDiameter = unit.radius * 2;
+  ctx.clearRect(clearX, clearY, unitDiameter, unitDiameter);
+  let centerX = path[i].x;
+  let centerY = path[i].y;
 
-   // set unit.x and unit.y
-   unit.setX(centerX - (gridSize * 0.5));
-   unit.setY(centerY - (gridSize * 0.5));
+  // set unit.x and unit.y
+  unit.setX(centerX - (gridSize * 0.5));
+  unit.setY(centerY - (gridSize * 0.5));
 
-   
-   drawUnit(unit);
-   drawPath(unit, allPath, nodeI);
-   pathCtx.clearRect(deleteX, deleteY, gridSize / 2, gridSize / 2);
+  
+  drawUnit(unit);
+  drawPath(unit, allPath, nodeI);
+  pathCtx.clearRect(deleteX, deleteY, gridSize / 2, gridSize / 2);
 
-   setTimeout(() => {
-     i++;
-     makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
-   }, Math.round(1000 / unit.speed));
+  setTimeout(() => {
+    i++;
+    makeMovementInUpdateUnit(unit, currentNode, nextNode, path, allPath, currX, currY, i, nodeI);
+  }, Math.round(1000 / unit.speed));
 }
 
 export const makeMovementInPursueUnit = (unit:Unit, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {

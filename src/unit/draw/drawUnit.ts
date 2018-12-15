@@ -24,7 +24,6 @@ export const drawUnit = (unit: Unit) => {
     }
   }
   if(ctx) {
-    ctx.clearRect(unit.x, unit.y, gridSize, gridSize);
     if(currentlyChosenUnit && currentlyChosenUnit.id === unit.id) {
       ctx.beginPath();
       ctx.arc(unit.centerX, unit.centerY, unit.radius + 4, 0, Math.PI*2);

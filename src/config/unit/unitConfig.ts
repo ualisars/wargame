@@ -1,1 +1,1 @@
-export const radius:number = 15;
+export const radius:number = 12;
