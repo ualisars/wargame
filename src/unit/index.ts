@@ -6,7 +6,6 @@ import {
   createUnit
 } from './create';
 import {
-  drawUnitImage,
   drawUnit,
   redrawUnits
 } from './draw';
@@ -53,7 +52,6 @@ export {
   onChooseUnit,
   chooseUnitType,
   createUnit,
-  drawUnitImage,
   drawUnit,
   redrawUnits,
   armourPenetration,

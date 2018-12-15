@@ -6,12 +6,6 @@ import { swordIconImage } from '../../store/images/unitIconImages';
 import { currentlyChosenUnit } from '../../store/unit/currentlyChosenUnit';
 import { playerUnits } from '../../store/unit/units';
 
-export const drawUnitImage = (x:number, y:number, width:number, height:number, src:string) => {
-  loadImage(src, (err:any, img:any) => {
-    ctx.drawImage(img, x, y, width, height);
-  });
-}
-
 export const drawUnit = (unit: Unit) => {
   let color;
   if(unit.controlBy === 'player') {
