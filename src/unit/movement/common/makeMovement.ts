@@ -70,7 +70,11 @@ export const makeMovementInPursueUnit = (unit:Unit, pursuedUnit:any, currentNode
      deleteX = path[i].x  - (gridSize * 0.5);
      deleteY = path[i].y - (gridSize * 0.5);
    }
-   ctx.clearRect(deleteX, deleteY, gridSize, gridSize);
+   let clearX = unit.centerX - unit.radius;
+   let clearY =  unit.centerY - unit.radius;
+   let unitDiameter = unit.radius * 2;
+   ctx.clearRect(clearX, clearY, unitDiameter, unitDiameter);
+   
    let centerX = path[i].x;
    let centerY = path[i].y;
    unit.setX(centerX - (gridSize * 0.5));
