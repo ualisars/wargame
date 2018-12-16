@@ -18,6 +18,7 @@ export const meleeAttack = (attackUnit: Unit, defendUnit: Unit, enemyPosition:st
     let armour = defendUnit.armour;
     if(defendUnit.health <= 0) {
       console.error('defendUnit is destroyed');
+      attackUnit.removeEnemyFromFightAgainst(defendUnit);
       removeUnit(defendUnit);
       displayUnitIcons();
       return;
