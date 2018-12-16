@@ -1,5 +1,4 @@
 import { ctx } from '../../config/context';
-import { loadImage } from '../../utils';
 import { Unit } from '../types';
 import { gridSize } from '../../config';
 import { swordIconImage } from '../../store/images/unitIconImages';
@@ -8,6 +7,7 @@ import { playerUnits } from '../../store/unit/units';
 
 export const drawUnit = (unit: Unit) => {
   let color;
+  let radiusOffset = 0;
   if(unit.controlBy === 'player') {
     color = '#dbdb0d';
   }
@@ -25,31 +25,21 @@ export const drawUnit = (unit: Unit) => {
       ctx.fill();
       ctx.closePath();
       ctx.restore();
-    
-      ctx.beginPath();
-      ctx.arc(unit.centerX, unit.centerY, unit.radius - 4, 0, Math.PI*2);
-      ctx.fillStyle = color;
-      ctx.fill();
-      ctx.closePath();
-      ctx.restore();
-      let offset = 8;
-      let x = unit.x + offset;
-      let y =  unit.y + offset;
-      let radius = (unit.radius * 2) - offset
-      ctx.drawImage(swordIconImage, x, y, radius, radius);
-    } else {
-      ctx.beginPath();
-      ctx.arc(unit.centerX, unit.centerY, unit.radius, 0, Math.PI*2);
-      ctx.fillStyle = color;
-      ctx.fill();
-      ctx.closePath();
-      ctx.restore();
-      let offset = 8;
-      let x = unit.x + offset;
-      let y =  unit.y + offset;
-      let radius = (unit.radius * 2) - offset
-      ctx.drawImage(swordIconImage, x, y, radius, radius);
-    }
+      radiusOffset = 2;
+    } 
+    let offsetX = 2;
+    let offsetY = 2;
+    ctx.beginPath();
+    ctx.arc(unit.centerX, unit.centerY, unit.radius - radiusOffset, 0, Math.PI*2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.closePath();
+    ctx.restore();
+    let offset = 8;
+    let x = unit.x + offset;
+    let y =  unit.y + offset;
+    let radius = (unit.radius * 2) - offset
+    ctx.drawImage(swordIconImage, x + offsetX, y + offsetY, radius, radius);
   }
 }
 
