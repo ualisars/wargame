@@ -117,20 +117,20 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
   if(anotherUnitIsOnTheWay(unit)) {
     console.log('another unit is on the way');
     // unit has another allies' unit on its way
+    if(getBlockedEnemies(unit).length > 0) { // unit is blocked by enemy
+      stopMoving(unit, currentNode);
+      unit.setUnitToPursueToNull();
+      unit.setIsFightingToTrue();
+      drawUnitIcon(unit);
+      for(let enemy of getBlockedEnemies(unit)) {
+        enemy.setIsFightingToTrue();
+        unit.assignEnemy(enemy);
+        enemy.assignEnemy(unit);
+      }
+      return;
+    } 
     const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
     if(!permission) {
-      if(getBlockedEnemies(unit).length > 0) { // unit is blocked by enemy
-        stopMoving(unit, currentNode);
-        unit.setUnitToPursueToNull();
-        unit.setIsFightingToTrue();
-        drawUnitIcon(unit);
-        for(let enemy of getBlockedEnemies(unit)) {
-          enemy.setIsFightingToTrue();
-          unit.assignEnemy(enemy);
-          enemy.assignEnemy(unit);
-        }
-        return;
-      } 
       stopMoving(unit, currentNode);
       let updatedMap = Object.assign([], initialMap);
       let blockedNodes = getSurroundedBlockedNodes(unit);

@@ -115,23 +115,23 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
   }
 
   if(anotherUnitIsOnTheWay(unit)) {
-    // unit has another allies' unit on its way
-    console.error("ANOTHER UNIT IS ON THE WAY");
+     // unit has another allies' unit on its way
+     console.error("ANOTHER UNIT IS ON THE WAY");
+    if(getBlockedEnemies(unit).length > 0) { // unit is blocked by enemy
+      stopMoving(unit, currentNode);
+      unit.setUnitToPursueToNull();
+      unit.setIsFightingToTrue();
+      drawUnitIcon(unit);
+      for(let enemy of getBlockedEnemies(unit)) {
+        enemy.setIsFightingToTrue();
+        unit.assignEnemy(enemy);
+        enemy.assignEnemy(unit);
+      }
+      return;
+    } 
     const permission:boolean = unitCanMoveToTheNode(nextNode, unit);
     console.log('PERMISSION', permission);
     if(!permission) {
-      if(getBlockedEnemies(unit).length > 0) { // unit is blocked by enemy
-        stopMoving(unit, currentNode);
-        unit.setUnitToPursueToNull();
-        unit.setIsFightingToTrue();
-        drawUnitIcon(unit);
-        for(let enemy of getBlockedEnemies(unit)) {
-          enemy.setIsFightingToTrue();
-          unit.assignEnemy(enemy);
-          enemy.assignEnemy(unit);
-        }
-        return;
-      } 
       stopMoving(unit, currentNode);
       let updatedMap = Object.assign([], initialMap);
       let blockedNodes = getSurroundedBlockedNodes(unit);

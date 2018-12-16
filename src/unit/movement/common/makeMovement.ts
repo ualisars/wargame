@@ -40,8 +40,8 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
 
   
   drawUnit(unit);
-  drawPath(unit, allPath, nodeI);
-  pathCtx.clearRect(deleteX, deleteY, gridSize / 2, gridSize / 2);
+  //drawPath(unit, allPath, nodeI);
+  //pathCtx.clearRect(deleteX, deleteY, gridSize / 2, gridSize / 2);
 
   setTimeout(() => {
     i++;
