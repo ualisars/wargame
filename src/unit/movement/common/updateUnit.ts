@@ -119,6 +119,18 @@ export let updateUnit = (
   // ally unit is on the destination position
   // currentUnit should stop moving
   if(anotherUnitIsOnTheWay(unit) && i === updatedPath.length - 1) {
+    if(getBlockedEnemies(unit).length > 0) {
+      stopMoving(unit, currentNode);
+      unit.setUnitToPursueToNull();
+      unit.setIsFightingToTrue();
+      drawUnitIcon(unit);
+      for(let enemy of getBlockedEnemies(unit)) {
+        enemy.setIsFightingToTrue();
+        unit.assignEnemy(enemy);
+        enemy.assignEnemy(unit);
+      }
+      return;
+    }
     console.error('another unit occupying destination position');
     unit.assignMoveToPosition(unit.x, unit.y);
     stopMoving(unit, currentNode);
