@@ -27,7 +27,17 @@ import { getInterceptedEnemies } from '../../../utils/unit/interception/getInter
 import { getBlockedEnemies } from '../../../utils/unit/unitPosition/getBlockedEnemies';
 import { drawUnitIcon } from '../../../UI/battleUI/unitPanel/icon/drawUnitIcon';
 
-export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:number, currentMoveToY:number, chasenUnit:any=null, newMovement:boolean) => {
+export let updateUnit = (
+    unit:Unit,
+    path:any[], 
+    i:number=0, 
+    currentMoveToX:number, 
+    currentMoveToY:number, 
+    chasenUnit:any=null, 
+    newMovement:boolean,
+    tries: number = 0
+  ) => {
+  if(tries > 3) return;
   if(unit.health <= 0) {
     return;
   }
@@ -142,7 +152,7 @@ export let updateUnit = (unit:Unit, path:any[], i:number=0, currentMoveToX:numbe
       let finishNode = getNodeFromMap(currentMoveToX, currentMoveToY, updatedMap);
 
       let newPath:any = aStar(updatedMap, startNode, finishNode);
-      updateUnit(unit, newPath, 0, currentMoveToX, currentMoveToY, null, false);
+      updateUnit(unit, newPath, 0, currentMoveToX, currentMoveToY, null, false, tries += 1);
       return;
     } 
   }

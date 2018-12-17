@@ -23,7 +23,17 @@ import { getInterceptedEnemies } from '../../../utils/unit/interception/getInter
 import { getBlockedEnemies } from '../../../utils/unit/unitPosition/getBlockedEnemies';
 import { drawUnitIcon } from '../../../UI/battleUI/unitPanel/icon/drawUnitIcon';
 
-export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number, currentMoveToY:number, i:number, path:any, newMovement:boolean) => {
+export const pursueUnit = ( 
+    unit: Unit,
+    pursuedUnit: Unit, 
+    currentMoveToX:number, 
+    currentMoveToY:number, 
+    i:number, 
+    path:any, 
+    newMovement:boolean, 
+    tries: number = 0
+) => {
+  if(tries > 3) return;
   if(unit.isFighting) {
     unit.setUnitToPursueToNull();
     if(newMovement && unitCanGetOutOfCombat(unit)) { // unit is trying to out of combat
@@ -118,6 +128,7 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
      // unit has another allies' unit on its way
      console.error("ANOTHER UNIT IS ON THE WAY");
     if(getBlockedEnemies(unit).length > 0) { // unit is blocked by enemy
+      console.log('UNIT is blocked by enemy');
       stopMoving(unit, currentNode);
       unit.setUnitToPursueToNull();
       unit.setIsFightingToTrue();
@@ -143,7 +154,7 @@ export const pursueUnit = (unit: Unit, pursuedUnit: Unit, currentMoveToX:number,
       let finishNode = getNodeFromMap(currentMoveToX, currentMoveToY, updatedMap);
 
       let newPath:any = aStar(updatedMap, startNode, finishNode);
-      pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, i, newPath, false);
+      pursueUnit(unit, pursuedUnit, currentMoveToX, currentMoveToY, i, newPath, false, tries += 1);
       return;
     }
   }
