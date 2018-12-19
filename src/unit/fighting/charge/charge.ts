@@ -6,7 +6,6 @@ import {calculateDamageWhenItsLessThanOne} from '../damage';
 */
 export const charge = (attackUnit:any, defendUnit:any) => {
   let attackAngle = checkAttackSide(attackUnit, defendUnit);
-  console.error('attackAngle', attackAngle);
   let charge = calculateCharge(attackUnit, defendUnit, attackAngle);
   defendUnit.health = Math.round(defendUnit.health - charge);
 }

@@ -117,7 +117,6 @@ class Unit {
     let node: MapNode = getNodeFromMap(x, y);
     if(node) {
       this.moveToNode = node;
-      console.log(this.name + ' is moving to node:' + node.x + ' y:' + node.y);
     }
 
   }

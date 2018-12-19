@@ -111,6 +111,7 @@ export const pursueUnit = (
 
   // unit is reached opponents's unit
   if(nextNode.x === pursuedUnit.currentNode.x && nextNode.y === pursuedUnit.currentNode.y) {
+    console.log('UNIT REACHED ENEMY');
     stopMoving(unit, currentNode);
     unit.setUnitToPursueToNull();
     unit.setIsFightingToTrue();
@@ -119,8 +120,11 @@ export const pursueUnit = (
     unit.assignEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
     pursuedUnit.assignEnemy(unit);
     pursuedUnit.setIsFightingToTrue();
+    let pursuedUnitCurrentNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y);
+    stopMoving(pursuedUnit, pursuedUnitCurrentNode);
     drawUnitIcon(pursuedUnit);
     charge(unit, pursuedUnit);
+    console.log('end of reached enemy');
     return;
   }
 

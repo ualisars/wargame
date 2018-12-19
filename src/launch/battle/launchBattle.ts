@@ -64,20 +64,13 @@ export const launchBattle = () => {
     console.log('Position y', e.offsetY); // get Y
     onChooseUnit(units, x, y);
     console.log('currentlyChosenUnit', currentlyChosenUnit);
-    console.error('map', initialMap);
     console.log('node', getNodeFromMap(x, y));
     redrawPlayerUnits();
     displayUnitIcons();
     clearPath();
-    // test delete in deployment
-    if(currentlyChosenUnit) {
-      console.log('surroundedNodes', getSurroundedNodes(currentlyChosenUnit, 1));
-      console.log('blockedNodes:', getSurroundedBlockedNodes(currentlyChosenUnit));
-    }
   });
 
   auxiliaryCanvas.addEventListener('contextmenu', (e:any) => {
-    console.error('Right Mouse Click');
     e.preventDefault();
     let x = e.offsetX; // get X
     let y = e.offsetY; // get Y

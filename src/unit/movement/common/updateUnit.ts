@@ -62,6 +62,7 @@ export let updateUnit = (
   }
 
   if(getInterceptedEnemies(unit).length !== 0) { // enemy is on the neighbour node
+    console.log('UNIT IS INTERCEPTED BY ENEMY');
     let currentNode = getNodeFromMap(unit.x, unit.y);
     stopMoving(unit, currentNode);
     unit.setUnitToPursueToNull();
