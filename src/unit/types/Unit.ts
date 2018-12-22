@@ -67,6 +67,7 @@ class Unit {
   unitToHelp:number;
   isUnitNeedHelp:boolean = false;
   beCloseTo:any[] = [];
+  commandNumber: number;
   frozen:boolean = false; // to prevent too many orders in short period of time
   
   constructor(id:number, x:number, y:number, controlBy:string='player') {
@@ -297,6 +298,10 @@ class Unit {
   }
   removeBaseNode() {
     this.baseNode = {};
+  }
+
+  setCommandNumber(commandNumber: number) {
+    this.commandNumber = commandNumber;
   }
 }
 
