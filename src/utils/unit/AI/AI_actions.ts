@@ -144,6 +144,22 @@ export const getFightingUnits = (units: Unit[]): Unit[] => {
   return fightingUnits;
 }
 
+export const getTotalUnitsHealth = (units: Unit[]): number => {
+  let totalHealth: number = 0;
+  for(let unit of units) {
+    totalHealth += unit.health;
+  }
+  return totalHealth;
+}
+
+export const getTotalUnitsInitialHealth = (units: Unit[]): number => {
+  let totalInitialHealth: number = 0;
+  for(let unit of units) {
+    totalInitialHealth += unit.health;
+  }
+  return totalInitialHealth;
+}
+
 export const getClosestEnemyToUnit = (unit:Unit) => {
   let updatedPlayerUnits = Object.assign([], deleteUnitFromArray(unit, playerUnits));
   if(updatedPlayerUnits.length === 0) {
