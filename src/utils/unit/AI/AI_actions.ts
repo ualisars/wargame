@@ -133,6 +133,17 @@ export const getNotFightingUnits = (exclusion:Unit[] = []):Unit[] => {
   return notFightingUnits;
 }
 
+export const getFightingUnits = (units: Unit[]): Unit[] => {
+  let updatedUnits = Object.assign([], units);
+  let fightingUnits: Unit[] = [];
+  for(let unit of units) {
+    if(unit.isFighting) {
+      fightingUnits.push(unit);
+    }
+  }
+  return fightingUnits;
+}
+
 export const getClosestEnemyToUnit = (unit:Unit) => {
   let updatedPlayerUnits = Object.assign([], deleteUnitFromArray(unit, playerUnits));
   if(updatedPlayerUnits.length === 0) {

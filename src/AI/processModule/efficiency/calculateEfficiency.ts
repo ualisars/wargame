@@ -44,10 +44,12 @@ export const unitEfficiency = (unit: Unit, computerUnitsWithSimulatingPositions:
     // one unit and one enemy
     if(closeEnemiesNumber === 1 && closeAlliesNumber === 0) {
         let enemy = closeEnemies[0];
-        if(isEnemyVulnerableToUnit(unit, enemy)) {
+        let enemyHealthPercentage = Math.round(enemy.health / enemy.initialHealth);
+        let unitHealthPercentage = Math.round(unit.health / unit.initialHealth);
+        if(isEnemyVulnerableToUnit(unit, enemy) && unitHealthPercentage >= 70) {
             return 100;
         }
-        else if(isEnemyDangerousForUnit(unit, enemy)) {
+        else if(isEnemyDangerousForUnit(unit, enemy) && enemyHealthPercentage >= 70) {
             return 0;
         } 
         else {
