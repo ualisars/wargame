@@ -134,7 +134,6 @@ export const getNotFightingUnits = (exclusion:Unit[] = []):Unit[] => {
 }
 
 export const getFightingUnits = (units: Unit[]): Unit[] => {
-  let updatedUnits = Object.assign([], units);
   let fightingUnits: Unit[] = [];
   for(let unit of units) {
     if(unit.isFighting) {

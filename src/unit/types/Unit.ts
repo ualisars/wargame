@@ -4,7 +4,7 @@ import {
   getNodeFromMap
 } from '../../utils';
 import {
-  deleteUnitFromArray
+  deleteUnitFromArray, isUnitInArray
 } from '../../utils/unit/general';
 import {radius} from '../../config/unit';
 import MapNode from '../../map/nodes/MapNode';
@@ -30,7 +30,8 @@ class Unit {
   figthAgainst: any = {
     front: {},
     flank: [],
-    rear: {}
+    rear: {},
+    all: []
   };
 
   // general
@@ -184,6 +185,9 @@ class Unit {
         this.figthAgainst.flank.push(enemy);
       }
     }
+    if(!isUnitInArray(enemy, this.figthAgainst.all)) {
+      this.figthAgainst.all.push(enemy);
+    }
   }
 
   increaseWeightInPercentage(percentage: number) {
@@ -210,6 +214,8 @@ class Unit {
         }
       }
     }
+
+    this.figthAgainst.all = deleteUnitFromArray(enemy, this.figthAgainst.all);
   }
 
   arrangeFightAgainst() {
@@ -233,6 +239,7 @@ class Unit {
     this.figthAgainst.front = {};
     this.figthAgainst.rear = {};
     this.figthAgainst.flank = [];
+    this.figthAgainst.all = [];
   }
 
   // AI methods

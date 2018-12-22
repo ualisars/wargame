@@ -191,40 +191,44 @@ describe('Unit class test', () => {
     it('enemy1 should be front enemy for unit', (done) => {
       unit.assignEnemy(enemy1);
       assert.equal(unit.figthAgainst.front.id, enemy1.id);
+      assert.equal(isUnitInArray(enemy1, unit.figthAgainst.all), true);
       done();
     });
 
     it('enemy2 should be flank enemy for unit', (done) => {
       unit.assignEnemy(enemy2);
       assert.equal(isUnitInArray(enemy2, unit.figthAgainst.flank), true);
+      assert.equal(isUnitInArray(enemy2, unit.figthAgainst.all), true);
       done();
     });
 
     it('enemy3 should be flank enemy for unit', (done) => {
       unit.assignEnemy(enemy3);
       assert.equal(isUnitInArray(enemy3, unit.figthAgainst.flank), true);
+      assert.equal(isUnitInArray(enemy3, unit.figthAgainst.all), true);
       done();
     });
 
     it('enemy4 should be rear enemy for unit', (done) => {
       unit.assignEnemy(enemy4);
       assert.equal(unit.figthAgainst.rear.id, enemy4.id);
+      assert.equal(isUnitInArray(enemy4, unit.figthAgainst.all), true);
       done();
     });
 
     it('enemy5 should be flank enemy for unit', (done) => {
       unit.assignEnemy(enemy5);
       assert.equal(isUnitInArray(enemy5, unit.figthAgainst.flank), true);
+      assert.equal(isUnitInArray(enemy5, unit.figthAgainst.all), true);
       done();
     });
 
     it('enemy6 should be flank enemy for unit', (done) => {
       unit.assignEnemy(enemy6);
       assert.equal(isUnitInArray(enemy6, unit.figthAgainst.flank), true);
+      assert.equal(isUnitInArray(enemy6, unit.figthAgainst.all), true);
       done();
     });
-
-
   });
 
 
@@ -346,8 +350,6 @@ describe('Unit class test', () => {
       // explicitly assign enemy 1 to a flank
       unit.figthAgainst.flank.push(enemy1);
       unit.figthAgainst.rear = enemy2;
-
-
     });
 
     // remove units after test completed
@@ -405,6 +407,7 @@ describe('Unit class test', () => {
       assert.equal(isUnitInArray(enemy4, unit.figthAgainst.flank), false);
       assert.notEqual(unit.figthAgainst.front.id, enemy4.id);
       assert.notEqual(unit.figthAgainst.rear.id, enemy4.id);
+      assert.equal(isUnitInArray(enemy4, unit.figthAgainst.all), false);
       done();
     });
 
@@ -414,7 +417,7 @@ describe('Unit class test', () => {
       assert.equal(isUnitInArray(enemy2, unit.figthAgainst.flank), false);
       assert.notEqual(unit.figthAgainst.front.id, enemy2.id);
       assert.notEqual(unit.figthAgainst.rear.id, enemy2.id);
-
+      assert.equal(isUnitInArray(enemy2, unit.figthAgainst.all), false);
       done();
     });
 
@@ -424,21 +427,21 @@ describe('Unit class test', () => {
       assert.equal(isUnitInArray(enemy3, unit.figthAgainst.flank), false);
       assert.notEqual(unit.figthAgainst.front.id, enemy3.id);
       assert.notEqual(unit.figthAgainst.rear.id, enemy3.id);
+      assert.equal(isUnitInArray(enemy3, unit.figthAgainst.all), false);
       done();
     });
 
     it('enemy1 should no longer be in figthAgainst', (done) => {
-
       unit.removeEnemyFromFightAgainst(enemy1);
       assert.equal(isUnitInArray(enemy1, unit.figthAgainst.flank), false);
       assert.notEqual(unit.figthAgainst.front.id, enemy1.id);
       assert.notEqual(unit.figthAgainst.rear.id, enemy1.id);
       assert.equal(unit.figthAgainst.flank.length, 0);
+      assert.equal(isUnitInArray(enemy1, unit.figthAgainst.all), false);
       done();
     });
 
     it('enemy6 should no longer be in figthAgainst', (done) => {
-
       unit.removeEnemyFromFightAgainst(enemy6);
       assert.equal(isUnitInArray(enemy6, unit.figthAgainst.flank), false);
       assert.notEqual(unit.figthAgainst.front.id, enemy6.id);
@@ -446,6 +449,7 @@ describe('Unit class test', () => {
       assert.notEqual(unit.figthAgainst.rear.id, enemy6.id);
       assert.equal(unit.figthAgainst.flank.length, 0);
       assert.equal(isObjectEmpty(unit.figthAgainst.rear), true);
+      assert.equal(isUnitInArray(enemy6, unit.figthAgainst.all), false);
       done();
     });
 
@@ -455,6 +459,7 @@ describe('Unit class test', () => {
       assert.equal(unit.figthAgainst.flank.length, 0);
       assert.equal(isObjectEmpty(unit.figthAgainst.front), true);
       assert.equal(isObjectEmpty(unit.figthAgainst.rear), true);
+      assert.equal(unit.figthAgainst.all.length, 0);
       done();
     });
 
@@ -498,6 +503,7 @@ describe('Unit class test', () => {
       assert.equal(unit.figthAgainst.flank.length, 0);
       assert.equal(isObjectEmpty(unit.figthAgainst.front), true);
       assert.equal(isObjectEmpty(unit.figthAgainst.rear), true);
+      assert.equal(unit.figthAgainst.all.length, 0);
       done();
     })
   });
