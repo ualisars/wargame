@@ -6,7 +6,7 @@ import Action from "../decisionUnit/randomAction/Action";
 import { Command } from "../decisionUnit/randomAction/Command";
 import { attackEnemy } from "../../../unit/movement";
 import { assessVulnerability } from "../../processModule/vulnerability";
-import { protect } from "../../../unit/movement/computer/protect";
+import { beCloseTo } from "../../../unit/movement/computer/beCloseTo";
 import { generateCurrentCommandNumber } from "../decisionUnit/commandNumber/currentCommandNumber";
 import { setCommandNumberToUnits } from "../decisionUnit/commandNumber/setCommandNumberToUnits";
 
@@ -28,12 +28,11 @@ export const moveUnits = () => {
             let ally = action.actionUnit;
             let unitVulnerability = assessVulnerability(unit);
             let allyVulnerability = assessVulnerability(ally);
-            moveTo(unit, ally.currentNode.x, ally.currentNode.y);
             if(unitVulnerability >= allyVulnerability) {
-                protect(unit, ally, commandNumber);
+                beCloseTo(unit, ally, commandNumber, true);
             } 
             else {
-                // TODO: be close to ally
+                beCloseTo(unit, ally, commandNumber);
             } 
         }
     }
