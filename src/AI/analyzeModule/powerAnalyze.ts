@@ -10,19 +10,27 @@ import { revealedUnits } from '../../store/AI/enemies/revealedEnemies';
 import { visibleForComputerUnits } from '../../store/unit/visibleUnits';
 import { visiblePlayerUnitsPower } from '../../store/AI/power/visiblePlayerUnitsPower';
 import { revealedUnitsPower } from '../../store/AI/power/revealedUnitsPower';
+import Power from '../../store/AI/power/Power';
+import { Unit } from '../../unit';
 
-export const calculateTotalComputerPower = () => {
+export const calculateTotalComputerPower = (): Power => {
+  let localPower = new Power();
   computerPower.resetAllProperties();
   for(let unit of computerUnits) {
     decomposeUnitProps(unit, 'computer');
+    decomposePower(localPower, unit);
   }
+  return localPower;
 }
 
-export const calculateTotalPlayerPower = () => {
+export const calculateTotalPlayerPower = (): Power => {
+  let localPower = new Power();
   playerPower.resetAllProperties();
   for(let unit of playerUnits) {
     decomposeUnitProps(unit);
+    decomposePower(localPower, unit);
   }
+  return localPower;
 }
 
 export const calculateRevealedUnitsPower = () => {
@@ -65,70 +73,34 @@ export const calculateInitialPower = () => {
 
 export const decomposeUnitProps = (unit:any, side:string='player') => {
   if(side === 'visiblePlayerUnits') {
-    visiblePlayerUnitsPower.incrementQuantity();
-    visiblePlayerUnitsPower.addHealth(unit.health);
-    visiblePlayerUnitsPower.addSpeed(unit.speed);
-    visiblePlayerUnitsPower.addArmour(unit.armour);
-    visiblePlayerUnitsPower.addMeleeDamage(unit.meleeDamage);
-    visiblePlayerUnitsPower.addMissileDamage(unit.missileDamage);
-    visiblePlayerUnitsPower.addDiscipline(unit.discipline);
-    visiblePlayerUnitsPower.addMorale(unit.morale);
-    visiblePlayerUnitsPower.addCondition(unit.condition);
+    decomposePower(visiblePlayerUnitsPower, unit);
   }
   if(side === 'player') {
-    playerPower.incrementQuantity();
-    playerPower.addHealth(unit.health);
-    playerPower.addSpeed(unit.speed);
-    playerPower.addArmour(unit.armour);
-    playerPower.addMeleeDamage(unit.meleeDamage);
-    playerPower.addMissileDamage(unit.missileDamage);
-    playerPower.addDiscipline(unit.discipline);
-    playerPower.addMorale(unit.morale);
-    playerPower.addCondition(unit.condition);
+    decomposePower(playerPower, unit);
   }
   else if(side === 'computer') {
-    computerPower.incrementQuantity();
-    computerPower.addHealth(unit.health);
-    computerPower.addSpeed(unit.speed);
-    computerPower.addArmour(unit.armour);
-    computerPower.addMeleeDamage(unit.meleeDamage);
-    computerPower.addMissileDamage(unit.missileDamage);
-    computerPower.addDiscipline(unit.discipline);
-    computerPower.addMorale(unit.morale);
-    computerPower.addCondition(unit.condition);
+    decomposePower(computerPower, unit);
   }
   else if(side === 'initialComputer') {
-    initialComputerPower.incrementQuantity();
-    initialComputerPower.addHealth(unit.health);
-    initialComputerPower.addSpeed(unit.speed);
-    initialComputerPower.addArmour(unit.armour);
-    initialComputerPower.addMeleeDamage(unit.meleeDamage);
-    initialComputerPower.addMissileDamage(unit.missileDamage);
-    initialComputerPower.addDiscipline(unit.discipline);
-    initialComputerPower.addMorale(unit.morale);
-    initialComputerPower.addCondition(unit.condition);
+    decomposePower(initialComputerPower, unit);
   }
   else if(side === 'initialPlayer') {
-    initialPlayerPower.incrementQuantity();
-    initialPlayerPower.addHealth(unit.health);
-    initialPlayerPower.addSpeed(unit.speed);
-    initialPlayerPower.addArmour(unit.armour);
-    initialPlayerPower.addMeleeDamage(unit.meleeDamage);
-    initialPlayerPower.addMissileDamage(unit.missileDamage);
-    initialPlayerPower.addDiscipline(unit.discipline);
-    initialPlayerPower.addMorale(unit.morale);
-    initialPlayerPower.addCondition(unit.condition);
+    decomposePower(initialPlayerPower, unit);
   }
 
   else if(side === 'revealedUnits') {
-    revealedUnitsPower.incrementQuantity();
-    revealedUnitsPower.addHealth(unit.health);
-    revealedUnitsPower.addSpeed(unit.speed);
-    revealedUnitsPower.addArmour(unit.armour);
-    revealedUnitsPower.addMeleeDamage(unit.meleeDamage);
-    revealedUnitsPower.addMissileDamage(unit.missileDamage);
-    revealedUnitsPower.addDiscipline(unit.discipline);
-    revealedUnitsPower.addMorale(unit.morale);
-    revealedUnitsPower.addCondition(unit.condition);
+    decomposePower(revealedUnitsPower, unit);
   }
+}
+
+export const decomposePower = (power: Power, unit: Unit) => {
+  power.incrementQuantity();
+  power.addHealth(unit.health);
+  power.addSpeed(unit.speed);
+  power.addArmour(unit.armour);
+  power.addMeleeDamage(unit.meleeDamage);
+  power.addMissileDamage(unit.missileDamage);
+  power.addDiscipline(unit.discipline);
+  power.addMorale(unit.morale);
+  power.addCondition(unit.condition);
 }

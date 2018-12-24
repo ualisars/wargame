@@ -29,6 +29,7 @@ import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
 import { redrawPlayerUnits } from '../../unit/draw/drawUnit';
 import { drawClickedIcon } from '../../UI/battleUI/unitPanel/icon/clickIcon';
 import { clearPath } from '../../path/draw/drawPath';
+import { computerAction } from '../../AI/strategyModule/controlUnit/computerAction';
 
 export const launchBattle = () => {
   console.log('battle mode', battleMode);
@@ -95,13 +96,10 @@ export const launchBattle = () => {
 
  
   drawBackground('./src/img/terrain/terrain.png');
+  computerAction();
   displayUnitIcons();
   battleListener();
   moveUnits();
-  setInterval(() => {
-    moveUnits();
-  }, 3000);
-
   setInterval(() => {
     isBattleEnd();
   }, 15000);
