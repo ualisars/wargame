@@ -189,6 +189,7 @@ class Unit {
     if(!isUnitInArray(enemy, this.figthAgainst.all)) {
       this.figthAgainst.all.push(enemy);
     }
+    this.isFighting = true;
   }
 
   increaseWeightInPercentage(percentage: number) {
@@ -217,6 +218,10 @@ class Unit {
     }
 
     this.figthAgainst.all = deleteUnitFromArray(enemy, this.figthAgainst.all);
+
+    if(this.figthAgainst.all.length === 0) {
+      this.isFighting = false;
+    }
   }
 
   arrangeFightAgainst() {
@@ -241,6 +246,7 @@ class Unit {
     this.figthAgainst.rear = {};
     this.figthAgainst.flank = [];
     this.figthAgainst.all = [];
+    this.isFighting = false;
   }
 
   // AI methods

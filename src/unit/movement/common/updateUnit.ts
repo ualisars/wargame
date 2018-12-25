@@ -51,7 +51,6 @@ export let updateUnit = (
     drawUnitIcon(unit);
     if(newMovement && unitCanGetOutOfCombat(unit)) { // unit is trying to out of combat
       unit.setUnitToPursueToNull();
-      unit.setIsFightingToFalse(); // unit is not fighting now
       unit.clearFightAgainst(); // now unit not fighting with anyone
       removeUnitFromEnemiesFightAgainst(unit); // remove unit from all enemies figthAgainst
     } else {
@@ -66,11 +65,9 @@ export let updateUnit = (
     let currentNode = getNodeFromMap(unit.x, unit.y);
     stopMoving(unit, currentNode);
     unit.setUnitToPursueToNull();
-    unit.setIsFightingToTrue();
     drawUnitIcon(unit);
     for(let enemy of getInterceptedEnemies(unit)) {
       stopMoving(enemy, enemy.nextNode);
-      enemy.setIsFightingToTrue();
       unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
       enemy.assignEnemy(unit);
       drawUnitIcon(enemy);
@@ -123,10 +120,8 @@ export let updateUnit = (
     if(getBlockedEnemies(unit).length > 0) {
       stopMoving(unit, currentNode);
       unit.setUnitToPursueToNull();
-      unit.setIsFightingToTrue();
       drawUnitIcon(unit);
       for(let enemy of getBlockedEnemies(unit)) {
-        enemy.setIsFightingToTrue();
         unit.assignEnemy(enemy);
         enemy.assignEnemy(unit);
       }
@@ -143,10 +138,8 @@ export let updateUnit = (
     if(getBlockedEnemies(unit).length > 0) { // unit is blocked by enemy
       stopMoving(unit, currentNode);
       unit.setUnitToPursueToNull();
-      unit.setIsFightingToTrue();
       drawUnitIcon(unit);
       for(let enemy of getBlockedEnemies(unit)) {
-        enemy.setIsFightingToTrue();
         unit.assignEnemy(enemy);
         enemy.assignEnemy(unit);
       }

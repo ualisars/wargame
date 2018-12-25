@@ -7,7 +7,6 @@ import {aStar} from '../../../path/aStar/AStar';
 export const moveTo = (unit:Unit, moveToX:number, moveToY:number):void => {
   if(unit.isMoving) {
     unit.setUnitToPursue(null);
-    let startNode = getNodeFromMap(unit.x, unit.y);
     let finishNode = getNodeFromMap(moveToX, moveToY);
     unit.assignMoveToPosition(finishNode.x, finishNode.y);
   } else {

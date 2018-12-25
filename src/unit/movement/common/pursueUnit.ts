@@ -37,7 +37,6 @@ export const pursueUnit = (
   if(unit.isFighting) {
     unit.setUnitToPursueToNull();
     if(newMovement && unitCanGetOutOfCombat(unit)) { // unit is trying to out of combat
-      unit.setIsFightingToFalse(); // unit is not fighting now
       unit.clearFightAgainst(); // now unit not fighting with anyone
       removeUnitFromEnemiesFightAgainst(unit);
       unit.setIsMovingToTrue();
@@ -69,10 +68,8 @@ export const pursueUnit = (
   if(getInterceptedEnemies(unit).length !== 0) { // enemy is on the neighbour node
     unit.setIsMovingToFalse();
     unit.setUnitToPursueToNull();
-    unit.setIsFightingToTrue();
     drawUnitIcon(unit);
     for(let enemy of getInterceptedEnemies(unit)) {
-      enemy.setIsFightingToTrue();
       enemy.setIsMovingToFalse();
       unit.assignEnemy(enemy); // assign pursuedUnit as front line enemy
       enemy.assignEnemy(unit);
@@ -114,12 +111,9 @@ export const pursueUnit = (
     console.log('UNIT REACHED ENEMY');
     stopMoving(unit, currentNode);
     unit.setUnitToPursueToNull();
-    unit.setIsFightingToTrue();
-    pursuedUnit.setIsFightingToTrue();
     drawUnitIcon(unit);
     unit.assignEnemy(pursuedUnit); // assign pursuedUnit as front line enemy
     pursuedUnit.assignEnemy(unit);
-    pursuedUnit.setIsFightingToTrue();
     let pursuedUnitCurrentNode = getNodeFromMap(pursuedUnit.x, pursuedUnit.y);
     stopMoving(pursuedUnit, pursuedUnitCurrentNode);
     drawUnitIcon(pursuedUnit);
@@ -135,10 +129,8 @@ export const pursueUnit = (
       console.log('UNIT is blocked by enemy');
       stopMoving(unit, currentNode);
       unit.setUnitToPursueToNull();
-      unit.setIsFightingToTrue();
       drawUnitIcon(unit);
       for(let enemy of getBlockedEnemies(unit)) {
-        enemy.setIsFightingToTrue();
         unit.assignEnemy(enemy);
         enemy.assignEnemy(unit);
       }

@@ -12,7 +12,6 @@ import { moveTo } from '../common/moveTo';
 import { beCloseTo } from "./beCloseTo";
 
 export const advance = (unit: Unit, actionNode: MapNode, commandNumber: number) => {
-    console.error('advance');
     if(commandNumber !== currentCommandNumber) return;
     if(!unit.isMoving && !unit.isFighting) {
         if(unit.currentNode.x != actionNode.x && unit.currentNode.y != actionNode.y) {
