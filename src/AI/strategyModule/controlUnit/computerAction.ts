@@ -4,7 +4,6 @@ import { moveUnits } from "./moveUnits";
 import { calculateTotalPower } from "../../analyzeModule/powerAnalyze";
 
 export const computerAction = () => {
-    moveUnits();
     let previousState = new PreviousState();
     calculateTotalPower();
     setTimeout(() => {
@@ -15,4 +14,9 @@ export const computerAction = () => {
         previousState.setPreviousState();
         computerAction();
     }, 600);
+}
+
+export const computerMovement = () => {
+    moveUnits();
+    computerAction();
 }

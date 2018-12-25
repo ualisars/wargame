@@ -11,9 +11,13 @@ import { generateCurrentCommandNumber } from "../decisionUnit/commandNumber/curr
 import { setCommandNumberToUnits } from "../decisionUnit/commandNumber/setCommandNumberToUnits";
 
 export const moveUnits = () => {
+    console.error('moveUnits');
     let commandNumber = generateCurrentCommandNumber();
     setCommandNumberToUnits(commandNumber);
     let commands: Commands = bestActionAlgorithm();
+    for(let unit of computerUnits) {
+        console.error(`command unit ${unit.id} ${commands.getCommandsByUnitId(unit.id).command}`);
+    }
     for(let unit of computerUnits) {
         let action: Action = commands.getCommandsByUnitId(unit.id);
         let command = action.command;

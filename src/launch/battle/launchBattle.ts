@@ -1,4 +1,3 @@
-import { initialMap } from '../../map/createMap/initialMap';
 import { auxiliaryCanvas } from '../../config/canvas';
 import { auxiliaryCtx } from '../../config/context';
 import {
@@ -10,7 +9,6 @@ import {
   getNodeFromMap,
   drawBackground
 } from '../../utils';
-import {getSurroundedBlockedNodes} from '../../utils/node';
 import {onChooseUnit} from '../../unit';
 import {
   units,
@@ -21,15 +19,13 @@ import {
   moveTo
 } from '../../unit/movement';
 import { currentlyChosenUnit } from '../../store/unit/currentlyChosenUnit';
-import { getSurroundedNodes } from '../../utils/surrounded';
 import { battleMode } from '../../config/global/globalConfig';
 import { displayUnitIcons } from '../../UI/battleUI/unitPanel/display/displayUnitIcons';
 import { battleListener, isBattleEnd } from '../../gameLoop';
-import { moveUnits } from '../../AI/strategyModule/controlUnit/moveUnits';
 import { redrawPlayerUnits } from '../../unit/draw/drawUnit';
 import { drawClickedIcon } from '../../UI/battleUI/unitPanel/icon/clickIcon';
 import { clearPath } from '../../path/draw/drawPath';
-import { computerAction } from '../../AI/strategyModule/controlUnit/computerAction';
+import { computerMovement } from '../../AI/strategyModule/controlUnit/computerAction';
 
 export const launchBattle = () => {
   console.log('battle mode', battleMode);
@@ -93,13 +89,10 @@ export const launchBattle = () => {
       clearPath();
     }
   }); // on context
-
- 
   drawBackground('./src/img/terrain/terrain.png');
-  computerAction();
   displayUnitIcons();
   battleListener();
-  moveUnits();
+  computerMovement();
   setInterval(() => {
     isBattleEnd();
   }, 15000);
