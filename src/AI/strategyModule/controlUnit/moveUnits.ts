@@ -9,6 +9,7 @@ import { assessVulnerability } from "../../processModule/vulnerability";
 import { beCloseTo } from "../../../unit/movement/computer/beCloseTo";
 import { generateCurrentCommandNumber } from "../decisionUnit/commandNumber/currentCommandNumber";
 import { setCommandNumberToUnits } from "../decisionUnit/commandNumber/setCommandNumberToUnits";
+import { advance } from "../../../unit/movement/computer/advance";
 
 export const moveUnits = () => {
     console.error('moveUnits');
@@ -26,7 +27,7 @@ export const moveUnits = () => {
             attackEnemy(unit, action.actionUnit);
         }
         else if(command === Command.MoveToNode) {
-            moveTo(unit, node.x, node.y);
+            advance(unit, action.node, commandNumber);
         }
         else if(command === Command.BeCloseToUnit) {
             let ally = action.actionUnit;

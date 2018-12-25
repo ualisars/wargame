@@ -6,6 +6,7 @@ import { getSurroundedUnits } from "../../../utils/surrounded/getSurroundedUnits
 import { visibleForComputerUnits } from "../../../store/unit/visibleUnits";
 import { getRandomNode } from "../../../utils/node";
 import { currentCommandNumber } from "../../../AI/strategyModule/decisionUnit/commandNumber/currentCommandNumber";
+import { moveTo } from '../common/moveTo';
 
 export const beCloseTo = (
     unit: Unit, 
@@ -30,7 +31,7 @@ export const beCloseTo = (
         else if(distanceBetweenUnits >= 2) {
             let nodes = getSurroundedNodes(actionUnit, 2);
             let node = getRandomNode(nodes);
-            moveTo(node.x, node.y);
+            moveTo(unit, node.x, node.y);
         }
     } 
     setTimeout(() => {

@@ -5,10 +5,6 @@ import {
   updateUnit
 } from './common';
 
-import {
-
-} from './computer';
-
 export {
   attackEnemy,
   moveTo,

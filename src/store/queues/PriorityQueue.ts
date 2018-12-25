@@ -1,29 +1,34 @@
 import Positions from "../AI/positions/Positions";
 
-class PriorityQueue {
-   private elements: any = [];
-   private positionId: number = 1;
 
-   insert(efficiency: number, positions: Positions) {
+class PriorityQueue {
+    private elements: any = []
+    insert(key: any, priority: Number) {
         this.elements.push({
-            efficiency: efficiency,
-            positions: positions,
-            positionId: this.positionId
+            key: key,
+            value: priority
         });
-        this.positionId += 1;
     }
-    
+
+    update(key: any, newPriority: Number) {
+        for(let element of this.elements) {
+            if(element.key == key) {
+                element.value = newPriority; 
+            }
+        }
+    }
+
     extractMax() {
         let max = this.elements[0];
         let maxIndex = 0;
         for(let i = 1; i < this.elements.length; ++i) {
-            if(this.elements[i].efficiency > max.efficiency) {
+            if(this.elements[i].value > max.value) {
                 max = this.elements[i];
                 maxIndex = i;
             }
         }
         this.elements = this.elements.filter((el: any) => {
-            if(el.positionId === max.positionId) {
+            if(el.key === max.key) {
               return false;
             }
             return true;
@@ -37,10 +42,6 @@ class PriorityQueue {
         } else {
             return false;
         }
-    }
-
-    clearElements() {
-        this.elements = [];
     }
 }
 
