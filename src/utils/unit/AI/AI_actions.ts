@@ -348,7 +348,10 @@ export const isUnitsChanged = (currentUnits: Unit[], previousUnits: Unit[]): boo
   updatedPreviousUnits.sort(compare);
 
   for(let i = 0; i < updatedCurrentUnits.length; ++i) {
-    if(updatedCurrentUnits[i] != updatedPreviousUnits[i]) return true;
+    if(updatedCurrentUnits[i] != updatedPreviousUnits[i]) {
+      console.error('units changed');
+      return true;
+    } 
   }
   return false;
 }

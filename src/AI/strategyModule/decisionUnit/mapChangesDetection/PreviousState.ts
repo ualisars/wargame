@@ -5,36 +5,36 @@ import { visibleForPlayerUnits, visibleForComputerUnits } from "../../../../stor
 import { hidingEnemies } from "../../../../store/AI/enemies/hidingEnemies";
 
 class PreviousState {
-    previousPlayerUnits: Unit[];
-    previousComputerUnits: Unit[];
-    previousPlayerTotalHealth: number;
-    previousComputerTotalHealth: number;
-    previousVisibleForPlayerUnits: Unit[];
-    previousVisibleForComputerUnits: Unit[];
-    previousHidingEnemies: Unit[];
+    playerUnits: Unit[];
+    computerUnits: Unit[];
+    playerTotalHealth: number;
+    computerTotalHealth: number;
+    visibleForPlayerUnits: Unit[];
+    visibleForComputerUnits: Unit[];
+    hidingEnemies: Unit[];
 
     constructor() {
         let playerPower = calculateTotalPlayerPower();
         let computerPower = calculateTotalComputerPower();
-        this.previousPlayerUnits = Object.assign([], playerUnits);
-        this.previousComputerUnits = Object.assign([], computerUnits);
-        this.previousPlayerTotalHealth = playerPower.totalHealth;
-        this.previousComputerTotalHealth = computerPower.totalHealth;
-        this.previousVisibleForPlayerUnits = Object.assign([], visibleForPlayerUnits);
-        this.previousVisibleForComputerUnits = Object.assign([], visibleForComputerUnits);
-        this.previousHidingEnemies = Object.assign([], hidingEnemies);
+        this.playerUnits = Object.assign([], playerUnits);
+        this.computerUnits = Object.assign([], computerUnits);
+        this.playerTotalHealth = playerPower.totalHealth;
+        this.computerTotalHealth = computerPower.totalHealth;
+        this.visibleForPlayerUnits = Object.assign([], visibleForPlayerUnits);
+        this.visibleForComputerUnits = Object.assign([], visibleForComputerUnits);
+        this.hidingEnemies = Object.assign([], hidingEnemies);
     }
 
     setPreviousState() {
         let playerPower = calculateTotalPlayerPower();
         let computerPower = calculateTotalComputerPower();
-        this.previousPlayerUnits = Object.assign([], playerUnits);
-        this.previousComputerUnits = Object.assign([], computerUnits);
-        this.previousPlayerTotalHealth = playerPower.totalHealth;
-        this.previousComputerTotalHealth = computerPower.totalHealth;
-        this.previousVisibleForPlayerUnits = Object.assign([], visibleForPlayerUnits);
-        this.previousVisibleForComputerUnits = Object.assign([], visibleForComputerUnits);
-        this.previousHidingEnemies = Object.assign([], hidingEnemies);
+        this.playerUnits = Object.assign([], playerUnits);
+        this.computerUnits = Object.assign([], computerUnits);
+        this.playerTotalHealth = playerPower.totalHealth;
+        this.computerTotalHealth = computerPower.totalHealth;
+        this.visibleForPlayerUnits = Object.assign([], visibleForPlayerUnits);
+        this.visibleForComputerUnits = Object.assign([], visibleForComputerUnits);
+        this.hidingEnemies = Object.assign([], hidingEnemies);
     }
 }
 

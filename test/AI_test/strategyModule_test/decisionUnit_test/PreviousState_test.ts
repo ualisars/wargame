@@ -36,13 +36,13 @@ describe('AI strategy module test', () => {
 
         describe("initialState state", () => {
             it("computer units number should be 3", () => {
-                assert.equal(previousState.previousComputerUnits.length, 3);
+                assert.equal(previousState.computerUnits.length, 3);
             });
             it("player units number should be 3", () => {
-                assert.equal(previousState.previousPlayerUnits.length, 3);
+                assert.equal(previousState.playerUnits.length, 3);
             });
             it("visible for computer units number should be 0", () => {
-                assert.equal(previousState.previousVisibleForComputerUnits.length, 0);
+                assert.equal(previousState.visibleForComputerUnits.length, 0);
             });
         });
 
@@ -51,26 +51,26 @@ describe('AI strategy module test', () => {
                 addUnitIntoVisibleUnits(playerUnit1);
             });
             it("computer units number should be 3", () => {
-                assert.equal(previousState.previousComputerUnits.length, 3);
+                assert.equal(previousState.computerUnits.length, 3);
             });
             it("player units number should be 3", () => {
-                assert.equal(previousState.previousPlayerUnits.length, 3);
+                assert.equal(previousState.playerUnits.length, 3);
             });
             it("visible for computer units number should be 0", () => {
-                assert.equal(previousState.previousVisibleForComputerUnits.length, 0);
+                assert.equal(previousState.visibleForComputerUnits.length, 0);
             });
             describe("set previous state", () => {
                 before(() => {
                     previousState.setPreviousState();
                 });
                 it("computer units number should be 3", () => {
-                    assert.equal(previousState.previousComputerUnits.length, 3);
+                    assert.equal(previousState.computerUnits.length, 3);
                 });
                 it("player units number should be 3", () => {
-                    assert.equal(previousState.previousPlayerUnits.length, 3);
+                    assert.equal(previousState.playerUnits.length, 3);
                 });
                 it("visible for computer units number should be 1", () => {
-                    assert.equal(previousState.previousVisibleForComputerUnits.length, 1);
+                    assert.equal(previousState.visibleForComputerUnits.length, 1);
                 });
             });
         });
@@ -81,26 +81,26 @@ describe('AI strategy module test', () => {
                 addUnitIntoVisibleUnits(playerUnit3);
             });
             it("computer units number should be 3", () => {
-                assert.equal(previousState.previousComputerUnits.length, 3);
+                assert.equal(previousState.computerUnits.length, 3);
             });
             it("player units number should be 3", () => {
-                assert.equal(previousState.previousPlayerUnits.length, 3);
+                assert.equal(previousState.playerUnits.length, 3);
             });
             it("visible for computer units number should be 1", () => {
-                assert.equal(previousState.previousVisibleForComputerUnits.length, 1);
+                assert.equal(previousState.visibleForComputerUnits.length, 1);
             });
             describe("set previous state", () => {
                 before(() => {
                     previousState.setPreviousState();
                 });
                 it("computer units number should be 3", () => {
-                    assert.equal(previousState.previousComputerUnits.length, 3);
+                    assert.equal(previousState.computerUnits.length, 3);
                 });
                 it("player units number should be 3", () => {
-                    assert.equal(previousState.previousPlayerUnits.length, 3);
+                    assert.equal(previousState.playerUnits.length, 3);
                 });
                 it("visible for computer units number should be 3", () => {
-                    assert.equal(previousState.previousVisibleForComputerUnits.length, 3);
+                    assert.equal(previousState.visibleForComputerUnits.length, 3);
                 });
             });
         });
@@ -110,26 +110,26 @@ describe('AI strategy module test', () => {
                 removeUnitFromVisibleUnits(playerUnit3);
             });
             it("computer units number should be 3", () => {
-                assert.equal(previousState.previousComputerUnits.length, 3);
+                assert.equal(previousState.computerUnits.length, 3);
             });
             it("player units number should be 3", () => {
-                assert.equal(previousState.previousPlayerUnits.length, 3);
+                assert.equal(previousState.playerUnits.length, 3);
             });
             it("visible for computer units number should be 3", () => {
-                assert.equal(previousState.previousVisibleForComputerUnits.length, 3);
+                assert.equal(previousState.visibleForComputerUnits.length, 3);
             });
             describe("set previous state", () => {
                 before(() => {
                     previousState.setPreviousState();
                 });
                 it("computer units number should be 3", () => {
-                    assert.equal(previousState.previousComputerUnits.length, 3);
+                    assert.equal(previousState.computerUnits.length, 3);
                 });
                 it("player units number should be 3", () => {
-                    assert.equal(previousState.previousPlayerUnits.length, 3);
+                    assert.equal(previousState.playerUnits.length, 3);
                 });
                 it("visible for computer units number should be 2", () => {
-                    assert.equal(previousState.previousVisibleForComputerUnits.length, 2);
+                    assert.equal(previousState.visibleForComputerUnits.length, 2);
                 });
             });
         });
@@ -139,26 +139,26 @@ describe('AI strategy module test', () => {
                 removeUnit(computerUnit1);
             });
             it("computer units number should be 3", () => {
-                assert.equal(previousState.previousComputerUnits.length, 3);
+                assert.equal(previousState.computerUnits.length, 3);
             });
             it("player units number should be 3", () => {
-                assert.equal(previousState.previousPlayerUnits.length, 3);
+                assert.equal(previousState.playerUnits.length, 3);
             });
             it("visible for computer units number should be 2", () => {
-                assert.equal(previousState.previousVisibleForComputerUnits.length, 2);
+                assert.equal(previousState.visibleForComputerUnits.length, 2);
             });
             describe("set previous state", () => {
                 before(() => {
                     previousState.setPreviousState();
                 });
                 it("computer units number should be 2", () => {
-                    assert.equal(previousState.previousComputerUnits.length, 2);
+                    assert.equal(previousState.computerUnits.length, 2);
                 });
                 it("player units number should be 3", () => {
-                    assert.equal(previousState.previousPlayerUnits.length, 3);
+                    assert.equal(previousState.playerUnits.length, 3);
                 });
                 it("visible for computer units number should be 2", () => {
-                    assert.equal(previousState.previousVisibleForComputerUnits.length, 2);
+                    assert.equal(previousState.visibleForComputerUnits.length, 2);
                 });
             });
         });
