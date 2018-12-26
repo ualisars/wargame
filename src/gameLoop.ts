@@ -4,13 +4,11 @@ import {
   units
 } from './store/unit/units';
 import { drawMessage } from './UI/messages/drawMessage';
-import { isUnitSpottedByEnemy, meleeCombat } from './unit';
+import { meleeCombat, spotUnits } from './unit';
 import { finishBattle } from './config/global/globalConfig';
 
 export const battleListener = () => {
-  for(let unit of units) {
-    isUnitSpottedByEnemy(unit)
-  }
+  spotUnits(units);
   meleeCombat();
   setTimeout(() => {
    battleListener();

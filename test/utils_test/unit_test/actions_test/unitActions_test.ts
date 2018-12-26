@@ -13,6 +13,7 @@ import {
   getClosestNodeToUnit,
   findClosestUnitsToTheNodeCenter
 } from '../../../../src/utils/unit/actions';
+import { isUnitsChanged } from '../../../../src/utils/unit/AI/AI_actions';
 
 describe('unitActionsUtils test', () => {
 
@@ -195,4 +196,94 @@ describe('unitActionsUtils test', () => {
     });
   });
 
+  describe('isUnitsChanged test', () => {
+    let unit1:Unit, unit2:Unit, unit3:Unit, unit4:Unit, unit5: Unit;
+    before(() => {
+      removeAllUnits();
+      unit1 = createUnit('HeavyCavalry', 440, 160, 'computer');
+      unit2 = createUnit('Scouts', 400, 160, 'computer');
+      unit3 = createUnit('Pikemen', 480, 200, 'computer');
+      unit4 = createUnit('Militia', 440, 240, 'computer');
+      unit5 = createUnit('LightCavalry', 400, 200, 'computer');
+    });
+
+    after(() => {
+      removeUnit(unit1);
+      removeUnit(unit2);
+      removeUnit(unit3);
+      removeUnit(unit4);
+      removeUnit(unit5);
+    });
+
+    describe('add unit1 compare with unit3 and unit4', () => {
+      let previousUnits: Unit[] = [];
+      let units: Unit[] = [];
+      before(() => {
+        units.push(unit1);
+        previousUnits.push(unit3);
+        previousUnits.push(unit4);
+      });
+      it("units should be changed", () => {
+        assert.equal(isUnitsChanged(units, previousUnits), true);
+      }); 
+    });
+
+    describe('add unit1 and unit2 compare with unit1 and unit2', () => {
+      let previousUnits: Unit[] = [];
+      let units: Unit[] = [];
+      before(() => {
+        units.push(unit1);
+        units.push(unit2);
+        previousUnits.push(unit1);
+        previousUnits.push(unit2);
+      });
+      it("units should not be changed", () => {
+        assert.equal(isUnitsChanged(units, previousUnits), false);
+      }); 
+    });
+
+    describe('add unit1 and unit2 compare with unit1 and unit3', () => {
+      let previousUnits: Unit[] = [];
+      let units: Unit[] = [];
+      before(() => {
+        units.push(unit1);
+        units.push(unit3);
+        previousUnits.push(unit1);
+        previousUnits.push(unit2);
+      });
+      it("units should be changed", () => {
+        assert.equal(isUnitsChanged(units, previousUnits), true);
+      }); 
+    });
+
+    describe('add unit2 and unit4 compare with unit3 and unit4', () => {
+      let previousUnits: Unit[] = [];
+      let units: Unit[] = [];
+      before(() => {
+        units.push(unit2);
+        units.push(unit4);
+        previousUnits.push(unit3);
+        previousUnits.push(unit4);
+      });
+      it("units should be changed", () => {
+        assert.equal(isUnitsChanged(units, previousUnits), true);
+      }); 
+    });
+
+    describe('add unit1, unit3 and unit4 compare with unit1, unit3 and unit4', () => {
+      let previousUnits: Unit[] = [];
+      let units: Unit[] = [];
+      before(() => {
+        units.push(unit1);
+        units.push(unit3);
+        units.push(unit4);
+        previousUnits.push(unit4);
+        previousUnits.push(unit1);
+        previousUnits.push(unit3);
+      });
+      it("units should not be changed", () => {
+        assert.equal(isUnitsChanged(units, previousUnits), false);
+      }); 
+    });
+  });
 });

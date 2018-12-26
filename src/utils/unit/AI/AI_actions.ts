@@ -332,3 +332,23 @@ export const getScoutsNumber = ():number => {
       return scouts.length;
   }
 }
+
+export const isUnitsChanged = (currentUnits: Unit[], previousUnits: Unit[]): boolean => {
+  const compare = (unit1: Unit, unit2: Unit) => {
+    if (unit1.id < unit2.id)
+      return -1;
+    if (unit1.id > unit2.id)
+      return 1;
+    return 0;
+  }
+  if(currentUnits.length != previousUnits.length) return true;
+  let updatedCurrentUnits = Object.assign([], currentUnits);
+  let updatedPreviousUnits = Object.assign([], previousUnits)
+  updatedCurrentUnits.sort(compare);
+  updatedPreviousUnits.sort(compare);
+
+  for(let i = 0; i < updatedCurrentUnits.length; ++i) {
+    if(updatedCurrentUnits[i] != updatedPreviousUnits[i]) return true;
+  }
+  return false;
+}
