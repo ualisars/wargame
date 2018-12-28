@@ -1,23 +1,27 @@
 import {
-  MAP_WIDTH,
-  MAP_HEIGHT,
-  gridSize
-} from '../../config/map';
-import {
   createNodes,
   createOneObstacle,
   createObstacles,
   addNeighbors
 } from '..';
 import MapNode from '../nodes/MapNode';
+import { createSearchMap } from '../nodes/createNodes';
 
 export let initialMap:MapNode[] = [];
+export let searchMap: any = {};
 
 export const createMap = () => {
   return new Promise(resolve => {
     initialMap = createNodes();
     resolve();
   });
+}
+
+export const initializeSearchMap = (map: MapNode[]) => {
+  return new Promise(resolve => {
+      searchMap = createSearchMap(map);
+      resolve();
+    });
 }
 
 export let addObstaclesToMap = () => {
@@ -41,8 +45,9 @@ export const initializeMap = () => {
     createMap()
     .then(() => addObstaclesToMap())
     .then(() => {
-      console.log('map', initialMap);
-      resolve();
+      initializeSearchMap(initialMap).then(() => {
+        resolve();
+      });
     });
   });
 }

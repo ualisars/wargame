@@ -1,5 +1,9 @@
-import { createMap } from "../src/map/createMap";
+import { initializeMap } from "../src/map/createMap/initialMap";
 
 describe('initialize map', () => {
-    createMap();
+    initializeMap().then(
+        () => {
+            console.log('map initialized');
+        }
+    );
 });
