@@ -1,4 +1,4 @@
-import { gridSize } from '../../../config';
+import { gridSize, MAP_WIDTH } from '../../../config';
 import { initialMap } from '../../../map/createMap/initialMap';
 import MapNode from '../../../map/nodes/MapNode';
 
@@ -11,5 +11,13 @@ export let getNodeFromMap = (x:number, y:number, map=initialMap): MapNode => {
       node = grid;
     }
   }
+  return node;
+}
+
+export const getNodeFromMapB = (x: number, y: number, map=initialMap): MapNode => {
+  let node: MapNode;
+  let nodesInX: number = MAP_WIDTH / gridSize;
+  let mediumX: number = Math.floor(nodesInX / 2);
+  
   return node;
 }
