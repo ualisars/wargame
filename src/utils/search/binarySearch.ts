@@ -11,10 +11,10 @@ export const coordinateBinarySearch = (
         let medium = Math.floor(left + (right - left) / 2);
         let coordinate = medium * gridSize;
         if(searchCoordinate >= coordinate && searchCoordinate < coordinate + gridSize) {
-            return searchMap[medium];
+            return searchMap[coordinate];
         }
         else if(searchCoordinate === coordinate + gridSize) {
-            return searchMap[medium];
+            return searchMap[coordinate + gridSize];
         }
         else if(coordinate > searchCoordinate) {
             return coordinateBinarySearch(left, medium - 1, searchCoordinate);
