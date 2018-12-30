@@ -1,7 +1,6 @@
 import {
   getMinValueFromNodes,
   getMaxValueFromNodes,
-  getNodeFromMap,
   getDistanceBetweenUnitAndNodeInGrids
 } from '../..';
 
@@ -17,11 +16,6 @@ export const getFarthestNodeFromEnemy = (enemy:any, nodes:any[]):any => {
   return farthestNode;
 }
 
-/*
-  get fathestNodes of the area
-  by the x ordinate, nodes located close
-  to the edge of the map
-*/
 export const getFarthestXNodes = (nodes:any[]):any[] => {
   let farthestNodes:any[] = [];
   let minValue = getMinValueFromNodes('x', nodes);

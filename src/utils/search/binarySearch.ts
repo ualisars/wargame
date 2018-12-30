@@ -33,6 +33,9 @@ export const coordinateYBinarySearch = (
     if(right >= left) {
         let medium = Math.floor(left + (right - left) / 2);
         let node: MapNode = map[medium];
+        if(!node) {
+            return null;
+        }
         if(searchCoordinate >= node.y && searchCoordinate < node.y + gridSize) {
             return map[medium];
         }

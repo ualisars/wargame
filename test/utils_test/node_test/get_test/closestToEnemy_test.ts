@@ -1,24 +1,21 @@
-import {assert} from 'chai';
+import { assert } from 'chai';
 import {
   getClosestToEnemyNodes,
   getClosestToEnemySideNodes
 } from '../../../../src/utils/node/get';
 import {
-  hidingEnemies,
   addToHidingEnemies,
   removeFromHidingEnemies
 } from '../../../../src/store/AI/enemies/hidingEnemies';
-import {createUnit} from '../../../../src/unit/create';
-import {removeAllUnits} from '../../../../src/store/unit/units';
-import {removeUnit} from '../../../../src/unit/remove';
+import { createUnit } from '../../../../src/unit/create';
+import { removeAllUnits } from '../../../../src/store/unit/units';
+import { removeUnit } from '../../../../src/unit/remove';
 import Unit from '../../../../src/unit/types/Unit';
 
 describe('NodeUtils: get: closestToEnemy test', () => {
-
-
-  // add cavalry to hidingEnemies
-  let pikemen:Unit = createUnit('pikemen', 130, 60, 'player');
+  let pikemen: Unit;
   before(() => {
+    pikemen = createUnit('pikemen', 130, 60, 'player');
     removeAllUnits();
     addToHidingEnemies(pikemen);
   });
