@@ -1,6 +1,7 @@
-import { gridSize, MAP_WIDTH } from '../../../config';
+import { gridSize, MAP_WIDTH, MAP_HEIGHT } from '../../../config';
 import { initialMap, searchMap } from '../../../map/createMap/initialMap';
 import MapNode from '../../../map/nodes/MapNode';
+import { coordinateYBinarySearch, findXInSearchMap } from '../../search/binarySearch';
 
 export let getNodeFromMap = (x:number, y:number, map=initialMap): MapNode => {
   let node: MapNode;
@@ -14,9 +15,12 @@ export let getNodeFromMap = (x:number, y:number, map=initialMap): MapNode => {
   return node;
 }
 
-export const getNodeFromMapB = (x: number, y: number, map=searchMap): MapNode => {
-  let node: MapNode;
-  let nodesInX: number = MAP_WIDTH / gridSize;
-  let mediumX: number = Math.floor(nodesInX / 2);
-  return node;
-}
+// export const getNodeFromMap = (x: number, y: number, map=searchMap): MapNode => {
+//   let node: MapNode;
+//   let nodesInX: number = MAP_WIDTH / gridSize;
+//   let nodesInY: number = MAP_HEIGHT / gridSize;
+//   let xNodes = findXInSearchMap(0, nodesInX, x);
+//   if(!xNodes) throw new Error('x array is not defined');
+//   node = coordinateBinarySearch(0, nodesInY, y, xNodes);
+//   return node;
+// }
