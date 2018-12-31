@@ -14,8 +14,6 @@ export const createObstacles = (startX:number, finishX:number, startY:number, fi
         y
       }
       newMap = deleteObjectFromArray(node, newMap);
-      let xLength = Math.abs(startX - finishX);
-      let yLength = Math.abs(startY - finishY);
       let src:string;
       if(type === 'forest') src='./src/img/terrain/trees.png';
       else if(type === 'mountain') src='/src/img/terrain/mountain.png';

@@ -15,12 +15,12 @@ export const advance = (unit: Unit, actionNode: MapNode, commandNumber: number) 
     if(commandNumber !== currentCommandNumber) return;
     if(!unit.isMoving && !unit.isFighting) {
         if(unit.currentNode.x != actionNode.x && unit.currentNode.y != actionNode.y) {
-            console.log('advance moveTo');
-            moveTo(unit, actionNode.x, actionNode.y);
+            if(actionNode){
+                moveTo(unit, actionNode.x, actionNode.y);
+            }
         }
         else if(computerUnits.length === 1) {
             let enemy = getClosestEnemyToUnit(unit);
-            console.log('advance attack');
             attackEnemy(unit, enemy);
         }
         else {
@@ -35,7 +35,6 @@ export const advance = (unit: Unit, actionNode: MapNode, commandNumber: number) 
                 let ally = getUnitById(element.key);
                 if(element.value >= 80 && ally.isFighting) {
                     beCloseTo(unit, ally, commandNumber, true);
-                    console.log('advance be close to');
                     break;
                 }
             }

@@ -3,8 +3,9 @@ import {
   gridSize,
   MAP_WIDTH
 } from '../../config';
+import MapNode from '../nodes/MapNode';
 
-export const neighbors = (map: any[], node:any) => {
+export const neighbors = (map: MapNode[], node: MapNode): MapNode[] => {
   let dirs = [
     {x: -gridSize, y: -gridSize},
     {x: 0, y: -gridSize, distance: 10},
@@ -15,28 +16,25 @@ export const neighbors = (map: any[], node:any) => {
     {x: 0, y: gridSize},
     {x: gridSize, y: gridSize}
   ];
-  let result = [];
+  let nodeNeighbors: MapNode[] = [];
   for(let dir of dirs) {
     let neighbor = {
       x: node.x + dir.x,
       y: node.y + dir.y
     }
     if(neighbor.x >= 0 && neighbor.x <= MAP_WIDTH && neighbor.y >= 0 && neighbor.y <= MAP_HEIGHT) {
-        let finded:boolean = false;
-        for(let node of map) {
-          if(neighbor.x === node.x && neighbor.y === node.y) {
-            finded = true;
-          }
+      let foundNode: MapNode;
+      for(let node of map) {
+        if(neighbor.x === node.x && neighbor.y === node.y) {
+          foundNode = node;
         }
-        if(finded) {
-          result.push({
-            x: neighbor.x,
-            y: neighbor.y
-          });
-        }
+      }
+      if(foundNode) {
+        nodeNeighbors.push(foundNode);
+      }
     }
   }
-  return result;
+  return nodeNeighbors;
 }
 
 export const addNeighbors = (map:any[]) => {

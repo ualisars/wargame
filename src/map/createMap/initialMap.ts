@@ -34,9 +34,8 @@ export let addObstaclesToMap = () => {
     initialMap = createObstacles(480, 580, 400, 440, 'forest');
     initialMap = createObstacles(960, 1000, 360, 400, 'forest');
     initialMap = createObstacles(920, 1000, 400, 440, 'forest');
-    addNeighbors(initialMap).then(() => resolve());
+    resolve();
   });
-  
 }
 
 export const initializeMap = () => {
@@ -45,9 +44,9 @@ export const initializeMap = () => {
     createMap()
     .then(() => addObstaclesToMap())
     .then(() => {
-      initializeSearchMap(initialMap).then(() => {
+      addNeighbors(initialMap).then(() => initializeSearchMap(initialMap).then(() => {
         resolve();
-      });
+      }));
     });
   });
 }
