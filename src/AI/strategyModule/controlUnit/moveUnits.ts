@@ -27,17 +27,17 @@ export const moveUnits = () => {
             attackEnemy(unit, action.actionUnit);
         }
         else if(command === Command.MoveToNode) {
-            advance(unit, action.node, commandNumber);
+            advance(unit, action.node, commandNumber, true);
         }
         else if(command === Command.BeCloseToUnit) {
             let ally = action.actionUnit;
             let unitVulnerability = assessVulnerability(unit);
             let allyVulnerability = assessVulnerability(ally);
             if(unitVulnerability >= allyVulnerability) {
-                beCloseTo(unit, ally, commandNumber, true);
+                beCloseTo(unit, ally, commandNumber, true, true);
             } 
             else {
-                beCloseTo(unit, ally, commandNumber);
+                beCloseTo(unit, ally, commandNumber, false, true);
             } 
         }
     }

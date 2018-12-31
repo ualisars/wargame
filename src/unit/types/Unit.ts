@@ -145,21 +145,21 @@ class Unit {
   }
 
   setCurrentNode(node: MapNode) {
-    this.currentNode = node;
-    // let foundNode: MapNode = getNodeFromMap(node.x, node.y);
-    // if(foundNode) {
-    //   this.currentNode = foundNode;
-    // } else {
+    let foundNode: MapNode = getNodeFromMap(node.x, node.y);
+    if(foundNode) {
+      this.currentNode = foundNode;
+    } 
+    // else {
     //   throw `Error: Node ${node} not found in the map`;
     // }
   }
 
   setNextNode(node: MapNode) {
-    // let foundNode: MapNode = getNodeFromMap(node.x, node.y);
-    this.nextNode = node;
-    // if(foundNode) {
-    //   this.nextNode = foundNode;
-    // } else {
+    let foundNode: MapNode = getNodeFromMap(node.x, node.y);
+    if(foundNode) {
+      this.nextNode = foundNode;
+    }
+    // else {
     //   throw `Error: Node ${node} not found in the map`;
     // }
   }

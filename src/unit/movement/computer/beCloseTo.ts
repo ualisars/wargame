@@ -12,10 +12,11 @@ export const beCloseTo = (
     unit: Unit, 
     actionUnit: Unit, 
     commandNumber: number, 
-    protection: boolean = false
+    protection: boolean = false,
+    newCommand: boolean = false
 ) => {
     if(commandNumber !== currentCommandNumber) return;
-    if(!unit.isFighting && !unit.isMoving) {
+    if(newCommand || (!unit.isFighting && !unit.isMoving)) {
         let distanceBetweenUnits: number = getDistanceBetweenTwoUnitsInGrids(unit, actionUnit);
         if(actionUnit.isFighting) {
             if(actionUnit.figthAgainst.all.length != 0) {

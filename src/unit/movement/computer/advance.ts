@@ -11,13 +11,12 @@ import { getUnitById } from "../../../utils/unit/general";
 import { moveTo } from '../common/moveTo';
 import { beCloseTo } from "./beCloseTo";
 
-export const advance = (unit: Unit, actionNode: MapNode, commandNumber: number) => {
+export const advance = (unit: Unit, actionNode: MapNode, commandNumber: number, newCommand: boolean = false) => {
     if(commandNumber !== currentCommandNumber) return;
-    if(!unit.isMoving && !unit.isFighting) {
+    if(newCommand || (!unit.isMoving && !unit.isFighting)) {
+        console.log(`unit ${unit.id} commandNumber ${commandNumber}`);
         if(unit.currentNode.x != actionNode.x && unit.currentNode.y != actionNode.y) {
-            if(actionNode){
-                moveTo(unit, actionNode.x, actionNode.y);
-            }
+            moveTo(unit, actionNode.x, actionNode.y);
         }
         else if(computerUnits.length === 1) {
             let enemy = getClosestEnemyToUnit(unit);
