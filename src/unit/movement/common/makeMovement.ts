@@ -50,9 +50,7 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
 }
 
 export const makeMovementInPursueUnit = (unit:Unit, pursuedUnit:any, currentNode:any, nextNode:any, path:any[], allPath:any[], currX:number, currY:number, i:number, nodeI: number) => {
-  //console.log('makeMovement2');
   if(unit.x === nextNode.x && unit.y === nextNode.y) { // unit reach destination point
-    //console.error('unit reached its position');
     nodeI++;
     pursueUnit(unit, pursuedUnit, currX, currY, nodeI, allPath, false);
   }

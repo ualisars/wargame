@@ -29,7 +29,6 @@ export const isObjectInMapKeys = (object:any, map:any) => {
   let arr:any[] = Array.from(map);
   let result:boolean = false;
   for(let i = 0; i < arr.length; ++i) {
-    //console.log('object', object);
     if(arr[i][0].x === object.x && arr[i][0].y === object.y) {
       result = true;
     }

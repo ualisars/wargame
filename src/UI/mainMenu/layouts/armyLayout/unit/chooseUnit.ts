@@ -34,7 +34,6 @@ export const onChooseUnitInArmy = (mouseX:number, mouseY:number) => {
         }
       }
   }
-  // console.log('selectedUnit', selectedUnit);
   if(selectedUnit && !selectedUnitInRoster) {
     drawRemoveIcon(selectedUnit);
   }

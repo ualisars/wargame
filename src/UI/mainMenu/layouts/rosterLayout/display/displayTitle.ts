@@ -9,6 +9,5 @@ export const displayRosterTitle = () => {
   mainMenuCtx.font = '24px serif';
   mainMenuCtx.textAlign = 'left';
   mainMenuCtx.fillText('Roster', 150, titleHeight + 20);
-  //console.log('roster', roster);
   displayRosterUnits();
 }

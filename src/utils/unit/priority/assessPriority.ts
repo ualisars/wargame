@@ -23,7 +23,6 @@ import MapNode from '../../../map/nodes/MapNode';
 export const getPriorityUnit = (node: MapNode, units:Unit[]):Unit => {
   let updatedUnits:Unit[] = Object.assign([], units);
   let closestUnits:Unit[] = findClosestUnitsToTheNodeCenter(node, updatedUnits);
-  //console.log('closestUnits', closestUnits);
   if(closestUnits.length === 1) {
     return closestUnits[0];
   }

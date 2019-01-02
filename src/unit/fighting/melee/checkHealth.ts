@@ -1,7 +1,6 @@
 import {units} from '../../../store/unit/units';
 import {removeUnit} from '../../remove';
 import {
-  spottedUnits,
   removeUnitFromSpottedUnits,
 } from '../../../store/unit/spottedUnits';
 import {findUnitInFightAgainst} from '../fightAgainst';
@@ -16,7 +15,6 @@ export const checkHealth = () => {
       if(unit.health <= 0) { // unit is destroyed
         if(unit.controlBy === 'player') { // if unit is destroyed remove it from spottedUnits
           removeUnitFromSpottedUnits(unit);
-          console.log('spottedUnits', spottedUnits);
         }
         if(findUnitInFightAgainst(unit).length > 0) { // if unit is figthAgainst some enemies
           for(let enemy of findUnitInFightAgainst(unit)) { // delete this unit from all enemy's fighting

@@ -64,7 +64,6 @@ export const dragAndDrop = () => {
     onChooseComputer(x, y);
     if(isUnitShouldBeRemoved(x,y)) {
       let unit = isUnitShouldBeRemoved(x, y);
-      console.log('remove unit:', unit);
       decreaseSpentGold(unit.cost);
       removeUnitFromArmy(unit);
       displayChosenUnits();
@@ -76,7 +75,6 @@ export const dragAndDrop = () => {
       activateBattleMode();
     }
     if(selectedUnitInRoster) { // add unit to roster
-      console.log('unit is added:', isUnitAddedToArmy(x, y));
       if(isUnitAddedToArmy(x,y)) { // draw unit in army list
         let unit = isUnitAddedToArmy(x,y);
         addUnitToArmy(unit);
@@ -91,7 +89,6 @@ export const dragAndDrop = () => {
       }
     }
     onChooseRoster(x, y);
-    console.log('onClick selectedUnitInRoster', selectedUnitInRoster);
   });
 
   dragAndDropCanvas.addEventListener('mousemove', (e:any) => {
@@ -103,7 +100,6 @@ export const dragAndDrop = () => {
       let unit = isUnitSelectedInRoster(x,y);
       if(hoveredUnit) {
         if(unit.x !== hoveredUnit.x && unit.y !== hoveredUnit) {
-          console.log('changeHoveredUnit')
           changeHoveredUnit(unit);
           displayInfo();
         }

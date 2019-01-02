@@ -28,8 +28,6 @@ import { clearPath } from '../../path/draw/drawPath';
 import { computerMovement } from '../../AI/strategyModule/controlUnit/computerAction';
 
 export const launchBattle = () => {
-  console.log('battle mode', battleMode);
-  console.log('monitor: height', window.screen.availHeight, 'width:',window.screen.availWidth);
   auxiliaryCanvas.addEventListener('mousemove', (e:any) => {
     let mouseX = e.offsetX; // get X
     let mouseY = e.offsetY; // get Y
@@ -54,14 +52,9 @@ export const launchBattle = () => {
   });
 
   auxiliaryCanvas.addEventListener('click', (e:any) => {
-    console.error('Click');
     let x = e.offsetX; // get X
     let y = e.offsetY; // get Y
-    console.log('Position x', e.offsetX); // get X
-    console.log('Position y', e.offsetY); // get Y
     onChooseUnit(units, x, y);
-    console.log('currentlyChosenUnit', currentlyChosenUnit);
-    console.log('node', getNodeFromMap(x, y));
     redrawPlayerUnits();
     displayUnitIcons();
     clearPath();

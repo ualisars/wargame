@@ -6,5 +6,4 @@ export const selectUnitInRoster = (unit:any) => {
   } else {
     selectedUnitInRoster = null;
   }
-  console.log('selectedUnitInRoster', selectedUnitInRoster);
 }

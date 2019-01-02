@@ -41,7 +41,6 @@ export const isEnemyInTheRange = (unit:any, enemy:any) => {
   let distanceY:number = ((unit.currentNode.y - enemy.currentNode.y) / gridSize);
   let distance:number = Math.max(distanceX, distanceY); // get min distance
   if(distance <= range) { // enemy is reacheable for missileAttack
-    console.log('enemy is reacheable for missileAttack');
     return true;
   }
   return false;
