@@ -1,17 +1,12 @@
-import {mainMenuCtx} from '../../../../../config/context';
-import {
-  unitRosterWidth,
-  unitRosterHeight,
-  titleHeight
-} from '../../../../../config/mainMenu';
-import {roster} from '../../../../../store/roster/roster';
-import {loadImage} from '../../../../../utils';
+import { mainMenuCtx } from '../../../../../config/context';
+import { titleHeight } from '../../../../../config/mainMenu';
+import { roster } from '../../../../../store/roster/roster';
+import { loadImage } from '../../../../../utils';
 import {
   rosterImgHeight,
   rosterImgWidth
 } from '../rosterSettings';
-import {drawCoin} from '../coin';
-
+import { drawCoin } from '../coin';
 
 export const displayRosterUnits = (i:number = 0, x:number=60, y:number=titleHeight+60) => {
   if(i >= roster.length) {

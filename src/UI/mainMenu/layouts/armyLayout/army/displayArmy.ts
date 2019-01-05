@@ -1,20 +1,12 @@
-import {
-  mainMenuCtx,
-  dragAndDropCanvasCtx
-} from '../../../../../config/context';
-import {side} from '../../../../../config/mainMenu/sides/side';
+import { mainMenuCtx } from '../../../../../config/context';
+import { side } from '../../../../../config/mainMenu/sides/side';
 import {
   playerArmy,
-  computerArmy,
-  removeUnitFromArmy
+  computerArmy
 } from '../../../../../store/roster/army';
-import {loadImage} from '../../../../../utils';
 import {
   unitRosterWidth,
-  unitRosterHeight,
-  titleHeight,
-  armyLayoutWidth,
-  armyLayoutHeight
+  titleHeight
 } from '../../../../../config/mainMenu';
 import {
   armyImgHeight,
@@ -36,16 +28,9 @@ export const displayArmy = (i:number = 1) => {
     let unit = army[i - 1];
     let x = unit.armyPosition.x;
     let y = unit.armyPosition.y;
-    console.error('unit name', unit.name);
-    console.error('unit icon', unitIconImages[unit.name]);
     mainMenuCtx.drawImage(unitIconImages[unit.name], x, y, armyImgWidth, armyImgHeight);
     i++;
     displayArmy(i);
-    // loadImage(unit.imgSrc, (err:any, img:any) => {
-    //   mainMenuCtx.drawImage(img, x, y, armyImgWidth, armyImgHeight);
-    //   i++;
-    //   displayArmy(i);
-    // });
   } else {
     // draw empty box
     let unitNumber = army.length;

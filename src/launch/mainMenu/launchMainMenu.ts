@@ -8,12 +8,14 @@ import { dragAndDrop } from '../../UI/mainMenu/main';
 import { drawBottomLayout } from '../../UI/mainMenu/layouts/bottomLayout';
 import { initializeMap } from '../../map/createMap/initialMap';
 import { loadIcons, loadUnitIcons } from '../../store/images/unitIconImages';
+import { createRoster } from '../../store/roster/roster';
 
 export const launchMainMenu = () => {
   initializeMap().then(
     () => {
       loadUnitIcons().then(() => {
         mainMenuCtx.fillRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT);
+        createRoster();
         displayRoster();
         displayChosenUnits();
         displayInfo();
