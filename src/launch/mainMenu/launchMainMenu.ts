@@ -7,19 +7,21 @@ import { displayTitle } from '../../UI/mainMenu/layouts/upperLayout';
 import { dragAndDrop } from '../../UI/mainMenu/main';
 import { drawBottomLayout } from '../../UI/mainMenu/layouts/bottomLayout';
 import { initializeMap } from '../../map/createMap/initialMap';
-import { loadIcons } from '../../store/images/unitIconImages';
+import { loadIcons, loadUnitIcons } from '../../store/images/unitIconImages';
 
 export const launchMainMenu = () => {
   initializeMap().then(
     () => {
-      mainMenuCtx.fillRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT);
-      displayRoster();
-      displayChosenUnits();
-      displayInfo();
-      displayTitle();
-      dragAndDrop();
-      drawBottomLayout();
-      loadIcons();
+      loadUnitIcons().then(() => {
+        mainMenuCtx.fillRect(0, 0, MAP_WIDTH, CANVAS_HEIGHT);
+        displayRoster();
+        displayChosenUnits();
+        displayInfo();
+        displayTitle();
+        dragAndDrop();
+        drawBottomLayout();
+        loadIcons();
+      });
     }
   );
 }

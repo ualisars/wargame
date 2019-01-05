@@ -1,6 +1,6 @@
 import { loadImage } from "../../utils";
-import { units } from "../unit/units";
 import { moveIconSrc, fightIconSrc, swordIconSrc } from "../../UI/battleUI/unitPanel/icon/iconSettings";
+import { defaultUnits, createDefaultUnits } from "../unit/defaultUnits";
 
 export let unitIconImages: any = {};
 export let movementIconImage: any;
@@ -15,6 +15,13 @@ export const loadIcons = () => {
 
 export const loadUnitIcons = () => {
     return new Promise(resolve => {
+        createDefaultUnits().then(() => loadDefaultUnits()
+        .then(() => resolve()));
+    });
+}
+
+const loadDefaultUnits = () => {
+    return new Promise(resolve => {
         loadUnitIconImages().then(() => {
             resolve();
         });
@@ -24,7 +31,6 @@ export const loadUnitIcons = () => {
 const loadMovementIconImage = () => {
     loadImage(moveIconSrc, (err: any, img: any) => {
         movementIconImage = img;
-        
     });
 }
 
@@ -36,11 +42,14 @@ const loadFightIconImage = () => {
 
 const loadUnitIconImages = (i: number = 0) => {
     return new Promise(resolve => {
-        if(i === units.length) {
+        if(i === defaultUnits.length) {
             resolve();
         }
-        loadImage(units[i].imgSrc, (err: any, img: any) => {
-            unitIconImages[units[i].name] = img;
+        loadImage(defaultUnits[i].imgSrc, (err: any, img: any) => {
+            if(err) {
+                throw new Error(`Cannot load images of unit ${defaultUnits[i].name}`);
+            }
+            unitIconImages[defaultUnits[i].name] = img;
             resolve(loadUnitIconImages(i + 1));
         });
     });

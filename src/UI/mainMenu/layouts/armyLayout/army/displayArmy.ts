@@ -20,6 +20,7 @@ import {
   armyImgHeight,
   armyImgWidth
 } from '../armySettings';
+import { unitIconImages } from '../../../../../store/images/unitIconImages';
 
 export let emptyBox:any;
 
@@ -35,11 +36,16 @@ export const displayArmy = (i:number = 1) => {
     let unit = army[i - 1];
     let x = unit.armyPosition.x;
     let y = unit.armyPosition.y;
-    loadImage(unit.imgSrc, (err:any, img:any) => {
-      mainMenuCtx.drawImage(img, x, y, armyImgWidth, armyImgHeight);
-      i++;
-      displayArmy(i);
-    });
+    console.error('unit name', unit.name);
+    console.error('unit icon', unitIconImages[unit.name]);
+    mainMenuCtx.drawImage(unitIconImages[unit.name], x, y, armyImgWidth, armyImgHeight);
+    i++;
+    displayArmy(i);
+    // loadImage(unit.imgSrc, (err:any, img:any) => {
+    //   mainMenuCtx.drawImage(img, x, y, armyImgWidth, armyImgHeight);
+    //   i++;
+    //   displayArmy(i);
+    // });
   } else {
     // draw empty box
     let unitNumber = army.length;
