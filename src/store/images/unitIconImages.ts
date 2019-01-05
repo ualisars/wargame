@@ -30,12 +30,18 @@ const loadDefaultUnits = () => {
 
 const loadMovementIconImage = () => {
     loadImage(moveIconSrc, (err: any, img: any) => {
+        if(err) {
+            throw new Error("cannot load movement icon");
+        }
         movementIconImage = img;
     });
 }
 
 const loadFightIconImage = () => {
     loadImage(fightIconSrc, (err: any, img: any) => {
+        if(err) {
+            throw new Error("cannot load fight icon");
+        }
         fightIconImage = img;
     });
 }
@@ -57,6 +63,9 @@ const loadUnitIconImages = (i: number = 0) => {
 
 export const loadSwordIconImage = () => {
     loadImage(swordIconSrc, (err: any, img: any) => {
+        if(err) {
+            throw new Error("cannot load sword icon");
+        }
         swordIconImage = img;
     });
 }
