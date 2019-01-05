@@ -1,10 +1,8 @@
 import {
-  mainMenu,
   dragAndDropCanvas
 } from '../../../config/canvas';
 import {
-  dragAndDropCanvasCtx,
-  mainMenuCtx
+  dragAndDropCanvasCtx
 } from '../../../config/context';
 import {
   decreaseSpentGold,
@@ -38,7 +36,6 @@ import {
   onChooseUnitInArmy,
   armyImgWidth,
   armyImgHeight,
-  displayArmy,
   displayChosenUnits,
 } from '../layouts/armyLayout';
 import {isUnitShouldBeRemoved} from '../layouts/armyLayout/remove/removeUnit';
@@ -153,7 +150,8 @@ export const isUnitAddedToArmy = (mouseX:number, mouseY:number):any => {
   const height = armyImgHeight;
   let x = emptyBox.x;
   let y = emptyBox.y;
-  if(mouseX >= x && mouseX < (x + width) && mouseY >= y && mouseY < (y + height)) {
+
+  if(!emptyBox.filled && (mouseX >= x && mouseX < (x + width) && mouseY >= y && mouseY < (y + height))) {
     return selectedUnitInRoster;
   }
   return null;

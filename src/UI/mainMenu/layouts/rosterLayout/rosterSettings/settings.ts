@@ -1,2 +1,2 @@
-export const rosterImgWidth:number = 80;
-export const rosterImgHeight:number = 80;
+export const rosterImgWidth:number = 100;
+export const rosterImgHeight:number = 100;

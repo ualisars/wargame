@@ -54,16 +54,26 @@ export const displayArmy = (i:number = 1) => {
       }
     }
 
-    mainMenuCtx.fillStyle = '#fff';
-    mainMenuCtx.fillRect(x, y, armyImgWidth, armyImgHeight);
-    mainMenuCtx.fillStyle = '#000';
-    mainMenuCtx.strokeRect(x, y, armyImgWidth, armyImgHeight);
-    emptyBox = {
-      i,
-      x,
-      y,
-      filled: false
-    };
+    if(i <= 10) {
+      mainMenuCtx.fillStyle = '#fff';
+      mainMenuCtx.fillRect(x, y, armyImgWidth, armyImgHeight);
+      mainMenuCtx.fillStyle = '#000';
+      mainMenuCtx.strokeRect(x, y, armyImgWidth, armyImgHeight);
+
+      emptyBox = {
+        i,
+        x,
+        y,
+        filled: false
+      };
+    } else {
+      emptyBox = {
+        i,
+        x,
+        y,
+        filled: true
+      };
+    }   
     return;
   }
 }
