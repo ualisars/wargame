@@ -13,7 +13,7 @@ class LightCavalry extends Unit {
   // Characteristics
   name: string = 'LightCavalry';
   type: string = 'cavalry';
-  imgSrc:string = './src/img/units/pikemen.jpg';
+  imgSrc:string = './src/img/units/lightCavalry.png';
   health: number = 80;
   speed: number = 40;
   armour: number = 2;
