@@ -47,8 +47,7 @@ export const drawFightIcon = (x: number, y: number, unit: Unit, half: boolean = 
 }
 
 export const drawArrowIcon = (x: number, y: number, half: boolean = false) => {
-    let k = (half) ? 0.5 : 1;
-    ctx.strokeRect(x, y, arrowIcon.width * k, arrowIcon.height);
+   // todo add arrow icon
 }
 
 export const fillHealthPoints = (x: number, y: number, unit: Unit, half: boolean = false) => {
