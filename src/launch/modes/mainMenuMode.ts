@@ -13,6 +13,7 @@ import { setMainMenuMode } from '../../config';
 import { launchGame } from '..';
 import { eventCanvas } from '../../config/canvas/event';
 import { pathCanvas } from '../../config/canvas/path';
+import { loadingCanvas } from '../../config/canvas/loading';
 
 export const activateMainMenuMode = () => {
   dragAndDropCanvas.style.zIndex = '6';
@@ -23,6 +24,7 @@ export const activateMainMenuMode = () => {
   eventCanvas.style.zIndex = '1';
   pathCanvas.style.zIndex = '1';
   backgroundCanvas.style.zIndex = '1';
+  loadingCanvas.style.zIndex = '1';
   clearMap();
   setMainMenuMode();
   launchGame();

@@ -9,8 +9,11 @@ import { drawBottomLayout } from '../../UI/mainMenu/layouts/bottomLayout';
 import { initializeMap } from '../../map/createMap/initialMap';
 import { loadIcons, loadUnitIcons } from '../../store/images/unitIconImages';
 import { createRoster } from '../../store/roster/roster';
+import { drawLoadingCanvas } from '../loading/drawLoadingCanvas';
+import { loadingCanvas } from '../../config/canvas/loading';
 
 export const launchMainMenu = () => {
+  drawLoadingCanvas();
   initializeMap().then(
     () => {
       loadUnitIcons().then(() => {
@@ -23,6 +26,7 @@ export const launchMainMenu = () => {
         dragAndDrop();
         drawBottomLayout();
         loadIcons();
+        loadingCanvas.style.zIndex = '1';
       });
     }
   );

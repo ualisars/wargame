@@ -8,6 +8,7 @@ import {
 } from '../canvas';
 import { pathCanvas } from '../canvas/path';
 import { eventCanvas } from '../canvas/event';
+import { loadingCanvas } from '../canvas/loading';
 
 // define 2d context
 export let ctx:any;
@@ -18,6 +19,7 @@ export let mainMenuCtx:any;
 export let dragAndDropCanvasCtx:any;
 export let pathCtx: any;
 export let eventCtx: any;
+export let loadingCtx: any;
 
 if(canvas) {
   ctx = canvas.getContext("2d");
@@ -42,4 +44,7 @@ if(pathCanvas) {
 }
 if(eventCanvas) {
   eventCtx = eventCanvas.getContext('2d');
+}
+if(loadingCanvas) {
+  loadingCtx = loadingCanvas.getContext('2d');
 }

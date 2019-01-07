@@ -15,8 +15,11 @@ import { createArmy } from '../../battle/roster/army/createArmy';
 import { loadUnitIcons } from '../../store/images/unitIconImages';
 import { pathCanvas } from '../../config/canvas/path';
 import { eventCanvas } from '../../config/canvas/event';
+import { loadingCanvas } from '../../config/canvas/loading';
+import { drawLoadingCanvas } from '../loading/drawLoadingCanvas';
 
 export const activateBattleMode = () => {
+  drawLoadingCanvas();
   setBattleMode().then(() => {
     clearMainMenu();
     createArmy().then(() => loadUnitIcons())
@@ -29,6 +32,7 @@ export const activateBattleMode = () => {
       pathCanvas.style.zIndex = '3';
       terrain.style.zIndex = '2';
       backgroundCanvas.style.zIndex = '1';
+      loadingCanvas.style.zIndex = '0';
       launchGame()
     });
   });
