@@ -1,5 +1,5 @@
 import { loadImage } from "../../utils";
-import { moveIconSrc, fightIconSrc, swordIconSrc, spearIconSrc, spearAndShieldSrc } from "../../UI/battleUI/unitPanel/icon/iconSettings";
+import { moveIconSrc, fightIconSrc, swordIconSrc, spearIconSrc, spearAndShieldSrc, swordAndRoundShieldSrc } from "../../UI/battleUI/unitPanel/icon/iconSettings";
 import { defaultUnits, createDefaultUnits } from "../unit/defaultUnits";
 
 export let unitIconImages: any = {};
@@ -8,6 +8,7 @@ export let fightIconImage: any;
 export let swordIconImage: any;
 export let spearIconImage: any;
 export let spearAndShieldIconImage: any;
+export let swordAndRoundShieldIconImage: any;
 
 export const loadIcons = () => {
     loadFightIconImage();
@@ -15,6 +16,7 @@ export const loadIcons = () => {
     loadSwordIconImage();
     loadSpearIconImage();
     loadSpearAndShieldIconImage();
+    loadSwordAndRoundShieldIconImage();
 }
 
 export const loadUnitIcons = () => {
@@ -89,6 +91,15 @@ export const loadSpearAndShieldIconImage = () => {
             throw new Error(`cannot load spear and shield icon at path ${spearAndShieldSrc}`);
         }
         spearAndShieldIconImage = img;
+    });
+}
+
+export const loadSwordAndRoundShieldIconImage = () => {
+    loadImage(swordAndRoundShieldSrc, (err: any, img: any) => {
+        if(err) {
+            throw new Error(`cannot load sword and round shild icon at path ${swordAndRoundShieldSrc}`);
+        }
+        swordAndRoundShieldIconImage = img;
     });
 }
 

@@ -8,6 +8,7 @@ export const fightIconSrc: string = "./src/img/icons/Swords.png";
 export const swordIconSrc: string = "./src/img/units/icons/sword.png";
 export const spearIconSrc: string = "./src/img/units/icons/spear.png";
 export const spearAndShieldSrc: string = "./src/img/units/icons/spearAndShield.png";
+export const swordAndRoundShieldSrc: string = "./src/img/units/icons/swordAndRoundShield.png";
 
 export const movementIcon: any = {
     width: 30,
