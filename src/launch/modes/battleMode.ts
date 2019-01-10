@@ -17,11 +17,13 @@ import { pathCanvas } from '../../config/canvas/path';
 import { eventCanvas } from '../../config/canvas/event';
 import { loadingCanvas } from '../../config/canvas/loading';
 import { drawLoadingCanvas } from '../loading/drawLoadingCanvas';
+import { fillUnitToIconMap } from '../../store/images/unitToIconMap';
 
 export const activateBattleMode = () => {
   drawLoadingCanvas();
   setBattleMode().then(() => {
     clearMainMenu();
+    fillUnitToIconMap();
     createArmy().then(() => loadUnitIcons())
     .then(() => {
       dragAndDropCanvas.style.zIndex = '0';

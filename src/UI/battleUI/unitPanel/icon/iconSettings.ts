@@ -5,7 +5,10 @@ export const healthPointsHeight: number = 10;
 export const iconHeight: number = UNIT_ICON_HEIGHT - (attributesHeight + healthPointsHeight);
 export const moveIconSrc: string = "./src/img/icons/MoveIcon.png";
 export const fightIconSrc: string = "./src/img/icons/Swords.png";
-export const swordIconSrc: string = "./src/img/units/icons/sword.png"
+export const swordIconSrc: string = "./src/img/units/icons/sword.png";
+export const spearIconSrc: string = "./src/img/units/icons/spear.png";
+export const spearAndShieldSrc: string = "./src/img/units/icons/spearAndShield.png";
+
 export const movementIcon: any = {
     width: 30,
     height: attributesHeight

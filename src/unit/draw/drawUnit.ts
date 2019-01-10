@@ -1,9 +1,9 @@
 import { ctx } from '../../config/context';
 import { Unit } from '../types';
 import { gridSize } from '../../config';
-import { swordIconImage } from '../../store/images/unitIconImages';
 import { currentlyChosenUnit } from '../../store/unit/currentlyChosenUnit';
 import { playerUnits } from '../../store/unit/units';
+import { unitToIconMap } from '../../store/images/unitToIconMap';
 
 export const drawUnit = (unit: Unit) => {
   let color;
@@ -38,8 +38,8 @@ export const drawUnit = (unit: Unit) => {
     let offset = 8;
     let x = unit.x + offset;
     let y =  unit.y + offset;
-    let radius = (unit.radius * 2) - offset
-    ctx.drawImage(swordIconImage, x + offsetX, y + offsetY, radius, radius);
+    let radius = (unit.radius * 2) - offset;
+    ctx.drawImage(unitToIconMap[unit.name], x + offsetX, y + offsetY, radius, radius);
   }
 }
 
