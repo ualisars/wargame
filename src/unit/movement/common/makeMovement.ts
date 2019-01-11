@@ -35,8 +35,11 @@ export const makeMovementInUpdateUnit = (unit:Unit, currentNode:any, nextNode:an
   let centerY = path[i].y;
 
   // set unit.x and unit.y
-  unit.setX(centerX - (gridSize * 0.5));
-  unit.setY(centerY - (gridSize * 0.5));
+  let x = centerX - (gridSize * 0.5);
+  let y = centerY - (gridSize * 0.5);
+  
+  unit.setX(x);
+  unit.setY(y);
 
   
   drawUnit(unit);

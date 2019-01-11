@@ -8,7 +8,9 @@ export const moveTo = (unit:Unit, moveToX:number, moveToY:number):void => {
   if(unit.isMoving) {
     unit.setUnitToPursue(null);
     let finishNode = getNodeFromMap(moveToX, moveToY);
-    unit.assignMoveToPosition(finishNode.x, finishNode.y);
+    if(finishNode && finishNode.x && finishNode.y) {
+      unit.assignMoveToPosition(finishNode.x, finishNode.y);
+    }
   } else {
     unit.setUnitToPursue(null);
     let startNode = getNodeFromMap(unit.x, unit.y);

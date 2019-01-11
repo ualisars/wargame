@@ -120,7 +120,6 @@ class Unit {
     if(node) {
       this.moveToNode = node;
     }
-
   }
 
   removeEnemyFromFlank(opponent:Unit) {
@@ -145,13 +144,12 @@ class Unit {
   }
 
   setCurrentNode(node: MapNode) {
-    let foundNode: MapNode = getNodeFromMap(node.x, node.y);
-    if(foundNode) {
-      this.currentNode = foundNode;
-    } 
-    // else {
-    //   throw `Error: Node ${node} not found in the map`;
-    // }
+    if(node && node.x && node.y) {
+      let foundNode: MapNode = getNodeFromMap(node.x, node.y);
+      if(foundNode) {
+        this.currentNode = foundNode;
+      }
+    }
   }
 
   setNextNode(node: MapNode) {
@@ -159,9 +157,6 @@ class Unit {
     if(foundNode) {
       this.nextNode = foundNode;
     }
-    // else {
-    //   throw `Error: Node ${node} not found in the map`;
-    // }
   }
 
   assignEnemy(enemy:Unit) {

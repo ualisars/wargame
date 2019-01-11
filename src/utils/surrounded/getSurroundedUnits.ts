@@ -22,10 +22,14 @@ import {
     
     let nodes = getSurroundedNodes(unit, range);
     for(let node of nodes) {
-      for(let currentUnit of updatedUnits) {
-        let currentUnitNode = getNodeFromMap(currentUnit.x, currentUnit.y);
-        if(node.x === currentUnitNode.x && node.y === currentUnitNode.y) {
-          surroundedUnits.push(currentUnit);
+      if(node && node.x && node.y) {
+        for(let currentUnit of updatedUnits) {
+          let currentUnitNode = getNodeFromMap(currentUnit.x, currentUnit.y);
+          if(currentUnitNode && currentUnitNode.x && currentUnitNode.y) {
+            if(node.x === currentUnitNode.x && node.y === currentUnitNode.y) {
+              surroundedUnits.push(currentUnit);
+            }
+          }
         }
       }
     }
