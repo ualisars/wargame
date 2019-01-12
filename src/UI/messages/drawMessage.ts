@@ -1,15 +1,6 @@
 import {MAP_WIDTH, CANVAS_HEIGHT} from '../../config';
-import {backgroundCanvas} from '../../config/canvas';
 
-import {
-  backgroundCtx,
-  ctx,
-  auxiliaryCtx
-} from '../../config/context';
-
-export const drawMessage = (message:string) => {
-  // backgroundCtx.clearRect(0, 0, WIDTH, HEIGHT);
-  // ctx.clearRect(0,0, WIDTH, HEIGHT);
+export const drawMessage = (ctx: CanvasRenderingContext2D, message:string) => {
   ctx.fillStyle = '#000';
   ctx.font = '256px serif';
   ctx.textAlign = 'left';

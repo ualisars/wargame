@@ -1,8 +1,6 @@
 import {
   mainMenu,
-  dragAndDropCanvas
-} from '../../config/canvas';
-import {
+  dragAndDropCanvas,
   canvas,
   auxiliaryCanvas,
   backgroundCanvas,

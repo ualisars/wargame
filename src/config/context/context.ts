@@ -9,6 +9,7 @@ import {
 import { pathCanvas } from '../canvas/path';
 import { eventCanvas } from '../canvas/event';
 import { loadingCanvas } from '../canvas/loading';
+import { battleResultCanvas } from '../canvas/battleResult';
 
 // define 2d context
 export let ctx:any;
@@ -20,6 +21,7 @@ export let dragAndDropCanvasCtx:any;
 export let pathCtx: any;
 export let eventCtx: any;
 export let loadingCtx: any;
+export let battleResultCtx: any;
 
 if(canvas) {
   ctx = canvas.getContext("2d");
@@ -47,4 +49,7 @@ if(eventCanvas) {
 }
 if(loadingCanvas) {
   loadingCtx = loadingCanvas.getContext('2d');
+}
+if(battleResultCanvas) {
+  battleResultCtx = battleResultCanvas.getContext('2d');
 }
