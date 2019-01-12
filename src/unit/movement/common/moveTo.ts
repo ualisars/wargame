@@ -15,8 +15,10 @@ export const moveTo = (unit:Unit, moveToX:number, moveToY:number):void => {
     unit.setUnitToPursue(null);
     let startNode = getNodeFromMap(unit.x, unit.y);
     let finishNode = getNodeFromMap(moveToX, moveToY);
-    let path:any = aStar(initialMap, startNode, finishNode);
-    unit.assignMoveToPosition(finishNode.x, finishNode.y);
-    updateUnit(unit, path, 0, finishNode.x, finishNode.y, null, true);
+    if(finishNode && finishNode.x && finishNode.y) {
+      let path:any = aStar(initialMap, startNode, finishNode);
+      unit.assignMoveToPosition(finishNode.x, finishNode.y);
+      updateUnit(unit, path, 0, finishNode.x, finishNode.y, null, true);
+    }
   }
 }
